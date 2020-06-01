@@ -1,0 +1,37 @@
+<p>Control de la entrada por el teclado mediante consolaÂ (control del buffer).</p>
+
+<p>Esta es una clase que se ha realizado manteniendo los estÃ¡ndares de reutilizaciÃ³n. Se puede apreciar en los mensajes por pantalla y la universalidad de los parÃ¡metros. Concretamente se realizÃ³ para la creaciÃ³n del ejercicio “<a href="http://localhost/java-ejercicios-nivel-2/" title="Ir a ejercicio &quot;VehÃ­culos&quot;">VehÃ­culos</a>”.</p>
+
+<p>[code language=”java”]</p>
+
+<p>package ruben.utils;</p>
+
+<p>import java.io.*;</p>
+
+<p>/** * CLASE UTILS * ————– * Controla la entrada por teclada, espifica si es String, Integer… * * @author RubÃ©n */</p>
+
+<p>package anfora.utils;</p>
+
+<p>import java.io.*;</p>
+
+<p>/** * * @author analista */ public class Comun {</p>
+
+<p>public static String leerCadena(String mensaje) {</p>
+
+<p>String texto=””;</p>
+
+<p>try { //Leer una cadena de texto desde el buffer de entrada (teclado) BufferedReader entrada=new BufferedReader(new InputStreamReader(System.in)); System.out.print(mensaje); texto = entrada.readLine(); } catch(IOException e){ System.out.println(“Error de Entrada/Salida.”); } catch(Exception e){ System.out.println(“Error.”); }</p>
+
+<p>return texto; }</p>
+
+<p>public static int leerEntero(String mensaje) {</p>
+
+<p>Integer num = null;</p>
+
+<p>do { try { //Leer una cadena de texto desde el buffer de entrada (teclado) BufferedReader entrada=new BufferedReader(new InputStreamReader(System.in)); System.out.print(mensaje); num = Integer.parseInt(entrada.readLine());</p>
+
+<p>} catch(IOException e){ System.out.println(“Error de Entrada/Salida.”); } catch(java.lang.NumberFormatException e){ System.out.println(“El valor introducido debe ser un nÃºmero.”); } } while (num == null);</p>
+
+<p>return num; }</p>
+
+<p>public static void limpiarConsola() { try { for (int i = 0; i &lt; 10; i ++) System.out.println(); } catch (Exception e) { System.out.println(“Error limpiando la consola.\n(Error: “ + e + “)”); } } } [/code]</p>
