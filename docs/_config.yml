@@ -14,10 +14,10 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 title: Rubén Arcos
-#email: your-email@example.com
-description: > La mayorí­a de los buenos programadores programan no porque esperan que les pagen o que el público los adore, sino porque programar es divertido. - Linus Torvalds
-baseurl: "" # the subpath of your site, e.g. /blog
-url: "https://rarcos.com/" # the base hostname & protocol for your site, e.g. http://example.com
+#email: your-email@example.com .
+description: "La mayorí­a de los buenos programadores programan no porque esperan que les pagen o que el público los adore, sino porque programar es divertido. - Linus Torvalds"
+baseurl: "" # the subpath of your site, e.g. /blog.
+url: "https://rarcos.com/" # the base hostname & protocol for your site, e.g. http://example.com.
 #twitter_username: jekyllrb
 github_username:  rubenarcos2
 
