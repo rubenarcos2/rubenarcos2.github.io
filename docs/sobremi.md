@@ -4,7 +4,8 @@ title: Sobre mí - CV
 date: 2013-06-28 16:49
 author: ruben
 comments: false
-theme: orbit
+theme: minima
+
 categories: []
 permalink: /sobre_mi-cv/
 ---
@@ -31,7 +32,7 @@ permalink: /sobre_mi-cv/
 <p style="text-align: center;"><em>ayudar al usuario mi finalidad y,</em></p>
 <p style="text-align: center;"><em>automatizar procesos mi definición. </em></p>
 </li>
- 	<li style="display: inline-block;"><a href="https//www.rarcos.com/pdf/cv_ruben_arcos_web.pdf" target="_blank" rel="noopener noreferrer"><img src="https://www.rarcos.com/images/cv_pdf.png" alt="Descargar CV en PDF" width="64" height="64" /></a></li>
+ 	<li style="display: inline-block;"><a href="/assets/pdf/cv_ruben_arcos_web.pdf" target="_blank" rel="noopener noreferrer"><img class="wp-image-763 aligncenter" src="/assets/images/cv_pdf.png" alt="Descargar CV en PDF" width="64" height="64" /></a></li>
 </ul>
 <h2>Mi trayectoria profesional y académica:</h2>
 <div id="background-experience-container" class="background-section" data-li-template="experience_section">

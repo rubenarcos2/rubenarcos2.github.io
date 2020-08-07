@@ -14,18 +14,43 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 title: Rubén Arcos
-#email: your-email@example.com .
-description: "La mayorí­a de los buenos programadores programan no porque esperan que les pagen o que el público los adore, sino porque programar es divertido. - Linus Torvalds"
+description: Desarrollador de aplicaciones multiplataformas
+#"La mayorí­a de los buenos programadores programan no porque esperan que les pagen o que el público los adore, sino porque programar es divertido. - Linus Torvalds"
 baseurl: "" # the subpath of your site, e.g. /blog.
 url: "https://rarcos.com/" # the base hostname & protocol for your site, e.g. http://example.com.
 #twitter_username: jekyllrb
 github_username:  rubenarcos2
 
+# Minima date format
+# refer to https://shopify.github.io/liquid/filters/date/ if you want to customize this
+minima:
+  date_format: "%-d %b %Y"
+
+# generate social links in footer
+social_links:
+  #twitter: jekyllrb
+  github:  rubenarcos2
+  # devto: jekyll
+  # dribbble: jekyll
+  # facebook: jekyll
+  # flickr:   jekyll
+  # instagram: jekyll
+  linkedin: rubenarcos2
+  # pinterest: jekyll
+  # youtube: jekyll
+  # youtube_channel: UC8CXR0-3I70i1tfPg1PAE1g
+  # youtube_channel_name: CloudCannon
+  # telegram: jekyll
+  # googleplus: +jekyll
+  # microdotblog: jekyll
+  # keybase: jekyll
+
 # Build settings
-markdown: kramdown
+#markdown: kramdown
 theme: minima
 plugins:
   - jekyll-feed
+  - jekyll-seo-tag
 
 # Exclude from processing.
 # The following items will not be processed, by default. Create a custom list
