@@ -5,7 +5,7 @@ date: 2018-12-02 12:23
 author: admin
 comments: false
 categories: []
-permalink: /content_license/
+permalink: /license/
 ---
 This web page, all content with proyects and source code, is licensed under Creative Commons: Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)
 <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">More info</a>
