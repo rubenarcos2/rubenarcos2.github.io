@@ -14,6 +14,7 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 title: Rubén Arcos
+logo: /assets/img/logo.png
 #email: your-email@example.com .
 description: Desarrollador de aplicaciones multiplataforma
 #"La mayorí­a de los buenos programadores programan no porque esperan que les pagen o que el público los adore, sino porque programar es divertido. - Linus Torvalds"
@@ -23,8 +24,8 @@ url: "https://rarcos.com/" # the base hostname & protocol for your site, e.g. ht
 github_username:  rubenarcos2
 
 # Build settings
-markdown: kramdown
-theme: minima
+#markdown: kramdown
+#theme: cayman
 plugins:
   - jekyll-feed
 
