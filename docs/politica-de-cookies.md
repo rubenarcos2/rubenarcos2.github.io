@@ -1,12 +1,13 @@
 ---
 layout: page
-title: PolÃ­tica de cookies
+title: Política de cookies
 date: 2015-07-17 09:09
 author: admin
-comments: true
+comments: false
 categories: []
+permalink: /cookies/
 ---
-<h3 style="text-align: center;"><strong>Â¿QuÃ© son las cookies?
+<h3 style="text-align: center;"><strong>¿Qué son las cookies?
 </strong></h3>
 &nbsp;
 
@@ -53,4 +54,4 @@ Puede usted permitir, bloquear o eliminar las cookies instaladas en su equipo me
 
 <strong>El Usuario acepta expresamente, por la utilizaciÃ³n de este Site,Â el tratamiento de la informaciÃ³nÂ recabada en la forma y con los fines anteriormente mencionados.</strong> Y asimismo reconoce conocer la posibilidad de rechazar el tratamiento deÂ tales datos o informaciÃ³nÂ rechazando el uso de Cookies mediante la selecciÃ³n de la configuraciÃ³n apropiada a tal fin en su navegador. Si bien esta opciÃ³n de bloqueo de Cookies en su navegador puede no permitirle el uso pleno de todas las funcionalidades del Website.
 <p style="text-align: center;"><strong>Si tiene dudas sobre esta polÃ­tica de cookies, puede contactar en:</strong></p>
-<p style="text-align: center;"><strong> <a href="http://localhost/contacto/">http://localhost/contacto/</a></strong></p>
+<p style="text-align: center;"><strong> <a href="http://rarcos.com/contacto/">http://rarcos.com/contacto/</a></strong></p>

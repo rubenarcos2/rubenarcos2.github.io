@@ -3,13 +3,14 @@ layout: page
 title: Content License
 date: 2018-12-02 12:23
 author: admin
-comments: true
+comments: false
 categories: []
+permalink: /content_license/
 ---
 This web page, all content with proyects and source code, is licensed under Creative Commons: Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)
 <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">More info</a>
 
-Esta pÃ¡gina web y todo su contenido, incluido proyectos y cÃ³digo fuente, estÃ¡ licenciado bajo una licencia de Creative Commons: Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)
+Esta página web y todo su contenido, incluido proyectos y código fuente, está licenciado bajo una licencia de Creative Commons: Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)
 <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.es">MÃ¡s info</a>
 <h2 id="creativecommonslicenseccbyncnd40httpslicensebuttonsnetlbyncnd4080x15pnghttpscreativecommonsorglicensesbyncnd40">Creative Commons <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/"><img src="https://licensebuttons.net/l/by-nc-nd/4.0/88x31.png" alt="License: CC BY-NC-ND 4.0" /></a></h2>
 <h1 id="attributionnoncommercialnoderivatives40international">Attribution-NonCommercial-NoDerivatives 4.0 International</h1>

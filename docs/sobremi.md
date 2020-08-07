@@ -5,7 +5,7 @@ date: 2013-06-28 16:49
 author: ruben
 comments: false
 categories: []
-permalink: /about/
+permalink: /sobre_mi-cv/
 ---
 <div id="top-card" data-li-template="top_card">
 <div class="profile-top-card top-card ">
