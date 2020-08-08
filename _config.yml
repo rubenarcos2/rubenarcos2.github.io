@@ -23,7 +23,7 @@ url: "https://rarcos.com" # the base hostname & protocol for your site, e.g. htt
 github_username:  rubenarcos2
 
 # Build settings
-#markdown: kramdown
+markdown: kramdown
 theme: jekyll-theme-cayman
 plugins:
   - jekyll-feed
