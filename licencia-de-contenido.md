@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Content License
+title: Licencia de contenido
 date: 2018-12-02 12:23
 author: admin
 comments: false
