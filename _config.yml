@@ -12,9 +12,9 @@
 # These are used to personalize your new site. If you look in the HTML files,
 # you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
 # You can create any custom variable you would like, and they will b# in the templates via {{ site.myvariable }}.
-title: Your awesome Rubén Arcose#mail@example.com
+title: Rubén Arcos
 description: "Apps developer | Desarrollador aplicaciones multiplataforma"
-url: "" # the base hostname & protocol for your site, e.g. http://example.com
+url: "https://rarcos.com" 
 #twitter_username: jekyllrb
 github_username: rubenarcos2
 linkedin_username: rubenarcos2
