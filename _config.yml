@@ -19,6 +19,9 @@ description: Apps developer | Desarrollador aplicaciones multiplataforma
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
 #twitter_username: jekyllrb
+show_downloads: false
+google_analytics: UA-64172909-1
+
 github_username:  rubenarcos2
 linkedin_username: rubenarcos2
 
