@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Historia de la informÃ¡tica: hardware & software
+title: "Historia de la informática: hardware & software"
 date: 2014-10-26 13:20
 author: ruben
 comments: true

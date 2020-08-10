@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Gran sorpresa: matrÃ­cula de honor
+title: "Gran sorpresa: matrícula de honor"
 date: 2016-06-09 20:16
 author: ruben
 comments: true
