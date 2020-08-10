@@ -11,23 +11,18 @@
 # Site settings
 # These are used to personalize your new site. If you look in the HTML files,
 # you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
-# You can create any custom variable you would like, and they will be accessible
-# in the templates via {{ site.myvariable }}.
-title: Rubén Arcos
-#email: your-email@example.com
-description: Apps developer | Desarrollador aplicaciones multiplataforma
-baseurl: "" # the subpath of your site, e.g. /blog
+# You can create any custom variable you would like, and they will b# in the templates via {{ site.myvariable }}.
+title: Your awesome Rubén Arcose#mail@example.com
+description: "Apps developer | Desarrollador aplicaciones multiplataforma"
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
 #twitter_username: jekyllrb
+github_username: rubenarcos2
+linkedin_username: rubenarcos2
 show_downloads: false
 google_analytics: UA-64172909-1
 
-github_username:  rubenarcos2
-linkedin_username: rubenarcos2
-
-# Build settings
 markdown: kramdown
-theme: jekyll-theme-cayman
+theme: minima
 plugins:
   - jekyll-feed
 
