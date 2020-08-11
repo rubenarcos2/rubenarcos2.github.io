@@ -65,7 +65,7 @@ El servidor se ha creado mediante el framework de Spring incluyendo:
 
 > Destacar que está pendiente de implementar lo incorporación de seguridad (Spring Security) y encriptación de las comunicaciones mediante HTTPS y DB de datos sensibles
 
-<img src="/assets/images/proyecto_server.jpg" alt="" width="185" height="464" />
+<img src="/assets/images/proyecto_server.jpg" alt="" width="185" height="464" style="float: right; margin-right: 10px;" />
 
 En el servidor se encuentra toda gestión de la comunicación con la DB, también están los DTO (modelos de datos que se publican en la api para su futuro consumo desde un app Android), los controladores: datos de la DB (DTOs), Contador Android, LED en Raspberry pi y sus correspondientes driver para acceso a GPIO y comunicación puerto COM.
 
