@@ -8,7 +8,7 @@ categories: [alojamiento, Blog, blog, dominio, https, seguridad, web]
 ---
 He actualizado recientemente esta web para que satisfaga las nuevas exigencias de navegación segura, concretamente con un certificado de seguridad, para que la comunicación se realice de forma segura mediante el protocolo HTTPS.
 
-<a href="https://www.ssllabs.com/ssltest/analyze.html?d=rarcos.com" rel="attachment wp-att-1450"><img class="aligncenter size-full wp-image-1450" src="/assets/images/can_Secured_Web.png" alt="" width="1349" height="778" /></a>
+<a href="https://www.ssllabs.com/ssltest/analyze.html?d=rarcos.com"><img  class="center" src="/assets/images/Scan_Secured_Web.png" alt="" width="1349" height="778" /></a>
 
 Como podeis comprobar en la imagen, tras el <a href="https://www.ssllabs.com/ssltest/analyze.html?d=rarcos.com">escaneo de toda la traza de ruta</a> de redirecciones desde el dominio (DNS) hasta el alojamiento web (hosting) se realiza de forma segurida y encriptada, por tanto.
 
