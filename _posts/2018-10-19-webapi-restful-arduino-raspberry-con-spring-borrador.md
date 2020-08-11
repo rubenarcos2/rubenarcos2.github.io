@@ -10,6 +10,7 @@ tags: [arduino, Bases de Datos, Blog, C#, IoT, Java, java, restful, spring, tomc
 He realizado el siguiente proyecto de pruebas RESTful para la comunicación mediante una interfaz cliente en Arduino y Raspberry pi y con un servidor basado en Spring para la gestión de la API. En ambos clientes se dispone de acceso a los elementos físicos de hardware mediante comunicación I/O a las GPIOs correspondientes.
 
 
+
 La idea de realización consiste en la gestión de un contador basado e instalado en una placa Arduino Uno que consta de un botón y un display LED para la visualización del mismo, a su vez el programa de este gestiona la posibilidad de incremento físico del contador (mediante el botón), como mediante la recepción exterior por el puerto COM (USB) y la asignación de un valor específico recibido en remoto.
 
 Por otra parte la placa Raspberry Pi, alberga el servidor de gestión de la API, la comunicación con Arduino Uno (mediante USB, aunque podrá haberse instalado online: bluetooth, wifi local/nube) y a la GPIO.
@@ -19,6 +20,7 @@ El consumo de la API se podrá realizar a través de cualquier cliente HTTP, bie
 
 
 ![Esquema con el diseño proyectado del sistema](/assets/images/diagrama_sistema.jpg)
+
 
 
 <h4><strong>Composición y diseño:</strong></h4>
@@ -40,10 +42,12 @@ El consumo de la API se podrá realizar a través de cualquier cliente HTTP, bie
 <p style="padding-left: 120px;">HTTP API consume: Web & App Android</p>
 
 
+
 <h4><strong>Elementos de Hardware</strong> que componen el sistema:</h4>
 
 
 [gallery columns="4" ids="1410,1415,1412,1413"]
+
 
 
 <h3>La creación del servidor</h3>
@@ -63,14 +67,17 @@ El servidor se ha creado mediante el framework de Spring incluyendo:
 </ul>
 
 
+
 > Destacar que está pendiente de implementar lo incorporación de seguridad (Spring Security) y encriptación de las comunicaciones mediante HTTPS y DB de datos sensibles
 
 <img src="/assets/images/proyecto_server.jpg" alt="" width="185" height="464" style="float: right; margin-right: 10px;" />
+
 
 En el servidor se encuentra toda gestión de la comunicación con la DB, también están los DTO (modelos de datos que se publican en la api para su futuro consumo desde un app Android), los controladores: datos de la DB (DTOs), Contador Android, LED en Raspberry pi y sus correspondientes driver para acceso a GPIO y comunicación puerto COM.
 
 
 La compilación, depuración y deploy se está realizando en remoto desde un PC que se encuentra en la misma (o no) red que la Raspberry Pi, a la que se ataca mediante SSH para su control y subida de ficheros. La configuración de esta conexión se encuentra declarada el pom.xml, pero está prevista la externalización a un fichero externo encriptado (esta retrasado por la dependencia de una librería de terceros).
+
 
 
 A continuación se muestra el transcurso de un funcionamiento esperado para sistema:
@@ -80,6 +87,7 @@ A continuación se muestra el transcurso de un funcionamiento esperado para sist
  	<li>Puesta en marcha e incremento contador</li>
  	<li>Consumo API y modificación contador desde esta</li>
 </ol>
+
 
 
 *Incremento del contador de forma manual (mediante botón físico) y comunición Arduino & Raspberry Pi 
@@ -93,7 +101,10 @@ mediante puerto COM y consumo API obtención contador*
 [video src="/assets/video/arduino_ctrl_api.mp4" autoplay="false" preload="auto"][/video]
 
 
+
 ---
+
+
 
 <h4 class="entry-title">Content License <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/"><img src="https://licensebuttons.net/l/by-nc-nd/4.0/88x31.png" alt="Creative Commons License: CC BY-NC-ND 4.0" /></a></h4>
 
