@@ -4,7 +4,8 @@ title: WebAPI RESTful Arduino - Raspberry con Spring [Borrador]
 date: 2018-10-19 16:46
 author: ruben
 comments: true
-categories: [arduino, Bases de Datos, Blog, C#, IoT, Java, java, restful, spring, tomcat, webapi]
+category: Blog
+tags: [arduino, Bases de Datos, Blog, C#, IoT, Java, java, restful, spring, tomcat, webapi]
 ---
 He realizado el siguiente proyecto de pruebas RESTful para la comunicaciÃ³n mediante una interfaz cliente en Arduino y Raspberry pi y con un servidor basado en Spring para la gestiÃ³n de la API. En ambos clientes se dispone de acceso a los elementos fÃ­sicos de hardware mediante comunicaciÃ³n I/O a las GPIOs correspondientes.
 
