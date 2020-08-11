@@ -1,6 +1,6 @@
 ---
 layout: post
-title: WebAPI RESTful Arduino - Raspberry con Spring [Borrador]
+title: WebAPI RESTful Arduino - Raspberry con Spring
 date: 2018-10-19 16:46
 author: ruben
 comments: true
