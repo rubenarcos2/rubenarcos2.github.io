@@ -18,4 +18,4 @@ Espero que disfruteis de todos los contenidos e información de mi web como hast
 
 Puedes comprobarlo en tu barra de búsqueda:
 
-<img class="aligncenter size-medium wp-image-1452" src="/assets/images/certificado-ssl-linkideia1-300x188.png" alt="" width="300" height="188" /></a>
+<img  class="center" src="/assets/images/certificado-ssl-linkideia1-300x188.png" alt="" width="300" height="188" />
