@@ -18,7 +18,7 @@ Por otra parte la placa Raspberry Pi, alberga el servidor de gestión de la API,
 El consumo de la API se podrá realizar a través de cualquier cliente HTTP, bien sea web o App Android, por ejemplo (estando en construcción esta ultima, que mostrar aquí en breve, cuando esté libre de errores).
 
 
-![Esquema con el diseño proyectado del sistema](/assets/images/diagrama_sistema-150x150.jpg)
+![Esquema con el diseño proyectado del sistema](/assets/images/diagrama_sistema.jpg)
 
 
 <h4><strong>Composición y diseño:</strong></h4>
