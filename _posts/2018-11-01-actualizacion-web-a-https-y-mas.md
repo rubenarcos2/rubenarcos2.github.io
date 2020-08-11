@@ -17,9 +17,7 @@ Como podeis comprobar en la imagen, tras el <a href="https://www.ssllabs.com/ssl
 
 Espero que disfruteis de todos los contenidos e información de mi web como hasta ahora, pero con la tranquilidad de todas las ventajas que ofrece la navegación segura.
 
-&nbsp;
-
-Puedes comprobarlo en tu barra de búsqueda:
 <p align="center">
+    *Puedes comprobarlo en tu barra de búsqueda*
     <img  class="center" width="300" height="188" src="/assets/images/certificado-ssl-linkideia1-300x188.png"/>
 </p>
