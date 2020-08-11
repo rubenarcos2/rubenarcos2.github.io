@@ -80,13 +80,14 @@ La compilación, depuración y deploy se está realizando en remoto desde un PC 
 A continuación se muestra el transcurso de un funcionamiento esperado para sistema:
 <ol>
  	<li>Deploy remoto en raspberry</li>
- 	<li>Encendido y comunicaciÃ³n Raspberry&lt;-&gt;Arduino</li>
+ 	<li>Encendido y comunicación Raspberry & Arduino</li>
  	<li>Puesta en marcha e incremento contador</li>
- 	<li>Consumo API y modificaciÃ³n contador desde esta</li>
+ 	<li>Consumo API y modificación contador desde esta</li>
 </ol>
+
 &nbsp;
-<pre>Incremento del contador de forma manual (mediante botÃ³n fÃ­sico) y comuniciÃ³n Arduino &gt; Raspberry Pi 
-mediante puerto COM y consumo API obtenciÃ³n contador</pre>
+<pre>Incremento del contador de forma manual (mediante botón físico) y comunición Arduino & Raspberry Pi 
+mediante puerto COM y consumo API obtención contador</pre>
 [video src="http://localhost/wp-content/uploads/2018/10/arduino_on_manual.mp4" autoplay="false" preload="auto"][/video]
 
 <pre>Comunicación Raspberry Pi GPIO desde servidor mediante consumo API, control y obtención estado LED</pre>
@@ -96,14 +97,12 @@ mediante puerto COM y consumo API obtenciÃ³n contador</pre>
 
 [video src="http://localhost/wp-content/uploads/2018/10/arduino_ctrl_api.mp4" autoplay="false" preload="auto"][/video]
 
-&nbsp;
-<h3 class="entry-title">Content License</h3>
-Creative Commons <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/"><img src="https://licensebuttons.net/l/by-nc-nd/4.0/88x31.png" alt="License: CC BY-NC-ND 4.0" /></a>
-<div class="entry-content description clearfix">
+
+
+<h5 class="entry-title">Content License <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/"><img src="https://licensebuttons.net/l/by-nc-nd/4.0/88x31.png" alt="Creative Commons License: CC BY-NC-ND 4.0" /></a></h5>
+
 This web page, all content with proyects and source code, is licensed under Creative Commons: Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)
 <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">More info</a>
 
 Esta página web y todo su contenido, incluido proyectos y código fuente, está licenciada bajo una licencia de Creative Commons: Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)
 <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.es">Más info</a>
-
-</div>
