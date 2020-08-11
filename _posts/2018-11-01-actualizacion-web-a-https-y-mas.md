@@ -4,7 +4,8 @@ title: Actualización web a HTTPS y más
 date: 2018-11-01 11:00
 author: ruben
 comments: true
-categories: [alojamiento, Blog, blog, dominio, https, seguridad, web]
+category: Blog
+tags: [alojamiento, Blog, blog, dominio, https, seguridad, web]
 ---
 He actualizado recientemente esta web para que satisfaga las nuevas exigencias de navegación segura, concretamente con un certificado de seguridad, para que la comunicación se realice de forma segura mediante el protocolo HTTPS.
 
