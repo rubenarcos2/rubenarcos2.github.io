@@ -81,18 +81,18 @@ La compilación, depuración y deploy se está realizando en remoto desde un PC 
 
 
 A continuación se muestra el transcurso de un funcionamiento esperado para sistema:
-<ol>
- 	<li>Deploy remoto en raspberry</li>
- 	<li>Encendido y comunicación Raspberry & Arduino</li>
- 	<li>Puesta en marcha e incremento contador</li>
- 	<li>Consumo API y modificación contador desde esta</li>
-</ol>
 
+* Deploy remoto en raspberry<
+* Encendido y comunicación Raspberry & Arduino
+* Puesta en marcha e incremento contador
+* Consumo API y modificación contador desde esta
 
 
 *Incremento del contador de forma manual (mediante botón físico) y comunición Arduino & Raspberry Pi 
 mediante puerto COM y consumo API obtención contador*
-[video src="/assets/video/arduino_on_manual.mp4" autoplay="false" preload="auto"][/video]
+<video width="720" height="480" controls> 
+	<source src="/assets/video/arduino_on_manual.mp4" autoplay="false" type="video/mp4">
+</video>
 
 *Comunicación Raspberry Pi GPIO desde servidor mediante consumo API, control y obtención estado LED*
 [video src="/assets/video/raspberry_led.mp4" autoplay="false" preload="auto"][/video]
