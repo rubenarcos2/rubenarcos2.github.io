@@ -18,7 +18,7 @@ Por otra parte la placa Raspberry Pi, alberga el servidor de gestión de la API,
 El consumo de la API se podrá realizar a través de cualquier cliente HTTP, bien sea web o App Android, por ejemplo (estando en construcción esta ultima, que mostrar aquí en breve, cuando esté libre de errores).
 
 
-![/assets/images/diagrama_sistema-150x150.jpg](Esquema con el diseño proyectado del sistema)
+![Esquema con el diseño proyectado del sistema](/assets/images/diagrama_sistema-150x150.jpg)
 
 
 <h4><strong>Composición y diseño:</strong></h4>
@@ -63,7 +63,7 @@ El servidor se ha creado mediante el framework de Spring incluyendo:
 </ul>
 
 
-<blockquote><em>Destacar que está pendiente de implementar lo incorporación de seguridad (Spring Security) y encriptación de las comunicaciones mediante HTTPS y DB de datos sensibles</em></blockquote>
+> Destacar que está pendiente de implementar lo incorporación de seguridad (Spring Security) y encriptación de las comunicaciones mediante HTTPS y DB de datos sensibles
 
 <img src="/assets/images/proyecto_server.jpg" alt="" width="185" height="464" />
 
@@ -93,8 +93,9 @@ mediante puerto COM y consumo API obtención contador*
 [video src="/assets/video/arduino_ctrl_api.mp4" autoplay="false" preload="auto"][/video]
 
 
+---
 
-<h5 class="entry-title">Content License <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/"><img src="https://licensebuttons.net/l/by-nc-nd/4.0/88x31.png" alt="Creative Commons License: CC BY-NC-ND 4.0" /></a></h5>
+<h4 class="entry-title">Content License <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/"><img src="https://licensebuttons.net/l/by-nc-nd/4.0/88x31.png" alt="Creative Commons License: CC BY-NC-ND 4.0" /></a></h4>
 
 This web page, all content with proyects and source code, is licensed under Creative Commons: Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)
 <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">More info</a>
