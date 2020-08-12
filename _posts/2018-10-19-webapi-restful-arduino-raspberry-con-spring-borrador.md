@@ -108,8 +108,7 @@ A continuación se muestra el transcurso de un funcionamiento esperado para sist
 	<video width="100%" controls controlsList="nodownload"> 
 		<source src="/assets/video/arduino_ctrl_api.mp4" autoplay="false" type="video/mp4">
 	</video>
-	<h5><i>Comunicación Raspberry Pi & Arduino desde servidor mediante consumo API, control contador</i><h5>
-</p>
+	<h5><i>Comunicación Raspberry Pi & Arduino desde servidor mediante consumo API, control contador</i><h5></p>
 &nbsp;
 &nbsp;
 &nbsp;
