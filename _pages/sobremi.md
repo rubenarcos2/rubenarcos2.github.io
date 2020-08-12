@@ -6,7 +6,7 @@ author: ruben
 comments: false
 theme: orbit
 categories: []
-permalink: /about/
+permalink: /cv/
 ---
 <div id="top-card" data-li-template="top_card">
 <div class="profile-top-card top-card ">

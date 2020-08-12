@@ -22,15 +22,13 @@ show_downloads: false
 google_analytics: UA-64172909-1
 
 markdown: kramdown
-#theme: minima
-remote_theme: "mmistakes/minimal-mistakes"
+theme: minima
 
 paginate: 5 # amount of posts to show
 paginate_path: /page:num/
 
 plugins:
   - jekyll-feed
-  - jekyll-include-cache
 
 # Exclude from processing.
 # The following items will not be processed, by default. Create a custom list
