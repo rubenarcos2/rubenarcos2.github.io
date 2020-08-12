@@ -7,17 +7,18 @@ comments: true
 category: Blog
 tags: [arduino, Bases de Datos, Blog, C#, IoT, Java, java, restful, spring, tomcat, webapi]
 ---
-He realizado el siguiente proyecto de pruebas RESTful para la comunicación mediante una interfaz cliente en Arduino y Raspberry pi y con un servidor basado en Spring para la gestión de la API. En ambos clientes se dispone de acceso a los elementos físicos de hardware mediante comunicación I/O a las GPIOs correspondientes.
+<p align="justify>
+	He realizado el siguiente proyecto de pruebas RESTful para la comunicación mediante una interfaz cliente en Arduino y Raspberry pi y con un servidor basado en Spring para la gestión de la API. En ambos clientes se dispone de acceso a los elementos físicos de hardware mediante comunicación I/O a las GPIOs correspondientes.
 
-&nbsp;
+	&nbsp;
 
-La idea de realización consiste en la gestión de un contador basado e instalado en una placa Arduino Uno que consta de un botón y un display LED para la visualización del mismo, a su vez el programa de este gestiona la posibilidad de incremento físico del contador (mediante el botón), como mediante la recepción exterior por el puerto COM (USB) y la asignación de un valor específico recibido en remoto.
+	La idea de realización consiste en la gestión de un contador basado e instalado en una placa Arduino Uno que consta de un botón y un display LED para la visualización del mismo, a su vez el programa de este gestiona la posibilidad de incremento físico del contador (mediante el botón), como mediante la recepción exterior por el puerto COM (USB) y la asignación de un valor específico recibido en remoto.
 
-Por otra parte la placa Raspberry Pi, alberga el servidor de gestión de la API, la comunicación con Arduino Uno (mediante USB, aunque podrá haberse instalado online: bluetooth, wifi local/nube) y a la GPIO.
+	Por otra parte la placa Raspberry Pi, alberga el servidor de gestión de la API, la comunicación con Arduino Uno (mediante USB, aunque podrá haberse instalado online: bluetooth, wifi local/nube) y a la GPIO.
 
 
-El consumo de la API se podrá realizar a través de cualquier cliente HTTP, bien sea web o App Android, por ejemplo (estando en construcción esta ultima, que mostrar aquí en breve, cuando esté libre de errores).
-
+	El consumo de la API se podrá realizar a través de cualquier cliente HTTP, bien sea web o App Android, por ejemplo (estando en construcción esta ultima, que mostrar aquí en breve, cuando esté libre de errores).
+</p>
 
 ![Esquema con el diseño proyectado del sistema](/assets/images/diagrama_sistema.jpg)
 
@@ -27,19 +28,19 @@ El consumo de la API se podrá realizar a través de cualquier cliente HTTP, bie
 <ul>
  	<li>Hardware: Arduino</li>
 </ul>
-<p style="padding-left: 120px;">- Display LED numérico y Botón con comunicación I/O sobre COM port</p>
-<p style="padding-left: 120px;">- C-Arduino comunnication I/O COM port, Display LED output, Botón input, Contador</p>
+<p style="padding-left: 60px;">- Display LED numérico y Botón con comunicación I/O sobre COM port</p>
+<p style="padding-left: 60px;">- C-Arduino comunnication I/O COM port, Display LED output, Botón input, Contador</p>
 
 <ul>
  	<li>Middleware & Server: Raspberry Pi</li>
 </ul>
-<p style="padding-left: 120px;">- Tomcat con Spring WebAPI services</p>
-<p style="padding-left: 120px;">- Raspberry Py I/O GPIO controller, LED pin out</p>
+<p style="padding-left: 60px;">- Tomcat con Spring WebAPI services</p>
+<p style="padding-left: 60px;">- Raspberry Py I/O GPIO controller, LED pin out</p>
 
 <ul>
  	<li>Client: Cualquier conexión HTTP</li>
 </ul>
-<p style="padding-left: 120px;">HTTP API consume: Web & App Android</p>
+<p style="padding-left: 60px;">HTTP API consume: Web & App Android</p>
 
 &nbsp;
 
@@ -70,14 +71,15 @@ El servidor se ha creado mediante el framework de Spring incluyendo:
 
 > Destacar que está pendiente de implementar lo incorporación de seguridad (Spring Security) y encriptación de las comunicaciones mediante HTTPS y DB de datos sensibles
 
+&nbsp;
+
 <img src="/assets/images/proyecto_server.jpg" alt="" width="185" height="464" style="float: right; margin-right: 10px;" />
 
+<p align="justify>
+	En el servidor se encuentra toda gestión de la comunicación con la DB, también están los DTO (modelos de datos que se publican en la api para su futuro consumo desde un app Android), los controladores: datos de la DB (DTOs), Contador Android, LED en Raspberry pi y sus correspondientes driver para acceso a GPIO y comunicación puerto COM.
 
-En el servidor se encuentra toda gestión de la comunicación con la DB, también están los DTO (modelos de datos que se publican en la api para su futuro consumo desde un app Android), los controladores: datos de la DB (DTOs), Contador Android, LED en Raspberry pi y sus correspondientes driver para acceso a GPIO y comunicación puerto COM.
-
-
-La compilación, depuración y deploy se está realizando en remoto desde un PC que se encuentra en la misma (o no) red que la Raspberry Pi, a la que se ataca mediante SSH para su control y subida de ficheros. La configuración de esta conexión se encuentra declarada el pom.xml, pero está prevista la externalización a un fichero externo encriptado (esta retrasado por la dependencia de una librería de terceros).
-
+	La compilación, depuración y deploy se está realizando en remoto desde un PC que se encuentra en la misma (o no) red que la Raspberry Pi, a la que se ataca mediante SSH para su control y subida de ficheros. La configuración de esta conexión se encuentra declarada el pom.xml, pero está prevista la externalización a un fichero externo encriptado (esta retrasado por la dependencia de una librería de terceros).
+</p>
 &nbsp;
 
 A continuación se muestra el transcurso de un funcionamiento esperado para sistema:
@@ -87,29 +89,30 @@ A continuación se muestra el transcurso de un funcionamiento esperado para sist
 * Puesta en marcha e incremento contador
 * Consumo API y modificación contador desde esta
 
+<p align="center">
+	<video width="100%" controls controlsList="nodownload"> 
+		<source src="/assets/video/arduino_on_manual.mp4" autoplay="false" type="video/mp4">
+	</video>
+	<h5><i>Incremento del contador de forma manual (mediante botón físico) y comunición Arduino & Raspberry Pi 
+	mediante puerto COM y consumo API obtención contador</i><h5>
 
-<video width="100%" controls controlsList="nodownload"> 
-	<source src="/assets/video/arduino_on_manual.mp4" autoplay="false" type="video/mp4">
-</video>
-<h5><i>Incremento del contador de forma manual (mediante botón físico) y comunición Arduino & Raspberry Pi 
-mediante puerto COM y consumo API obtención contador</i><h5>
+	<video width="100%" controls controlsList="nodownload"> 
+		<source src="/assets/video/raspberry_led.mp4" autoplay="false" type="video/mp4">
+	</video>
+	<h5><i>Comunicación Raspberry Pi GPIO desde servidor mediante consumo API, control y obtención estado LED</i><h5>
 
-<video width="100%" controls controlsList="nodownload"> 
-	<source src="/assets/video/raspberry_led.mp4" autoplay="false" type="video/mp4">
-</video>
-<h5><i>Comunicación Raspberry Pi GPIO desde servidor mediante consumo API, control y obtención estado LED</i><h5>
-
-<video width="100%" controls controlsList="nodownload"> 
-	<source src="/assets/video/arduino_ctrl_api.mp4" autoplay="false" type="video/mp4">
-</video>
-<h5><i>Comunicación Raspberry Pi & Arduino desde servidor mediante consumo API, control contador</i><h5>
+	<video width="100%" controls controlsList="nodownload"> 
+		<source src="/assets/video/arduino_ctrl_api.mp4" autoplay="false" type="video/mp4">
+	</video>
+	<h5><i>Comunicación Raspberry Pi & Arduino desde servidor mediante consumo API, control contador</i><h5>
+</p>
+&nbsp;
 &nbsp;
 &nbsp;
 &nbsp;
 <hr>
-&nbsp;
 <h6>
-<p align="center">
+
 	<a href="https://creativecommons.org/licenses/by-nc-nd/4.0/"><img src="https://licensebuttons.net/l/by-nc-nd/4.0/88x31.png" alt="Creative Commons License: CC BY-NC-ND 4.0" /></a>
 </p>
 <p>
