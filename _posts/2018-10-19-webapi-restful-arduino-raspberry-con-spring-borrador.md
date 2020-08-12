@@ -84,7 +84,7 @@ El servidor se ha creado mediante el framework de Spring incluyendo:
 
 A continuación se muestra el transcurso de un funcionamiento esperado para sistema:
 
-* Deploy remoto en raspberry<
+* Deploy remoto en raspberry
 * Encendido y comunicación Raspberry & Arduino
 * Puesta en marcha e incremento contador
 * Consumo API y modificación contador desde esta
