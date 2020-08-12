@@ -91,21 +91,24 @@ A continuación se muestra el transcurso de un funcionamiento esperado para sist
 <video width="320" height="240" controls controlsList="nodownload"> 
 	<source src="/assets/video/arduino_on_manual.mp4" autoplay="false" type="video/mp4">
 </video>
-*Incremento del contador de forma manual (mediante botón físico) y comunición Arduino & Raspberry Pi 
-mediante puerto COM y consumo API obtención contador*
+<h5><i>Incremento del contador de forma manual (mediante botón físico) y comunición Arduino & Raspberry Pi 
+mediante puerto COM y consumo API obtención contador</i><h5>
 
 <video width="320" height="240" controls controlsList="nodownload"> 
 	<source src="/assets/video/raspberry_led.mp4" autoplay="false" type="video/mp4">
 </video>
-*Comunicación Raspberry Pi GPIO desde servidor mediante consumo API, control y obtención estado LED*
+Comunicación Raspberry Pi GPIO desde servidor mediante consumo API, control y obtención estado LED</i><h5>
 
 <video width="320" height="240" controls controlsList="nodownload"> 
 	<source src="/assets/video/arduino_ctrl_api.mp4" autoplay="false" type="video/mp4">
 </video>
-*Comunicación Raspberry Pi & Arduino desde servidor mediante consumo API, control contador*
+<h5><i>Comunicación Raspberry Pi & Arduino desde servidor mediante consumo API, control contador</i><h5>
 &nbsp;
----
 &nbsp;
+
+<hr>
+&nbsp;
+
 <h5>
 	Content License <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/"><img src="https://licensebuttons.net/l/by-nc-nd/4.0/88x31.png" alt="Creative Commons License: CC BY-NC-ND 4.0" /></a>
 </h5>
