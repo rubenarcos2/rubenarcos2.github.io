@@ -7,7 +7,7 @@ comments: true
 category: Blog
 tags: [arduino, Bases de Datos, Blog, C#, IoT, Java, java, restful, spring, tomcat, webapi]
 ---
-<p align="justify>
+<p align="justify">
 	He realizado el siguiente proyecto de pruebas RESTful para la comunicación mediante una interfaz cliente en Arduino y Raspberry pi y con un servidor basado en Spring para la gestión de la API. En ambos clientes se dispone de acceso a los elementos físicos de hardware mediante comunicación I/O a las GPIOs correspondientes.
 
 	&nbsp;
@@ -75,7 +75,7 @@ El servidor se ha creado mediante el framework de Spring incluyendo:
 
 <img src="/assets/images/proyecto_server.jpg" alt="" width="185" height="464" style="float: right; margin-right: 10px;" />
 
-<p align="justify>
+<p align="justify">
 	En el servidor se encuentra toda gestión de la comunicación con la DB, también están los DTO (modelos de datos que se publican en la api para su futuro consumo desde un app Android), los controladores: datos de la DB (DTOs), Contador Android, LED en Raspberry pi y sus correspondientes driver para acceso a GPIO y comunicación puerto COM.
 
 	La compilación, depuración y deploy se está realizando en remoto desde un PC que se encuentra en la misma (o no) red que la Raspberry Pi, a la que se ataca mediante SSH para su control y subida de ficheros. La configuración de esta conexión se encuentra declarada el pom.xml, pero está prevista la externalización a un fichero externo encriptado (esta retrasado por la dependencia de una librería de terceros).
