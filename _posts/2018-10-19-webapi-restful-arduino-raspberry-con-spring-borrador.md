@@ -97,7 +97,7 @@ mediante puerto COM y consumo API obtención contador</i><h5>
 <video width="100%" controls controlsList="nodownload"> 
 	<source src="/assets/video/raspberry_led.mp4" autoplay="false" type="video/mp4">
 </video>
-Comunicación Raspberry Pi GPIO desde servidor mediante consumo API, control y obtención estado LED</i><h5>
+<h5><i>Comunicación Raspberry Pi GPIO desde servidor mediante consumo API, control y obtención estado LED</i><h5>
 
 <video width="100%" controls controlsList="nodownload"> 
 	<source src="/assets/video/arduino_ctrl_api.mp4" autoplay="false" type="video/mp4">
