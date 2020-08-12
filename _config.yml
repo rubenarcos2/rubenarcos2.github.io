@@ -23,6 +23,10 @@ google_analytics: UA-64172909-1
 
 markdown: kramdown
 theme: minima
+
+paginate: 5 # amount of posts to show
+paginate_path: /page:num/
+
 plugins:
   - jekyll-feed
 

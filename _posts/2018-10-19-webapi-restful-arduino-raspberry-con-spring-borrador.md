@@ -4,13 +4,14 @@ title: WebAPI RESTful Arduino - Raspberry con Spring
 date: 2018-10-19 16:46
 author: ruben
 comments: true
+excerpt_separator: <!--more-->
 category: Blog
 tags: [arduino, Bases de Datos, Blog, C#, IoT, Java, java, restful, spring, tomcat, webapi]
 ---
 <p align="justify">
 	He realizado el siguiente proyecto de pruebas RESTful para la comunicación mediante una interfaz cliente en Arduino y Raspberry pi y con un servidor basado en Spring para la gestión de la API. En ambos clientes se dispone de acceso a los elementos físicos de hardware mediante comunicación I/O a las GPIOs correspondientes.
 
-	&nbsp;
+	<!--more-->
 
 	La idea de realización consiste en la gestión de un contador basado e instalado en una placa Arduino Uno que consta de un botón y un display LED para la visualización del mismo, a su vez el programa de este gestiona la posibilidad de incremento físico del contador (mediante el botón), como mediante la recepción exterior por el puerto COM (USB) y la asignación de un valor específico recibido en remoto.
 
@@ -24,7 +25,7 @@ tags: [arduino, Bases de Datos, Blog, C#, IoT, Java, java, restful, spring, tomc
 
 &nbsp;
 
-<h4><strong>Composición y diseño:</strong></h4>
+<h3>Composición y diseño:</h3>
 <ul>
  	<li>Hardware: Arduino</li>
 </ul>
@@ -44,7 +45,7 @@ tags: [arduino, Bases de Datos, Blog, C#, IoT, Java, java, restful, spring, tomc
 
 &nbsp;
 
-<h4><strong>Elementos de Hardware</strong> que componen el sistema:</h4>
+<h3>Elementos de Hardware:</h3>
 
 
 [gallery columns="4" ids="1410,1415,1412,1413"]
@@ -59,10 +60,10 @@ El servidor se ha creado mediante el framework de Spring incluyendo:
  	<li>SSH para depuración y deploy remoto en Raspberry Pi</li>
  	<li>Gestión HTTP para los controller de la API</li>
  	<li>Comunicación y gestión de puertos GPIO (elementos físicos de hardware)
-<ul>
- 	<li>Arduino con conexión COM (USB) a Raspberry Pi</li>
- 	<li>GPIO I/O Raspberry Pi</li>
-</ul>
+	<ul>
+		<li>Arduino con conexión COM (USB) a Raspberry Pi</li>
+		<li>GPIO I/O Raspberry Pi</li>
+	</ul>
 </li>
  	<li>Generador aleatorio de nombres (crea los datos de la DB con formatos 'previsibles'</li>
 </ul>
@@ -73,13 +74,14 @@ El servidor se ha creado mediante el framework de Spring incluyendo:
 
 &nbsp;
 
-<img src="/assets/images/proyecto_server.jpg" alt="" width="185" height="464" style="float: right; margin-right: 10px;" />
+<img src="/assets/images/proyecto_server.jpg" alt="" width="185" height="464" style="float: right; margin-left: 10px;" />
 
 <p align="justify">
 	En el servidor se encuentra toda gestión de la comunicación con la DB, también están los DTO (modelos de datos que se publican en la api para su futuro consumo desde un app Android), los controladores: datos de la DB (DTOs), Contador Android, LED en Raspberry pi y sus correspondientes driver para acceso a GPIO y comunicación puerto COM.
 
 	La compilación, depuración y deploy se está realizando en remoto desde un PC que se encuentra en la misma (o no) red que la Raspberry Pi, a la que se ataca mediante SSH para su control y subida de ficheros. La configuración de esta conexión se encuentra declarada el pom.xml, pero está prevista la externalización a un fichero externo encriptado (esta retrasado por la dependencia de una librería de terceros).
 </p>
+
 &nbsp;
 
 A continuación se muestra el transcurso de un funcionamiento esperado para sistema:
@@ -88,6 +90,8 @@ A continuación se muestra el transcurso de un funcionamiento esperado para sist
 * Encendido y comunicación Raspberry & Arduino
 * Puesta en marcha e incremento contador
 * Consumo API y modificación contador desde esta
+
+&nbsp;
 
 <p align="center">
 	<video width="100%" controls controlsList="nodownload"> 
