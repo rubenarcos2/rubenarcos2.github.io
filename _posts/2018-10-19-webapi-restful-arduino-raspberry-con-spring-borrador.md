@@ -7,6 +7,7 @@ comments: true
 category: Blog
 tags: [arduino, Bases de Datos, Blog, C#, IoT, Java, java, restful, spring, tomcat, webapi]
 ---
+<pre>
 He realizado el siguiente proyecto de pruebas RESTful para la comunicación mediante una interfaz cliente en Arduino y Raspberry pi y con un servidor basado en Spring para la gestión de la API. En ambos clientes se dispone de acceso a los elementos físicos de hardware mediante comunicación I/O a las GPIOs correspondientes.
 
 <hr>
@@ -116,3 +117,4 @@ mediante puerto COM y consumo API obtención contador*
 	<p>Esta página web y todo su contenido, incluido proyectos y código fuente, está licenciada bajo una licencia de Creative Commons: Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)
 	<a href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.es">Más info</a></p>
 </h6>
+</pre>
