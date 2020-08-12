@@ -118,10 +118,12 @@ A continuación se muestra el transcurso de un funcionamiento esperado para sist
 &nbsp;
 &nbsp;
 &nbsp;
-&nbsp;
+
 <hr>
-<h6 align="center">
-	<a href="https://creativecommons.org/licenses/by-nc-nd/4.0/"><img src="https://licensebuttons.net/l/by-nc-nd/4.0/88x31.png" alt="Creative Commons License: CC BY-NC-ND 4.0" /></a>
+&nbsp;
+<h6>
+	<a href="https://creativecommons.org/licenses/by-nc-nd/4.0/"><img align="center" src="https://licensebuttons.net/l/by-nc-nd/4.0/88x31.png" alt="Creative Commons License: CC BY-NC-ND 4.0" /></a>
+	&nbsp;
 	<p>This web page, all content with proyects and source code, is licensed under Creative Commons: Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)
 	<a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">More info</a></p>
 	<p>Esta página web y todo su contenido, incluido proyectos y código fuente, está licenciada bajo una licencia de Creative Commons: Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)<a href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.es">Más info</a></p>
