@@ -42,7 +42,7 @@ permalink: /cookies/
 </p>
 &nbsp;
 
-<h3><strong>¿Cómo eliminar o bloquear cookies según su navegador web? </strong></h3>
+<h3 style="text-align: center;"><strong>¿Cómo eliminar o bloquear cookies según su navegador web? </strong></h3>
 <p align="justify">
 	Puede usted permitir, bloquear o eliminar las cookies instaladas en su equipo mediante la configuración de las opciones del navegador instalado en su ordenador:
 	<ul>
