@@ -9,7 +9,7 @@ permalink: /cookies/
 ---
 <h3 style="text-align: center;"><strong>¿Qué son las cookies?
 </strong></h3>
-&nbsp;
+
 <p align="justify">
 	<em>Cookie</em> es un fichero que se descarga en su ordenador al acceder a determinadas páginas web. Las <em>cookies</em> permiten a una página web, entre otras cosas, almacenar y recuperar información sobre los hábitos de navegación de un usuario o de su equipo y, dependiendo de la información que contengan y de la forma en que utilice su equipo, pueden utilizarse para reconocer al usuario.. El navegador del usuario memoriza <em>cookies</em> en el disco duro solamente durante la sesión actual ocupando un espacio de memoria mí­nimo y no perjudicando al ordenador. Las <em>cookies</em> no contienen ninguna clase de información personal especí­fica, y la mayorí­a de las mismas se borran del disco duro al finalizar la sesión de navegador (las denominadas <em>cookies</em> de sesión).
 
@@ -42,7 +42,7 @@ permalink: /cookies/
 </p>
 &nbsp;
 
-<h3 style="text-align: center;"><strong>¿Cómo eliminar o bloquear cookies según su navegador web? </strong></h3>
+<h3><strong>¿Cómo eliminar o bloquear cookies según su navegador web? </strong></h3>
 <p align="justify">
 	Puede usted permitir, bloquear o eliminar las cookies instaladas en su equipo mediante la configuración de las opciones del navegador instalado en su ordenador:
 	<ul>
@@ -51,10 +51,11 @@ permalink: /cookies/
 		<li><a href="http://support.mozilla.org/es/kb/habilitar-y-deshabilitar-cookies-que-los-sitios-we" target="_blank" rel="noopener">Firefox</a></li>
 		<li><a href="http://support.apple.com/kb/ph5042" target="_blank" rel="noopener">Safari</a></li>
 	</ul>
-	&nbsp;
-	<h3 style="text-align: center;"><strong>Aceptación y conformidad del usuario</strong></h3>
-	&nbsp;
+</p>
+&nbsp;
 
+<h3 style="text-align: center;"><strong>Aceptación y conformidad del usuario</strong></h3>	
+<p align="justify">
 	<strong>El Usuario acepta expresamente, por la utilización de este Site, el tratamiento de la información recabada en la forma y con los fines anteriormente mencionados.</strong> Y asimismo reconoce conocer la posibilidad de rechazar el tratamiento deÂ tales datos o información rechazando el uso de Cookies mediante la selección de la configuración apropiada a tal fin en su navegador. Si bien esta opción de bloqueo de Cookies en su navegador puede no permitirle el uso pleno de todas las funcionalidades del Website.
 	<p style="text-align: center;"><strong>Si tiene dudas sobre esta polí­tica de cookies, puede contactar en:</strong></p>
 	<p style="text-align: center;"><strong> <a href="http://rarcos.com/contacto/">http://rarcos.com/contacto/</a></strong></p>
