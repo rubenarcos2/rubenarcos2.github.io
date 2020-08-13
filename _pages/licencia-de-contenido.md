@@ -11,9 +11,15 @@ permalink: /license/
 	This web page, all content with proyects and source code, is licensed under Creative Commons: Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)
 	<a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">More info</a>
 
+	&nbsp;
+	
 	Esta página web y todo su contenido, incluido proyectos y código fuente, está licenciado bajo una licencia de Creative Commons: Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)
 	<a href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.es">Más info</a>
+	
+	&nbsp;
+
 	<h2 id="creativecommonslicenseccbyncnd40httpslicensebuttonsnetlbyncnd4080x15pnghttpscreativecommonsorglicensesbyncnd40">Creative Commons <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/"><img src="https://licensebuttons.net/l/by-nc-nd/4.0/88x31.png" alt="License: CC BY-NC-ND 4.0" /></a></h2>
+
 	<h1 id="attributionnoncommercialnoderivatives40international">Attribution-NonCommercial-NoDerivatives 4.0 International</h1>
 	Creative Commons Corporation ("Creative Commons") is not a law firm and does not provide legal services or legal advice. Distribution of Creative Commons public licenses does not create a lawyer-client or other relationship. Creative Commons makes its licenses and related information available on an"as-is" basis. Creative Commons gives no warranties regarding its licenses, any material licensed under their terms and conditions, or any related information. Creative Commons disclaims all liability for damages resulting from their use to the fullest extent possible.
 	<h3 id="usingcreativecommonspubliclicenses">Using Creative Commons Public Licenses</h3>
