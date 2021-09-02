@@ -10,7 +10,7 @@ Proyecto integrado fin del Ciclo Formativo de Grado Superior de Aplicaciones Mul
     <source src="GesMerCa_defensa.mp4" type="video/mp4">
 </video>
 
-{% pdf "GesMerCa_defensa_anticopia.pdf" %}
+{% pdf "../assets/pdfs/GesMerCa_defensa_anticopia.pdf" %}
 
 **Ejemplo de ejecución**
 
@@ -28,7 +28,7 @@ Proyecto integrado fin del Ciclo Formativo de Grado Superior de Aplicaciones Mul
 
 **Documentación completa y diagramas del proyecto**
 
-{% pdf "Documentacion_GESMERCA_anticopia.pdf" %}
+{% pdf "../assets/pdfs/Documentacion_GESMERCA_anticopia.pdf" %}
 
 **Ejecutable y código fuente**
 

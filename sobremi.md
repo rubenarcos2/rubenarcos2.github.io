@@ -25,14 +25,10 @@ permalink: /cv/
 </div>
 </div>
 </div>
-<ul class="nav" style="list-style-type: none; text-align: center; margin: 0; padding: 0;">
- 	<li style="display: inline-block; width: 75%;">
 <p style="text-align: center;"><em> Ser programador es mi proyecto,</em></p>
 <p style="text-align: center;"><em>ayudar al usuario mi finalidad y,</em></p>
 <p style="text-align: center;"><em>automatizar procesos mi definición. </em></p>
-</li>
- 	<li style="display: inline-block;"><a href="../cv_ruben.pdf" target="_blank" rel="noopener noreferrer"><img class="wp-image-763 aligncenter" src="../cv_pdf.png" alt="Descargar CV en PDF" width="64" height="64" /></a></li>
-</ul>
+<p style="text-align: right;"><a href="../cv_ruben.pdf" target="_blank" rel="noopener noreferrer"><img class="wp-image-763 aligncenter" src="../cv_pdf.png" alt="Descargar CV en PDF" width="64" height="64" /></a></p>
 <h2>Mi trayectoria profesional y académica:</h2>
 <div id="background-experience-container" class="background-section" data-li-template="experience_section">
 <div id="background-experience" class="background-experience edit-default">
@@ -135,14 +131,14 @@ de la empresa, gestión informática interna.</h5>
 <h4 class="summary fn org">E.T.S. de Ingenierí­a Informática - Universidad Nacional de Educación a Distancia (U.N.E.D.)</h4>
 <h4><strong><span class="degree">Grado en Ingenierí­a en Tecnologí­as de la Información (ITI)</span></strong><span class="degree"> - </span><span class="degree"><em>[Cursando]</em></span></h4>
 </header><span class="education-date"><time>2018</time><time> - Cursando</time></span>
-<h5 class="notes">Ingenierí­a en Tecnologí­as de la Información (<span style="color: #000080;"><a style="color: #000080; text-decoration: underline;" href="http://portal.uned.es/portal/page?_pageid=93,61703779&amp;_dad=portal&amp;_schema=PORTAL&amp;idGrado=7102" target="_blank" rel="noopener">Ver Contenidos</a></span>, <span style="color: #000080;"><a style="color: #000080; text-decoration: underline;" href="http://portal.uned.es/portal/page?_pageid=93,61703738&amp;_dad=portal&amp;_schema=PORTAL&amp;idContenido=3" target="_blank" rel="noopener noreferrer">Ver Competencias</a></span>, <span style="text-decoration: underline;"><span style="color: #000080;"><a style="color: #000080; text-decoration: underline;" href="http://portal.uned.es/portal/page?_pageid=93,61703738&amp;_dad=portal&amp;_schema=PORTAL&amp;idContenido=2" rel="noopener noreferrer">Más Información</a></span></span>)</h5>
+<h5 class="notes">Ingenierí­a en Tecnologí­as de la Información </h5>
 <div id="education-230092202" class="editable-item section-item">
 <div id="education-230092202-view">
 <div class="education first"><header>
 <h4 class="summary fn org">C.E.P. San José</h4>
 <h4><strong><span class="degree">C.F.G.S. en Desarrollo de Aplicaciones Multiplataforma (DAM)</span></strong></h4>
 </header><span class="education-date"><time>2014</time><time> - 2016<time> (2000 h.)</time></time></span>
-<h5 class="notes">Técnico superior de Desarrollo de Aplicaciones Multiplataforma (<span style="color: #000080;"><a style="color: #000080; text-decoration: underline;" href="http://localhost/wp-content/uploads/2013/06/Contenido_DAM.jpg" target="_blank" rel="noopener">Ver Contenidos</a></span>, <span style="color: #000080;"><a style="color: #000080; text-decoration: underline;" href="http://www.fundacionloyola.es/sanjose/index.php/ciclos-formativos/g-s-aplicaciones-informaticas" target="_blank" rel="noopener noreferrer">Ver Competencias</a></span>, <span style="text-decoration: underline;"><span style="color: #000080;"><a style="color: #000080; text-decoration: underline;" href="http://localhost/wp-content/plugins/pdfjs-viewer-shortcode/pdfjs/web/viewer.php?file=https%3A%2F%2Fwww.rarcos.com%2Fwp-content%2Fuploads%2F2017%2F10%2FMatrí­cula_honor_DAM.pdf&amp;download=false&amp;print=false&amp;openfile=false" target="_blank" rel="noopener noreferrer">Ver mención especial</a></span></span>)</h5>
+<h5 class="notes">Técnico superior de Desarrollo de Aplicaciones Multiplataforma </h5>
 </div>
 </div>
 </div>

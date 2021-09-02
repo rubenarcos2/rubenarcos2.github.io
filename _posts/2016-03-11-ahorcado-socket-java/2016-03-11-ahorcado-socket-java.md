@@ -10,7 +10,7 @@ Juego del ahorcado mediante socket cliente/servidor
 
  **Documentación y casos contemplados**
 
-{% pdf "Documentacion-PEVAL-Ahorcado.pdf" %}
+{% pdf "../assets/pdfs/Documentacion-PEVAL-Ahorcado.pdf" %}
 
  **Ejecutable y código fuente**
 

@@ -47,6 +47,10 @@ defaults:
     values:
       layout: post
       comments: false
+  - scope:
+      path: "*.pdf"
+    values:
+      sitemap: false
 
 # Jekyll Compose default front matter
 jekyll_compose:

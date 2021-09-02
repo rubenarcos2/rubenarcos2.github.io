@@ -15,7 +15,7 @@ He realizado otra práctica para demostrar el funcionamiento de los hilos y su s
 
  **Documentación y casos contemplados**
 
-{% pdf "Documentación-PEVAL.pdf" %}
+{% pdf "../assets/pdfs/Documentación-PEVAL.pdf" %}
 
 
 **Captura de pantalla del programa en ejecución**
@@ -33,8 +33,8 @@ Jerarquí­a de clases
 [![Code-Optimization-3-256x256[1]](Code-Optimization-3-256x2561.png)](https://bitbucket.org/rubenarcos/java-hilos-aeropuerto)
 
 ##### Documentación adicional funcionamiento aeroportuario:
-- [Control del tráfico aéreo](Control-del-tráfico-aéreo.pdf)  
-- [Matrí­culas aeronaves](Matrículas-aeronaves.pdf)
+- [Control del tráfico aéreo](../assets/pdfs/Control-del-tráfico-aéreo.pdf)  
+- [Matrí­culas aeronaves](../assets/pdfs/Matrículas-aeronaves.pdf)
     
 
 ### Content License

@@ -13,7 +13,7 @@ He realizado una práctica para demostrar el funcionamiento de los hilos y su si
 
 **Documentación y casos contemplados**
 
-{% pdf "Examen-1-evaluacion.pdf" %}
+{% pdf "../assets/pdfs/Examen-1-evaluacion.pdf" %}
 
 **Captura de pantalla del programa en ejecución**
 
