@@ -1,5 +1,5 @@
 ---
-title: "WebAPI RESTful Arduino - Raspberry con Spring [Borrador]"
+title: "WebAPI RESTful Arduino - Raspberry con Spring"
 date: "2018-10-19"
 coverImage: "api_ardu_rasp.jpg"
 ---
