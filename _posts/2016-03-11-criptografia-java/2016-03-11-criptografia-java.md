@@ -17,7 +17,7 @@ Demostración de encriptación/desencriptación público/privada
 
  **Documentación y casos contemplados**
  
-{% pdf "PENEVAL-Encriptacion-Documentacion.pdf" %}
+{% pdf "../assets/pdfs/PENEVAL-Encriptacion-Documentacion.pdf" %}
 
  **Ejecutable y código fuente**
 
