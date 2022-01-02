@@ -1,143 +1,52 @@
 [
   
     {
+      "title"    : "Tu web en una app Android",
+      "tags"     : "",
+      "url"      : "/Tu_web_en_app_Android/",
+      "date"     : "2021-11-23 00:00:00 +0000"
+    } ,
+  
+    {
+      "title"    : "IoT proyectos y Mqtt en openhab",
+      "tags"     : "",
+      "url"      : "/IoT_proyectos_openhab/",
+      "date"     : "2021-10-13 00:00:00 +0000"
+    } ,
+  
+    {
       "title"    : "Conversion JS de ES6 a ES5 - Transpilado",
       "tags"     : "",
-      "url"      : "/conversion_js_es6-es5/",
+      "url"      : "/Conversion_js_de_es6_a_es5-transpilado/",
       "date"     : "2021-08-14 00:00:00 +0000"
     } ,
   
     {
       "title"    : "Actualización web a HTTPS",
       "tags"     : "",
-      "url"      : "/actualizacion-web-a-https-y-mas/",
+      "url"      : "/Actualizacion_web_a_https/",
       "date"     : "2018-11-01 00:00:00 +0000"
     } ,
   
     {
       "title"    : "WebAPI RESTful Arduino - Raspberry con Spring",
       "tags"     : "",
-      "url"      : "/webapi-restful-arduino-raspberry-con-spring/",
+      "url"      : "/WebAPI_RESTful_Arduino-Raspberry_con_Spring/",
       "date"     : "2018-10-19 00:00:00 +0000"
     } ,
   
     {
-      "title"    : "API Rest con Spring",
+      "title"    : "Proyecto Integrado",
       "tags"     : "",
-      "url"      : "/api-rest-con-spring/",
-      "date"     : "2018-06-11 00:00:00 +0000"
-    } ,
-  
-    {
-      "title"    : ".Net Framework vs .Net Core",
-      "tags"     : "",
-      "url"      : "/net-framework-vs-net-core/",
-      "date"     : "2016-12-26 00:00:00 +0000"
-    } ,
-  
-    {
-      "title"    : "Proyecto integrado",
-      "tags"     : "",
-      "url"      : "/proyecto-integrado/",
+      "url"      : "/Proyecto_integrado/",
       "date"     : "2016-06-11 00:00:00 +0000"
     } ,
   
     {
-      "title"    : "Hilos en JAVA, demostración nivel avanzado 1",
+      "title"    : "Hilos en JAVA 1",
       "tags"     : "",
-      "url"      : "/hilos-en-java-demostracion/",
+      "url"      : "/Hilos_en_java-1/",
       "date"     : "2016-05-30 00:00:00 +0000"
-    } ,
-  
-    {
-      "title"    : "Criptografí­a - Java",
-      "tags"     : "",
-      "url"      : "/criptografia-java/",
-      "date"     : "2016-03-11 00:00:00 +0000"
-    } ,
-  
-    {
-      "title"    : "Ahorcado Socket - Java",
-      "tags"     : "",
-      "url"      : "/ahorcado-socket-java/",
-      "date"     : "2016-03-11 00:00:00 +0000"
-    } ,
-  
-    {
-      "title"    : "C# Tetris",
-      "tags"     : "",
-      "url"      : "/c-tetris/",
-      "date"     : "2016-02-11 00:00:00 +0000"
-    } ,
-  
-    {
-      "title"    : "Hilos en JAVA, ejercicio nivel avanzado 1.2 (consola)",
-      "tags"     : "",
-      "url"      : "/hilos-en-java-ejercicio-1/",
-      "date"     : "2016-01-28 00:00:00 +0000"
-    } ,
-  
-    {
-      "title"    : "Hilos en JAVA, ejercicio nivel avanzado 1.1 (applet)",
-      "tags"     : "",
-      "url"      : "/hilos-en-java-ejercicio-1-applet/",
-      "date"     : "2016-01-28 00:00:00 +0000"
-    } ,
-  
-    {
-      "title"    : "Hilos en JAVA, demostración nivel avanzado 2",
-      "tags"     : "",
-      "url"      : "/hilos-en-java-demostracion-2-2/",
-      "date"     : "2016-01-28 00:00:00 +0000"
-    } ,
-  
-    {
-      "title"    : "C# Editor de textos",
-      "tags"     : "",
-      "url"      : "/editor_textos/",
-      "date"     : "2016-01-11 00:00:00 +0000"
-    } ,
-  
-    {
-      "title"    : "Hilos en Java, creación (teorí­a)",
-      "tags"     : "",
-      "url"      : "/creacion-de-hilos-en-java/",
-      "date"     : "2015-10-07 00:00:00 +0000"
-    } ,
-  
-    {
-      "title"    : "Proyecto gestión en Flex/AIR, proyecto personal",
-      "tags"     : "",
-      "url"      : "/biblioteca-air/",
-      "date"     : "2015-09-15 00:00:00 +0000"
-    } ,
-  
-    {
-      "title"    : "Javascript - Práctica juego de las siete y media",
-      "tags"     : "",
-      "url"      : "/javascript-practica-juego-de-las-siete-y-media/",
-      "date"     : "2015-06-11 00:00:00 +0000"
-    } ,
-  
-    {
-      "title"    : "POO en JAVA, ejercicio nivel intermedio 1",
-      "tags"     : "",
-      "url"      : "/java-ejercicios-nivel-2/",
-      "date"     : "2014-10-09 00:00:00 +0000"
-    } ,
-  
-    {
-      "title"    : "I/O en JAVA, ejercicio nivel básico 1",
-      "tags"     : "",
-      "url"      : "/java-clase-para-entrada-por-teclado-control-del-buffer/",
-      "date"     : "2014-10-09 00:00:00 +0000"
-    } ,
-  
-    {
-      "title"    : "SysAdmin, servidor de virtualización Proxmox (Tutorial)",
-      "tags"     : "",
-      "url"      : "/instalacion-y-coniguracion-de-un-servidor-de-virtualizacion-proxmox/",
-      "date"     : "2014-03-03 00:00:00 +0000"
     } 
   
 ]

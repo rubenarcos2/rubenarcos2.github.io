@@ -28,4 +28,7 @@
       ? area.classList.add("blurry")
       : area.classList.remove("blurry");
   });
+
+  document.addEventListener('contextmenu', event => event.preventDefault());
+
 })();

@@ -8,8 +8,8 @@
             "type": "image/png"
         },
         {
-            "src": "/android-chrome-384x384.png",
-            "sizes": "384x384",
+            "src": "/android-chrome-310x310.png",
+            "sizes": "310x310",
             "type": "image/png"
         }
     ],
