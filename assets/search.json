@@ -36,6 +36,20 @@
     } ,
   
     {
+      "title"    : "API Rest con Spring",
+      "tags"     : "",
+      "url"      : "/API_Rest_con_Spring/",
+      "date"     : "2018-06-11 00:00:00 +0000"
+    } ,
+  
+    {
+      "title"    : ".Net Framework vs .Net Core",
+      "tags"     : "",
+      "url"      : "/net-framework-vs-net-core/",
+      "date"     : "2016-12-26 00:00:00 +0000"
+    } ,
+  
+    {
       "title"    : "Proyecto Integrado",
       "tags"     : "",
       "url"      : "/Proyecto_integrado/",
@@ -47,6 +61,13 @@
       "tags"     : "",
       "url"      : "/Hilos_en_java-1/",
       "date"     : "2016-05-30 00:00:00 +0000"
+    } ,
+  
+    {
+      "title"    : "Criptografía - Java",
+      "tags"     : "",
+      "url"      : "/Criptografia_java/",
+      "date"     : "2016-03-11 00:00:00 +0000"
     } 
   
 ]
