@@ -110,6 +110,13 @@
       "tags"     : "",
       "url"      : "/flex-air-biblioteca/",
       "date"     : "2015-09-15 00:00:00 +0000"
+    } ,
+  
+    {
+      "title"    : "Javascript Juego de la siete y media",
+      "tags"     : "",
+      "url"      : "/js_juego_siete_y_media/",
+      "date"     : "2015-06-11 00:00:00 +0000"
     } 
   
 ]
