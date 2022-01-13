@@ -117,6 +117,13 @@
       "tags"     : "",
       "url"      : "/js_juego_siete_y_media/",
       "date"     : "2015-06-11 00:00:00 +0000"
+    } ,
+  
+    {
+      "title"    : "SysAdmin instalación Proxmox",
+      "tags"     : "",
+      "url"      : "/proxmox/",
+      "date"     : "2014-03-04 00:00:00 +0000"
     } 
   
 ]
