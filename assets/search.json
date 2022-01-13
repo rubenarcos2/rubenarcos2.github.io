@@ -78,17 +78,24 @@
     } ,
   
     {
-      "title"    : "Criptografía - Java",
+      "title"    : "Criptografía en Java",
       "tags"     : "",
       "url"      : "/Criptografia-java/",
       "date"     : "2016-03-11 00:00:00 +0000"
     } ,
   
     {
-      "title"    : "Ahorcado Socket - Java",
+      "title"    : "Sockets en Java",
       "tags"     : "",
       "url"      : "/Ahorcado_socket_java/",
       "date"     : "2016-03-11 00:00:00 +0000"
+    } ,
+  
+    {
+      "title"    : "C# Editor de textos",
+      "tags"     : "",
+      "url"      : "/c-editor-textos/",
+      "date"     : "2016-02-11 00:00:00 +0000"
     } ,
   
     {
