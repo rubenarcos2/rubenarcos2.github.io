@@ -50,13 +50,6 @@
     } ,
   
     {
-      "title"    : "Hilos en JAVA, ejercicio nivel avanzado 1.2 (consola)",
-      "tags"     : "",
-      "url"      : "/Hilos_en_java_ejercicio-1/",
-      "date"     : "2016-06-28 00:00:00 +0000"
-    } ,
-  
-    {
       "title"    : "Proyecto Integrado",
       "tags"     : "",
       "url"      : "/Proyecto_integrado/",
@@ -64,10 +57,24 @@
     } ,
   
     {
-      "title"    : "Hilos en JAVA 1",
+      "title"    : "Hilos en Java 2",
+      "tags"     : "",
+      "url"      : "/Hilos_en_java-2/",
+      "date"     : "2016-06-02 00:00:00 +0000"
+    } ,
+  
+    {
+      "title"    : "Hilos en Java 1",
       "tags"     : "",
       "url"      : "/Hilos_en_java-1/",
       "date"     : "2016-05-30 00:00:00 +0000"
+    } ,
+  
+    {
+      "title"    : "Hilos en Java 0.5",
+      "tags"     : "",
+      "url"      : "/Hilos_en_java-0-5/",
+      "date"     : "2016-05-28 00:00:00 +0000"
     } ,
   
     {
