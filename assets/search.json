@@ -1,6 +1,20 @@
 [
   
     {
+      "title"    : "IA - Perceptrón clasificador dataset iris",
+      "tags"     : "IA, streamlit, python, ML, web, iris",
+      "url"      : "/IA_perceptron_clasificador_iris/",
+      "date"     : "2022-01-29 00:00:00 +0000"
+    } ,
+  
+    {
+      "title"    : "IA en la web - Streamlit",
+      "tags"     : "IA, streamlit, python, ML, web",
+      "url"      : "/IA_en_la_web-Streamlit/",
+      "date"     : "2022-01-29 00:00:00 +0000"
+    } ,
+  
+    {
       "title"    : "Tu web en una app Android",
       "tags"     : "",
       "url"      : "/Tu_web_en_app_Android/",
@@ -121,7 +135,7 @@
   
     {
       "title"    : "SysAdmin instalación Proxmox",
-      "tags"     : "",
+      "tags"     : "sysadmin, proxmox, tutorial",
       "url"      : "/proxmox/",
       "date"     : "2014-03-04 00:00:00 +0000"
     } 
