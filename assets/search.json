@@ -1,6 +1,13 @@
 [
   
     {
+      "title"    : "Api rest en R",
+      "tags"     : "R, api rest, api, web",
+      "url"      : "/API_Rest_en_R/",
+      "date"     : "2022-02-11 00:00:00 +0000"
+    } ,
+  
+    {
       "title"    : "IA - Perceptrón clasificador dataset iris",
       "tags"     : "IA, streamlit, python, ML, web, iris",
       "url"      : "/IA_perceptron_clasificador_iris/",
