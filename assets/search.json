@@ -1,7 +1,14 @@
 [
   
     {
-      "title"    : "Api rest en R",
+      "title"    : "Python - API Rest en Flask",
+      "tags"     : "Python, api rest, api, web",
+      "url"      : "/Python-API_Rest_en_Flask/",
+      "date"     : "2022-02-15 00:00:00 +0000"
+    } ,
+  
+    {
+      "title"    : "R - Api rest",
       "tags"     : "R, api rest, api, web",
       "url"      : "/API_Rest_en_R/",
       "date"     : "2022-02-11 00:00:00 +0000"
@@ -15,28 +22,28 @@
     } ,
   
     {
-      "title"    : "IA en la web - Streamlit",
+      "title"    : "IA - En la web con Streamlit",
       "tags"     : "IA, streamlit, python, ML, web",
       "url"      : "/IA_en_la_web-Streamlit/",
       "date"     : "2022-01-29 00:00:00 +0000"
     } ,
   
     {
-      "title"    : "Tu web en una app Android",
+      "title"    : "Android - Tu web en una app",
       "tags"     : "",
       "url"      : "/Tu_web_en_app_Android/",
       "date"     : "2021-11-23 00:00:00 +0000"
     } ,
   
     {
-      "title"    : "IoT proyectos y Mqtt en openhab",
+      "title"    : "IoT - Proyectos y Mqtt en openhab",
       "tags"     : "",
       "url"      : "/IoT_proyectos_openhab/",
       "date"     : "2021-10-13 00:00:00 +0000"
     } ,
   
     {
-      "title"    : "Conversion JS de ES6 a ES5 - Transpilado",
+      "title"    : "JS - Conversion de ES6 a ES5, transpilado",
       "tags"     : "",
       "url"      : "/Conversion_js_de_es6_a_es5-transpilado/",
       "date"     : "2021-08-14 00:00:00 +0000"
@@ -50,14 +57,14 @@
     } ,
   
     {
-      "title"    : "WebAPI RESTful Arduino - Raspberry con Spring",
+      "title"    : "Spring - WebAPI RESTful Arduino &lt;-&gt; Raspberry",
       "tags"     : "",
       "url"      : "/WebAPI_RESTful_Arduino-Raspberry_con_Spring/",
       "date"     : "2018-10-19 00:00:00 +0000"
     } ,
   
     {
-      "title"    : "API Rest con Spring",
+      "title"    : "Spring - API Rest simple",
       "tags"     : "",
       "url"      : "/API_Rest_con_Spring/",
       "date"     : "2018-06-11 00:00:00 +0000"
@@ -78,21 +85,21 @@
     } ,
   
     {
-      "title"    : "Hilos en Java 2",
+      "title"    : "Java - Hilos 2",
       "tags"     : "",
       "url"      : "/Hilos_en_java-2/",
       "date"     : "2016-06-02 00:00:00 +0000"
     } ,
   
     {
-      "title"    : "Hilos en Java 1",
+      "title"    : "Java - Hilos 1",
       "tags"     : "",
       "url"      : "/Hilos_en_java-1/",
       "date"     : "2016-05-30 00:00:00 +0000"
     } ,
   
     {
-      "title"    : "Hilos en Java 0.5",
+      "title"    : "Java - Hilos 0.5",
       "tags"     : "",
       "url"      : "/Hilos_en_java-0-5/",
       "date"     : "2016-05-28 00:00:00 +0000"
@@ -106,42 +113,42 @@
     } ,
   
     {
-      "title"    : "Sockets en Java",
+      "title"    : "Java - Sockets cliente-servidor",
       "tags"     : "",
       "url"      : "/Ahorcado_socket_java/",
       "date"     : "2016-03-11 00:00:00 +0000"
     } ,
   
     {
-      "title"    : "C# Editor de textos",
+      "title"    : "C# - Editor de textos",
       "tags"     : "",
       "url"      : "/c-editor-textos/",
       "date"     : "2016-02-11 00:00:00 +0000"
     } ,
   
     {
-      "title"    : "C# Tetris",
+      "title"    : "C# - Tetris",
       "tags"     : "",
       "url"      : "/c-tetris/",
       "date"     : "2016-02-11 00:00:00 +0000"
     } ,
   
     {
-      "title"    : "Flex/Air Biblioteca",
+      "title"    : "Flex/Air - Biblioteca",
       "tags"     : "",
       "url"      : "/flex-air-biblioteca/",
       "date"     : "2015-09-15 00:00:00 +0000"
     } ,
   
     {
-      "title"    : "Javascript Juego de la siete y media",
+      "title"    : "JS - Juego de la siete y media",
       "tags"     : "",
       "url"      : "/js_juego_siete_y_media/",
       "date"     : "2015-06-11 00:00:00 +0000"
     } ,
   
     {
-      "title"    : "SysAdmin instalación Proxmox",
+      "title"    : "SysAdmin - Instalación Proxmox",
       "tags"     : "sysadmin, proxmox, tutorial",
       "url"      : "/proxmox/",
       "date"     : "2014-03-04 00:00:00 +0000"
