@@ -1,1 +1,1 @@
-Sitemap: http://rarcos.com/sitemap.xml
+Sitemap: https://www.rarcos.com/sitemap.xml

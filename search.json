@@ -1,0 +1,179 @@
+[
+  
+    {
+      "title"    : "Python - API Rest en Flask",
+      "category" : "",
+      "tags"     : "python, api, rest, flask",
+      "url"      : "/2022/02/15/Python-API_Rest_en_Flask/",
+      "date"     : "2022-02-15 15:33:28 +0100"
+    } ,
+  
+    {
+      "title"    : "R - Api rest",
+      "category" : "",
+      "tags"     : "R, api, rest, flask",
+      "url"      : "/2022/02/11/API_Rest_en_R/",
+      "date"     : "2022-02-11 15:33:28 +0100"
+    } ,
+  
+    {
+      "title"    : "IA - Perceptrón clasificador dataset iris",
+      "category" : "",
+      "tags"     : "IA, streamlit, python, ML, web, iris",
+      "url"      : "/2022/01/29/IA_perceptron_clasificador_iris/",
+      "date"     : "2022-01-29 15:33:28 +0100"
+    } ,
+  
+    {
+      "title"    : "IA - En la web con Streamlit",
+      "category" : "",
+      "tags"     : "IA, streamlit, python, ML, web",
+      "url"      : "/2022/01/29/IA_en_la_web-Streamlit/",
+      "date"     : "2022-01-29 15:33:28 +0100"
+    } ,
+  
+    {
+      "title"    : "Android - Tu web en una app",
+      "category" : "",
+      "tags"     : "Android, apk, app",
+      "url"      : "/2021/11/23/Tu_web_en_app_Android/",
+      "date"     : "2021-11-23 15:33:28 +0100"
+    } ,
+  
+    {
+      "title"    : "IoT - Proyectos y Mqtt en openhab",
+      "category" : "",
+      "tags"     : "iot, mqtt, arduino, raspberrypi, esp8266",
+      "url"      : "/2021/10/13/IoT_proyectos_openhab/",
+      "date"     : "2021-10-13 16:33:28 +0200"
+    } ,
+  
+    {
+      "title"    : "JS - Conversion de ES6 a ES5, transpilado",
+      "category" : "",
+      "tags"     : "es5, es6, js",
+      "url"      : "/2021/08/14/Conversion_js_de_es6_a_es5-transpilado/",
+      "date"     : "2021-08-14 16:33:28 +0200"
+    } ,
+  
+    {
+      "title"    : "Actualización web a HTTPS",
+      "category" : "",
+      "tags"     : "web, https",
+      "url"      : "/2018/11/01/Actualizacion_web_a_https/",
+      "date"     : "2018-11-01 15:33:28 +0100"
+    } ,
+  
+    {
+      "title"    : "Spring - WebAPI RESTful Arduino &lt;-&gt; Raspberry",
+      "category" : "",
+      "tags"     : "web, https",
+      "url"      : "/2018/10/19/WebAPI_RESTful_Arduino-Raspberry_con_Spring/",
+      "date"     : "2018-10-19 16:33:28 +0200"
+    } ,
+  
+    {
+      "title"    : "Spring - API Rest simple",
+      "category" : "",
+      "tags"     : "spring, api, rest, java",
+      "url"      : "/2018/06/11/API_Rest_con_Spring/",
+      "date"     : "2018-06-11 16:33:28 +0200"
+    } ,
+  
+    {
+      "title"    : ".Net Framework vs .Net Core",
+      "category" : "",
+      "tags"     : ".net, c#, microsoft",
+      "url"      : "/2016/12/26/net-framework-vs-net-core/",
+      "date"     : "2016-12-26 15:33:28 +0100"
+    } ,
+  
+    {
+      "title"    : "Proyecto Integrado",
+      "category" : "",
+      "tags"     : ".net, c#, proyecto integrado, gesmerca",
+      "url"      : "/2016/06/11/Proyecto_integrado/",
+      "date"     : "2016-06-11 16:33:28 +0200"
+    } ,
+  
+    {
+      "title"    : "Java - Hilos 2",
+      "category" : "",
+      "tags"     : "java, hilos, threads",
+      "url"      : "/2016/06/02/Hilos_en_java-2/",
+      "date"     : "2016-06-02 16:33:28 +0200"
+    } ,
+  
+    {
+      "title"    : "Java - Hilos 1",
+      "category" : "",
+      "tags"     : "ava, hilos, threads",
+      "url"      : "/2016/05/30/Hilos_en_java-1/",
+      "date"     : "2016-05-30 16:33:28 +0200"
+    } ,
+  
+    {
+      "title"    : "Java - Hilos 0.5",
+      "category" : "",
+      "tags"     : "java, hilos, threads",
+      "url"      : "/2016/05/28/Hilos_en_java-0-5/",
+      "date"     : "2016-05-28 16:33:28 +0200"
+    } ,
+  
+    {
+      "title"    : "Criptografía en Java",
+      "category" : "",
+      "tags"     : "java, criptografía, encriptación",
+      "url"      : "/2016/03/11/Criptografia-java/",
+      "date"     : "2016-03-11 15:33:28 +0100"
+    } ,
+  
+    {
+      "title"    : "Java - Sockets cliente-servidor",
+      "category" : "",
+      "tags"     : "java, socket",
+      "url"      : "/2016/03/11/Ahorcado_socket_java/",
+      "date"     : "2016-03-11 15:33:28 +0100"
+    } ,
+  
+    {
+      "title"    : "C# - Editor de textos",
+      "category" : "",
+      "tags"     : "c#, editor textos",
+      "url"      : "/2016/02/11/c-editor-textos/",
+      "date"     : "2016-02-11 15:33:28 +0100"
+    } ,
+  
+    {
+      "title"    : "C# - Tetris",
+      "category" : "",
+      "tags"     : "c#, tetris",
+      "url"      : "/2016/02/11/c-tetris/",
+      "date"     : "2016-02-11 15:33:28 +0100"
+    } ,
+  
+    {
+      "title"    : "Flex/Air - Biblioteca",
+      "category" : "",
+      "tags"     : "flex, air, adobe, biblioteca",
+      "url"      : "/2015/09/15/flex-air-biblioteca/",
+      "date"     : "2015-09-15 16:33:28 +0200"
+    } ,
+  
+    {
+      "title"    : "JS - Juego de la siete y media",
+      "category" : "",
+      "tags"     : "js, juego, siete y media",
+      "url"      : "/2015/06/11/js_juego_siete_y_media/",
+      "date"     : "2015-06-11 16:33:28 +0200"
+    } ,
+  
+    {
+      "title"    : "SysAdmin - Instalación Proxmox",
+      "category" : "",
+      "tags"     : "sysadmin, proxmox, tutorial",
+      "url"      : "/2014/03/04/proxmox/",
+      "date"     : "2014-03-04 00:00:00 +0100"
+    } 
+  
+]

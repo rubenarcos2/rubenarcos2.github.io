@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>JS - Conversion de ES6 a ES5, transpilado</title>
+  <meta name='description' content='Desarrollador de aplicaciones multiplataformas'>
+  
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Dancing+Script%7CPT+Serif:400,400i,700%7CLato:400,700%7CRoboto:300,400" rel="stylesheet">
+
+  <!-- Font Awesome v4.7.0 -->
+  <link rel="stylesheet" href="/css/font-awesome.min.css">
+
+  <!-- Normalize v7.0.0 -->
+  <link rel="stylesheet" href="/css/normalize.css">
+
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="http://localhost:4000/2021/08/14/Conversion_js_de_es6_a_es5-transpilado/">
+  <link rel="alternate" type="application/rss+xml" title="Rubén Arcos" href="/feed.xml">
+
+  <!-- Chrome, Firefox OS and Opera -->
+  <meta name="theme-color" content="#faf5ee">
+  <!-- Windows Phone -->
+  <meta name="msapplication-navbutton-color" content="#faf5ee">
+  <!-- iOS Safari -->
+  <meta name="apple-mobile-web-app-status-bar-style" content="#faf5ee">
+</head>
+
+  
+  
+  
+    
+      <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-64172909-1', 'auto');
+  ga('send', 'pageview');
+
+</script> <!-- /Google Analytics -->
+  
+
+    
+
+    <div class="full-page-container">
+      <div class="overlay"></div>
+      <header class="site-header clearfix">
+  <div class="wrapper-content">
+
+    <div class="navigation-wrap">
+      <div class="nav-toggle-close"><i class="fa fa-times" aria-hidden="true"></i></div>
+
+      <nav class="site-nav">
+        
+          
+        
+          
+            
+              <a href='/about.html'>Sobre mí</a>
+            
+          
+        
+          
+            
+              <a href='/contact.html'>Contacto</a>
+            
+          
+        
+          
+            
+          
+        
+          
+            
+          
+        
+          
+        
+          
+            
+          
+        
+          
+            
+          
+        
+          
+            
+          
+        
+          
+            
+          
+        
+          
+            
+          
+        
+        <a href="https://linkedin.com/in/rubenarcos2"><i class="fa fa-linkedin fa-2x" aria-hidden="true"></i></a>
+        <a href="https://github.com/rubenarcos2"><i class="fa fa-github fa-2x" aria-hidden="true"></i></a>
+      </nav>
+      
+    </div>
+
+    <span class="search-toggle">
+      <i class="fa fa-search" aria-hidden="true"></i>
+    </span>
+    
+    <div class="nav-toggle"><i class="fa fa-bars" aria-hidden="true"></i></div>
+
+    <div class="site-logo">
+      <a href="/">Rubén Arcos</a>
+    </div>
+    
+  </div>
+</header> <!-- /.site-header -->
+
+      <div class="search-box">
+  <div class="wrapper-content">
+    <form class="search-form">
+      <label class="screen-reader-text" for="search-input">Buscar...</label>
+      <input type="text" id="search-input" class="search-field" name="s" placeholder="Type to search...">
+    </form>
+    <div class="btn-close">
+      <span class="bt-search-close">
+        <i class="fa fa-times" aria-hidden="true"></i>
+      </span>
+    </div>
+  </div>
+  <ul id="results-container" class="search-results-list"></ul>  
+</div> <!-- /.search-box -->
+
+        <div class="post-header" style="background: url(/images/pages/js_icon.jpg)">
+  <div class="post-header-info">
+    <h1 class="post-title">JS - Conversion de ES6 a ES5, transpilado</h1>
+    <div class="post-meta">
+      <time datetime="2021-08-14T16:33:28+02:00">
+         08/14/2021
+      </time>
+    </div>
+  </div>
+</div>
+
+<div class="content-box">
+  <article class="post">
+
+    <div class="post-content">
+      <h1 id="transpilación-con-babel">Transpilación con Babel</h1>
+
+<p>Transpilar manualmente el código ES6 a ES5 es posible, aunque la conversión manual sólo te lleves unos minutos, es insostenible a medida que aumenta el tamaño del archivo JavaScript.</p>
+
+<p>Dado que ES6 es previsiblemente compatible con versiones anteriores, un grupo de programadores de JavaScript ha desarrollado una biblioteca de JavaScript llamada Babel que transpila JavaScript ES6 a ES5.</p>
+
+<p><em>La transpilación es el proceso de convertir un lenguaje de programación a otro.</em></p>
+
+<p>Los siguientes comandos sirve para utilizar Babel y transpilar la nueva versión de JavaScript (ES6), fácil de escribir, a la antigua versión de JavaScript (ES5), compatible con el navegador.</p>
+
+<p>En las siguientes instrucciones, pasarás el código de JavaScript ES6 a Babel, que lo transpilará a ES5 y lo escribirá en un archivo en el directorio lib.</p>
+
+<p>Esto instala uno de los dos paquetes <em>Babel</em> necesarios.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm <span class="nb">install </span>babel-cli
+</code></pre></div></div>
+
+<p>Esto instala el segundo de los dos paquetes Babel necesarios.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm <span class="nb">install </span>babel-preset-env
+</code></pre></div></div>
+
+<p>Puedes ver el código ES5 en ./lib/main.js.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm run build
+</code></pre></div></div>
+
+<p>Es posible que tengas que actualizar para ver el directorio lib recién creado.</p>
+
+<p>Resultado del proceso de transpilado de ES6 a ES5:</p>
+
+<table>
+  <tbody>
+    <tr>
+      <td><img src="/images/pages/ES6.png" alt="" /></td>
+      <td><img src="/images/pages/ES5.png" alt="" /></td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Recuerda que si a los comandos anteriores les añades -D, indica a npm que añada cada paquete a una propiedad llamada devDependencies en package.json. Una vez que las dependencias del proyecto están listadas en devDependencies, otros desarrolladores pueden ejecutar su proyecto sin instalar cada paquete por separado. En su lugar, pueden simplemente ejecutar npm install - que indica a npm que busque dentro de package.json y descargue todos los paquetes listados en devDependencies.</p>
+
+<h2 id="transpilado-a-una-versión-específica">Transpilado a una versión específica</h2>
+
+<p>Por defecto, como se ha comprobado antes, se transpila a ES5, pero si queremos hacerlo a cualquier otra versión de ECMAScript, tenemos que crear en la raiz del proyecto el fichero  <em>.babelrc</em> .</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">touch</span> .babelrc
+</code></pre></div></div>
+
+<p>Dentro de .babelrc necesita definir el preajuste para su archivo JavaScript inicial. El preajuste especifica la versión de su archivo JavaScript inicial.</p>
+
+<p>Para especificar que estamos transpilando código desde una fuente ES6+, tenemos que añadir el siguiente objeto JavaScript en .babelrc:</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"presets"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"env"</span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<p>Cuando se ejecuta Babel, busca en .babelrc para determinar la versión del archivo JavaScript inicial. En este caso, [“env”] indica a Babel que transpile cualquier código de las versiones ES6 y posteriores.</p>
+
+<p><img src="/images/pages/proyect_schema.png" alt="" /></p>
+
+<p>Hay un último paso antes de poder transpilar nuestro código. Necesitamos especificar un script en package.json que inicie la transpilación de ES6+ a ES5.</p>
+
+<p>Dentro del archivo package.json, hay una propiedad llamada <strong>scripts</strong> así:</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nl">"scripts"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="nl">"test"</span><span class="p">:</span><span class="w"> </span><span class="s2">"echo </span><span class="se">\"</span><span class="s2">Error: no test specified</span><span class="se">\"</span><span class="s2"> &amp;&amp; exit 1"</span><span class="w">
+</span><span class="p">}</span><span class="err">,</span><span class="w">
+</span></code></pre></div></div>
+
+<p>Añadimos la última línea de  <strong>build</strong> :</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nl">"scripts"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="nl">"test"</span><span class="p">:</span><span class="w"> </span><span class="s2">"echo </span><span class="se">\"</span><span class="s2">Error: no test specified</span><span class="se">\"</span><span class="s2"> &amp;&amp; exit 1"</span><span class="w">
+   </span><span class="nl">"build"</span><span class="p">:</span><span class="w"> </span><span class="s2">"babel src -d lib"</span><span class="w">
+</span><span class="p">}</span><span class="err">,</span><span class="w">
+</span></code></pre></div></div>
+
+<p>Así especificamos que se transpile a ES5.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm run build
+</code></pre></div></div>
+
+    </div>
+
+    <footer class="post-footer">
+      <p>
+        <h3>Content License</h3>
+
+        <p><img src="/images/pages/88x311.png"/></p>
+        
+        <p>This web page, all content with proyects and source code, is licensed under Creative Commons: Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0) <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">More info</a></p>
+        
+        <p>Esta página web y todo su contenido, incluido proyectos y código fuente, está licenciado bajo una licencia de Creative Commons: Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)<a href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.es">Más info</a></p>
+        
+      </p>
+
+      <ul class="post-footer-list">
+        <li class="post-footer-item">
+          <a class="post-facebook" href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:4000/2021/08/14/Conversion_js_de_es6_a_es5-transpilado/" onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook" rel="nofollow"><i class="fa fa-facebook" aria-hidden="true"></i><span>Facebook</span></a>
+        </li>
+
+        <li class="post-footer-item">
+          <a class="post-twitter" href="https://twitter.com/intent/tweet?text=JS%20-%20Conversion%20de%20ES6%20a%20ES5,%20transpilado&url=http://localhost:4000/2021/08/14/Conversion_js_de_es6_a_es5-transpilado/" onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter" rel="nofollow"><i class="fa fa-twitter" aria-hidden="true"></i><span>Twitter</span></a>
+        </li>
+
+        <li class="post-footer-item">
+          <a href="http://pinterest.com/pin/create/button/?url=http://localhost:4000/2021/08/14/Conversion_js_de_es6_a_es5-transpilado/&amp;media=http://localhost:4000/images/pages/js_icon.jpg&amp;description=JS%20-%20Conversion%20de%20ES6%20a%20ES5,%20transpilado" onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=900,height=500,toolbar=1,resizable=0'); return false;" class="post-pinterest" title="Share on Pinterest" rel="nofollow"><i class="fa fa-pinterest" aria-hidden="true"></i><span>Pinterest</span></a>
+        </li>
+      </ul>
+      
+      <div class="post-tag">
+        <span>Tags:</span>
+        
+        <a href="/tags#es5" class="tag">es5</a>
+        
+        <a href="/tags#es6" class="tag">es6</a>
+        
+        <a href="/tags#js" class="tag">js</a>
+        
+      </div>
+      
+    </footer>
+
+    
+    <div class="post-author">
+      
+      <div class="post-author-image">
+        <a style="background-image: url(/images/ruben.jpg)">
+          <span class="screen-reader-text">Rubén Arcos Picture</span>
+        </a>
+      </div>
+      <div class="post-author-info">
+        <h4>Rubén Arcos</h4>
+        <p class="post-author-bio">Soy desarrollador de aplicaciones informáticas. <br>Tengo un C.F.G.S. en DAM y estoy haciendo un curso de especialización en IA y Big data.</p>
+        <div class="post-author-meta">
+          
+          <a href="https://twitter.com/rarcosdev" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+          
+          
+          <a href="https://linkedin.com/in/rubenarcos2" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+          
+          
+          <a href="https://github.com/rubenarcos2" target="_blank"><i class="fa fa-github" aria-hidden="true"></i></a>
+          
+          
+          
+          
+          
+          
+          
+          
+          
+        </div>
+      </div>
+      
+    </div>
+
+    <div class="page-navigation clearfix">
+      
+      <a class="prev-page" href="/2018/11/01/Actualizacion_web_a_https/"><i class="fa fa-angle-left" aria-hidden="true"></i><span>Actualización web a HTTPS</span></a>
+      
+      
+      <a class="next-page" href="/2021/10/13/IoT_proyectos_openhab/"><span>IoT - Proyectos y Mqtt en openhab</span><i class="fa fa-angle-right" aria-hidden="true"></i></a>
+      
+    </div>
+
+    
+  </article> <!-- /.post -->
+
+</div> <!-- /.content-box -->
+<style>
+    #cookie-notice {padding: 0.5rem 1rem; display: none; text-align: center; position: fixed; bottom: 0; width: calc(100% - 2rem); background: #222; color: rgba(255,255,255,0.8);}
+    #cookie-notice a {display: inline-block; cursor: pointer; margin-left: 0.5rem;}
+    @media (max-width: 767px) {
+        #cookie-notice span {display: block; padding-top: 3px; margin-bottom: 1rem;}
+        #cookie-notice a {position: relative; bottom: 4px;}
+    }
+</style>
+<div id="cookie-notice"><span>Esta web utiliza cookies y scripts de terceros para mejorar la funcionalidad de este sitio web.</span>
+    <a id="cookie-notice-accept" class="btn btn-primary btn-sm">Aceptar</a><a href="/cookies" class="btn btn-primary btn-sm">Más info</a></div>
+<script>
+    function createCookie(name,value,days) {
+        var expires = "";
+        if (days) {
+            var date = new Date();
+            date.setTime(date.getTime() + (days*24*60*60*1000));
+            expires = "; expires=" + date.toUTCString();
+        }
+        document.cookie = name + "=" + value + expires + "; path=/";
+    }
+    function readCookie(name) {
+        var nameEQ = name + "=";
+        var ca = document.cookie.split(';');
+        for(var i=0;i < ca.length;i++) {
+            var c = ca[i];
+            while (c.charAt(0)==' ') c = c.substring(1,c.length);
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+        }
+        return null;
+    }
+    function eraseCookie(name) {
+        createCookie(name,"",-1);
+    }
+
+    if(readCookie('cookie-notice-dismissed')=='true') {
+
+    } else {
+        document.getElementById('cookie-notice').style.display = 'block';
+    }
+    document.getElementById('cookie-notice-accept').addEventListener("click",function() {
+        createCookie('cookie-notice-dismissed','true',31);
+        document.getElementById('cookie-notice').style.display = 'none';
+        location.reload();
+    });
+
+</script>
+
+
+      <div class="top" title="Scroll To Top">
+  <i class="fa fa-chevron-up" aria-hidden="true"></i>
+</div> <!-- /.top -->
+      <footer class="site-footer">
+
+  <div class="footer-wrapper">
+
+    <h2 class="footer-heading">Rubén Arcos</h2>
+
+    <ul class="social-footer">
+    
+      <li><a href="https://twitter.com/rarcosdev" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+    
+    
+    
+    
+    <li><a href="https://linkedin.com/in/rubenarcos2" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+    
+    
+    <li><a href="https://github.com/rubenarcos2" target="_blank"><i class="fa fa-github" aria-hidden="true"></i></a></li>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    </ul>
+
+    <div class="copyright">
+      <p><a href="https://jekyllrb.com/">Proudly powered by Jekyll</a> | Theme: Lokmont by <a href="https://artemsheludko.github.io/">Artem Sheludko</a></p>
+    </div>
+  </div>
+
+</footer> <!-- /.site-footer -->
+
+    </div> <!-- /.full-page-container -->
+
+    <script src="/js/jquery-3.2.1.min.js"></script>
+<script src="/js/jquery.viewportchecker.min.js"></script>
+<script src="/js/jquery.fitvids.js"></script>
+<script src="/js/simple-jekyll-search.min.js"></script>
+<script src="/js/transition.js"></script>
+<script src="/js/zoom.min.js"></script>
+<script src="/js/main.js"></script>
+    <style>
+    #cookie-notice {padding: 0.5rem 1rem; display: none; text-align: center; position: fixed; bottom: 0; width: calc(100% - 2rem); background: #222; color: rgba(255,255,255,0.8);}
+    #cookie-notice a {display: inline-block; cursor: pointer; margin-left: 0.5rem;}
+    @media (max-width: 767px) {
+        #cookie-notice span {display: block; padding-top: 3px; margin-bottom: 1rem;}
+        #cookie-notice a {position: relative; bottom: 4px;}
+    }
+</style>
+<div id="cookie-notice"><span>Esta web utiliza cookies y scripts de terceros para mejorar la funcionalidad de este sitio web.</span>
+    <a id="cookie-notice-accept" class="btn btn-primary btn-sm">Aceptar</a><a href="/cookies" class="btn btn-primary btn-sm">Más info</a></div>
+<script>
+    function createCookie(name,value,days) {
+        var expires = "";
+        if (days) {
+            var date = new Date();
+            date.setTime(date.getTime() + (days*24*60*60*1000));
+            expires = "; expires=" + date.toUTCString();
+        }
+        document.cookie = name + "=" + value + expires + "; path=/";
+    }
+    function readCookie(name) {
+        var nameEQ = name + "=";
+        var ca = document.cookie.split(';');
+        for(var i=0;i < ca.length;i++) {
+            var c = ca[i];
+            while (c.charAt(0)==' ') c = c.substring(1,c.length);
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+        }
+        return null;
+    }
+    function eraseCookie(name) {
+        createCookie(name,"",-1);
+    }
+
+    if(readCookie('cookie-notice-dismissed')=='true') {
+
+    } else {
+        document.getElementById('cookie-notice').style.display = 'block';
+    }
+    document.getElementById('cookie-notice-accept').addEventListener("click",function() {
+        createCookie('cookie-notice-dismissed','true',31);
+        document.getElementById('cookie-notice').style.display = 'none';
+        location.reload();
+    });
+
+</script>
+  </body>
+
+</html>

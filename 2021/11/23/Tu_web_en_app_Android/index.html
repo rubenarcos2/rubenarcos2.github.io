@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Android - Tu web en una app</title>
+  <meta name='description' content='Desarrollador de aplicaciones multiplataformas'>
+  
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Dancing+Script%7CPT+Serif:400,400i,700%7CLato:400,700%7CRoboto:300,400" rel="stylesheet">
+
+  <!-- Font Awesome v4.7.0 -->
+  <link rel="stylesheet" href="/css/font-awesome.min.css">
+
+  <!-- Normalize v7.0.0 -->
+  <link rel="stylesheet" href="/css/normalize.css">
+
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="http://localhost:4000/2021/11/23/Tu_web_en_app_Android/">
+  <link rel="alternate" type="application/rss+xml" title="Rubén Arcos" href="/feed.xml">
+
+  <!-- Chrome, Firefox OS and Opera -->
+  <meta name="theme-color" content="#faf5ee">
+  <!-- Windows Phone -->
+  <meta name="msapplication-navbutton-color" content="#faf5ee">
+  <!-- iOS Safari -->
+  <meta name="apple-mobile-web-app-status-bar-style" content="#faf5ee">
+</head>
+
+  
+  
+  
+    
+      <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-64172909-1', 'auto');
+  ga('send', 'pageview');
+
+</script> <!-- /Google Analytics -->
+  
+
+    
+
+    <div class="full-page-container">
+      <div class="overlay"></div>
+      <header class="site-header clearfix">
+  <div class="wrapper-content">
+
+    <div class="navigation-wrap">
+      <div class="nav-toggle-close"><i class="fa fa-times" aria-hidden="true"></i></div>
+
+      <nav class="site-nav">
+        
+          
+        
+          
+            
+              <a href='/about.html'>Sobre mí</a>
+            
+          
+        
+          
+            
+              <a href='/contact.html'>Contacto</a>
+            
+          
+        
+          
+            
+          
+        
+          
+            
+          
+        
+          
+        
+          
+            
+          
+        
+          
+            
+          
+        
+          
+            
+          
+        
+          
+            
+          
+        
+          
+            
+          
+        
+        <a href="https://linkedin.com/in/rubenarcos2"><i class="fa fa-linkedin fa-2x" aria-hidden="true"></i></a>
+        <a href="https://github.com/rubenarcos2"><i class="fa fa-github fa-2x" aria-hidden="true"></i></a>
+      </nav>
+      
+    </div>
+
+    <span class="search-toggle">
+      <i class="fa fa-search" aria-hidden="true"></i>
+    </span>
+    
+    <div class="nav-toggle"><i class="fa fa-bars" aria-hidden="true"></i></div>
+
+    <div class="site-logo">
+      <a href="/">Rubén Arcos</a>
+    </div>
+    
+  </div>
+</header> <!-- /.site-header -->
+
+      <div class="search-box">
+  <div class="wrapper-content">
+    <form class="search-form">
+      <label class="screen-reader-text" for="search-input">Buscar...</label>
+      <input type="text" id="search-input" class="search-field" name="s" placeholder="Type to search...">
+    </form>
+    <div class="btn-close">
+      <span class="bt-search-close">
+        <i class="fa fa-times" aria-hidden="true"></i>
+      </span>
+    </div>
+  </div>
+  <ul id="results-container" class="search-results-list"></ul>  
+</div> <!-- /.search-box -->
+
+        <div class="post-header" style="background: url(/images/pages/android.png)">
+  <div class="post-header-info">
+    <h1 class="post-title">Android - Tu web en una app</h1>
+    <div class="post-meta">
+      <time datetime="2021-11-23T15:33:28+01:00">
+         11/23/2021
+      </time>
+    </div>
+  </div>
+</div>
+
+<div class="content-box">
+  <article class="post">
+
+    <div class="post-content">
+      <p>Si quieres tener tu página web en una app mobile, solamente tenemos que crear un proyecto nuevo en Android Studio, y hacer lo siguiente:</p>
+
+<h3 id="crear-un-componente-webview-en-el-layout">Crear un componente webview en el layout</h3>
+
+<p>Sustituye el código del <em>activity_main.xml</em> por el siguiente, que añade un componente webview, es realmente una instancia del navegador web.</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;WebView</span>
+        <span class="na">android:id=</span><span class="s">"@+id/webview"</span>
+        <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+        <span class="na">android:layout_height=</span><span class="s">"match_parent"</span>
+        <span class="nt">/&gt;</span>
+</code></pre></div></div>
+
+<p>Veras en la versión de diseño que ocupa todo el espacio del Activity.</p>
+
+<h3 id="permisos-de-la-aplicación">Permisos de la aplicación</h3>
+
+<p>en el fichero <em>AndroidManifest.xml</em> debajo de la declaración del <em>package</em>, añade el código siguiente que habilita los permisos de Internet.</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;uses-permission</span> <span class="na">android:name=</span><span class="s">"android.permission.INTERNET"</span> <span class="nt">/&gt;</span>
+</code></pre></div></div>
+
+<p>También es recomendable añadir en las propiedades de la aplicación:</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code>android:usesCleartextTraffic="true"
+</code></pre></div></div>
+
+<p>Finalmente el Manifest queda así:</p>
+
+<p><img src="/images/pages/manifest.png" alt="Manifest" /></p>
+
+<h3 id="asignación-de-la-url-web-y-carga-del-webview">Asignación de la URL web y carga del webview</h3>
+
+<p>En la actividad principal <em>MainActivity.java</em>, vamos a añadir las propiedades necesarias de comportamiento del webview, así como la ruta de nuestra web, para que la carge desde el inicio de la aplicación.</p>
+
+<p>Para la asignación del webview de componente con el del layout:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">WebView</span> <span class="n">myWebView</span> <span class="o">=</span> <span class="o">(</span><span class="nc">WebView</span><span class="o">)</span> <span class="n">findViewById</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">webview</span><span class="o">);</span>
+</code></pre></div></div>
+
+<p>Las propiedades de JS activo y contenido:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">WebSettings</span> <span class="n">webSettings</span> <span class="o">=</span> <span class="n">myWebView</span><span class="o">.</span><span class="na">getSettings</span><span class="o">();</span>
+<span class="n">webSettings</span><span class="o">.</span><span class="na">setJavaScriptEnabled</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
+<span class="n">webSettings</span><span class="o">.</span><span class="na">getAllowContentAccess</span><span class="o">();</span>
+</code></pre></div></div>
+
+<p>La creación de un cliente de webview, es decir, una instancia del navegador que cargará dentro de nuestro visor:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">myWebView</span><span class="o">.</span><span class="na">setWebViewClient</span><span class="o">(</span><span class="k">new</span> <span class="nc">WebViewClient</span><span class="o">());</span>
+<span class="n">myWebView</span><span class="o">.</span><span class="na">loadUrl</span><span class="o">(</span><span class="s">"https://www.rarcos.com"</span><span class="o">);</span>
+</code></pre></div></div>
+
+<p>Finalmente la clase <em>MainActivity.java</em> queda así:</p>
+
+<p><img src="/images/pages/mainactivity.png" alt="MainActivity" /></p>
+
+<h3 id="personalización-y-estilos">Personalización y estilos</h3>
+
+<p>Si ejecutas ahora la aplicación, verás que funciona perfectamente, pero que nos ha añadido una barra con un título y ha coloreado tanto esta barra como la superior del teléfono.</p>
+
+<p>Si deseas cambiar el nombre y te gusta así, ve a los recursos de texto <em>res-&gt;values-&gt;strings.xml</em> y cambialo</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;resources&gt;</span>
+    <span class="nt">&lt;string</span> <span class="na">name=</span><span class="s">"app_name"</span><span class="nt">&gt;</span>Rubén Arcos<span class="nt">&lt;/string&gt;</span>
+<span class="nt">&lt;/resources&gt;</span>
+</code></pre></div></div>
+
+<p>En mi caso no me gustaba y opté por quitar la barra con el título y el color de ambas. Para ello hay que cambiar los recursos del tema (tanto para el dark como para el light) ubicados en <em>res-&gt;values-&gt;themes/themes.xml</em> añadiendo la siguiente línea:</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;item</span> <span class="na">name=</span><span class="s">"windowNoTitle"</span><span class="nt">&gt;</span>true<span class="nt">&lt;/item&gt;</span>
+</code></pre></div></div>
+
+<p>Para finalizar se puede generar los iconos de la app que se mostrarán en el instalador y tenemos que generar para las distintas densidades de pixel en pantalla (DPI), siguiedo el asistente que se encuentra haciendo clic con el botón derecho sobre la carpeta de recursos <em>res</em>:</p>
+
+<p><img src="/images/pages/imageassets.png" alt="ImageAssets" /></p>
+
+<p>Si quieres ver el resultado, te puedes descargar mi app</p>
+
+<p><strong>App con acceso a esta web</strong></p>
+
+<p><a href="/images/pages/rarcos.com.apk"><img src="/images/pages/Code-Optimization-3-256x2561.png" alt="App rarcos.com" /></a></p>
+
+    </div>
+
+    <footer class="post-footer">
+      <p>
+        <h3>Content License</h3>
+
+        <p><img src="/images/pages/88x311.png"/></p>
+        
+        <p>This web page, all content with proyects and source code, is licensed under Creative Commons: Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0) <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">More info</a></p>
+        
+        <p>Esta página web y todo su contenido, incluido proyectos y código fuente, está licenciado bajo una licencia de Creative Commons: Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)<a href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.es">Más info</a></p>
+        
+      </p>
+
+      <ul class="post-footer-list">
+        <li class="post-footer-item">
+          <a class="post-facebook" href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:4000/2021/11/23/Tu_web_en_app_Android/" onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook" rel="nofollow"><i class="fa fa-facebook" aria-hidden="true"></i><span>Facebook</span></a>
+        </li>
+
+        <li class="post-footer-item">
+          <a class="post-twitter" href="https://twitter.com/intent/tweet?text=Android%20-%20Tu%20web%20en%20una%20app&url=http://localhost:4000/2021/11/23/Tu_web_en_app_Android/" onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter" rel="nofollow"><i class="fa fa-twitter" aria-hidden="true"></i><span>Twitter</span></a>
+        </li>
+
+        <li class="post-footer-item">
+          <a href="http://pinterest.com/pin/create/button/?url=http://localhost:4000/2021/11/23/Tu_web_en_app_Android/&amp;media=http://localhost:4000/images/pages/android.png&amp;description=Android%20-%20Tu%20web%20en%20una%20app" onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=900,height=500,toolbar=1,resizable=0'); return false;" class="post-pinterest" title="Share on Pinterest" rel="nofollow"><i class="fa fa-pinterest" aria-hidden="true"></i><span>Pinterest</span></a>
+        </li>
+      </ul>
+      
+      <div class="post-tag">
+        <span>Tags:</span>
+        
+        <a href="/tags#Android" class="tag">Android</a>
+        
+        <a href="/tags#apk" class="tag">apk</a>
+        
+        <a href="/tags#app" class="tag">app</a>
+        
+      </div>
+      
+    </footer>
+
+    
+    <div class="post-author">
+      
+      <div class="post-author-image">
+        <a style="background-image: url(/images/ruben.jpg)">
+          <span class="screen-reader-text">Rubén Arcos Picture</span>
+        </a>
+      </div>
+      <div class="post-author-info">
+        <h4>Rubén Arcos</h4>
+        <p class="post-author-bio">Soy desarrollador de aplicaciones informáticas. <br>Tengo un C.F.G.S. en DAM y estoy haciendo un curso de especialización en IA y Big data.</p>
+        <div class="post-author-meta">
+          
+          <a href="https://twitter.com/rarcosdev" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+          
+          
+          <a href="https://linkedin.com/in/rubenarcos2" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+          
+          
+          <a href="https://github.com/rubenarcos2" target="_blank"><i class="fa fa-github" aria-hidden="true"></i></a>
+          
+          
+          
+          
+          
+          
+          
+          
+          
+        </div>
+      </div>
+      
+    </div>
+
+    <div class="page-navigation clearfix">
+      
+      <a class="prev-page" href="/2021/10/13/IoT_proyectos_openhab/"><i class="fa fa-angle-left" aria-hidden="true"></i><span>IoT - Proyectos y Mqtt en openhab</span></a>
+      
+      
+      <a class="next-page" href="/2022/01/29/IA_en_la_web-Streamlit/"><span>IA - En la web con Streamlit</span><i class="fa fa-angle-right" aria-hidden="true"></i></a>
+      
+    </div>
+
+    
+  </article> <!-- /.post -->
+
+</div> <!-- /.content-box -->
+<style>
+    #cookie-notice {padding: 0.5rem 1rem; display: none; text-align: center; position: fixed; bottom: 0; width: calc(100% - 2rem); background: #222; color: rgba(255,255,255,0.8);}
+    #cookie-notice a {display: inline-block; cursor: pointer; margin-left: 0.5rem;}
+    @media (max-width: 767px) {
+        #cookie-notice span {display: block; padding-top: 3px; margin-bottom: 1rem;}
+        #cookie-notice a {position: relative; bottom: 4px;}
+    }
+</style>
+<div id="cookie-notice"><span>Esta web utiliza cookies y scripts de terceros para mejorar la funcionalidad de este sitio web.</span>
+    <a id="cookie-notice-accept" class="btn btn-primary btn-sm">Aceptar</a><a href="/cookies" class="btn btn-primary btn-sm">Más info</a></div>
+<script>
+    function createCookie(name,value,days) {
+        var expires = "";
+        if (days) {
+            var date = new Date();
+            date.setTime(date.getTime() + (days*24*60*60*1000));
+            expires = "; expires=" + date.toUTCString();
+        }
+        document.cookie = name + "=" + value + expires + "; path=/";
+    }
+    function readCookie(name) {
+        var nameEQ = name + "=";
+        var ca = document.cookie.split(';');
+        for(var i=0;i < ca.length;i++) {
+            var c = ca[i];
+            while (c.charAt(0)==' ') c = c.substring(1,c.length);
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+        }
+        return null;
+    }
+    function eraseCookie(name) {
+        createCookie(name,"",-1);
+    }
+
+    if(readCookie('cookie-notice-dismissed')=='true') {
+
+    } else {
+        document.getElementById('cookie-notice').style.display = 'block';
+    }
+    document.getElementById('cookie-notice-accept').addEventListener("click",function() {
+        createCookie('cookie-notice-dismissed','true',31);
+        document.getElementById('cookie-notice').style.display = 'none';
+        location.reload();
+    });
+
+</script>
+
+
+      <div class="top" title="Scroll To Top">
+  <i class="fa fa-chevron-up" aria-hidden="true"></i>
+</div> <!-- /.top -->
+      <footer class="site-footer">
+
+  <div class="footer-wrapper">
+
+    <h2 class="footer-heading">Rubén Arcos</h2>
+
+    <ul class="social-footer">
+    
+      <li><a href="https://twitter.com/rarcosdev" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+    
+    
+    
+    
+    <li><a href="https://linkedin.com/in/rubenarcos2" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+    
+    
+    <li><a href="https://github.com/rubenarcos2" target="_blank"><i class="fa fa-github" aria-hidden="true"></i></a></li>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    </ul>
+
+    <div class="copyright">
+      <p><a href="https://jekyllrb.com/">Proudly powered by Jekyll</a> | Theme: Lokmont by <a href="https://artemsheludko.github.io/">Artem Sheludko</a></p>
+    </div>
+  </div>
+
+</footer> <!-- /.site-footer -->
+
+    </div> <!-- /.full-page-container -->
+
+    <script src="/js/jquery-3.2.1.min.js"></script>
+<script src="/js/jquery.viewportchecker.min.js"></script>
+<script src="/js/jquery.fitvids.js"></script>
+<script src="/js/simple-jekyll-search.min.js"></script>
+<script src="/js/transition.js"></script>
+<script src="/js/zoom.min.js"></script>
+<script src="/js/main.js"></script>
+    <style>
+    #cookie-notice {padding: 0.5rem 1rem; display: none; text-align: center; position: fixed; bottom: 0; width: calc(100% - 2rem); background: #222; color: rgba(255,255,255,0.8);}
+    #cookie-notice a {display: inline-block; cursor: pointer; margin-left: 0.5rem;}
+    @media (max-width: 767px) {
+        #cookie-notice span {display: block; padding-top: 3px; margin-bottom: 1rem;}
+        #cookie-notice a {position: relative; bottom: 4px;}
+    }
+</style>
+<div id="cookie-notice"><span>Esta web utiliza cookies y scripts de terceros para mejorar la funcionalidad de este sitio web.</span>
+    <a id="cookie-notice-accept" class="btn btn-primary btn-sm">Aceptar</a><a href="/cookies" class="btn btn-primary btn-sm">Más info</a></div>
+<script>
+    function createCookie(name,value,days) {
+        var expires = "";
+        if (days) {
+            var date = new Date();
+            date.setTime(date.getTime() + (days*24*60*60*1000));
+            expires = "; expires=" + date.toUTCString();
+        }
+        document.cookie = name + "=" + value + expires + "; path=/";
+    }
+    function readCookie(name) {
+        var nameEQ = name + "=";
+        var ca = document.cookie.split(';');
+        for(var i=0;i < ca.length;i++) {
+            var c = ca[i];
+            while (c.charAt(0)==' ') c = c.substring(1,c.length);
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+        }
+        return null;
+    }
+    function eraseCookie(name) {
+        createCookie(name,"",-1);
+    }
+
+    if(readCookie('cookie-notice-dismissed')=='true') {
+
+    } else {
+        document.getElementById('cookie-notice').style.display = 'block';
+    }
+    document.getElementById('cookie-notice-accept').addEventListener("click",function() {
+        createCookie('cookie-notice-dismissed','true',31);
+        document.getElementById('cookie-notice').style.display = 'none';
+        location.reload();
+    });
+
+</script>
+  </body>
+
+</html>

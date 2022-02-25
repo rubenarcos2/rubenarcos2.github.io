@@ -1,1 +1,988 @@
-<!DOCTYPE html> <html lang="es-ES"> <head prefix="og: http://ogp.me/ns#"> <meta charset="UTF-8" /> <meta http-equiv="X-UA-Compatible" content="ie=edge" /> <meta name="viewport" content="width=device-width, initial-scale=1.0" /> <meta name="mobile-web-app-capable" content="yes" /> <meta name="apple-mobile-web-app-capable" content="yes" /> <meta name="application-name" content="Rubén Arcos" /> <meta name="apple-mobile-web-app-status-bar-style" content="#fff" /> <meta name="apple-mobile-web-app-title" content="Rubén Arcos" /> <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous"> <title> Tags - Rubén Arcos </title> <link rel="alternate" href="http://localhost:4000/tags/" hreflang="es-ES" /> <link rel="canonical" href="http://localhost:4000/tags/" /> <meta name="description" content="developer" /> <meta name="referrer" content="no-referrer-when-downgrade" /> <meta property="fb:app_id" content="" /> <meta property="og:site_name" content="Tags | Rubén Arcos" /> <meta property="og:title" content="Tags | Rubén Arcos" /> <meta property="og:type" content="website" /> <meta property="og:url" content="http://localhost:4000/tags/" /> <meta property="og:description" content="developer" /> <meta property="og:image" content="http://localhost:4000/assets/img/ogp.png" /> <meta property="og:image:width" content="640" /> <meta property="og:image:height" content="640" /> <meta name="twitter:card" content="summary" /> <meta name="twitter:title" content="Tags | rarcosdev" /> <meta name="twitter:url" content="http://localhost:4000/tags/" /> <meta name="twitter:site" content="@rarcosdev" /> <meta name="twitter:creator" content="@rarcosdev" /> <meta name="twitter:description" content="developer" /> <meta name="twitter:image" content="http://localhost:4000/assets/img/ogp.png" /> <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicons/apple-touch-icon.png" /> <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicons/favicon-32x32.png" /> <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicons/favicon-16x16.png" /> <link rel="manifest" href="/assets/favicons/site.webmanifest" /> <link rel="mask-icon" href="/assets/favicons/safari-pinned-tab.svg" color="#5bbad5" /> <meta name="apple-mobile-web-app-title" content="Jekyll Klise" /> <meta name="application-name" content="Jekyll Klise" /> <meta name="msapplication-TileColor" content="#da532c" /> <meta name="theme-color" content="#2c2c2c" /> <link rel="stylesheet" href="/assets/css/style.css" /> </head> <body data-theme="light" class="notransition"> <script> const body = document.body; const data = body.getAttribute("data-theme"); const initTheme = (state) => { if (state === "dark") { body.setAttribute("data-theme", "dark"); } else if (state === "light") { body.removeAttribute("data-theme"); } else { localStorage.setItem("theme", data); } }; initTheme(localStorage.getItem("theme")); setTimeout(() => body.classList.remove("notransition"), 75); </script> <div class="navbar" role="navigation"> <nav class="menu"> <input type="checkbox" id="menu-trigger" class="menu-trigger" /> <label for="menu-trigger"> <span class="menu-icon"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 512 512" > <path d="M64,384H448V341.33H64Zm0-106.67H448V234.67H64ZM64,128v42.67H448V128Z" /> </svg> </span> </label> <a id="mode"> <svg class="mode-sunny" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 512 512" > <title>LIGHT</title> <line x1="256" y1="48" x2="256" y2="96" style="stroke-linecap:round;stroke-miterlimit:10;stroke-width:32px" /> <line x1="256" y1="416" x2="256" y2="464" style="stroke-linecap:round;stroke-miterlimit:10;stroke-width:32px" /> <line x1="403.08" y1="108.92" x2="369.14" y2="142.86" style="stroke-linecap:round;stroke-miterlimit:10;stroke-width:32px" /> <line x1="142.86" y1="369.14" x2="108.92" y2="403.08" style="stroke-linecap:round;stroke-miterlimit:10;stroke-width:32px" /> <line x1="464" y1="256" x2="416" y2="256" style="stroke-linecap:round;stroke-miterlimit:10;stroke-width:32px" /> <line x1="96" y1="256" x2="48" y2="256" style="stroke-linecap:round;stroke-miterlimit:10;stroke-width:32px" /> <line x1="403.08" y1="403.08" x2="369.14" y2="369.14" style="stroke-linecap:round;stroke-miterlimit:10;stroke-width:32px" /> <line x1="142.86" y1="142.86" x2="108.92" y2="108.92" style="stroke-linecap:round;stroke-miterlimit:10;stroke-width:32px" /> <circle cx="256" cy="256" r="80" style="stroke-linecap:round;stroke-miterlimit:10;stroke-width:32px" /> </svg> <svg class="mode-moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 512 512" > <title>DARK</title> <line x1="256" y1="48" x2="256" y2="96" style="stroke-linecap:round;stroke-miterlimit:10;stroke-width:32px" /> <line x1="256" y1="416" x2="256" y2="464" style="stroke-linecap:round;stroke-miterlimit:10;stroke-width:32px" /> <line x1="403.08" y1="108.92" x2="369.14" y2="142.86" style="stroke-linecap:round;stroke-miterlimit:10;stroke-width:32px" /> <line x1="142.86" y1="369.14" x2="108.92" y2="403.08" style="stroke-linecap:round;stroke-miterlimit:10;stroke-width:32px" /> <line x1="464" y1="256" x2="416" y2="256" style="stroke-linecap:round;stroke-miterlimit:10;stroke-width:32px" /> <line x1="96" y1="256" x2="48" y2="256" style="stroke-linecap:round;stroke-miterlimit:10;stroke-width:32px" /> <line x1="403.08" y1="403.08" x2="369.14" y2="369.14" style="stroke-linecap:round;stroke-miterlimit:10;stroke-width:32px" /> <line x1="142.86" y1="142.86" x2="108.92" y2="108.92" style="stroke-linecap:round;stroke-miterlimit:10;stroke-width:32px" /> <circle cx="256" cy="256" r="80" style="stroke-linecap:round;stroke-miterlimit:10;stroke-width:32px" /> </svg> </a> <div class="trigger"> <div class="trigger-container"><a class="menu-link" href="/">Home</a><a class="menu-link" href="/archive/">Labs & Posts</a><a class="menu-link" href="/about/">About & CV</a><a class="menu-link" href="/contacto/">Contacto</a><a class="menu-link" href="https://github.com/rubenarcos2" target="_blank" rel="noopener" ><i class="fab fa-github fa-2x"></i></a ><a class="menu-link" href="https://es.linkedin.com/in/rubenarcos2" target="_blank" rel="noopener" ><i class="fab fa-linkedin fa-2x"></i></a ></div> </div> </nav> </div> <div class="wrapper"> <header class="header"> <h1 class="header-title center" itemprop="headline">Tags.</h1> </header> <main class="page-content" aria-label="Content"> <div class="archive-tags"> <a class="tag-item" href="#">all</a> <a class="tag-item" href="#sysadmin">sysadmin</a> <a class="tag-item" href="#proxmox">proxmox</a> <a class="tag-item" href="#tutorial">tutorial</a> <a class="tag-item" href="#IA">IA</a> <a class="tag-item" href="#streamlit">streamlit</a> <a class="tag-item" href="#python">python</a> <a class="tag-item" href="#ML">ML</a> <a class="tag-item" href="#web">web</a> <a class="tag-item" href="#iris">iris</a> <a class="tag-item" href="#R">R</a> <a class="tag-item" href="#api rest">api rest</a> <a class="tag-item" href="#api">api</a> <a class="tag-item" href="#Python">Python</a></div> <h2 id="sysadmin"> SYSADMIN </h2><article class="post-item" id="results-container"> <span class="post-item-date">Mar 04, 2014</span> <h3 class="post-item-title"> <a href="/proxmox/">SysAdmin - Instalación Proxmox</a> </h3> </article> <h2 id="proxmox"> PROXMOX </h2><article class="post-item" id="results-container"> <span class="post-item-date">Mar 04, 2014</span> <h3 class="post-item-title"> <a href="/proxmox/">SysAdmin - Instalación Proxmox</a> </h3> </article> <h2 id="tutorial"> TUTORIAL </h2><article class="post-item" id="results-container"> <span class="post-item-date">Mar 04, 2014</span> <h3 class="post-item-title"> <a href="/proxmox/">SysAdmin - Instalación Proxmox</a> </h3> </article> <h2 id="IA"> IA </h2><article class="post-item" id="results-container"> <span class="post-item-date">Jan 29, 2022</span> <h3 class="post-item-title"> <a href="/IA_perceptron_clasificador_iris/">IA - Perceptrón clasificador dataset iris</a> </h3> </article><article class="post-item" id="results-container"> <span class="post-item-date">Jan 29, 2022</span> <h3 class="post-item-title"> <a href="/IA_en_la_web-Streamlit/">IA - En la web con Streamlit</a> </h3> </article> <h2 id="streamlit"> STREAMLIT </h2><article class="post-item" id="results-container"> <span class="post-item-date">Jan 29, 2022</span> <h3 class="post-item-title"> <a href="/IA_perceptron_clasificador_iris/">IA - Perceptrón clasificador dataset iris</a> </h3> </article><article class="post-item" id="results-container"> <span class="post-item-date">Jan 29, 2022</span> <h3 class="post-item-title"> <a href="/IA_en_la_web-Streamlit/">IA - En la web con Streamlit</a> </h3> </article> <h2 id="python"> PYTHON </h2><article class="post-item" id="results-container"> <span class="post-item-date">Jan 29, 2022</span> <h3 class="post-item-title"> <a href="/IA_perceptron_clasificador_iris/">IA - Perceptrón clasificador dataset iris</a> </h3> </article><article class="post-item" id="results-container"> <span class="post-item-date">Jan 29, 2022</span> <h3 class="post-item-title"> <a href="/IA_en_la_web-Streamlit/">IA - En la web con Streamlit</a> </h3> </article> <h2 id="ML"> ML </h2><article class="post-item" id="results-container"> <span class="post-item-date">Jan 29, 2022</span> <h3 class="post-item-title"> <a href="/IA_perceptron_clasificador_iris/">IA - Perceptrón clasificador dataset iris</a> </h3> </article><article class="post-item" id="results-container"> <span class="post-item-date">Jan 29, 2022</span> <h3 class="post-item-title"> <a href="/IA_en_la_web-Streamlit/">IA - En la web con Streamlit</a> </h3> </article> <h2 id="web"> WEB </h2><article class="post-item" id="results-container"> <span class="post-item-date">Feb 15, 2022</span> <h3 class="post-item-title"> <a href="/Python-API_Rest_en_Flask/">Python - API Rest en Flask</a> </h3> </article><article class="post-item" id="results-container"> <span class="post-item-date">Feb 11, 2022</span> <h3 class="post-item-title"> <a href="/API_Rest_en_R/">R - Api rest</a> </h3> </article><article class="post-item" id="results-container"> <span class="post-item-date">Jan 29, 2022</span> <h3 class="post-item-title"> <a href="/IA_perceptron_clasificador_iris/">IA - Perceptrón clasificador dataset iris</a> </h3> </article><article class="post-item" id="results-container"> <span class="post-item-date">Jan 29, 2022</span> <h3 class="post-item-title"> <a href="/IA_en_la_web-Streamlit/">IA - En la web con Streamlit</a> </h3> </article> <h2 id="iris"> IRIS </h2><article class="post-item" id="results-container"> <span class="post-item-date">Jan 29, 2022</span> <h3 class="post-item-title"> <a href="/IA_perceptron_clasificador_iris/">IA - Perceptrón clasificador dataset iris</a> </h3> </article> <h2 id="R"> R </h2><article class="post-item" id="results-container"> <span class="post-item-date">Feb 11, 2022</span> <h3 class="post-item-title"> <a href="/API_Rest_en_R/">R - Api rest</a> </h3> </article> <h2 id="api rest"> API REST </h2><article class="post-item" id="results-container"> <span class="post-item-date">Feb 15, 2022</span> <h3 class="post-item-title"> <a href="/Python-API_Rest_en_Flask/">Python - API Rest en Flask</a> </h3> </article><article class="post-item" id="results-container"> <span class="post-item-date">Feb 11, 2022</span> <h3 class="post-item-title"> <a href="/API_Rest_en_R/">R - Api rest</a> </h3> </article> <h2 id="api"> API </h2><article class="post-item" id="results-container"> <span class="post-item-date">Feb 15, 2022</span> <h3 class="post-item-title"> <a href="/Python-API_Rest_en_Flask/">Python - API Rest en Flask</a> </h3> </article><article class="post-item" id="results-container"> <span class="post-item-date">Feb 11, 2022</span> <h3 class="post-item-title"> <a href="/API_Rest_en_R/">R - Api rest</a> </h3> </article> <h2 id="Python"> PYTHON </h2><article class="post-item" id="results-container"> <span class="post-item-date">Feb 15, 2022</span> <h3 class="post-item-title"> <a href="/Python-API_Rest_en_Flask/">Python - API Rest en Flask</a> </h3> </article> </main> <footer class="footer"> <a class="footer_item" href="/contacto">contact&nbsp;&nbsp;&nbsp;|</a> <a class="footer_item" href="/about">CV&nbsp;&nbsp;&nbsp;|</a> <a class="footer_item" href="/cookies">cookies&nbsp;&nbsp;&nbsp;|</a> <a class="footer_item" href="/license">license of content&nbsp;&nbsp;&nbsp;|</a> <span class="footer_item">&copy; 2022</span> <small class="footer_copyright"> <!-- Klisé Theme: https://github.com/piharpi/jekyll-klise --> <a href="https://github.com/piharpi/jekyll-klise" target="_blank" rel="noreferrer noopener" >klisé</a > theme on <a href="https://jekyllrb.com" target="_blank" rel="noreferrer noopener" >jekyll</a > </small> </footer> <script src="/assets/js/main.js" defer="defer"></script><!-- Google Analytics --> <!-- Global site tag (gtag.js) - Google Analytics --> <script async src="https://www.googletagmanager.com/gtag/js?id=UA-64172909-1"></script> <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'UA-64172909-1'); </script> <!-- End Google Analytics --> </div> <style> #cookie-notice {padding: 0.5rem 1rem; display: none; text-align: center; position: fixed; bottom: 0; width: calc(100% - 2rem); background: #222; color: rgba(255,255,255,0.8);} #cookie-notice a {display: inline-block; cursor: pointer; margin-left: 0.5rem;} @media (max-width: 767px) { #cookie-notice span {display: block; padding-top: 3px; margin-bottom: 1rem;} #cookie-notice a {position: relative; bottom: 4px;} } </style> <div id="cookie-notice"><span>Esta web utiliza cookies y scripts de terceros para mejorar la funcionalidad de este sitio web.</span> <a id="cookie-notice-accept" class="btn btn-primary btn-sm">Aceptar</a><a href="/cookies" class="btn btn-primary btn-sm">Más info</a></div> <script> function createCookie(name,value,days) { var expires = ""; if (days) { var date = new Date(); date.setTime(date.getTime() + (days*24*60*60*1000)); expires = "; expires=" + date.toUTCString(); } document.cookie = name + "=" + value + expires + "; path=/"; } function readCookie(name) { var nameEQ = name + "="; var ca = document.cookie.split(';'); for(var i=0;i < ca.length;i++) { var c = ca[i]; while (c.charAt(0)==' ') c = c.substring(1,c.length); if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length); } return null; } function eraseCookie(name) { createCookie(name,"",-1); } if(readCookie('cookie-notice-dismissed')=='true') { } else { document.getElementById('cookie-notice').style.display = 'block'; } document.getElementById('cookie-notice-accept').addEventListener("click",function() { createCookie('cookie-notice-dismissed','true',31); document.getElementById('cookie-notice').style.display = 'none'; location.reload(); }); </script> </body> </html>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Tags in Blog</title>
+  <meta name='description' content='Desarrollador de aplicaciones multiplataformas'>
+  
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Dancing+Script%7CPT+Serif:400,400i,700%7CLato:400,700%7CRoboto:300,400" rel="stylesheet">
+
+  <!-- Font Awesome v4.7.0 -->
+  <link rel="stylesheet" href="/css/font-awesome.min.css">
+
+  <!-- Normalize v7.0.0 -->
+  <link rel="stylesheet" href="/css/normalize.css">
+
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="http://localhost:4000/tags/">
+  <link rel="alternate" type="application/rss+xml" title="Rubén Arcos" href="/feed.xml">
+
+  <!-- Chrome, Firefox OS and Opera -->
+  <meta name="theme-color" content="#faf5ee">
+  <!-- Windows Phone -->
+  <meta name="msapplication-navbutton-color" content="#faf5ee">
+  <!-- iOS Safari -->
+  <meta name="apple-mobile-web-app-status-bar-style" content="#faf5ee">
+</head>
+
+  
+  
+  
+    
+      <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-64172909-1', 'auto');
+  ga('send', 'pageview');
+
+</script> <!-- /Google Analytics -->
+  
+
+    
+
+    <div class="full-page-container">
+      <div class="overlay"></div>
+      <header class="site-header clearfix">
+  <div class="wrapper-content">
+
+    <div class="navigation-wrap">
+      <div class="nav-toggle-close"><i class="fa fa-times" aria-hidden="true"></i></div>
+
+      <nav class="site-nav">
+        
+          
+        
+          
+            
+              <a href='/about.html'>Sobre mí</a>
+            
+          
+        
+          
+            
+              <a href='/contact.html'>Contacto</a>
+            
+          
+        
+          
+            
+          
+        
+          
+            
+          
+        
+          
+        
+          
+            
+          
+        
+          
+            
+          
+        
+          
+            
+          
+        
+          
+            
+          
+        
+          
+            
+          
+        
+        <a href="https://linkedin.com/in/rubenarcos2"><i class="fa fa-linkedin fa-2x" aria-hidden="true"></i></a>
+        <a href="https://github.com/rubenarcos2"><i class="fa fa-github fa-2x" aria-hidden="true"></i></a>
+      </nav>
+      
+    </div>
+
+    <span class="search-toggle">
+      <i class="fa fa-search" aria-hidden="true"></i>
+    </span>
+    
+    <div class="nav-toggle"><i class="fa fa-bars" aria-hidden="true"></i></div>
+
+    <div class="site-logo">
+      <a href="/">Rubén Arcos</a>
+    </div>
+    
+  </div>
+</header> <!-- /.site-header -->
+
+      <div class="search-box">
+  <div class="wrapper-content">
+    <form class="search-form">
+      <label class="screen-reader-text" for="search-input">Buscar...</label>
+      <input type="text" id="search-input" class="search-field" name="s" placeholder="Type to search...">
+    </form>
+    <div class="btn-close">
+      <span class="bt-search-close">
+        <i class="fa fa-times" aria-hidden="true"></i>
+      </span>
+    </div>
+  </div>
+  <ul id="results-container" class="search-results-list"></ul>  
+</div> <!-- /.search-box -->
+
+        <div class="page-header" style="background: url(/images/pages/20.jpg)">
+  <h1 class="page-title">Tags in Blog</h1>
+</div>
+
+<article class="page">
+
+  <div class="page-content">
+    
+
+
+<section class="blog-tags">
+  <ul class="tags clearfix">
+  
+    
+    <li><a href="#.net" class="tag">.net <span>(2)</span></a></li>
+  
+    
+    <li><a href="#Android" class="tag">Android <span>(1)</span></a></li>
+  
+    
+    <li><a href="#IA" class="tag">IA <span>(2)</span></a></li>
+  
+    
+    <li><a href="#ML" class="tag">ML <span>(2)</span></a></li>
+  
+    
+    <li><a href="#R" class="tag">R <span>(1)</span></a></li>
+  
+    
+    <li><a href="#adobe" class="tag">adobe <span>(1)</span></a></li>
+  
+    
+    <li><a href="#air" class="tag">air <span>(1)</span></a></li>
+  
+    
+    <li><a href="#api" class="tag">api <span>(3)</span></a></li>
+  
+    
+    <li><a href="#apk" class="tag">apk <span>(1)</span></a></li>
+  
+    
+    <li><a href="#app" class="tag">app <span>(1)</span></a></li>
+  
+    
+    <li><a href="#arduino" class="tag">arduino <span>(1)</span></a></li>
+  
+    
+    <li><a href="#ava" class="tag">ava <span>(1)</span></a></li>
+  
+    
+    <li><a href="#biblioteca" class="tag">biblioteca <span>(1)</span></a></li>
+  
+    
+    <li><a href="#c%23" class="tag">c# <span>(4)</span></a></li>
+  
+    
+    <li><a href="#criptograf%C3%ADa" class="tag">criptografía <span>(1)</span></a></li>
+  
+    
+    <li><a href="#editor+textos" class="tag">editor textos <span>(1)</span></a></li>
+  
+    
+    <li><a href="#encriptaci%C3%B3n" class="tag">encriptación <span>(1)</span></a></li>
+  
+    
+    <li><a href="#es5" class="tag">es5 <span>(1)</span></a></li>
+  
+    
+    <li><a href="#es6" class="tag">es6 <span>(1)</span></a></li>
+  
+    
+    <li><a href="#esp8266" class="tag">esp8266 <span>(1)</span></a></li>
+  
+    
+    <li><a href="#flask" class="tag">flask <span>(2)</span></a></li>
+  
+    
+    <li><a href="#flex" class="tag">flex <span>(1)</span></a></li>
+  
+    
+    <li><a href="#gesmerca" class="tag">gesmerca <span>(1)</span></a></li>
+  
+    
+    <li><a href="#hilos" class="tag">hilos <span>(3)</span></a></li>
+  
+    
+    <li><a href="#https" class="tag">https <span>(2)</span></a></li>
+  
+    
+    <li><a href="#iot" class="tag">iot <span>(1)</span></a></li>
+  
+    
+    <li><a href="#iris" class="tag">iris <span>(1)</span></a></li>
+  
+    
+    <li><a href="#java" class="tag">java <span>(5)</span></a></li>
+  
+    
+    <li><a href="#js" class="tag">js <span>(2)</span></a></li>
+  
+    
+    <li><a href="#juego" class="tag">juego <span>(1)</span></a></li>
+  
+    
+    <li><a href="#microsoft" class="tag">microsoft <span>(1)</span></a></li>
+  
+    
+    <li><a href="#mqtt" class="tag">mqtt <span>(1)</span></a></li>
+  
+    
+    <li><a href="#proxmox" class="tag">proxmox <span>(1)</span></a></li>
+  
+    
+    <li><a href="#proyecto+integrado" class="tag">proyecto integrado <span>(1)</span></a></li>
+  
+    
+    <li><a href="#python" class="tag">python <span>(3)</span></a></li>
+  
+    
+    <li><a href="#raspberrypi" class="tag">raspberrypi <span>(1)</span></a></li>
+  
+    
+    <li><a href="#rest" class="tag">rest <span>(3)</span></a></li>
+  
+    
+    <li><a href="#siete+y+media" class="tag">siete y media <span>(1)</span></a></li>
+  
+    
+    <li><a href="#socket" class="tag">socket <span>(1)</span></a></li>
+  
+    
+    <li><a href="#spring" class="tag">spring <span>(1)</span></a></li>
+  
+    
+    <li><a href="#streamlit" class="tag">streamlit <span>(2)</span></a></li>
+  
+    
+    <li><a href="#sysadmin" class="tag">sysadmin <span>(1)</span></a></li>
+  
+    
+    <li><a href="#tetris" class="tag">tetris <span>(1)</span></a></li>
+  
+    
+    <li><a href="#threads" class="tag">threads <span>(3)</span></a></li>
+  
+    
+    <li><a href="#tutorial" class="tag">tutorial <span>(1)</span></a></li>
+  
+    
+    <li><a href="#web" class="tag">web <span>(4)</span></a></li>
+  
+  </ul>
+  
+    
+  <h2 id=".net">.net</h2>
+    
+    <div class="tag-list">
+        <span><a href="/2016/12/26/net-framework-vs-net-core/">.Net Framework vs .Net Core</a></span>
+        <small><span>| 26 Dec 2016</span></small>
+    </div>
+    
+    <div class="tag-list">
+        <span><a href="/2016/06/11/Proyecto_integrado/">Proyecto Integrado</a></span>
+        <small><span>| 11 Jun 2016</span></small>
+    </div>
+    
+  
+    
+  <h2 id="Android">Android</h2>
+    
+    <div class="tag-list">
+        <span><a href="/2021/11/23/Tu_web_en_app_Android/">Android - Tu web en una app</a></span>
+        <small><span>| 23 Nov 2021</span></small>
+    </div>
+    
+  
+    
+  <h2 id="IA">IA</h2>
+    
+    <div class="tag-list">
+        <span><a href="/2022/01/29/IA_perceptron_clasificador_iris/">IA - Perceptrón clasificador dataset iris</a></span>
+        <small><span>| 29 Jan 2022</span></small>
+    </div>
+    
+    <div class="tag-list">
+        <span><a href="/2022/01/29/IA_en_la_web-Streamlit/">IA - En la web con Streamlit</a></span>
+        <small><span>| 29 Jan 2022</span></small>
+    </div>
+    
+  
+    
+  <h2 id="ML">ML</h2>
+    
+    <div class="tag-list">
+        <span><a href="/2022/01/29/IA_perceptron_clasificador_iris/">IA - Perceptrón clasificador dataset iris</a></span>
+        <small><span>| 29 Jan 2022</span></small>
+    </div>
+    
+    <div class="tag-list">
+        <span><a href="/2022/01/29/IA_en_la_web-Streamlit/">IA - En la web con Streamlit</a></span>
+        <small><span>| 29 Jan 2022</span></small>
+    </div>
+    
+  
+    
+  <h2 id="R">R</h2>
+    
+    <div class="tag-list">
+        <span><a href="/2022/02/11/API_Rest_en_R/">R - Api rest</a></span>
+        <small><span>| 11 Feb 2022</span></small>
+    </div>
+    
+  
+    
+  <h2 id="adobe">adobe</h2>
+    
+    <div class="tag-list">
+        <span><a href="/2015/09/15/flex-air-biblioteca/">Flex/Air - Biblioteca</a></span>
+        <small><span>| 15 Sep 2015</span></small>
+    </div>
+    
+  
+    
+  <h2 id="air">air</h2>
+    
+    <div class="tag-list">
+        <span><a href="/2015/09/15/flex-air-biblioteca/">Flex/Air - Biblioteca</a></span>
+        <small><span>| 15 Sep 2015</span></small>
+    </div>
+    
+  
+    
+  <h2 id="api">api</h2>
+    
+    <div class="tag-list">
+        <span><a href="/2022/02/15/Python-API_Rest_en_Flask/">Python - API Rest en Flask</a></span>
+        <small><span>| 15 Feb 2022</span></small>
+    </div>
+    
+    <div class="tag-list">
+        <span><a href="/2022/02/11/API_Rest_en_R/">R - Api rest</a></span>
+        <small><span>| 11 Feb 2022</span></small>
+    </div>
+    
+    <div class="tag-list">
+        <span><a href="/2018/06/11/API_Rest_con_Spring/">Spring - API Rest simple</a></span>
+        <small><span>| 11 Jun 2018</span></small>
+    </div>
+    
+  
+    
+  <h2 id="apk">apk</h2>
+    
+    <div class="tag-list">
+        <span><a href="/2021/11/23/Tu_web_en_app_Android/">Android - Tu web en una app</a></span>
+        <small><span>| 23 Nov 2021</span></small>
+    </div>
+    
+  
+    
+  <h2 id="app">app</h2>
+    
+    <div class="tag-list">
+        <span><a href="/2021/11/23/Tu_web_en_app_Android/">Android - Tu web en una app</a></span>
+        <small><span>| 23 Nov 2021</span></small>
+    </div>
+    
+  
+    
+  <h2 id="arduino">arduino</h2>
+    
+    <div class="tag-list">
+        <span><a href="/2021/10/13/IoT_proyectos_openhab/">IoT - Proyectos y Mqtt en openhab</a></span>
+        <small><span>| 13 Oct 2021</span></small>
+    </div>
+    
+  
+    
+  <h2 id="ava">ava</h2>
+    
+    <div class="tag-list">
+        <span><a href="/2016/05/30/Hilos_en_java-1/">Java - Hilos 1</a></span>
+        <small><span>| 30 May 2016</span></small>
+    </div>
+    
+  
+    
+  <h2 id="biblioteca">biblioteca</h2>
+    
+    <div class="tag-list">
+        <span><a href="/2015/09/15/flex-air-biblioteca/">Flex/Air - Biblioteca</a></span>
+        <small><span>| 15 Sep 2015</span></small>
+    </div>
+    
+  
+    
+  <h2 id="c%23">c#</h2>
+    
+    <div class="tag-list">
+        <span><a href="/2016/12/26/net-framework-vs-net-core/">.Net Framework vs .Net Core</a></span>
+        <small><span>| 26 Dec 2016</span></small>
+    </div>
+    
+    <div class="tag-list">
+        <span><a href="/2016/06/11/Proyecto_integrado/">Proyecto Integrado</a></span>
+        <small><span>| 11 Jun 2016</span></small>
+    </div>
+    
+    <div class="tag-list">
+        <span><a href="/2016/02/11/c-editor-textos/">C# - Editor de textos</a></span>
+        <small><span>| 11 Feb 2016</span></small>
+    </div>
+    
+    <div class="tag-list">
+        <span><a href="/2016/02/11/c-tetris/">C# - Tetris</a></span>
+        <small><span>| 11 Feb 2016</span></small>
+    </div>
+    
+  
+    
+  <h2 id="criptograf%C3%ADa">criptografía</h2>
+    
+    <div class="tag-list">
+        <span><a href="/2016/03/11/Criptografia-java/">Criptografía en Java</a></span>
+        <small><span>| 11 Mar 2016</span></small>
+    </div>
+    
+  
+    
+  <h2 id="editor+textos">editor textos</h2>
+    
+    <div class="tag-list">
+        <span><a href="/2016/02/11/c-editor-textos/">C# - Editor de textos</a></span>
+        <small><span>| 11 Feb 2016</span></small>
+    </div>
+    
+  
+    
+  <h2 id="encriptaci%C3%B3n">encriptación</h2>
+    
+    <div class="tag-list">
+        <span><a href="/2016/03/11/Criptografia-java/">Criptografía en Java</a></span>
+        <small><span>| 11 Mar 2016</span></small>
+    </div>
+    
+  
+    
+  <h2 id="es5">es5</h2>
+    
+    <div class="tag-list">
+        <span><a href="/2021/08/14/Conversion_js_de_es6_a_es5-transpilado/">JS - Conversion de ES6 a ES5, transpilado</a></span>
+        <small><span>| 14 Aug 2021</span></small>
+    </div>
+    
+  
+    
+  <h2 id="es6">es6</h2>
+    
+    <div class="tag-list">
+        <span><a href="/2021/08/14/Conversion_js_de_es6_a_es5-transpilado/">JS - Conversion de ES6 a ES5, transpilado</a></span>
+        <small><span>| 14 Aug 2021</span></small>
+    </div>
+    
+  
+    
+  <h2 id="esp8266">esp8266</h2>
+    
+    <div class="tag-list">
+        <span><a href="/2021/10/13/IoT_proyectos_openhab/">IoT - Proyectos y Mqtt en openhab</a></span>
+        <small><span>| 13 Oct 2021</span></small>
+    </div>
+    
+  
+    
+  <h2 id="flask">flask</h2>
+    
+    <div class="tag-list">
+        <span><a href="/2022/02/15/Python-API_Rest_en_Flask/">Python - API Rest en Flask</a></span>
+        <small><span>| 15 Feb 2022</span></small>
+    </div>
+    
+    <div class="tag-list">
+        <span><a href="/2022/02/11/API_Rest_en_R/">R - Api rest</a></span>
+        <small><span>| 11 Feb 2022</span></small>
+    </div>
+    
+  
+    
+  <h2 id="flex">flex</h2>
+    
+    <div class="tag-list">
+        <span><a href="/2015/09/15/flex-air-biblioteca/">Flex/Air - Biblioteca</a></span>
+        <small><span>| 15 Sep 2015</span></small>
+    </div>
+    
+  
+    
+  <h2 id="gesmerca">gesmerca</h2>
+    
+    <div class="tag-list">
+        <span><a href="/2016/06/11/Proyecto_integrado/">Proyecto Integrado</a></span>
+        <small><span>| 11 Jun 2016</span></small>
+    </div>
+    
+  
+    
+  <h2 id="hilos">hilos</h2>
+    
+    <div class="tag-list">
+        <span><a href="/2016/06/02/Hilos_en_java-2/">Java - Hilos 2</a></span>
+        <small><span>| 02 Jun 2016</span></small>
+    </div>
+    
+    <div class="tag-list">
+        <span><a href="/2016/05/30/Hilos_en_java-1/">Java - Hilos 1</a></span>
+        <small><span>| 30 May 2016</span></small>
+    </div>
+    
+    <div class="tag-list">
+        <span><a href="/2016/05/28/Hilos_en_java-0-5/">Java - Hilos 0.5</a></span>
+        <small><span>| 28 May 2016</span></small>
+    </div>
+    
+  
+    
+  <h2 id="https">https</h2>
+    
+    <div class="tag-list">
+        <span><a href="/2018/11/01/Actualizacion_web_a_https/">Actualización web a HTTPS</a></span>
+        <small><span>| 01 Nov 2018</span></small>
+    </div>
+    
+    <div class="tag-list">
+        <span><a href="/2018/10/19/WebAPI_RESTful_Arduino-Raspberry_con_Spring/">Spring - WebAPI RESTful Arduino <-> Raspberry</a></span>
+        <small><span>| 19 Oct 2018</span></small>
+    </div>
+    
+  
+    
+  <h2 id="iot">iot</h2>
+    
+    <div class="tag-list">
+        <span><a href="/2021/10/13/IoT_proyectos_openhab/">IoT - Proyectos y Mqtt en openhab</a></span>
+        <small><span>| 13 Oct 2021</span></small>
+    </div>
+    
+  
+    
+  <h2 id="iris">iris</h2>
+    
+    <div class="tag-list">
+        <span><a href="/2022/01/29/IA_perceptron_clasificador_iris/">IA - Perceptrón clasificador dataset iris</a></span>
+        <small><span>| 29 Jan 2022</span></small>
+    </div>
+    
+  
+    
+  <h2 id="java">java</h2>
+    
+    <div class="tag-list">
+        <span><a href="/2018/06/11/API_Rest_con_Spring/">Spring - API Rest simple</a></span>
+        <small><span>| 11 Jun 2018</span></small>
+    </div>
+    
+    <div class="tag-list">
+        <span><a href="/2016/06/02/Hilos_en_java-2/">Java - Hilos 2</a></span>
+        <small><span>| 02 Jun 2016</span></small>
+    </div>
+    
+    <div class="tag-list">
+        <span><a href="/2016/05/28/Hilos_en_java-0-5/">Java - Hilos 0.5</a></span>
+        <small><span>| 28 May 2016</span></small>
+    </div>
+    
+    <div class="tag-list">
+        <span><a href="/2016/03/11/Criptografia-java/">Criptografía en Java</a></span>
+        <small><span>| 11 Mar 2016</span></small>
+    </div>
+    
+    <div class="tag-list">
+        <span><a href="/2016/03/11/Ahorcado_socket_java/">Java - Sockets cliente-servidor</a></span>
+        <small><span>| 11 Mar 2016</span></small>
+    </div>
+    
+  
+    
+  <h2 id="js">js</h2>
+    
+    <div class="tag-list">
+        <span><a href="/2021/08/14/Conversion_js_de_es6_a_es5-transpilado/">JS - Conversion de ES6 a ES5, transpilado</a></span>
+        <small><span>| 14 Aug 2021</span></small>
+    </div>
+    
+    <div class="tag-list">
+        <span><a href="/2015/06/11/js_juego_siete_y_media/">JS - Juego de la siete y media</a></span>
+        <small><span>| 11 Jun 2015</span></small>
+    </div>
+    
+  
+    
+  <h2 id="juego">juego</h2>
+    
+    <div class="tag-list">
+        <span><a href="/2015/06/11/js_juego_siete_y_media/">JS - Juego de la siete y media</a></span>
+        <small><span>| 11 Jun 2015</span></small>
+    </div>
+    
+  
+    
+  <h2 id="microsoft">microsoft</h2>
+    
+    <div class="tag-list">
+        <span><a href="/2016/12/26/net-framework-vs-net-core/">.Net Framework vs .Net Core</a></span>
+        <small><span>| 26 Dec 2016</span></small>
+    </div>
+    
+  
+    
+  <h2 id="mqtt">mqtt</h2>
+    
+    <div class="tag-list">
+        <span><a href="/2021/10/13/IoT_proyectos_openhab/">IoT - Proyectos y Mqtt en openhab</a></span>
+        <small><span>| 13 Oct 2021</span></small>
+    </div>
+    
+  
+    
+  <h2 id="proxmox">proxmox</h2>
+    
+    <div class="tag-list">
+        <span><a href="/2014/03/04/proxmox/">SysAdmin - Instalación Proxmox</a></span>
+        <small><span>| 04 Mar 2014</span></small>
+    </div>
+    
+  
+    
+  <h2 id="proyecto+integrado">proyecto integrado</h2>
+    
+    <div class="tag-list">
+        <span><a href="/2016/06/11/Proyecto_integrado/">Proyecto Integrado</a></span>
+        <small><span>| 11 Jun 2016</span></small>
+    </div>
+    
+  
+    
+  <h2 id="python">python</h2>
+    
+    <div class="tag-list">
+        <span><a href="/2022/02/15/Python-API_Rest_en_Flask/">Python - API Rest en Flask</a></span>
+        <small><span>| 15 Feb 2022</span></small>
+    </div>
+    
+    <div class="tag-list">
+        <span><a href="/2022/01/29/IA_perceptron_clasificador_iris/">IA - Perceptrón clasificador dataset iris</a></span>
+        <small><span>| 29 Jan 2022</span></small>
+    </div>
+    
+    <div class="tag-list">
+        <span><a href="/2022/01/29/IA_en_la_web-Streamlit/">IA - En la web con Streamlit</a></span>
+        <small><span>| 29 Jan 2022</span></small>
+    </div>
+    
+  
+    
+  <h2 id="raspberrypi">raspberrypi</h2>
+    
+    <div class="tag-list">
+        <span><a href="/2021/10/13/IoT_proyectos_openhab/">IoT - Proyectos y Mqtt en openhab</a></span>
+        <small><span>| 13 Oct 2021</span></small>
+    </div>
+    
+  
+    
+  <h2 id="rest">rest</h2>
+    
+    <div class="tag-list">
+        <span><a href="/2022/02/15/Python-API_Rest_en_Flask/">Python - API Rest en Flask</a></span>
+        <small><span>| 15 Feb 2022</span></small>
+    </div>
+    
+    <div class="tag-list">
+        <span><a href="/2022/02/11/API_Rest_en_R/">R - Api rest</a></span>
+        <small><span>| 11 Feb 2022</span></small>
+    </div>
+    
+    <div class="tag-list">
+        <span><a href="/2018/06/11/API_Rest_con_Spring/">Spring - API Rest simple</a></span>
+        <small><span>| 11 Jun 2018</span></small>
+    </div>
+    
+  
+    
+  <h2 id="siete+y+media">siete y media</h2>
+    
+    <div class="tag-list">
+        <span><a href="/2015/06/11/js_juego_siete_y_media/">JS - Juego de la siete y media</a></span>
+        <small><span>| 11 Jun 2015</span></small>
+    </div>
+    
+  
+    
+  <h2 id="socket">socket</h2>
+    
+    <div class="tag-list">
+        <span><a href="/2016/03/11/Ahorcado_socket_java/">Java - Sockets cliente-servidor</a></span>
+        <small><span>| 11 Mar 2016</span></small>
+    </div>
+    
+  
+    
+  <h2 id="spring">spring</h2>
+    
+    <div class="tag-list">
+        <span><a href="/2018/06/11/API_Rest_con_Spring/">Spring - API Rest simple</a></span>
+        <small><span>| 11 Jun 2018</span></small>
+    </div>
+    
+  
+    
+  <h2 id="streamlit">streamlit</h2>
+    
+    <div class="tag-list">
+        <span><a href="/2022/01/29/IA_perceptron_clasificador_iris/">IA - Perceptrón clasificador dataset iris</a></span>
+        <small><span>| 29 Jan 2022</span></small>
+    </div>
+    
+    <div class="tag-list">
+        <span><a href="/2022/01/29/IA_en_la_web-Streamlit/">IA - En la web con Streamlit</a></span>
+        <small><span>| 29 Jan 2022</span></small>
+    </div>
+    
+  
+    
+  <h2 id="sysadmin">sysadmin</h2>
+    
+    <div class="tag-list">
+        <span><a href="/2014/03/04/proxmox/">SysAdmin - Instalación Proxmox</a></span>
+        <small><span>| 04 Mar 2014</span></small>
+    </div>
+    
+  
+    
+  <h2 id="tetris">tetris</h2>
+    
+    <div class="tag-list">
+        <span><a href="/2016/02/11/c-tetris/">C# - Tetris</a></span>
+        <small><span>| 11 Feb 2016</span></small>
+    </div>
+    
+  
+    
+  <h2 id="threads">threads</h2>
+    
+    <div class="tag-list">
+        <span><a href="/2016/06/02/Hilos_en_java-2/">Java - Hilos 2</a></span>
+        <small><span>| 02 Jun 2016</span></small>
+    </div>
+    
+    <div class="tag-list">
+        <span><a href="/2016/05/30/Hilos_en_java-1/">Java - Hilos 1</a></span>
+        <small><span>| 30 May 2016</span></small>
+    </div>
+    
+    <div class="tag-list">
+        <span><a href="/2016/05/28/Hilos_en_java-0-5/">Java - Hilos 0.5</a></span>
+        <small><span>| 28 May 2016</span></small>
+    </div>
+    
+  
+    
+  <h2 id="tutorial">tutorial</h2>
+    
+    <div class="tag-list">
+        <span><a href="/2014/03/04/proxmox/">SysAdmin - Instalación Proxmox</a></span>
+        <small><span>| 04 Mar 2014</span></small>
+    </div>
+    
+  
+    
+  <h2 id="web">web</h2>
+    
+    <div class="tag-list">
+        <span><a href="/2022/01/29/IA_perceptron_clasificador_iris/">IA - Perceptrón clasificador dataset iris</a></span>
+        <small><span>| 29 Jan 2022</span></small>
+    </div>
+    
+    <div class="tag-list">
+        <span><a href="/2022/01/29/IA_en_la_web-Streamlit/">IA - En la web con Streamlit</a></span>
+        <small><span>| 29 Jan 2022</span></small>
+    </div>
+    
+    <div class="tag-list">
+        <span><a href="/2018/11/01/Actualizacion_web_a_https/">Actualización web a HTTPS</a></span>
+        <small><span>| 01 Nov 2018</span></small>
+    </div>
+    
+    <div class="tag-list">
+        <span><a href="/2018/10/19/WebAPI_RESTful_Arduino-Raspberry_con_Spring/">Spring - WebAPI RESTful Arduino <-> Raspberry</a></span>
+        <small><span>| 19 Oct 2018</span></small>
+    </div>
+    
+  
+</section> <!-- /.blog-tags -->
+  </div>
+
+</article> <!-- End Page -->
+<style>
+    #cookie-notice {padding: 0.5rem 1rem; display: none; text-align: center; position: fixed; bottom: 0; width: calc(100% - 2rem); background: #222; color: rgba(255,255,255,0.8);}
+    #cookie-notice a {display: inline-block; cursor: pointer; margin-left: 0.5rem;}
+    @media (max-width: 767px) {
+        #cookie-notice span {display: block; padding-top: 3px; margin-bottom: 1rem;}
+        #cookie-notice a {position: relative; bottom: 4px;}
+    }
+</style>
+<div id="cookie-notice"><span>Esta web utiliza cookies y scripts de terceros para mejorar la funcionalidad de este sitio web.</span>
+    <a id="cookie-notice-accept" class="btn btn-primary btn-sm">Aceptar</a><a href="/cookies" class="btn btn-primary btn-sm">Más info</a></div>
+<script>
+    function createCookie(name,value,days) {
+        var expires = "";
+        if (days) {
+            var date = new Date();
+            date.setTime(date.getTime() + (days*24*60*60*1000));
+            expires = "; expires=" + date.toUTCString();
+        }
+        document.cookie = name + "=" + value + expires + "; path=/";
+    }
+    function readCookie(name) {
+        var nameEQ = name + "=";
+        var ca = document.cookie.split(';');
+        for(var i=0;i < ca.length;i++) {
+            var c = ca[i];
+            while (c.charAt(0)==' ') c = c.substring(1,c.length);
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+        }
+        return null;
+    }
+    function eraseCookie(name) {
+        createCookie(name,"",-1);
+    }
+
+    if(readCookie('cookie-notice-dismissed')=='true') {
+
+    } else {
+        document.getElementById('cookie-notice').style.display = 'block';
+    }
+    document.getElementById('cookie-notice-accept').addEventListener("click",function() {
+        createCookie('cookie-notice-dismissed','true',31);
+        document.getElementById('cookie-notice').style.display = 'none';
+        location.reload();
+    });
+
+</script>
+
+
+      <div class="top" title="Scroll To Top">
+  <i class="fa fa-chevron-up" aria-hidden="true"></i>
+</div> <!-- /.top -->
+      <footer class="site-footer">
+
+  <div class="footer-wrapper">
+
+    <h2 class="footer-heading">Rubén Arcos</h2>
+
+    <ul class="social-footer">
+    
+      <li><a href="https://twitter.com/rarcosdev" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+    
+    
+    
+    
+    <li><a href="https://linkedin.com/in/rubenarcos2" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+    
+    
+    <li><a href="https://github.com/rubenarcos2" target="_blank"><i class="fa fa-github" aria-hidden="true"></i></a></li>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    </ul>
+
+    <div class="copyright">
+      <p><a href="https://jekyllrb.com/">Proudly powered by Jekyll</a> | Theme: Lokmont by <a href="https://artemsheludko.github.io/">Artem Sheludko</a></p>
+    </div>
+  </div>
+
+</footer> <!-- /.site-footer -->
+
+    </div> <!-- /.full-page-container -->
+
+    <script src="/js/jquery-3.2.1.min.js"></script>
+<script src="/js/jquery.viewportchecker.min.js"></script>
+<script src="/js/jquery.fitvids.js"></script>
+<script src="/js/simple-jekyll-search.min.js"></script>
+<script src="/js/transition.js"></script>
+<script src="/js/zoom.min.js"></script>
+<script src="/js/main.js"></script>
+    <style>
+    #cookie-notice {padding: 0.5rem 1rem; display: none; text-align: center; position: fixed; bottom: 0; width: calc(100% - 2rem); background: #222; color: rgba(255,255,255,0.8);}
+    #cookie-notice a {display: inline-block; cursor: pointer; margin-left: 0.5rem;}
+    @media (max-width: 767px) {
+        #cookie-notice span {display: block; padding-top: 3px; margin-bottom: 1rem;}
+        #cookie-notice a {position: relative; bottom: 4px;}
+    }
+</style>
+<div id="cookie-notice"><span>Esta web utiliza cookies y scripts de terceros para mejorar la funcionalidad de este sitio web.</span>
+    <a id="cookie-notice-accept" class="btn btn-primary btn-sm">Aceptar</a><a href="/cookies" class="btn btn-primary btn-sm">Más info</a></div>
+<script>
+    function createCookie(name,value,days) {
+        var expires = "";
+        if (days) {
+            var date = new Date();
+            date.setTime(date.getTime() + (days*24*60*60*1000));
+            expires = "; expires=" + date.toUTCString();
+        }
+        document.cookie = name + "=" + value + expires + "; path=/";
+    }
+    function readCookie(name) {
+        var nameEQ = name + "=";
+        var ca = document.cookie.split(';');
+        for(var i=0;i < ca.length;i++) {
+            var c = ca[i];
+            while (c.charAt(0)==' ') c = c.substring(1,c.length);
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+        }
+        return null;
+    }
+    function eraseCookie(name) {
+        createCookie(name,"",-1);
+    }
+
+    if(readCookie('cookie-notice-dismissed')=='true') {
+
+    } else {
+        document.getElementById('cookie-notice').style.display = 'block';
+    }
+    document.getElementById('cookie-notice-accept').addEventListener("click",function() {
+        createCookie('cookie-notice-dismissed','true',31);
+        document.getElementById('cookie-notice').style.display = 'none';
+        location.reload();
+    });
+
+</script>
+  </body>
+
+</html>

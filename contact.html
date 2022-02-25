@@ -5,7 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Página no encontrada</title>
+  <title>Contacto</title>
   <meta name='description' content='Desarrollador de aplicaciones multiplataformas'>
   
   <!-- Google Fonts -->
@@ -19,7 +19,7 @@
 
   <!-- Main Stylesheet -->
   <link rel="stylesheet" href="/css/main.css">
-  <link rel="canonical" href="http://localhost:4000/404.html">
+  <link rel="canonical" href="http://localhost:4000/contact.html">
   <link rel="alternate" type="application/rss+xml" title="Rubén Arcos" href="/feed.xml">
 
   <!-- Chrome, Firefox OS and Opera -->
@@ -136,11 +136,92 @@
   <ul id="results-container" class="search-results-list"></ul>  
 </div> <!-- /.search-box -->
 
-        <div style="text-align: center">
-  <h1 style="font-size: 54px; margin: 15px 0px; line-height: 1;">Página no encontrada</h1>
-  <p><strong>La página solicitada no ha sido encontrada</strong></p>
-  <p><a href="/">Volver al blog</a></p>
+        <div class="page-header" style="background: url(/images/pages/maps.jpg)">
+  <h1 class="page-title">Contacto</h1>
 </div>
+
+<article class="page">
+
+  <div class="page-content">
+    <h3>¿Dónde estoy en el mundo?</h3>
+
+<iframe src="https://maps.google.com/maps?f=q&source=s_q&hl=es-ES&geocode=&q=m%C3%A1laga&aq=&sll=40.719147,-73.997318&sspn=0.038251,0.084543&gl=US&ie=UTF8&hq=&hnear=M%C3%A1laga,+Andaluc%C3%ADa,+Espa%C3%B1a&t=m&z=12&ll=36.721261,-4.421266&output=embed" width="100%" height="35%"></iframe>
+
+
+<h5 class="contact-subtitle">¡Escríbeme unas líneas!</h5>
+<hr>
+
+<form action="https://formspree.io/f/mzbyorod" method="POST" class="form">
+  <div class="form-group">
+    <label for="form-name">Nombre (obligatorio)</label>
+    <input class="form-input" type="text" name="name" id="form-name" required>
+  </div>
+  <div class="form-group">
+    <label for="form-email">Email (obligatorio)</label>
+    <input class="form-input" type="email" name="_replyto" id="form-email" required>
+  </div>
+  <div class="form-group">
+    <label for="form-subject">Asunto</label>
+    <input class="form-input" type="text" name="subject" id="form-subject">
+  </div>
+  <div class="form-group">
+    <label for="form-text">Mensaje (obligatorio)</label>
+    <textarea class="form-textarea" name="text" rows="12" id="form-text" required></textarea>
+  </div>
+  <div class="form-group">
+    <button type="submit" class="form-btn btn btn-big">Enviar</button>
+  </div>
+</form> <!-- /.form -->
+  </div>
+
+</article> <!-- End Page -->
+<style>
+    #cookie-notice {padding: 0.5rem 1rem; display: none; text-align: center; position: fixed; bottom: 0; width: calc(100% - 2rem); background: #222; color: rgba(255,255,255,0.8);}
+    #cookie-notice a {display: inline-block; cursor: pointer; margin-left: 0.5rem;}
+    @media (max-width: 767px) {
+        #cookie-notice span {display: block; padding-top: 3px; margin-bottom: 1rem;}
+        #cookie-notice a {position: relative; bottom: 4px;}
+    }
+</style>
+<div id="cookie-notice"><span>Esta web utiliza cookies y scripts de terceros para mejorar la funcionalidad de este sitio web.</span>
+    <a id="cookie-notice-accept" class="btn btn-primary btn-sm">Aceptar</a><a href="/cookies" class="btn btn-primary btn-sm">Más info</a></div>
+<script>
+    function createCookie(name,value,days) {
+        var expires = "";
+        if (days) {
+            var date = new Date();
+            date.setTime(date.getTime() + (days*24*60*60*1000));
+            expires = "; expires=" + date.toUTCString();
+        }
+        document.cookie = name + "=" + value + expires + "; path=/";
+    }
+    function readCookie(name) {
+        var nameEQ = name + "=";
+        var ca = document.cookie.split(';');
+        for(var i=0;i < ca.length;i++) {
+            var c = ca[i];
+            while (c.charAt(0)==' ') c = c.substring(1,c.length);
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+        }
+        return null;
+    }
+    function eraseCookie(name) {
+        createCookie(name,"",-1);
+    }
+
+    if(readCookie('cookie-notice-dismissed')=='true') {
+
+    } else {
+        document.getElementById('cookie-notice').style.display = 'block';
+    }
+    document.getElementById('cookie-notice-accept').addEventListener("click",function() {
+        createCookie('cookie-notice-dismissed','true',31);
+        document.getElementById('cookie-notice').style.display = 'none';
+        location.reload();
+    });
+
+</script>
+
 
       <div class="top" title="Scroll To Top">
   <i class="fa fa-chevron-up" aria-hidden="true"></i>

@@ -1,0 +1,503 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-02-25T10:23:14+01:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Rubén Arcos</title><subtitle>Desarrollador de aplicaciones multiplataformas</subtitle><entry><title type="html">Python - API Rest en Flask</title><link href="http://localhost:4000/2022/02/15/Python-API_Rest_en_Flask/" rel="alternate" type="text/html" title="Python - API Rest en Flask" /><published>2022-02-15T15:33:28+01:00</published><updated>2022-02-15T15:33:28+01:00</updated><id>http://localhost:4000/2022/02/15/Python%20-%20API_Rest_en_Flask</id><content type="html" xml:base="http://localhost:4000/2022/02/15/Python-API_Rest_en_Flask/"><![CDATA[<h1 id="api-rest-en-python-con-flask">Api rest en Python con Flask</h1>
+
+<p>A continuación, se muestra un proyecto de Python realizado para crear una api rest mediante el uso de la librería <a href="https://palletsprojects.com/p/flask/">flask</a>. Tiene las siguientes características:</p>
+
+<p>Se crea una base de datos MySQL (situada en un servidor de bases de datos en Internet) con dos tablas para almacenar:</p>
+<ul>
+  <li>los datos de los usuarios: nombre, dirección, teléfono, email y usuario en Github</li>
+  <li>los datos de los repositorios de los usuarios:  nombre del repositorio, url, descripción y fecha de última modificación</li>
+</ul>
+
+<p>La aplicación en Flask permite añadir un nuevo usuario, ver los datos de los usuarios almacenados, editarlos, eliminarlos y ver sus repositorios.
+Los repositorios de un usuario se muestran en una nueva página.</p>
+
+<p>Cuando se añade un usuario, se obtienen sus repositorios públicos usando el api de GitHub y se almacenan en la tabla de repositorios.
+Cuando se modifica el nombre del usuario en Github, se borran sus repositorios anteriores y se obtienen los nuevos.</p>
+
+<p>Si quieres ver el resultado, te recomiendo visites:</p>
+
+<p><a href="https://flask-python-crud.herokuapp.com/usuarios"><img src="/images/pages/app_flask_heroku.jpg" alt="Ir a ver la app en funcionamiento" /></a></p>
+
+<p><em>Repositorio con el contenido</em></p>
+
+<p><a href="https://github.com/rubenarcos2/api_rest_flask_python"><img src="/images/pages/repository_small.png" alt="Repositorio" /></a></p>]]></content><author><name></name></author><category term="python" /><category term="api" /><category term="rest" /><category term="flask" /><summary type="html"><![CDATA[Api rest en Python con Flask]]></summary></entry><entry><title type="html">R - Api rest</title><link href="http://localhost:4000/2022/02/11/API_Rest_en_R/" rel="alternate" type="text/html" title="R - Api rest" /><published>2022-02-11T15:33:28+01:00</published><updated>2022-02-11T15:33:28+01:00</updated><id>http://localhost:4000/2022/02/11/API_Rest_en_R</id><content type="html" xml:base="http://localhost:4000/2022/02/11/API_Rest_en_R/"><![CDATA[<h1 id="api-rest-en-r">Api rest en R</h1>
+
+<p>A continuación, se muestra un proyecto de R realizado para crear una api rest mediante el uso de la librería <a href="">plumber</a>.
+Para que funcione tiene que estar todo en la misma carpeta y tiene el siguiente contenido:</p>
+
+<ul>
+  <li>Clase entrypoint. Contiene la configuración del servidor que levanta R.</li>
+</ul>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">library</span><span class="p">(</span><span class="nx">plumber</span><span class="p">)</span>
+
+<span class="nx">p</span> <span class="o">&lt;-</span> <span class="nx">plumb</span><span class="p">(</span><span class="dl">"</span><span class="s2">API_calculadora.r</span><span class="dl">"</span><span class="p">)</span>
+<span class="nx">p$run</span><span class="p">(</span><span class="nx">port</span> <span class="o">=</span> <span class="mi">8888</span><span class="p">)</span></code></pre></figure>
+
+<ul>
+  <li>Clase enrutadora. Es una clase que tiene los endpoints a las funciones de la calculadora.</li>
+</ul>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">library</span><span class="p">(</span><span class="nx">jsonlite</span><span class="p">)</span>
+<span class="nx">library</span><span class="p">(</span><span class="nx">plumber</span><span class="p">)</span>
+<span class="nx">library</span><span class="p">(</span><span class="nx">dplyr</span><span class="p">)</span>
+<span class="nx">library</span><span class="p">(</span><span class="nx">ggplot2</span><span class="p">)</span>
+<span class="nx">library</span><span class="p">(</span><span class="nx">gapminder</span><span class="p">)</span>
+
+<span class="err">#</span><span class="o">*</span> <span class="p">@</span><span class="nd">apiTitle</span> <span class="nx">API</span> <span class="nx">de</span> <span class="nx">ejemplo</span>
+<span class="err">#</span><span class="o">*</span> <span class="p">@</span><span class="nd">apiDescription</span> <span class="nx">Endpoints</span> <span class="nx">para</span> <span class="nx">exponer</span> <span class="nx">funciones</span> <span class="nx">de</span> <span class="nx">ejmplo</span> <span class="nx">con</span> <span class="nx">Plumber</span><span class="p">.</span><span class="nx">r</span>
+
+<span class="err">#</span><span class="o">*</span> <span class="nx">Returns</span> <span class="nx">sum</span> <span class="k">of</span> <span class="nx">a</span> <span class="nx">and</span> <span class="nx">b</span>
+<span class="err">#</span><span class="o">*</span> <span class="p">@</span><span class="nd">param</span> <span class="nx">a</span>
+<span class="err">#</span><span class="o">*</span> <span class="p">@</span><span class="nd">param</span> <span class="nx">b</span>
+<span class="err">#</span><span class="o">*</span> <span class="p">@</span><span class="nd">get</span> <span class="sr">/su</span><span class="err">m
+</span><span class="kd">function</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span><span class="nx">b</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">calculadora</span> <span class="o">&lt;-</span> <span class="nx">modules</span><span class="p">::</span><span class="nx">use</span><span class="p">(</span><span class="dl">'</span><span class="s1">./calculadora.r</span><span class="dl">'</span><span class="p">)</span>
+  <span class="nx">calculadora$suma</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span><span class="nx">b</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="err">#</span><span class="o">*</span> <span class="nx">Returns</span> <span class="nx">minus</span> <span class="k">of</span> <span class="nx">a</span> <span class="nx">and</span> <span class="nx">b</span>
+<span class="err">#</span><span class="o">*</span> <span class="p">@</span><span class="nd">param</span> <span class="nx">a</span>
+<span class="err">#</span><span class="o">*</span> <span class="p">@</span><span class="nd">param</span> <span class="nx">b</span>
+<span class="err">#</span><span class="o">*</span> <span class="p">@</span><span class="nd">get</span> <span class="sr">/minu</span><span class="err">s
+</span><span class="kd">function</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span><span class="nx">b</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">calculadora</span> <span class="o">&lt;-</span> <span class="nx">modules</span><span class="p">::</span><span class="nx">use</span><span class="p">(</span><span class="dl">'</span><span class="s1">./calculadora.r</span><span class="dl">'</span><span class="p">)</span>
+  <span class="nx">calculadora$resta</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span><span class="nx">b</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="err">#</span><span class="o">*</span> <span class="nx">Returns</span> <span class="nx">multiply</span> <span class="k">of</span> <span class="nx">a</span> <span class="nx">and</span> <span class="nx">b</span>
+<span class="err">#</span><span class="o">*</span> <span class="p">@</span><span class="nd">param</span> <span class="nx">a</span>
+<span class="err">#</span><span class="o">*</span> <span class="p">@</span><span class="nd">param</span> <span class="nx">b</span>
+<span class="err">#</span><span class="o">*</span> <span class="p">@</span><span class="nd">get</span> <span class="sr">/mul</span><span class="err">t
+</span><span class="kd">function</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span><span class="nx">b</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">calculadora</span> <span class="o">&lt;-</span> <span class="nx">modules</span><span class="p">::</span><span class="nx">use</span><span class="p">(</span><span class="dl">'</span><span class="s1">./calculadora.r</span><span class="dl">'</span><span class="p">)</span>
+  <span class="nx">calculadora$mult</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span><span class="nx">b</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="err">#</span><span class="o">*</span> <span class="nx">Returns</span> <span class="nx">minus</span> <span class="k">of</span> <span class="nx">a</span> <span class="nx">and</span> <span class="nx">b</span>
+<span class="err">#</span><span class="o">*</span> <span class="p">@</span><span class="nd">param</span> <span class="nx">a</span>
+<span class="err">#</span><span class="o">*</span> <span class="p">@</span><span class="nd">param</span> <span class="nx">b</span>
+<span class="err">#</span><span class="o">*</span> <span class="p">@</span><span class="nd">get</span> <span class="sr">/di</span><span class="err">v
+</span><span class="kd">function</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span><span class="nx">b</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">calculadora</span> <span class="o">&lt;-</span> <span class="nx">modules</span><span class="p">::</span><span class="nx">use</span><span class="p">(</span><span class="dl">'</span><span class="s1">./calculadora.r</span><span class="dl">'</span><span class="p">)</span>
+  <span class="nx">calculadora$div</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span><span class="nx">b</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="err">#</span><span class="o">*</span> <span class="nx">Returns</span> <span class="nx">minus</span> <span class="k">of</span> <span class="nx">a</span> <span class="nx">and</span> <span class="nx">b</span>
+<span class="err">#</span><span class="o">*</span> <span class="p">@</span><span class="nd">param</span> <span class="nx">a</span>
+<span class="err">#</span><span class="o">*</span> <span class="p">@</span><span class="nd">param</span> <span class="nx">b</span>
+<span class="err">#</span><span class="o">*</span> <span class="p">@</span><span class="nd">param</span> <span class="nx">c</span>
+<span class="err">#</span><span class="o">*</span> <span class="p">@</span><span class="nd">get</span> <span class="sr">/pol</span><span class="err">i
+</span><span class="kd">function</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span><span class="nx">b</span><span class="p">,</span><span class="nx">c</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">calculadora</span> <span class="o">&lt;-</span> <span class="nx">modules</span><span class="p">::</span><span class="nx">use</span><span class="p">(</span><span class="dl">'</span><span class="s1">./calculadora.r</span><span class="dl">'</span><span class="p">)</span>
+  <span class="nx">calculadora$poli</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span><span class="nx">b</span><span class="p">,</span><span class="nx">c</span><span class="p">)</span>
+<span class="p">}</span></code></pre></figure>
+
+<ul>
+  <li>Clase calculadora. Es una fichero de R estándar que solo contine las funciones básicas de las operaciones matemáticas</li>
+</ul>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">suma</span> <span class="o">&lt;-</span> <span class="kd">function</span><span class="p">(</span><span class="nx">num1</span><span class="p">,</span> <span class="nx">num2</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">as</span><span class="p">.</span><span class="nx">numeric</span><span class="p">(</span><span class="nx">num1</span><span class="p">)</span> <span class="o">+</span> <span class="k">as</span><span class="p">.</span><span class="nx">numeric</span><span class="p">(</span><span class="nx">num2</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="nx">resta</span> <span class="o">&lt;-</span> <span class="kd">function</span><span class="p">(</span><span class="nx">num1</span><span class="p">,</span> <span class="nx">num2</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">as</span><span class="p">.</span><span class="nx">numeric</span><span class="p">(</span><span class="nx">num1</span><span class="p">)</span> <span class="o">-</span> <span class="k">as</span><span class="p">.</span><span class="nx">numeric</span><span class="p">(</span><span class="nx">num2</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="nx">mult</span> <span class="o">&lt;-</span> <span class="kd">function</span><span class="p">(</span><span class="nx">num1</span><span class="p">,</span> <span class="nx">num2</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">as</span><span class="p">.</span><span class="nx">numeric</span><span class="p">(</span><span class="nx">num1</span><span class="p">)</span> <span class="o">*</span> <span class="k">as</span><span class="p">.</span><span class="nx">numeric</span><span class="p">(</span><span class="nx">num2</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="nx">div</span> <span class="o">&lt;-</span> <span class="kd">function</span><span class="p">(</span><span class="nx">num1</span><span class="p">,</span> <span class="nx">num2</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span><span class="p">(</span><span class="nx">num2</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">){</span>
+    <span class="k">as</span><span class="p">.</span><span class="nx">numeric</span><span class="p">(</span><span class="nx">num1</span><span class="p">)</span> <span class="o">/</span> <span class="k">as</span><span class="p">.</span><span class="nx">numeric</span><span class="p">(</span><span class="nx">num2</span><span class="p">)</span>
+  <span class="p">}</span><span class="k">else</span><span class="p">{</span>
+    <span class="dl">"</span><span class="s2">No se puede dividir por 0</span><span class="dl">"</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="nx">poli</span> <span class="o">&lt;-</span> <span class="kd">function</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">,</span> <span class="nx">c</span><span class="p">)</span> <span class="p">{</span>
+
+  <span class="nx">discriminante</span> <span class="o">&lt;-</span> <span class="p">(</span><span class="nx">b</span><span class="o">^</span><span class="mi">2</span><span class="p">)</span> <span class="o">-</span> <span class="p">(</span><span class="mi">4</span><span class="o">*</span><span class="nx">a</span><span class="o">*</span><span class="nx">c</span><span class="p">)</span>
+
+  <span class="k">if</span><span class="p">(</span><span class="nx">discriminante</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">){</span>
+    <span class="nx">error</span> <span class="o">&lt;-</span> <span class="dl">"</span><span class="s2">No tiene solucion</span><span class="dl">"</span>
+  <span class="p">}</span>
+<span class="p">}</span></code></pre></figure>
+
+<p><img src="/images/pages/r_api_calculadora.jpg" alt="r_api_calculadora.jpg" /></p>
+
+<p><img src="/images/pages/api_funcionando.gif" alt="api_funcionando.gif" /></p>
+
+<p><em>Repositorio con el contenido</em></p>
+
+<p><a href="https://github.com/rubenarcos2/api_rest_flask_python"><img src="/images/pages/repository_small.png" alt="Repositorio" /></a></p>]]></content><author><name></name></author><category term="R" /><category term="api" /><category term="rest" /><category term="flask" /><summary type="html"><![CDATA[Api rest en R]]></summary></entry><entry><title type="html">IA - En la web con Streamlit</title><link href="http://localhost:4000/2022/01/29/IA_en_la_web-Streamlit/" rel="alternate" type="text/html" title="IA - En la web con Streamlit" /><published>2022-01-29T15:33:28+01:00</published><updated>2022-01-29T15:33:28+01:00</updated><id>http://localhost:4000/2022/01/29/IA_en_la_web-Streamlit</id><content type="html" xml:base="http://localhost:4000/2022/01/29/IA_en_la_web-Streamlit/"><![CDATA[<h1 id="instalación-de-streamlit">Instalación de Streamlit</h1>
+
+<p>Mediante el uso de <a href="https://streamlit.io/">streamlit</a> podemos hacer visibles el uso de nuestros modelos de IA para cualquier usuario.</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js">    <span class="nx">pip</span> <span class="nx">install</span> <span class="nx">streamlit</span></code></pre></figure>
+
+<p>y en el entorno de env que previamente has creado, ejecutar</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js">    <span class="nx">streamlit</span> <span class="nx">run</span> <span class="nx">main</span><span class="p">.</span><span class="nx">py</span></code></pre></figure>
+
+<p>dentro del fichero main, nuestro ‘hello world’ sería:</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js">    <span class="k">import</span> <span class="nx">streamlit</span> <span class="k">as</span> <span class="nx">st</span>
+
+    <span class="nx">st</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="dl">"</span><span class="s2">Hello world!</span><span class="dl">"</span><span class="p">)</span></code></pre></figure>
+
+<p>esto levantará un servidor</p>
+
+<p><img src="up_streamlit.jpg" alt="" /></p>
+
+<p>y ya tendrás tus scripts de python con IA corriendo en la web, con una interfaz transparente al usuario. Ahora queda la parte más dificil, enlazar nuestro repositorio git con los códigos fuentes a heroku y hacer deploy automático en cada cambio.</p>
+
+<h1 id="conexión-de-git-con-heroku">Conexión de git con heroku</h1>
+
+<p><a href="">https://devcenter.heroku.com/articles/git</a></p>
+
+<p><a href="">https://devcenter.heroku.com/articles/getting-started-with-python</a></p>
+
+<h2 id="subiendo-nuestro-app-stramlit">Subiendo nuestro app Stramlit</h2>
+
+<p>Actualiza los cambios en el repositorio y heroku lo detecta automáticamente, pero para ello es importante que esté activado el “Automatically deploys from master”, luego en “activity” podrás ver el curso del build y cuando indique la ruta de la nueva app querrá decir que ha terminado.</p>
+
+<h3 id="nota">nota</h3>
+
+<p>He tenido un problema con el fichero del dataset, que es general a todos los fichero que se tengan que acceder desde Heroku y es que no admite las rutas relativas, por ello con este trozo de código se soluciona:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">BASE_DIR <span class="o">=</span> os.path.dirname<span class="o">(</span>os.path.dirname<span class="o">(</span>os.path.abspath<span class="o">(</span>__file__<span class="o">)))</span>
+<span class="c">#Donde se tenga que apuntar la ruta</span>
+ruta <span class="o">=</span> os.path.join<span class="o">(</span>BASE_DIR, <span class="s1">'nombre_fichero'</span><span class="o">)</span></code></pre></figure>
+
+<p><em>Repositorio con el contenido</em></p>
+
+<p><a href="https://github.com/rubenarcos2/streamlit-perceptron-iris"><img src="/images/pages/repository_small.png" alt="Repositorio" /></a></p>]]></content><author><name></name></author><category term="IA" /><category term="streamlit" /><category term="python" /><category term="ML" /><category term="web" /><summary type="html"><![CDATA[Instalación de Streamlit]]></summary></entry><entry><title type="html">IA - Perceptrón clasificador dataset iris</title><link href="http://localhost:4000/2022/01/29/IA_perceptron_clasificador_iris/" rel="alternate" type="text/html" title="IA - Perceptrón clasificador dataset iris" /><published>2022-01-29T15:33:28+01:00</published><updated>2022-01-29T15:33:28+01:00</updated><id>http://localhost:4000/2022/01/29/IA_perceptron_clasificador_iris</id><content type="html" xml:base="http://localhost:4000/2022/01/29/IA_perceptron_clasificador_iris/"><![CDATA[<h1 id="perceptrón-clasificador-para-el-dataset-iris">Perceptrón clasificador para el dataset iris</h1>
+
+<p>A continuación, se muestra un proyecto de IA realizado para la clasificación del dataset de flores iris, que se ha portado a la web para que se pueda utilizar por cualquier usuario introduciendo las medidas de las flores.</p>
+
+<p>Abrir el proyecto uso de perceptrones para la clasificación de flores - dataset iris</p>
+
+<p><a href="https://perceptron-clasificador-iris.herokuapp.com/"><img src="/images/pages/app_perceptron_heroku.jpg" alt="Abrir el proyecto uso de perceptrones para la clasificación de flores - dataset iris" /></a></p>
+
+<p>Se ha portado mediante streamlit.</p>]]></content><author><name></name></author><category term="IA" /><category term="streamlit" /><category term="python" /><category term="ML" /><category term="web" /><category term="iris" /><summary type="html"><![CDATA[Perceptrón clasificador para el dataset iris]]></summary></entry><entry><title type="html">Android - Tu web en una app</title><link href="http://localhost:4000/2021/11/23/Tu_web_en_app_Android/" rel="alternate" type="text/html" title="Android - Tu web en una app" /><published>2021-11-23T15:33:28+01:00</published><updated>2021-11-23T15:33:28+01:00</updated><id>http://localhost:4000/2021/11/23/Tu_web_en_app_Android</id><content type="html" xml:base="http://localhost:4000/2021/11/23/Tu_web_en_app_Android/"><![CDATA[<p>Si quieres tener tu página web en una app mobile, solamente tenemos que crear un proyecto nuevo en Android Studio, y hacer lo siguiente:</p>
+
+<h3 id="crear-un-componente-webview-en-el-layout">Crear un componente webview en el layout</h3>
+
+<p>Sustituye el código del <em>activity_main.xml</em> por el siguiente, que añade un componente webview, es realmente una instancia del navegador web.</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;WebView</span>
+        <span class="na">android:id=</span><span class="s">"@+id/webview"</span>
+        <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+        <span class="na">android:layout_height=</span><span class="s">"match_parent"</span>
+        <span class="nt">/&gt;</span>
+</code></pre></div></div>
+
+<p>Veras en la versión de diseño que ocupa todo el espacio del Activity.</p>
+
+<h3 id="permisos-de-la-aplicación">Permisos de la aplicación</h3>
+
+<p>en el fichero <em>AndroidManifest.xml</em> debajo de la declaración del <em>package</em>, añade el código siguiente que habilita los permisos de Internet.</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;uses-permission</span> <span class="na">android:name=</span><span class="s">"android.permission.INTERNET"</span> <span class="nt">/&gt;</span>
+</code></pre></div></div>
+
+<p>También es recomendable añadir en las propiedades de la aplicación:</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code>android:usesCleartextTraffic="true"
+</code></pre></div></div>
+
+<p>Finalmente el Manifest queda así:</p>
+
+<p><img src="/images/pages/manifest.png" alt="Manifest" /></p>
+
+<h3 id="asignación-de-la-url-web-y-carga-del-webview">Asignación de la URL web y carga del webview</h3>
+
+<p>En la actividad principal <em>MainActivity.java</em>, vamos a añadir las propiedades necesarias de comportamiento del webview, así como la ruta de nuestra web, para que la carge desde el inicio de la aplicación.</p>
+
+<p>Para la asignación del webview de componente con el del layout:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">WebView</span> <span class="n">myWebView</span> <span class="o">=</span> <span class="o">(</span><span class="nc">WebView</span><span class="o">)</span> <span class="n">findViewById</span><span class="o">(</span><span class="no">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">webview</span><span class="o">);</span>
+</code></pre></div></div>
+
+<p>Las propiedades de JS activo y contenido:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">WebSettings</span> <span class="n">webSettings</span> <span class="o">=</span> <span class="n">myWebView</span><span class="o">.</span><span class="na">getSettings</span><span class="o">();</span>
+<span class="n">webSettings</span><span class="o">.</span><span class="na">setJavaScriptEnabled</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
+<span class="n">webSettings</span><span class="o">.</span><span class="na">getAllowContentAccess</span><span class="o">();</span>
+</code></pre></div></div>
+
+<p>La creación de un cliente de webview, es decir, una instancia del navegador que cargará dentro de nuestro visor:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">myWebView</span><span class="o">.</span><span class="na">setWebViewClient</span><span class="o">(</span><span class="k">new</span> <span class="nc">WebViewClient</span><span class="o">());</span>
+<span class="n">myWebView</span><span class="o">.</span><span class="na">loadUrl</span><span class="o">(</span><span class="s">"https://www.rarcos.com"</span><span class="o">);</span>
+</code></pre></div></div>
+
+<p>Finalmente la clase <em>MainActivity.java</em> queda así:</p>
+
+<p><img src="/images/pages/mainactivity.png" alt="MainActivity" /></p>
+
+<h3 id="personalización-y-estilos">Personalización y estilos</h3>
+
+<p>Si ejecutas ahora la aplicación, verás que funciona perfectamente, pero que nos ha añadido una barra con un título y ha coloreado tanto esta barra como la superior del teléfono.</p>
+
+<p>Si deseas cambiar el nombre y te gusta así, ve a los recursos de texto <em>res-&gt;values-&gt;strings.xml</em> y cambialo</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;resources&gt;</span>
+    <span class="nt">&lt;string</span> <span class="na">name=</span><span class="s">"app_name"</span><span class="nt">&gt;</span>Rubén Arcos<span class="nt">&lt;/string&gt;</span>
+<span class="nt">&lt;/resources&gt;</span>
+</code></pre></div></div>
+
+<p>En mi caso no me gustaba y opté por quitar la barra con el título y el color de ambas. Para ello hay que cambiar los recursos del tema (tanto para el dark como para el light) ubicados en <em>res-&gt;values-&gt;themes/themes.xml</em> añadiendo la siguiente línea:</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;item</span> <span class="na">name=</span><span class="s">"windowNoTitle"</span><span class="nt">&gt;</span>true<span class="nt">&lt;/item&gt;</span>
+</code></pre></div></div>
+
+<p>Para finalizar se puede generar los iconos de la app que se mostrarán en el instalador y tenemos que generar para las distintas densidades de pixel en pantalla (DPI), siguiedo el asistente que se encuentra haciendo clic con el botón derecho sobre la carpeta de recursos <em>res</em>:</p>
+
+<p><img src="/images/pages/imageassets.png" alt="ImageAssets" /></p>
+
+<p>Si quieres ver el resultado, te puedes descargar mi app</p>
+
+<p><strong>App con acceso a esta web</strong></p>
+
+<p><a href="/images/pages/rarcos.com.apk"><img src="/images/pages/Code-Optimization-3-256x2561.png" alt="App rarcos.com" /></a></p>]]></content><author><name></name></author><category term="Android" /><category term="apk" /><category term="app" /><summary type="html"><![CDATA[Si quieres tener tu página web en una app mobile, solamente tenemos que crear un proyecto nuevo en Android Studio, y hacer lo siguiente:]]></summary></entry><entry><title type="html">IoT - Proyectos y Mqtt en openhab</title><link href="http://localhost:4000/2021/10/13/IoT_proyectos_openhab/" rel="alternate" type="text/html" title="IoT - Proyectos y Mqtt en openhab" /><published>2021-10-13T16:33:28+02:00</published><updated>2021-10-13T16:33:28+02:00</updated><id>http://localhost:4000/2021/10/13/IoT_proyectos_openhab</id><content type="html" xml:base="http://localhost:4000/2021/10/13/IoT_proyectos_openhab/"><![CDATA[<h1 id="proyectos-para-domotizar-things-con-openhab">Proyectos para domotizar things con OpenHab</h1>
+
+<p>LLevo mucho tiempo haciendo <em>things</em> con Arduino y sus variantes: ESP8266, ESP32. Y no he querido publicar nada hasta ahora porque veo que la utilidad real viene cuando se puede controlar desde una central y sus salida web, desde TV, Smartphones, Apps… Es aquí cuando la automatización se vuelve universal y cualquier usuario sin conocimiento puede dar instrucciones, recibir datos de sensores y poder automatizar tareas de varias <em>things</em> entre sí y demás. En mi caso los proyectos más grandes e interesantes que he realizado son:</p>
+
+<ul>
+  <li>Regadera IoT</li>
+  <li>Termómetro y Humedad interior</li>
+  <li>Estor IoT</li>
+</ul>
+
+<p>He probado varias <em>centralitas</em> que gestionen las <em>things</em> y que utilizen el MQTT como broker para la comunicación como estandar.
+Aquí estan las principales: <a href="https://alternativeto.net/feature/home-automation/">https://alternativeto.net/feature/home-automation/</a></p>
+
+<p>También tengo que decir que primero decidí como condicion que debería aprender a hacer las <em>things</em> autónomas, es decir, que cada una de ella realizara las tareas que tenían que hacer de forma autónoma (solo con los microcontroladores) y a ser posible tener un acceso web para ver o tomar acciones. Ha sido después de haber conseguido cumplir con este requisito autoimpuesto, cuando he investigado centros de control y empezado a probarlos.</p>
+
+<p>Actualmente tengo montado dos versiones de cada una de las <em>things</em> la autónoma y la que hace de cliente para OpenHab o cualquier servidor que implemente MQTT. Openhab lo he montado con la imagen de OpenHabian que facilitan en una Raspberry Pi 3 B+ y funciona perfectamente (eso sí con un cargador de 2,5 amp como el original) aunque tienen una carga apreciable en el SO. En una vps tengo HomeAssistants dockerizado. Los dos los he probado a dockerizar, pero Openhab me ha dado un problema de puertos del MQTT que no he conseguido resolver por ahora. En la vps me ha funcionado muy lento, requiere muchos mas recursos.</p>
+
+<h2 id="reloj-meteorológico">Reloj meteorológico</h2>
+
+<p><img src="/images/pages/reloj.png" alt="" />
+<img src="/images/pages/IMG_20211026_120326.jpg" alt="" /></p>
+
+<p>Reloj con sensor de temperatura DHT11 a tiempo real, y obtención de la previsión meteorológica mediante la API de <a href="http://openweathermap.org/">http://openweathermap.org/</a> y el envío mediante MQTT de los datos del sensor local a Openhab.</p>
+
+<figure class="video_container">
+  <iframe src="/images/pages/VID_20211026_114524.mp4" frameborder="0" allowfullscreen="true"> </iframe>
+</figure>
+
+<p>Código fuente y partes imprimibles:</p>
+
+<p><a href="https://github.com/rubenarcos2/IoT-My_learning_path/tree/main/Mqtt/LCD_clock_openweather"><img src="/images/pages/repository_small.png" alt="Repositorio" /></a></p>
+
+<h2 id="regadera-iot">Regadera IoT</h2>
+
+<p><img src="/images/pages/IMG_20200904_195754.jpg" alt="" /></p>
+
+<p>Regadera funcionando de forma autónoma, tiene un reloj interno que se activa a una hora y riega mientras pasa un minuto y hasta que detecta saturación de la humedad de la tierra, através del sensor capacitativo de humedad que está clavado en la tierra.</p>
+
+<figure class="video_container">
+  <iframe src="/images/pages/VID_20200904_195800.mp4" frameborder="0" allowfullscreen="true"> </iframe>
+</figure>
+
+<p>Código fuente y partes imprimibles:</p>
+
+<p><a href="https://github.com/rubenarcos2/IoT-My_learning_path/tree/main/Mqtt/regader_iot_mqtt"><img src="/images/pages/repository_small.png" alt="Repositorio" /></a></p>]]></content><author><name></name></author><category term="iot" /><category term="mqtt" /><category term="arduino" /><category term="raspberrypi" /><category term="esp8266" /><summary type="html"><![CDATA[Proyectos para domotizar things con OpenHab]]></summary></entry><entry><title type="html">JS - Conversion de ES6 a ES5, transpilado</title><link href="http://localhost:4000/2021/08/14/Conversion_js_de_es6_a_es5-transpilado/" rel="alternate" type="text/html" title="JS - Conversion de ES6 a ES5, transpilado" /><published>2021-08-14T16:33:28+02:00</published><updated>2021-08-14T16:33:28+02:00</updated><id>http://localhost:4000/2021/08/14/Conversion_js_de_es6_a_es5-transpilado</id><content type="html" xml:base="http://localhost:4000/2021/08/14/Conversion_js_de_es6_a_es5-transpilado/"><![CDATA[<h1 id="transpilación-con-babel">Transpilación con Babel</h1>
+
+<p>Transpilar manualmente el código ES6 a ES5 es posible, aunque la conversión manual sólo te lleves unos minutos, es insostenible a medida que aumenta el tamaño del archivo JavaScript.</p>
+
+<p>Dado que ES6 es previsiblemente compatible con versiones anteriores, un grupo de programadores de JavaScript ha desarrollado una biblioteca de JavaScript llamada Babel que transpila JavaScript ES6 a ES5.</p>
+
+<p><em>La transpilación es el proceso de convertir un lenguaje de programación a otro.</em></p>
+
+<p>Los siguientes comandos sirve para utilizar Babel y transpilar la nueva versión de JavaScript (ES6), fácil de escribir, a la antigua versión de JavaScript (ES5), compatible con el navegador.</p>
+
+<p>En las siguientes instrucciones, pasarás el código de JavaScript ES6 a Babel, que lo transpilará a ES5 y lo escribirá en un archivo en el directorio lib.</p>
+
+<p>Esto instala uno de los dos paquetes <em>Babel</em> necesarios.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm <span class="nb">install </span>babel-cli
+</code></pre></div></div>
+
+<p>Esto instala el segundo de los dos paquetes Babel necesarios.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm <span class="nb">install </span>babel-preset-env
+</code></pre></div></div>
+
+<p>Puedes ver el código ES5 en ./lib/main.js.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm run build
+</code></pre></div></div>
+
+<p>Es posible que tengas que actualizar para ver el directorio lib recién creado.</p>
+
+<p>Resultado del proceso de transpilado de ES6 a ES5:</p>
+
+<table>
+  <tbody>
+    <tr>
+      <td><img src="/images/pages/ES6.png" alt="" /></td>
+      <td><img src="/images/pages/ES5.png" alt="" /></td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Recuerda que si a los comandos anteriores les añades -D, indica a npm que añada cada paquete a una propiedad llamada devDependencies en package.json. Una vez que las dependencias del proyecto están listadas en devDependencies, otros desarrolladores pueden ejecutar su proyecto sin instalar cada paquete por separado. En su lugar, pueden simplemente ejecutar npm install - que indica a npm que busque dentro de package.json y descargue todos los paquetes listados en devDependencies.</p>
+
+<h2 id="transpilado-a-una-versión-específica">Transpilado a una versión específica</h2>
+
+<p>Por defecto, como se ha comprobado antes, se transpila a ES5, pero si queremos hacerlo a cualquier otra versión de ECMAScript, tenemos que crear en la raiz del proyecto el fichero  <em>.babelrc</em> .</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">touch</span> .babelrc
+</code></pre></div></div>
+
+<p>Dentro de .babelrc necesita definir el preajuste para su archivo JavaScript inicial. El preajuste especifica la versión de su archivo JavaScript inicial.</p>
+
+<p>Para especificar que estamos transpilando código desde una fuente ES6+, tenemos que añadir el siguiente objeto JavaScript en .babelrc:</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"presets"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"env"</span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<p>Cuando se ejecuta Babel, busca en .babelrc para determinar la versión del archivo JavaScript inicial. En este caso, [“env”] indica a Babel que transpile cualquier código de las versiones ES6 y posteriores.</p>
+
+<p><img src="/images/pages/proyect_schema.png" alt="" /></p>
+
+<p>Hay un último paso antes de poder transpilar nuestro código. Necesitamos especificar un script en package.json que inicie la transpilación de ES6+ a ES5.</p>
+
+<p>Dentro del archivo package.json, hay una propiedad llamada <strong>scripts</strong> así:</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nl">"scripts"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="nl">"test"</span><span class="p">:</span><span class="w"> </span><span class="s2">"echo </span><span class="se">\"</span><span class="s2">Error: no test specified</span><span class="se">\"</span><span class="s2"> &amp;&amp; exit 1"</span><span class="w">
+</span><span class="p">}</span><span class="err">,</span><span class="w">
+</span></code></pre></div></div>
+
+<p>Añadimos la última línea de  <strong>build</strong> :</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nl">"scripts"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="nl">"test"</span><span class="p">:</span><span class="w"> </span><span class="s2">"echo </span><span class="se">\"</span><span class="s2">Error: no test specified</span><span class="se">\"</span><span class="s2"> &amp;&amp; exit 1"</span><span class="w">
+   </span><span class="nl">"build"</span><span class="p">:</span><span class="w"> </span><span class="s2">"babel src -d lib"</span><span class="w">
+</span><span class="p">}</span><span class="err">,</span><span class="w">
+</span></code></pre></div></div>
+
+<p>Así especificamos que se transpile a ES5.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm run build
+</code></pre></div></div>]]></content><author><name></name></author><category term="es5" /><category term="es6" /><category term="js" /><summary type="html"><![CDATA[Transpilación con Babel]]></summary></entry><entry><title type="html">Actualización web a HTTPS</title><link href="http://localhost:4000/2018/11/01/Actualizacion_web_a_https/" rel="alternate" type="text/html" title="Actualización web a HTTPS" /><published>2018-11-01T15:33:28+01:00</published><updated>2018-11-01T15:33:28+01:00</updated><id>http://localhost:4000/2018/11/01/Actualizacion_web_a_https</id><content type="html" xml:base="http://localhost:4000/2018/11/01/Actualizacion_web_a_https/"><![CDATA[<p>He actualizado recientemente esta web para que satisfaga las nuevas exigencias de navegación segura, concretamente con un certificado de seguridad, para que la comunicación se realice de forma segura mediante el protocolo HTTPS.</p>
+
+<p><img src="/images/pages/Scan_Secured_Web.png" alt="" /></p>
+
+<p>Como podeis comprobar en la imagen, tras el <a href="https://www.ssllabs.com/ssltest/analyze.html?d=rarcos.com">escaneo de toda la traza de ruta</a> de redirecciones desde el dominio (DNS) hasta el alojamiento web (hosting) se realiza de forma segurida y encriptada, por tanto.</p>
+
+<p>Espero que disfruteis de todos los contenidos e información de mi web como hasta ahora, pero con la tranquilidad de todas las ventajas que ofrece la navegación segura.</p>
+
+<p>Puedes comprobarlo en tu barra de búsqueda:</p>
+
+<p><img src="/images/pages/certificado-ssl-linkideia1.png" alt="" /></p>]]></content><author><name></name></author><category term="web" /><category term="https" /><summary type="html"><![CDATA[He actualizado recientemente esta web para que satisfaga las nuevas exigencias de navegación segura, concretamente con un certificado de seguridad, para que la comunicación se realice de forma segura mediante el protocolo HTTPS.]]></summary></entry><entry><title type="html">Spring - WebAPI RESTful Arduino &amp;lt;-&amp;gt; Raspberry</title><link href="http://localhost:4000/2018/10/19/WebAPI_RESTful_Arduino-Raspberry_con_Spring/" rel="alternate" type="text/html" title="Spring - WebAPI RESTful Arduino &amp;lt;-&amp;gt; Raspberry" /><published>2018-10-19T16:33:28+02:00</published><updated>2018-10-19T16:33:28+02:00</updated><id>http://localhost:4000/2018/10/19/WebAPI_RESTful_Arduino-Raspberry_con_Spring</id><content type="html" xml:base="http://localhost:4000/2018/10/19/WebAPI_RESTful_Arduino-Raspberry_con_Spring/"><![CDATA[<p>He realizado el siguiente proyecto de pruebas RESTful para la comunicación mediante una interfaz cliente en Arduino y Raspberry pi y con un servidor basado en Spring para la gestión de la API. En ambos clientes se dispone de acceso a los elementos físicos de hardware mediante comunicación I/O a las GPIOs correspondientes.</p>
+
+<p><img src="/images/pages/171211-20Arduino20Vs20Raspberry20Pi1.jpg" alt="" /></p>
+
+<p>La idea de realización consiste en la gestión de un contador basado e instalado en una placa Arduino Uno que consta de un botón y un display LED para la visualización del mismo, a su vez el programa de este gestiona la posibilidad de incremento físico del contador (mediante el botón), como mediante la recepción exterior por el puerto COM (USB) y la asignación de un valor expecífico recibido en remoto.</p>
+
+<p>Por otra parte la placa Raspberry Pi, alberga el servidor de gestió de la API, la comunicación con Arduino Uno (mediante USB, aunque podría haberse instalado online: bluetooth, wifi local/nube) y a la GPIO.</p>
+
+<p>El consumo de la API se podrá realizar a travás de cualquier cliente HTTP, bien sea web o App Android, por ejemplo (estando en construcción esta última, que mostrará aquí en breve, cuando está libre de errores).</p>
+
+<p><img src="/images/pages/diagrama_sistema.jpg" alt="" /></p>
+
+<h4 id="composición-y-diseño"><strong>Composición y diseño:</strong></h4>
+
+<p>Hardware : Arduino</p>
+
+<ul>
+  <li>Display LED numárico y Botón con comunicación I/O sobre COM port</li>
+  <li>Arduino comunnication I/O COM port, Display LED output, Botón input, Contador</li>
+  <li>Middleware &amp; Server : Raspberry Pi</li>
+  <li>Tomcat con Spring WebAPI services Raspberry Py</li>
+  <li>I/O GPIO controller, LED pin out</li>
+  <li>Client : Cualquier conexión HTTP</li>
+  <li>HTTP API consume: Web &amp; App Android</li>
+</ul>
+
+<h4 id="elementos-de-hardware-que-componen-el-sistema"><strong>Elementos de Hardware</strong> que componen el sistema:</h4>
+
+<h3 id="la-creación-del-servidor">La creación del servidor</h3>
+
+<p>El servidor se ha creado mediante el framework de Spring incluyendo:</p>
+
+<ul>
+  <li>Comunicación DB mediante JPA e Hibernate</li>
+  <li>SSH para depuración y deploy remoto en Raspberry Pi</li>
+  <li>Gestión HTTP para los controller de la API</li>
+  <li>Comunicación y gestión de puertos GPIO (elementos físicos de hardware)
+    <ul>
+      <li>Arduino con conexión COM (USB) a Raspberry Pi</li>
+      <li>GPIO I/O Raspberry Pi</li>
+    </ul>
+  </li>
+  <li>Generador aleatorio de nombres (crea los datos de la DB con formatos ‘previsibles’</li>
+</ul>
+
+<blockquote>
+  <p><em>Destacar que está pendiente de implementar lo incorporación de seguridad (Spring Security) y encriptación de las comunicaciones mediante HTTPS y DB de datos sensibles</em></p>
+</blockquote>
+
+<p><img src="/images/pages/web201.png" alt="" /> En el servidor se encuentra toda gestión de la comunicación con la DB, tambián están los DTO (modelos de datos que se publican en la api para su futuro consumo desde un app Android), los controladores: datos de la DB (DTOs), Contador Android, LED en Raspberry pi y sus correspodientes driver para acceso a GPIO y comunicación puerto COM.</p>
+
+<p>La compilación, depuración y deploy se está realizando en remoto desde un PC que se encuentra en la misma (o no) red que la Raspberry Pi, a la que se ataca mediante SSH para su control y subida de ficheros. La configuración de esta conexión se encuentra declarada el pom.xml, pero está prevista la externalización a un fichero externo encriptado (está retrasado por la dependencia de una librería de terceros).</p>
+
+<p>A continuación se muestra el transcurso de un funcionamiento esperado para sistema:</p>
+
+<ol>
+  <li>Deploy remoto en raspberry</li>
+  <li>Encendido y comunicación Raspberry&lt;-&gt;Arduino</li>
+  <li>Puesta en marcha e incremento contador</li>
+  <li>Consumo API y modificación contador desde esta</li>
+</ol>
+
+<p>Incremento del contador de forma manual (mediante botón físico) y comunición Arduino &gt; Raspberry Pi mediante puerto COM y consumo API obtención contador</p>
+
+<video width="100%" muted="" controls=""><source src="/images/pages/arduino_on_manual.mp4" type="video/mp4" /></video>
+
+<p>Comunicación Raspberry Pi GPIO desde servidor mediante consumo API, control y obtención estado LED</p>
+
+<video width="100%" muted="" controls=""><source src="/images/pages/raspberry_led.mp4" type="video/mp4" /></video>
+
+<p>Comunicación Raspberry Pi &gt; Arduino desde servidor mediante consumo API, control contador</p>
+
+<video width="100%" muted="" controls=""><source src="/images/pages/arduino_ctrl_api.mp4" type="video/mp4" /></video>]]></content><author><name></name></author><category term="web" /><category term="https" /><summary type="html"><![CDATA[He realizado el siguiente proyecto de pruebas RESTful para la comunicación mediante una interfaz cliente en Arduino y Raspberry pi y con un servidor basado en Spring para la gestión de la API. En ambos clientes se dispone de acceso a los elementos físicos de hardware mediante comunicación I/O a las GPIOs correspondientes.]]></summary></entry><entry><title type="html">Spring - API Rest simple</title><link href="http://localhost:4000/2018/06/11/API_Rest_con_Spring/" rel="alternate" type="text/html" title="Spring - API Rest simple" /><published>2018-06-11T16:33:28+02:00</published><updated>2018-06-11T16:33:28+02:00</updated><id>http://localhost:4000/2018/06/11/API_Rest_con_Spring</id><content type="html" xml:base="http://localhost:4000/2018/06/11/API_Rest_con_Spring/"><![CDATA[<ul>
+  <li><a href="http://www.arquitecturajava.com/que-es-rest/">API Rest</a></li>
+  <li><a href="https://projects.spring.io/spring-boot/">Spring Boot</a></li>
+  <li><a href="https://spring.io/guides/gs/rest-service/">Tutorial Spring Rest Service</a></li>
+  <li><a href="https://picodotdev.github.io/blog-bitix/2016/09/ejemplo-de-api-rest-en-java-con-jax-rs-y-spring-boot/">Tutorial JAX-RS Spring Boot</a></li>
+</ul>
+
+<p><strong>Pruebas, código y proyecto</strong></p>
+
+<p><a href="/images/pages/mvc.png"><img src="/images/pages/mvc.png" alt="" /></a></p>
+
+<p>Main.java</p>
+
+<script src="https://emgithub.com/embed.js?target=https%3A%2F%2Fgithub.com%2Frubenarcos2%2Fprueba-api-rest-spring-java%2Fblob%2Fmaster%2Fsrc%2Fmain%2Fjava%2Fcom%2FcitaClientes%2FSpringBootRestExampleApplication.java&amp;style=github-gist&amp;showBorder=on&amp;showLineNumbers=on&amp;showCopy=on"></script>
+
+<p>Controlador</p>
+
+<script src="https://emgithub.com/embed.js?target=https%3A%2F%2Fgithub.com%2Frubenarcos2%2Fprueba-api-rest-spring-java%2Fblob%2Fmaster%2Fsrc%2Fmain%2Fjava%2Fcom%2FcitaClientes%2Fcontrollers%2FPieRestController.java&amp;style=github-gist&amp;showBorder=on&amp;showLineNumbers=on&amp;showCopy=on"></script>
+
+<p>Modelo - Objeto de ejemplo serializable</p>
+
+<script src="https://emgithub.com/embed.js?target=https%3A%2F%2Fgithub.com%2Frubenarcos2%2Fprueba-api-rest-spring-java%2Fblob%2Fmaster%2Fsrc%2Fmain%2Fjava%2Fcom%2FcitaClientes%2Fmodels%2FPie.java&amp;style=github-gist&amp;showBorder=on&amp;showLineNumbers=on&amp;showCopy=on"></script>
+
+<p>Interfaz para extender el ordenamiento de la lista por orden alfabÃ©tico</p>
+
+<script src="https://emgithub.com/embed.js?target=https%3A%2F%2Fgithub.com%2Frubenarcos2%2Fprueba-api-rest-spring-java%2Fblob%2Fmaster%2Fsrc%2Fmain%2Fjava%2Fcom%2FcitaClientes%2Frepositories%2FPieRepository.java&amp;style=github-gist&amp;showBorder=on&amp;showLineNumbers=on&amp;showCopy=on"></script>
+
+<p><em>Repositorio de pruebas</em></p>
+
+<p><a href="https://github.com/rubenarcos2/prueba-api-rest-spring-java"><img src="/images/pages/repository_small.png" alt="Repositorio" /></a></p>]]></content><author><name></name></author><category term="spring" /><category term="api" /><category term="rest" /><category term="java" /><summary type="html"><![CDATA[API Rest Spring Boot Tutorial Spring Rest Service Tutorial JAX-RS Spring Boot]]></summary></entry></feed>
