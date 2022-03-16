@@ -86,7 +86,6 @@
         if (modelo != null) {
           var tensor = tf.tensor1d([parseInt(indexDf)]);
           var prediccion = modelo.predict(tensor).dataSync();
-          console.log(prediccion);
           prediccion = Math.round(prediccion*1000)/1000;
           document.getElementById("resultado").innerHTML = "En el mes " + month + " del año " + year + " habrá un " + prediccion + "% de la población estadounidense desempleada.";
         } else {
