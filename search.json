@@ -1,6 +1,30 @@
 [
   
     {
+      "title"    : "Python - IA ejemplo de uso de RoBERTa Q&amp;A",
+      "category" : "",
+      "tags"     : "python, pytorch, ia, colab, bert",
+      "url"      : "/2022/03/18/IA-Roberta-QA/",
+      "date"     : "2022-03-18 15:33:28 +0100"
+    } ,
+  
+    {
+      "title"    : "Python - IA ejemplo de uso de Bert Q&amp;A exportado con flask",
+      "category" : "",
+      "tags"     : "python, pytorch, ia, flask, bert",
+      "url"      : "/2022/03/18/IA-Bert-flask/",
+      "date"     : "2022-03-18 15:33:28 +0100"
+    } ,
+  
+    {
+      "title"    : "Python - Modelo de IA en Keras con exportación a tensorflow js",
+      "category" : "",
+      "tags"     : "python, keras, ia, tensorflow, js",
+      "url"      : "/2022/03/16/Python-Keras_IA_tf.js/",
+      "date"     : "2022-03-16 15:33:28 +0100"
+    } ,
+  
+    {
       "title"    : "Python - API Rest en Flask",
       "category" : "",
       "tags"     : "python, api, rest, flask",

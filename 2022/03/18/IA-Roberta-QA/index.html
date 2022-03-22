@@ -5,8 +5,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>IA - Perceptrón clasificador dataset iris</title>
-  <meta name='description' content='Proyecto de IA realizado para la clasificación del dataset de flores iris, que se ha portado a la web para que se pueda utilizar por cualquier usuario introd...'>
+  <title>Python - IA ejemplo de uso de RoBERTa Q&A</title>
+  <meta name='description' content='Utilización del modelo de aprendizaje profundo RoBERTa para pregruntas y respuestas.'>
   
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Dancing+Script%7CPT+Serif:400,400i,700%7CLato:400,700%7CRoboto:300,400" rel="stylesheet">
@@ -19,7 +19,7 @@
 
   <!-- Main Stylesheet -->
   <link rel="stylesheet" href="/css/main.css">
-  <link rel="canonical" href="http://localhost:4000/2022/01/29/IA_perceptron_clasificador_iris/">
+  <link rel="canonical" href="http://localhost:4000/2022/03/18/IA-Roberta-QA/">
   <link rel="alternate" type="application/rss+xml" title="Rubén Arcos" href="/feed.xml">
 
   <!-- Chrome, Firefox OS and Opera -->
@@ -142,12 +142,12 @@
   <ul id="results-container" class="search-results-list"></ul>  
 </div> <!-- /.search-box -->
 
-        <div class="post-header" style="background: url(/images/pages/perceptron.png)">
+        <div class="post-header" style="background: url(/images/pages/bert-based-qna-chatbot.jpg)">
   <div class="post-header-info">
-    <h1 class="post-title">IA - Perceptrón clasificador dataset iris</h1>
+    <h1 class="post-title">Python - IA ejemplo de uso de RoBERTa Q&amp;A</h1>
     <div class="post-meta">
-      <time datetime="2022-01-29T15:33:28+01:00">
-         29/01/2022
+      <time datetime="2022-03-18T15:33:28+01:00">
+         18/03/2022
       </time>
     </div>
   </div>
@@ -157,15 +157,29 @@
   <article class="post">
 
     <div class="post-content">
-      <h1 id="perceptrón-clasificador-para-el-dataset-iris">Perceptrón clasificador para el dataset iris</h1>
+      <h1 id="utilización-de-roberta-en-qa">Utilización de RoBERTa en Q&amp;A</h1>
 
-<p>A continuación, se muestra un proyecto de IA realizado para la clasificación del dataset de flores iris, que se ha portado a la web para que se pueda utilizar por cualquier usuario introduciendo las medidas de las flores.</p>
+<p>RoBERTa-base español entrenado en BNE afinado para el conjunto de datos del Corpus de Respuesta a Preguntas en Español (SQAC).
+RoBERTa-base-bne es un modelo de lenguaje enmascarado basado en transformadores para el idioma español. Está basado en el modelo base de RoBERTa y ha sido preentrenado utilizando el mayor corpus de español conocido hasta la fecha, con un total de 570GB de texto limpio y deduplicado procesado para este trabajo, recopilado a partir de los rastreos web realizados por la Biblioteca Nacional de España desde 2009 hasta 2019.</p>
 
-<p>Abrir el proyecto uso de perceptrones para la clasificación de flores - dataset iris</p>
+<p>El modelo original preentrenado se puede encontrar <a href="https://huggingface.co/PlanTL-GOB-ES/roberta-base-bne">aquí</a>:</p>
 
-<p><a href="https://perceptron-clasificador-iris.herokuapp.com/"><img src="/images/pages/app_perceptron_heroku.jpg" alt="Abrir el proyecto uso de perceptrones para la clasificación de flores - dataset iris" /></a></p>
+<p><strong>Dataset</strong></p>
 
-<p>Se ha portado mediante streamlit.</p>
+<p>El conjunto de datos utilizado es el corpus SQAC.</p>
+
+<p><strong>Evaluación y resultados</strong></p>
+
+<p>Puntuación F1: 0,7923 (media de 5 ejecuciones).</p>
+
+<p>Para ver los detalles de la evaluación, visite nuestro repositorio de <a href="https://github.com/PlanTL-GOB-ES/lm-spanish">GitHub</a>.</p>
+
+<hr />
+<p>Si quieres ver el resultado de mi ejemplo de utilización de RoBERTa, te recomiendo visites:</p>
+
+<p><em>Repositorio con el contenido</em></p>
+
+<p><a href="https://colab.research.google.com/drive/16diuU5pQSETl3VQeh6E909YFsbtlfX3Z"><img src="/images/pages/repository_small_colab.png" alt="Repositorio" /></a></p>
 
     </div>
 
@@ -183,32 +197,30 @@
 
       <ul class="post-footer-list">
         <li class="post-footer-item">
-          <a class="post-facebook" href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:4000/2022/01/29/IA_perceptron_clasificador_iris/" onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook" rel="nofollow"><i class="fa fa-facebook" aria-hidden="true"></i><span>Facebook</span></a>
+          <a class="post-facebook" href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:4000/2022/03/18/IA-Roberta-QA/" onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook" rel="nofollow"><i class="fa fa-facebook" aria-hidden="true"></i><span>Facebook</span></a>
         </li>
 
         <li class="post-footer-item">
-          <a class="post-twitter" href="https://twitter.com/intent/tweet?text=IA%20-%20Perceptr%C3%B3n%20clasificador%20dataset%20iris&url=http://localhost:4000/2022/01/29/IA_perceptron_clasificador_iris/" onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter" rel="nofollow"><i class="fa fa-twitter" aria-hidden="true"></i><span>Twitter</span></a>
+          <a class="post-twitter" href="https://twitter.com/intent/tweet?text=Python%20-%20IA%20ejemplo%20de%20uso%20de%20RoBERTa%20Q&A&url=http://localhost:4000/2022/03/18/IA-Roberta-QA/" onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter" rel="nofollow"><i class="fa fa-twitter" aria-hidden="true"></i><span>Twitter</span></a>
         </li>
 
         <li class="post-footer-item">
-          <a href="http://pinterest.com/pin/create/button/?url=http://localhost:4000/2022/01/29/IA_perceptron_clasificador_iris/&amp;media=http://localhost:4000/images/pages/perceptron.png&amp;description=IA%20-%20Perceptr%C3%B3n%20clasificador%20dataset%20iris" onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=900,height=500,toolbar=1,resizable=0'); return false;" class="post-pinterest" title="Share on Pinterest" rel="nofollow"><i class="fa fa-pinterest" aria-hidden="true"></i><span>Pinterest</span></a>
+          <a href="http://pinterest.com/pin/create/button/?url=http://localhost:4000/2022/03/18/IA-Roberta-QA/&amp;media=http://localhost:4000/images/pages/bert-based-qna-chatbot.jpg&amp;description=Python%20-%20IA%20ejemplo%20de%20uso%20de%20RoBERTa%20Q&A" onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=900,height=500,toolbar=1,resizable=0'); return false;" class="post-pinterest" title="Share on Pinterest" rel="nofollow"><i class="fa fa-pinterest" aria-hidden="true"></i><span>Pinterest</span></a>
         </li>
       </ul>
       
       <div class="post-tag">
         <span>Tags:</span>
         
-        <a href="/tags#IA" class="tag">IA</a>
-        
-        <a href="/tags#streamlit" class="tag">streamlit</a>
-        
         <a href="/tags#python" class="tag">python</a>
         
-        <a href="/tags#ML" class="tag">ML</a>
+        <a href="/tags#pytorch" class="tag">pytorch</a>
         
-        <a href="/tags#web" class="tag">web</a>
+        <a href="/tags#ia" class="tag">ia</a>
         
-        <a href="/tags#iris" class="tag">iris</a>
+        <a href="/tags#colab" class="tag">colab</a>
+        
+        <a href="/tags#bert" class="tag">bert</a>
         
       </div>
       
@@ -250,10 +262,8 @@
 
     <div class="page-navigation clearfix">
       
-      <a class="prev-page" href="/2022/01/29/IA_en_la_web-Streamlit/"><i class="fa fa-angle-left" aria-hidden="true"></i><span>IA - En la web con Streamlit</span></a>
+      <a class="prev-page" href="/2022/03/18/IA-Bert-flask/"><i class="fa fa-angle-left" aria-hidden="true"></i><span>Python - IA ejemplo de uso de Bert Q&A exportado con flask</span></a>
       
-      
-      <a class="next-page" href="/2022/02/11/API_Rest_en_R/"><span>R - Api rest</span><i class="fa fa-angle-right" aria-hidden="true"></i></a>
       
     </div>
 

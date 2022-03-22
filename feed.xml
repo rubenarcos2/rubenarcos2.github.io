@@ -1,4 +1,246 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="https://www.rarcos.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://www.rarcos.com/" rel="alternate" type="text/html" /><updated>2022-02-25T11:02:49+01:00</updated><id>https://www.rarcos.com/feed.xml</id><title type="html">Rubén Arcos</title><subtitle>Desarrollador de aplicaciones multiplataformas</subtitle><entry><title type="html">Python - API Rest en Flask</title><link href="https://www.rarcos.com/2022/02/15/Python-API_Rest_en_Flask/" rel="alternate" type="text/html" title="Python - API Rest en Flask" /><published>2022-02-15T15:33:28+01:00</published><updated>2022-02-15T15:33:28+01:00</updated><id>https://www.rarcos.com/2022/02/15/Python%20-%20API_Rest_en_Flask</id><content type="html" xml:base="https://www.rarcos.com/2022/02/15/Python-API_Rest_en_Flask/"><![CDATA[<h1 id="api-rest-en-python-con-flask">Api rest en Python con Flask</h1>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="https://www.rarcos.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://www.rarcos.com/" rel="alternate" type="text/html" /><updated>2022-03-22T12:12:48+01:00</updated><id>https://www.rarcos.com/feed.xml</id><title type="html">Rubén Arcos</title><subtitle>Desarrollador de aplicaciones multiplataformas</subtitle><entry><title type="html">Python - IA ejemplo de uso de Bert Q&amp;amp;A exportado con flask</title><link href="https://www.rarcos.com/2022/03/18/IA-Bert-flask/" rel="alternate" type="text/html" title="Python - IA ejemplo de uso de Bert Q&amp;amp;A exportado con flask" /><published>2022-03-18T15:33:28+01:00</published><updated>2022-03-18T15:33:28+01:00</updated><id>https://www.rarcos.com/2022/03/18/IA-Bert-flask</id><content type="html" xml:base="https://www.rarcos.com/2022/03/18/IA-Bert-flask/"><![CDATA[<h1 id="utilización-de-bert-en-flask">Utilización de Bert en flask</h1>
+
+<p>El BERT (Bidirectional Encoder Representations from Transformers) puede utilizarse para una de estas aplicaciones, es decir, la de preguntas y respuestas. Le das al modelo de aprendizaje profundo un párrafo para que lo lea y luego le haces una pregunta relacionada con el mismo. Hay muchas aplicaciones de este tipo en las que BERT ha demostrado ser lo suficientemente fuerte en PNL (Comprensión del Lenguaje Natural para ser más precisos). El concepto de BERT se introdujo en 2018. Desde entonces, han surgido variaciones de BERT como ALBERT, RoBERTa, MobileBERT, etc. Puede leer sobre el documento original <a href="https://arxiv.org/pdf/1810.04805.pdf">aquí</a>.</p>
+
+<p>Utilizaremos una versión de BERT especial para web, más ligera, está en <a href="https://huggingface.co/mrm8488/distill-bert-base-spanish-wwm-cased-finetuned-spa-squad2-es">huggingface</a> para un conjunto de datos de preguntas y respuestas, es decir, Stanford Question Answering Dataset (SQuAD) y desplegaremos el modelo afinado en Heroku para la inferencia en tiempo real.</p>
+
+<hr />
+
+<p>Esta es la aplicación que yo he realizado basándome en la del tutorial y he aplicado algunas modificaciones:</p>
+
+<p><a href="https://bert-qna-flask.herokuapp.com/">https://bert-qna-flask.herokuapp.com/</a></p>
+
+<hr />
+
+<p><strong>Nota</strong>
+Asegúrese de seguir esta estructura de carpetas:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">/web-app
+|--templates
+|----index.html
+|--app.py
+|--requirements.txt
+|--Procfile</code></pre></figure>
+
+<h2 id="paso-1">Paso 1</h2>
+
+<p>Como esto tiene que ser desplegado en Heroku, vamos a asegurarnos de que Heroku instala todas las bibliotecas necesarias para ejecutar el programa.
+Haz un archivo llamado “requirements.txt” y pon las siguientes librerías en el archivo:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">https://download.pytorch.org/whl/cpu/torch-1.3.1%2Bcpu-cp36-cp36m-linux_x86_64.whl
+<span class="nv">transformers</span><span class="o">==</span>3.0.2
+<span class="nv">numpy</span><span class="o">==</span>1.19.1
+flask
+<span class="nv">joblib</span><span class="o">==</span>0.16.0
+<span class="nv">sentencepiece</span><span class="o">==</span>0.1.91
+<span class="nv">urllib3</span><span class="o">==</span>1.25.10</code></pre></figure>
+
+<p>Para instalar las dependencias en un entorno, tipo anaconda, no funciona la descarga directa de pytorch para cpu. Es necesario ejecutar:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">pip3 <span class="nb">install </span><span class="nv">torch</span><span class="o">==</span>1.3.1+cpu <span class="nv">torchvision</span><span class="o">==</span>0.4.2+cpu <span class="nt">-f</span> https://download.pytorch.org/whl/torch_stable.html</code></pre></figure>
+
+<p>Más info: <a href="https://github.com/pytorch/pytorch/issues/29434">en este enlace</a> y este <a href="https://foroayuda.es/donde-obtengo-una-version-de-pytorch-solo-para-cpu/">otro enlace</a> que tiene el versionado de pytorch.</p>
+
+<h2 id="paso-2">Paso 2</h2>
+
+<p>Haz un archivo llamado “app.py” y pon el siguiente código:</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">os</span>
+
+<span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Flask</span><span class="p">,</span> <span class="n">render_template</span>
+
+<span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">request</span>
+
+<span class="kn">import</span> <span class="nn">torch</span>
+
+<span class="kn">from</span> <span class="nn">transformers</span> <span class="kn">import</span> <span class="n">pipeline</span>
+
+<span class="c1"># name = "twmkn9/albert-base-v2-squad2"
+</span>
+<span class="c1"># name = "distilbert-base-uncased-distilled-squad"
+</span>
+<span class="n">nlp</span> <span class="o">=</span> <span class="n">pipeline</span><span class="p">(</span>
+
+    <span class="s">'question-answering'</span><span class="p">,</span>
+
+    <span class="n">model</span><span class="o">=</span><span class="s">'mrm8488/distill-bert-base-spanish-wwm-cased-finetuned-spa-squad2-es'</span><span class="p">,</span>
+
+    <span class="n">tokenizer</span><span class="o">=</span><span class="p">(</span>
+
+    <span class="s">'mrm8488/distill-bert-base-spanish-wwm-cased-finetuned-spa-squad2-es'</span><span class="p">,</span>
+
+    <span class="p">{</span><span class="s">"use_fast"</span><span class="p">:</span> <span class="bp">False</span><span class="p">}</span>
+
+    <span class="p">)</span>
+
+<span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">answer_question</span><span class="p">(</span><span class="n">question</span><span class="p">,</span> <span class="n">answer_text</span><span class="p">):</span>
+
+    <span class="k">try</span><span class="p">:</span>
+
+    <span class="n">answer</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">({</span><span class="s">'question'</span><span class="p">:</span><span class="n">question</span><span class="p">,</span> <span class="s">'context'</span><span class="p">:</span><span class="n">answer_text</span><span class="p">})</span>
+
+    <span class="k">return</span> <span class="n">answer</span><span class="p">[</span><span class="s">'answer'</span><span class="p">]</span>
+
+    <span class="k">except</span> <span class="nb">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+
+    <span class="k">print</span><span class="p">(</span><span class="s">"Error en la generación de la respuesta:"</span><span class="p">,</span> <span class="n">e</span><span class="p">)</span>
+
+<span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="n">__name__</span><span class="p">)</span>
+
+<span class="o">@</span><span class="n">app</span><span class="p">.</span><span class="n">route</span><span class="p">(</span><span class="s">'/'</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s">'GET'</span><span class="p">,</span> <span class="s">'POST'</span><span class="p">])</span>
+
+<span class="k">def</span> <span class="nf">index</span><span class="p">():</span>
+
+    <span class="k">if</span> <span class="n">request</span><span class="p">.</span><span class="n">method</span> <span class="o">==</span> <span class="s">'POST'</span><span class="p">:</span>
+
+    <span class="n">form</span> <span class="o">=</span> <span class="n">request</span><span class="p">.</span><span class="n">form</span>
+
+    <span class="n">result</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="n">bert_abstract</span> <span class="o">=</span> <span class="n">form</span><span class="p">[</span><span class="s">'paragraph'</span><span class="p">]</span>
+
+    <span class="n">question</span> <span class="o">=</span> <span class="n">form</span><span class="p">[</span><span class="s">'question'</span><span class="p">]</span>
+
+    <span class="n">result</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">form</span><span class="p">[</span><span class="s">'question'</span><span class="p">])</span>
+
+    <span class="n">result</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">answer_question</span><span class="p">(</span><span class="n">question</span><span class="p">,</span> <span class="n">bert_abstract</span><span class="p">))</span>
+
+    <span class="n">result</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">form</span><span class="p">[</span><span class="s">'paragraph'</span><span class="p">])</span>
+
+    <span class="k">return</span> <span class="n">render_template</span><span class="p">(</span><span class="s">"index.html"</span><span class="p">,</span><span class="n">result</span> <span class="o">=</span> <span class="n">result</span><span class="p">)</span>
+
+    <span class="c1"># answer = answer_question(question, bert_abstract)
+</span>
+    <span class="c1"># return answer
+</span>
+    <span class="k">return</span> <span class="n">render_template</span><span class="p">(</span><span class="s">"index.html"</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">'__main__'</span><span class="p">:</span>
+
+    <span class="n">port</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">os</span><span class="p">.</span><span class="n">environ</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="s">"PORT"</span><span class="p">,</span> <span class="mi">5000</span><span class="p">))</span>
+
+    <span class="n">app</span><span class="p">.</span><span class="n">run</span><span class="p">(</span><span class="n">host</span><span class="o">=</span><span class="s">'0.0.0.0'</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="n">port</span><span class="p">)</span></code></pre></figure>
+
+<p>Esto obtendrá el modelo BERT y el tokenizador necesario para el modelo. Hemos utilizado “mrm8488/bert-small-finetuned-squadv2” de huggingface ya que es comparativamente más pequeño que los otros modelos BERT y tenemos un espacio limitado de 512 MBs en la cuenta de nivel gratuito de Heroku. A continuación, creamos un servidor flask para recibir las entradas en forma de párrafos y preguntas.
+Ahora, haz una carpeta llamada “templates” y dentro de la carpeta, crea un archivo llamado “index.html”. Pon el siguiente código en el archivo:</p>
+
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="cp">&lt;!DOCTYPE html&gt;</span>
+
+<span class="nt">&lt;html&gt;</span>
+  <span class="nt">&lt;head&gt;</span>
+    <span class="nt">&lt;title&gt;</span>Bert Question Answering<span class="nt">&lt;/title&gt;</span>
+    <span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">"viewport"</span> <span class="na">content=</span><span class="s">"width=device-width, initial-scale=1.0"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;link</span> <span class="na">href=</span><span class="s">"//netdna.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">media=</span><span class="s">"screen"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;style&gt;</span>
+      <span class="nc">.container</span> <span class="p">{</span>
+        <span class="nl">max-width</span><span class="p">:</span> <span class="m">1000px</span><span class="p">;</span>
+      <span class="p">}</span>
+    <span class="nt">&lt;/style&gt;</span>
+  <span class="nt">&lt;/head&gt;</span>
+  <span class="nt">&lt;body&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"container"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"row-sm-5 row-sm-offset-1"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;h4&gt;</span>Enter a paragraph and a question to test BERT<span class="nt">&lt;/h4&gt;</span>
+            <span class="nt">&lt;form</span> <span class="na">role=</span><span class="s">"form"</span> <span class="na">method=</span><span class="s">'POST'</span> <span class="na">action=</span><span class="s">'/'</span><span class="nt">&gt;</span>
+              <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"form-group"</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;textarea</span> <span class="na">name=</span><span class="s">"paragraph"</span> <span class="na">class=</span><span class="s">"form-control"</span> <span class="na">id=</span><span class="s">"url-box"</span> <span class="na">placeholder=</span><span class="s">"Enter a paragraph"</span> <span class="na">style=</span><span class="s">"max-width: 300px;"</span> <span class="na">autofocus</span> <span class="na">required</span><span class="nt">&gt;</span>
+			
+		<span class="nt">&lt;/textarea&gt;</span>
+                 <span class="nt">&lt;br&gt;</span>
+                <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">name=</span><span class="s">"question"</span> <span class="na">class=</span><span class="s">"form-control"</span> <span class="na">id=</span><span class="s">"url-box"</span> <span class="na">placeholder=</span><span class="s">"Enter a question"</span> <span class="na">style=</span><span class="s">"max-width: 300px;"</span> <span class="na">autofocus</span> <span class="na">required</span><span class="nt">&gt;</span>
+              <span class="nt">&lt;/div&gt;</span>
+              <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"submit"</span> <span class="na">class=</span><span class="s">"btn btn-default"</span><span class="nt">&gt;</span>Predict<span class="nt">&lt;/button&gt;</span>
+            <span class="nt">&lt;/form&gt;</span>
+          <span class="nt">&lt;br&gt;</span>
+      <span class="nt">&lt;/div&gt;</span>
+
+    `<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"row-sm-5 row-sm-offset-1"</span><span class="nt">&gt;</span>`
+          
+      `<span class="nt">&lt;/div&gt;</span>`
+
+    `<span class="nt">&lt;/div&gt;</span>`
+
+<span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span></code></pre></figure>
+
+<p>Con el código anterior, creamos un formulario para recibir las entradas.</p>
+
+<h2 id="paso-3">Paso 3</h2>
+
+<p>Crea un archivo llamándolo “Procfile” sin ninguna extensión. Y pon el siguiente código:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">web: python app.py</code></pre></figure>
+
+<p>Esto le dirá a Heroku qué hacer una vez que la aplicación haya sido desplegada.</p>
+
+<h2 id="paso-4">Paso 4</h2>
+
+<p>Tenemos nuestro código listo. Ahora vamos a hablar con Heroku. Asegúrate de tener instalado Heroku CLI y git.</p>
+
+<p>Una vez hecho esto, escriba los siguientes comandos en su terminal de comandos:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">heroku login</code></pre></figure>
+
+<p>Esto te conectará con Heroku CLI
+A continuación, escriba esto para crear una aplicación heroku:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">heroku create your_app_name</code></pre></figure>
+
+<p>El nombre de tu aplicación puede ser cualquier cosa única.
+A continuación, escribe los siguientes comandos para desplegar tu aplicación en Heroku:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">git init
+git add <span class="nb">.</span>
+git commit <span class="nt">-m</span> <span class="s1">'initial commit'</span>
+git push heroku master</code></pre></figure>
+
+<p>¡Hurra! ¡Tu aplicación ha sido desplegada! Veamos cómo funciona.
+Abre una ventana del navegador y escribe la siguiente dirección web:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">https://your_app_name.herokuapp.com</code></pre></figure>
+
+<p>Debería ver una página web como ésta:</p>
+
+<p><img src="/images/pages/0_1YwbgemSDKHq0WQ2.png" alt="app en funcionamiento" /></p>
+
+<p><em>Fuente:</em> Este tutorial está copiado y traducido de <a href="https://medium.com/analytics-vidhya/deploying-bert-on-heroku-7df1d23f9c43">aquí</a> quién tiene todos los derechos.</p>
+
+<p>La aplicación original:
+“I have deployed my BERT app <a href="https://bertqna.herokuapp.com/">here</a> if you wish to give it a try.”</p>]]></content><author><name></name></author><category term="python" /><category term="pytorch" /><category term="ia" /><category term="flask" /><category term="bert" /><summary type="html"><![CDATA[Utilización del modelo de aprendizaje profundo Bert para pregruntas y respuestas, exportado en flask.]]></summary></entry><entry><title type="html">Python - IA ejemplo de uso de RoBERTa Q&amp;amp;A</title><link href="https://www.rarcos.com/2022/03/18/IA-Roberta-QA/" rel="alternate" type="text/html" title="Python - IA ejemplo de uso de RoBERTa Q&amp;amp;A" /><published>2022-03-18T15:33:28+01:00</published><updated>2022-03-18T15:33:28+01:00</updated><id>https://www.rarcos.com/2022/03/18/IA-Roberta-QA</id><content type="html" xml:base="https://www.rarcos.com/2022/03/18/IA-Roberta-QA/"><![CDATA[<h1 id="utilización-de-roberta-en-qa">Utilización de RoBERTa en Q&amp;A</h1>
+
+<p>RoBERTa-base español entrenado en BNE afinado para el conjunto de datos del Corpus de Respuesta a Preguntas en Español (SQAC).
+RoBERTa-base-bne es un modelo de lenguaje enmascarado basado en transformadores para el idioma español. Está basado en el modelo base de RoBERTa y ha sido preentrenado utilizando el mayor corpus de español conocido hasta la fecha, con un total de 570GB de texto limpio y deduplicado procesado para este trabajo, recopilado a partir de los rastreos web realizados por la Biblioteca Nacional de España desde 2009 hasta 2019.</p>
+
+<p>El modelo original preentrenado se puede encontrar <a href="https://huggingface.co/PlanTL-GOB-ES/roberta-base-bne">aquí</a>:</p>
+
+<p><strong>Dataset</strong></p>
+
+<p>El conjunto de datos utilizado es el corpus SQAC.</p>
+
+<p><strong>Evaluación y resultados</strong></p>
+
+<p>Puntuación F1: 0,7923 (media de 5 ejecuciones).</p>
+
+<p>Para ver los detalles de la evaluación, visite nuestro repositorio de <a href="https://github.com/PlanTL-GOB-ES/lm-spanish">GitHub</a>.</p>
+
+<hr />
+<p>Si quieres ver el resultado de mi ejemplo de utilización de RoBERTa, te recomiendo visites:</p>
+
+<p><em>Repositorio con el contenido</em></p>
+
+<p><a href="https://colab.research.google.com/drive/16diuU5pQSETl3VQeh6E909YFsbtlfX3Z"><img src="/images/pages/repository_small_colab.png" alt="Repositorio" /></a></p>]]></content><author><name></name></author><category term="python" /><category term="pytorch" /><category term="ia" /><category term="colab" /><category term="bert" /><summary type="html"><![CDATA[Utilización del modelo de aprendizaje profundo RoBERTa para pregruntas y respuestas.]]></summary></entry><entry><title type="html">Python - Modelo de IA en Keras con exportación a tensorflow js</title><link href="https://www.rarcos.com/2022/03/16/Python-Keras_IA_tf.js/" rel="alternate" type="text/html" title="Python - Modelo de IA en Keras con exportación a tensorflow js" /><published>2022-03-16T15:33:28+01:00</published><updated>2022-03-16T15:33:28+01:00</updated><id>https://www.rarcos.com/2022/03/16/Python%20-%20Keras_IA_tf.js</id><content type="html" xml:base="https://www.rarcos.com/2022/03/16/Python-Keras_IA_tf.js/"><![CDATA[<h1 id="modelo-de-regresión-en-keras-exportado-a-tensorflow-js">Modelo de regresión en Keras exportado a tensorflow js</h1>
+
+<p>A continuación, se muestra un proyecto en Keras, que utiliza un dataset con los datos del desempleo en EEUU. Se aplica IA para la predicción de los valores futuros y se exporta el modelo ya entrenada para ser ejecutado mediante web.</p>
+
+<p>Si quieres ver el resultado, te recomiendo visites:</p>
+
+<p><a href="https://rarcos.com/WorkspaceWeb/predictUnrate(keras)/"><img src="/images/pages/450_1000.png" alt="Ir a ver la app en funcionamiento" /></a></p>
+
+<p><em>Repositorio con el contenido</em></p>
+
+<p><a href="https://colab.research.google.com/drive/1zG_hZIhR5Kzu-4RfsRDnWtf5RqE0rJWU"><img src="/images/pages/repository_small_colab.png" alt="Repositorio" /></a></p>]]></content><author><name></name></author><category term="python" /><category term="keras" /><category term="ia" /><category term="tensorflow" /><category term="js" /><summary type="html"><![CDATA[Proyecto en Keras, que utiliza un dataset con los datos del desempleo en EEUU. Se aplica IA para la predicción de los valores futuros y se exporta el modelo ya entrenada para ser ejecutado mediante web.]]></summary></entry><entry><title type="html">Python - API Rest en Flask</title><link href="https://www.rarcos.com/2022/02/15/Python-API_Rest_en_Flask/" rel="alternate" type="text/html" title="Python - API Rest en Flask" /><published>2022-02-15T15:33:28+01:00</published><updated>2022-02-15T15:33:28+01:00</updated><id>https://www.rarcos.com/2022/02/15/Python%20-%20API_Rest_en_Flask</id><content type="html" xml:base="https://www.rarcos.com/2022/02/15/Python-API_Rest_en_Flask/"><![CDATA[<h1 id="api-rest-en-python-con-flask">Api rest en Python con Flask</h1>
 
 <p>A continuación, se muestra un proyecto de Python realizado para crear una api rest mediante el uso de la librería <a href="https://palletsprojects.com/p/flask/">flask</a>. Tiene las siguientes características:</p>
 
@@ -20,7 +262,7 @@ Cuando se modifica el nombre del usuario en Github, se borran sus repositorios a
 
 <p><em>Repositorio con el contenido</em></p>
 
-<p><a href="https://github.com/rubenarcos2/api_rest_flask_python"><img src="/images/pages/repository_small.png" alt="Repositorio" /></a></p>]]></content><author><name></name></author><category term="python" /><category term="api" /><category term="rest" /><category term="flask" /><summary type="html"><![CDATA[Api rest en Python con Flask]]></summary></entry><entry><title type="html">R - Api rest</title><link href="https://www.rarcos.com/2022/02/11/API_Rest_en_R/" rel="alternate" type="text/html" title="R - Api rest" /><published>2022-02-11T15:33:28+01:00</published><updated>2022-02-11T15:33:28+01:00</updated><id>https://www.rarcos.com/2022/02/11/API_Rest_en_R</id><content type="html" xml:base="https://www.rarcos.com/2022/02/11/API_Rest_en_R/"><![CDATA[<h1 id="api-rest-en-r">Api rest en R</h1>
+<p><a href="https://github.com/rubenarcos2/api_rest_flask_python"><img src="/images/pages/repository_small.png" alt="Repositorio" /></a></p>]]></content><author><name></name></author><category term="python" /><category term="api" /><category term="rest" /><category term="flask" /><summary type="html"><![CDATA[Proyecto en Python realizado para crear una api rest mediante el uso de la librería flask.]]></summary></entry><entry><title type="html">R - Api rest</title><link href="https://www.rarcos.com/2022/02/11/API_Rest_en_R/" rel="alternate" type="text/html" title="R - Api rest" /><published>2022-02-11T15:33:28+01:00</published><updated>2022-02-11T15:33:28+01:00</updated><id>https://www.rarcos.com/2022/02/11/API_Rest_en_R</id><content type="html" xml:base="https://www.rarcos.com/2022/02/11/API_Rest_en_R/"><![CDATA[<h1 id="api-rest-en-r">Api rest en R</h1>
 
 <p>A continuación, se muestra un proyecto de R realizado para crear una api rest mediante el uso de la librería <a href="">plumber</a>.
 Para que funcione tiene que estar todo en la misma carpeta y tiene el siguiente contenido:</p>
@@ -128,11 +370,15 @@ Para que funcione tiene que estar todo en la misma carpeta y tiene el siguiente 
 
 <p><img src="/images/pages/r_api_calculadora.jpg" alt="r_api_calculadora.jpg" /></p>
 
-<p><img src="/images/pages/api_funcionando.gif" alt="api_funcionando.gif" /></p>
+<p><img src="/images/pages/api_funcionando.gif" alt="api_funcionando.gif" /></p>]]></content><author><name></name></author><category term="R" /><category term="api" /><category term="rest" /><category term="flask" /><summary type="html"><![CDATA[Proyecto en R realizado para crear una api rest mediante el uso de la librería plumber.]]></summary></entry><entry><title type="html">IA - Perceptrón clasificador dataset iris</title><link href="https://www.rarcos.com/2022/01/29/IA_perceptron_clasificador_iris/" rel="alternate" type="text/html" title="IA - Perceptrón clasificador dataset iris" /><published>2022-01-29T15:33:28+01:00</published><updated>2022-01-29T15:33:28+01:00</updated><id>https://www.rarcos.com/2022/01/29/IA_perceptron_clasificador_iris</id><content type="html" xml:base="https://www.rarcos.com/2022/01/29/IA_perceptron_clasificador_iris/"><![CDATA[<h1 id="perceptrón-clasificador-para-el-dataset-iris">Perceptrón clasificador para el dataset iris</h1>
 
-<p><em>Repositorio con el contenido</em></p>
+<p>A continuación, se muestra un proyecto de IA realizado para la clasificación del dataset de flores iris, que se ha portado a la web para que se pueda utilizar por cualquier usuario introduciendo las medidas de las flores.</p>
 
-<p><a href="https://github.com/rubenarcos2/api_rest_flask_python"><img src="/images/pages/repository_small.png" alt="Repositorio" /></a></p>]]></content><author><name></name></author><category term="R" /><category term="api" /><category term="rest" /><category term="flask" /><summary type="html"><![CDATA[Api rest en R]]></summary></entry><entry><title type="html">IA - En la web con Streamlit</title><link href="https://www.rarcos.com/2022/01/29/IA_en_la_web-Streamlit/" rel="alternate" type="text/html" title="IA - En la web con Streamlit" /><published>2022-01-29T15:33:28+01:00</published><updated>2022-01-29T15:33:28+01:00</updated><id>https://www.rarcos.com/2022/01/29/IA_en_la_web-Streamlit</id><content type="html" xml:base="https://www.rarcos.com/2022/01/29/IA_en_la_web-Streamlit/"><![CDATA[<h1 id="instalación-de-streamlit">Instalación de Streamlit</h1>
+<p>Abrir el proyecto uso de perceptrones para la clasificación de flores - dataset iris</p>
+
+<p><a href="https://perceptron-clasificador-iris.herokuapp.com/"><img src="/images/pages/app_perceptron_heroku.jpg" alt="Abrir el proyecto uso de perceptrones para la clasificación de flores - dataset iris" /></a></p>
+
+<p>Se ha portado mediante streamlit.</p>]]></content><author><name></name></author><category term="IA" /><category term="streamlit" /><category term="python" /><category term="ML" /><category term="web" /><category term="iris" /><summary type="html"><![CDATA[Proyecto de IA realizado para la clasificación del dataset de flores iris, que se ha portado a la web para que se pueda utilizar por cualquier usuario introduciendo las medidas de las flores.]]></summary></entry><entry><title type="html">IA - En la web con Streamlit</title><link href="https://www.rarcos.com/2022/01/29/IA_en_la_web-Streamlit/" rel="alternate" type="text/html" title="IA - En la web con Streamlit" /><published>2022-01-29T15:33:28+01:00</published><updated>2022-01-29T15:33:28+01:00</updated><id>https://www.rarcos.com/2022/01/29/IA_en_la_web-Streamlit</id><content type="html" xml:base="https://www.rarcos.com/2022/01/29/IA_en_la_web-Streamlit/"><![CDATA[<h1 id="instalación-de-streamlit">Instalación de Streamlit</h1>
 
 <p>Mediante el uso de <a href="https://streamlit.io/">streamlit</a> podemos hacer visibles el uso de nuestros modelos de IA para cualquier usuario.</p>
 
@@ -148,11 +394,9 @@ Para que funcione tiene que estar todo en la misma carpeta y tiene el siguiente 
 
     <span class="nx">st</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="dl">"</span><span class="s2">Hello world!</span><span class="dl">"</span><span class="p">)</span></code></pre></figure>
 
-<p>esto levantará un servidor</p>
+<p>esto levantará un servidor web con el contenido, y ya tendrás tus scripts de python con IA corriendo en la web, con una interfaz transparente al usuario.</p>
 
-<p><img src="up_streamlit.jpg" alt="" /></p>
-
-<p>y ya tendrás tus scripts de python con IA corriendo en la web, con una interfaz transparente al usuario. Ahora queda la parte más dificil, enlazar nuestro repositorio git con los códigos fuentes a heroku y hacer deploy automático en cada cambio.</p>
+<p>Ahora queda la parte más dificil, enlazar nuestro repositorio git con los códigos fuentes a heroku y hacer deploy automático en cada cambio.</p>
 
 <h1 id="conexión-de-git-con-heroku">Conexión de git con heroku</h1>
 
@@ -174,15 +418,7 @@ ruta <span class="o">=</span> os.path.join<span class="o">(</span>BASE_DIR, <spa
 
 <p><em>Repositorio con el contenido</em></p>
 
-<p><a href="https://github.com/rubenarcos2/streamlit-perceptron-iris"><img src="/images/pages/repository_small.png" alt="Repositorio" /></a></p>]]></content><author><name></name></author><category term="IA" /><category term="streamlit" /><category term="python" /><category term="ML" /><category term="web" /><summary type="html"><![CDATA[Instalación de Streamlit]]></summary></entry><entry><title type="html">IA - Perceptrón clasificador dataset iris</title><link href="https://www.rarcos.com/2022/01/29/IA_perceptron_clasificador_iris/" rel="alternate" type="text/html" title="IA - Perceptrón clasificador dataset iris" /><published>2022-01-29T15:33:28+01:00</published><updated>2022-01-29T15:33:28+01:00</updated><id>https://www.rarcos.com/2022/01/29/IA_perceptron_clasificador_iris</id><content type="html" xml:base="https://www.rarcos.com/2022/01/29/IA_perceptron_clasificador_iris/"><![CDATA[<h1 id="perceptrón-clasificador-para-el-dataset-iris">Perceptrón clasificador para el dataset iris</h1>
-
-<p>A continuación, se muestra un proyecto de IA realizado para la clasificación del dataset de flores iris, que se ha portado a la web para que se pueda utilizar por cualquier usuario introduciendo las medidas de las flores.</p>
-
-<p>Abrir el proyecto uso de perceptrones para la clasificación de flores - dataset iris</p>
-
-<p><a href="https://perceptron-clasificador-iris.herokuapp.com/"><img src="/images/pages/app_perceptron_heroku.jpg" alt="Abrir el proyecto uso de perceptrones para la clasificación de flores - dataset iris" /></a></p>
-
-<p>Se ha portado mediante streamlit.</p>]]></content><author><name></name></author><category term="IA" /><category term="streamlit" /><category term="python" /><category term="ML" /><category term="web" /><category term="iris" /><summary type="html"><![CDATA[Perceptrón clasificador para el dataset iris]]></summary></entry><entry><title type="html">Android - Tu web en una app</title><link href="https://www.rarcos.com/2021/11/23/Tu_web_en_app_Android/" rel="alternate" type="text/html" title="Android - Tu web en una app" /><published>2021-11-23T15:33:28+01:00</published><updated>2021-11-23T15:33:28+01:00</updated><id>https://www.rarcos.com/2021/11/23/Tu_web_en_app_Android</id><content type="html" xml:base="https://www.rarcos.com/2021/11/23/Tu_web_en_app_Android/"><![CDATA[<p>Si quieres tener tu página web en una app mobile, solamente tenemos que crear un proyecto nuevo en Android Studio, y hacer lo siguiente:</p>
+<p><a href="https://github.com/rubenarcos2/streamlit-perceptron-iris"><img src="/images/pages/repository_small.png" alt="Repositorio" /></a></p>]]></content><author><name></name></author><category term="IA" /><category term="streamlit" /><category term="python" /><category term="ML" /><category term="web" /><summary type="html"><![CDATA[Instalación de Streamlit: mediante el uso de streamlit podemos hacer visibles el uso de nuestros modelos de IA para cualquier usuario.]]></summary></entry><entry><title type="html">Android - Tu web en una app</title><link href="https://www.rarcos.com/2021/11/23/Tu_web_en_app_Android/" rel="alternate" type="text/html" title="Android - Tu web en una app" /><published>2021-11-23T15:33:28+01:00</published><updated>2021-11-23T15:33:28+01:00</updated><id>https://www.rarcos.com/2021/11/23/Tu_web_en_app_Android</id><content type="html" xml:base="https://www.rarcos.com/2021/11/23/Tu_web_en_app_Android/"><![CDATA[<p>Si quieres tener tu página web en una app mobile, solamente tenemos que crear un proyecto nuevo en Android Studio, y hacer lo siguiente:</p>
 
 <h3 id="crear-un-componente-webview-en-el-layout">Crear un componente webview en el layout</h3>
 
@@ -263,7 +499,7 @@ ruta <span class="o">=</span> os.path.join<span class="o">(</span>BASE_DIR, <spa
 
 <p><strong>App con acceso a esta web</strong></p>
 
-<p><a href="/images/pages/rarcos.com.apk"><img src="/images/pages/Code-Optimization-3-256x2561.png" alt="App rarcos.com" /></a></p>]]></content><author><name></name></author><category term="Android" /><category term="apk" /><category term="app" /><summary type="html"><![CDATA[Si quieres tener tu página web en una app mobile, solamente tenemos que crear un proyecto nuevo en Android Studio, y hacer lo siguiente:]]></summary></entry><entry><title type="html">IoT - Proyectos y Mqtt en openhab</title><link href="https://www.rarcos.com/2021/10/13/IoT_proyectos_openhab/" rel="alternate" type="text/html" title="IoT - Proyectos y Mqtt en openhab" /><published>2021-10-13T16:33:28+02:00</published><updated>2021-10-13T16:33:28+02:00</updated><id>https://www.rarcos.com/2021/10/13/IoT_proyectos_openhab</id><content type="html" xml:base="https://www.rarcos.com/2021/10/13/IoT_proyectos_openhab/"><![CDATA[<h1 id="proyectos-para-domotizar-things-con-openhab">Proyectos para domotizar things con OpenHab</h1>
+<p><a href="/images/pages/rarcos.com.apk"><img src="/images/pages/Code-Optimization-3-256x2561.png" alt="App rarcos.com" /></a></p>]]></content><author><name></name></author><category term="Android" /><category term="apk" /><category term="app" /><summary type="html"><![CDATA[Cómo tener una página web en una app Android]]></summary></entry><entry><title type="html">IoT - Proyectos y Mqtt en openhab</title><link href="https://www.rarcos.com/2021/10/13/IoT_proyectos_openhab/" rel="alternate" type="text/html" title="IoT - Proyectos y Mqtt en openhab" /><published>2021-10-13T16:33:28+02:00</published><updated>2021-10-13T16:33:28+02:00</updated><id>https://www.rarcos.com/2021/10/13/IoT_proyectos_openhab</id><content type="html" xml:base="https://www.rarcos.com/2021/10/13/IoT_proyectos_openhab/"><![CDATA[<h1 id="proyectos-para-domotizar-things-con-openhab">Proyectos para domotizar things con OpenHab</h1>
 
 <p>LLevo mucho tiempo haciendo <em>things</em> con Arduino y sus variantes: ESP8266, ESP32. Y no he querido publicar nada hasta ahora porque veo que la utilidad real viene cuando se puede controlar desde una central y sus salida web, desde TV, Smartphones, Apps… Es aquí cuando la automatización se vuelve universal y cualquier usuario sin conocimiento puede dar instrucciones, recibir datos de sensores y poder automatizar tareas de varias <em>things</em> entre sí y demás. En mi caso los proyectos más grandes e interesantes que he realizado son:</p>
 
@@ -389,115 +625,4 @@ Aquí estan las principales: <a href="https://alternativeto.net/feature/home-aut
 <p>Así especificamos que se transpile a ES5.</p>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm run build
-</code></pre></div></div>]]></content><author><name></name></author><category term="es5" /><category term="es6" /><category term="js" /><summary type="html"><![CDATA[Transpilación con Babel]]></summary></entry><entry><title type="html">Actualización web a HTTPS</title><link href="https://www.rarcos.com/2018/11/01/Actualizacion_web_a_https/" rel="alternate" type="text/html" title="Actualización web a HTTPS" /><published>2018-11-01T15:33:28+01:00</published><updated>2018-11-01T15:33:28+01:00</updated><id>https://www.rarcos.com/2018/11/01/Actualizacion_web_a_https</id><content type="html" xml:base="https://www.rarcos.com/2018/11/01/Actualizacion_web_a_https/"><![CDATA[<p>He actualizado recientemente esta web para que satisfaga las nuevas exigencias de navegación segura, concretamente con un certificado de seguridad, para que la comunicación se realice de forma segura mediante el protocolo HTTPS.</p>
-
-<p><img src="/images/pages/Scan_Secured_Web.png" alt="" /></p>
-
-<p>Como podeis comprobar en la imagen, tras el <a href="https://www.ssllabs.com/ssltest/analyze.html?d=rarcos.com">escaneo de toda la traza de ruta</a> de redirecciones desde el dominio (DNS) hasta el alojamiento web (hosting) se realiza de forma segurida y encriptada, por tanto.</p>
-
-<p>Espero que disfruteis de todos los contenidos e información de mi web como hasta ahora, pero con la tranquilidad de todas las ventajas que ofrece la navegación segura.</p>
-
-<p>Puedes comprobarlo en tu barra de búsqueda:</p>
-
-<p><img src="/images/pages/certificado-ssl-linkideia1.png" alt="" /></p>]]></content><author><name></name></author><category term="web" /><category term="https" /><summary type="html"><![CDATA[He actualizado recientemente esta web para que satisfaga las nuevas exigencias de navegación segura, concretamente con un certificado de seguridad, para que la comunicación se realice de forma segura mediante el protocolo HTTPS.]]></summary></entry><entry><title type="html">Spring - WebAPI RESTful Arduino &amp;lt;-&amp;gt; Raspberry</title><link href="https://www.rarcos.com/2018/10/19/WebAPI_RESTful_Arduino-Raspberry_con_Spring/" rel="alternate" type="text/html" title="Spring - WebAPI RESTful Arduino &amp;lt;-&amp;gt; Raspberry" /><published>2018-10-19T16:33:28+02:00</published><updated>2018-10-19T16:33:28+02:00</updated><id>https://www.rarcos.com/2018/10/19/WebAPI_RESTful_Arduino-Raspberry_con_Spring</id><content type="html" xml:base="https://www.rarcos.com/2018/10/19/WebAPI_RESTful_Arduino-Raspberry_con_Spring/"><![CDATA[<p>He realizado el siguiente proyecto de pruebas RESTful para la comunicación mediante una interfaz cliente en Arduino y Raspberry pi y con un servidor basado en Spring para la gestión de la API. En ambos clientes se dispone de acceso a los elementos físicos de hardware mediante comunicación I/O a las GPIOs correspondientes.</p>
-
-<p><img src="/images/pages/171211-20Arduino20Vs20Raspberry20Pi1.jpg" alt="" /></p>
-
-<p>La idea de realización consiste en la gestión de un contador basado e instalado en una placa Arduino Uno que consta de un botón y un display LED para la visualización del mismo, a su vez el programa de este gestiona la posibilidad de incremento físico del contador (mediante el botón), como mediante la recepción exterior por el puerto COM (USB) y la asignación de un valor expecífico recibido en remoto.</p>
-
-<p>Por otra parte la placa Raspberry Pi, alberga el servidor de gestió de la API, la comunicación con Arduino Uno (mediante USB, aunque podría haberse instalado online: bluetooth, wifi local/nube) y a la GPIO.</p>
-
-<p>El consumo de la API se podrá realizar a travás de cualquier cliente HTTP, bien sea web o App Android, por ejemplo (estando en construcción esta última, que mostrará aquí en breve, cuando está libre de errores).</p>
-
-<p><img src="/images/pages/diagrama_sistema.jpg" alt="" /></p>
-
-<h4 id="composición-y-diseño"><strong>Composición y diseño:</strong></h4>
-
-<p>Hardware : Arduino</p>
-
-<ul>
-  <li>Display LED numárico y Botón con comunicación I/O sobre COM port</li>
-  <li>Arduino comunnication I/O COM port, Display LED output, Botón input, Contador</li>
-  <li>Middleware &amp; Server : Raspberry Pi</li>
-  <li>Tomcat con Spring WebAPI services Raspberry Py</li>
-  <li>I/O GPIO controller, LED pin out</li>
-  <li>Client : Cualquier conexión HTTP</li>
-  <li>HTTP API consume: Web &amp; App Android</li>
-</ul>
-
-<h4 id="elementos-de-hardware-que-componen-el-sistema"><strong>Elementos de Hardware</strong> que componen el sistema:</h4>
-
-<h3 id="la-creación-del-servidor">La creación del servidor</h3>
-
-<p>El servidor se ha creado mediante el framework de Spring incluyendo:</p>
-
-<ul>
-  <li>Comunicación DB mediante JPA e Hibernate</li>
-  <li>SSH para depuración y deploy remoto en Raspberry Pi</li>
-  <li>Gestión HTTP para los controller de la API</li>
-  <li>Comunicación y gestión de puertos GPIO (elementos físicos de hardware)
-    <ul>
-      <li>Arduino con conexión COM (USB) a Raspberry Pi</li>
-      <li>GPIO I/O Raspberry Pi</li>
-    </ul>
-  </li>
-  <li>Generador aleatorio de nombres (crea los datos de la DB con formatos ‘previsibles’</li>
-</ul>
-
-<blockquote>
-  <p><em>Destacar que está pendiente de implementar lo incorporación de seguridad (Spring Security) y encriptación de las comunicaciones mediante HTTPS y DB de datos sensibles</em></p>
-</blockquote>
-
-<p><img src="/images/pages/web201.png" alt="" /> En el servidor se encuentra toda gestión de la comunicación con la DB, tambián están los DTO (modelos de datos que se publican en la api para su futuro consumo desde un app Android), los controladores: datos de la DB (DTOs), Contador Android, LED en Raspberry pi y sus correspodientes driver para acceso a GPIO y comunicación puerto COM.</p>
-
-<p>La compilación, depuración y deploy se está realizando en remoto desde un PC que se encuentra en la misma (o no) red que la Raspberry Pi, a la que se ataca mediante SSH para su control y subida de ficheros. La configuración de esta conexión se encuentra declarada el pom.xml, pero está prevista la externalización a un fichero externo encriptado (está retrasado por la dependencia de una librería de terceros).</p>
-
-<p>A continuación se muestra el transcurso de un funcionamiento esperado para sistema:</p>
-
-<ol>
-  <li>Deploy remoto en raspberry</li>
-  <li>Encendido y comunicación Raspberry&lt;-&gt;Arduino</li>
-  <li>Puesta en marcha e incremento contador</li>
-  <li>Consumo API y modificación contador desde esta</li>
-</ol>
-
-<p>Incremento del contador de forma manual (mediante botón físico) y comunición Arduino &gt; Raspberry Pi mediante puerto COM y consumo API obtención contador</p>
-
-<video width="100%" muted="" controls=""><source src="/images/pages/arduino_on_manual.mp4" type="video/mp4" /></video>
-
-<p>Comunicación Raspberry Pi GPIO desde servidor mediante consumo API, control y obtención estado LED</p>
-
-<video width="100%" muted="" controls=""><source src="/images/pages/raspberry_led.mp4" type="video/mp4" /></video>
-
-<p>Comunicación Raspberry Pi &gt; Arduino desde servidor mediante consumo API, control contador</p>
-
-<video width="100%" muted="" controls=""><source src="/images/pages/arduino_ctrl_api.mp4" type="video/mp4" /></video>]]></content><author><name></name></author><category term="web" /><category term="https" /><summary type="html"><![CDATA[He realizado el siguiente proyecto de pruebas RESTful para la comunicación mediante una interfaz cliente en Arduino y Raspberry pi y con un servidor basado en Spring para la gestión de la API. En ambos clientes se dispone de acceso a los elementos físicos de hardware mediante comunicación I/O a las GPIOs correspondientes.]]></summary></entry><entry><title type="html">Spring - API Rest simple</title><link href="https://www.rarcos.com/2018/06/11/API_Rest_con_Spring/" rel="alternate" type="text/html" title="Spring - API Rest simple" /><published>2018-06-11T16:33:28+02:00</published><updated>2018-06-11T16:33:28+02:00</updated><id>https://www.rarcos.com/2018/06/11/API_Rest_con_Spring</id><content type="html" xml:base="https://www.rarcos.com/2018/06/11/API_Rest_con_Spring/"><![CDATA[<ul>
-  <li><a href="http://www.arquitecturajava.com/que-es-rest/">API Rest</a></li>
-  <li><a href="https://projects.spring.io/spring-boot/">Spring Boot</a></li>
-  <li><a href="https://spring.io/guides/gs/rest-service/">Tutorial Spring Rest Service</a></li>
-  <li><a href="https://picodotdev.github.io/blog-bitix/2016/09/ejemplo-de-api-rest-en-java-con-jax-rs-y-spring-boot/">Tutorial JAX-RS Spring Boot</a></li>
-</ul>
-
-<p><strong>Pruebas, código y proyecto</strong></p>
-
-<p><a href="/images/pages/mvc.png"><img src="/images/pages/mvc.png" alt="" /></a></p>
-
-<p>Main.java</p>
-
-<script src="https://emgithub.com/embed.js?target=https%3A%2F%2Fgithub.com%2Frubenarcos2%2Fprueba-api-rest-spring-java%2Fblob%2Fmaster%2Fsrc%2Fmain%2Fjava%2Fcom%2FcitaClientes%2FSpringBootRestExampleApplication.java&amp;style=github-gist&amp;showBorder=on&amp;showLineNumbers=on&amp;showCopy=on"></script>
-
-<p>Controlador</p>
-
-<script src="https://emgithub.com/embed.js?target=https%3A%2F%2Fgithub.com%2Frubenarcos2%2Fprueba-api-rest-spring-java%2Fblob%2Fmaster%2Fsrc%2Fmain%2Fjava%2Fcom%2FcitaClientes%2Fcontrollers%2FPieRestController.java&amp;style=github-gist&amp;showBorder=on&amp;showLineNumbers=on&amp;showCopy=on"></script>
-
-<p>Modelo - Objeto de ejemplo serializable</p>
-
-<script src="https://emgithub.com/embed.js?target=https%3A%2F%2Fgithub.com%2Frubenarcos2%2Fprueba-api-rest-spring-java%2Fblob%2Fmaster%2Fsrc%2Fmain%2Fjava%2Fcom%2FcitaClientes%2Fmodels%2FPie.java&amp;style=github-gist&amp;showBorder=on&amp;showLineNumbers=on&amp;showCopy=on"></script>
-
-<p>Interfaz para extender el ordenamiento de la lista por orden alfabÃ©tico</p>
-
-<script src="https://emgithub.com/embed.js?target=https%3A%2F%2Fgithub.com%2Frubenarcos2%2Fprueba-api-rest-spring-java%2Fblob%2Fmaster%2Fsrc%2Fmain%2Fjava%2Fcom%2FcitaClientes%2Frepositories%2FPieRepository.java&amp;style=github-gist&amp;showBorder=on&amp;showLineNumbers=on&amp;showCopy=on"></script>
-
-<p><em>Repositorio de pruebas</em></p>
-
-<p><a href="https://github.com/rubenarcos2/prueba-api-rest-spring-java"><img src="/images/pages/repository_small.png" alt="Repositorio" /></a></p>]]></content><author><name></name></author><category term="spring" /><category term="api" /><category term="rest" /><category term="java" /><summary type="html"><![CDATA[API Rest Spring Boot Tutorial Spring Rest Service Tutorial JAX-RS Spring Boot]]></summary></entry></feed>
+</code></pre></div></div>]]></content><author><name></name></author><category term="es5" /><category term="es6" /><category term="js" /><summary type="html"><![CDATA[Transpilación con Babel: utilizar Babel y transpilar la nueva versión de JavaScript (ES6), fácil de escribir, a la antigua versión de JavaScript (ES5), compatible con el navegador..]]></summary></entry></feed>
