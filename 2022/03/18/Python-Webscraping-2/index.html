@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Python - Webscraping II (Selenium)</title>
+  <meta name='description' content='Proyecto de webscraping: consiste en la captación de un listado con las ofertas de trabajo del portal *ticjob.es* para el lenguaje de programación Python y l...'>
+  
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Dancing+Script%7CPT+Serif:400,400i,700%7CLato:400,700%7CRoboto:300,400" rel="stylesheet">
+
+  <!-- Font Awesome v4.7.0 -->
+  <link rel="stylesheet" href="/css/font-awesome.min.css">
+
+  <!-- Normalize v7.0.0 -->
+  <link rel="stylesheet" href="/css/normalize.css">
+
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="http://localhost:4000/2022/03/18/Python-Webscraping-2/">
+  <link rel="alternate" type="application/rss+xml" title="Rubén Arcos" href="/feed.xml">
+
+  <!-- Chrome, Firefox OS and Opera -->
+  <meta name="theme-color" content="#faf5ee">
+  <!-- Windows Phone -->
+  <meta name="msapplication-navbutton-color" content="#faf5ee">
+  <!-- iOS Safari -->
+  <meta name="apple-mobile-web-app-status-bar-style" content="#faf5ee">
+</head>
+
+  
+  
+  
+    
+      <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-64172909-1', 'auto');
+  ga('send', 'pageview');
+
+</script> <!-- /Google Analytics -->
+  
+
+    
+
+    <div class="full-page-container">
+      <div class="overlay"></div>
+      <header class="site-header clearfix">
+  <div class="wrapper-content">
+
+    <div class="navigation-wrap">
+      <div class="nav-toggle-close"><i class="fa fa-times" aria-hidden="true"></i></div>
+
+      <nav class="site-nav">
+        
+          
+        
+          
+            
+              <a href='/about/'>Sobre mí</a>
+            
+          
+        
+          
+            
+              <a href='/contacto/'>Contacto</a>
+            
+          
+        
+          
+            
+              <a href='/cookies/'>Cookies</a>
+            
+          
+        
+          
+            
+          
+        
+          
+            
+          
+        
+          
+        
+          
+            
+          
+        
+          
+            
+          
+        
+          
+            
+          
+        
+          
+            
+          
+        
+          
+            
+          
+        
+          
+            
+          
+        
+        <a href="https://linkedin.com/in/rubenarcos2"><i class="fa fa-linkedin fa-2x" aria-hidden="true"></i></a>
+        <a href="https://github.com/rubenarcos2"><i class="fa fa-github fa-2x" aria-hidden="true"></i></a>
+      </nav>
+      
+    </div>
+
+    <span class="search-toggle">
+      <i class="fa fa-search" aria-hidden="true"></i>
+    </span>
+    
+    <div class="nav-toggle"><i class="fa fa-bars" aria-hidden="true"></i></div>
+
+    <div class="site-logo">
+      <a href="/">Rubén Arcos</a>
+    </div>
+    
+  </div>
+</header> <!-- /.site-header -->
+
+      <div class="search-box">
+  <div class="wrapper-content">
+    <form class="search-form">
+      <label class="screen-reader-text" for="search-input">Buscar...</label>
+      <input type="text" id="search-input" class="search-field" name="s" placeholder="Type to search...">
+    </form>
+    <div class="btn-close">
+      <span class="bt-search-close">
+        <i class="fa fa-times" aria-hidden="true"></i>
+      </span>
+    </div>
+  </div>
+  <ul id="results-container" class="search-results-list"></ul>  
+</div> <!-- /.search-box -->
+
+        <div class="post-header" style="background: url(/images/pages/webscraping.png)">
+  <div class="post-header-info">
+    <h1 class="post-title">Python - Webscraping II (Selenium)</h1>
+    <div class="post-meta">
+      <time datetime="2022-03-18T15:33:28+01:00">
+         18/03/2022
+      </time>
+    </div>
+  </div>
+</div>
+
+<div class="content-box">
+  <article class="post">
+
+    <div class="post-content">
+      <h1 id="webscraping-ii">Webscraping II</h1>
+
+<p>A continuación, se muestra un proyecto de webscraping. Consiste en la captación de un listado con las ofertas de trabajo del portal <em>ticjob.es</em> para el lenguaje de programación Python y la localidad de Málaga.</p>
+
+<p>Además se hace uso de <em>sqlalchemy</em> para el almacenamiento del resultado en una tabla en una base de datos <em>mysql</em>.</p>
+
+<h2 id="script-de-captación-de-datos-y-guardado-en-base-de-datos">Script de captación de datos y guardado en base de datos</h2>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">selenium</span> <span class="kn">import</span> <span class="n">webdriver</span>
+<span class="kn">from</span> <span class="nn">sqlalchemy</span> <span class="kn">import</span> <span class="n">create_engine</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="n">pd</span>
+
+<span class="n">search_query</span> <span class="o">=</span> <span class="s">'https://ticjob.es'</span>
+
+<span class="n">browser</span> <span class="o">=</span> <span class="n">webdriver</span><span class="p">.</span><span class="n">Firefox</span><span class="p">()</span>
+<span class="k">if</span> <span class="s">'linux'</span> <span class="ow">in</span> <span class="n">os</span><span class="p">.</span><span class="n">name</span><span class="p">:</span>
+    <span class="n">browser</span> <span class="o">=</span> <span class="n">webdriver</span><span class="p">.</span><span class="n">Firefox</span><span class="p">(</span><span class="n">executable_path</span><span class="o">=</span><span class="s">'geckodriver'</span><span class="p">)</span>
+<span class="k">elif</span> <span class="s">'windows'</span> <span class="ow">in</span> <span class="n">os</span><span class="p">.</span><span class="n">name</span><span class="p">:</span>
+    <span class="n">browser</span> <span class="o">=</span> <span class="n">webdriver</span><span class="p">.</span><span class="n">Firefox</span><span class="p">(</span><span class="n">executable_path</span><span class="o">=</span><span class="s">'geckodriver.exe'</span><span class="p">)</span>
+
+<span class="n">browser</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="n">search_query</span><span class="p">)</span>
+<span class="n">time</span><span class="p">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="nb">input</span> <span class="o">=</span> <span class="n">browser</span><span class="p">.</span><span class="n">find_element_by_id</span><span class="p">(</span><span class="s">"keywords-input"</span><span class="p">).</span><span class="n">send_keys</span><span class="p">(</span><span class="s">"Python Málaga"</span><span class="p">)</span>
+<span class="n">send_button</span> <span class="o">=</span> <span class="n">browser</span><span class="p">.</span><span class="n">find_element_by_id</span><span class="p">(</span><span class="s">"search-form"</span><span class="p">).</span><span class="n">submit</span><span class="p">()</span>
+<span class="n">time</span><span class="p">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="c1"># Página con los resultados
+</span>
+<span class="n">titles</span> <span class="o">=</span> <span class="n">browser</span><span class="p">.</span><span class="n">find_elements_by_class_name</span><span class="p">(</span><span class="s">"job-title"</span><span class="p">)</span>
+<span class="n">dates</span> <span class="o">=</span> <span class="n">browser</span><span class="p">.</span><span class="n">find_elements_by_class_name</span><span class="p">(</span><span class="s">"date-field"</span><span class="p">)</span>
+<span class="n">locations</span> <span class="o">=</span> <span class="n">browser</span><span class="p">.</span><span class="n">find_elements_by_class_name</span><span class="p">(</span><span class="s">"location-field"</span><span class="p">)</span>
+<span class="n">descriptions</span> <span class="o">=</span> <span class="n">browser</span><span class="p">.</span><span class="n">find_elements_by_class_name</span><span class="p">(</span><span class="s">"job-description"</span><span class="p">)</span>
+
+<span class="n">time</span><span class="p">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="n">lista_titles</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">title</span> <span class="ow">in</span> <span class="n">titles</span><span class="p">:</span>
+    <span class="n">lista_titles</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">title</span><span class="p">.</span><span class="n">text</span><span class="p">)</span>
+
+<span class="n">lista_dates</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">date</span> <span class="ow">in</span> <span class="n">dates</span><span class="p">:</span>
+    <span class="n">lista_dates</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">date</span><span class="p">.</span><span class="n">text</span><span class="p">)</span>
+
+<span class="n">lista_locations</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">location</span> <span class="ow">in</span> <span class="n">locations</span><span class="p">:</span>
+    <span class="n">lista_locations</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">location</span><span class="p">.</span><span class="n">text</span><span class="p">)</span>
+
+<span class="n">lista_descriptions</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">description</span> <span class="ow">in</span> <span class="n">descriptions</span><span class="p">:</span>
+    <span class="n">lista_descriptions</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">description</span><span class="p">.</span><span class="n">text</span><span class="p">)</span>
+
+<span class="n">time</span><span class="p">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">browser</span><span class="p">.</span><span class="n">close</span><span class="p">()</span>
+
+<span class="c1">#### Guardado de los datos en un dataframe
+</span>
+<span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="s">"Títulos"</span><span class="p">:</span> <span class="n">lista_titles</span><span class="p">,</span> <span class="s">"Fechas"</span><span class="p">:</span> <span class="n">lista_dates</span><span class="p">,</span> <span class="s">"Localización"</span><span class="p">:</span> <span class="n">lista_locations</span><span class="p">,</span> <span class="s">"Descripción"</span><span class="p">:</span> <span class="n">lista_descriptions</span><span class="p">}</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+
+<span class="c1">#### Guardado del dataframe en la base de datos ####
+</span><span class="k">try</span><span class="p">:</span>
+    <span class="n">engine</span> <span class="o">=</span> <span class="n">create_engine</span><span class="p">(</span><span class="s">'mysql+pymysql://sbd_tarea_24:sbd_tarea_2-4123456@db4free.net/sbd_tarea_24'</span><span class="p">)</span>
+
+    <span class="n">df</span><span class="p">.</span><span class="n">to_sql</span><span class="p">(</span><span class="s">"ofertas_trabajo"</span><span class="p">,</span> <span class="n">con</span> <span class="o">=</span> <span class="n">engine</span><span class="p">,</span> <span class="n">if_exists</span><span class="o">=</span><span class="s">'replace'</span><span class="p">)</span>
+
+    <span class="k">print</span><span class="p">(</span><span class="s">"Se ha grabado en la base de datos correctamente"</span><span class="p">)</span>
+<span class="k">except</span> <span class="nb">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"Ha habido un error en la grabación en la base de datos:"</span><span class="p">,</span> <span class="n">e</span><span class="p">)</span></code></pre></figure>
+
+<h2 id="envío-del-resultado-por-email">Envío del resultado por email</h2>
+
+<p>A continuación, se muestra el uso de la api de gmail, para poder enviar el resultado por email.</p>
+
+<p>Puedes seguir el tutorial de configuración <a href="/2022/03/18/Python-Gmail_api">aquí</a>. Y guardar el script resultante en la misma carpeta.</p>
+
+<p>Añadir este pedazo de código al final del script de webscraping, para que se envíen las ofertas por email.</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">email_api_gmail</span> <span class="kn">import</span> <span class="n">send</span>
+
+<span class="c1">#### Envío de los datos por email ####
+</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">email</span> <span class="o">=</span> <span class="s">"&lt;html&gt;"</span> <span class="o">+</span> <span class="n">df</span><span class="p">.</span><span class="n">to_html</span><span class="p">()</span> <span class="o">+</span> <span class="s">"&lt;/html&gt;"</span>
+        <span class="n">send</span><span class="p">(</span><span class="s">"rubenarcos2@gmail.com"</span><span class="p">,</span> <span class="s">"Listado de ofertas de empleo"</span><span class="p">,</span> <span class="n">email</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">"Se han enviado las ofertas de trabajo por email correctamente."</span><span class="p">)</span>
+    <span class="k">except</span> <span class="nb">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">"Ha habido un error en el envío de las ofertas por email:"</span><span class="p">,</span> <span class="n">e</span><span class="p">)</span></code></pre></figure>
+
+<h2 id="automatización-del-script-con-cron">Automatización del script con cron</h2>
+
+<p>Para finalizar, se muestra el uso de la configuración del lanzamiento de un script mediant cron con la librería <em>python-crontab.</em></p>
+
+<p>Puedes seguir el tutorial de configuración <a href="/2022/03/18/Python-Crontab/">aquí</a>.</p>
+
+<p>Cambiar este pedazo de código, sustituir la función <em>uploadScript</em>, al final del script de crontab del tutorial anterior.</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">uploadScript</span><span class="p">():</span>
+    <span class="n">src_path</span> <span class="o">=</span> <span class="sa">r</span><span class="s">"ruta_acceso/Selenium.py"</span>
+    <span class="n">dst_path</span> <span class="o">=</span> <span class="sa">r</span><span class="s">"/opt/jobs_offer/jobs_offer_task.py"</span>
+    <span class="n">shutil</span><span class="p">.</span><span class="n">copy</span><span class="p">(</span><span class="n">src_path</span><span class="p">,</span> <span class="n">dst_path</span><span class="p">)</span>
+    <span class="n">src_path</span> <span class="o">=</span> <span class="sa">r</span><span class="s">"ruta_acceso/credentials.json"</span>
+    <span class="n">dst_path</span> <span class="o">=</span> <span class="sa">r</span><span class="s">"/opt/jobs_offer/credentials.json"</span>
+    <span class="n">shutil</span><span class="p">.</span><span class="n">copy</span><span class="p">(</span><span class="n">src_path</span><span class="p">,</span> <span class="n">dst_path</span><span class="p">)</span>
+    <span class="n">src_path</span> <span class="o">=</span> <span class="sa">r</span><span class="s">"ruta_acceso/email_api_gmail.py"</span>
+    <span class="n">dst_path</span> <span class="o">=</span> <span class="sa">r</span><span class="s">"/opt/jobs_offer/email_api_gmail.py"</span>
+    <span class="n">shutil</span><span class="p">.</span><span class="n">copy</span><span class="p">(</span><span class="n">src_path</span><span class="p">,</span> <span class="n">dst_path</span><span class="p">)</span>
+    <span class="n">src_path</span> <span class="o">=</span> <span class="sa">r</span><span class="s">"ruta_acceso/chromedriver"</span>
+    <span class="n">dst_path</span> <span class="o">=</span> <span class="sa">r</span><span class="s">"/opt/jobs_offer/chromedriver"</span>
+    <span class="n">shutil</span><span class="p">.</span><span class="n">copy</span><span class="p">(</span><span class="n">src_path</span><span class="p">,</span> <span class="n">dst_path</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">'Copied all files'</span><span class="p">)</span></code></pre></figure>
+
+<hr />
+<p><strong>Fuentes:</strong></p>
+
+<p><a href="https://mailtrap.io/blog/send-emails-with-gmail-api/#Python">https://mailtrap.io/blog/send-emails-with-gmail-api/#Python</a>
+<a href="https://www.thepythoncode.com/article/use-gmail-api-in-python">https://www.thepythoncode.com/article/use-gmail-api-in-python</a>
+<a href="https://developers.google.com/android-publisher/getting_started?hl=es-419">https://developers.google.com/android-publisher/getting_started?hl=es-419</a>
+<a href="https://docs.moodle.org/all/es/Servicio_OAuth_2_Google">https://docs.moodle.org/all/es/Servicio_OAuth_2_Google</a></p>
+
+    </div>
+
+    <footer class="post-footer">
+      <p>
+        <h3>Content License</h3>
+
+        <p><img src="/images/pages/88x311.png"/></p>
+        
+        <p>This web page, all content with proyects and source code, is licensed under Creative Commons: Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0) <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">More info</a></p>
+        
+        <p>Esta página web y todo su contenido, incluido proyectos y código fuente, está licenciado bajo una licencia de Creative Commons: Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)<a href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.es">Más info</a></p>
+        
+      </p>
+
+      <ul class="post-footer-list">
+        <li class="post-footer-item">
+          <a class="post-facebook" href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:4000/2022/03/18/Python-Webscraping-2/" onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook" rel="nofollow"><i class="fa fa-facebook" aria-hidden="true"></i><span>Facebook</span></a>
+        </li>
+
+        <li class="post-footer-item">
+          <a class="post-twitter" href="https://twitter.com/intent/tweet?text=Python%20-%20Webscraping%20II%20(Selenium)&url=http://localhost:4000/2022/03/18/Python-Webscraping-2/" onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter" rel="nofollow"><i class="fa fa-twitter" aria-hidden="true"></i><span>Twitter</span></a>
+        </li>
+
+        <li class="post-footer-item">
+          <a href="http://pinterest.com/pin/create/button/?url=http://localhost:4000/2022/03/18/Python-Webscraping-2/&amp;media=http://localhost:4000/images/pages/webscraping.png&amp;description=Python%20-%20Webscraping%20II%20(Selenium)" onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=900,height=500,toolbar=1,resizable=0'); return false;" class="post-pinterest" title="Share on Pinterest" rel="nofollow"><i class="fa fa-pinterest" aria-hidden="true"></i><span>Pinterest</span></a>
+        </li>
+      </ul>
+      
+      <div class="post-tag">
+        <span>Tags:</span>
+        
+        <a href="/tags#python" class="tag">python</a>
+        
+        <a href="/tags#keras" class="tag">keras</a>
+        
+        <a href="/tags#ia" class="tag">ia</a>
+        
+        <a href="/tags#tensorflow" class="tag">tensorflow</a>
+        
+        <a href="/tags#js" class="tag">js</a>
+        
+        <a href="/tags#webscraping" class="tag">webscraping</a>
+        
+      </div>
+      
+    </footer>
+
+    
+    <div class="post-author">
+      
+      <div class="post-author-image">
+        <a style="background-image: url(/images/ruben.jpg)">
+          <span class="screen-reader-text">Rubén Arcos Picture</span>
+        </a>
+      </div>
+      <div class="post-author-info">
+        <h4>Rubén Arcos</h4>
+        <p class="post-author-bio">Soy desarrollador de aplicaciones informáticas. <br>Tengo un C.F.G.S. en DAM y estoy haciendo un curso de especialización en IA y Big data.</p>
+        <div class="post-author-meta">
+          
+          <a href="https://twitter.com/rarcosdev" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+          
+          
+          <a href="https://linkedin.com/in/rubenarcos2" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+          
+          
+          <a href="https://github.com/rubenarcos2" target="_blank"><i class="fa fa-github" aria-hidden="true"></i></a>
+          
+          
+          
+          
+          
+          
+          
+          
+          
+        </div>
+      </div>
+      
+    </div>
+
+    <div class="page-navigation clearfix">
+      
+      <a class="prev-page" href="/2022/03/18/Python-Webscraping-1/"><i class="fa fa-angle-left" aria-hidden="true"></i><span>Python - Webscraping I (BeautifulSoup)</span></a>
+      
+      
+      <a class="next-page" href="/2022/03/18/IA-Bert-flask/"><span>Python - IA ejemplo de uso de Bert Q&A exportado con flask</span><i class="fa fa-angle-right" aria-hidden="true"></i></a>
+      
+    </div>
+
+    
+  </article> <!-- /.post -->
+
+</div> <!-- /.content-box -->
+<style>
+    #cookie-notice {padding: 0.5rem 1rem; display: none; text-align: center; position: fixed; bottom: 0; width: calc(100% - 2rem); background: #222; color: rgba(255,255,255,0.8);}
+    #cookie-notice a {display: inline-block; cursor: pointer; margin-left: 0.5rem;}
+    @media (max-width: 767px) {
+        #cookie-notice span {display: block; padding-top: 3px; margin-bottom: 1rem;}
+        #cookie-notice a {position: relative; bottom: 4px;}
+    }
+</style>
+<div id="cookie-notice"><span>Esta web utiliza cookies y scripts de terceros para mejorar la funcionalidad de este sitio web.</span>
+    <a id="cookie-notice-accept" class="btn btn-primary btn-sm">Aceptar</a><a href="/cookies" class="btn btn-primary btn-sm">Más info</a></div>
+<script>
+    function createCookie(name,value,days) {
+        var expires = "";
+        if (days) {
+            var date = new Date();
+            date.setTime(date.getTime() + (days*24*60*60*1000));
+            expires = "; expires=" + date.toUTCString();
+        }
+        document.cookie = name + "=" + value + expires + "; path=/";
+    }
+    function readCookie(name) {
+        var nameEQ = name + "=";
+        var ca = document.cookie.split(';');
+        for(var i=0;i < ca.length;i++) {
+            var c = ca[i];
+            while (c.charAt(0)==' ') c = c.substring(1,c.length);
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+        }
+        return null;
+    }
+    function eraseCookie(name) {
+        createCookie(name,"",-1);
+    }
+
+    if(readCookie('cookie-notice-dismissed')=='true') {
+
+    } else {
+        document.getElementById('cookie-notice').style.display = 'block';
+    }
+    document.getElementById('cookie-notice-accept').addEventListener("click",function() {
+        createCookie('cookie-notice-dismissed','true',31);
+        document.getElementById('cookie-notice').style.display = 'none';
+        location.reload();
+    });
+
+</script>
+
+
+      <div class="top" title="Scroll To Top">
+  <i class="fa fa-chevron-up" aria-hidden="true"></i>
+</div> <!-- /.top -->
+      <footer class="site-footer">
+
+  <div class="footer-wrapper">
+
+    <h2 class="footer-heading">Rubén Arcos</h2>
+
+    <ul class="social-footer">
+    
+      <li><a href="https://twitter.com/rarcosdev" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+    
+    
+    
+    
+    <li><a href="https://linkedin.com/in/rubenarcos2" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+    
+    
+    <li><a href="https://github.com/rubenarcos2" target="_blank"><i class="fa fa-github" aria-hidden="true"></i></a></li>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    </ul>
+
+    <div class="copyright">
+      <p><a href="https://jekyllrb.com/">Proudly powered by Jekyll</a> | Theme: Lokmont by <a href="https://artemsheludko.github.io/">Artem Sheludko</a></p>
+    </div>
+  </div>
+
+</footer> <!-- /.site-footer -->
+
+    </div> <!-- /.full-page-container -->
+
+    <script src="/js/jquery-3.2.1.min.js"></script>
+<script src="/js/jquery.viewportchecker.min.js"></script>
+<script src="/js/jquery.fitvids.js"></script>
+<script src="/js/simple-jekyll-search.min.js"></script>
+<script src="/js/transition.js"></script>
+<script src="/js/zoom.min.js"></script>
+<script src="/js/main.js"></script>
+    <style>
+    #cookie-notice {padding: 0.5rem 1rem; display: none; text-align: center; position: fixed; bottom: 0; width: calc(100% - 2rem); background: #222; color: rgba(255,255,255,0.8);}
+    #cookie-notice a {display: inline-block; cursor: pointer; margin-left: 0.5rem;}
+    @media (max-width: 767px) {
+        #cookie-notice span {display: block; padding-top: 3px; margin-bottom: 1rem;}
+        #cookie-notice a {position: relative; bottom: 4px;}
+    }
+</style>
+<div id="cookie-notice"><span>Esta web utiliza cookies y scripts de terceros para mejorar la funcionalidad de este sitio web.</span>
+    <a id="cookie-notice-accept" class="btn btn-primary btn-sm">Aceptar</a><a href="/cookies" class="btn btn-primary btn-sm">Más info</a></div>
+<script>
+    function createCookie(name,value,days) {
+        var expires = "";
+        if (days) {
+            var date = new Date();
+            date.setTime(date.getTime() + (days*24*60*60*1000));
+            expires = "; expires=" + date.toUTCString();
+        }
+        document.cookie = name + "=" + value + expires + "; path=/";
+    }
+    function readCookie(name) {
+        var nameEQ = name + "=";
+        var ca = document.cookie.split(';');
+        for(var i=0;i < ca.length;i++) {
+            var c = ca[i];
+            while (c.charAt(0)==' ') c = c.substring(1,c.length);
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+        }
+        return null;
+    }
+    function eraseCookie(name) {
+        createCookie(name,"",-1);
+    }
+
+    if(readCookie('cookie-notice-dismissed')=='true') {
+
+    } else {
+        document.getElementById('cookie-notice').style.display = 'block';
+    }
+    document.getElementById('cookie-notice-accept').addEventListener("click",function() {
+        createCookie('cookie-notice-dismissed','true',31);
+        document.getElementById('cookie-notice').style.display = 'none';
+        location.reload();
+    });
+
+</script>
+  </body>
+
+</html>
