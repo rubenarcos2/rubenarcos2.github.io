@@ -248,7 +248,7 @@
 </span>
     <span class="k">try</span><span class="p">:</span>
         <span class="n">email</span> <span class="o">=</span> <span class="s">"&lt;html&gt;"</span> <span class="o">+</span> <span class="n">df</span><span class="p">.</span><span class="n">to_html</span><span class="p">()</span> <span class="o">+</span> <span class="s">"&lt;/html&gt;"</span>
-        <span class="n">send</span><span class="p">(</span><span class="s">"rubenarcos2@gmail.com"</span><span class="p">,</span> <span class="s">"Listado de ofertas de empleo"</span><span class="p">,</span> <span class="n">email</span><span class="p">)</span>
+        <span class="n">send</span><span class="p">(</span><span class="s">"destinatario@email.com"</span><span class="p">,</span> <span class="s">"Listado de ofertas de empleo"</span><span class="p">,</span> <span class="n">email</span><span class="p">)</span>
         <span class="k">print</span><span class="p">(</span><span class="s">"Se han enviado las ofertas de trabajo por email correctamente."</span><span class="p">)</span>
     <span class="k">except</span> <span class="nb">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
         <span class="k">print</span><span class="p">(</span><span class="s">"Ha habido un error en el envío de las ofertas por email:"</span><span class="p">,</span> <span class="n">e</span><span class="p">)</span></code></pre></figure>
