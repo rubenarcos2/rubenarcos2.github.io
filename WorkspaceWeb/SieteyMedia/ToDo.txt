@@ -1,0 +1,9 @@
+Pendiente de hacer
+--------------------
+- Añadir array para los nombres de los jugadores, al comienzo.
+- Control de transición de movimiento a la posición de cada jugador.
+- Control de la transiciones para que ejecute las funciones al terminar, listeners.
+- Control de la transición de "salidaCartas" en la puntuación, para que no muestre la baraja de nuevo.
+- CSS para todos los navegadores, transiciones.
+- Recortar cartas de todos los palos.
+- Crear array con los palos y cargarlos en las cartas aleatoriamente.
