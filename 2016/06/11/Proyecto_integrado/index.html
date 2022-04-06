@@ -163,13 +163,13 @@
     <div class="post-content">
       <p>Proyecto integrado fin del Ciclo Formativo de Grado Superior de Aplicaciones Multiplataformas</p>
 
-<p><strong>Presentación y exposición del proyecto</strong></p>
+<h1 id="presentación-y-exposición-del-proyecto">Presentación y exposición del proyecto</h1>
 
 <video autoplay="" width="100%" muted="" controls=""><source src="/images/pages/GesMerCa_defensa.mp4" type="video/mp4" /></video>
 
 <iframe src="/pdf/GesMerCa_defensa_anticopia.pdf#toolbar=0" frameborder="0" allowfullscreen="" width="660" height="500"></iframe>
 
-<p><strong>Ejemplo de ejecución</strong></p>
+<h1 id="ejemplo-de-ejecución">Ejemplo de ejecución</h1>
 
 <p><img src="/images/pages/Carga.png" alt="" /></p>
 
@@ -179,31 +179,40 @@
 
 <p><img src="/images/pages/Login.png" alt="" /></p>
 
-<p><strong>¿Porqué se eligen estos mecaní­smos de autenticación?</strong></p>
+<h2 id="porqué-se-eligen-estos-mecanísmos-de-autenticación">¿Porqué se eligen estos mecaní­smos de autenticación?</h2>
 
 <iframe src="https://www.youtube.com/embed/MFHeKRsQtGE" width="560" height="440" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
 
-<p><strong>Documentación completa y diagramas del proyecto</strong></p>
+<h1 id="documentación-completa-y-diagramas-del-proyecto">Documentación completa y diagramas del proyecto</h1>
 
 <iframe src="/pdf/Documentacion_GESMERCA_anticopia.pdf#toolbar=0" frameborder="0" allowfullscreen="" width="660" height="990"></iframe>
 
-<p><strong>Ejecutable y código fuente</strong></p>
+<h2 id="ejecutable-y-código-fuente">Ejecutable y código fuente</h2>
 
-<p>1) Realizar la instalación. 2) Ejecución de GesMerca 2.1) Los credenciales por defecto son:</p>
+<ol>
+  <li>Realizar la instalación.</li>
+  <li>Ejecución de GesMerca</li>
+  <li>Los credenciales por defecto son:
+    <ul>
+      <li>Administrador: admin/admin</li>
+      <li>Usuario: ruben/123456</li>
+    </ul>
+    <ul>
+      <li>Código de bloqueo del terminal: 5555</li>
+    </ul>
+  </li>
+  <li>En la ventana de configuración, una vez iniciada la sesión como administrador, se puede cambiar la forma de realizar el login inicial, también la configuración personalizada para un usuario concreto, en la misma ventana. Los privilegios se detectarán de forma automática.</li>
+  <li>La conexión a la base de datos está configurada a una copia de pruebas en la nube por defecto. No obstante, es posible cambiar la configuración en un fichero local (GesMerCa.exe.config).</li>
+  <li>Una vez realizada la instalación, si comprueba que tiene problemas de conexión de la base de datos, realice el siguiente cambio:
+    <ul>
+      <li>En la ruta de la instalación de la aplicación, modifique el fichero GesMerCa.exe.config, en la línea 13 y añada al final SSLMode=0;
+<img src="/images/pages/gesmerca_add_ssl_mode0.jpg" alt="Descargar instalador .msi" /></li>
+    </ul>
+  </li>
+</ol>
 
-<ul>
-  <li>Administrador: Uss: admin Pass: admin</li>
-  <li>Usuario: Uss: ruben Pass: 123456</li>
-  <li>Código de bloqueo del terminal: 5555</li>
-</ul>
-
-<p>3) En la ventana de configuración, una vez iniciada la sesión como administrador, se puede cambiar la forma de realizar el login inicial, tambií©n la configuración personalizada para un usuario concreto, en la misma ventana. Los privilegios se detectarí¡n de forma automática. 4) La conexión a la base de datos estí¡ configurada a una copia de pruebas en la nube por defecto. No obstante, es posible cambiar la configuración en un fichero local.</p>
-
-<p><a href="https://bitbucket.org/rubenarcos/gesmerca-c/downloads/GesMerCa.msi"><img src="/images/pages/v-10-5121.png" alt="Descargar instalador .msi" /></a>
-<a href="https://bitbucket.org/rubenarcos/gesmerca-c/downloads/GesMerCa.msi">Descargar instalador .msi</a></p>
-
-<p><a href="https://bitbucket.org/rubenarcos/gesmerca-c/downloads/setup.exe"><img src="/images/pages/icono_archivo_exe1.png" alt="Descargar instalador .exe" /></a>
-<a href="https://bitbucket.org/rubenarcos/gesmerca-c/downloads/setup.exe">Descargar instalador .exe</a></p>
+<h2 id="instalador">Instalador</h2>
+<p><a href="https://bitbucket.org/rubenarcos/gesmerca-c/downloads/GesMerCa.msi"><img src="/images/pages/v-10-5121.png" alt="Descargar instalador .msi" /></a> <a href="https://bitbucket.org/rubenarcos/gesmerca-c/downloads/setup.exe"><img src="/images/pages/icono_archivo_exe1.png" alt="Descargar instalador .exe" /></a></p>
 
     </div>
 
