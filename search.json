@@ -1,6 +1,14 @@
 [
   
     {
+      "title"    : "Python - NLTK",
+      "category" : "",
+      "tags"     : "python, NLTK",
+      "url"      : "/2022/04/05/Python-NLTK/",
+      "date"     : "2022-04-05 07:30:00 +0200"
+    } ,
+  
+    {
       "title"    : "Python - IA ejemplo de uso de RoBERTa Q&amp;A",
       "category" : "",
       "tags"     : "python, pytorch, ia, colab, bert",
@@ -13,6 +21,38 @@
       "category" : "",
       "tags"     : "python, pytorch, ia, flask, bert",
       "url"      : "/2022/03/18/IA-Bert-flask/",
+      "date"     : "2022-03-18 15:33:28 +0100"
+    } ,
+  
+    {
+      "title"    : "Python - Webscraping II (Selenium)",
+      "category" : "",
+      "tags"     : "python, keras, ia, tensorflow, js, webscraping",
+      "url"      : "/2022/03/18/Python-Webscraping-2/",
+      "date"     : "2022-03-18 15:33:28 +0100"
+    } ,
+  
+    {
+      "title"    : "Python - Webscraping I (BeautifulSoup)",
+      "category" : "",
+      "tags"     : "python, keras, ia, tensorflow, js, webscraping",
+      "url"      : "/2022/03/18/Python-Webscraping-1/",
+      "date"     : "2022-03-18 15:33:28 +0100"
+    } ,
+  
+    {
+      "title"    : "Python - Envío de emails mediante la api de Gmail con python",
+      "category" : "",
+      "tags"     : "python, gmail, api, webscraping",
+      "url"      : "/2022/03/18/Python-Gmail_api/",
+      "date"     : "2022-03-18 15:33:28 +0100"
+    } ,
+  
+    {
+      "title"    : "Python - Programación de scripts mediante crontab en pyton",
+      "category" : "",
+      "tags"     : "python, webscraping, cron, crontab",
+      "url"      : "/2022/03/18/Python-Crontab/",
       "date"     : "2022-03-18 15:33:28 +0100"
     } ,
   
