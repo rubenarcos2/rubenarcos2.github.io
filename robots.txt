@@ -1,2 +1,1 @@
 Sitemap: https://rarcos.com//sitemap.xml
-Disallow: /pdf/*.pdf

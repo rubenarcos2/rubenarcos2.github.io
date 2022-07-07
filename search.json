@@ -1,6 +1,14 @@
 [
   
     {
+      "title"    : "Java - Stream Api",
+      "category" : "",
+      "tags"     : "java, stream api",
+      "url"      : "/2022/07/07/Java-Stream-Api/",
+      "date"     : "2022-07-07 16:33:28 +0200"
+    } ,
+  
+    {
       "title"    : "Python - NLTK",
       "category" : "",
       "tags"     : "python, NLTK",

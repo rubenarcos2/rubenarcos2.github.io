@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Java - Stream Api</title>
+  <meta name='description'
+    content='Uso de la Stream Api de Java 8'>
+
+  <!-- Google Fonts -->
+  <link
+    href="https://fonts.googleapis.com/css?family=Dancing+Script%7CPT+Serif:400,400i,700%7CLato:400,700%7CRoboto:300,400"
+    rel="stylesheet">
+
+  <!-- Font Awesome v4.7.0 -->
+  <link rel="stylesheet" href="/css/font-awesome.min.css">
+
+  <!-- Normalize v7.0.0 -->
+  <link rel="stylesheet" href="/css/normalize.css">
+
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="https://rarcos.com//2022/07/07/Java-Stream-Api/">
+  <link rel="alternate" type="application/rss+xml" title="Rubén Arcos" href="/%20/feed.xml">
+
+  <!-- Chrome, Firefox OS and Opera -->
+  <meta name="theme-color" content="#faf5ee">
+  <!-- Windows Phone -->
+  <meta name="msapplication-navbutton-color" content="#faf5ee">
+  <!-- iOS Safari -->
+  <meta name="apple-mobile-web-app-status-bar-style" content="#faf5ee">
+</head>
+  
+  
+  
+    
+      <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-64172909-1', 'auto');
+  ga('send', 'pageview');
+
+</script> <!-- /Google Analytics -->
+  
+
+    
+
+    <div class="full-page-container">
+      <div class="overlay"></div>
+      <header class="site-header clearfix">
+  <div class="wrapper-content">
+
+    <div class="navigation-wrap">
+      <div class="nav-toggle-close"><i class="fa fa-times" aria-hidden="true"></i></div>
+
+      <nav class="site-nav">
+        
+          
+        
+          
+            
+              <a href='/about/'>Sobre mí</a>
+            
+          
+        
+          
+            
+              <a href='/contacto/'>Contacto</a>
+            
+          
+        
+          
+            
+              <a href='/cookies/'>Cookies</a>
+            
+          
+        
+          
+            
+          
+        
+          
+            
+          
+        
+          
+        
+          
+            
+          
+        
+          
+            
+          
+        
+          
+            
+          
+        
+          
+            
+          
+        
+          
+            
+          
+        
+          
+            
+          
+        
+        <a href="https://linkedin.com/in/rubenarcos2"><i class="fa fa-linkedin fa-2x" aria-hidden="true"></i></a>
+        <a href="https://github.com/rubenarcos2"><i class="fa fa-github fa-2x" aria-hidden="true"></i></a>
+      </nav>
+      
+    </div>
+
+    <span class="search-toggle">
+      <i class="fa fa-search" aria-hidden="true"></i>
+    </span>
+    
+    <div class="nav-toggle"><i class="fa fa-bars" aria-hidden="true"></i></div>
+
+    <div class="site-logo">
+      <a href="/">Rubén Arcos</a>
+    </div>
+    
+  </div>
+</header> <!-- /.site-header -->
+
+      <div class="search-box">
+  <div class="wrapper-content">
+    <form class="search-form">
+      <label class="screen-reader-text" for="search-input">Buscar...</label>
+      <input type="text" id="search-input" class="search-field" name="s" placeholder="Type to search...">
+    </form>
+    <div class="btn-close">
+      <span class="bt-search-close">
+        <i class="fa fa-times" aria-hidden="true"></i>
+      </span>
+    </div>
+  </div>
+  <ul id="results-container" class="search-results-list"></ul>  
+</div> <!-- /.search-box -->
+
+        <div class="post-header" style="background: url(/images/pages/javastreamapi.png)">
+  <div class="post-header-info">
+    <h1 class="post-title">Java - Stream Api</h1>
+    <div class="post-meta">
+      <time datetime="2022-07-07T16:33:28+02:00">
+         07/07/2022
+      </time>
+    </div>
+  </div>
+</div>
+
+<div class="content-box">
+  <article class="post">
+
+    <div class="post-content">
+      <h1 id="utilización-de-la-stream-api">Utilización de la Stream Api</h1>
+
+<p>La API Stream ofrece un enfoque alternativo de “tuberías y filtros” para el procesamiento de colecciones.</p>
+
+<p>Antes de Java 8 debías manipular colecciones manualmente, por lo general iterando a través de la colección y usando operadores en cada elemento en turno. Estos bucles explícitos requerían muchas repeticiones, además de que es difícil entender la estructura del ciclo for hasta que uno llega al cuerpo del mismo.</p>
+
+<p>La API Stream te proporciona una forma de procesar datos de manera más eficiente al realizar una única ejecución sobre ellos, independientemente de la cantidad de información que estés procesando o de si estás realizando múltiples cálculos</p>
+
+<p>El código fuente con los ejerciciós está <a href="https://github.com/rubenarcos2/java8StreamApi">aquí</a>, he utilizado TDD:</p>
+
+<p><strong>Map</strong></p>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kn">package</span> <span class="nn">com.rarcos</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">static</span> <span class="n">java</span><span class="o">.</span><span class="na">util</span><span class="o">.</span><span class="na">stream</span><span class="o">.</span><span class="na">Collectors</span><span class="o">.</span><span class="na">toList</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">java.util.ArrayList</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.List</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.stream.IntStream</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MapCollection</span> <span class="o">{</span>
+
+	<span class="kd">private</span> <span class="nf">MapCollection</span><span class="o">()</span> <span class="o">{</span>
+	<span class="o">}</span>
+
+	<span class="c1">// Map 1 - All characters upper case are returned.</span>
+	<span class="kd">public</span> <span class="kd">static</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="nf">mapAllUpperCaseJava7</span><span class="o">(</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">collection</span><span class="o">)</span> <span class="o">{</span>
+		<span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">newCollection</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;();</span>
+		<span class="k">for</span> <span class="o">(</span><span class="nc">String</span> <span class="n">elm</span> <span class="o">:</span> <span class="n">collection</span><span class="o">)</span> <span class="o">{</span>
+			<span class="n">newCollection</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">elm</span><span class="o">.</span><span class="na">toUpperCase</span><span class="o">());</span>
+		<span class="o">}</span>
+		<span class="k">return</span> <span class="n">newCollection</span><span class="o">;</span>
+	<span class="o">}</span>
+
+	<span class="kd">public</span> <span class="kd">static</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="nf">mapAllUpperCase</span><span class="o">(</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">collection</span><span class="o">)</span> <span class="o">{</span>
+		<span class="k">return</span> <span class="n">collection</span><span class="o">.</span><span class="na">stream</span><span class="o">().</span><span class="na">map</span><span class="o">(</span><span class="nl">String:</span><span class="o">:</span><span class="n">toUpperCase</span><span class="o">).</span><span class="na">toList</span><span class="o">();</span>
+	<span class="o">}</span>
+
+	<span class="c1">// Map 2 - All length of countries are returned.</span>
+	<span class="kd">public</span> <span class="kd">static</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="nf">mapLengthJava7</span><span class="o">(</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">collection</span><span class="o">)</span> <span class="o">{</span>
+		<span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">newCollection</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;();</span>
+		<span class="k">for</span> <span class="o">(</span><span class="nc">String</span> <span class="n">elm</span> <span class="o">:</span> <span class="n">collection</span><span class="o">)</span> <span class="o">{</span>
+			<span class="n">newCollection</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="nc">String</span><span class="o">.</span><span class="na">valueOf</span><span class="o">(</span><span class="n">elm</span><span class="o">.</span><span class="na">length</span><span class="o">()));</span>
+		<span class="o">}</span>
+		<span class="k">return</span> <span class="n">newCollection</span><span class="o">;</span>
+	<span class="o">}</span>
+
+	<span class="kd">public</span> <span class="kd">static</span> <span class="nc">IntStream</span> <span class="nf">mapLength</span><span class="o">(</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">collection</span><span class="o">)</span> <span class="o">{</span>
+		<span class="k">return</span> <span class="n">collection</span><span class="o">.</span><span class="na">stream</span><span class="o">().</span><span class="na">mapToInt</span><span class="o">(</span><span class="nl">String:</span><span class="o">:</span><span class="n">length</span><span class="o">);</span>
+	<span class="o">}</span>
+
+	<span class="c1">// Map 3 - All name of person to upper case are returned.</span>
+	<span class="kd">public</span> <span class="kd">static</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="nf">mapNamePersonUpperCaseJava7</span><span class="o">(</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">Person</span><span class="o">&gt;</span> <span class="n">collection</span><span class="o">)</span> <span class="o">{</span>
+		<span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">newCollection</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;();</span>
+		<span class="k">for</span> <span class="o">(</span><span class="nc">Person</span> <span class="n">elm</span> <span class="o">:</span> <span class="n">collection</span><span class="o">)</span> <span class="o">{</span>
+			<span class="n">newCollection</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="nc">String</span><span class="o">.</span><span class="na">valueOf</span><span class="o">(</span><span class="n">elm</span><span class="o">.</span><span class="na">getName</span><span class="o">().</span><span class="na">toUpperCase</span><span class="o">()));</span>
+		<span class="o">}</span>
+		<span class="k">return</span> <span class="n">newCollection</span><span class="o">;</span>
+	<span class="o">}</span>
+
+	<span class="kd">public</span> <span class="kd">static</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="nf">mapNamePersonUpperCase</span><span class="o">(</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">Person</span><span class="o">&gt;</span> <span class="n">collection</span><span class="o">)</span> <span class="o">{</span>
+		<span class="k">return</span> <span class="n">collection</span><span class="o">.</span><span class="na">stream</span><span class="o">().</span><span class="na">map</span><span class="o">(</span><span class="n">e</span> <span class="o">-&gt;</span> <span class="n">e</span><span class="o">.</span><span class="na">getName</span><span class="o">()).</span><span class="na">map</span><span class="o">(</span><span class="n">e</span> <span class="o">-&gt;</span> <span class="n">e</span><span class="o">.</span><span class="na">toUpperCase</span><span class="o">()).</span><span class="na">toList</span><span class="o">();</span>
+	<span class="o">}</span>
+
+	<span class="c1">// Map 4 - Flat map are returned.</span>
+	<span class="kd">public</span> <span class="kd">static</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="nf">mapFlatJava7</span><span class="o">(</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;&gt;</span> <span class="n">collection</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">newCollection</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;();</span>
+        <span class="k">for</span> <span class="o">(</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">subCollection</span> <span class="o">:</span> <span class="n">collection</span><span class="o">)</span> <span class="o">{</span>
+            <span class="k">for</span> <span class="o">(</span><span class="nc">String</span> <span class="n">value</span> <span class="o">:</span> <span class="n">subCollection</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">newCollection</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">value</span><span class="o">);</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+        <span class="k">return</span> <span class="n">newCollection</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="nf">mapFlat</span><span class="o">(</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;&gt;</span> <span class="n">collection</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">collection</span><span class="o">.</span><span class="na">stream</span><span class="o">()</span> <span class="c1">// Convert collection to Stream</span>
+                <span class="o">.</span><span class="na">flatMap</span><span class="o">(</span><span class="n">value</span> <span class="o">-&gt;</span> <span class="n">value</span><span class="o">.</span><span class="na">stream</span><span class="o">())</span> <span class="c1">// Replace list with stream</span>
+                <span class="o">.</span><span class="na">collect</span><span class="o">(</span><span class="n">toList</span><span class="o">());</span> <span class="c1">// Collect results to a new list</span>
+    <span class="o">}</span>
+<span class="o">}</span></code></pre></figure>
+
+<p><strong>Filter</strong></p>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kn">package</span> <span class="nn">com.rarcos</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">java.util.ArrayList</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.List</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">FilterCollection</span> <span class="o">{</span>
+
+	<span class="kd">private</span> <span class="nf">FilterCollection</span><span class="o">()</span> <span class="o">{</span>
+	<span class="o">}</span>
+
+	<span class="c1">// Filter 1 - Filter collection so that only elements with less or equal then 5</span>
+	<span class="c1">// characters are returned.</span>
+	<span class="kd">public</span> <span class="kd">static</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="nf">filterShorterThant5CharactersJava7</span><span class="o">(</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">collection</span><span class="o">)</span> <span class="o">{</span>
+		<span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">newCollection</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;();</span>
+		<span class="k">for</span> <span class="o">(</span><span class="nc">String</span> <span class="n">elm</span> <span class="o">:</span> <span class="n">collection</span><span class="o">)</span> <span class="o">{</span>
+			<span class="k">if</span> <span class="o">(</span><span class="n">elm</span><span class="o">.</span><span class="na">length</span><span class="o">()</span> <span class="o">&lt;=</span> <span class="mi">5</span><span class="o">)</span>
+				<span class="n">newCollection</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">elm</span><span class="o">);</span>
+		<span class="o">}</span>
+		<span class="k">return</span> <span class="n">newCollection</span><span class="o">;</span>
+	<span class="o">}</span>
+
+	<span class="kd">public</span> <span class="kd">static</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="nf">filterShorterThant5Characters</span><span class="o">(</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">collection</span><span class="o">)</span> <span class="o">{</span>
+		<span class="k">return</span> <span class="n">collection</span><span class="o">.</span><span class="na">stream</span><span class="o">().</span><span class="na">filter</span><span class="o">(</span><span class="n">e</span> <span class="o">-&gt;</span> <span class="n">e</span><span class="o">.</span><span class="na">length</span><span class="o">()</span> <span class="o">&lt;=</span> <span class="mi">5</span><span class="o">).</span><span class="na">toList</span><span class="o">();</span>
+	<span class="o">}</span>
+
+	<span class="c1">// Filter 2 - Filter collection start with C character are returned.</span>
+	<span class="kd">public</span> <span class="kd">static</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="nf">filterWithCharacterCJava7</span><span class="o">(</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">collection</span><span class="o">)</span> <span class="o">{</span>
+		<span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">newCollection</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;();</span>
+		<span class="k">for</span> <span class="o">(</span><span class="nc">String</span> <span class="n">elm</span> <span class="o">:</span> <span class="n">collection</span><span class="o">)</span> <span class="o">{</span>
+			<span class="k">if</span> <span class="o">(</span><span class="n">elm</span><span class="o">.</span><span class="na">toUpperCase</span><span class="o">().</span><span class="na">contains</span><span class="o">(</span><span class="s">"C"</span><span class="o">))</span>
+				<span class="n">newCollection</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">elm</span><span class="o">);</span>
+		<span class="o">}</span>
+		<span class="k">return</span> <span class="n">newCollection</span><span class="o">;</span>
+	<span class="o">}</span>
+
+	<span class="kd">public</span> <span class="kd">static</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="nf">filterWithCharacterC</span><span class="o">(</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">collection</span><span class="o">)</span> <span class="o">{</span>
+		<span class="k">return</span> <span class="n">collection</span><span class="o">.</span><span class="na">stream</span><span class="o">().</span><span class="na">filter</span><span class="o">(</span><span class="n">e</span> <span class="o">-&gt;</span> <span class="n">e</span><span class="o">.</span><span class="na">toUpperCase</span><span class="o">().</span><span class="na">contains</span><span class="o">(</span><span class="s">"C"</span><span class="o">)).</span><span class="na">toList</span><span class="o">();</span>
+	<span class="o">}</span>
+
+	<span class="c1">// Filter 3 - Filter collection with distinct characters are returned.</span>
+	<span class="kd">public</span> <span class="kd">static</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="nf">filterWithDistinctCharactersJava7</span><span class="o">(</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">collection</span><span class="o">)</span> <span class="o">{</span>
+		<span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">listDistinctInts</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;(</span><span class="n">collection</span><span class="o">.</span><span class="na">size</span><span class="o">());</span>
+		<span class="k">for</span> <span class="o">(</span><span class="nc">String</span> <span class="n">i</span> <span class="o">:</span> <span class="n">collection</span><span class="o">)</span> <span class="o">{</span>
+			<span class="k">if</span> <span class="o">(!</span><span class="n">listDistinctInts</span><span class="o">.</span><span class="na">contains</span><span class="o">(</span><span class="n">i</span><span class="o">))</span> <span class="o">{</span>
+				<span class="n">listDistinctInts</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">i</span><span class="o">);</span>
+			<span class="o">}</span>
+		<span class="o">}</span>
+		<span class="k">return</span> <span class="n">listDistinctInts</span><span class="o">;</span>
+	<span class="o">}</span>
+
+	<span class="kd">public</span> <span class="kd">static</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="nf">filterWithDistinctCharacters</span><span class="o">(</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">collection</span><span class="o">)</span> <span class="o">{</span>
+		<span class="k">return</span> <span class="n">collection</span><span class="o">.</span><span class="na">stream</span><span class="o">().</span><span class="na">distinct</span><span class="o">().</span><span class="na">toList</span><span class="o">();</span>
+	<span class="o">}</span>
+
+	<span class="c1">// Filter 4 - Filter collection 3 first elements are returned.</span>
+	<span class="kd">public</span> <span class="kd">static</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="nf">filter3FirstJava7</span><span class="o">(</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">collection</span><span class="o">)</span> <span class="o">{</span>
+		<span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">newCollection</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;(</span><span class="n">collection</span><span class="o">.</span><span class="na">size</span><span class="o">());</span>
+		<span class="n">newCollection</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">collection</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">0</span><span class="o">));</span>
+		<span class="n">newCollection</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">collection</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">1</span><span class="o">));</span>
+		<span class="n">newCollection</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">collection</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">2</span><span class="o">));</span>
+		<span class="k">return</span> <span class="n">newCollection</span><span class="o">;</span>
+	<span class="o">}</span>
+
+	<span class="kd">public</span> <span class="kd">static</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="nf">filter3First</span><span class="o">(</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">collection</span><span class="o">)</span> <span class="o">{</span>
+		<span class="k">return</span> <span class="n">collection</span><span class="o">.</span><span class="na">stream</span><span class="o">().</span><span class="na">limit</span><span class="o">(</span><span class="mi">3</span><span class="o">).</span><span class="na">toList</span><span class="o">();</span>
+	<span class="o">}</span>
+
+	<span class="c1">// Filter 4 - Filter collection all elements minus 3 first elements are</span>
+	<span class="c1">// returned.</span>
+	<span class="kd">public</span> <span class="kd">static</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="nf">filterAllMinus3FirstJava7</span><span class="o">(</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">collection</span><span class="o">)</span> <span class="o">{</span>
+		<span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">newCollection</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;(</span><span class="n">collection</span><span class="o">.</span><span class="na">size</span><span class="o">());</span>
+
+		<span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">3</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">collection</span><span class="o">.</span><span class="na">size</span><span class="o">();</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+			<span class="n">newCollection</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">collection</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">i</span><span class="o">));</span>
+		<span class="o">}</span>
+
+		<span class="k">return</span> <span class="n">newCollection</span><span class="o">;</span>
+	<span class="o">}</span>
+
+	<span class="kd">public</span> <span class="kd">static</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="nf">filterAllMinus3First</span><span class="o">(</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">collection</span><span class="o">)</span> <span class="o">{</span>
+		<span class="k">return</span> <span class="n">collection</span><span class="o">.</span><span class="na">stream</span><span class="o">().</span><span class="na">skip</span><span class="o">(</span><span class="mi">3</span><span class="o">).</span><span class="na">toList</span><span class="o">();</span>
+	<span class="o">}</span>
+<span class="o">}</span></code></pre></figure>
+
+<p><strong>Search</strong></p>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kn">package</span> <span class="nn">com.rarcos</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">java.util.ArrayList</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.List</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.Optional</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.Random</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">SearchCollection</span> <span class="o">{</span>
+
+	<span class="kd">private</span> <span class="nf">SearchCollection</span><span class="o">()</span> <span class="o">{</span>
+	<span class="o">}</span>
+
+	<span class="c1">// Search 1 - Search it have more 4 characters are returned.</span>
+	<span class="kd">public</span> <span class="kd">static</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="nf">searchAllMore4CharactersJava7</span><span class="o">(</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">collection</span><span class="o">)</span> <span class="o">{</span>
+		<span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">newCollection</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;();</span>
+		<span class="k">for</span> <span class="o">(</span><span class="nc">String</span> <span class="n">elm</span> <span class="o">:</span> <span class="n">collection</span><span class="o">)</span> <span class="o">{</span>
+			<span class="k">if</span> <span class="o">(</span><span class="n">elm</span><span class="o">.</span><span class="na">length</span><span class="o">()</span> <span class="o">&gt;</span> <span class="mi">4</span><span class="o">)</span>
+				<span class="n">newCollection</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">elm</span><span class="o">);</span>
+		<span class="o">}</span>
+		<span class="k">return</span> <span class="n">newCollection</span><span class="o">;</span>
+	<span class="o">}</span>
+
+	<span class="kd">public</span> <span class="kd">static</span> <span class="kt">boolean</span> <span class="nf">searchAllMore4Characters</span><span class="o">(</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">collection</span><span class="o">)</span> <span class="o">{</span>
+		<span class="k">return</span> <span class="n">collection</span><span class="o">.</span><span class="na">stream</span><span class="o">().</span><span class="na">allMatch</span><span class="o">(</span><span class="n">e</span> <span class="o">-&gt;</span> <span class="n">e</span><span class="o">.</span><span class="na">length</span><span class="o">()</span> <span class="o">&gt;</span> <span class="mi">4</span><span class="o">);</span>
+	<span class="o">}</span>
+
+	<span class="c1">// Search 2 - Search it have one or more condition are returned.</span>
+	<span class="kd">public</span> <span class="kd">static</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="nf">searchConditionJava7</span><span class="o">(</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">collection</span><span class="o">)</span> <span class="o">{</span>
+		<span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">newCollection</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;();</span>
+		<span class="k">for</span> <span class="o">(</span><span class="nc">String</span> <span class="n">elm</span> <span class="o">:</span> <span class="n">collection</span><span class="o">)</span> <span class="o">{</span>
+			<span class="k">if</span> <span class="o">(</span><span class="n">elm</span> <span class="o">==</span> <span class="s">"Spain"</span><span class="o">)</span>
+				<span class="n">newCollection</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">elm</span><span class="o">);</span>
+		<span class="o">}</span>
+		<span class="k">return</span> <span class="n">newCollection</span><span class="o">;</span>
+	<span class="o">}</span>
+
+	<span class="kd">public</span> <span class="kd">static</span> <span class="kt">boolean</span> <span class="nf">searchCondition</span><span class="o">(</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">collection</span><span class="o">)</span> <span class="o">{</span>
+		<span class="k">return</span> <span class="n">collection</span><span class="o">.</span><span class="na">stream</span><span class="o">().</span><span class="na">anyMatch</span><span class="o">(</span><span class="n">e</span> <span class="o">-&gt;</span> <span class="n">e</span> <span class="o">==</span> <span class="s">"Spain"</span><span class="o">);</span>
+	<span class="o">}</span>
+
+	<span class="c1">// Search 2 - Search it haven't condition are returned.</span>
+	<span class="kd">public</span> <span class="kd">static</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="nf">searchNotConditionJava7</span><span class="o">(</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">collection</span><span class="o">)</span> <span class="o">{</span>
+		<span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">newCollection</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;();</span>
+		<span class="k">for</span> <span class="o">(</span><span class="nc">String</span> <span class="n">elm</span> <span class="o">:</span> <span class="n">collection</span><span class="o">)</span> <span class="o">{</span>
+			<span class="k">if</span> <span class="o">(</span><span class="n">elm</span> <span class="o">==</span> <span class="s">"Spain"</span><span class="o">)</span>
+				<span class="n">newCollection</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">elm</span><span class="o">);</span>
+		<span class="o">}</span>
+		<span class="k">return</span> <span class="n">newCollection</span><span class="o">;</span>
+	<span class="o">}</span>
+
+	<span class="kd">public</span> <span class="kd">static</span> <span class="kt">boolean</span> <span class="nf">searchNotCondition</span><span class="o">(</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">collection</span><span class="o">)</span> <span class="o">{</span>
+		<span class="k">return</span> <span class="n">collection</span><span class="o">.</span><span class="na">stream</span><span class="o">().</span><span class="na">noneMatch</span><span class="o">(</span><span class="n">e</span> <span class="o">-&gt;</span> <span class="n">e</span><span class="o">.</span><span class="na">length</span><span class="o">()</span> <span class="o">&gt;=</span> <span class="mi">4</span><span class="o">);</span>
+	<span class="o">}</span>
+
+	<span class="c1">// Search 3 - Search any element are returned.</span>
+	<span class="kd">public</span> <span class="kd">static</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="nf">searchAnyElementJava7</span><span class="o">(</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">collection</span><span class="o">)</span> <span class="o">{</span>
+		<span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">newCollection</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;();</span>
+		<span class="nc">Random</span> <span class="n">r</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Random</span><span class="o">();</span>
+		<span class="kt">int</span> <span class="n">pos</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="na">nextInt</span><span class="o">((</span><span class="n">collection</span><span class="o">.</span><span class="na">size</span><span class="o">()</span> <span class="o">-</span> <span class="mi">0</span><span class="o">)</span> <span class="o">+</span> <span class="mi">1</span><span class="o">)</span> <span class="o">+</span> <span class="mi">0</span><span class="o">;</span>
+		<span class="n">newCollection</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">collection</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">pos</span><span class="o">));</span>
+		<span class="k">return</span> <span class="n">newCollection</span><span class="o">;</span>
+	<span class="o">}</span>
+
+	<span class="kd">public</span> <span class="kd">static</span> <span class="nc">Optional</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="nf">searchAnyElement</span><span class="o">(</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">collection</span><span class="o">)</span> <span class="o">{</span>
+		<span class="k">return</span> <span class="n">collection</span><span class="o">.</span><span class="na">parallelStream</span><span class="o">().</span><span class="na">findAny</span><span class="o">();</span>
+	<span class="o">}</span>
+
+	<span class="c1">// Search 4 - Search first element are returned.</span>
+	<span class="kd">public</span> <span class="kd">static</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="nf">searchFirstElementJava7</span><span class="o">(</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">collection</span><span class="o">)</span> <span class="o">{</span>
+		<span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">newCollection</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;();</span>
+		<span class="nc">Random</span> <span class="n">r</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Random</span><span class="o">();</span>
+		<span class="kt">int</span> <span class="n">pos</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="na">nextInt</span><span class="o">((</span><span class="n">collection</span><span class="o">.</span><span class="na">size</span><span class="o">()</span> <span class="o">-</span> <span class="mi">0</span><span class="o">)</span> <span class="o">+</span> <span class="mi">1</span><span class="o">)</span> <span class="o">+</span> <span class="mi">0</span><span class="o">;</span>
+		<span class="n">newCollection</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">collection</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">pos</span><span class="o">));</span>
+		<span class="k">return</span> <span class="n">newCollection</span><span class="o">;</span>
+	<span class="o">}</span>
+
+	<span class="kd">public</span> <span class="kd">static</span> <span class="nc">Optional</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="nf">searchFirstElement</span><span class="o">(</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">collection</span><span class="o">)</span> <span class="o">{</span>
+		<span class="k">return</span> <span class="n">collection</span><span class="o">.</span><span class="na">parallelStream</span><span class="o">().</span><span class="na">findFirst</span><span class="o">();</span>
+	<span class="o">}</span>
+<span class="o">}</span></code></pre></figure>
+
+<p><strong>Data and Calculate</strong></p>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kn">package</span> <span class="nn">com.rarcos</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">java.util.Arrays</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.Comparator</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.List</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.OptionalInt</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">DataAndCalculateCollection</span> <span class="o">{</span>
+
+	<span class="kd">private</span> <span class="nf">DataAndCalculateCollection</span><span class="o">()</span> <span class="o">{</span>
+	<span class="o">}</span>
+
+	<span class="c1">// Data and calculate 1 - Max number are returned.</span>
+	<span class="kd">public</span> <span class="kd">static</span> <span class="kt">int</span> <span class="nf">dataAndCalculateMaxJava7</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">collection</span><span class="o">)</span> <span class="o">{</span>
+		<span class="kt">int</span> <span class="n">maximum</span> <span class="o">=</span> <span class="n">collection</span><span class="o">[</span><span class="mi">0</span><span class="o">];</span>
+		<span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">collection</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+			<span class="k">if</span> <span class="o">(</span><span class="n">maximum</span> <span class="o">&lt;</span> <span class="n">collection</span><span class="o">[</span><span class="n">i</span><span class="o">])</span>
+				<span class="n">maximum</span> <span class="o">=</span> <span class="n">collection</span><span class="o">[</span><span class="n">i</span><span class="o">];</span>
+		<span class="o">}</span>
+		<span class="k">return</span> <span class="n">maximum</span><span class="o">;</span>
+	<span class="o">}</span>
+
+	<span class="kd">public</span> <span class="kd">static</span> <span class="nc">OptionalInt</span> <span class="nf">dataAndCalculateMax</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">collection</span><span class="o">)</span> <span class="o">{</span>
+		<span class="k">return</span> <span class="nc">Arrays</span><span class="o">.</span><span class="na">stream</span><span class="o">(</span><span class="n">collection</span><span class="o">).</span><span class="na">reduce</span><span class="o">(</span><span class="nl">Integer:</span><span class="o">:</span><span class="n">max</span><span class="o">);</span>
+	<span class="o">}</span>
+
+	<span class="c1">// Data and calculate 2 - Sum of numbers are returned.</span>
+	<span class="kd">public</span> <span class="kd">static</span> <span class="kt">int</span> <span class="nf">dataAndCalculateSumJava7</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">collection</span><span class="o">)</span> <span class="o">{</span>
+		<span class="kt">int</span> <span class="n">sum</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+		<span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">number</span> <span class="o">:</span> <span class="n">collection</span><span class="o">)</span> <span class="o">{</span>
+			<span class="n">sum</span> <span class="o">+=</span> <span class="n">number</span><span class="o">;</span>
+		<span class="o">}</span>
+		<span class="k">return</span> <span class="n">sum</span><span class="o">;</span>
+	<span class="o">}</span>
+
+	<span class="kd">public</span> <span class="kd">static</span> <span class="kt">int</span> <span class="nf">dataAndCalculateSum</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">collection</span><span class="o">)</span> <span class="o">{</span>
+		<span class="k">return</span> <span class="nc">Arrays</span><span class="o">.</span><span class="na">stream</span><span class="o">(</span><span class="n">collection</span><span class="o">).</span><span class="na">reduce</span><span class="o">(</span><span class="mi">0</span><span class="o">,</span> <span class="o">(</span><span class="n">x</span><span class="o">,</span> <span class="n">y</span><span class="o">)</span> <span class="o">-&gt;</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span><span class="o">);</span>
+	<span class="o">}</span>
+
+	<span class="c1">// Data and calculate 3 - Elements sorted are returned.</span>
+<span class="c1">//	public static int[] dataAndCalculateSortJava7(int[] collection) {</span>
+<span class="c1">//		return Collections.sort(collection);</span>
+<span class="c1">//	}</span>
+
+	<span class="kd">public</span> <span class="kd">static</span> <span class="nc">Object</span><span class="o">[]</span> <span class="nf">dataAndCalculateSort</span><span class="o">(</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">collection</span><span class="o">)</span> <span class="o">{</span>
+		<span class="k">return</span> <span class="n">collection</span><span class="o">.</span><span class="na">stream</span><span class="o">().</span><span class="na">sorted</span><span class="o">((</span><span class="n">s1</span><span class="o">,</span> <span class="n">s2</span><span class="o">)</span> <span class="o">-&gt;</span> <span class="n">s1</span><span class="o">.</span><span class="na">compareTo</span><span class="o">(</span><span class="n">s2</span><span class="o">)).</span><span class="na">toArray</span><span class="o">();</span>
+	<span class="o">}</span>
+
+	<span class="c1">// Data and calculate 4 - Oldest person are returned.</span>
+	<span class="kd">public</span> <span class="kd">static</span> <span class="nc">Person</span> <span class="nf">getOldestPerson7</span><span class="o">(</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">Person</span><span class="o">&gt;</span> <span class="n">people</span><span class="o">)</span> <span class="o">{</span>
+		<span class="nc">Person</span> <span class="n">oldestPerson</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Person</span><span class="o">(</span><span class="s">""</span><span class="o">,</span> <span class="mi">0</span><span class="o">);</span>
+		<span class="k">for</span> <span class="o">(</span><span class="nc">Person</span> <span class="n">person</span> <span class="o">:</span> <span class="n">people</span><span class="o">)</span> <span class="o">{</span>
+			<span class="k">if</span> <span class="o">(</span><span class="n">person</span><span class="o">.</span><span class="na">getAge</span><span class="o">()</span> <span class="o">&gt;</span> <span class="n">oldestPerson</span><span class="o">.</span><span class="na">getAge</span><span class="o">())</span> <span class="o">{</span>
+				<span class="n">oldestPerson</span> <span class="o">=</span> <span class="n">person</span><span class="o">;</span>
+			<span class="o">}</span>
+		<span class="o">}</span>
+		<span class="k">return</span> <span class="n">oldestPerson</span><span class="o">;</span>
+	<span class="o">}</span>
+
+	<span class="kd">public</span> <span class="kd">static</span> <span class="nc">Person</span> <span class="nf">getOldestPerson</span><span class="o">(</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">Person</span><span class="o">&gt;</span> <span class="n">people</span><span class="o">)</span> <span class="o">{</span>
+		<span class="k">return</span> <span class="n">people</span><span class="o">.</span><span class="na">stream</span><span class="o">()</span> <span class="c1">// Convert collection to Stream</span>
+				<span class="o">.</span><span class="na">max</span><span class="o">(</span><span class="nc">Comparator</span><span class="o">.</span><span class="na">comparing</span><span class="o">(</span><span class="nl">Person:</span><span class="o">:</span><span class="n">getAge</span><span class="o">))</span> <span class="c1">// Compares people ages</span>
+				<span class="o">.</span><span class="na">get</span><span class="o">();</span> <span class="c1">// Gets stream result</span>
+	<span class="o">}</span>
+<span class="o">}</span></code></pre></figure>
+
+<hr />
+
+<p>El código fuente con los ejerciciós está aquí, he utilizado TDD:</p>
+
+<p><em>Repositorio con el contenido</em></p>
+
+<p><a href="https://github.com/rubenarcos2/java8StreamApi"><img src="/images/pages/repository_small.png" alt="Repositorio" /></a></p>
+
+<h5 id="más-sobre-todas-las-novedades-de-java-8">Más sobre todas las novedades de Java 8:</h5>
+
+<p><a href="https://code.tutsplus.com/es/tutorials/java-8-for-android-development-stream-api-and-date-time-libraries--cms-29904">https://code.tutsplus.com/es/tutorials/java-8-for-android-development-stream-api-and-date-time-libraries–cms-29904</a></p>
+
+<h5 id="más-ejercicios-para-practicar-el-stream-api">Más ejercicios para practicar el stream api:</h5>
+
+<p><a href="https://github.com/vfarcic/java-8-exercises">https://github.com/vfarcic/java-8-exercises</a></p>
+
+    </div>
+
+    <footer class="post-footer">
+      <p>
+        <h3>Content License</h3>
+
+        <p><img src="/images/pages/88x311.png"/></p>
+        
+        <p>This web page, all content with proyects and source code, is licensed under Creative Commons: Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0) <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">More info</a></p>
+        
+        <p>Esta página web y todo su contenido, incluido proyectos y código fuente, está licenciado bajo una licencia de Creative Commons: Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)<a href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.es">Más info</a></p>
+        
+      </p>
+
+      <ul class="post-footer-list">
+        <li class="post-footer-item">
+          <a class="post-facebook" href="https://www.facebook.com/sharer/sharer.php?u=https://rarcos.com//2022/07/07/Java-Stream-Api/" onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook" rel="nofollow"><i class="fa fa-facebook" aria-hidden="true"></i><span>Facebook</span></a>
+        </li>
+
+        <li class="post-footer-item">
+          <a class="post-twitter" href="https://twitter.com/intent/tweet?text=Java%20-%20Stream%20Api&url=https://rarcos.com//2022/07/07/Java-Stream-Api/" onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter" rel="nofollow"><i class="fa fa-twitter" aria-hidden="true"></i><span>Twitter</span></a>
+        </li>
+
+        <li class="post-footer-item">
+          <a href="http://pinterest.com/pin/create/button/?url=https://rarcos.com//2022/07/07/Java-Stream-Api/&amp;media=https://rarcos.com//images/pages/javastreamapi.png&amp;description=Java%20-%20Stream%20Api" onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=900,height=500,toolbar=1,resizable=0'); return false;" class="post-pinterest" title="Share on Pinterest" rel="nofollow"><i class="fa fa-pinterest" aria-hidden="true"></i><span>Pinterest</span></a>
+        </li>
+      </ul>
+      
+      <div class="post-tag">
+        <span>Tags:</span>
+        
+        <a href="/tags#java" class="tag">java</a>
+        
+        <a href="/tags#stream api" class="tag">stream api</a>
+        
+      </div>
+      
+    </footer>
+
+    
+    <div class="post-author">
+      
+      <div class="post-author-image">
+        <a style="background-image: url(/images/ruben.jpg)">
+          <span class="screen-reader-text">Rubén Arcos Picture</span>
+        </a>
+      </div>
+      <div class="post-author-info">
+        <h4>Rubén Arcos</h4>
+        <p class="post-author-bio">Desarrollador TI. <br>Tecnico superior en desarrollo de aplicaciones multiplataformas y<br>Técnico especialicialista en IA y Big data.</p>
+        <div class="post-author-meta">
+          
+          <a href="https://twitter.com/rarcosdev" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+          
+          
+          <a href="https://linkedin.com/in/rubenarcos2" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+          
+          
+          <a href="https://github.com/rubenarcos2" target="_blank"><i class="fa fa-github" aria-hidden="true"></i></a>
+          
+          
+          
+          
+          
+          
+          
+          
+          
+        </div>
+      </div>
+      
+    </div>
+
+    <div class="page-navigation clearfix">
+      
+      <a class="prev-page" href="/2022/04/05/Python-NLTK/"><i class="fa fa-angle-left" aria-hidden="true"></i><span>Python - NLTK</span></a>
+      
+      
+    </div>
+
+    
+  </article> <!-- /.post -->
+
+</div> <!-- /.content-box -->
+<style>
+    #cookie-notice {padding: 0.5rem 1rem; display: none; text-align: center; position: fixed; bottom: 0; width: calc(100% - 2rem); background: #222; color: rgba(255,255,255,0.8);}
+    #cookie-notice a {display: inline-block; cursor: pointer; margin-left: 0.5rem;}
+    @media (max-width: 767px) {
+        #cookie-notice span {display: block; padding-top: 3px; margin-bottom: 1rem;}
+        #cookie-notice a {position: relative; bottom: 4px;}
+    }
+</style>
+<div id="cookie-notice"><span>Esta web utiliza cookies y scripts de terceros para mejorar la funcionalidad de este sitio web.</span>
+    <a id="cookie-notice-accept" class="btn btn-primary btn-sm">Aceptar</a><a href="/cookies" class="btn btn-primary btn-sm">Más info</a></div>
+<script>
+    function createCookie(name,value,days) {
+        var expires = "";
+        if (days) {
+            var date = new Date();
+            date.setTime(date.getTime() + (days*24*60*60*1000));
+            expires = "; expires=" + date.toUTCString();
+        }
+        document.cookie = name + "=" + value + expires + "; path=/";
+    }
+    function readCookie(name) {
+        var nameEQ = name + "=";
+        var ca = document.cookie.split(';');
+        for(var i=0;i < ca.length;i++) {
+            var c = ca[i];
+            while (c.charAt(0)==' ') c = c.substring(1,c.length);
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+        }
+        return null;
+    }
+    function eraseCookie(name) {
+        createCookie(name,"",-1);
+    }
+
+    if(readCookie('cookie-notice-dismissed')=='true') {
+
+    } else {
+        document.getElementById('cookie-notice').style.display = 'block';
+    }
+    document.getElementById('cookie-notice-accept').addEventListener("click",function() {
+        createCookie('cookie-notice-dismissed','true',31);
+        document.getElementById('cookie-notice').style.display = 'none';
+        location.reload();
+    });
+
+</script>
+
+
+      <div class="top" title="Scroll To Top">
+  <i class="fa fa-chevron-up" aria-hidden="true"></i>
+</div> <!-- /.top -->
+      <footer class="site-footer">
+
+  <div class="footer-wrapper">
+
+    <h2 class="footer-heading">Rubén Arcos</h2>
+
+    <ul class="social-footer">
+    
+      <li><a href="https://twitter.com/rarcosdev" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+    
+    
+    
+    
+    <li><a href="https://linkedin.com/in/rubenarcos2" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+    
+    
+    <li><a href="https://github.com/rubenarcos2" target="_blank"><i class="fa fa-github" aria-hidden="true"></i></a></li>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    </ul>
+
+    <div class="copyright">
+      <p><a href="https://jekyllrb.com/">Proudly powered by Jekyll</a> | Theme: Lokmont by <a href="https://artemsheludko.github.io/">Artem Sheludko</a></p>
+    </div>
+  </div>
+
+</footer> <!-- /.site-footer -->
+
+    </div> <!-- /.full-page-container -->
+
+    <script src="/js/jquery-3.2.1.min.js"></script>
+<script src="/js/jquery.viewportchecker.min.js"></script>
+<script src="/js/jquery.fitvids.js"></script>
+<script src="/js/simple-jekyll-search.min.js"></script>
+<script src="/js/transition.js"></script>
+<script src="/js/zoom.min.js"></script>
+<script src="/js/main.js"></script>
+    <style>
+    #cookie-notice {padding: 0.5rem 1rem; display: none; text-align: center; position: fixed; bottom: 0; width: calc(100% - 2rem); background: #222; color: rgba(255,255,255,0.8);}
+    #cookie-notice a {display: inline-block; cursor: pointer; margin-left: 0.5rem;}
+    @media (max-width: 767px) {
+        #cookie-notice span {display: block; padding-top: 3px; margin-bottom: 1rem;}
+        #cookie-notice a {position: relative; bottom: 4px;}
+    }
+</style>
+<div id="cookie-notice"><span>Esta web utiliza cookies y scripts de terceros para mejorar la funcionalidad de este sitio web.</span>
+    <a id="cookie-notice-accept" class="btn btn-primary btn-sm">Aceptar</a><a href="/cookies" class="btn btn-primary btn-sm">Más info</a></div>
+<script>
+    function createCookie(name,value,days) {
+        var expires = "";
+        if (days) {
+            var date = new Date();
+            date.setTime(date.getTime() + (days*24*60*60*1000));
+            expires = "; expires=" + date.toUTCString();
+        }
+        document.cookie = name + "=" + value + expires + "; path=/";
+    }
+    function readCookie(name) {
+        var nameEQ = name + "=";
+        var ca = document.cookie.split(';');
+        for(var i=0;i < ca.length;i++) {
+            var c = ca[i];
+            while (c.charAt(0)==' ') c = c.substring(1,c.length);
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+        }
+        return null;
+    }
+    function eraseCookie(name) {
+        createCookie(name,"",-1);
+    }
+
+    if(readCookie('cookie-notice-dismissed')=='true') {
+
+    } else {
+        document.getElementById('cookie-notice').style.display = 'block';
+    }
+    document.getElementById('cookie-notice-accept').addEventListener("click",function() {
+        createCookie('cookie-notice-dismissed','true',31);
+        document.getElementById('cookie-notice').style.display = 'none';
+        location.reload();
+    });
+
+</script>
+  </body>
+
+</html>
