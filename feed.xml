@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="https://rarcos.com//feed.xml" rel="self" type="application/atom+xml" /><link href="https://rarcos.com//" rel="alternate" type="text/html" /><updated>2022-07-09T10:21:15+02:00</updated><id>https://rarcos.com//feed.xml</id><title type="html">Rubén Arcos</title><subtitle>Desarrollador de aplicaciones multiplataformas</subtitle><entry><title type="html">Java - Stream Api</title><link href="https://rarcos.com//2022/07/07/Java-Stream-Api/" rel="alternate" type="text/html" title="Java - Stream Api" /><published>2022-07-07T16:33:28+02:00</published><updated>2022-07-07T16:33:28+02:00</updated><id>https://rarcos.com//2022/07/07/Java-Stream-Api</id><content type="html" xml:base="https://rarcos.com//2022/07/07/Java-Stream-Api/"><![CDATA[<h1 id="utilización-de-la-stream-api">Utilización de la Stream Api</h1>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="https://rarcos.com//feed.xml" rel="self" type="application/atom+xml" /><link href="https://rarcos.com//" rel="alternate" type="text/html" /><updated>2022-07-15T12:59:57+02:00</updated><id>https://rarcos.com//feed.xml</id><title type="html">Rubén Arcos</title><subtitle>Desarrollador de aplicaciones multiplataformas</subtitle><entry><title type="html">Java - Stream Api</title><link href="https://rarcos.com//2022/07/07/Java-Stream-Api/" rel="alternate" type="text/html" title="Java - Stream Api" /><published>2022-07-07T16:33:28+02:00</published><updated>2022-07-07T16:33:28+02:00</updated><id>https://rarcos.com//2022/07/07/Java-Stream-Api</id><content type="html" xml:base="https://rarcos.com//2022/07/07/Java-Stream-Api/"><![CDATA[<h1 id="utilización-de-la-stream-api">Utilización de la Stream Api</h1>
 
 <p>La API Stream ofrece un enfoque alternativo de “tuberías y filtros” para el procesamiento de colecciones.</p>
 
@@ -441,7 +441,21 @@
 
 <p><a href="https://github.com/vfarcic/java-8-exercises">https://github.com/vfarcic/java-8-exercises</a></p>
 
-<p><a href="https://github.com/OpenWebinarsNet/Curso-java-8-para-programadores-java">https://github.com/OpenWebinarsNet/Curso-java-8-para-programadores-java</a></p>]]></content><author><name></name></author><category term="java" /><category term="stream api" /><summary type="html"><![CDATA[Uso de la Stream Api de Java 8]]></summary></entry><entry><title type="html">Python - NLTK</title><link href="https://rarcos.com//2022/04/05/Python-NLTK/" rel="alternate" type="text/html" title="Python - NLTK" /><published>2022-04-05T07:30:00+02:00</published><updated>2022-04-05T07:30:00+02:00</updated><id>https://rarcos.com//2022/04/05/Python%20-%20NLTK</id><content type="html" xml:base="https://rarcos.com//2022/04/05/Python-NLTK/"><![CDATA[<h1 id="buscador-de-sustantivos">Buscador de sustantivos</h1>
+<p><a href="https://github.com/OpenWebinarsNet/Curso-java-8-para-programadores-java">https://github.com/OpenWebinarsNet/Curso-java-8-para-programadores-java</a></p>]]></content><author><name></name></author><category term="java" /><category term="stream api" /><summary type="html"><![CDATA[Uso de la Stream Api de Java 8]]></summary></entry><entry><title type="html">Spring 5 - Spring Boot y MVC</title><link href="https://rarcos.com//2022/07/07/Spring-5-MVC/" rel="alternate" type="text/html" title="Spring 5 - Spring Boot y MVC" /><published>2022-07-07T16:33:28+02:00</published><updated>2022-07-07T16:33:28+02:00</updated><id>https://rarcos.com//2022/07/07/Spring%205%20-%20MVC</id><content type="html" xml:base="https://rarcos.com//2022/07/07/Spring-5-MVC/"><![CDATA[<h1 id="spring-boot-y-spring-mvc">Spring Boot y Spring MVC</h1>
+
+<p>Desarrollo de una aplicaciones web usando Spring Boot y Spring MVC.</p>
+
+<p>Esta es la demostración de la aplicación que he realizado (click en la imagen):</p>
+
+<p>(debido al servidor que he utilizado, heroku, no está disponible la visualización de las imágenes)</p>
+
+<p><a href="https://spring-inmobiliaria.herokuapp.com"><img src="/images/pages/spring-inmobiliaria.png" alt="Ir a ver la app en funcionamiento" /></a></p>
+
+<hr />
+
+<p><em>Repositorio con el contenido</em></p>
+
+<p><a href="https://github.com/rubenarcos2/spring-Inmobiliaria"><img src="/images/pages/repository_small.png" alt="Repositorio" /></a></p>]]></content><author><name></name></author><category term="java" /><category term="spring" /><category term="MVC" /><category term="spring5" /><summary type="html"><![CDATA[Uso del framework Spring 5 con Spring Boot y MVC]]></summary></entry><entry><title type="html">Python - NLTK</title><link href="https://rarcos.com//2022/04/05/Python-NLTK/" rel="alternate" type="text/html" title="Python - NLTK" /><published>2022-04-05T07:30:00+02:00</published><updated>2022-04-05T07:30:00+02:00</updated><id>https://rarcos.com//2022/04/05/Python%20-%20NLTK</id><content type="html" xml:base="https://rarcos.com//2022/04/05/Python-NLTK/"><![CDATA[<h1 id="buscador-de-sustantivos">Buscador de sustantivos</h1>
 
 <p>Desarrollo de un buscador de sustantivos. El programa consistirá en preprocesar un documento, extraer todos sus sustantivos en minúsculas y guardarlos en un índice para poder hacer luego búsquedas solo de sustantivos.</p>
 
@@ -1250,26 +1264,4 @@ Python nos presenta el módulo crontab para gestionar los trabajos programados a
 
 <p><em>Repositorio con el contenido</em></p>
 
-<p><a href="https://colab.research.google.com/drive/1zG_hZIhR5Kzu-4RfsRDnWtf5RqE0rJWU"><img src="/images/pages/repository_small_colab.png" alt="Repositorio" /></a></p>]]></content><author><name></name></author><category term="python" /><category term="keras" /><category term="ia" /><category term="tensorflow" /><category term="js" /><summary type="html"><![CDATA[Proyecto en Keras, que utiliza un dataset con los datos del desempleo en EEUU. Se aplica IA para la predicción de los valores futuros y se exporta el modelo ya entrenada para ser ejecutado mediante web.]]></summary></entry><entry><title type="html">Python - API Rest en Flask</title><link href="https://rarcos.com//2022/02/15/Python-API_Rest_en_Flask/" rel="alternate" type="text/html" title="Python - API Rest en Flask" /><published>2022-02-15T15:33:28+01:00</published><updated>2022-02-15T15:33:28+01:00</updated><id>https://rarcos.com//2022/02/15/Python%20-%20API_Rest_en_Flask</id><content type="html" xml:base="https://rarcos.com//2022/02/15/Python-API_Rest_en_Flask/"><![CDATA[<h1 id="api-rest-en-python-con-flask">Api rest en Python con Flask</h1>
-
-<p>A continuación, se muestra un proyecto de Python realizado para crear una api rest mediante el uso de la librería <a href="https://palletsprojects.com/p/flask/">flask</a>. Tiene las siguientes características:</p>
-
-<p>Se crea una base de datos MySQL (situada en un servidor de bases de datos en Internet) con dos tablas para almacenar:</p>
-<ul>
-  <li>los datos de los usuarios: nombre, dirección, teléfono, email y usuario en Github</li>
-  <li>los datos de los repositorios de los usuarios:  nombre del repositorio, url, descripción y fecha de última modificación</li>
-</ul>
-
-<p>La aplicación en Flask permite añadir un nuevo usuario, ver los datos de los usuarios almacenados, editarlos, eliminarlos y ver sus repositorios.
-Los repositorios de un usuario se muestran en una nueva página.</p>
-
-<p>Cuando se añade un usuario, se obtienen sus repositorios públicos usando el api de GitHub y se almacenan en la tabla de repositorios.
-Cuando se modifica el nombre del usuario en Github, se borran sus repositorios anteriores y se obtienen los nuevos.</p>
-
-<p>Si quieres ver el resultado, te recomiendo visites:</p>
-
-<p><a href="https://flask-python-crud.herokuapp.com/usuarios"><img src="/images/pages/app_flask_heroku.jpg" alt="Ir a ver la app en funcionamiento" /></a></p>
-
-<p><em>Repositorio con el contenido</em></p>
-
-<p><a href="https://github.com/rubenarcos2/api_rest_flask_python"><img src="/images/pages/repository_small.png" alt="Repositorio" /></a></p>]]></content><author><name></name></author><category term="python" /><category term="api" /><category term="rest" /><category term="flask" /><summary type="html"><![CDATA[Proyecto en Python realizado para crear una api rest mediante el uso de la librería flask.]]></summary></entry></feed>
+<p><a href="https://colab.research.google.com/drive/1zG_hZIhR5Kzu-4RfsRDnWtf5RqE0rJWU"><img src="/images/pages/repository_small_colab.png" alt="Repositorio" /></a></p>]]></content><author><name></name></author><category term="python" /><category term="keras" /><category term="ia" /><category term="tensorflow" /><category term="js" /><summary type="html"><![CDATA[Proyecto en Keras, que utiliza un dataset con los datos del desempleo en EEUU. Se aplica IA para la predicción de los valores futuros y se exporta el modelo ya entrenada para ser ejecutado mediante web.]]></summary></entry></feed>
