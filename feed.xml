@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="https://rarcos.com//feed.xml" rel="self" type="application/atom+xml" /><link href="https://rarcos.com//" rel="alternate" type="text/html" /><updated>2022-07-16T11:59:33+02:00</updated><id>https://rarcos.com//feed.xml</id><title type="html">Rubén Arcos</title><subtitle>Desarrollador de aplicaciones multiplataformas</subtitle><entry><title type="html">Java - Stream Api</title><link href="https://rarcos.com//2022/07/07/Java-Stream-Api/" rel="alternate" type="text/html" title="Java - Stream Api" /><published>2022-07-07T16:33:28+02:00</published><updated>2022-07-07T16:33:28+02:00</updated><id>https://rarcos.com//2022/07/07/Java-Stream-Api</id><content type="html" xml:base="https://rarcos.com//2022/07/07/Java-Stream-Api/"><![CDATA[<h1 id="utilización-de-la-stream-api">Utilización de la Stream Api</h1>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="https://rarcos.com//feed.xml" rel="self" type="application/atom+xml" /><link href="https://rarcos.com//" rel="alternate" type="text/html" /><updated>2022-07-16T12:11:32+02:00</updated><id>https://rarcos.com//feed.xml</id><title type="html">Rubén Arcos</title><subtitle>Desarrollador de aplicaciones multiplataformas</subtitle><entry><title type="html">Java - Stream Api</title><link href="https://rarcos.com//2022/07/07/Java-Stream-Api/" rel="alternate" type="text/html" title="Java - Stream Api" /><published>2022-07-07T16:33:28+02:00</published><updated>2022-07-07T16:33:28+02:00</updated><id>https://rarcos.com//2022/07/07/Java-Stream-Api</id><content type="html" xml:base="https://rarcos.com//2022/07/07/Java-Stream-Api/"><![CDATA[<h1 id="utilización-de-la-stream-api">Utilización de la Stream Api</h1>
 
 <p>La API Stream ofrece un enfoque alternativo de “tuberías y filtros” para el procesamiento de colecciones.</p>
 
@@ -449,9 +449,11 @@
 
 <p>(debido al servidor que he utilizado, heroku, no está disponible la visualización de las imágenes)</p>
 
-<p>Los credenciales son:
-username: admin
-password: admin</p>
+<p>Los credenciales son:</p>
+
+<p>username: admin</p>
+
+<p>password: admin</p>
 
 <p><a href="https://spring-inmobiliaria.herokuapp.com"><img src="/images/pages/spring-inmobiliaria.png" alt="Ir a ver la app en funcionamiento" /></a></p>
 
