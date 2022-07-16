@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="https://rarcos.com//feed.xml" rel="self" type="application/atom+xml" /><link href="https://rarcos.com//" rel="alternate" type="text/html" /><updated>2022-07-16T12:11:32+02:00</updated><id>https://rarcos.com//feed.xml</id><title type="html">Rubén Arcos</title><subtitle>Desarrollador de aplicaciones multiplataformas</subtitle><entry><title type="html">Java - Stream Api</title><link href="https://rarcos.com//2022/07/07/Java-Stream-Api/" rel="alternate" type="text/html" title="Java - Stream Api" /><published>2022-07-07T16:33:28+02:00</published><updated>2022-07-07T16:33:28+02:00</updated><id>https://rarcos.com//2022/07/07/Java-Stream-Api</id><content type="html" xml:base="https://rarcos.com//2022/07/07/Java-Stream-Api/"><![CDATA[<h1 id="utilización-de-la-stream-api">Utilización de la Stream Api</h1>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="https://rarcos.com//feed.xml" rel="self" type="application/atom+xml" /><link href="https://rarcos.com//" rel="alternate" type="text/html" /><updated>2022-07-16T12:22:02+02:00</updated><id>https://rarcos.com//feed.xml</id><title type="html">Rubén Arcos</title><subtitle>Desarrollador de aplicaciones multiplataformas</subtitle><entry><title type="html">Java - Stream Api</title><link href="https://rarcos.com//2022/07/07/Java-Stream-Api/" rel="alternate" type="text/html" title="Java - Stream Api" /><published>2022-07-07T16:33:28+02:00</published><updated>2022-07-07T16:33:28+02:00</updated><id>https://rarcos.com//2022/07/07/Java-Stream-Api</id><content type="html" xml:base="https://rarcos.com//2022/07/07/Java-Stream-Api/"><![CDATA[<h1 id="utilización-de-la-stream-api">Utilización de la Stream Api</h1>
 
 <p>La API Stream ofrece un enfoque alternativo de “tuberías y filtros” para el procesamiento de colecciones.</p>
 
@@ -443,17 +443,28 @@
 
 <p><a href="https://github.com/OpenWebinarsNet/Curso-java-8-para-programadores-java">https://github.com/OpenWebinarsNet/Curso-java-8-para-programadores-java</a></p>]]></content><author><name></name></author><category term="java" /><category term="stream api" /><summary type="html"><![CDATA[Uso de la Stream Api de Java 8]]></summary></entry><entry><title type="html">Spring 5 - Spring Boot y MVC</title><link href="https://rarcos.com//2022/07/07/Spring-5-MVC/" rel="alternate" type="text/html" title="Spring 5 - Spring Boot y MVC" /><published>2022-07-07T16:33:28+02:00</published><updated>2022-07-07T16:33:28+02:00</updated><id>https://rarcos.com//2022/07/07/Spring%205%20-%20MVC</id><content type="html" xml:base="https://rarcos.com//2022/07/07/Spring-5-MVC/"><![CDATA[<h1 id="spring-boot-y-spring-mvc">Spring Boot y Spring MVC</h1>
 
-<p>Desarrollo de una aplicaciones web usando Spring Boot y Spring MVC.</p>
+<p>Desarrollo de una aplicaciones web usando Spring Boot:</p>
 
-<p>Esta es la demostración de la aplicación que he realizado (click en la imagen):</p>
-
-<p>(debido al servidor que he utilizado, heroku, no está disponible la visualización de las imágenes)</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>- Spring MVC
+    - Thymeleaf
+    - Bootstrap
+- Spring JPA
+    - PostgreSQL
+- Upload files to server
+- Spring security
+    - Persistence on DB
+    - Sessions
+</code></pre></div></div>
 
 <p>Los credenciales son:</p>
 
-<p>username: admin</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>- username: admin
+- password: admin
+</code></pre></div></div>
 
-<p>password: admin</p>
+<p>Esta es la demostración de la aplicación que he realizado (click <a href="https://spring-inmobiliaria.herokuapp.com">aquí</a> o en la imagen):</p>
+
+<p><em>(debido al servidor que he utilizado, heroku, no está disponible la visualización de las imágenes)</em></p>
 
 <p><a href="https://spring-inmobiliaria.herokuapp.com"><img src="/images/pages/spring-inmobiliaria.png" alt="Ir a ver la app en funcionamiento" /></a></p>
 
@@ -461,7 +472,7 @@
 
 <p><em>Repositorio con el contenido</em></p>
 
-<p><a href="https://github.com/rubenarcos2/spring-Inmobiliaria"><img src="/images/pages/repository_small.png" alt="Repositorio" /></a></p>]]></content><author><name></name></author><category term="java" /><category term="spring" /><category term="MVC" /><category term="spring5" /><summary type="html"><![CDATA[Uso del framework Spring 5 con Spring Boot y MVC]]></summary></entry><entry><title type="html">Python - NLTK</title><link href="https://rarcos.com//2022/04/05/Python-NLTK/" rel="alternate" type="text/html" title="Python - NLTK" /><published>2022-04-05T07:30:00+02:00</published><updated>2022-04-05T07:30:00+02:00</updated><id>https://rarcos.com//2022/04/05/Python%20-%20NLTK</id><content type="html" xml:base="https://rarcos.com//2022/04/05/Python-NLTK/"><![CDATA[<h1 id="buscador-de-sustantivos">Buscador de sustantivos</h1>
+<p><a href="https://github.com/rubenarcos2/spring-Inmobiliaria"><img src="/images/pages/repository_small.png" alt="Repositorio" /></a></p>]]></content><author><name></name></author><category term="java" /><category term="spring" /><category term="MVC" /><category term="spring5" /><summary type="html"><![CDATA[Uso del framework Spring 5 con Spring Boot: MVC, spring security, spring JPA, postgreSQL, upload file, thymeleaf, sessions...]]></summary></entry><entry><title type="html">Python - NLTK</title><link href="https://rarcos.com//2022/04/05/Python-NLTK/" rel="alternate" type="text/html" title="Python - NLTK" /><published>2022-04-05T07:30:00+02:00</published><updated>2022-04-05T07:30:00+02:00</updated><id>https://rarcos.com//2022/04/05/Python%20-%20NLTK</id><content type="html" xml:base="https://rarcos.com//2022/04/05/Python-NLTK/"><![CDATA[<h1 id="buscador-de-sustantivos">Buscador de sustantivos</h1>
 
 <p>Desarrollo de un buscador de sustantivos. El programa consistirá en preprocesar un documento, extraer todos sus sustantivos en minúsculas y guardarlos en un índice para poder hacer luego búsquedas solo de sustantivos.</p>
 
