@@ -1,11 +1,19 @@
 [
   
     {
+      "title"    : "Laravel 9 - PHP 8 y MVC",
+      "category" : "",
+      "tags"     : "php, spring, MVC, laravel",
+      "url"      : "/2022/07/17/Laravel-9-MVC/",
+      "date"     : "2022-07-17 16:33:28 +0200"
+    } ,
+  
+    {
       "title"    : "Spring 5 - Spring Boot y MVC",
       "category" : "",
       "tags"     : "java, spring, MVC, spring5",
-      "url"      : "/2022/07/07/Spring-5-MVC/",
-      "date"     : "2022-07-07 16:33:28 +0200"
+      "url"      : "/2022/07/15/Spring-5-MVC/",
+      "date"     : "2022-07-15 16:33:28 +0200"
     } ,
   
     {
