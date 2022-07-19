@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="https://rarcos.com//feed.xml" rel="self" type="application/atom+xml" /><link href="https://rarcos.com//" rel="alternate" type="text/html" /><updated>2022-07-19T09:47:59+02:00</updated><id>https://rarcos.com//feed.xml</id><title type="html">Rubén Arcos</title><subtitle>Desarrollador de aplicaciones multiplataformas</subtitle><entry><title type="html">Laravel 9 - PHP 8 y MVC</title><link href="https://rarcos.com//2022/07/17/Laravel-9-MVC/" rel="alternate" type="text/html" title="Laravel 9 - PHP 8 y MVC" /><published>2022-07-17T16:33:28+02:00</published><updated>2022-07-17T16:33:28+02:00</updated><id>https://rarcos.com//2022/07/17/Laravel%209%20-%20MVC</id><content type="html" xml:base="https://rarcos.com//2022/07/17/Laravel-9-MVC/"><![CDATA[<h1 id="laravel-9-php-8-y-mvc">Laravel 9, PHP 8 y MVC</h1>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="https://rarcos.com//feed.xml" rel="self" type="application/atom+xml" /><link href="https://rarcos.com//" rel="alternate" type="text/html" /><updated>2022-07-19T13:13:55+02:00</updated><id>https://rarcos.com//feed.xml</id><title type="html">Rubén Arcos</title><subtitle>Desarrollador de aplicaciones multiplataformas</subtitle><entry><title type="html">Laravel 9 - PHP 8 y MVC</title><link href="https://rarcos.com//2022/07/17/Laravel-9-MVC/" rel="alternate" type="text/html" title="Laravel 9 - PHP 8 y MVC" /><published>2022-07-17T16:33:28+02:00</published><updated>2022-07-17T16:33:28+02:00</updated><id>https://rarcos.com//2022/07/17/Laravel%209%20-%20MVC</id><content type="html" xml:base="https://rarcos.com//2022/07/17/Laravel-9-MVC/"><![CDATA[<h1 id="laravel-9-php-8-y-mvc">Laravel 9, PHP 8 y MVC</h1>
 
 <p>Desarrollo de una aplicaciones web usando Laravel 9 y PHP 8:</p>
 
@@ -448,6 +448,44 @@ npm <span class="nb">install
 &lt;script <span class="nv">src</span><span class="o">=</span><span class="s2">"https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"</span> <span class="nv">integrity</span><span class="o">=</span><span class="s2">"sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"</span> <span class="nv">crossorigin</span><span class="o">=</span><span class="s2">"anonymous"</span><span class="o">&gt;</span>&lt;/script&gt;</code></pre></figure>
 
 <p>Y una vez guardado se verán los cambios ya aplicados y nuestra aplicación ya tendrá servicio de autenticación completo. Solo tendremos que ir añadiendo la autenticación requerida en los endpoints.</p>
+
+<h2 id="modificación-del-enrutador">Modificación del enrutador</h2>
+<p>Ahora vamos a modificar el enrutador para que tenga los endpoints restringidos y solamente se pueda acceder a la vista principal sin haber hecho <em>login in</em>.</p>
+
+<figure class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+
+<span class="kn">use</span> <span class="nc">Illuminate\Support\Facades\Route</span><span class="p">;</span>
+
+<span class="cm">/*
+|--------------------------------------------------------------------------
+| Web Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register web routes for your application. These
+| routes are loaded by the RouteServiceProvider within a group which
+| contains the "web" middleware group. Now create something great!
+|
+*/</span>
+<span class="nc">Auth</span><span class="o">::</span><span class="nf">routes</span><span class="p">();</span>
+<span class="nc">Route</span><span class="o">::</span><span class="nf">group</span><span class="p">([</span><span class="s1">'middleware'</span> <span class="o">=&gt;</span> <span class="s1">'auth'</span><span class="p">],</span> <span class="k">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="nc">Route</span><span class="o">::</span><span class="nb">delete</span><span class="p">(</span><span class="s1">'/{id}'</span><span class="p">,</span> <span class="s1">'App\Http\Controllers\HouseController@destroy'</span><span class="p">)</span><span class="o">-&gt;</span><span class="nf">name</span><span class="p">(</span><span class="s1">'houses-destroy'</span><span class="p">);</span>
+    <span class="nc">Route</span><span class="o">::</span><span class="nf">patch</span><span class="p">(</span><span class="s1">'/{id}'</span><span class="p">,</span> <span class="s1">'App\Http\Controllers\HouseController@update'</span><span class="p">)</span><span class="o">-&gt;</span><span class="nf">name</span><span class="p">(</span><span class="s1">'houses-update'</span><span class="p">);</span>
+    <span class="nc">Route</span><span class="o">::</span><span class="nf">get</span><span class="p">(</span><span class="s1">'/edit/{id}'</span><span class="p">,</span> <span class="s1">'App\Http\Controllers\HouseController@edit'</span><span class="p">)</span><span class="o">-&gt;</span><span class="nf">name</span><span class="p">(</span><span class="s1">'houses-edit'</span><span class="p">);</span>
+    <span class="nc">Route</span><span class="o">::</span><span class="nf">get</span><span class="p">(</span><span class="s1">'/new'</span><span class="p">,</span> <span class="s1">'App\Http\Controllers\HouseController@new'</span><span class="p">)</span><span class="o">-&gt;</span><span class="nf">name</span><span class="p">(</span><span class="s1">'houses-new'</span><span class="p">);</span>
+    <span class="nc">Route</span><span class="o">::</span><span class="nf">post</span><span class="p">(</span><span class="s1">'/new'</span><span class="p">,</span> <span class="s1">'App\Http\Controllers\HouseController@store'</span><span class="p">)</span><span class="o">-&gt;</span><span class="nf">name</span><span class="p">(</span><span class="s1">'houses-new'</span><span class="p">);</span>
+
+    <span class="nc">Route</span><span class="o">::</span><span class="nf">get</span><span class="p">(</span><span class="s1">'/properties'</span><span class="p">,</span> <span class="s1">'\App\Http\Controllers\PropertyController@index'</span><span class="p">)</span><span class="o">-&gt;</span><span class="nf">name</span><span class="p">(</span><span class="s1">'properties'</span><span class="p">);</span>
+    <span class="nc">Route</span><span class="o">::</span><span class="nf">post</span><span class="p">(</span><span class="s1">'/properties'</span><span class="p">,</span> <span class="s1">'App\Http\Controllers\PropertyController@store'</span><span class="p">);</span>
+    <span class="nc">Route</span><span class="o">::</span><span class="nb">delete</span><span class="p">(</span><span class="s1">'/properties/{id}'</span><span class="p">,</span> <span class="s1">'App\Http\Controllers\PropertyController@destroy'</span><span class="p">)</span><span class="o">-&gt;</span><span class="nf">name</span><span class="p">(</span><span class="s1">'properties-destroy'</span><span class="p">);</span>
+    <span class="nc">Route</span><span class="o">::</span><span class="nf">get</span><span class="p">(</span><span class="s1">'/properties/{id}'</span><span class="p">,</span> <span class="s1">'App\Http\Controllers\PropertyController@show'</span><span class="p">)</span><span class="o">-&gt;</span><span class="nf">name</span><span class="p">(</span><span class="s1">'properties-edit'</span><span class="p">);</span>
+    <span class="nc">Route</span><span class="o">::</span><span class="nf">patch</span><span class="p">(</span><span class="s1">'/properties/{id}'</span><span class="p">,</span> <span class="s1">'App\Http\Controllers\PropertyController@update'</span><span class="p">)</span><span class="o">-&gt;</span><span class="nf">name</span><span class="p">(</span><span class="s1">'properties-update'</span><span class="p">);</span>
+<span class="p">});</span>
+
+<span class="nc">Route</span><span class="o">::</span><span class="nf">get</span><span class="p">(</span><span class="s1">'/'</span><span class="p">,</span> <span class="s1">'\App\Http\Controllers\HouseController@index'</span><span class="p">)</span><span class="o">-&gt;</span><span class="nf">name</span><span class="p">(</span><span class="s1">'houses'</span><span class="p">);</span>
+<span class="nc">Route</span><span class="o">::</span><span class="nf">post</span><span class="p">(</span><span class="s1">'/'</span><span class="p">,</span> <span class="s1">'App\Http\Controllers\HouseController@store'</span><span class="p">);</span>
+<span class="nc">Route</span><span class="o">::</span><span class="nf">get</span><span class="p">(</span><span class="s1">'/{id}'</span><span class="p">,</span> <span class="s1">'App\Http\Controllers\HouseController@show'</span><span class="p">)</span><span class="o">-&gt;</span><span class="nf">name</span><span class="p">(</span><span class="s1">'houses-show'</span><span class="p">);</span></code></pre></figure>
+
+<p>Es importante tener en cuenta el orden en el que se definen las rutas hacia los controladores, debe de coincidir con el flujo del usuario, para que no empiecen a generarse errores dispares que en apariencia difieren, pero son provocados por esto solamente.</p>
 
 <hr />
 
