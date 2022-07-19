@@ -1,8 +1,14 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="https://rarcos.com//feed.xml" rel="self" type="application/atom+xml" /><link href="https://rarcos.com//" rel="alternate" type="text/html" /><updated>2022-07-18T20:35:27+02:00</updated><id>https://rarcos.com//feed.xml</id><title type="html">Rubén Arcos</title><subtitle>Desarrollador de aplicaciones multiplataformas</subtitle><entry><title type="html">Laravel 9 - PHP 8 y MVC</title><link href="https://rarcos.com//2022/07/17/Laravel-9-MVC/" rel="alternate" type="text/html" title="Laravel 9 - PHP 8 y MVC" /><published>2022-07-17T16:33:28+02:00</published><updated>2022-07-17T16:33:28+02:00</updated><id>https://rarcos.com//2022/07/17/Laravel%209%20-%20MVC</id><content type="html" xml:base="https://rarcos.com//2022/07/17/Laravel-9-MVC/"><![CDATA[<h1 id="laravel-9-php-8-y-mvc">Laravel 9, PHP 8 y MVC</h1>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="https://rarcos.com//feed.xml" rel="self" type="application/atom+xml" /><link href="https://rarcos.com//" rel="alternate" type="text/html" /><updated>2022-07-19T09:47:59+02:00</updated><id>https://rarcos.com//feed.xml</id><title type="html">Rubén Arcos</title><subtitle>Desarrollador de aplicaciones multiplataformas</subtitle><entry><title type="html">Laravel 9 - PHP 8 y MVC</title><link href="https://rarcos.com//2022/07/17/Laravel-9-MVC/" rel="alternate" type="text/html" title="Laravel 9 - PHP 8 y MVC" /><published>2022-07-17T16:33:28+02:00</published><updated>2022-07-17T16:33:28+02:00</updated><id>https://rarcos.com//2022/07/17/Laravel%209%20-%20MVC</id><content type="html" xml:base="https://rarcos.com//2022/07/17/Laravel-9-MVC/"><![CDATA[<h1 id="laravel-9-php-8-y-mvc">Laravel 9, PHP 8 y MVC</h1>
 
 <p>Desarrollo de una aplicaciones web usando Laravel 9 y PHP 8:</p>
 
 <p>Esta es la demostración de la aplicación que he realizado (click <a href="https://laravel-inmobiliaria.herokuapp.com">aquí</a> o en la imagen):</p>
+
+<p>Los credenciales son:</p>
+<ul>
+  <li>usuario: admin@admin.com</li>
+  <li>contraseña: administrador</li>
+</ul>
 
 <p><a href="https://laravel-inmobiliaria.herokuapp.com"><img src="/images/pages/laravel-inmobiliaria.png" alt="Ir a ver la app en funcionamiento" /></a></p>
 
