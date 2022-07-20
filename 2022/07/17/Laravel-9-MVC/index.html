@@ -345,12 +345,12 @@ Para más información y otros tipos de instalaciones ver <a href="https://larav
 <h2 id="realización-de-la-migración-a-la-db">Realización de la migración a la DB</h2>
 <p>Primero, vamos a configurar los parámetros de conexión con nuestra DB. Estos se encuentra en el fichero de configuración <em>.env</em> en la raíz del proyecto. Concretamente cambiaremos la parte referente a la DB:</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">DB_CONNECTION</span><span class="o">=</span>mysql
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">DB_CONNECTION</span><span class="o">=</span>pgsql
 <span class="nv">DB_HOST</span><span class="o">=</span>127.0.0.1
-<span class="nv">DB_PORT</span><span class="o">=</span>3306
+<span class="nv">DB_PORT</span><span class="o">=</span>5432
 <span class="nv">DB_DATABASE</span><span class="o">=</span>laravel
-<span class="nv">DB_USERNAME</span><span class="o">=</span>root
-<span class="nv">DB_PASSWORD</span><span class="o">=</span></code></pre></figure>
+<span class="nv">DB_USERNAME</span><span class="o">=</span>postgres
+<span class="nv">DB_PASSWORD</span><span class="o">=</span>postgres</code></pre></figure>
 
 <p>Posteriormente, migramos todos los cambios a la DB con el comando:</p>
 
