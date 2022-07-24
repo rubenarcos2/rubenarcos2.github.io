@@ -1,6 +1,14 @@
 [
   
     {
+      "title"    : "JS Vanilla MVC - Spring API rest",
+      "category" : "",
+      "tags"     : "spring, MVC, js, vanilla js, api, api rest",
+      "url"      : "/2022/07/23/Vanilla-JS-MVC-Spring-API-rest/",
+      "date"     : "2022-07-23 16:33:28 +0200"
+    } ,
+  
+    {
       "title"    : "Laravel 9 - PHP 8 y MVC",
       "category" : "",
       "tags"     : "php, spring, MVC, laravel",

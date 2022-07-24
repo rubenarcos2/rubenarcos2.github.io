@@ -1,4 +1,23 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="https://rarcos.com//feed.xml" rel="self" type="application/atom+xml" /><link href="https://rarcos.com//" rel="alternate" type="text/html" /><updated>2022-07-21T10:05:48+02:00</updated><id>https://rarcos.com//feed.xml</id><title type="html">Rubén Arcos</title><subtitle>Desarrollador de aplicaciones multiplataformas</subtitle><entry><title type="html">Laravel 9 - PHP 8 y MVC</title><link href="https://rarcos.com//2022/07/17/Laravel-9-MVC/" rel="alternate" type="text/html" title="Laravel 9 - PHP 8 y MVC" /><published>2022-07-17T16:33:28+02:00</published><updated>2022-07-17T16:33:28+02:00</updated><id>https://rarcos.com//2022/07/17/Laravel%209%20-%20MVC</id><content type="html" xml:base="https://rarcos.com//2022/07/17/Laravel-9-MVC/"><![CDATA[<h1 id="laravel-9-php-8-y-mvc">Laravel 9, PHP 8 y MVC</h1>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="https://rarcos.com//feed.xml" rel="self" type="application/atom+xml" /><link href="https://rarcos.com//" rel="alternate" type="text/html" /><updated>2022-07-24T13:47:40+02:00</updated><id>https://rarcos.com//feed.xml</id><title type="html">Rubén Arcos</title><subtitle>Desarrollador de aplicaciones multiplataformas</subtitle><entry><title type="html">JS Vanilla MVC - Spring API rest</title><link href="https://rarcos.com//2022/07/23/Vanilla-JS-MVC-Spring-API-rest/" rel="alternate" type="text/html" title="JS Vanilla MVC - Spring API rest" /><published>2022-07-23T16:33:28+02:00</published><updated>2022-07-23T16:33:28+02:00</updated><id>https://rarcos.com//2022/07/23/Vanilla%20JS%20MVC%20-%20Spring%20API%20rest</id><content type="html" xml:base="https://rarcos.com//2022/07/23/Vanilla-JS-MVC-Spring-API-rest/"><![CDATA[<h1 id="js-vanilla-mvc---spring-api-restlaravel-9-php-8-y-mv">JS Vanilla MVC - Spring API restLaravel 9, PHP 8 y MV</h1>
+
+<p>Desarrollo de una app en JS Vanilla con MVC para consumir una api rest en Spring Boot.</p>
+
+<p>Esta es la demostración de la aplicación que he realizado (click <a href="/WorkspaceWeb/JSconsumeAPI">aquí</a> o en la imagen):</p>
+
+<p><a href="/WorkspaceWeb/JSconsumeAPI"><img src="/images/pages/api_rest.png" alt="Ir a ver la app en funcionamiento" /></a></p>
+
+<hr />
+
+<p><em>Repositorio con el contenido</em></p>
+
+<p><a href="https://github.com/rubenarcos2/spring-boot-api_rest"><img src="/images/pages/repository_small.png" alt="Repositorio" /></a>
+Servidor
+<a href="https://github.com/rubenarcos2/js-vanilla-api-client"><img src="/images/pages/repository_small.png" alt="Repositorio" /></a>
+Cliente</p>
+
+<hr />
+
+<p><strong>Fuentes:</strong></p>]]></content><author><name></name></author><category term="spring" /><category term="MVC" /><category term="js" /><category term="vanilla js" /><category term="api" /><category term="api rest" /><summary type="html"><![CDATA[Desarrollo de una app en JS Vanilla con MVC para consumir una api rest en Spring Boot]]></summary></entry><entry><title type="html">Laravel 9 - PHP 8 y MVC</title><link href="https://rarcos.com//2022/07/17/Laravel-9-MVC/" rel="alternate" type="text/html" title="Laravel 9 - PHP 8 y MVC" /><published>2022-07-17T16:33:28+02:00</published><updated>2022-07-17T16:33:28+02:00</updated><id>https://rarcos.com//2022/07/17/Laravel%209%20-%20MVC</id><content type="html" xml:base="https://rarcos.com//2022/07/17/Laravel-9-MVC/"><![CDATA[<h1 id="laravel-9-php-8-y-mvc">Laravel 9, PHP 8 y MVC</h1>
 
 <p>Desarrollo de una aplicaciones web usando Laravel 9 y PHP 8:</p>
 
@@ -1729,63 +1748,4 @@ La aplicación original: “I have deployed my BERT app <a href="https://bertqna
 <p><a href="https://mailtrap.io/blog/send-emails-with-gmail-api/#Python">https://mailtrap.io/blog/send-emails-with-gmail-api/#Python</a>
 <a href="https://www.thepythoncode.com/article/use-gmail-api-in-python">https://www.thepythoncode.com/article/use-gmail-api-in-python</a>
 <a href="https://developers.google.com/android-publisher/getting_started?hl=es-419">https://developers.google.com/android-publisher/getting_started?hl=es-419</a>
-<a href="https://docs.moodle.org/all/es/Servicio_OAuth_2_Google">https://docs.moodle.org/all/es/Servicio_OAuth_2_Google</a></p>]]></content><author><name></name></author><category term="python" /><category term="gmail" /><category term="api" /><category term="webscraping" /><summary type="html"><![CDATA[Proyecto de webscraping: consiste en la captación de un listado con las ofertas de trabajo del portal *ticjob.es* para el lenguaje de programación Python y la localidad de Málaga.]]></summary></entry><entry><title type="html">Python - Programación de scripts mediante crontab en pyton</title><link href="https://rarcos.com//2022/03/18/Python-Crontab/" rel="alternate" type="text/html" title="Python - Programación de scripts mediante crontab en pyton" /><published>2022-03-18T15:33:28+01:00</published><updated>2022-03-18T15:33:28+01:00</updated><id>https://rarcos.com//2022/03/18/Python%20-%20Crontab</id><content type="html" xml:base="https://rarcos.com//2022/03/18/Python-Crontab/"><![CDATA[<h1 id="crontab">Crontab</h1>
-
-<p>Cron es una utilidad que nos permite programar tareas en sistemas basados en Unix utilizando expresiones Cron. Las tareas en cron se definen en un crontab, que es un archivo de texto que contiene los comandos a ejecutar. La sintaxis utilizada en un crontab se describe más adelante en este artículo.
-Python nos presenta el módulo crontab para gestionar los trabajos programados a través de cron. Las funciones disponibles en él permiten acceder a cron, crear trabajos, establecer restricciones, eliminar trabajos y mucho más sin tener que escribir manualmente los archivos crontab. En este artículo, mostraremos cómo utilizar estas operaciones desde tu código Python.</p>
-
-<p>Cron utiliza una sintaxis específica para definir los horarios. Consta de cinco campos, separados por espacios en blanco. Los campos son:</p>
-
-<p><img src="https://miro.medium.com/max/875/0*3S3I1pVZY6ZG-x-G.png" alt="image1" /></p>
-
-<ul>
-  <li>Resaltar que este script solamente puede ser utilizado en un <strong>entorno linux</strong>.</li>
-  <li>Para la misma tarea en <strong>windows</strong> ver este <a href="#https://datatofish.com/python-script-windows-scheduler/">tutorial</a>.</li>
-  <li>Para eliminar la tarea después de haberla probado, estos son los <a href="https://linuxhint.com/delete-cron-job-linux/">pasos a seguir</a>.</li>
-</ul>
-
-<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c1">############################################################################################
-##### ESTE SCRIPT SOLO PUEDE SER EJECUTADO EN UN ENTORNO LINUX                  ############
-##### THIS SCRIPT CAN ONLY BE RUN IN A LINUX ENVIRONMENT                        ############
-############################################################################################
-</span>
-<span class="kn">from</span> <span class="nn">crontab</span> <span class="kn">import</span> <span class="n">CronTab</span>
-<span class="kn">import</span> <span class="nn">pwd</span>
-<span class="kn">import</span> <span class="nn">os</span>
-<span class="kn">import</span> <span class="nn">shutil</span>
-
-<span class="c1">#/opt/jobs_offer must have permissions for the script to create the token.pickle file the first time. This is a dependency on email sending.
-#They have to be absolute routes, change before using
-</span><span class="k">def</span> <span class="nf">uploadScript</span><span class="p">():</span>
-    <span class="n">src_path</span> <span class="o">=</span> <span class="sa">r</span><span class="s">"ruta_absoluta/script_lanzado.py"</span>
-    <span class="n">dst_path</span> <span class="o">=</span> <span class="sa">r</span><span class="s">"/opt/carpeta_destino/script_lanzado.py"</span>
-    <span class="n">shutil</span><span class="p">.</span><span class="n">copy</span><span class="p">(</span><span class="n">src_path</span><span class="p">,</span> <span class="n">dst_path</span><span class="p">)</span>
-    <span class="k">print</span><span class="p">(</span><span class="s">'Copied all files'</span><span class="p">)</span>
-
-<span class="k">def</span> <span class="nf">add_cron</span><span class="p">():</span>
-    <span class="n">cron</span> <span class="o">=</span> <span class="n">CronTab</span><span class="p">(</span><span class="n">pwd</span><span class="p">.</span><span class="n">getpwuid</span><span class="p">(</span><span class="n">os</span><span class="p">.</span><span class="n">getuid</span><span class="p">())[</span><span class="mi">0</span><span class="p">])</span> <span class="c1"># For current user
-</span>    <span class="c1"># 8:00 am all days in the morning
-</span>    <span class="n">basic_command</span> <span class="o">=</span> <span class="s">"0 8 * * 0-6 python3 /opt/jobs_offer/jobs_offer_task.py"</span>
-    <span class="n">basic_iter</span> <span class="o">=</span> <span class="n">cron</span><span class="p">.</span><span class="n">find_command</span><span class="p">(</span><span class="s">"jobs_offer_task"</span><span class="p">)</span>
-    <span class="n">exists</span><span class="o">=</span><span class="bp">False</span>
-    <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">basic_iter</span><span class="p">:</span>
-        <span class="k">if</span> <span class="nb">str</span><span class="p">(</span><span class="n">item</span><span class="p">)</span> <span class="o">==</span> <span class="n">basic_command</span><span class="p">:</span>
-            <span class="k">print</span><span class="p">(</span><span class="s">"crontab job already exist"</span><span class="p">,</span> <span class="n">item</span><span class="p">)</span>
-            <span class="n">exists</span><span class="o">=</span><span class="bp">True</span>
-            <span class="k">break</span>
-
-    <span class="k">if</span> <span class="ow">not</span> <span class="n">exists</span><span class="p">:</span>
-        <span class="n">job</span> <span class="o">=</span> <span class="n">cron</span><span class="p">.</span><span class="n">new</span><span class="p">(</span><span class="n">command</span><span class="o">=</span><span class="s">'python3 /opt/jobs_offer_task.py'</span><span class="p">)</span>
-        <span class="n">job</span><span class="p">.</span><span class="n">minute</span><span class="p">.</span><span class="n">every</span><span class="p">(</span><span class="mi">15</span><span class="p">)</span>
-        <span class="n">job</span><span class="p">.</span><span class="n">enable</span><span class="p">()</span>
-        <span class="n">cron</span><span class="p">.</span><span class="n">write</span><span class="p">()</span>
-    <span class="k">print</span><span class="p">(</span><span class="s">'Job added to crontab, ok'</span><span class="p">)</span>
-
-<span class="n">uploadScript</span><span class="p">()</span>
-<span class="n">add_cron</span><span class="p">()</span></code></pre></figure>
-
-<hr />
-<p><strong>Fuentes:</strong></p>
-
-<p><a href="https://medium.com/@django.course/7-ways-to-execute-scheduled-jobs-with-python-47d481d22b91">https://medium.com/@django.course/7-ways-to-execute-scheduled-jobs-with-python-47d481d22b91</a>
-<a href="https://linuxhint.com/delete-cron-job-linux/">https://linuxhint.com/delete-cron-job-linux/</a></p>]]></content><author><name></name></author><category term="python" /><category term="webscraping" /><category term="cron" /><category term="crontab" /><summary type="html"><![CDATA[Proyecto de webscraping: consiste en la captación de un listado con las ofertas de trabajo del portal *ticjob.es* para el lenguaje de programación Python y la localidad de Málaga.]]></summary></entry></feed>
+<a href="https://docs.moodle.org/all/es/Servicio_OAuth_2_Google">https://docs.moodle.org/all/es/Servicio_OAuth_2_Google</a></p>]]></content><author><name></name></author><category term="python" /><category term="gmail" /><category term="api" /><category term="webscraping" /><summary type="html"><![CDATA[Proyecto de webscraping: consiste en la captación de un listado con las ofertas de trabajo del portal *ticjob.es* para el lenguaje de programación Python y la localidad de Málaga.]]></summary></entry></feed>

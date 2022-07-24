@@ -1,0 +1,32 @@
+@font-face {
+  font-family: 'Kreon';
+  src: url('../fonts/Kreon-VariableFont_wght.ttf');
+}
+
+body {
+  font-family: 'Kreon', serif;
+}
+
+tr:hover {
+  background-color: lightgray;
+  cursor: pointer;
+}
+
+tr:hover + td {
+  color: red;   
+}
+
+#loading{
+  position: fixed;
+  left: 50%;
+  top: 50%;  
+}
+
+h1{
+  text-align: center;
+  padding: 1em;
+}
+
+#btnNew{
+  float: right;
+}
