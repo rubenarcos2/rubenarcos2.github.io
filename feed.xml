@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="https://rarcos.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://rarcos.com/" rel="alternate" type="text/html" /><updated>2022-07-26T14:04:04+02:00</updated><id>https://rarcos.com/feed.xml</id><title type="html">Rubén Arcos</title><subtitle>Desarrollador de aplicaciones multiplataformas</subtitle><entry><title type="html">JS Vanilla MVC - Spring API rest</title><link href="https://rarcos.com/2022/07/23/Vanilla-JS-MVC-Spring-API-rest/" rel="alternate" type="text/html" title="JS Vanilla MVC - Spring API rest" /><published>2022-07-23T16:33:28+02:00</published><updated>2022-07-23T16:33:28+02:00</updated><id>https://rarcos.com/2022/07/23/Vanilla%20JS%20MVC%20-%20Spring%20API%20rest</id><content type="html" xml:base="https://rarcos.com/2022/07/23/Vanilla-JS-MVC-Spring-API-rest/"><![CDATA[<h1 id="js-vanilla-mvc---spring-api-rest">JS Vanilla MVC - Spring API rest</h1>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="https://rarcos.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://rarcos.com/" rel="alternate" type="text/html" /><updated>2022-07-29T10:39:46+02:00</updated><id>https://rarcos.com/feed.xml</id><title type="html">Rubén Arcos</title><subtitle>Desarrollador de aplicaciones multiplataformas</subtitle><entry><title type="html">JS Vanilla MVC - Spring API rest</title><link href="https://rarcos.com/2022/07/23/Vanilla-JS-MVC-Spring-API-rest/" rel="alternate" type="text/html" title="JS Vanilla MVC - Spring API rest" /><published>2022-07-23T16:33:28+02:00</published><updated>2022-07-23T16:33:28+02:00</updated><id>https://rarcos.com/2022/07/23/Vanilla%20JS%20MVC%20-%20Spring%20API%20rest</id><content type="html" xml:base="https://rarcos.com/2022/07/23/Vanilla-JS-MVC-Spring-API-rest/"><![CDATA[<h1 id="js-vanilla-mvc---spring-api-rest">JS Vanilla MVC - Spring API rest</h1>
 
 <p>Desarrollo de una app en JS Vanilla con MVC para consumir una api rest en Spring Boot.</p>
 
@@ -19,7 +19,256 @@ Cliente</p>
 
 <hr />
 
-<p><strong>Fuentes:</strong></p>]]></content><author><name></name></author><category term="spring" /><category term="MVC" /><category term="js" /><category term="vanilla js" /><category term="api" /><category term="api rest" /><summary type="html"><![CDATA[Desarrollo de una app en JS Vanilla con MVC para consumir una api rest en Spring Boot]]></summary></entry><entry><title type="html">Laravel 9 - PHP 8 y MVC</title><link href="https://rarcos.com/2022/07/17/Laravel-9-MVC/" rel="alternate" type="text/html" title="Laravel 9 - PHP 8 y MVC" /><published>2022-07-17T16:33:28+02:00</published><updated>2022-07-17T16:33:28+02:00</updated><id>https://rarcos.com/2022/07/17/Laravel%209%20-%20MVC</id><content type="html" xml:base="https://rarcos.com/2022/07/17/Laravel-9-MVC/"><![CDATA[<h1 id="laravel-9-php-8-y-mvc">Laravel 9, PHP 8 y MVC</h1>
+<p><strong>Fuentes:</strong></p>]]></content><author><name></name></author><category term="spring" /><category term="MVC" /><category term="js" /><category term="vanilla js" /><category term="api" /><category term="api rest" /><summary type="html"><![CDATA[Desarrollo de una app en JS Vanilla con MVC para consumir una api rest en Spring Boot]]></summary></entry><entry><title type="html">2022-07-28-C# + Arduino - Detector mute</title><link href="https://rarcos.com/2022/07/23/C-+-Arduino-Detector-mute/" rel="alternate" type="text/html" title="2022-07-28-C# + Arduino - Detector mute" /><published>2022-07-23T16:33:28+02:00</published><updated>2022-07-23T16:33:28+02:00</updated><id>https://rarcos.com/2022/07/23/C#%20+%20Arduino%20-%20Detector%20mute</id><content type="html" xml:base="https://rarcos.com/2022/07/23/C-+-Arduino-Detector-mute/"><![CDATA[<h1 id="2022-07-28-c--arduino---detector-mute-micrófono-y-webcam-en-uso">2022-07-28-C# + Arduino - Detector mute micrófono y webcam en uso</h1>
+
+<p>Desarrollo de una app en C# que se comunique con Arduino para la detección del micrófono, el estado muteado y la activación de la webcam.</p>
+
+<p><img src="/images/pages/arduino_c_sharp_detect_mute.jpg" alt="app en funcionamiento" /></p>
+
+<p>El código de C#:</p>
+
+<figure class="highlight"><pre><code class="language-c" data-lang="c"><span class="n">using</span> <span class="n">System</span><span class="p">;</span>
+<span class="n">using</span> <span class="n">System</span><span class="p">.</span><span class="n">Linq</span><span class="p">;</span>
+<span class="n">using</span> <span class="n">System</span><span class="p">.</span><span class="n">Windows</span><span class="p">.</span><span class="n">Forms</span><span class="p">;</span>
+<span class="n">using</span> <span class="n">System</span><span class="p">.</span><span class="n">IO</span><span class="p">.</span><span class="n">Ports</span><span class="p">;</span>
+<span class="n">using</span> <span class="n">NAudio</span><span class="p">.</span><span class="n">CoreAudioApi</span><span class="p">;</span>
+<span class="n">using</span> <span class="n">Microsoft</span><span class="p">.</span><span class="n">Win32</span><span class="p">;</span>
+<span class="n">using</span> <span class="n">System</span><span class="p">.</span><span class="n">Threading</span><span class="p">;</span>
+
+<span class="n">namespace</span> <span class="n">ArduinoComunicacionSerie</span>
+<span class="p">{</span>
+    <span class="n">public</span> <span class="n">partial</span> <span class="n">class</span> <span class="n">frmMain</span> <span class="o">:</span> <span class="n">Form</span>
+    <span class="p">{</span>
+        <span class="n">System</span><span class="p">.</span><span class="n">IO</span><span class="p">.</span><span class="n">Ports</span><span class="p">.</span><span class="n">SerialPort</span> <span class="n">ArduinoPort</span><span class="p">;</span>
+        <span class="n">public</span> <span class="n">MMDeviceCollection</span> <span class="n">devices</span><span class="p">;</span>
+        <span class="n">public</span> <span class="kt">int</span> <span class="n">deviceSelected</span><span class="p">;</span>
+        <span class="n">public</span> <span class="n">bool</span> <span class="n">toogleMuted</span><span class="p">;</span>
+
+        <span class="n">public</span> <span class="n">frmMain</span><span class="p">()</span>
+        <span class="p">{</span>
+            <span class="n">InitializeComponent</span><span class="p">();</span>
+
+            <span class="n">try</span>
+            <span class="p">{</span>
+                <span class="n">ArduinoPort</span> <span class="o">=</span> <span class="n">new</span> <span class="n">SerialPort</span><span class="p">();</span>
+                <span class="n">ArduinoPort</span><span class="p">.</span><span class="n">PortName</span> <span class="o">=</span> <span class="s">"COM4"</span><span class="p">;</span>
+                <span class="n">ArduinoPort</span><span class="p">.</span><span class="n">BaudRate</span> <span class="o">=</span> <span class="mi">9600</span><span class="p">;</span>
+                <span class="n">ArduinoPort</span><span class="p">.</span><span class="n">DataReceived</span> <span class="o">+=</span> <span class="n">new</span> <span class="n">SerialDataReceivedEventHandler</span><span class="p">(</span><span class="n">arduinoReceivedSerial</span><span class="p">);</span>
+                <span class="n">ArduinoPort</span><span class="p">.</span><span class="n">Open</span><span class="p">();</span>
+            <span class="p">}</span>
+            <span class="n">catch</span><span class="p">(</span><span class="n">Exception</span> <span class="n">ex</span><span class="p">)</span>
+            <span class="p">{</span>
+                <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="n">ex</span><span class="p">.</span><span class="n">Message</span><span class="p">);</span>
+                <span class="n">MessageBox</span><span class="p">.</span><span class="n">Show</span><span class="p">(</span><span class="s">"Conecte Arduino e inicie de nuevo la aplicación"</span><span class="p">,</span> <span class="s">"No está conectado Arduino"</span><span class="p">);</span>
+            <span class="p">}</span>
+
+            <span class="n">MMDeviceEnumerator</span> <span class="n">en</span> <span class="o">=</span> <span class="n">new</span> <span class="n">MMDeviceEnumerator</span><span class="p">();</span>
+            <span class="n">devices</span> <span class="o">=</span> <span class="n">en</span><span class="p">.</span><span class="n">EnumerateAudioEndPoints</span><span class="p">(</span><span class="n">DataFlow</span><span class="p">.</span><span class="n">All</span><span class="p">,</span> <span class="n">DeviceState</span><span class="p">.</span><span class="n">Active</span><span class="p">);</span>
+
+            <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">devices</span><span class="p">.</span><span class="n">Count</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+            <span class="p">{</span>
+                <span class="c1">//Console.WriteLine(devices[i].ToString());</span>
+                <span class="n">cmbDevices</span><span class="p">.</span><span class="n">Items</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="n">devices</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">ToString</span><span class="p">());</span>
+                <span class="k">if</span> <span class="p">(</span><span class="n">devices</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">ToString</span><span class="p">().</span><span class="n">Contains</span><span class="p">(</span><span class="s">"Micrófono"</span><span class="p">))</span> <span class="p">{</span> <span class="n">cmbDevices</span><span class="p">.</span><span class="n">SelectedIndex</span> <span class="o">=</span> <span class="n">i</span><span class="p">;</span> <span class="n">deviceSelected</span> <span class="o">=</span> <span class="n">i</span><span class="p">;</span> <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+
+        <span class="n">private</span> <span class="kt">void</span> <span class="n">arduinoReceivedSerial</span><span class="p">(</span><span class="n">object</span> <span class="n">sender</span><span class="p">,</span> <span class="n">SerialDataReceivedEventArgs</span> <span class="n">e</span><span class="p">)</span>
+        <span class="p">{</span>            
+            <span class="k">if</span> <span class="p">(</span><span class="n">e</span><span class="p">.</span><span class="n">EventType</span> <span class="o">==</span> <span class="n">SerialData</span><span class="p">.</span><span class="n">Chars</span><span class="p">)</span>
+            <span class="p">{</span>
+                <span class="kt">int</span> <span class="n">input</span> <span class="o">=</span> <span class="n">ArduinoPort</span><span class="p">.</span><span class="n">ReadChar</span><span class="p">();</span>
+                <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="n">input</span><span class="p">);</span>
+                <span class="k">if</span> <span class="p">(</span><span class="n">input</span><span class="p">.</span><span class="n">Equals</span><span class="p">(</span><span class="sc">'z'</span><span class="p">))</span>
+                <span class="p">{</span>
+                    <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">"***** CONNECTED *****"</span><span class="p">);</span>
+                <span class="p">}</span>
+
+                <span class="k">if</span> <span class="p">(</span><span class="n">input</span><span class="p">.</span><span class="n">Equals</span><span class="p">(</span><span class="sc">'g'</span><span class="p">))</span>
+                <span class="p">{</span>
+                    <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">"***** BUTTON PRESSED *****"</span><span class="p">);</span>
+                    <span class="n">MMDeviceEnumerator</span> <span class="n">en</span> <span class="o">=</span> <span class="n">new</span> <span class="n">MMDeviceEnumerator</span><span class="p">();</span>
+                    <span class="n">var</span> <span class="n">devices</span> <span class="o">=</span> <span class="n">en</span><span class="p">.</span><span class="n">EnumerateAudioEndPoints</span><span class="p">(</span><span class="n">DataFlow</span><span class="p">.</span><span class="n">All</span><span class="p">,</span> <span class="n">DeviceState</span><span class="p">.</span><span class="n">Active</span><span class="p">);</span>
+                    <span class="n">toogleMuted</span> <span class="o">=</span> <span class="o">!</span><span class="n">toogleMuted</span><span class="p">;</span> 
+                    <span class="n">devices</span><span class="p">[</span><span class="n">deviceSelected</span><span class="p">].</span><span class="n">AudioSessionManager</span><span class="p">.</span><span class="n">AudioSessionControl</span><span class="p">.</span><span class="n">SimpleAudioVolume</span><span class="p">.</span><span class="n">Mute</span> <span class="o">=</span> <span class="n">toogleMuted</span><span class="p">;</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+
+        <span class="n">private</span> <span class="kt">void</span> <span class="n">chkToogleMute_CheckedChanged</span><span class="p">(</span><span class="n">object</span> <span class="n">sender</span><span class="p">,</span> <span class="n">EventArgs</span> <span class="n">e</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="n">MMDeviceEnumerator</span> <span class="n">en</span> <span class="o">=</span> <span class="n">new</span> <span class="n">MMDeviceEnumerator</span><span class="p">();</span>
+            <span class="n">var</span> <span class="n">devices</span> <span class="o">=</span> <span class="n">en</span><span class="p">.</span><span class="n">EnumerateAudioEndPoints</span><span class="p">(</span><span class="n">DataFlow</span><span class="p">.</span><span class="n">All</span><span class="p">,</span> <span class="n">DeviceState</span><span class="p">.</span><span class="n">Active</span><span class="p">);</span>            
+            <span class="n">toogleMuted</span> <span class="o">=</span> <span class="n">chkToogleMute</span><span class="p">.</span><span class="n">Checked</span><span class="p">;</span>
+            <span class="n">devices</span><span class="p">[</span><span class="n">cmbDevices</span><span class="p">.</span><span class="n">SelectedIndex</span><span class="p">].</span><span class="n">AudioSessionManager</span><span class="p">.</span><span class="n">AudioSessionControl</span><span class="p">.</span><span class="n">SimpleAudioVolume</span><span class="p">.</span><span class="n">Mute</span> <span class="o">=</span> <span class="n">toogleMuted</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="n">private</span> <span class="kt">void</span> <span class="n">chkToogleWebcam_CheckedChanged</span><span class="p">(</span><span class="n">object</span> <span class="n">sender</span><span class="p">,</span> <span class="n">EventArgs</span> <span class="n">e</span><span class="p">)</span>
+        <span class="p">{</span>
+           
+        <span class="p">}</span>
+
+        <span class="n">private</span> <span class="kt">void</span> <span class="n">frmMain_FormClosing</span><span class="p">(</span><span class="n">object</span> <span class="n">sender</span><span class="p">,</span> <span class="n">FormClosingEventArgs</span> <span class="n">e</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">ArduinoPort</span><span class="p">.</span><span class="n">IsOpen</span><span class="p">)</span> <span class="n">ArduinoPort</span><span class="p">.</span><span class="n">Close</span><span class="p">();</span>
+        <span class="p">}</span>
+
+        <span class="n">private</span> <span class="kt">void</span> <span class="n">timerChangeStatus_Tick</span><span class="p">(</span><span class="n">object</span> <span class="n">sender</span><span class="p">,</span> <span class="n">EventArgs</span> <span class="n">e</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="n">chkToogleMute</span><span class="p">.</span><span class="n">Checked</span> <span class="o">=</span> <span class="n">toogleMuted</span><span class="p">;</span>
+
+            <span class="k">if</span> <span class="p">(</span><span class="n">cmbDevices</span><span class="p">.</span><span class="n">SelectedItem</span> <span class="o">!=</span> <span class="n">null</span><span class="p">)</span>
+            <span class="p">{</span>
+                <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">"Mute      : "</span> <span class="o">+</span> <span class="n">devices</span><span class="p">[</span><span class="n">cmbDevices</span><span class="p">.</span><span class="n">SelectedIndex</span><span class="p">].</span><span class="n">AudioSessionManager</span><span class="p">.</span><span class="n">AudioSessionControl</span><span class="p">.</span><span class="n">SimpleAudioVolume</span><span class="p">.</span><span class="n">Mute</span><span class="p">);</span>
+                <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">"Webcam    : "</span> <span class="o">+</span> <span class="n">IsWebCamInUse</span><span class="p">());</span>
+                <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">"Microphone: "</span> <span class="o">+</span> <span class="n">IsMicrophoneInUse</span><span class="p">());</span>
+
+                <span class="k">if</span> <span class="p">(</span><span class="n">IsWebCamInUse</span><span class="p">())</span>
+                <span class="p">{</span>
+                    <span class="n">chkCamera</span><span class="p">.</span><span class="n">Checked</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+                    <span class="n">ArduinoPort</span><span class="p">.</span><span class="n">Write</span><span class="p">(</span><span class="s">"e"</span><span class="p">);</span>
+                <span class="p">}</span>
+                <span class="k">else</span>
+                <span class="p">{</span>
+                    <span class="n">chkCamera</span><span class="p">.</span><span class="n">Checked</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+                    <span class="n">ArduinoPort</span><span class="p">.</span><span class="n">Write</span><span class="p">(</span><span class="s">"f"</span><span class="p">);</span>
+                <span class="p">}</span>
+
+                <span class="k">if</span> <span class="p">(</span><span class="n">IsMicrophoneInUse</span><span class="p">())</span>
+                <span class="p">{</span>
+                    <span class="n">chkMicrophone</span><span class="p">.</span><span class="n">Checked</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+                    <span class="n">ArduinoPort</span><span class="p">.</span><span class="n">Write</span><span class="p">(</span><span class="s">"a"</span><span class="p">);</span>
+                <span class="p">}</span>
+                <span class="k">else</span>
+                <span class="p">{</span>
+                    <span class="n">chkMicrophone</span><span class="p">.</span><span class="n">Checked</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+                    <span class="n">ArduinoPort</span><span class="p">.</span><span class="n">Write</span><span class="p">(</span><span class="s">"b"</span><span class="p">);</span>
+                <span class="p">}</span>
+
+                <span class="k">if</span> <span class="p">(</span><span class="n">devices</span><span class="p">[</span><span class="n">cmbDevices</span><span class="p">.</span><span class="n">SelectedIndex</span><span class="p">].</span><span class="n">AudioSessionManager</span><span class="p">.</span><span class="n">AudioSessionControl</span><span class="p">.</span><span class="n">SimpleAudioVolume</span><span class="p">.</span><span class="n">Mute</span><span class="p">)</span>
+                <span class="p">{</span>
+                    <span class="n">chkMicroMute</span><span class="p">.</span><span class="n">Checked</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+                    <span class="n">ArduinoPort</span><span class="p">.</span><span class="n">Write</span><span class="p">(</span><span class="s">"c"</span><span class="p">);</span>
+                <span class="p">}</span>
+                <span class="k">else</span>
+                <span class="p">{</span>
+                    <span class="n">chkMicroMute</span><span class="p">.</span><span class="n">Checked</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+                    <span class="n">ArduinoPort</span><span class="p">.</span><span class="n">Write</span><span class="p">(</span><span class="s">"d"</span><span class="p">);</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+
+        <span class="n">private</span> <span class="n">bool</span> <span class="n">IsWebCamInUse</span><span class="p">()</span>
+        <span class="p">{</span>
+            <span class="n">using</span> <span class="p">(</span><span class="n">var</span> <span class="n">key</span> <span class="o">=</span> <span class="n">Registry</span><span class="p">.</span><span class="n">CurrentUser</span><span class="p">.</span><span class="n">OpenSubKey</span><span class="p">(</span><span class="err">@</span><span class="s">"SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\webcam\NonPackaged"</span><span class="p">))</span>
+            <span class="p">{</span>
+                <span class="n">foreach</span> <span class="p">(</span><span class="n">var</span> <span class="n">subKeyName</span> <span class="n">in</span> <span class="n">key</span><span class="p">.</span><span class="n">GetSubKeyNames</span><span class="p">())</span>
+                <span class="p">{</span>
+                    <span class="n">using</span> <span class="p">(</span><span class="n">var</span> <span class="n">subKey</span> <span class="o">=</span> <span class="n">key</span><span class="p">.</span><span class="n">OpenSubKey</span><span class="p">(</span><span class="n">subKeyName</span><span class="p">))</span>
+                    <span class="p">{</span>
+                        <span class="k">if</span> <span class="p">(</span><span class="n">subKey</span><span class="p">.</span><span class="n">GetValueNames</span><span class="p">().</span><span class="n">Contains</span><span class="p">(</span><span class="s">"LastUsedTimeStop"</span><span class="p">))</span>
+                        <span class="p">{</span>
+                            <span class="n">var</span> <span class="n">endTime</span> <span class="o">=</span> <span class="n">subKey</span><span class="p">.</span><span class="n">GetValue</span><span class="p">(</span><span class="s">"LastUsedTimeStop"</span><span class="p">)</span> <span class="n">is</span> <span class="kt">long</span> <span class="o">?</span> <span class="p">(</span><span class="kt">long</span><span class="p">)</span><span class="n">subKey</span><span class="p">.</span><span class="n">GetValue</span><span class="p">(</span><span class="s">"LastUsedTimeStop"</span><span class="p">)</span> <span class="o">:</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+                            <span class="k">if</span> <span class="p">(</span><span class="n">endTime</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">)</span>
+                            <span class="p">{</span>
+                                <span class="k">return</span> <span class="nb">true</span><span class="p">;</span>
+                            <span class="p">}</span>
+                        <span class="p">}</span>
+                    <span class="p">}</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+
+            <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="n">private</span> <span class="n">bool</span> <span class="n">IsMicrophoneInUse</span><span class="p">()</span>
+        <span class="p">{</span>
+            <span class="n">using</span> <span class="p">(</span><span class="n">var</span> <span class="n">key</span> <span class="o">=</span> <span class="n">Registry</span><span class="p">.</span><span class="n">CurrentUser</span><span class="p">.</span><span class="n">OpenSubKey</span><span class="p">(</span><span class="err">@</span><span class="s">"SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\microphone\NonPackaged"</span><span class="p">))</span>
+            <span class="p">{</span>
+                <span class="n">foreach</span> <span class="p">(</span><span class="n">var</span> <span class="n">subKeyName</span> <span class="n">in</span> <span class="n">key</span><span class="p">.</span><span class="n">GetSubKeyNames</span><span class="p">())</span>
+                <span class="p">{</span>
+                    <span class="n">using</span> <span class="p">(</span><span class="n">var</span> <span class="n">subKey</span> <span class="o">=</span> <span class="n">key</span><span class="p">.</span><span class="n">OpenSubKey</span><span class="p">(</span><span class="n">subKeyName</span><span class="p">))</span>
+                    <span class="p">{</span>
+                        <span class="k">if</span> <span class="p">(</span><span class="n">subKey</span><span class="p">.</span><span class="n">GetValueNames</span><span class="p">().</span><span class="n">Contains</span><span class="p">(</span><span class="s">"LastUsedTimeStop"</span><span class="p">))</span>
+                        <span class="p">{</span>
+                            <span class="n">var</span> <span class="n">endTime</span> <span class="o">=</span> <span class="n">subKey</span><span class="p">.</span><span class="n">GetValue</span><span class="p">(</span><span class="s">"LastUsedTimeStop"</span><span class="p">)</span> <span class="n">is</span> <span class="kt">long</span> <span class="o">?</span> <span class="p">(</span><span class="kt">long</span><span class="p">)</span><span class="n">subKey</span><span class="p">.</span><span class="n">GetValue</span><span class="p">(</span><span class="s">"LastUsedTimeStop"</span><span class="p">)</span> <span class="o">:</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+                            <span class="k">if</span> <span class="p">(</span><span class="n">endTime</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">)</span>
+                            <span class="p">{</span>
+                                <span class="k">return</span> <span class="nb">true</span><span class="p">;</span>
+                            <span class="p">}</span>
+                        <span class="p">}</span>
+                    <span class="p">}</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+
+            <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+        <span class="p">}</span>
+
+
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>El código de Arduino:</p>
+
+<figure class="highlight"><pre><code class="language-c" data-lang="c"><span class="k">const</span> <span class="kt">int</span> <span class="n">pinLEDMicUso</span>  <span class="o">=</span> <span class="n">D1</span><span class="p">;</span>
+<span class="k">const</span> <span class="kt">int</span> <span class="n">pinLEDMicMute</span> <span class="o">=</span> <span class="n">D2</span><span class="p">;</span>
+<span class="k">const</span> <span class="kt">int</span> <span class="n">pinLEDCamUso</span>  <span class="o">=</span> <span class="n">D3</span><span class="p">;</span>
+<span class="k">const</span> <span class="kt">int</span> <span class="n">pinBTNMicMute</span> <span class="o">=</span> <span class="n">D4</span><span class="p">;</span>
+<span class="kt">int</span> <span class="n">btnMicMute</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+<span class="kt">void</span> <span class="nf">setup</span><span class="p">()</span>
+<span class="p">{</span>
+   <span class="n">Serial</span><span class="p">.</span><span class="n">begin</span><span class="p">(</span><span class="mi">9600</span><span class="p">);</span>
+   <span class="n">pinMode</span><span class="p">(</span><span class="n">pinLEDMicUso</span><span class="p">,</span> <span class="n">OUTPUT</span><span class="p">);</span>
+   <span class="n">pinMode</span><span class="p">(</span><span class="n">pinLEDMicMute</span><span class="p">,</span> <span class="n">OUTPUT</span><span class="p">);</span>
+   <span class="n">pinMode</span><span class="p">(</span><span class="n">pinLEDCamUso</span><span class="p">,</span> <span class="n">OUTPUT</span><span class="p">);</span>
+   <span class="n">pinMode</span><span class="p">(</span><span class="n">pinBTNMicMute</span><span class="p">,</span> <span class="n">INPUT</span><span class="p">);</span>
+   <span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="sc">'z'</span><span class="p">);</span> <span class="c1">//Conectado</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">loop</span><span class="p">()</span> <span class="p">{</span>
+   <span class="k">if</span> <span class="p">(</span><span class="n">Serial</span><span class="p">.</span><span class="n">available</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span>
+   <span class="p">{</span>
+      <span class="kt">int</span> <span class="n">option</span> <span class="o">=</span> <span class="n">Serial</span><span class="p">.</span><span class="n">read</span><span class="p">();</span>
+      <span class="k">if</span> <span class="p">(</span><span class="n">option</span> <span class="o">==</span> <span class="sc">'a'</span><span class="p">)</span>
+      <span class="p">{</span>
+         <span class="n">digitalWrite</span><span class="p">(</span><span class="n">pinLEDMicUso</span><span class="p">,</span> <span class="n">HIGH</span><span class="p">);</span> 
+      <span class="p">}</span>
+      <span class="k">if</span> <span class="p">(</span><span class="n">option</span> <span class="o">==</span> <span class="sc">'b'</span><span class="p">)</span>
+      <span class="p">{</span>
+         <span class="n">digitalWrite</span><span class="p">(</span><span class="n">pinLEDMicUso</span><span class="p">,</span> <span class="n">LOW</span><span class="p">);</span>
+      <span class="p">}</span>
+      <span class="k">if</span> <span class="p">(</span><span class="n">option</span> <span class="o">==</span> <span class="sc">'c'</span><span class="p">)</span>
+      <span class="p">{</span>
+         <span class="n">digitalWrite</span><span class="p">(</span><span class="n">pinLEDMicMute</span><span class="p">,</span> <span class="n">HIGH</span><span class="p">);</span> 
+      <span class="p">}</span>
+      <span class="k">if</span> <span class="p">(</span><span class="n">option</span> <span class="o">==</span> <span class="sc">'d'</span><span class="p">)</span>
+      <span class="p">{</span>
+         <span class="n">digitalWrite</span><span class="p">(</span><span class="n">pinLEDMicMute</span><span class="p">,</span> <span class="n">LOW</span><span class="p">);</span>
+      <span class="p">}</span>
+      <span class="k">if</span> <span class="p">(</span><span class="n">option</span> <span class="o">==</span> <span class="sc">'e'</span><span class="p">)</span>
+      <span class="p">{</span>
+         <span class="n">digitalWrite</span><span class="p">(</span><span class="n">pinLEDCamUso</span><span class="p">,</span> <span class="n">HIGH</span><span class="p">);</span> 
+      <span class="p">}</span>
+      <span class="k">if</span> <span class="p">(</span><span class="n">option</span> <span class="o">==</span> <span class="sc">'f'</span><span class="p">)</span>
+      <span class="p">{</span>
+         <span class="n">digitalWrite</span><span class="p">(</span><span class="n">pinLEDCamUso</span><span class="p">,</span> <span class="n">LOW</span><span class="p">);</span>
+      <span class="p">}</span>
+   <span class="p">}</span>
+
+   <span class="n">btnMicMute</span> <span class="o">=</span> <span class="n">digitalRead</span><span class="p">(</span><span class="n">pinBTNMicMute</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">btnMicMute</span> <span class="o">==</span> <span class="n">LOW</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">"g"</span><span class="p">);</span>
+        <span class="n">delay</span><span class="p">(</span><span class="mi">200</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></figure>
+
+<hr />
+
+<p><em>Repositorio con el contenido</em></p>
+
+<p><a href="https://github.com/rubenarcos2/c_sharp-arduino_detect_mute"><img src="/images/pages/repository_small.png" alt="Repositorio" /></a>
+<a href="https://github.com/rubenarcos2/c_sharp-arduino_detect_mute/raw/main/ArduinoComunicacionSerie/bin/c_sharp-arduino_detect_mute.zip"><img src="/images/pages/icono_archivo_exe1-100x100.png" alt="Ejecutable" /></a></p>]]></content><author><name></name></author><category term="spring" /><category term="MVC" /><category term="js" /><category term="vanilla js" /><category term="api" /><category term="api rest" /><summary type="html"><![CDATA[Desarrollo de una app en C# que se comunique con Arduino para la detección del micrófono, el estado muteado y la activación de la webcam]]></summary></entry><entry><title type="html">Laravel 9 - PHP 8 y MVC</title><link href="https://rarcos.com/2022/07/17/Laravel-9-MVC/" rel="alternate" type="text/html" title="Laravel 9 - PHP 8 y MVC" /><published>2022-07-17T16:33:28+02:00</published><updated>2022-07-17T16:33:28+02:00</updated><id>https://rarcos.com/2022/07/17/Laravel%209%20-%20MVC</id><content type="html" xml:base="https://rarcos.com/2022/07/17/Laravel-9-MVC/"><![CDATA[<h1 id="laravel-9-php-8-y-mvc">Laravel 9, PHP 8 y MVC</h1>
 
 <p>Desarrollo de una aplicaciones web usando Laravel 9 y PHP 8:</p>
 
@@ -1554,200 +1803,4 @@ La aplicación original: “I have deployed my BERT app <a href="https://bertqna
 
 <p><em>Repositorio con el contenido</em></p>
 
-<p><a href="https://colab.research.google.com/drive/11Kiqfw7KvID4KDvu8ag8WV41EO4Em9OT"><img src="/images/pages/repository_small_colab.png" alt="Repositorio" /></a></p>]]></content><author><name></name></author><category term="python" /><category term="keras" /><category term="ia" /><category term="tensorflow" /><category term="js" /><category term="webscraping" /><summary type="html"><![CDATA[Proyecto de webscraping: consiste en la captación de un listado con los libros que corresponden al título *machine learning* de la web de amazon.]]></summary></entry><entry><title type="html">Python - Envío de emails mediante la api de Gmail con python</title><link href="https://rarcos.com/2022/03/18/Python-Gmail_api/" rel="alternate" type="text/html" title="Python - Envío de emails mediante la api de Gmail con python" /><published>2022-03-18T15:33:28+01:00</published><updated>2022-03-18T15:33:28+01:00</updated><id>https://rarcos.com/2022/03/18/Python%20-%20Gmail_api</id><content type="html" xml:base="https://rarcos.com/2022/03/18/Python-Gmail_api/"><![CDATA[<h1 id="utilización-y-activación-de-la-api-de-gmail">Utilización y activación de la api de Gmail</h1>
-
-<h2 id="google-api-console">Google API Console</h2>
-
-<p>Lo primero que tenemos que hacer es crear un proyecto nuevo en <a href="https://console.cloud.google.com/apis/dashboard">Google Developers Console</a>. A continuación, haz clic en Seleccionar un proyecto y crea uno nuevo.</p>
-
-<p><img src="https://lh4.googleusercontent.com/cQ3I0lmHvuA46MI7Btd3fL-4AVbcyFE6Z_a6OA3l3XrN6jsETLZNzt-uvrfu9wfiTN-BmL3EX2RLQapRZ1ILEmjfFB_BhcunrubAgBhRSJCmlXtg2Cv1toNKm7lznukYB0LgjYbP" alt="image1" /></p>
-
-<p>Nombra tu nuevo proyecto y pulsa Crear en la parte inferior.</p>
-
-<h2 id="habilita-gmail-api">Habilita Gmail API</h2>
-
-<p>Una vez hecho esto, puedes pulsar la pestaña Biblioteca de la izquierda y encontrarte en la página de la Biblioteca API. Introduce “Gmail API” en la barra de búsqueda y haz clic en ella una vez encontrada. Ahora, tienes que habilitar la API para tu proyecto.</p>
-
-<p><img src="https://lh6.googleusercontent.com/qRA82H-dl5bKqCzC8H_YpR8cDa23K85f6s5Q2piOw95VO62mqn_YfOkLFVaSD_p0qCVKTLGRLeFDMzU3Ad-Lb8Ou0Yde3efa7diXO5QDVC7IjCQcrbQh-H30xBVpy24KfrSZJ1Uc" alt="image2" /></p>
-
-<p>*Ten en cuenta que tendrás que activarlo por separado para cada nuevo proyecto en el que trabajes. *</p>
-
-<h2 id="paso-3-credenciales-y-autenticación-con-oauth-20">Paso 3: Credenciales y autenticación con OAuth 2.0</h2>
-
-<p>Una vez activada la API, accederás a un bonito panel que dice: “Para utilizar esta API, puede que necesites credenciales”. Si haces clic en Crear credenciales, tendrás que pasar por una serie de preguntas para saber qué tipo de credenciales necesitas. Te aconsejamos que vayas por otro camino ya que ya sabemos lo que es: ID de cliente OAuth. Así pues, haz clic en la pestaña Credenciales de la izquierda, y luego elige OAuth client ID en la lista desplegable del botón Crear credenciales.</p>
-
-<p><img src="https://lh6.googleusercontent.com/UwsT80hMiX5B1TjEg51gbqkkJ-iembuOfCu3cM9k1pdcv2mlleKht4k_FmeRFBwFApyuHkqb8Xgxut9dHybJAIQCtzfvul60Uh957dPXi3fRFrsU4ZjhTSZo_-8byEsxIy52jSRv" alt="image3" /></p>
-
-<p>Verás el botón Configurar pantalla de consentimiento. Te llevará a una página con muchos campos. Sólo tienes que introducir el nombre de tu aplicación y especificar los dominios autorizados. Rellena otros campos si quieres.</p>
-
-<p><img src="https://lh5.googleusercontent.com/WAhpqm_Hwa640iUPpKK7eWRPDIPf2FlpQ7Y5XT2uKa9UrfO-i868IpL-O4orLMXSMT6wRnubrYzyZD0LRUSjKt9xJDSOdZSrZmjBTuDKj3w9pGHG2U_m_afZ8RlN9R2SXmDHcXht" alt="image4" /></p>
-
-<p>Haz clic en guardar y luego elige el tipo de tu aplicación (aplicación web, Android, Chrome App, iOS u otra). Después de eso, nombra tu ID de cliente OAuth. Además, introduce los orígenes de JavaScript y los dominios de redirección para utilizarlos con las solicitudes de un navegador o un servidor web, respectivamente. Haz clic en crear para finalizar. Eso es todo. Descarga un archivo JSON con tus credenciales - lo necesitarás más tarde.</p>
-
-<h2 id="habilitación-de-la-api-de-gmail">Habilitación de la API de Gmail</h2>
-
-<p>Para utilizar la API de Gmail, necesitamos un token para conectarnos a la API de Gmail, podemos obtener uno desde el panel de control de las API de Google.</p>
-
-<p>Primero habilitamos la API de correo de Google, nos dirigimos al panel de control y utilizamos la barra de búsqueda para buscar la API de Gmail, hacemos clic en ella y la habilitamos:</p>
-
-<p><img src="https://www.thepythoncode.com/media/articles/use-gmail-api-in-python/enable-gmail-api.png" alt="image5" /></p>
-
-<p>A continuación, creamos un ID de cliente OAuth 2.0 mediante la creación de credenciales (dirigiéndose al botón Crear credenciales):</p>
-
-<p><img src="https://www.thepythoncode.com/media/articles/use-gmail-api-in-python/create-oauth-client-id.png" alt="image6" /></p>
-
-<p>Seleccione Desktop App como el tipo de aplicación y proceda, verá una ventana como esta:</p>
-
-<p><img src="https://www.thepythoncode.com/media/articles/use-gmail-api-in-python/oauth-credentials.png" alt="image7" /></p>
-
-<p>Descargamos nuestro archivo de credenciales y lo <strong>guardamos como</strong> <em>credentials.json</em> en el directorio actual:</p>
-
-<p><img src="https://www.thepythoncode.com/media/articles/use-gmail-api-in-python/download-credentials.png" alt="image8" /></p>
-
-<hr />
-
-<p>Nota: Si es la primera vez que utilizas las API de Google, puede que tengas que crear simplemente una pantalla de consentimiento de OAuth y añadir tu correo electrónico como usuario de prueba.</p>
-
-<h2 id="crear-pantalla-de-consentimiento">Crear pantalla de consentimiento</h2>
-
-<p>Información detallada de cómo crearla <a href="https://docs.moodle.org/all/es/Servicio_OAuth_2_Google">aquí</a>.</p>
-
-<p>Importante destacar que se marque para <em>uso interno</em> y que no se suba <em>logotipo</em>.</p>
-
-<p>Es porque si no se activa un procedimiento de verificación humana, que retrasa la activación de ventana de consentimiento hasta que termine, y pueden ser días. Lo cual no necesitamos para nuestras pruebas y sería en caso de poner en producción la aplicación, para que así se muestre una ventana <em>formal</em> de aceptación de permisos con aspecto y auterización corporativo.</p>
-
-<h1 id="creación-del-script-para-consumir-la-api-de-gmail-en-python">Creación del Script para consumir la API de Gmail en python</h1>
-
-<h2 id="dependencias-necesarias">Dependencias necesarias</h2>
-
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>pip3 <span class="nb">install</span> <span class="nt">--upgrade</span> google-api-python-client google-auth-httplib2 google-auth-oauthlib</code></pre></figure>
-
-<h2 id="código-de-consumo-de-la-api">Código de consumo de la api</h2>
-
-<p>En la misma carpeta donde se encuentre este script, debe estar el fichero <em>credentials.json</em> que fue renombrado por el que nos descargamos de google con los credenciales de acceso de nuestra cuenta. También destacar que se creará de forma automática después del primer lanzamiento un fichero <em>tocken.picle</em> que no deberemos borrar.</p>
-
-<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">os</span>
-<span class="kn">import</span> <span class="nn">pickle</span>
-
-<span class="c1"># Gmail API utils
-</span>
-<span class="kn">from</span> <span class="nn">googleapiclient.discovery</span> <span class="kn">import</span> <span class="n">build</span>
-<span class="kn">from</span> <span class="nn">google_auth_oauthlib.flow</span> <span class="kn">import</span> <span class="n">InstalledAppFlow</span>
-<span class="kn">from</span> <span class="nn">google.auth.transport.requests</span> <span class="kn">import</span> <span class="n">Request</span>
-
-<span class="c1"># for encoding/decoding messages in base64
-</span>
-<span class="kn">from</span> <span class="nn">base64</span> <span class="kn">import</span> <span class="n">urlsafe_b64decode</span><span class="p">,</span> <span class="n">urlsafe_b64encode</span>
-
-<span class="c1"># for dealing with attachement MIME types
-</span>
-<span class="kn">from</span> <span class="nn">email.mime.text</span> <span class="kn">import</span> <span class="n">MIMEText</span>
-<span class="kn">from</span> <span class="nn">email.mime.multipart</span> <span class="kn">import</span> <span class="n">MIMEMultipart</span>
-<span class="kn">from</span> <span class="nn">email.mime.image</span> <span class="kn">import</span> <span class="n">MIMEImage</span>
-<span class="kn">from</span> <span class="nn">email.mime.audio</span> <span class="kn">import</span> <span class="n">MIMEAudio</span>
-<span class="kn">from</span> <span class="nn">email.mime.base</span> <span class="kn">import</span> <span class="n">MIMEBase</span>
-<span class="kn">from</span> <span class="nn">mimetypes</span> <span class="kn">import</span> <span class="n">guess_type</span> <span class="k">as</span> <span class="n">guess_mime_type</span>
-
-<span class="c1"># Request all access (permission to read/send/receive emails, manage the inbox, and more)
-</span>
-<span class="n">SCOPES</span> <span class="o">=</span> <span class="p">[</span><span class="s">'https://mail.google.com/'</span><span class="p">]</span>
-<span class="n">our_email</span> <span class="o">=</span> <span class="s">'email_envio@gmail.com'</span>
-
-<span class="k">def</span> <span class="nf">gmail_authenticate</span><span class="p">():</span>
-    <span class="n">creds</span> <span class="o">=</span> <span class="bp">None</span>
-    <span class="c1"># the file token.pickle stores the user's access and refresh tokens, and is
-</span>    <span class="c1"># created automatically when the authorization flow completes for the first time
-</span>    <span class="k">if</span> <span class="n">os</span><span class="p">.</span><span class="n">path</span><span class="p">.</span><span class="n">exists</span><span class="p">(</span><span class="s">"token.pickle"</span><span class="p">):</span>
-        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s">"token.pickle"</span><span class="p">,</span> <span class="s">"rb"</span><span class="p">)</span> <span class="k">as</span> <span class="n">token</span><span class="p">:</span>
-            <span class="n">creds</span> <span class="o">=</span> <span class="n">pickle</span><span class="p">.</span><span class="n">load</span><span class="p">(</span><span class="n">token</span><span class="p">)</span>
-    <span class="c1"># if there are no (valid) credentials availablle, let the user log in.
-</span>    <span class="k">if</span> <span class="ow">not</span> <span class="n">creds</span> <span class="ow">or</span> <span class="ow">not</span> <span class="n">creds</span><span class="p">.</span><span class="n">valid</span><span class="p">:</span>
-        <span class="k">if</span> <span class="n">creds</span> <span class="ow">and</span> <span class="n">creds</span><span class="p">.</span><span class="n">expired</span> <span class="ow">and</span> <span class="n">creds</span><span class="p">.</span><span class="n">refresh_token</span><span class="p">:</span>
-            <span class="n">creds</span><span class="p">.</span><span class="n">refresh</span><span class="p">(</span><span class="n">Request</span><span class="p">())</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="n">flow</span> <span class="o">=</span> <span class="n">InstalledAppFlow</span><span class="p">.</span><span class="n">from_client_secrets_file</span><span class="p">(</span><span class="s">'credentials.json'</span><span class="p">,</span> <span class="n">SCOPES</span><span class="p">)</span>
-            <span class="n">creds</span> <span class="o">=</span> <span class="n">flow</span><span class="p">.</span><span class="n">run_local_server</span><span class="p">(</span><span class="n">port</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-        <span class="c1"># save the credentials for the next run
-</span>        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s">"token.pickle"</span><span class="p">,</span> <span class="s">"wb"</span><span class="p">)</span> <span class="k">as</span> <span class="n">token</span><span class="p">:</span>
-            <span class="n">pickle</span><span class="p">.</span><span class="n">dump</span><span class="p">(</span><span class="n">creds</span><span class="p">,</span> <span class="n">token</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">build</span><span class="p">(</span><span class="s">'gmail'</span><span class="p">,</span> <span class="s">'v1'</span><span class="p">,</span> <span class="n">credentials</span><span class="o">=</span><span class="n">creds</span><span class="p">)</span>
-
-<span class="c1"># get the Gmail API service
-</span>
-<span class="n">service</span> <span class="o">=</span> <span class="n">gmail_authenticate</span><span class="p">()</span>
-
-<span class="c1"># Adds the attachment with the given filename to the given message
-</span>
-<span class="k">def</span> <span class="nf">add_attachment</span><span class="p">(</span><span class="n">message</span><span class="p">,</span> <span class="n">filename</span><span class="p">):</span>
-    <span class="n">content_type</span><span class="p">,</span> <span class="n">encoding</span> <span class="o">=</span> <span class="n">guess_mime_type</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
-    <span class="k">if</span> <span class="n">content_type</span> <span class="ow">is</span> <span class="bp">None</span> <span class="ow">or</span> <span class="n">encoding</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
-        <span class="n">content_type</span> <span class="o">=</span> <span class="s">'application/octet-stream'</span>
-    <span class="n">main_type</span><span class="p">,</span> <span class="n">sub_type</span> <span class="o">=</span> <span class="n">content_type</span><span class="p">.</span><span class="n">split</span><span class="p">(</span><span class="s">'/'</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-    <span class="k">if</span> <span class="n">main_type</span> <span class="o">==</span> <span class="s">'text'</span><span class="p">:</span>
-        <span class="n">fp</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s">'rb'</span><span class="p">)</span>
-        <span class="n">msg</span> <span class="o">=</span> <span class="n">MIMEText</span><span class="p">(</span><span class="n">fp</span><span class="p">.</span><span class="n">read</span><span class="p">().</span><span class="n">decode</span><span class="p">(),</span> <span class="n">_subtype</span><span class="o">=</span><span class="n">sub_type</span><span class="p">)</span>
-        <span class="n">fp</span><span class="p">.</span><span class="n">close</span><span class="p">()</span>
-    <span class="k">elif</span> <span class="n">main_type</span> <span class="o">==</span> <span class="s">'image'</span><span class="p">:</span>
-        <span class="n">fp</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s">'rb'</span><span class="p">)</span>
-        <span class="n">msg</span> <span class="o">=</span> <span class="n">MIMEImage</span><span class="p">(</span><span class="n">fp</span><span class="p">.</span><span class="n">read</span><span class="p">(),</span> <span class="n">_subtype</span><span class="o">=</span><span class="n">sub_type</span><span class="p">)</span>
-        <span class="n">fp</span><span class="p">.</span><span class="n">close</span><span class="p">()</span>
-    <span class="k">elif</span> <span class="n">main_type</span> <span class="o">==</span> <span class="s">'audio'</span><span class="p">:</span>
-        <span class="n">fp</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s">'rb'</span><span class="p">)</span>
-        <span class="n">msg</span> <span class="o">=</span> <span class="n">MIMEAudio</span><span class="p">(</span><span class="n">fp</span><span class="p">.</span><span class="n">read</span><span class="p">(),</span> <span class="n">_subtype</span><span class="o">=</span><span class="n">sub_type</span><span class="p">)</span>
-        <span class="n">fp</span><span class="p">.</span><span class="n">close</span><span class="p">()</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="n">fp</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s">'rb'</span><span class="p">)</span>
-        <span class="n">msg</span> <span class="o">=</span> <span class="n">MIMEBase</span><span class="p">(</span><span class="n">main_type</span><span class="p">,</span> <span class="n">sub_type</span><span class="p">)</span>
-        <span class="n">msg</span><span class="p">.</span><span class="n">set_payload</span><span class="p">(</span><span class="n">fp</span><span class="p">.</span><span class="n">read</span><span class="p">())</span>
-        <span class="n">fp</span><span class="p">.</span><span class="n">close</span><span class="p">()</span>
-    <span class="n">filename</span> <span class="o">=</span> <span class="n">os</span><span class="p">.</span><span class="n">path</span><span class="p">.</span><span class="n">basename</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
-    <span class="n">msg</span><span class="p">.</span><span class="n">add_header</span><span class="p">(</span><span class="s">'Content-Disposition'</span><span class="p">,</span> <span class="s">'attachment'</span><span class="p">,</span> <span class="n">filename</span><span class="o">=</span><span class="n">filename</span><span class="p">)</span>
-    <span class="n">message</span><span class="p">.</span><span class="n">attach</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
-
-<span class="k">def</span> <span class="nf">build_message</span><span class="p">(</span><span class="n">destination</span><span class="p">,</span> <span class="n">obj</span><span class="p">,</span> <span class="n">body</span><span class="p">,</span> <span class="n">attachments</span><span class="o">=</span><span class="p">[]):</span>
-    <span class="k">if</span> <span class="ow">not</span> <span class="n">attachments</span><span class="p">:</span> <span class="c1"># no attachments given
-</span>        <span class="n">message</span> <span class="o">=</span> <span class="n">MIMEText</span><span class="p">(</span><span class="n">body</span><span class="p">,</span> <span class="s">'html'</span><span class="p">)</span>
-        <span class="n">message</span><span class="p">[</span><span class="s">'to'</span><span class="p">]</span> <span class="o">=</span> <span class="n">destination</span>
-        <span class="n">message</span><span class="p">[</span><span class="s">'from'</span><span class="p">]</span> <span class="o">=</span> <span class="n">our_email</span>
-        <span class="n">message</span><span class="p">[</span><span class="s">'subject'</span><span class="p">]</span> <span class="o">=</span> <span class="n">obj</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="n">message</span> <span class="o">=</span> <span class="n">MIMEMultipart</span><span class="p">()</span>
-        <span class="n">message</span><span class="p">[</span><span class="s">'to'</span><span class="p">]</span> <span class="o">=</span> <span class="n">destination</span>
-        <span class="n">message</span><span class="p">[</span><span class="s">'from'</span><span class="p">]</span> <span class="o">=</span> <span class="n">our_email</span>
-        <span class="n">message</span><span class="p">[</span><span class="s">'subject'</span><span class="p">]</span> <span class="o">=</span> <span class="n">obj</span>
-        <span class="n">message</span><span class="p">.</span><span class="n">attach</span><span class="p">(</span><span class="n">MIMEText</span><span class="p">(</span><span class="n">body</span><span class="p">))</span>
-        <span class="k">for</span> <span class="n">filename</span> <span class="ow">in</span> <span class="n">attachments</span><span class="p">:</span>
-            <span class="n">add_attachment</span><span class="p">(</span><span class="n">message</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span>
-    <span class="k">return</span> <span class="p">{</span><span class="s">'raw'</span><span class="p">:</span> <span class="n">urlsafe_b64encode</span><span class="p">(</span><span class="n">message</span><span class="p">.</span><span class="n">as_bytes</span><span class="p">()).</span><span class="n">decode</span><span class="p">()}</span>
-
-<span class="k">def</span> <span class="nf">send_message</span><span class="p">(</span><span class="n">service</span><span class="p">,</span> <span class="n">destination</span><span class="p">,</span> <span class="n">obj</span><span class="p">,</span> <span class="n">body</span><span class="p">,</span> <span class="n">attachments</span><span class="o">=</span><span class="p">[]):</span>
-    <span class="k">return</span> <span class="n">service</span><span class="p">.</span><span class="n">users</span><span class="p">().</span><span class="n">messages</span><span class="p">().</span><span class="n">send</span><span class="p">(</span>
-      <span class="n">userId</span><span class="o">=</span><span class="s">"me"</span><span class="p">,</span>
-      <span class="n">body</span><span class="o">=</span><span class="n">build_message</span><span class="p">(</span><span class="n">destination</span><span class="p">,</span> <span class="n">obj</span><span class="p">,</span> <span class="n">body</span><span class="p">,</span> <span class="n">attachments</span><span class="p">)</span>
-    <span class="p">).</span><span class="n">execute</span><span class="p">()</span>
-
-<span class="k">def</span> <span class="nf">send</span><span class="p">(</span><span class="n">user</span><span class="p">,</span> <span class="n">subject</span><span class="p">,</span> <span class="n">body</span><span class="p">):</span>
-    <span class="n">send_message</span><span class="p">(</span><span class="n">service</span><span class="p">,</span> <span class="n">user</span><span class="p">,</span> <span class="n">subject</span><span class="p">,</span> <span class="n">body</span><span class="p">)</span></code></pre></figure>
-
-<h2 id="llamada-y-utilización-a-este-script">Llamada y utilización a este script</h2>
-
-<p>El script anterior, lo denominto una dependencia y he externalizado su uso, por ello desde dónde tengamos los datos y queramos enviar el email deberemos poner:</p>
-
-<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">email_api_gmail</span> <span class="kn">import</span> <span class="n">send</span> <span class="c1">#Es el nombre que yo le he dado al script que consume la api de gmail.
-</span>
-<span class="c1">#### Envío de los datos por email
-</span>
-    <span class="k">try</span><span class="p">:</span>
-        <span class="n">email</span> <span class="o">=</span> <span class="s">"`&lt;html&gt;`"</span> <span class="o">+</span> <span class="n">df</span><span class="p">.</span><span class="n">to_html</span><span class="p">()</span> <span class="o">+</span> <span class="s">"`&lt;/html&gt;`"</span>
-        <span class="n">send</span><span class="p">(</span><span class="s">"email_destinatario@dominio"</span><span class="p">,</span> <span class="s">"Encabezado del email"</span><span class="p">,</span> <span class="n">cuerpo_email</span><span class="p">)</span>
-        <span class="k">print</span><span class="p">(</span><span class="s">"Se ha el email correctamente."</span><span class="p">)</span>
-    <span class="k">except</span> <span class="nb">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-        <span class="k">print</span><span class="p">(</span><span class="s">"Ha habido un error en el envío del email:"</span><span class="p">,</span> <span class="n">e</span><span class="p">)</span></code></pre></figure>
-
-<hr />
-<p><strong>Fuentes:</strong></p>
-
-<p><a href="https://mailtrap.io/blog/send-emails-with-gmail-api/#Python">https://mailtrap.io/blog/send-emails-with-gmail-api/#Python</a>
-<a href="https://www.thepythoncode.com/article/use-gmail-api-in-python">https://www.thepythoncode.com/article/use-gmail-api-in-python</a>
-<a href="https://developers.google.com/android-publisher/getting_started?hl=es-419">https://developers.google.com/android-publisher/getting_started?hl=es-419</a>
-<a href="https://docs.moodle.org/all/es/Servicio_OAuth_2_Google">https://docs.moodle.org/all/es/Servicio_OAuth_2_Google</a></p>]]></content><author><name></name></author><category term="python" /><category term="gmail" /><category term="api" /><category term="webscraping" /><summary type="html"><![CDATA[Proyecto de webscraping: consiste en la captación de un listado con las ofertas de trabajo del portal *ticjob.es* para el lenguaje de programación Python y la localidad de Málaga.]]></summary></entry></feed>
+<p><a href="https://colab.research.google.com/drive/11Kiqfw7KvID4KDvu8ag8WV41EO4Em9OT"><img src="/images/pages/repository_small_colab.png" alt="Repositorio" /></a></p>]]></content><author><name></name></author><category term="python" /><category term="keras" /><category term="ia" /><category term="tensorflow" /><category term="js" /><category term="webscraping" /><summary type="html"><![CDATA[Proyecto de webscraping: consiste en la captación de un listado con los libros que corresponden al título *machine learning* de la web de amazon.]]></summary></entry></feed>
