@@ -3,7 +3,7 @@
     {
       "title"    : "2022-07-28-C# + Arduino - Detector mute",
       "category" : "",
-      "tags"     : "c_sharp, arduino, iot",
+      "tags"     : "C#, arduino, iot",
       "url"      : "/2022/07/23/C-+-Arduino-Detector-mute/",
       "date"     : "2022-07-23 16:33:28 +0200"
     } ,
@@ -11,7 +11,7 @@
     {
       "title"    : "JS Vanilla MVC - Spring API rest",
       "category" : "",
-      "tags"     : "spring, MVC, js, vanilla js, api, api rest",
+      "tags"     : "spring, MVC, js, vanilla js, api",
       "url"      : "/2022/07/23/Vanilla-JS-MVC-Spring-API-rest/",
       "date"     : "2022-07-23 16:33:28 +0200"
     } ,
@@ -139,7 +139,7 @@
     {
       "title"    : "Android - Tu web en una app",
       "category" : "",
-      "tags"     : "Android, apk, app",
+      "tags"     : "Android, apk",
       "url"      : "/2021/11/23/Tu_web_en_app_Android/",
       "date"     : "2021-11-23 15:33:28 +0100"
     } ,
@@ -211,7 +211,7 @@
     {
       "title"    : "Java - Hilos 1",
       "category" : "",
-      "tags"     : "ava, hilos, threads",
+      "tags"     : "java, hilos, threads",
       "url"      : "/2016/05/30/Hilos_en_java-1/",
       "date"     : "2016-05-30 16:33:28 +0200"
     } ,
