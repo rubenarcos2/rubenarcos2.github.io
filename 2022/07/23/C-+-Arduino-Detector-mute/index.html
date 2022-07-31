@@ -186,24 +186,12 @@
         <span class="n">public</span> <span class="n">MMDeviceCollection</span> <span class="n">devices</span><span class="p">;</span>
         <span class="n">public</span> <span class="kt">int</span> <span class="n">deviceSelected</span><span class="p">;</span>
         <span class="n">public</span> <span class="n">bool</span> <span class="n">toogleMuted</span><span class="p">;</span>
+        <span class="n">public</span> <span class="n">bool</span> <span class="n">toogleCamera</span><span class="p">;</span>
 
         <span class="n">public</span> <span class="n">frmMain</span><span class="p">()</span>
         <span class="p">{</span>
             <span class="n">InitializeComponent</span><span class="p">();</span>
-
-            <span class="n">try</span>
-            <span class="p">{</span>
-                <span class="n">ArduinoPort</span> <span class="o">=</span> <span class="n">new</span> <span class="n">SerialPort</span><span class="p">();</span>
-                <span class="n">ArduinoPort</span><span class="p">.</span><span class="n">PortName</span> <span class="o">=</span> <span class="s">"COM4"</span><span class="p">;</span>
-                <span class="n">ArduinoPort</span><span class="p">.</span><span class="n">BaudRate</span> <span class="o">=</span> <span class="mi">9600</span><span class="p">;</span>
-                <span class="n">ArduinoPort</span><span class="p">.</span><span class="n">DataReceived</span> <span class="o">+=</span> <span class="n">new</span> <span class="n">SerialDataReceivedEventHandler</span><span class="p">(</span><span class="n">arduinoReceivedSerial</span><span class="p">);</span>
-                <span class="n">ArduinoPort</span><span class="p">.</span><span class="n">Open</span><span class="p">();</span>
-            <span class="p">}</span>
-            <span class="n">catch</span><span class="p">(</span><span class="n">Exception</span> <span class="n">ex</span><span class="p">)</span>
-            <span class="p">{</span>
-                <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="n">ex</span><span class="p">.</span><span class="n">Message</span><span class="p">);</span>
-                <span class="n">MessageBox</span><span class="p">.</span><span class="n">Show</span><span class="p">(</span><span class="s">"Conecte Arduino e inicie de nuevo la aplicación"</span><span class="p">,</span> <span class="s">"No está conectado Arduino"</span><span class="p">);</span>
-            <span class="p">}</span>
+            <span class="n">timerChangeStatus</span><span class="p">.</span><span class="n">Stop</span><span class="p">();</span>
 
             <span class="n">MMDeviceEnumerator</span> <span class="n">en</span> <span class="o">=</span> <span class="n">new</span> <span class="n">MMDeviceEnumerator</span><span class="p">();</span>
             <span class="n">devices</span> <span class="o">=</span> <span class="n">en</span><span class="p">.</span><span class="n">EnumerateAudioEndPoints</span><span class="p">(</span><span class="n">DataFlow</span><span class="p">.</span><span class="n">All</span><span class="p">,</span> <span class="n">DeviceState</span><span class="p">.</span><span class="n">Active</span><span class="p">);</span>
@@ -216,8 +204,30 @@
             <span class="p">}</span>
         <span class="p">}</span>
 
+        <span class="n">private</span> <span class="kt">void</span> <span class="n">onLoadFrm</span><span class="p">(</span><span class="n">object</span> <span class="n">sender</span><span class="p">,</span> <span class="n">EventArgs</span> <span class="n">e</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="n">try</span>
+            <span class="p">{</span>
+                <span class="n">ArduinoPort</span> <span class="o">=</span> <span class="n">new</span> <span class="n">SerialPort</span><span class="p">();</span>
+                <span class="n">ArduinoPort</span><span class="p">.</span><span class="n">PortName</span> <span class="o">=</span> <span class="s">"COM4"</span><span class="p">;</span>
+                <span class="n">ArduinoPort</span><span class="p">.</span><span class="n">BaudRate</span> <span class="o">=</span> <span class="mi">9600</span><span class="p">;</span>
+                <span class="n">ArduinoPort</span><span class="p">.</span><span class="n">DataReceived</span> <span class="o">+=</span> <span class="n">new</span> <span class="n">SerialDataReceivedEventHandler</span><span class="p">(</span><span class="n">arduinoReceivedSerial</span><span class="p">);</span>
+                <span class="n">ArduinoPort</span><span class="p">.</span><span class="n">Open</span><span class="p">();</span>
+                <span class="n">timerChangeStatus</span><span class="p">.</span><span class="n">Start</span><span class="p">();</span>
+                <span class="n">chkToogleWebcam</span><span class="p">.</span><span class="n">Checked</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+            <span class="p">}</span>
+            <span class="n">catch</span> <span class="p">(</span><span class="n">Exception</span> <span class="n">ex</span><span class="p">)</span>
+            <span class="p">{</span>
+                <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="n">ex</span><span class="p">.</span><span class="n">Message</span><span class="p">);</span>
+                <span class="n">MessageBox</span><span class="p">.</span><span class="n">Show</span><span class="p">(</span><span class="s">"Conecte Arduino e inicie de nuevo la aplicación"</span><span class="p">,</span> <span class="s">"No está conectado Arduino"</span><span class="p">);</span>
+                <span class="n">timerChangeStatus</span><span class="p">.</span><span class="n">Stop</span><span class="p">();</span>
+                <span class="n">this</span><span class="p">.</span><span class="n">Close</span><span class="p">();</span>
+            <span class="p">}</span>
+
+        <span class="p">}</span>
+
         <span class="n">private</span> <span class="kt">void</span> <span class="n">arduinoReceivedSerial</span><span class="p">(</span><span class="n">object</span> <span class="n">sender</span><span class="p">,</span> <span class="n">SerialDataReceivedEventArgs</span> <span class="n">e</span><span class="p">)</span>
-        <span class="p">{</span>            
+        <span class="p">{</span>
             <span class="k">if</span> <span class="p">(</span><span class="n">e</span><span class="p">.</span><span class="n">EventType</span> <span class="o">==</span> <span class="n">SerialData</span><span class="p">.</span><span class="n">Chars</span><span class="p">)</span>
             <span class="p">{</span>
                 <span class="kt">int</span> <span class="n">input</span> <span class="o">=</span> <span class="n">ArduinoPort</span><span class="p">.</span><span class="n">ReadChar</span><span class="p">();</span>
@@ -229,11 +239,28 @@
 
                 <span class="k">if</span> <span class="p">(</span><span class="n">input</span><span class="p">.</span><span class="n">Equals</span><span class="p">(</span><span class="sc">'g'</span><span class="p">))</span>
                 <span class="p">{</span>
-                    <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">"***** BUTTON PRESSED *****"</span><span class="p">);</span>
+                    <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">"***** BUTTON PRESSED MICRO *****"</span><span class="p">);</span>
                     <span class="n">MMDeviceEnumerator</span> <span class="n">en</span> <span class="o">=</span> <span class="n">new</span> <span class="n">MMDeviceEnumerator</span><span class="p">();</span>
                     <span class="n">var</span> <span class="n">devices</span> <span class="o">=</span> <span class="n">en</span><span class="p">.</span><span class="n">EnumerateAudioEndPoints</span><span class="p">(</span><span class="n">DataFlow</span><span class="p">.</span><span class="n">All</span><span class="p">,</span> <span class="n">DeviceState</span><span class="p">.</span><span class="n">Active</span><span class="p">);</span>
-                    <span class="n">toogleMuted</span> <span class="o">=</span> <span class="o">!</span><span class="n">toogleMuted</span><span class="p">;</span> 
+                    <span class="n">toogleMuted</span> <span class="o">=</span> <span class="o">!</span><span class="n">toogleMuted</span><span class="p">;</span>
                     <span class="n">devices</span><span class="p">[</span><span class="n">deviceSelected</span><span class="p">].</span><span class="n">AudioSessionManager</span><span class="p">.</span><span class="n">AudioSessionControl</span><span class="p">.</span><span class="n">SimpleAudioVolume</span><span class="p">.</span><span class="n">Mute</span> <span class="o">=</span> <span class="n">toogleMuted</span><span class="p">;</span>
+                <span class="p">}</span>
+                <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">input</span><span class="p">.</span><span class="n">Equals</span><span class="p">(</span><span class="sc">'h'</span><span class="p">))</span>
+                <span class="p">{</span>
+                    <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">"***** BUTTON PRESSED CAMERA *****"</span><span class="p">);</span>
+                    <span class="n">RegistryKey</span> <span class="n">key</span> <span class="o">=</span> <span class="n">Registry</span><span class="p">.</span><span class="n">CurrentUser</span><span class="p">.</span><span class="n">OpenSubKey</span><span class="p">(</span><span class="err">@</span><span class="s">"Software\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\webcam"</span><span class="p">,</span> <span class="nb">true</span><span class="p">);</span>
+                    <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="n">key</span><span class="p">);</span>
+                    <span class="n">toogleCamera</span> <span class="o">=</span> <span class="o">!</span><span class="n">toogleCamera</span><span class="p">;</span>
+                    <span class="k">if</span> <span class="p">(</span><span class="n">toogleCamera</span><span class="p">)</span>
+                    <span class="p">{</span>
+                        <span class="c1">//adding/editing a value </span>
+                        <span class="n">key</span><span class="p">.</span><span class="n">SetValue</span><span class="p">(</span><span class="s">"Value"</span><span class="p">,</span> <span class="s">"Allow"</span><span class="p">);</span>
+                    <span class="p">}</span>
+                    <span class="k">else</span>
+                    <span class="p">{</span>
+                        <span class="n">key</span><span class="p">.</span><span class="n">SetValue</span><span class="p">(</span><span class="s">"Value"</span><span class="p">,</span> <span class="s">"Deny"</span><span class="p">);</span>
+                    <span class="p">}</span>
+                    <span class="n">key</span><span class="p">.</span><span class="n">Close</span><span class="p">();</span>
                 <span class="p">}</span>
             <span class="p">}</span>
         <span class="p">}</span>
@@ -241,14 +268,27 @@
         <span class="n">private</span> <span class="kt">void</span> <span class="n">chkToogleMute_CheckedChanged</span><span class="p">(</span><span class="n">object</span> <span class="n">sender</span><span class="p">,</span> <span class="n">EventArgs</span> <span class="n">e</span><span class="p">)</span>
         <span class="p">{</span>
             <span class="n">MMDeviceEnumerator</span> <span class="n">en</span> <span class="o">=</span> <span class="n">new</span> <span class="n">MMDeviceEnumerator</span><span class="p">();</span>
-            <span class="n">var</span> <span class="n">devices</span> <span class="o">=</span> <span class="n">en</span><span class="p">.</span><span class="n">EnumerateAudioEndPoints</span><span class="p">(</span><span class="n">DataFlow</span><span class="p">.</span><span class="n">All</span><span class="p">,</span> <span class="n">DeviceState</span><span class="p">.</span><span class="n">Active</span><span class="p">);</span>            
+            <span class="n">var</span> <span class="n">devices</span> <span class="o">=</span> <span class="n">en</span><span class="p">.</span><span class="n">EnumerateAudioEndPoints</span><span class="p">(</span><span class="n">DataFlow</span><span class="p">.</span><span class="n">All</span><span class="p">,</span> <span class="n">DeviceState</span><span class="p">.</span><span class="n">Active</span><span class="p">);</span>
             <span class="n">toogleMuted</span> <span class="o">=</span> <span class="n">chkToogleMute</span><span class="p">.</span><span class="n">Checked</span><span class="p">;</span>
             <span class="n">devices</span><span class="p">[</span><span class="n">cmbDevices</span><span class="p">.</span><span class="n">SelectedIndex</span><span class="p">].</span><span class="n">AudioSessionManager</span><span class="p">.</span><span class="n">AudioSessionControl</span><span class="p">.</span><span class="n">SimpleAudioVolume</span><span class="p">.</span><span class="n">Mute</span> <span class="o">=</span> <span class="n">toogleMuted</span><span class="p">;</span>
         <span class="p">}</span>
 
         <span class="n">private</span> <span class="kt">void</span> <span class="n">chkToogleWebcam_CheckedChanged</span><span class="p">(</span><span class="n">object</span> <span class="n">sender</span><span class="p">,</span> <span class="n">EventArgs</span> <span class="n">e</span><span class="p">)</span>
         <span class="p">{</span>
-           
+            <span class="n">toogleCamera</span> <span class="o">=</span> <span class="n">chkToogleWebcam</span><span class="p">.</span><span class="n">Checked</span><span class="p">;</span>
+
+            <span class="n">RegistryKey</span> <span class="n">key</span> <span class="o">=</span> <span class="n">Registry</span><span class="p">.</span><span class="n">CurrentUser</span><span class="p">.</span><span class="n">OpenSubKey</span><span class="p">(</span><span class="err">@</span><span class="s">"Software\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\webcam"</span><span class="p">,</span> <span class="nb">true</span><span class="p">);</span>
+            <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="n">key</span><span class="p">);</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">chkToogleWebcam</span><span class="p">.</span><span class="n">Checked</span><span class="p">)</span>
+            <span class="p">{</span>
+                <span class="c1">//adding/editing a value </span>
+                <span class="n">key</span><span class="p">.</span><span class="n">SetValue</span><span class="p">(</span><span class="s">"Value"</span><span class="p">,</span> <span class="s">"Allow"</span><span class="p">);</span>
+            <span class="p">}</span>
+            <span class="k">else</span>
+            <span class="p">{</span>
+                <span class="n">key</span><span class="p">.</span><span class="n">SetValue</span><span class="p">(</span><span class="s">"Value"</span><span class="p">,</span> <span class="s">"Deny"</span><span class="p">);</span>
+            <span class="p">}</span>
+            <span class="n">key</span><span class="p">.</span><span class="n">Close</span><span class="p">();</span>
         <span class="p">}</span>
 
         <span class="n">private</span> <span class="kt">void</span> <span class="n">frmMain_FormClosing</span><span class="p">(</span><span class="n">object</span> <span class="n">sender</span><span class="p">,</span> <span class="n">FormClosingEventArgs</span> <span class="n">e</span><span class="p">)</span>
@@ -259,46 +299,57 @@
         <span class="n">private</span> <span class="kt">void</span> <span class="n">timerChangeStatus_Tick</span><span class="p">(</span><span class="n">object</span> <span class="n">sender</span><span class="p">,</span> <span class="n">EventArgs</span> <span class="n">e</span><span class="p">)</span>
         <span class="p">{</span>
             <span class="n">chkToogleMute</span><span class="p">.</span><span class="n">Checked</span> <span class="o">=</span> <span class="n">toogleMuted</span><span class="p">;</span>
+            <span class="n">chkToogleWebcam</span><span class="p">.</span><span class="n">Checked</span> <span class="o">=</span> <span class="n">toogleCamera</span><span class="p">;</span>
 
-            <span class="k">if</span> <span class="p">(</span><span class="n">cmbDevices</span><span class="p">.</span><span class="n">SelectedItem</span> <span class="o">!=</span> <span class="n">null</span><span class="p">)</span>
+            <span class="n">try</span>
             <span class="p">{</span>
-                <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">"Mute      : "</span> <span class="o">+</span> <span class="n">devices</span><span class="p">[</span><span class="n">cmbDevices</span><span class="p">.</span><span class="n">SelectedIndex</span><span class="p">].</span><span class="n">AudioSessionManager</span><span class="p">.</span><span class="n">AudioSessionControl</span><span class="p">.</span><span class="n">SimpleAudioVolume</span><span class="p">.</span><span class="n">Mute</span><span class="p">);</span>
-                <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">"Webcam    : "</span> <span class="o">+</span> <span class="n">IsWebCamInUse</span><span class="p">());</span>
-                <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">"Microphone: "</span> <span class="o">+</span> <span class="n">IsMicrophoneInUse</span><span class="p">());</span>
+                <span class="k">if</span> <span class="p">(</span><span class="n">cmbDevices</span><span class="p">.</span><span class="n">SelectedItem</span> <span class="o">!=</span> <span class="n">null</span><span class="p">)</span>
+                <span class="p">{</span>
+                    <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">"Mute      : "</span> <span class="o">+</span> <span class="n">devices</span><span class="p">[</span><span class="n">cmbDevices</span><span class="p">.</span><span class="n">SelectedIndex</span><span class="p">].</span><span class="n">AudioSessionManager</span><span class="p">.</span><span class="n">AudioSessionControl</span><span class="p">.</span><span class="n">SimpleAudioVolume</span><span class="p">.</span><span class="n">Mute</span><span class="p">);</span>
+                    <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">"Webcam    : "</span> <span class="o">+</span> <span class="n">IsWebCamInUse</span><span class="p">());</span>
+                    <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">"Microphone: "</span> <span class="o">+</span> <span class="n">IsMicrophoneInUse</span><span class="p">());</span>
 
-                <span class="k">if</span> <span class="p">(</span><span class="n">IsWebCamInUse</span><span class="p">())</span>
-                <span class="p">{</span>
-                    <span class="n">chkCamera</span><span class="p">.</span><span class="n">Checked</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
-                    <span class="n">ArduinoPort</span><span class="p">.</span><span class="n">Write</span><span class="p">(</span><span class="s">"e"</span><span class="p">);</span>
-                <span class="p">}</span>
-                <span class="k">else</span>
-                <span class="p">{</span>
-                    <span class="n">chkCamera</span><span class="p">.</span><span class="n">Checked</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
-                    <span class="n">ArduinoPort</span><span class="p">.</span><span class="n">Write</span><span class="p">(</span><span class="s">"f"</span><span class="p">);</span>
-                <span class="p">}</span>
+                    <span class="k">if</span> <span class="p">(</span><span class="n">IsWebCamInUse</span><span class="p">())</span>
+                    <span class="p">{</span>
+                        <span class="n">chkCamera</span><span class="p">.</span><span class="n">Checked</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+                        <span class="n">ArduinoPort</span><span class="p">.</span><span class="n">Write</span><span class="p">(</span><span class="s">"e"</span><span class="p">);</span>
+                    <span class="p">}</span>
+                    <span class="k">else</span>
+                    <span class="p">{</span>
+                        <span class="n">chkCamera</span><span class="p">.</span><span class="n">Checked</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+                        <span class="n">ArduinoPort</span><span class="p">.</span><span class="n">Write</span><span class="p">(</span><span class="s">"f"</span><span class="p">);</span>
+                    <span class="p">}</span>
 
-                <span class="k">if</span> <span class="p">(</span><span class="n">IsMicrophoneInUse</span><span class="p">())</span>
-                <span class="p">{</span>
-                    <span class="n">chkMicrophone</span><span class="p">.</span><span class="n">Checked</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
-                    <span class="n">ArduinoPort</span><span class="p">.</span><span class="n">Write</span><span class="p">(</span><span class="s">"a"</span><span class="p">);</span>
-                <span class="p">}</span>
-                <span class="k">else</span>
-                <span class="p">{</span>
-                    <span class="n">chkMicrophone</span><span class="p">.</span><span class="n">Checked</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
-                    <span class="n">ArduinoPort</span><span class="p">.</span><span class="n">Write</span><span class="p">(</span><span class="s">"b"</span><span class="p">);</span>
-                <span class="p">}</span>
+                    <span class="k">if</span> <span class="p">(</span><span class="n">IsMicrophoneInUse</span><span class="p">())</span>
+                    <span class="p">{</span>
+                        <span class="n">chkMicrophone</span><span class="p">.</span><span class="n">Checked</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+                        <span class="n">ArduinoPort</span><span class="p">.</span><span class="n">Write</span><span class="p">(</span><span class="s">"a"</span><span class="p">);</span>
+                    <span class="p">}</span>
+                    <span class="k">else</span>
+                    <span class="p">{</span>
+                        <span class="n">chkMicrophone</span><span class="p">.</span><span class="n">Checked</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+                        <span class="n">ArduinoPort</span><span class="p">.</span><span class="n">Write</span><span class="p">(</span><span class="s">"b"</span><span class="p">);</span>
+                    <span class="p">}</span>
 
-                <span class="k">if</span> <span class="p">(</span><span class="n">devices</span><span class="p">[</span><span class="n">cmbDevices</span><span class="p">.</span><span class="n">SelectedIndex</span><span class="p">].</span><span class="n">AudioSessionManager</span><span class="p">.</span><span class="n">AudioSessionControl</span><span class="p">.</span><span class="n">SimpleAudioVolume</span><span class="p">.</span><span class="n">Mute</span><span class="p">)</span>
-                <span class="p">{</span>
-                    <span class="n">chkMicroMute</span><span class="p">.</span><span class="n">Checked</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
-                    <span class="n">ArduinoPort</span><span class="p">.</span><span class="n">Write</span><span class="p">(</span><span class="s">"c"</span><span class="p">);</span>
+                    <span class="k">if</span> <span class="p">(</span><span class="n">devices</span><span class="p">[</span><span class="n">cmbDevices</span><span class="p">.</span><span class="n">SelectedIndex</span><span class="p">].</span><span class="n">AudioSessionManager</span><span class="p">.</span><span class="n">AudioSessionControl</span><span class="p">.</span><span class="n">SimpleAudioVolume</span><span class="p">.</span><span class="n">Mute</span><span class="p">)</span>
+                    <span class="p">{</span>
+                        <span class="n">chkMicroMute</span><span class="p">.</span><span class="n">Checked</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+                        <span class="n">ArduinoPort</span><span class="p">.</span><span class="n">Write</span><span class="p">(</span><span class="s">"c"</span><span class="p">);</span>
+                    <span class="p">}</span>
+                    <span class="k">else</span>
+                    <span class="p">{</span>
+                        <span class="n">chkMicroMute</span><span class="p">.</span><span class="n">Checked</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+                        <span class="n">ArduinoPort</span><span class="p">.</span><span class="n">Write</span><span class="p">(</span><span class="s">"d"</span><span class="p">);</span>
+                    <span class="p">}</span>
                 <span class="p">}</span>
-                <span class="k">else</span>
-                <span class="p">{</span>
-                    <span class="n">chkMicroMute</span><span class="p">.</span><span class="n">Checked</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
-                    <span class="n">ArduinoPort</span><span class="p">.</span><span class="n">Write</span><span class="p">(</span><span class="s">"d"</span><span class="p">);</span>
-                <span class="p">}</span>
+            <span class="p">}</span><span class="n">catch</span><span class="p">(</span><span class="n">Exception</span> <span class="n">ex</span><span class="p">)</span>
+            <span class="p">{</span>
+                <span class="n">timerChangeStatus</span><span class="p">.</span><span class="n">Stop</span><span class="p">();</span>
+                <span class="n">MessageBox</span><span class="p">.</span><span class="n">Show</span><span class="p">(</span><span class="s">"Se ha perdido la conexión con Arduino</span><span class="se">\n</span><span class="s">Vuelve a abrir la aplicación una vez esté solucionado."</span><span class="p">,</span> <span class="s">"Comprueba la conexión con Arduino"</span><span class="p">);</span>
+                <span class="n">this</span><span class="p">.</span><span class="n">Close</span><span class="p">();</span>
             <span class="p">}</span>
+
+
         <span class="p">}</span>
 
         <span class="n">private</span> <span class="n">bool</span> <span class="n">IsWebCamInUse</span><span class="p">()</span>
@@ -347,63 +398,71 @@
             <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
         <span class="p">}</span>
 
-
     <span class="p">}</span>
 <span class="p">}</span></code></pre></figure>
 
 <p>El código de Arduino:</p>
 
-<figure class="highlight"><pre><code class="language-c" data-lang="c"><span class="k">const</span> <span class="kt">int</span> <span class="n">pinLEDMicUso</span>  <span class="o">=</span> <span class="n">D1</span><span class="p">;</span>
-<span class="k">const</span> <span class="kt">int</span> <span class="n">pinLEDMicMute</span> <span class="o">=</span> <span class="n">D2</span><span class="p">;</span>
-<span class="k">const</span> <span class="kt">int</span> <span class="n">pinLEDCamUso</span>  <span class="o">=</span> <span class="n">D3</span><span class="p">;</span>
-<span class="k">const</span> <span class="kt">int</span> <span class="n">pinBTNMicMute</span> <span class="o">=</span> <span class="n">D4</span><span class="p">;</span>
+<figure class="highlight"><pre><code class="language-c" data-lang="c"><span class="k">const</span> <span class="kt">int</span> <span class="n">pinLEDMicUso</span>  <span class="o">=</span> <span class="mi">16</span><span class="p">;</span>
+<span class="k">const</span> <span class="kt">int</span> <span class="n">pinLEDMicMute</span> <span class="o">=</span> <span class="mi">12</span><span class="p">;</span>
+<span class="k">const</span> <span class="kt">int</span> <span class="n">pinLEDCamUso</span>  <span class="o">=</span> <span class="mi">14</span><span class="p">;</span>
+<span class="k">const</span> <span class="kt">int</span> <span class="n">pinBTNMicMute</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="k">const</span> <span class="kt">int</span> <span class="n">pinBTNCamMute</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+
 <span class="kt">int</span> <span class="n">btnMicMute</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="kt">int</span> <span class="n">btnCamMute</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
 
 <span class="kt">void</span> <span class="nf">setup</span><span class="p">()</span>
 <span class="p">{</span>
-   <span class="n">Serial</span><span class="p">.</span><span class="n">begin</span><span class="p">(</span><span class="mi">9600</span><span class="p">);</span>
-   <span class="n">pinMode</span><span class="p">(</span><span class="n">pinLEDMicUso</span><span class="p">,</span> <span class="n">OUTPUT</span><span class="p">);</span>
-   <span class="n">pinMode</span><span class="p">(</span><span class="n">pinLEDMicMute</span><span class="p">,</span> <span class="n">OUTPUT</span><span class="p">);</span>
-   <span class="n">pinMode</span><span class="p">(</span><span class="n">pinLEDCamUso</span><span class="p">,</span> <span class="n">OUTPUT</span><span class="p">);</span>
-   <span class="n">pinMode</span><span class="p">(</span><span class="n">pinBTNMicMute</span><span class="p">,</span> <span class="n">INPUT</span><span class="p">);</span>
-   <span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="sc">'z'</span><span class="p">);</span> <span class="c1">//Conectado</span>
+  <span class="n">Serial</span><span class="p">.</span><span class="n">begin</span><span class="p">(</span><span class="mi">9600</span><span class="p">);</span>
+  <span class="n">pinMode</span><span class="p">(</span><span class="n">pinLEDMicUso</span><span class="p">,</span> <span class="n">OUTPUT</span><span class="p">);</span>
+  <span class="n">pinMode</span><span class="p">(</span><span class="n">pinLEDMicMute</span><span class="p">,</span> <span class="n">OUTPUT</span><span class="p">);</span>
+  <span class="n">pinMode</span><span class="p">(</span><span class="n">pinLEDCamUso</span><span class="p">,</span> <span class="n">OUTPUT</span><span class="p">);</span>
+  <span class="n">pinMode</span><span class="p">(</span><span class="n">pinBTNMicMute</span><span class="p">,</span> <span class="n">INPUT</span><span class="p">);</span>
+  <span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="sc">'z'</span><span class="p">);</span> <span class="c1">//Conectado</span>
 <span class="p">}</span>
 
 <span class="kt">void</span> <span class="nf">loop</span><span class="p">()</span> <span class="p">{</span>
-   <span class="k">if</span> <span class="p">(</span><span class="n">Serial</span><span class="p">.</span><span class="n">available</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span>
-   <span class="p">{</span>
-      <span class="kt">int</span> <span class="n">option</span> <span class="o">=</span> <span class="n">Serial</span><span class="p">.</span><span class="n">read</span><span class="p">();</span>
-      <span class="k">if</span> <span class="p">(</span><span class="n">option</span> <span class="o">==</span> <span class="sc">'a'</span><span class="p">)</span>
-      <span class="p">{</span>
-         <span class="n">digitalWrite</span><span class="p">(</span><span class="n">pinLEDMicUso</span><span class="p">,</span> <span class="n">HIGH</span><span class="p">);</span> 
-      <span class="p">}</span>
-      <span class="k">if</span> <span class="p">(</span><span class="n">option</span> <span class="o">==</span> <span class="sc">'b'</span><span class="p">)</span>
-      <span class="p">{</span>
-         <span class="n">digitalWrite</span><span class="p">(</span><span class="n">pinLEDMicUso</span><span class="p">,</span> <span class="n">LOW</span><span class="p">);</span>
-      <span class="p">}</span>
-      <span class="k">if</span> <span class="p">(</span><span class="n">option</span> <span class="o">==</span> <span class="sc">'c'</span><span class="p">)</span>
-      <span class="p">{</span>
-         <span class="n">digitalWrite</span><span class="p">(</span><span class="n">pinLEDMicMute</span><span class="p">,</span> <span class="n">HIGH</span><span class="p">);</span> 
-      <span class="p">}</span>
-      <span class="k">if</span> <span class="p">(</span><span class="n">option</span> <span class="o">==</span> <span class="sc">'d'</span><span class="p">)</span>
-      <span class="p">{</span>
-         <span class="n">digitalWrite</span><span class="p">(</span><span class="n">pinLEDMicMute</span><span class="p">,</span> <span class="n">LOW</span><span class="p">);</span>
-      <span class="p">}</span>
-      <span class="k">if</span> <span class="p">(</span><span class="n">option</span> <span class="o">==</span> <span class="sc">'e'</span><span class="p">)</span>
-      <span class="p">{</span>
-         <span class="n">digitalWrite</span><span class="p">(</span><span class="n">pinLEDCamUso</span><span class="p">,</span> <span class="n">HIGH</span><span class="p">);</span> 
-      <span class="p">}</span>
-      <span class="k">if</span> <span class="p">(</span><span class="n">option</span> <span class="o">==</span> <span class="sc">'f'</span><span class="p">)</span>
-      <span class="p">{</span>
-         <span class="n">digitalWrite</span><span class="p">(</span><span class="n">pinLEDCamUso</span><span class="p">,</span> <span class="n">LOW</span><span class="p">);</span>
-      <span class="p">}</span>
-   <span class="p">}</span>
-
-   <span class="n">btnMicMute</span> <span class="o">=</span> <span class="n">digitalRead</span><span class="p">(</span><span class="n">pinBTNMicMute</span><span class="p">);</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">btnMicMute</span> <span class="o">==</span> <span class="n">LOW</span><span class="p">)</span> <span class="p">{</span>
-        <span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">"g"</span><span class="p">);</span>
-        <span class="n">delay</span><span class="p">(</span><span class="mi">200</span><span class="p">);</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">Serial</span><span class="p">.</span><span class="n">available</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">option</span> <span class="o">=</span> <span class="n">Serial</span><span class="p">.</span><span class="n">read</span><span class="p">();</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">option</span> <span class="o">==</span> <span class="sc">'a'</span><span class="p">)</span>
+    <span class="p">{</span>
+      <span class="n">digitalWrite</span><span class="p">(</span><span class="n">pinLEDMicUso</span><span class="p">,</span> <span class="n">HIGH</span><span class="p">);</span>
     <span class="p">}</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">option</span> <span class="o">==</span> <span class="sc">'b'</span><span class="p">)</span>
+    <span class="p">{</span>
+      <span class="n">digitalWrite</span><span class="p">(</span><span class="n">pinLEDMicUso</span><span class="p">,</span> <span class="n">LOW</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">option</span> <span class="o">==</span> <span class="sc">'c'</span><span class="p">)</span>
+    <span class="p">{</span>
+      <span class="n">digitalWrite</span><span class="p">(</span><span class="n">pinLEDMicMute</span><span class="p">,</span> <span class="n">HIGH</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">option</span> <span class="o">==</span> <span class="sc">'d'</span><span class="p">)</span>
+    <span class="p">{</span>
+      <span class="n">digitalWrite</span><span class="p">(</span><span class="n">pinLEDMicMute</span><span class="p">,</span> <span class="n">LOW</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">option</span> <span class="o">==</span> <span class="sc">'e'</span><span class="p">)</span>
+    <span class="p">{</span>
+      <span class="n">digitalWrite</span><span class="p">(</span><span class="n">pinLEDCamUso</span><span class="p">,</span> <span class="n">HIGH</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">option</span> <span class="o">==</span> <span class="sc">'f'</span><span class="p">)</span>
+    <span class="p">{</span>
+      <span class="n">digitalWrite</span><span class="p">(</span><span class="n">pinLEDCamUso</span><span class="p">,</span> <span class="n">LOW</span><span class="p">);</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+
+  <span class="n">btnMicMute</span> <span class="o">=</span> <span class="n">digitalRead</span><span class="p">(</span><span class="n">pinBTNMicMute</span><span class="p">);</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">btnMicMute</span> <span class="o">==</span> <span class="n">LOW</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">"g"</span><span class="p">);</span>
+    <span class="n">delay</span><span class="p">(</span><span class="mi">200</span><span class="p">);</span>
+  <span class="p">}</span>
+
+  <span class="n">btnCamMute</span> <span class="o">=</span> <span class="n">digitalRead</span><span class="p">(</span><span class="n">pinBTNCamMute</span><span class="p">);</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">btnCamMute</span> <span class="o">==</span> <span class="n">LOW</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">"h"</span><span class="p">);</span>
+    <span class="n">delay</span><span class="p">(</span><span class="mi">200</span><span class="p">);</span>
+  <span class="p">}</span>
 <span class="p">}</span></code></pre></figure>
 
 <hr />
