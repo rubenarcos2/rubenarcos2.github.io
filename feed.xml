@@ -1,4 +1,113 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="https://rarcos.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://rarcos.com/" rel="alternate" type="text/html" /><updated>2022-08-05T21:22:49+02:00</updated><id>https://rarcos.com/feed.xml</id><title type="html">Rubén Arcos</title><subtitle>Desarrollador de aplicaciones multiplataformas</subtitle><entry><title type="html">JS Vanilla MVC - Spring API rest</title><link href="https://rarcos.com/2022/07/23/Vanilla-JS-MVC-Spring-API-rest/" rel="alternate" type="text/html" title="JS Vanilla MVC - Spring API rest" /><published>2022-07-23T16:33:28+02:00</published><updated>2022-07-23T16:33:28+02:00</updated><id>https://rarcos.com/2022/07/23/Vanilla%20JS%20MVC%20-%20Spring%20API%20rest</id><content type="html" xml:base="https://rarcos.com/2022/07/23/Vanilla-JS-MVC-Spring-API-rest/"><![CDATA[<h1 id="js-vanilla-mvc---spring-api-rest">JS Vanilla MVC - Spring API rest</h1>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="https://rarcos.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://rarcos.com/" rel="alternate" type="text/html" /><updated>2022-08-12T11:49:24+02:00</updated><id>https://rarcos.com/feed.xml</id><title type="html">Rubén Arcos</title><subtitle>Desarrollador de aplicaciones multiplataformas</subtitle><entry><title type="html">Python - IA juego Hotel</title><link href="https://rarcos.com/2022/08/11/IA-Juego-Hotel/" rel="alternate" type="text/html" title="Python - IA juego Hotel" /><published>2022-08-11T16:33:28+02:00</published><updated>2022-08-11T16:33:28+02:00</updated><id>https://rarcos.com/2022/08/11/IA%20-%20Juego%20Hotel</id><content type="html" xml:base="https://rarcos.com/2022/08/11/IA-Juego-Hotel/"><![CDATA[<p>He realizado la creación de un sistema de IA para aprendizaje de la decisión de compra para el juego del Hotel. Se trata de decidir si se compra o no en la casilla de <em>compra</em>, y predecir cual de las propiedades es mejor comprar.</p>
+
+<h1 id="programa-generador-de-partidas">Programa generador de partidas</h1>
+
+<p><strong>Generador de partidas</strong></p>
+
+<p>En primer lugar he tenido que realizar una generador de partidas del juego del Hotel, para alimentar a la IA. Posteriormente he creado también un jugador IA para comparar los resultados obtenidos tras el aprendizaje de la IA.</p>
+
+<p><em>Generador de partidas aleatorio (juego Hotel, 4 jugadores):</em></p>
+
+<p><a href="https://colab.research.google.com/drive/1KEqghfPGeuk9u5u8_s531CCb7869Hn3u"><img src="/images/pages/repository_small_colab.png" alt="Generador de partidas" /></a></p>
+
+<p><strong>Dataset</strong></p>
+
+<p>El conjunto de datos utilizado es el dataset de 500 partidas, pero se ha probado progresivamente de 10, 100, 500, 1000. No teniendo apenas diferencia en el aprendizaje entre el de 500 a 1000 partidas.</p>
+
+<p><em>10 partidas - 100 partidas - 500 partidas - 1000 partidas</em></p>
+
+<p><a href="https://github.com/rubenarcos2/ia-juego_hotel/raw/main/datasets/Diez_Partidas_Hotel.csv"><img src="/images/pages/repository_small_file.png" alt="Dataset 10 partidas" /></a>
+<a href="https://github.com/rubenarcos2/ia-juego_hotel/raw/main/datasets/Cien_Partidas_Hotel.csv"><img src="/images/pages/repository_small_file.png" alt="Dataset 100 partidas" /></a>
+<a href="https://github.com/rubenarcos2/ia-juego_hotel/raw/main/datasets/Quinientas_Partidas_Hotel_A.csv"><img src="/images/pages/repository_small_file.png" alt="Dataset 500 partidas" /></a>
+<a href="https://github.com/rubenarcos2/ia-juego_hotel/raw/main/datasets/Mil_Partidas_Hotel.csv"><img src="/images/pages/repository_small_file.png" alt="Dataset 1000 partidas" /></a></p>
+
+<h1 id="programa-de-ia">Programa de IA</h1>
+
+<p>Tras alimentar con el dataset y realizar el EDA correspondiente, he procedido a probar los modelos predictivos de IA que podrían ser más recomendables debido a la casuística en la que nos encontramos. Tras descartar, los que dabamos valores totalmente fuera de lugar, han sido: Adaboost, Naives Bayes, Decision Tree, Random Forest, XGBoost y 3 modelos diferente de deep learning (LSTM, Neuronal básica, Neuronal profunda).</p>
+
+<p><strong>Evaluación y resultados</strong></p>
+
+<table>
+  <tbody>
+    <tr>
+      <td><strong>Modelo predictivo</strong></td>
+      <td><strong>Tasa acierto</strong></td>
+      <td><strong>Tase error</strong> *</td>
+      <td><strong>Accuracy</strong></td>
+    </tr>
+    <tr>
+      <td>Naives Bayes (Smooth 1e-10)</td>
+      <td>66%</td>
+      <td>40%</td>
+      <td>0.66662</td>
+    </tr>
+    <tr>
+      <td>Naives Bayes (Smooth 1e-7)</td>
+      <td>91%</td>
+      <td>75%</td>
+      <td>0.90729</td>
+    </tr>
+    <tr>
+      <td>Naives Bayes (Smooth 1e-11)</td>
+      <td>65%</td>
+      <td>40%</td>
+      <td>0.65114</td>
+    </tr>
+    <tr>
+      <td>Adaboost</td>
+      <td>2%</td>
+      <td>100%</td>
+      <td>0.96112</td>
+    </tr>
+    <tr>
+      <td>Decision Tree</td>
+      <td>2%</td>
+      <td>63%</td>
+      <td>0.96113</td>
+    </tr>
+    <tr>
+      <td>Adaboost</td>
+      <td>2%</td>
+      <td>100%</td>
+      <td>0.96011</td>
+    </tr>
+    <tr>
+      <td>Adaboost</td>
+      <td>2%</td>
+      <td>78%</td>
+      <td>0.95977</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><em>*en los diferenetes a ‘no compra’, es decir en la elección de la propiedad</em></p>
+
+<p>Para ver los detalles de la evaluación y el programa de IA que contiene los resultados en :</p>
+
+<p><a href="https://colab.research.google.com/drive/10rXkRiRnq59435RtOSICPrA1T2dXyxG6"><img src="/images/pages/repository_small_colab.png" alt="Programa IA" /></a></p>
+
+<p>Para ver el programa que evalua la partida de jugadores aleatorios vs IA:</p>
+
+<p><a href="https://colab.research.google.com/drive/1c-ozdgzMSYzZD2el46knjWx0SRIi-hMC"><img src="/images/pages/repository_small_colab.png" alt="Programa Jugadores vs IA" /></a></p>
+
+<h1 id="programa-de-predicción">Programa de predicción</h1>
+
+<p>He realizado en flask el programa de predicción, importando el modelo ya entrenado con <em>pickle</em> y creado un formulario web para la introducción de los datos necesarios para la predicción.</p>
+
+<p><a href="https://ia-juego-hotel.herokuapp.com/">Aplicación web - https://ia-juego-hotel.herokuapp.com/</a></p>
+
+<hr />
+
+<p>Si quieres ver el resultado de todo, te recomiendo visites:</p>
+
+<p><em>Repositorio con el contenido</em></p>
+
+<p><em>Repositorio - Generador - Prog. IA - Jugadores vs IA</em></p>
+
+<p><a href="https://github.com/rubenarcos2/ia-juego_hotel"><img src="/images/pages/repository_small.png" alt="Repositorio" /></a>
+<a href="https://colab.research.google.com/drive/1KEqghfPGeuk9u5u8_s531CCb7869Hn3u"><img src="/images/pages/repository_small_colab.png" alt="Generador de partidas" /></a>
+<a href="https://colab.research.google.com/drive/10rXkRiRnq59435RtOSICPrA1T2dXyxG6"><img src="/images/pages/repository_small_colab.png" alt="Programa IA" /></a>
+<a href="https://colab.research.google.com/drive/1c-ozdgzMSYzZD2el46knjWx0SRIi-hMC"><img src="/images/pages/repository_small_colab.png" alt="Programa Jugadores vs IA" /></a></p>]]></content><author><name></name></author><category term="python" /><category term="naives bayes" /><category term="ia" /><category term="colab" /><summary type="html"><![CDATA[Creación de un sistema de IA para aprendizaje de la decisión de compra para el juego del Hotel]]></summary></entry><entry><title type="html">JS Vanilla MVC - Spring API rest</title><link href="https://rarcos.com/2022/07/23/Vanilla-JS-MVC-Spring-API-rest/" rel="alternate" type="text/html" title="JS Vanilla MVC - Spring API rest" /><published>2022-07-23T16:33:28+02:00</published><updated>2022-07-23T16:33:28+02:00</updated><id>https://rarcos.com/2022/07/23/Vanilla%20JS%20MVC%20-%20Spring%20API%20rest</id><content type="html" xml:base="https://rarcos.com/2022/07/23/Vanilla-JS-MVC-Spring-API-rest/"><![CDATA[<h1 id="js-vanilla-mvc---spring-api-rest">JS Vanilla MVC - Spring API rest</h1>
 
 <p>Desarrollo de una app en JS Vanilla con MVC para consumir una api rest en Spring Boot.</p>
 
@@ -1862,12 +1971,4 @@ La aplicación original: “I have deployed my BERT app <a href="https://bertqna
 <p><a href="https://mailtrap.io/blog/send-emails-with-gmail-api/#Python">https://mailtrap.io/blog/send-emails-with-gmail-api/#Python</a>
 <a href="https://www.thepythoncode.com/article/use-gmail-api-in-python">https://www.thepythoncode.com/article/use-gmail-api-in-python</a>
 <a href="https://developers.google.com/android-publisher/getting_started?hl=es-419">https://developers.google.com/android-publisher/getting_started?hl=es-419</a>
-<a href="https://docs.moodle.org/all/es/Servicio_OAuth_2_Google">https://docs.moodle.org/all/es/Servicio_OAuth_2_Google</a></p>]]></content><author><name></name></author><category term="python" /><category term="keras" /><category term="ia" /><category term="tensorflow" /><category term="js" /><category term="webscraping" /><summary type="html"><![CDATA[Proyecto de webscraping: consiste en la captación de un listado con las ofertas de trabajo del portal *ticjob.es* para el lenguaje de programación Python y la localidad de Málaga.]]></summary></entry><entry><title type="html">Python - Webscraping I (BeautifulSoup)</title><link href="https://rarcos.com/2022/03/18/Python-Webscraping-1/" rel="alternate" type="text/html" title="Python - Webscraping I (BeautifulSoup)" /><published>2022-03-18T15:33:28+01:00</published><updated>2022-03-18T15:33:28+01:00</updated><id>https://rarcos.com/2022/03/18/Python%20-%20Webscraping-1</id><content type="html" xml:base="https://rarcos.com/2022/03/18/Python-Webscraping-1/"><![CDATA[<h1 id="webscraping-i">Webscraping I</h1>
-
-<p>A continuación, se muestra un proyecto de webscraping. Consiste en la captación de un listado con los libros que corresponden al título <em>machine learning</em> de la web de amazon.</p>
-
-<p>Si quieres ver el resultado, te recomiendo visites:</p>
-
-<p><em>Repositorio con el contenido</em></p>
-
-<p><a href="https://colab.research.google.com/drive/11Kiqfw7KvID4KDvu8ag8WV41EO4Em9OT"><img src="/images/pages/repository_small_colab.png" alt="Repositorio" /></a></p>]]></content><author><name></name></author><category term="python" /><category term="keras" /><category term="ia" /><category term="tensorflow" /><category term="js" /><category term="webscraping" /><summary type="html"><![CDATA[Proyecto de webscraping: consiste en la captación de un listado con los libros que corresponden al título *machine learning* de la web de amazon.]]></summary></entry></feed>
+<a href="https://docs.moodle.org/all/es/Servicio_OAuth_2_Google">https://docs.moodle.org/all/es/Servicio_OAuth_2_Google</a></p>]]></content><author><name></name></author><category term="python" /><category term="keras" /><category term="ia" /><category term="tensorflow" /><category term="js" /><category term="webscraping" /><summary type="html"><![CDATA[Proyecto de webscraping: consiste en la captación de un listado con las ofertas de trabajo del portal *ticjob.es* para el lenguaje de programación Python y la localidad de Málaga.]]></summary></entry></feed>

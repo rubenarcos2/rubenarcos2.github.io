@@ -1,6 +1,14 @@
 [
   
     {
+      "title"    : "Python - IA juego Hotel",
+      "category" : "",
+      "tags"     : "python, naives bayes, ia, colab",
+      "url"      : "/2022/08/11/IA-Juego-Hotel/",
+      "date"     : "2022-08-11 16:33:28 +0200"
+    } ,
+  
+    {
       "title"    : "C# + Arduino - Detector mute",
       "category" : "",
       "tags"     : "C#, arduino, iot",
