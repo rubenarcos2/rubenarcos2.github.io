@@ -5,7 +5,7 @@
  */
 class HouseService {
   constructor() {
-    this.api_url = "http://vps.rarcos.com/houses";
+    this.api_url = "https://vps.rarcos.com:8443/houses";
   }
 
   getAll = async () => {
