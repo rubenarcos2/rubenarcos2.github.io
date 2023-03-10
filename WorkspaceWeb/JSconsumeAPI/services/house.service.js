@@ -5,7 +5,7 @@
  */
 class HouseService {
   constructor() {
-    this.api_url = "https://spring-boot-api-inmobiliaria.herokuapp.com/houses";
+    this.api_url = "http://vps.rarcos.com/houses";
   }
 
   getAll = async () => {
