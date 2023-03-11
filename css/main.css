@@ -1652,6 +1652,8 @@ table tr:hover {
 .pagination-box .load-more {
   -webkit-border-radius: 3px;
           border-radius: 3px;
+  background-color: rgba(0, 197, 217, 0.6);
+  color: white;
 }
 
 /* 9. ========== Footer Styles ========== */
