@@ -243,11 +243,96 @@ docker-compose <span class="nt">-version</span></code></pre></figure>
 
 <p><img src="/images/pages/docker-jerarquia.jpg" alt="docker-jerarquia.jpg" /></p>
 
-<p><a name="cont-spring-boot"><strong>Contenedor para Spring Boot</strong></a></p>
+<p>Vamos a utilizar para el certificado de autenticación del servidor https <a href="https://letsencrypt.org/">Let’s encrypt</a>.</p>
 
-<p><a name="cont-laravel"><strong>Contenedor para Laravel</strong></a></p>
+<p><strong>Instalación y generación del certificado Let’s encrypt</strong></p>
 
-<p><a name="cont-flask"><strong>Contenedor para Flask</strong></a></p>
+<p>Para la instalación de la aplicación <em>certbot</em> de Let’s encrypt para generar los certificados, recomiendo seguir las instrucciones de la siguiente página <a href="https://certbot.eff.org/instructions?ws=other&amp;os=ubuntufocal">https://certbot.eff.org/instructions?ws=other&amp;os=ubuntufocal</a> está preseleccionado para Ubuntu server.</p>
+
+<p>La página indicada anteriormente, es la única que funciona actualmente con Ubuntu Server 22.04, el resto de tutoriales que he visitado se encuentran obsoletos al haber cambiado a snap la aplicación de certbot de Let’s encrypt y el repositorio de github ya no funciona tampoco como se esperaba en instrucciones antiguas.</p>
+
+<p>Una vez terminado nos generará la siguiente salida:
+<img src="/images/pages/certificado_letsencrypt.jpg" alt="salida_certificado_letsencrypt" /></p>
+
+<p>Generamos el certificado que es válido para tomcat .p12.</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">openssl pkcs12 <span class="nt">-export</span> <span class="nt">-in</span> /etc/letsencrypt/live/vps.rarcos.com/fullchain.pem <span class="nt">-inkey</span> /etc/letsencrypt/live/vps.rarcos.com/privkey.pem <span class="nt">-out</span> springboot_letsencrypt.p12 <span class="nt">-name</span> bootalias <span class="nt">-CAfile</span> chain.pem <span class="nt">-caname</span> root</code></pre></figure>
+
+<p><em>Recuerda cambiar las rutas por las tuyas</em></p>
+
+<p><a name="cont-spring-boot"></a></p>
+
+<p><strong>Contenedor para Spring Boot</strong></p>
+
+<p>Copiamos los ficheros necesarios en nuestra carpeta de nuestro nuestra carpeta en el home de <em>/docker/docker-java/</em>: estando en la raíz de esta el fichero .jar y .p12.</p>
+
+<p><em>Generación de los scripts de docker</em></p>
+
+<p>En primer lugar, vamos a crear un <em>Dockerfile</em> para que contenga la imagen (para Ubuntu server) y realice la copia de los ficheros necesarios (el .jar y el certificado) hacia nuestro contenedor.</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">FROM eclipse-temurin:17-jdk-alpine
+
+ARG <span class="nv">JAR_FILE</span><span class="o">=</span><span class="k">*</span>.jar
+
+COPY <span class="k">${</span><span class="nv">JAR_FILE</span><span class="k">}</span> my_proyect_compiled.jar
+COPY my_cert_letsencrypt.p12 <span class="nb">.</span>
+
+ENTRYPOINT <span class="o">[</span><span class="s2">"java"</span>,<span class="s2">"-jar"</span>,<span class="s2">"/my_proyect_compiled.jar"</span><span class="o">]</span></code></pre></figure>
+
+<p><em>Tendremos que cambiar el nombre del certificado y del fichero del proyecto compilado .jar</em></p>
+
+<p>En segundo lugar, vamos a crear el script de <em>docker-compose.yml</em> que creará nuestro servicio web y expondrá el puerto 8443 por defecto.</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">version: <span class="s1">'3.8'</span>
+services:
+  proyect_name:
+    build: <span class="nb">.</span>
+    container_name: <span class="s1">'proyect_name-spring-app'</span>
+    restart: always
+    ports:
+      - <span class="s1">'8080:8080'</span>
+      - <span class="s1">'8443:8443'</span></code></pre></figure>
+
+<p><em>Tendremos que cambiar el nombre del servicio y del contenedor</em></p>
+
+<p><em>Proyecto Spring Boot</em></p>
+
+<p>Vamos a añadir al fichero <em>aplication.properties</em> la configuración para que el servidor tomcat que crea Spring, escuche por el puerto https, que por defecto es el 8443 en lugar del 443. Y el certificado que hemos creado previamente para que nuestro servidor funcione con Let’s encrypt.</p>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="n">server</span><span class="o">.</span><span class="na">port</span><span class="o">=</span><span class="mi">9443</span>
+<span class="n">server</span><span class="o">.</span><span class="na">ssl</span><span class="o">.</span><span class="na">enabled</span><span class="o">=</span><span class="kc">true</span>
+<span class="n">server</span><span class="o">.</span><span class="na">ssl</span><span class="o">.</span><span class="na">key</span><span class="o">-</span><span class="n">store</span><span class="o">=</span><span class="n">my_cert_letsencrypt</span><span class="o">.</span><span class="na">p12</span>
+<span class="n">server</span><span class="o">.</span><span class="na">ssl</span><span class="o">.</span><span class="na">key</span><span class="o">-</span><span class="n">store</span><span class="o">-</span><span class="n">password</span><span class="o">=</span><span class="n">your_password</span>
+<span class="n">server</span><span class="o">.</span><span class="na">ssl</span><span class="o">.</span><span class="na">keyStoreType</span><span class="o">=</span><span class="no">PKCS12</span>
+<span class="n">server</span><span class="o">.</span><span class="na">ssl</span><span class="o">.</span><span class="na">keyAlias</span><span class="o">=</span><span class="n">your_alias</span></code></pre></figure>
+
+<p><em>Tendremos que cambiar: el certificado, la contraseña y el alias con el que creamos anteriormente.</em></p>
+
+<p>Generamos el fichero <em>.jar</em> mediante el comando de mvn para compilar</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">mvn package</code></pre></figure>
+
+<p><em>Para ver la diferencia entre mvn package y mvn install, consulta este <a href="https://www.appsdeveloperblog.com/difference-between-mvn-package-and-mvn-install/">enlace</a></em></p>
+
+<p>Ahora en la carpeta <em>/target</em> del proyecto tendremos el fichero <em>.jar</em> que pasaremos por ftp a nuestra carpeta en el home de <em>/docker/docker-java/nombre_aplicacion</em> que contendrá a su vez los ficheros de <em>Dockerfile</em> y <em>docker-compose.yml</em>, junto a nuestro certificado <em>.p12</em>. Para que todo se pueda copiar en el contenedor de docker, según las instrucciones de nuesto <em>Dockerfile</em>.</p>
+
+<p>Finalmente, debemos tener la siguiente estructura de ficheros en la carpeta de docker:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">/docker-my_app
+|-Dockerfile
+|-docker-compose.yml
+|-my_app.jar
+|-my_cert.p12</code></pre></figure>
+
+<p>En la página oficial del Spring Boot hay también un tutorial que indica con mayor detalle lo realizado anteriormente <a href="https://spring.io/guides/topicals/spring-boot-docker/">https://spring.io/guides/topicals/spring-boot-docker/</a> incluyendo aspectos de seguridad como la creación de un usuario diferente a root dentro del contenedor de docker.</p>
+
+<p><a name="cont-laravel"></a></p>
+
+<p><strong>Contenedor para Laravel</strong></p>
+
+<p><a name="cont-flask"></a></p>
+
+<p><strong>Contenedor para Flask</strong></p>
 
 <hr />
 

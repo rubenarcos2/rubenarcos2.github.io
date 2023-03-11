@@ -1,6 +1,14 @@
 [
   
     {
+      "title"    : "Dockerizando VPS",
+      "category" : "",
+      "tags"     : "docker, docker-compose, vps, spring, java, php, laravel, flask, python",
+      "url"      : "/2023/03/11/Dockerizando-VPS/",
+      "date"     : "2023-03-11 06:41:00 +0100"
+    } ,
+  
+    {
       "title"    : "Python - IA juego Hotel",
       "category" : "",
       "tags"     : "python, naives bayes, ia, colab",

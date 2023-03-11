@@ -1,4 +1,182 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="https://rarcos.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://rarcos.com/" rel="alternate" type="text/html" /><updated>2023-02-03T19:52:43+01:00</updated><id>https://rarcos.com/feed.xml</id><title type="html">Rubén Arcos</title><subtitle>Desarrollador de aplicaciones multiplataformas</subtitle><entry><title type="html">Python - IA juego Hotel</title><link href="https://rarcos.com/2022/08/11/IA-Juego-Hotel/" rel="alternate" type="text/html" title="Python - IA juego Hotel" /><published>2022-08-11T16:33:28+02:00</published><updated>2022-08-11T16:33:28+02:00</updated><id>https://rarcos.com/2022/08/11/IA%20-%20Juego%20Hotel</id><content type="html" xml:base="https://rarcos.com/2022/08/11/IA-Juego-Hotel/"><![CDATA[<p>He realizado la creación de un sistema de IA para aprendizaje de la decisión de compra para el juego del Hotel. Se trata de decidir si se compra o no en la casilla de <em>compra</em>, y predecir cual de las propiedades es mejor comprar.</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="https://rarcos.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://rarcos.com/" rel="alternate" type="text/html" /><updated>2023-03-11T11:55:33+01:00</updated><id>https://rarcos.com/feed.xml</id><title type="html">Rubén Arcos</title><subtitle>Desarrollador de aplicaciones multiplataformas</subtitle><entry><title type="html">Dockerizando VPS</title><link href="https://rarcos.com/2023/03/11/Dockerizando-VPS/" rel="alternate" type="text/html" title="Dockerizando VPS" /><published>2023-03-11T06:41:00+01:00</published><updated>2023-03-11T06:41:00+01:00</updated><id>https://rarcos.com/2023/03/11/Dockerizando%20VPS</id><content type="html" xml:base="https://rarcos.com/2023/03/11/Dockerizando-VPS/"><![CDATA[<p>He traspasado todas mis aplicaciones que tenía en heroku a un vps propio y además he aprovechado para dockerizarlas todas, incluyendo bases de datos y otros servicios web. Concretamente he dockerizado:</p>
+<ul>
+  <li><a href="#cont-spring-boot">Spring Boot</a></li>
+  <li><a href="#cont-laravel">Laravel</a></li>
+  <li><a href="#cont-flask">Flask</a></li>
+  <li>PostgreSQL</li>
+  <li>MySQL</li>
+  <li>MongoDB</li>
+</ul>
+
+<h1 id="instalación-de-docker-en-el-vps">Instalación de docker en el VPS</h1>
+
+<p><strong>Docker</strong></p>
+
+<p>En primer lugar he tenido que instalar docker y docker compose. Para la instalación de docker en ubuntu 22.04 server :</p>
+
+<p>Actualizamos la lista de paquetes del S.O. y actualizamos el S.O.</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">apt update <span class="o">&amp;&amp;</span> apt upgrade</code></pre></figure>
+
+<p>Añadimos una serie de paquetes de requisitos previos.</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">apt <span class="nb">install </span>apt-transport-https ca-certificates curl software-properties-common</code></pre></figure>
+
+<p>Se agrega la clave GPG para el repositorio oficial de Docker a nuestro S.O.</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">curl <span class="nt">-fsSL</span> https://download.docker.com/linux/ubuntu/gpg | apt-key add -</code></pre></figure>
+
+<p>Y por último ya podremos añadir el repositorio a nuestro S.O. Podemos comprobar que se ha añadido una línea en /etc/apt/source.list.</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">add-apt-repository <span class="s2">"deb [arch=amd64] https://download.docker.com/linux/ubuntu jammy stable"</span></code></pre></figure>
+
+<p>Actualizamos la base de datos ya que hay una línea nueva (compruebe en el listado que sale) y comprobaremos antes de instalar que vamos a instalar desde el repositorio (y no desde Ubuntu Server).</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">apt update &amp; apt-cache policy docker-ce</code></pre></figure>
+
+<p>Por último, podremos instalar el paquete (paquete pesado de aproximadamente 400 MBytes). Como no puede ser de otra manera hay que asegurar que Docker engine está arrancado y si reinicia el servicio en el arranque del S.O. anfitrión.</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">apt-get <span class="nb">install </span>docker-ce</code></pre></figure>
+
+<p><em>Manualillo de systemctl</em></p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">systemctl disable Docker <span class="c"># deshabilitamos en el arranque el demonio docker </span>
+systemctl list-unit-files | <span class="nb">grep </span>docker 
+systemctl <span class="nb">enable </span>docker 
+systemctl list-unit-files | <span class="nb">grep </span>docker 
+systemctl stop docker <span class="o">&amp;&amp;</span> systemctl status Docker 
+systemctl start docker <span class="o">&amp;&amp;</span> systemctl status Docker 
+docker versión</code></pre></figure>
+
+<p><em>Resolución del problema de permisos de docker para un usuario no root</em></p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nb">sudo </span>groupadd docker
+<span class="nb">sudo </span>usermod <span class="nt">-aG</span> docker ruben
+newgrp docker
+docker ps</code></pre></figure>
+
+<p><strong>Docker-Compose</strong></p>
+
+<p>Actualización de la lista de repositorios</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nb">sudo </span>apt update</code></pre></figure>
+
+<p>Instalación de docker-compose</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nb">sudo </span>apt <span class="nb">install </span>docker-compose</code></pre></figure>
+
+<p>Comprobamos el estado del servidor docker y las versiones respectivamente</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">systemctl status docker
+docker <span class="nt">-v</span>
+docker-compose <span class="nt">-version</span></code></pre></figure>
+
+<h1 id="creación-de-los-contenedores-y-docker-compose">Creación de los contenedores y docker-compose</h1>
+
+<p>En primer lugar me he creado una carpeta <em>docker</em> en el home, que irá alojando los scripts y ficheros necesarios. Tiene la siguiente estructura:</p>
+
+<p><img src="/images/pages/docker-jerarquia.jpg" alt="docker-jerarquia.jpg" /></p>
+
+<p>Vamos a utilizar para el certificado de autenticación del servidor https <a href="https://letsencrypt.org/">Let’s encrypt</a>.</p>
+
+<p><strong>Instalación y generación del certificado Let’s encrypt</strong></p>
+
+<p>Para la instalación de la aplicación <em>certbot</em> de Let’s encrypt para generar los certificados, recomiendo seguir las instrucciones de la siguiente página <a href="https://certbot.eff.org/instructions?ws=other&amp;os=ubuntufocal">https://certbot.eff.org/instructions?ws=other&amp;os=ubuntufocal</a> está preseleccionado para Ubuntu server.</p>
+
+<p>La página indicada anteriormente, es la única que funciona actualmente con Ubuntu Server 22.04, el resto de tutoriales que he visitado se encuentran obsoletos al haber cambiado a snap la aplicación de certbot de Let’s encrypt y el repositorio de github ya no funciona tampoco como se esperaba en instrucciones antiguas.</p>
+
+<p>Una vez terminado nos generará la siguiente salida:
+<img src="/images/pages/certificado_letsencrypt.jpg" alt="salida_certificado_letsencrypt" /></p>
+
+<p>Generamos el certificado que es válido para tomcat .p12.</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">openssl pkcs12 <span class="nt">-export</span> <span class="nt">-in</span> /etc/letsencrypt/live/vps.rarcos.com/fullchain.pem <span class="nt">-inkey</span> /etc/letsencrypt/live/vps.rarcos.com/privkey.pem <span class="nt">-out</span> springboot_letsencrypt.p12 <span class="nt">-name</span> bootalias <span class="nt">-CAfile</span> chain.pem <span class="nt">-caname</span> root</code></pre></figure>
+
+<p><em>Recuerda cambiar las rutas por las tuyas</em></p>
+
+<p><a name="cont-spring-boot"></a></p>
+
+<p><strong>Contenedor para Spring Boot</strong></p>
+
+<p>Copiamos los ficheros necesarios en nuestra carpeta de nuestro nuestra carpeta en el home de <em>/docker/docker-java/</em>: estando en la raíz de esta el fichero .jar y .p12.</p>
+
+<p><em>Generación de los scripts de docker</em></p>
+
+<p>En primer lugar, vamos a crear un <em>Dockerfile</em> para que contenga la imagen (para Ubuntu server) y realice la copia de los ficheros necesarios (el .jar y el certificado) hacia nuestro contenedor.</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">FROM eclipse-temurin:17-jdk-alpine
+
+ARG <span class="nv">JAR_FILE</span><span class="o">=</span><span class="k">*</span>.jar
+
+COPY <span class="k">${</span><span class="nv">JAR_FILE</span><span class="k">}</span> my_proyect_compiled.jar
+COPY my_cert_letsencrypt.p12 <span class="nb">.</span>
+
+ENTRYPOINT <span class="o">[</span><span class="s2">"java"</span>,<span class="s2">"-jar"</span>,<span class="s2">"/my_proyect_compiled.jar"</span><span class="o">]</span></code></pre></figure>
+
+<p><em>Tendremos que cambiar el nombre del certificado y del fichero del proyecto compilado .jar</em></p>
+
+<p>En segundo lugar, vamos a crear el script de <em>docker-compose.yml</em> que creará nuestro servicio web y expondrá el puerto 8443 por defecto.</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">version: <span class="s1">'3.8'</span>
+services:
+  proyect_name:
+    build: <span class="nb">.</span>
+    container_name: <span class="s1">'proyect_name-spring-app'</span>
+    restart: always
+    ports:
+      - <span class="s1">'8080:8080'</span>
+      - <span class="s1">'8443:8443'</span></code></pre></figure>
+
+<p><em>Tendremos que cambiar el nombre del servicio y del contenedor</em></p>
+
+<p><em>Proyecto Spring Boot</em></p>
+
+<p>Vamos a añadir al fichero <em>aplication.properties</em> la configuración para que el servidor tomcat que crea Spring, escuche por el puerto https, que por defecto es el 8443 en lugar del 443. Y el certificado que hemos creado previamente para que nuestro servidor funcione con Let’s encrypt.</p>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="n">server</span><span class="o">.</span><span class="na">port</span><span class="o">=</span><span class="mi">9443</span>
+<span class="n">server</span><span class="o">.</span><span class="na">ssl</span><span class="o">.</span><span class="na">enabled</span><span class="o">=</span><span class="kc">true</span>
+<span class="n">server</span><span class="o">.</span><span class="na">ssl</span><span class="o">.</span><span class="na">key</span><span class="o">-</span><span class="n">store</span><span class="o">=</span><span class="n">my_cert_letsencrypt</span><span class="o">.</span><span class="na">p12</span>
+<span class="n">server</span><span class="o">.</span><span class="na">ssl</span><span class="o">.</span><span class="na">key</span><span class="o">-</span><span class="n">store</span><span class="o">-</span><span class="n">password</span><span class="o">=</span><span class="n">your_password</span>
+<span class="n">server</span><span class="o">.</span><span class="na">ssl</span><span class="o">.</span><span class="na">keyStoreType</span><span class="o">=</span><span class="no">PKCS12</span>
+<span class="n">server</span><span class="o">.</span><span class="na">ssl</span><span class="o">.</span><span class="na">keyAlias</span><span class="o">=</span><span class="n">your_alias</span></code></pre></figure>
+
+<p><em>Tendremos que cambiar: el certificado, la contraseña y el alias con el que creamos anteriormente.</em></p>
+
+<p>Generamos el fichero <em>.jar</em> mediante el comando de mvn para compilar</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">mvn package</code></pre></figure>
+
+<p><em>Para ver la diferencia entre mvn package y mvn install, consulta este <a href="https://www.appsdeveloperblog.com/difference-between-mvn-package-and-mvn-install/">enlace</a></em></p>
+
+<p>Ahora en la carpeta <em>/target</em> del proyecto tendremos el fichero <em>.jar</em> que pasaremos por ftp a nuestra carpeta en el home de <em>/docker/docker-java/nombre_aplicacion</em> que contendrá a su vez los ficheros de <em>Dockerfile</em> y <em>docker-compose.yml</em>, junto a nuestro certificado <em>.p12</em>. Para que todo se pueda copiar en el contenedor de docker, según las instrucciones de nuesto <em>Dockerfile</em>.</p>
+
+<p>Finalmente, debemos tener la siguiente estructura de ficheros en la carpeta de docker:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">/docker-my_app
+|-Dockerfile
+|-docker-compose.yml
+|-my_app.jar
+|-my_cert.p12</code></pre></figure>
+
+<p>En la página oficial del Spring Boot hay también un tutorial que indica con mayor detalle lo realizado anteriormente <a href="https://spring.io/guides/topicals/spring-boot-docker/">https://spring.io/guides/topicals/spring-boot-docker/</a> incluyendo aspectos de seguridad como la creación de un usuario diferente a root dentro del contenedor de docker.</p>
+
+<p><a name="cont-laravel"></a></p>
+
+<p><strong>Contenedor para Laravel</strong></p>
+
+<p><a name="cont-flask"></a></p>
+
+<p><strong>Contenedor para Flask</strong></p>
+
+<hr />
+
+<p><strong>Fuentes:</strong></p>
+
+<p><a href="https://certbot.eff.org/instructions">https://certbot.eff.org/instructions</a></p>
+
+<p><a href="https://wstutorial.com/rest/spring-boot-with-lets-encrypt.html">https://wstutorial.com/rest/spring-boot-with-lets-encrypt.html</a></p>
+
+<p><a href="https://spring.io/guides/topicals/spring-boot-docker/">https://spring.io/guides/topicals/spring-boot-docker/</a></p>]]></content><author><name></name></author><category term="docker" /><category term="docker-compose" /><category term="vps" /><category term="spring" /><category term="java" /><category term="php" /><category term="laravel" /><category term="flask" /><category term="python" /><summary type="html"><![CDATA[Cómo he dockerizado mi vps para alojar aplicaciones: spring, laravel, flask...y más]]></summary></entry><entry><title type="html">Python - IA juego Hotel</title><link href="https://rarcos.com/2022/08/11/IA-Juego-Hotel/" rel="alternate" type="text/html" title="Python - IA juego Hotel" /><published>2022-08-11T16:33:28+02:00</published><updated>2022-08-11T16:33:28+02:00</updated><id>https://rarcos.com/2022/08/11/IA%20-%20Juego%20Hotel</id><content type="html" xml:base="https://rarcos.com/2022/08/11/IA-Juego-Hotel/"><![CDATA[<p>He realizado la creación de un sistema de IA para aprendizaje de la decisión de compra para el juego del Hotel. Se trata de decidir si se compra o no en la casilla de <em>compra</em>, y predecir cual de las propiedades es mejor comprar.</p>
 
 <h1 id="programa-generador-de-partidas">Programa generador de partidas</h1>
 
@@ -125,8 +303,6 @@
 <p>Esta es la demostración de la aplicación que he realizado (click <a href="/WorkspaceWeb/JSconsumeAPI">aquí</a> o en la imagen):</p>
 
 <p><a href="/WorkspaceWeb/JSconsumeAPI"><img src="/images/pages/api_rest.png" alt="Ir a ver la app en funcionamiento" /></a></p>
-
-<p><em>La aplicación servidor está alojada en heroku y debido a las condiciones de servicio se supende pasado un tiempo, por favor si quieres ver la web en funcionamiento y solo te sale el icono de carga, refresca la página reiteradas veces hasta que la conexión con el servidor se establezca correctamente una vez se haya despertado</em></p>
 
 <hr />
 
@@ -982,11 +1158,9 @@ npm <span class="nb">install
 - password: admin
 </code></pre></div></div>
 
-<p>Esta es la demostración de la aplicación que he realizado (click <a href="https://spring-inmobiliaria.herokuapp.com">aquí</a> o en la imagen):</p>
+<p>Esta es la demostración de la aplicación que he realizado (click <a href="https://vps.rarcos.com:9443">aquí</a> o en la imagen):</p>
 
-<p><em>(debido al servidor que he utilizado, heroku, no está disponible la visualización de las imágenes)</em></p>
-
-<p><a href="https://spring-inmobiliaria.herokuapp.com"><img src="/images/pages/spring-inmobiliaria.png" alt="Ir a ver la app en funcionamiento" /></a></p>
+<p><a href="https://vps.rarcos.com:9443"><img src="/images/pages/spring-inmobiliaria.png" alt="Ir a ver la app en funcionamiento" /></a></p>
 
 <hr />
 
@@ -1861,125 +2035,4 @@ La aplicación original: “I have deployed my BERT app <a href="https://bertqna
 <hr />
 <p><strong>Fuentes:</strong></p>
 
-<p><a href="https://medium.com/analytics-vidhya/deploying-bert-on-heroku-7df1d23f9c43">https://medium.com/analytics-vidhya/deploying-bert-on-heroku-7df1d23f9c43</a></p>]]></content><author><name></name></author><category term="python" /><category term="pytorch" /><category term="ia" /><category term="flask" /><category term="bert" /><summary type="html"><![CDATA[Utilización del modelo de aprendizaje profundo Bert para pregruntas y respuestas, exportado en flask.]]></summary></entry><entry><title type="html">Python - Webscraping II (Selenium)</title><link href="https://rarcos.com/2022/03/18/Python-Webscraping-2/" rel="alternate" type="text/html" title="Python - Webscraping II (Selenium)" /><published>2022-03-18T15:33:28+01:00</published><updated>2022-03-18T15:33:28+01:00</updated><id>https://rarcos.com/2022/03/18/Python%20-%20Webscraping-2</id><content type="html" xml:base="https://rarcos.com/2022/03/18/Python-Webscraping-2/"><![CDATA[<h1 id="webscraping-ii">Webscraping II</h1>
-
-<p>A continuación, se muestra un proyecto de webscraping. Consiste en la captación de un listado con las ofertas de trabajo del portal <em>ticjob.es</em> para el lenguaje de programación Python y la localidad de Málaga.</p>
-
-<p>Además se hace uso de <em>sqlalchemy</em> para el almacenamiento del resultado en una tabla en una base de datos <em>mysql</em>.</p>
-
-<h2 id="script-de-captación-de-datos-y-guardado-en-base-de-datos">Script de captación de datos y guardado en base de datos</h2>
-
-<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">selenium</span> <span class="kn">import</span> <span class="n">webdriver</span>
-<span class="kn">from</span> <span class="nn">sqlalchemy</span> <span class="kn">import</span> <span class="n">create_engine</span>
-<span class="kn">import</span> <span class="nn">os</span>
-<span class="kn">import</span> <span class="nn">time</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="n">pd</span>
-
-<span class="n">search_query</span> <span class="o">=</span> <span class="s">'https://ticjob.es'</span>
-
-<span class="n">browser</span> <span class="o">=</span> <span class="n">webdriver</span><span class="p">.</span><span class="n">Firefox</span><span class="p">()</span>
-<span class="k">if</span> <span class="s">'linux'</span> <span class="ow">in</span> <span class="n">os</span><span class="p">.</span><span class="n">name</span><span class="p">:</span>
-    <span class="n">browser</span> <span class="o">=</span> <span class="n">webdriver</span><span class="p">.</span><span class="n">Firefox</span><span class="p">(</span><span class="n">executable_path</span><span class="o">=</span><span class="s">'geckodriver'</span><span class="p">)</span>
-<span class="k">elif</span> <span class="s">'windows'</span> <span class="ow">in</span> <span class="n">os</span><span class="p">.</span><span class="n">name</span><span class="p">:</span>
-    <span class="n">browser</span> <span class="o">=</span> <span class="n">webdriver</span><span class="p">.</span><span class="n">Firefox</span><span class="p">(</span><span class="n">executable_path</span><span class="o">=</span><span class="s">'geckodriver.exe'</span><span class="p">)</span>
-
-<span class="n">browser</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="n">search_query</span><span class="p">)</span>
-<span class="n">time</span><span class="p">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-
-<span class="nb">input</span> <span class="o">=</span> <span class="n">browser</span><span class="p">.</span><span class="n">find_element_by_id</span><span class="p">(</span><span class="s">"keywords-input"</span><span class="p">).</span><span class="n">send_keys</span><span class="p">(</span><span class="s">"Python Málaga"</span><span class="p">)</span>
-<span class="n">send_button</span> <span class="o">=</span> <span class="n">browser</span><span class="p">.</span><span class="n">find_element_by_id</span><span class="p">(</span><span class="s">"search-form"</span><span class="p">).</span><span class="n">submit</span><span class="p">()</span>
-<span class="n">time</span><span class="p">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-
-<span class="c1"># Página con los resultados
-</span>
-<span class="n">titles</span> <span class="o">=</span> <span class="n">browser</span><span class="p">.</span><span class="n">find_elements_by_class_name</span><span class="p">(</span><span class="s">"job-title"</span><span class="p">)</span>
-<span class="n">dates</span> <span class="o">=</span> <span class="n">browser</span><span class="p">.</span><span class="n">find_elements_by_class_name</span><span class="p">(</span><span class="s">"date-field"</span><span class="p">)</span>
-<span class="n">locations</span> <span class="o">=</span> <span class="n">browser</span><span class="p">.</span><span class="n">find_elements_by_class_name</span><span class="p">(</span><span class="s">"location-field"</span><span class="p">)</span>
-<span class="n">descriptions</span> <span class="o">=</span> <span class="n">browser</span><span class="p">.</span><span class="n">find_elements_by_class_name</span><span class="p">(</span><span class="s">"job-description"</span><span class="p">)</span>
-
-<span class="n">time</span><span class="p">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-
-<span class="n">lista_titles</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="k">for</span> <span class="n">title</span> <span class="ow">in</span> <span class="n">titles</span><span class="p">:</span>
-    <span class="n">lista_titles</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">title</span><span class="p">.</span><span class="n">text</span><span class="p">)</span>
-
-<span class="n">lista_dates</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="k">for</span> <span class="n">date</span> <span class="ow">in</span> <span class="n">dates</span><span class="p">:</span>
-    <span class="n">lista_dates</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">date</span><span class="p">.</span><span class="n">text</span><span class="p">)</span>
-
-<span class="n">lista_locations</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="k">for</span> <span class="n">location</span> <span class="ow">in</span> <span class="n">locations</span><span class="p">:</span>
-    <span class="n">lista_locations</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">location</span><span class="p">.</span><span class="n">text</span><span class="p">)</span>
-
-<span class="n">lista_descriptions</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="k">for</span> <span class="n">description</span> <span class="ow">in</span> <span class="n">descriptions</span><span class="p">:</span>
-    <span class="n">lista_descriptions</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">description</span><span class="p">.</span><span class="n">text</span><span class="p">)</span>
-
-<span class="n">time</span><span class="p">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
-<span class="n">browser</span><span class="p">.</span><span class="n">close</span><span class="p">()</span>
-
-<span class="c1">#### Guardado de los datos en un dataframe
-</span>
-<span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="s">"Títulos"</span><span class="p">:</span> <span class="n">lista_titles</span><span class="p">,</span> <span class="s">"Fechas"</span><span class="p">:</span> <span class="n">lista_dates</span><span class="p">,</span> <span class="s">"Localización"</span><span class="p">:</span> <span class="n">lista_locations</span><span class="p">,</span> <span class="s">"Descripción"</span><span class="p">:</span> <span class="n">lista_descriptions</span><span class="p">}</span>
-<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
-
-<span class="c1">#### Guardado del dataframe en la base de datos ####
-</span><span class="k">try</span><span class="p">:</span>
-    <span class="n">engine</span> <span class="o">=</span> <span class="n">create_engine</span><span class="p">(</span><span class="s">'mysql+pymysql://sbd_tarea_24:sbd_tarea_2-4123456@db4free.net/sbd_tarea_24'</span><span class="p">)</span>
-
-    <span class="n">df</span><span class="p">.</span><span class="n">to_sql</span><span class="p">(</span><span class="s">"ofertas_trabajo"</span><span class="p">,</span> <span class="n">con</span> <span class="o">=</span> <span class="n">engine</span><span class="p">,</span> <span class="n">if_exists</span><span class="o">=</span><span class="s">'replace'</span><span class="p">)</span>
-
-    <span class="k">print</span><span class="p">(</span><span class="s">"Se ha grabado en la base de datos correctamente"</span><span class="p">)</span>
-<span class="k">except</span> <span class="nb">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-    <span class="k">print</span><span class="p">(</span><span class="s">"Ha habido un error en la grabación en la base de datos:"</span><span class="p">,</span> <span class="n">e</span><span class="p">)</span></code></pre></figure>
-
-<h2 id="envío-del-resultado-por-email">Envío del resultado por email</h2>
-
-<p>A continuación, se muestra el uso de la api de gmail, para poder enviar el resultado por email.</p>
-
-<p>Puedes seguir el tutorial de configuración <a href="/2022/03/18/Python-Gmail_api">aquí</a>. Y guardar el script resultante en la misma carpeta.</p>
-
-<p>Añadir este pedazo de código al final del script de webscraping, para que se envíen las ofertas por email.</p>
-
-<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">email_api_gmail</span> <span class="kn">import</span> <span class="n">send</span>
-
-<span class="c1">#### Envío de los datos por email ####
-</span>
-    <span class="k">try</span><span class="p">:</span>
-        <span class="n">email</span> <span class="o">=</span> <span class="s">"&lt;html&gt;"</span> <span class="o">+</span> <span class="n">df</span><span class="p">.</span><span class="n">to_html</span><span class="p">()</span> <span class="o">+</span> <span class="s">"&lt;/html&gt;"</span>
-        <span class="n">send</span><span class="p">(</span><span class="s">"destinatario@email.com"</span><span class="p">,</span> <span class="s">"Listado de ofertas de empleo"</span><span class="p">,</span> <span class="n">email</span><span class="p">)</span>
-        <span class="k">print</span><span class="p">(</span><span class="s">"Se han enviado las ofertas de trabajo por email correctamente."</span><span class="p">)</span>
-    <span class="k">except</span> <span class="nb">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-        <span class="k">print</span><span class="p">(</span><span class="s">"Ha habido un error en el envío de las ofertas por email:"</span><span class="p">,</span> <span class="n">e</span><span class="p">)</span></code></pre></figure>
-
-<h2 id="automatización-del-script-con-cron">Automatización del script con cron</h2>
-
-<p>Para finalizar, se muestra el uso de la configuración del lanzamiento de un script mediant cron con la librería <em>python-crontab.</em></p>
-
-<p>Puedes seguir el tutorial de configuración <a href="/2022/03/18/Python-Crontab/">aquí</a>.</p>
-
-<p>Cambiar este pedazo de código, sustituir la función <em>uploadScript</em>, al final del script de crontab del tutorial anterior.</p>
-
-<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">uploadScript</span><span class="p">():</span>
-    <span class="n">src_path</span> <span class="o">=</span> <span class="sa">r</span><span class="s">"ruta_acceso/Selenium.py"</span>
-    <span class="n">dst_path</span> <span class="o">=</span> <span class="sa">r</span><span class="s">"/opt/jobs_offer/jobs_offer_task.py"</span>
-    <span class="n">shutil</span><span class="p">.</span><span class="n">copy</span><span class="p">(</span><span class="n">src_path</span><span class="p">,</span> <span class="n">dst_path</span><span class="p">)</span>
-    <span class="n">src_path</span> <span class="o">=</span> <span class="sa">r</span><span class="s">"ruta_acceso/credentials.json"</span>
-    <span class="n">dst_path</span> <span class="o">=</span> <span class="sa">r</span><span class="s">"/opt/jobs_offer/credentials.json"</span>
-    <span class="n">shutil</span><span class="p">.</span><span class="n">copy</span><span class="p">(</span><span class="n">src_path</span><span class="p">,</span> <span class="n">dst_path</span><span class="p">)</span>
-    <span class="n">src_path</span> <span class="o">=</span> <span class="sa">r</span><span class="s">"ruta_acceso/email_api_gmail.py"</span>
-    <span class="n">dst_path</span> <span class="o">=</span> <span class="sa">r</span><span class="s">"/opt/jobs_offer/email_api_gmail.py"</span>
-    <span class="n">shutil</span><span class="p">.</span><span class="n">copy</span><span class="p">(</span><span class="n">src_path</span><span class="p">,</span> <span class="n">dst_path</span><span class="p">)</span>
-    <span class="n">src_path</span> <span class="o">=</span> <span class="sa">r</span><span class="s">"ruta_acceso/chromedriver"</span>
-    <span class="n">dst_path</span> <span class="o">=</span> <span class="sa">r</span><span class="s">"/opt/jobs_offer/chromedriver"</span>
-    <span class="n">shutil</span><span class="p">.</span><span class="n">copy</span><span class="p">(</span><span class="n">src_path</span><span class="p">,</span> <span class="n">dst_path</span><span class="p">)</span>
-    <span class="k">print</span><span class="p">(</span><span class="s">'Copied all files'</span><span class="p">)</span></code></pre></figure>
-
-<hr />
-<p><strong>Fuentes:</strong></p>
-
-<p><a href="https://mailtrap.io/blog/send-emails-with-gmail-api/#Python">https://mailtrap.io/blog/send-emails-with-gmail-api/#Python</a>
-<a href="https://www.thepythoncode.com/article/use-gmail-api-in-python">https://www.thepythoncode.com/article/use-gmail-api-in-python</a>
-<a href="https://developers.google.com/android-publisher/getting_started?hl=es-419">https://developers.google.com/android-publisher/getting_started?hl=es-419</a>
-<a href="https://docs.moodle.org/all/es/Servicio_OAuth_2_Google">https://docs.moodle.org/all/es/Servicio_OAuth_2_Google</a></p>]]></content><author><name></name></author><category term="python" /><category term="keras" /><category term="ia" /><category term="tensorflow" /><category term="js" /><category term="webscraping" /><summary type="html"><![CDATA[Proyecto de webscraping: consiste en la captación de un listado con las ofertas de trabajo del portal *ticjob.es* para el lenguaje de programación Python y la localidad de Málaga.]]></summary></entry></feed>
+<p><a href="https://medium.com/analytics-vidhya/deploying-bert-on-heroku-7df1d23f9c43">https://medium.com/analytics-vidhya/deploying-bert-on-heroku-7df1d23f9c43</a></p>]]></content><author><name></name></author><category term="python" /><category term="pytorch" /><category term="ia" /><category term="flask" /><category term="bert" /><summary type="html"><![CDATA[Utilización del modelo de aprendizaje profundo Bert para pregruntas y respuestas, exportado en flask.]]></summary></entry></feed>
