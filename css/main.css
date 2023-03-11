@@ -1966,6 +1966,10 @@ table tr:hover {
     float: none;
     text-align: center;
   }
+
+  #readPostContent{
+    display: none;
+  }
 }
 
 @media screen and (max-width: 992px) {
