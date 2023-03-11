@@ -169,6 +169,7 @@
   <li><a href="#cont-spring-boot">Spring Boot</a></li>
   <li><a href="#cont-laravel">Laravel</a></li>
   <li><a href="#cont-flask">Flask</a></li>
+  <li><a href="#cont-nginx">Nginx</a></li>
   <li>PostgreSQL</li>
   <li>MySQL</li>
   <li>MongoDB</li>
@@ -334,6 +335,76 @@ services:
 
 <p><strong>Contenedor para Flask</strong></p>
 
+<p><a name="cont-nginx"></a></p>
+
+<p><strong>Contenedor para Nginx</strong></p>
+
+<p>Copiamos los ficheros necesarios en nuestra carpeta de nuestro nuestra carpeta en el home de <em>/docker/docker-ngnix/</em>: estando en la raíz de esta el fichero <em>docker-compose.yml y nginx.conf</em>, las carpetas: <em>cers, site-content y templates</em>.</p>
+
+<p><em>Generación de los scripts de docker</em></p>
+
+<p>docker-compose.yml</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">version: <span class="s2">"3.7"</span>
+services:
+  web:
+    image: nginx
+    volumes:
+     - ./templates:/etc/nginx/templates
+     - ./site-content:/etc/nginx/html
+     - ./certs:/etc/nginx/certs:ro
+     - ./nginx.conf:/etc/nginx/conf.d/nginx.conf
+
+    ports:
+     - <span class="s2">"80:80"</span>
+     - <span class="s2">"443:443"</span></code></pre></figure>
+
+<p><em>Sustituye mi dominio vps.rarcos.com por el tuyo</em></p>
+
+<p><em>Generación del script de configuración de ngnix</em></p>
+
+<p>nginx.conf</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">server <span class="o">{</span>
+    listen 80<span class="p">;</span>
+    listen <span class="o">[</span>::]:80<span class="p">;</span>
+    listen 443 ssl<span class="p">;</span>
+    server_name  www.vps.rarcos.com vps.rarcos.com<span class="p">;</span>
+    ssl_certificate /etc/nginx/certs/fullchain.pem<span class="p">;</span>
+    ssl_certificate_key /etc/nginx/certs/privkey.pem<span class="p">;</span>
+
+    <span class="c"># Redirect non-https traffic to https</span>
+    <span class="k">if</span> <span class="o">(</span><span class="nv">$scheme</span> <span class="o">!=</span> <span class="s2">"https"</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">return </span>301 https://<span class="nv">$host$request_uri</span><span class="p">;</span>
+    <span class="o">}</span>
+<span class="o">}</span></code></pre></figure>
+
+<p><em>Sustituye mi dominio vps.rarcos.com por el tuyo</em></p>
+
+<p><em>Generación del resto de ficheros y carpetas</em></p>
+
+<p>En la carpeta <em>certs</em> tienes que tener una copia de los ficheros generados por <em>certbot</em>, son los ficheros: <em>fullchain.pem y privkey.pem</em>.</p>
+
+<p>En la carpeta <em>site-content</em> el <em>index.html</em> de tu web con todo su contenido. Este es un ejemplo de redirección de mi página, por si te sirve de ejemplo.</p>
+
+<p>site-content/index.html</p>
+
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="nt">&lt;html</span> <span class="na">lang=</span><span class="s">"es"</span><span class="nt">&gt;</span>
+
+<span class="nt">&lt;head&gt;</span>
+    <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">"UTF-8"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">"viewport"</span> <span class="na">content=</span><span class="s">"width=device-width, initial-scale=1.0"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;meta</span> <span class="na">http-equiv=</span><span class="s">"X-UA-Compatible"</span> <span class="na">content=</span><span class="s">"ie=edge"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;meta</span> <span class="na">http-equiv=</span><span class="s">"refresh"</span> <span class="na">content=</span><span class="s">"5;url=https://rarcos.com"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;/head&gt;</span>
+
+<span class="nt">&lt;body&gt;</span>
+<span class="nt">&lt;h1&gt;</span>Acceso no permitido<span class="nt">&lt;/h1&gt;</span>
+<span class="nt">&lt;p&gt;</span>Va a ser redireccionado a la página <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"https://rarcos.com"</span><span class="nt">&gt;</span>https://rarcos.com<span class="nt">&lt;/a&gt;&lt;/p&gt;</span>
+<span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span></code></pre></figure>
+
 <hr />
 
 <p><strong>Fuentes:</strong></p>
@@ -343,6 +414,8 @@ services:
 <p><a href="https://wstutorial.com/rest/spring-boot-with-lets-encrypt.html">https://wstutorial.com/rest/spring-boot-with-lets-encrypt.html</a></p>
 
 <p><a href="https://spring.io/guides/topicals/spring-boot-docker/">https://spring.io/guides/topicals/spring-boot-docker/</a></p>
+
+<p><a href="https://awstip.com/run-nginx-in-a-docker-container-using-pre-generated-ssl-certificates-from-letsencrypt-b005ebce74ca">https://awstip.com/run-nginx-in-a-docker-container-using-pre-generated-ssl-certificates-from-letsencrypt-b005ebce74ca</a></p>
 
     </div>
 
