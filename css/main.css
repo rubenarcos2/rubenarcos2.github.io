@@ -1966,10 +1966,6 @@ table tr:hover {
     float: none;
     text-align: center;
   }
-
-  #readPostContent{
-    display: none;
-  }
 }
 
 @media screen and (max-width: 992px) {
@@ -2148,10 +2144,6 @@ table tr:hover {
   .page-header .page-title {
     font-size: 40px;
   }
-
-  #readPostContent{
-    display: none;
-  }
 }
 
 @media screen and (max-width: 576px) {
@@ -2189,10 +2181,6 @@ table tr:hover {
   .page-header {
     min-height: 350px;
   }
-
-  #readPostContent{
-    display: none;
-  }
 }
 
 @media screen and (max-width: 480px) {
@@ -2219,18 +2207,10 @@ table tr:hover {
   .pagination-box {
     margin-bottom: 50px;
   }
-
-  #readPostContent{
-    display: none;
-  }
 }
 
 @media only screen and (max-width: 480px) {
   .newsletter-button {
     font-size: 13px;
-  }
-
-  #readPostContent{
-    display: none;
   }
 }
