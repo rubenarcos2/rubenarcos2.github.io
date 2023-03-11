@@ -110,3 +110,24 @@ $(function() {
   }
 
 });
+
+function readPostContent(evt){
+  if ('speechSynthesis' in window) {
+    const post = document.getElementsByClassName('post-content')[0].textContent; 
+    const synth = window.speechSynthesis;
+    const utterThis = new SpeechSynthesisUtterance(post);
+    
+    if(synth.speaking){
+      synth.cancel();
+      utterThis.text = "Narración parada";
+      synth.speak(utterThis);
+      evt.text = "Leer artículo";
+    }else{
+      evt.text = "Parar narración";
+      synth.speak(utterThis);
+    }    
+  }else{
+    alert("Tu buscador no soporta la narración interactiva (TTS)");
+  }
+  
+};
