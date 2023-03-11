@@ -2044,6 +2044,10 @@ table tr:hover {
     width: -webkit-calc(100% / 12 * 6 - 30px);
     width: calc(100% / 12 * 6 - 30px);
   }
+
+  #readPostContent{
+    display: none;
+  }
 }
 
 @media only screen and (max-width: 992px) {
@@ -2054,6 +2058,10 @@ table tr:hover {
   .info-social,
   .info-newsletter {
     width: 100%;
+  }
+
+  #readPostContent{
+    display: none;
   }
 }
 
@@ -2176,6 +2184,10 @@ table tr:hover {
 
   .page-header {
     min-height: 350px;
+  }
+
+  #readPostContent{
+    display: none;
   }
 }
 
