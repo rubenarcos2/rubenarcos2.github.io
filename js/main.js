@@ -116,7 +116,8 @@ function readPostContent(evt){
     const post = document.getElementsByClassName('post-content')[0].textContent; 
     const synth = window.speechSynthesis;
     const utterThis = new SpeechSynthesisUtterance(post);
-    
+    utterThis.lang = 'es-ES';
+
     if(synth.speaking){
       synth.cancel();
       utterThis.text = "Narración parada";
