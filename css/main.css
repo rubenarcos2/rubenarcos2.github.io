@@ -2059,10 +2059,6 @@ table tr:hover {
   .info-newsletter {
     width: 100%;
   }
-
-  #readPostContent{
-    display: none;
-  }
 }
 
 @media screen and (max-width: 720px) {
@@ -2143,6 +2139,10 @@ table tr:hover {
 
   .page-header .page-title {
     font-size: 40px;
+  }
+
+  #readPostContent{
+    display: none;
   }
 }
 
