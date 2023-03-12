@@ -118,6 +118,10 @@ function readPostContent(evt){
     const utterThis = new SpeechSynthesisUtterance(post);
     utterThis.lang = 'es-ES';
 
+    utterThis.addEventListener("end", (event) => {
+      document.getElementById("readPostContent").childNodes[0].text = "Leer artículo";
+    });
+
     if(synth.speaking){
       synth.cancel();
       utterThis.text = "Narración parada";
