@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="https://rarcos.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://rarcos.com/" rel="alternate" type="text/html" /><updated>2023-03-14T18:15:09+01:00</updated><id>https://rarcos.com/feed.xml</id><title type="html">Rubén Arcos</title><subtitle>Desarrollador de aplicaciones multiplataformas</subtitle><entry><title type="html">Securizando VPS</title><link href="https://rarcos.com/2023/03/14/Securizando-VPS/" rel="alternate" type="text/html" title="Securizando VPS" /><published>2023-03-14T06:41:00+01:00</published><updated>2023-03-14T06:41:00+01:00</updated><id>https://rarcos.com/2023/03/14/Securizando%20VPS</id><content type="html" xml:base="https://rarcos.com/2023/03/14/Securizando-VPS/"><![CDATA[<p>A modo de apuntes, una securización estándar de un VPS:</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="https://rarcos.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://rarcos.com/" rel="alternate" type="text/html" /><updated>2023-03-14T21:49:33+01:00</updated><id>https://rarcos.com/feed.xml</id><title type="html">Rubén Arcos</title><subtitle>Desarrollador de aplicaciones multiplataformas</subtitle><entry><title type="html">Securizando VPS</title><link href="https://rarcos.com/2023/03/14/Securizando-VPS/" rel="alternate" type="text/html" title="Securizando VPS" /><published>2023-03-14T06:41:00+01:00</published><updated>2023-03-14T06:41:00+01:00</updated><id>https://rarcos.com/2023/03/14/Securizando%20VPS</id><content type="html" xml:base="https://rarcos.com/2023/03/14/Securizando-VPS/"><![CDATA[<p>A modo de apuntes, una securización estándar de un VPS:</p>
 <ul>
   <li><a href="#seg-basica">Seguridad básica</a></li>
   <li><a href="#ssh">Autenticación basada en clave SSH </a></li>
@@ -250,6 +250,47 @@ services:
 <p><a name="cont-flask"></a></p>
 
 <p><strong>Contenedor para Flask</strong></p>
+
+<p>Tenemos nuestra aplicación python con flask en la carpeta <em>app</em> y los certificados en la carpeta <em>certs</em> y el fichero de <em>requirements</em> al mismo nivel que los de docker.</p>
+
+<p><em>Generación de los scripts de docker</em></p>
+
+<p>Dockerfile</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">version: <span class="s1">'3.8'</span>
+
+services:
+  flask:
+    restart: always
+    build: <span class="nb">.</span>
+    <span class="nb">command</span>: python app.py run <span class="nt">-h</span> 0.0.0.0
+    volumes:
+      - ./app:/usr/src/app/
+    ports:
+      - 10443:5000
+    environment:
+      - <span class="nv">FLASK_APP</span><span class="o">=</span>app.py
+      - <span class="nv">FLASK_DEBUG</span><span class="o">=</span>1</code></pre></figure>
+
+<p>nginx.conf</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">server <span class="o">{</span>
+    listen 80<span class="p">;</span>
+    listen <span class="o">[</span>::]:80<span class="p">;</span>
+    listen 443 ssl<span class="p">;</span>
+    server_name  www.vps.rarcos.com vps.rarcos.com<span class="p">;</span>
+    ssl_certificate /etc/nginx/certs/fullchain.pem<span class="p">;</span>
+    ssl_certificate_key /etc/nginx/certs/privkey.pem<span class="p">;</span>
+
+    <span class="c"># Redirect non-https traffic to https</span>
+    <span class="k">if</span> <span class="o">(</span><span class="nv">$scheme</span> <span class="o">!=</span> <span class="s2">"https"</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">return </span>301 https://<span class="nv">$host$request_uri</span><span class="p">;</span>
+    <span class="o">}</span>
+<span class="o">}</span></code></pre></figure>
+
+<p>app.py</p>
+
+<p><em>Sustituye mi dominio vps.rarcos.com por el tuyo</em></p>
 
 <p><a name="cont-nginx"></a></p>
 
