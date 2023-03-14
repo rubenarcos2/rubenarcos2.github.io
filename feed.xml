@@ -1,4 +1,75 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="https://rarcos.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://rarcos.com/" rel="alternate" type="text/html" /><updated>2023-03-12T19:28:23+01:00</updated><id>https://rarcos.com/feed.xml</id><title type="html">Rubén Arcos</title><subtitle>Desarrollador de aplicaciones multiplataformas</subtitle><entry><title type="html">Dockerizando VPS</title><link href="https://rarcos.com/2023/03/11/Dockerizando-VPS/" rel="alternate" type="text/html" title="Dockerizando VPS" /><published>2023-03-11T06:41:00+01:00</published><updated>2023-03-11T06:41:00+01:00</updated><id>https://rarcos.com/2023/03/11/Dockerizando%20VPS</id><content type="html" xml:base="https://rarcos.com/2023/03/11/Dockerizando-VPS/"><![CDATA[<p>He traspasado todas mis aplicaciones que tenía en heroku a un vps propio y además he aprovechado para dockerizarlas todas, incluyendo bases de datos y otros servicios web. Concretamente he dockerizado:</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="https://rarcos.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://rarcos.com/" rel="alternate" type="text/html" /><updated>2023-03-14T08:37:56+01:00</updated><id>https://rarcos.com/feed.xml</id><title type="html">Rubén Arcos</title><subtitle>Desarrollador de aplicaciones multiplataformas</subtitle><entry><title type="html">Securizando VPS</title><link href="https://rarcos.com/2023/03/14/Securizando-VPS/" rel="alternate" type="text/html" title="Securizando VPS" /><published>2023-03-14T06:41:00+01:00</published><updated>2023-03-14T06:41:00+01:00</updated><id>https://rarcos.com/2023/03/14/Securizando%20VPS</id><content type="html" xml:base="https://rarcos.com/2023/03/14/Securizando-VPS/"><![CDATA[<p>A modo de apuntes, una securización estándar de un VPS:</p>
+<ul>
+  <li><a href="#seg-basica">Seguridad básica</a></li>
+  <li><a href="#ssh">autenticación basada en clave SSH </a></li>
+  <li><a href="#maldet">Detección de malware - maldet</a></li>
+  <li><a href="#postfix">Postfix - Envío de emai</a></li>
+</ul>
+
+<p><a name="seg-basica"></a></p>
+
+<h1 id="seguridad-de-linux-y-debilidades-comunes">Seguridad de Linux y debilidades comunes</h1>
+
+<p>15 consejos de seguridad de VPS para proteger la seguridad de tu servidor</p>
+
+<p><a href="https://www.hostinger.es/tutoriales/seguridad-vps">https://www.hostinger.es/tutoriales/seguridad-vps</a></p>
+
+<p><a name="ssh"></a></p>
+
+<h1 id="autenticación-basada-en-clave-ssh---acceso">Autenticación basada en clave SSH - Acceso</h1>
+
+<p>Generación del para de claves: pública-privada</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">ssh-keygen <span class="nt">-t</span> rsa</code></pre></figure>
+
+<p>Autorización de la clave pública</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nb">cat</span> ~/.ssh/id_rsa.pub <span class="o">&gt;&gt;</span> ~/.ssh/authorized_keys</code></pre></figure>
+
+<p>Deshabilitar la autenticación de contraseña en su servidor</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nb">sudo </span>nano /etc/ssh/sshd_config</code></pre></figure>
+
+<p>Cambiar el valor de PasswordAuthentication dentro del sshd_config a:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">PasswordAuthentication no</code></pre></figure>
+
+<p>Reiniciamos el servidor SSH para que se hagan efectivo los cambios:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">service ssh restart</code></pre></figure>
+
+<p>Pasamos por sftp la clave privada <em>id_rsa</em> al cliente que vayamos a utilizar. Putty en mi caso.
+En la parte del cliente, instalamos putty y generamos la clave privada de la siguiente forma:</p>
+
+<p><a href="https://www.simplified.guide/putty/convert-ssh-key-to-ppk">https://www.simplified.guide/putty/convert-ssh-key-to-ppk</a></p>
+
+<p><a name="maldet"></a></p>
+
+<h1 id="detección-de-malware---maldet">Detección de malware - maldet</h1>
+
+<p>Instalación y puesta en funcionamiento:</p>
+
+<p><a href="https://codigonaranja.com/como-detectar-malware-en-tu-sitio-web-servidores-linux-ubuntu-debian">https://codigonaranja.com/como-detectar-malware-en-tu-sitio-web-servidores-linux-ubuntu-debian</a></p>
+
+<p>Ve informes y reportes:</p>
+
+<p><a href="https://wpbeaches.com/set-lmd-maldet-clamav-runcloud/">https://wpbeaches.com/set-lmd-maldet-clamav-runcloud/</a></p>
+
+<p>Escaneo manual:</p>
+
+<p><a href="https://www.nosolocodigo.com/linux-malware-detect-escaner-para-aplicaciones-web-open-source/">https://www.nosolocodigo.com/linux-malware-detect-escaner-para-aplicaciones-web-open-source/</a></p>
+
+<p><a name="postfix"></a></p>
+
+<h1 id="instalación-y-configuración-de-postfix-para-usar-el-smtp-de-gmail">Instalación y configuración de Postfix para usar el SMTP de Gmail</h1>
+
+<p><a href="http://somebooks.es/configurar-postfix-para-usar-el-smtp-de-gmail-en-ubuntu-20-04-lts/">http://somebooks.es/configurar-postfix-para-usar-el-smtp-de-gmail-en-ubuntu-20-04-lts/</a></p>
+
+<hr />
+
+<p><strong>Fuentes:</strong></p>
+
+<p><a href="https://www.hostinger.es/tutoriales/seguridad-vps">https://www.hostinger.es/tutoriales/seguridad-vps</a></p>]]></content><author><name></name></author><category term="docker" /><category term="docker-compose" /><category term="vps" /><category term="spring" /><category term="java" /><category term="php" /><category term="laravel" /><category term="flask" /><category term="python" /><summary type="html"><![CDATA[Cómo he dockerizado mi vps para alojar aplicaciones: spring, laravel, flask...y más]]></summary></entry><entry><title type="html">Dockerizando VPS</title><link href="https://rarcos.com/2023/03/11/Dockerizando-VPS/" rel="alternate" type="text/html" title="Dockerizando VPS" /><published>2023-03-11T06:41:00+01:00</published><updated>2023-03-11T06:41:00+01:00</updated><id>https://rarcos.com/2023/03/11/Dockerizando%20VPS</id><content type="html" xml:base="https://rarcos.com/2023/03/11/Dockerizando-VPS/"><![CDATA[<p>He traspasado todas mis aplicaciones que tenía en heroku a un vps propio y además he aprovechado para dockerizarlas todas, incluyendo bases de datos y otros servicios web. Concretamente he dockerizado:</p>
 <ul>
   <li><a href="#cont-spring-boot">Spring Boot</a></li>
   <li><a href="#cont-laravel">Laravel</a></li>
@@ -1231,9 +1302,9 @@ npm <span class="nb">install
 - password: admin
 </code></pre></div></div>
 
-<p>Esta es la demostración de la aplicación que he realizado (click <a href="https://vps.rarcos.com:9443">aquí</a> o en la imagen):</p>
+<p>Esta es la demostración de la aplicación que he realizado (click <a href="https://vps.rarcos.com:10442">aquí</a> o en la imagen):</p>
 
-<p><a href="https://vps.rarcos.com:9443"><img src="/images/pages/spring-inmobiliaria.png" alt="Ir a ver la app en funcionamiento" /></a></p>
+<p><a href="https://vps.rarcos.com:10442"><img src="/images/pages/spring-inmobiliaria.png" alt="Ir a ver la app en funcionamiento" /></a></p>
 
 <hr />
 
@@ -1895,217 +1966,4 @@ RoBERTa-base-bne es un modelo de lenguaje enmascarado basado en transformadores 
 
 <p><em>Repositorio con el contenido</em></p>
 
-<p><a href="https://colab.research.google.com/drive/16diuU5pQSETl3VQeh6E909YFsbtlfX3Z"><img src="/images/pages/repository_small_colab.png" alt="Repositorio" /></a></p>]]></content><author><name></name></author><category term="python" /><category term="pytorch" /><category term="ia" /><category term="colab" /><category term="bert" /><summary type="html"><![CDATA[Utilización del modelo de aprendizaje profundo RoBERTa para pregruntas y respuestas.]]></summary></entry><entry><title type="html">Python - IA ejemplo de uso de Bert Q&amp;amp;A exportado con flask</title><link href="https://rarcos.com/2022/03/18/IA-Bert-flask/" rel="alternate" type="text/html" title="Python - IA ejemplo de uso de Bert Q&amp;amp;A exportado con flask" /><published>2022-03-18T15:33:28+01:00</published><updated>2022-03-18T15:33:28+01:00</updated><id>https://rarcos.com/2022/03/18/IA-Bert-flask</id><content type="html" xml:base="https://rarcos.com/2022/03/18/IA-Bert-flask/"><![CDATA[<h1 id="utilización-de-bert-en-flask">Utilización de Bert en flask</h1>
-
-<p>El BERT (Bidirectional Encoder Representations from Transformers) puede utilizarse para una de estas aplicaciones, es decir, la de preguntas y respuestas. Le das al modelo de aprendizaje profundo un párrafo para que lo lea y luego le haces una pregunta relacionada con el mismo. Hay muchas aplicaciones de este tipo en las que BERT ha demostrado ser lo suficientemente fuerte en PNL (Comprensión del Lenguaje Natural para ser más precisos). El concepto de BERT se introdujo en 2018. Desde entonces, han surgido variaciones de BERT como ALBERT, RoBERTa, MobileBERT, etc. Puede leer sobre el documento original <a href="https://arxiv.org/pdf/1810.04805.pdf">aquí</a>.</p>
-
-<p>Utilizaremos una versión de BERT especial para web, más ligera, está en <a href="https://huggingface.co/mrm8488/distill-bert-base-spanish-wwm-cased-finetuned-spa-squad2-es">huggingface</a> para un conjunto de datos de preguntas y respuestas, es decir, Stanford Question Answering Dataset (SQuAD) y desplegaremos el modelo afinado en Heroku para la inferencia en tiempo real.</p>
-
-<hr />
-
-<p>Esta es la aplicación que yo he realizado basándome en la del tutorial y he aplicado algunas modificaciones:</p>
-
-<p><a href="https://vps.rarcos.com:11443/">https://vps.rarcos.com:11443/</a></p>
-
-<hr />
-
-<p><strong>Nota</strong>
-Asegúrese de seguir esta estructura de carpetas:</p>
-
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">/web-app
-|--templates
-|----index.html
-|--app.py
-|--requirements.txt
-|--Procfile</code></pre></figure>
-
-<h2 id="paso-1">Paso 1</h2>
-
-<p>Como esto tiene que ser desplegado en Heroku, vamos a asegurarnos de que Heroku instala todas las bibliotecas necesarias para ejecutar el programa.
-Haz un archivo llamado “requirements.txt” y pon las siguientes librerías en el archivo:</p>
-
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">https://download.pytorch.org/whl/cpu/torch-1.3.1%2Bcpu-cp36-cp36m-linux_x86_64.whl
-<span class="nv">transformers</span><span class="o">==</span>3.0.2
-<span class="nv">numpy</span><span class="o">==</span>1.19.1
-flask
-<span class="nv">joblib</span><span class="o">==</span>0.16.0
-<span class="nv">sentencepiece</span><span class="o">==</span>0.1.91
-<span class="nv">urllib3</span><span class="o">==</span>1.25.10</code></pre></figure>
-
-<p>Para instalar las dependencias en un entorno, tipo anaconda, no funciona la descarga directa de pytorch para cpu. Es necesario ejecutar:</p>
-
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">pip3 <span class="nb">install </span><span class="nv">torch</span><span class="o">==</span>1.3.1+cpu <span class="nv">torchvision</span><span class="o">==</span>0.4.2+cpu <span class="nt">-f</span> https://download.pytorch.org/whl/torch_stable.html</code></pre></figure>
-
-<p>Más info: <a href="https://github.com/pytorch/pytorch/issues/29434">en este enlace</a> y este <a href="https://foroayuda.es/donde-obtengo-una-version-de-pytorch-solo-para-cpu/">otro enlace</a> que tiene el versionado de pytorch.</p>
-
-<h2 id="paso-2">Paso 2</h2>
-
-<p>Haz un archivo llamado “app.py” y pon el siguiente código:</p>
-
-<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">os</span>
-
-<span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Flask</span><span class="p">,</span> <span class="n">render_template</span>
-
-<span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">request</span>
-
-<span class="kn">import</span> <span class="nn">torch</span>
-
-<span class="kn">from</span> <span class="nn">transformers</span> <span class="kn">import</span> <span class="n">pipeline</span>
-
-<span class="c1"># name = "twmkn9/albert-base-v2-squad2"
-</span>
-<span class="c1"># name = "distilbert-base-uncased-distilled-squad"
-</span>
-<span class="n">nlp</span> <span class="o">=</span> <span class="n">pipeline</span><span class="p">(</span>
-
-    <span class="s">'question-answering'</span><span class="p">,</span>
-
-    <span class="n">model</span><span class="o">=</span><span class="s">'mrm8488/distill-bert-base-spanish-wwm-cased-finetuned-spa-squad2-es'</span><span class="p">,</span>
-
-    <span class="n">tokenizer</span><span class="o">=</span><span class="p">(</span>
-
-    <span class="s">'mrm8488/distill-bert-base-spanish-wwm-cased-finetuned-spa-squad2-es'</span><span class="p">,</span>
-
-    <span class="p">{</span><span class="s">"use_fast"</span><span class="p">:</span> <span class="bp">False</span><span class="p">}</span>
-
-    <span class="p">)</span>
-
-<span class="p">)</span>
-
-<span class="k">def</span> <span class="nf">answer_question</span><span class="p">(</span><span class="n">question</span><span class="p">,</span> <span class="n">answer_text</span><span class="p">):</span>
-
-    <span class="k">try</span><span class="p">:</span>
-
-    <span class="n">answer</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">({</span><span class="s">'question'</span><span class="p">:</span><span class="n">question</span><span class="p">,</span> <span class="s">'context'</span><span class="p">:</span><span class="n">answer_text</span><span class="p">})</span>
-
-    <span class="k">return</span> <span class="n">answer</span><span class="p">[</span><span class="s">'answer'</span><span class="p">]</span>
-
-    <span class="k">except</span> <span class="nb">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-
-    <span class="k">print</span><span class="p">(</span><span class="s">"Error en la generación de la respuesta:"</span><span class="p">,</span> <span class="n">e</span><span class="p">)</span>
-
-<span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="n">__name__</span><span class="p">)</span>
-
-<span class="o">@</span><span class="n">app</span><span class="p">.</span><span class="n">route</span><span class="p">(</span><span class="s">'/'</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s">'GET'</span><span class="p">,</span> <span class="s">'POST'</span><span class="p">])</span>
-
-<span class="k">def</span> <span class="nf">index</span><span class="p">():</span>
-
-    <span class="k">if</span> <span class="n">request</span><span class="p">.</span><span class="n">method</span> <span class="o">==</span> <span class="s">'POST'</span><span class="p">:</span>
-
-    <span class="n">form</span> <span class="o">=</span> <span class="n">request</span><span class="p">.</span><span class="n">form</span>
-
-    <span class="n">result</span> <span class="o">=</span> <span class="p">[]</span>
-
-    <span class="n">bert_abstract</span> <span class="o">=</span> <span class="n">form</span><span class="p">[</span><span class="s">'paragraph'</span><span class="p">]</span>
-
-    <span class="n">question</span> <span class="o">=</span> <span class="n">form</span><span class="p">[</span><span class="s">'question'</span><span class="p">]</span>
-
-    <span class="n">result</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">form</span><span class="p">[</span><span class="s">'question'</span><span class="p">])</span>
-
-    <span class="n">result</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">answer_question</span><span class="p">(</span><span class="n">question</span><span class="p">,</span> <span class="n">bert_abstract</span><span class="p">))</span>
-
-    <span class="n">result</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">form</span><span class="p">[</span><span class="s">'paragraph'</span><span class="p">])</span>
-
-    <span class="k">return</span> <span class="n">render_template</span><span class="p">(</span><span class="s">"index.html"</span><span class="p">,</span><span class="n">result</span> <span class="o">=</span> <span class="n">result</span><span class="p">)</span>
-
-    <span class="c1"># answer = answer_question(question, bert_abstract)
-</span>
-    <span class="c1"># return answer
-</span>
-    <span class="k">return</span> <span class="n">render_template</span><span class="p">(</span><span class="s">"index.html"</span><span class="p">)</span>
-
-<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">'__main__'</span><span class="p">:</span>
-
-    <span class="n">port</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">os</span><span class="p">.</span><span class="n">environ</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="s">"PORT"</span><span class="p">,</span> <span class="mi">5000</span><span class="p">))</span>
-
-    <span class="n">app</span><span class="p">.</span><span class="n">run</span><span class="p">(</span><span class="n">host</span><span class="o">=</span><span class="s">'0.0.0.0'</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="n">port</span><span class="p">)</span></code></pre></figure>
-
-<p>Esto obtendrá el modelo BERT y el tokenizador necesario para el modelo. Hemos utilizado “mrm8488/bert-small-finetuned-squadv2” de huggingface ya que es comparativamente más pequeño que los otros modelos BERT y tenemos un espacio limitado de 512 MBs en la cuenta de nivel gratuito de Heroku. A continuación, creamos un servidor flask para recibir las entradas en forma de párrafos y preguntas.
-Ahora, haz una carpeta llamada “templates” y dentro de la carpeta, crea un archivo llamado “index.html”. Pon el siguiente código en el archivo:</p>
-
-<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="cp">&lt;!DOCTYPE html&gt;</span>
-
-<span class="nt">&lt;html&gt;</span>
-  <span class="nt">&lt;head&gt;</span>
-    <span class="nt">&lt;title&gt;</span>Bert Question Answering<span class="nt">&lt;/title&gt;</span>
-    <span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">"viewport"</span> <span class="na">content=</span><span class="s">"width=device-width, initial-scale=1.0"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;link</span> <span class="na">href=</span><span class="s">"//netdna.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">media=</span><span class="s">"screen"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;style&gt;</span>
-      <span class="nc">.container</span> <span class="p">{</span>
-        <span class="nl">max-width</span><span class="p">:</span> <span class="m">1000px</span><span class="p">;</span>
-      <span class="p">}</span>
-    <span class="nt">&lt;/style&gt;</span>
-  <span class="nt">&lt;/head&gt;</span>
-  <span class="nt">&lt;body&gt;</span>
-    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"container"</span><span class="nt">&gt;</span>
-      <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"row-sm-5 row-sm-offset-1"</span><span class="nt">&gt;</span>
-          <span class="nt">&lt;h4&gt;</span>Enter a paragraph and a question to test BERT<span class="nt">&lt;/h4&gt;</span>
-            <span class="nt">&lt;form</span> <span class="na">role=</span><span class="s">"form"</span> <span class="na">method=</span><span class="s">'POST'</span> <span class="na">action=</span><span class="s">'/'</span><span class="nt">&gt;</span>
-              <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"form-group"</span><span class="nt">&gt;</span>
-                <span class="nt">&lt;textarea</span> <span class="na">name=</span><span class="s">"paragraph"</span> <span class="na">class=</span><span class="s">"form-control"</span> <span class="na">id=</span><span class="s">"url-box"</span> <span class="na">placeholder=</span><span class="s">"Enter a paragraph"</span> <span class="na">style=</span><span class="s">"max-width: 300px;"</span> <span class="na">autofocus</span> <span class="na">required</span><span class="nt">&gt;</span>
-			
-		<span class="nt">&lt;/textarea&gt;</span>
-                 <span class="nt">&lt;br&gt;</span>
-                <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">name=</span><span class="s">"question"</span> <span class="na">class=</span><span class="s">"form-control"</span> <span class="na">id=</span><span class="s">"url-box"</span> <span class="na">placeholder=</span><span class="s">"Enter a question"</span> <span class="na">style=</span><span class="s">"max-width: 300px;"</span> <span class="na">autofocus</span> <span class="na">required</span><span class="nt">&gt;</span>
-              <span class="nt">&lt;/div&gt;</span>
-              <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"submit"</span> <span class="na">class=</span><span class="s">"btn btn-default"</span><span class="nt">&gt;</span>Predict<span class="nt">&lt;/button&gt;</span>
-            <span class="nt">&lt;/form&gt;</span>
-          <span class="nt">&lt;br&gt;</span>
-      <span class="nt">&lt;/div&gt;</span>
-
-    `<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"row-sm-5 row-sm-offset-1"</span><span class="nt">&gt;</span>`
-          
-      `<span class="nt">&lt;/div&gt;</span>`
-
-    `<span class="nt">&lt;/div&gt;</span>`
-
-<span class="nt">&lt;/body&gt;</span>
-<span class="nt">&lt;/html&gt;</span></code></pre></figure>
-
-<p>Con el código anterior, creamos un formulario para recibir las entradas.</p>
-
-<h2 id="paso-3">Paso 3</h2>
-
-<p>Crea un archivo llamándolo “Procfile” sin ninguna extensión. Y pon el siguiente código:</p>
-
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">web: python app.py</code></pre></figure>
-
-<p>Esto le dirá a Heroku qué hacer una vez que la aplicación haya sido desplegada.</p>
-
-<h2 id="paso-4">Paso 4</h2>
-
-<p>Tenemos nuestro código listo. Ahora vamos a hablar con Heroku. Asegúrate de tener instalado Heroku CLI y git.</p>
-
-<p>Una vez hecho esto, escriba los siguientes comandos en su terminal de comandos:</p>
-
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">heroku login</code></pre></figure>
-
-<p>Esto te conectará con Heroku CLI
-A continuación, escriba esto para crear una aplicación heroku:</p>
-
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">heroku create your_app_name</code></pre></figure>
-
-<p>El nombre de tu aplicación puede ser cualquier cosa única.
-A continuación, escribe los siguientes comandos para desplegar tu aplicación en Heroku:</p>
-
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">git init
-git add <span class="nb">.</span>
-git commit <span class="nt">-m</span> <span class="s1">'initial commit'</span>
-git push heroku master</code></pre></figure>
-
-<p>¡Hurra! ¡Tu aplicación ha sido desplegada! Veamos cómo funciona.
-Abre una ventana del navegador y escribe la siguiente dirección web:</p>
-
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">https://your_app_name.herokuapp.com</code></pre></figure>
-
-<p>Debería ver una página web como ésta:</p>
-
-<p><img src="/images/pages/0_1YwbgemSDKHq0WQ2.png" alt="app en funcionamiento" /></p>
-
-<p><em>Este tutorial está copiado y traducido de <a href="https://medium.com/analytics-vidhya/deploying-bert-on-heroku-7df1d23f9c43">aquí</a> quién tiene todos los derechos.
-La aplicación original: “I have deployed my BERT app <a href="https://bertqna.herokuapp.com/">here</a> if you wish to give it a try.”</em></p>
-
-<hr />
-<p><strong>Fuentes:</strong></p>
-
-<p><a href="https://medium.com/analytics-vidhya/deploying-bert-on-heroku-7df1d23f9c43">https://medium.com/analytics-vidhya/deploying-bert-on-heroku-7df1d23f9c43</a></p>]]></content><author><name></name></author><category term="python" /><category term="pytorch" /><category term="ia" /><category term="flask" /><category term="bert" /><summary type="html"><![CDATA[Utilización del modelo de aprendizaje profundo Bert para pregruntas y respuestas, exportado en flask.]]></summary></entry></feed>
+<p><a href="https://colab.research.google.com/drive/16diuU5pQSETl3VQeh6E909YFsbtlfX3Z"><img src="/images/pages/repository_small_colab.png" alt="Repositorio" /></a></p>]]></content><author><name></name></author><category term="python" /><category term="pytorch" /><category term="ia" /><category term="colab" /><category term="bert" /><summary type="html"><![CDATA[Utilización del modelo de aprendizaje profundo RoBERTa para pregruntas y respuestas.]]></summary></entry></feed>

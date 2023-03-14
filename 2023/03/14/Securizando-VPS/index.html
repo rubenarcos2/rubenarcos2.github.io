@@ -5,9 +5,9 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Spring 5 - Spring Boot y MVC</title>
+  <title>Securizando VPS</title>
   <meta name='description'
-    content='Uso del framework Spring 5 con Spring Boot: MVC, spring security, spring JPA, postgreSQL, upload file, thymeleaf, sessions...'>
+    content='Cómo he dockerizado mi vps para alojar aplicaciones: spring, laravel, flask...y más'>
 
   <!-- Google Fonts -->
   <link
@@ -22,7 +22,7 @@
 
   <!-- Main Stylesheet -->
   <link rel="stylesheet" href="/css/main.css">
-  <link rel="canonical" href="https://rarcos.com/2022/07/15/Spring-5-MVC/">
+  <link rel="canonical" href="https://rarcos.com/2023/03/14/Securizando-VPS/">
   <link rel="alternate" type="application/rss+xml" title="Rubén Arcos" href="/%20/feed.xml">
 
   <!-- Chrome, Firefox OS and Opera -->
@@ -149,12 +149,12 @@
   <ul id="results-container" class="search-results-list"></ul>  
 </div> <!-- /.search-box -->
 
-        <div class="post-header" style="background: url( /images/pages/mvc.png)">
+        <div class="post-header" style="background: url( /images/pages/docker.png)">
   <div class="post-header-info">
-    <h1 class="post-title">Spring 5 - Spring Boot y MVC</h1>
+    <h1 class="post-title">Securizando VPS</h1>
     <div class="post-meta">
-      <time datetime="2022-07-15T16:33:28+02:00">
-         15/07/2022
+      <time datetime="2023-03-14T06:41:00+01:00">
+         14/03/2023
       </time>
     </div>
   </div>
@@ -166,47 +166,78 @@
   <article class="post">
 
     <div class="post-content">
-      <h1 id="spring-boot-y-spring-mvc">Spring Boot y Spring MVC</h1>
+      <p>A modo de apuntes, una securización estándar de un VPS:</p>
+<ul>
+  <li><a href="#seg-basica">Seguridad básica</a></li>
+  <li><a href="#ssh">autenticación basada en clave SSH </a></li>
+  <li><a href="#maldet">Detección de malware - maldet</a></li>
+  <li><a href="#postfix">Postfix - Envío de emai</a></li>
+</ul>
 
-<p>Desarrollo de una aplicaciones web usando Spring Boot:</p>
+<p><a name="seg-basica"></a></p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>- Spring MVC
-    - Thymeleaf
-    - Bootstrap
-- Spring JPA
-    - PostgreSQL
-- Upload files to server
-- Spring security
-    - Persistence on DB
-    - Sessions
-</code></pre></div></div>
+<h1 id="seguridad-de-linux-y-debilidades-comunes">Seguridad de Linux y debilidades comunes</h1>
 
-<p>Los credenciales son:</p>
+<p>15 consejos de seguridad de VPS para proteger la seguridad de tu servidor</p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>- username: admin
-- password: admin
-</code></pre></div></div>
+<p><a href="https://www.hostinger.es/tutoriales/seguridad-vps">https://www.hostinger.es/tutoriales/seguridad-vps</a></p>
 
-<p>Esta es la demostración de la aplicación que he realizado (click <a href="https://vps.rarcos.com:10442">aquí</a> o en la imagen):</p>
+<p><a name="ssh"></a></p>
 
-<p><a href="https://vps.rarcos.com:10442"><img src="/images/pages/spring-inmobiliaria.png" alt="Ir a ver la app en funcionamiento" /></a></p>
+<h1 id="autenticación-basada-en-clave-ssh---acceso">Autenticación basada en clave SSH - Acceso</h1>
 
-<hr />
+<p>Generación del para de claves: pública-privada</p>
 
-<p><em>Repositorio con el contenido</em></p>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">ssh-keygen <span class="nt">-t</span> rsa</code></pre></figure>
 
-<p><a href="https://github.com/rubenarcos2/spring-Inmobiliaria"><img src="/images/pages/repository_small.png" alt="Repositorio" /></a></p>
+<p>Autorización de la clave pública</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nb">cat</span> ~/.ssh/id_rsa.pub <span class="o">&gt;&gt;</span> ~/.ssh/authorized_keys</code></pre></figure>
+
+<p>Deshabilitar la autenticación de contraseña en su servidor</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nb">sudo </span>nano /etc/ssh/sshd_config</code></pre></figure>
+
+<p>Cambiar el valor de PasswordAuthentication dentro del sshd_config a:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">PasswordAuthentication no</code></pre></figure>
+
+<p>Reiniciamos el servidor SSH para que se hagan efectivo los cambios:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">service ssh restart</code></pre></figure>
+
+<p>Pasamos por sftp la clave privada <em>id_rsa</em> al cliente que vayamos a utilizar. Putty en mi caso.
+En la parte del cliente, instalamos putty y generamos la clave privada de la siguiente forma:</p>
+
+<p><a href="https://www.simplified.guide/putty/convert-ssh-key-to-ppk">https://www.simplified.guide/putty/convert-ssh-key-to-ppk</a></p>
+
+<p><a name="maldet"></a></p>
+
+<h1 id="detección-de-malware---maldet">Detección de malware - maldet</h1>
+
+<p>Instalación y puesta en funcionamiento:</p>
+
+<p><a href="https://codigonaranja.com/como-detectar-malware-en-tu-sitio-web-servidores-linux-ubuntu-debian">https://codigonaranja.com/como-detectar-malware-en-tu-sitio-web-servidores-linux-ubuntu-debian</a></p>
+
+<p>Ve informes y reportes:</p>
+
+<p><a href="https://wpbeaches.com/set-lmd-maldet-clamav-runcloud/">https://wpbeaches.com/set-lmd-maldet-clamav-runcloud/</a></p>
+
+<p>Escaneo manual:</p>
+
+<p><a href="https://www.nosolocodigo.com/linux-malware-detect-escaner-para-aplicaciones-web-open-source/">https://www.nosolocodigo.com/linux-malware-detect-escaner-para-aplicaciones-web-open-source/</a></p>
+
+<p><a name="postfix"></a></p>
+
+<h1 id="instalación-y-configuración-de-postfix-para-usar-el-smtp-de-gmail">Instalación y configuración de Postfix para usar el SMTP de Gmail</h1>
+
+<p><a href="http://somebooks.es/configurar-postfix-para-usar-el-smtp-de-gmail-en-ubuntu-20-04-lts/">http://somebooks.es/configurar-postfix-para-usar-el-smtp-de-gmail-en-ubuntu-20-04-lts/</a></p>
 
 <hr />
 
 <p><strong>Fuentes:</strong></p>
 
-<p><a href="https://openwebinars.net/academia/aprende/spring-boot/">https://openwebinars.net/academia/aprende/spring-boot/</a>
-<a href="https://github.com/OpenWebinarsNet/curso_spring_boot_mvc">https://github.com/OpenWebinarsNet/curso_spring_boot_mvc</a>
-<a href="https://github.com/OpenWebinarsNet/curso_spring_boot_mvc/blob/master/19_Seguridad_completo/src/main/java/com/openwebinars/spring/seguridad/SecurityConfig.java">https://github.com/OpenWebinarsNet/curso_spring_boot_mvc/blob/master/19_Seguridad_completo/src/main/java/com/openwebinars/spring/seguridad/SecurityConfig.java</a>
-<a href="https://fullstackdeveloper.guru/2020/06/05/how-to-do-user-authentication-in-spring-boot-using-postgresql-database/">https://fullstackdeveloper.guru/2020/06/05/how-to-do-user-authentication-in-spring-boot-using-postgresql-database/</a>
-<a href="https://www.jhipster.tech/tips/028_tip_pgadmin_heroku.html">https://www.jhipster.tech/tips/028_tip_pgadmin_heroku.html</a>
-<a href="https://huongdanjava.com/introduction-about-spring-session.html">https://huongdanjava.com/introduction-about-spring-session.html</a></p>
+<p><a href="https://www.hostinger.es/tutoriales/seguridad-vps">https://www.hostinger.es/tutoriales/seguridad-vps</a></p>
 
     </div>
 
@@ -229,7 +260,7 @@
       <ul class="post-footer-list">
         <li class="post-footer-item">
           <a class="post-facebook"
-            href="https://www.facebook.com/sharer/sharer.php?u=https://rarcos.com/2022/07/15/Spring-5-MVC/"
+            href="https://www.facebook.com/sharer/sharer.php?u=https://rarcos.com/2023/03/14/Securizando-VPS/"
             onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
             title="Share on Facebook" rel="nofollow"><i class="fa fa-facebook"
               aria-hidden="true"></i><span>Facebook</span></a>
@@ -237,21 +268,21 @@
 
         <li class="post-footer-item">
           <a class="post-twitter"
-            href="https://twitter.com/intent/tweet?text=Spring%205%20-%20Spring%20Boot%20y%20MVC&url=https://rarcos.com/2022/07/15/Spring-5-MVC/"
+            href="https://twitter.com/intent/tweet?text=Securizando%20VPS&url=https://rarcos.com/2023/03/14/Securizando-VPS/"
             onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
             title="Share on Twitter" rel="nofollow"><i class="fa fa-twitter"
               aria-hidden="true"></i><span>Twitter</span></a>
         </li>
 
         <li class="post-footer-item">
-          <a href="http://pinterest.com/pin/create/button/?url=https://rarcos.com/2022/07/15/Spring-5-MVC/&amp;media=https://rarcos.com/images/pages/mvc.png&amp;description=Spring%205%20-%20Spring%20Boot%20y%20MVC"
+          <a href="http://pinterest.com/pin/create/button/?url=https://rarcos.com/2023/03/14/Securizando-VPS/&amp;media=https://rarcos.com/images/pages/docker.png&amp;description=Securizando%20VPS"
             onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=900,height=500,toolbar=1,resizable=0'); return false;"
             class="post-pinterest" title="Share on Pinterest" rel="nofollow"><i class="fa fa-pinterest"
               aria-hidden="true"></i><span>Pinterest</span></a>
         </li>
 
         <li class="post-footer-item">
-          <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://rarcos.com/2022/07/15/Spring-5-MVC/&title=Spring%205%20-%20Spring%20Boot%20y%20MVC"
+          <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://rarcos.com/2023/03/14/Securizando-VPS/&title=Securizando%20VPS"
             onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=900,height=500,toolbar=1,resizable=0'); return false;"
             class="post-linkedin" title="Share on Linkedin" rel="nofollow"><i class="fa fa-linkedin"
               aria-hidden="true"></i><span>Linkedin</span></a>
@@ -261,13 +292,23 @@
       <div class="post-tag">
         <span>Tags:</span>
         
-        <a href="/tags#java" class="tag">java</a>
+        <a href="/tags#docker" class="tag">docker</a>
+        
+        <a href="/tags#docker-compose" class="tag">docker-compose</a>
+        
+        <a href="/tags#vps" class="tag">vps</a>
         
         <a href="/tags#spring" class="tag">spring</a>
         
-        <a href="/tags#MVC" class="tag">MVC</a>
+        <a href="/tags#java" class="tag">java</a>
         
-        <a href="/tags#spring5" class="tag">spring5</a>
+        <a href="/tags#php" class="tag">php</a>
+        
+        <a href="/tags#laravel" class="tag">laravel</a>
+        
+        <a href="/tags#flask" class="tag">flask</a>
+        
+        <a href="/tags#python" class="tag">python</a>
         
       </div>
       
@@ -309,12 +350,9 @@
 
     <div class="page-navigation clearfix">
       
-      <a class="prev-page" href="/2022/07/07/Java-Stream-Api/"><i class="fa fa-angle-left"
-          aria-hidden="true"></i><span>Java - Stream Api</span></a>
+      <a class="prev-page" href="/2023/03/11/Dockerizando-VPS/"><i class="fa fa-angle-left"
+          aria-hidden="true"></i><span>Dockerizando VPS</span></a>
       
-      
-      <a class="next-page" href="/2022/07/17/Laravel-9-MVC/"><span>Laravel 9 - PHP 8 y MVC</span><i class="fa fa-angle-right"
-          aria-hidden="true"></i></a>
       
     </div>
 
