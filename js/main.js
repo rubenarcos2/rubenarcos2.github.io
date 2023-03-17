@@ -126,7 +126,7 @@ function readPostContent(evt){
       synth.cancel();
       utterThis.text = "Narración parada";
       synth.speak(utterThis);
-      evt.text = "Leer artículo";
+      evt.text = "Leer artículo en voz alta";
     }else{
       evt.text = "Parar narración";
       synth.speak(utterThis);
