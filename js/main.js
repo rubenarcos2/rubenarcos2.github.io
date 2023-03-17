@@ -119,7 +119,7 @@ function readPostContent(evt){
     utterThis.lang = 'es-ES';
 
     utterThis.addEventListener("end", (event) => {
-      document.getElementById("readPostContent").childNodes[0].text = "Leer artículo";
+      document.getElementById("readPostContent").childNodes[0].text = "Leer artículo en voz alta";
     });
 
     if(synth.speaking){
