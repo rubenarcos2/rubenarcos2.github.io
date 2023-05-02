@@ -2044,10 +2044,11 @@ table tr:hover {
     width: -webkit-calc(100% / 12 * 6 - 30px);
     width: calc(100% / 12 * 6 - 30px);
   }
-
+/*
   #readPostContent{
     display: none;
   }
+*/
 }
 
 @media only screen and (max-width: 992px) {
@@ -2140,10 +2141,11 @@ table tr:hover {
   .page-header .page-title {
     font-size: 40px;
   }
-
+/*
   #readPostContent{
     display: none;
   }
+*/
 }
 
 @media screen and (max-width: 576px) {
