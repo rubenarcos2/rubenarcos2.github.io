@@ -1,4 +1,14 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="https://rarcos.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://rarcos.com/" rel="alternate" type="text/html" /><updated>2023-06-14T10:19:19+02:00</updated><id>https://rarcos.com/feed.xml</id><title type="html">Rubén Arcos</title><subtitle>Desarrollador de aplicaciones multiplataformas</subtitle><entry><title type="html">Securizando VPS</title><link href="https://rarcos.com/2023/03/14/Securizando-VPS/" rel="alternate" type="text/html" title="Securizando VPS" /><published>2023-03-14T06:41:00+01:00</published><updated>2023-03-14T06:41:00+01:00</updated><id>https://rarcos.com/2023/03/14/Securizando%20VPS</id><content type="html" xml:base="https://rarcos.com/2023/03/14/Securizando-VPS/"><![CDATA[<p>A modo de apuntes, una securización estándar de un VPS:</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="https://rarcos.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://rarcos.com/" rel="alternate" type="text/html" /><updated>2023-07-01T11:54:26+02:00</updated><id>https://rarcos.com/feed.xml</id><title type="html">Rubén Arcos</title><subtitle>Desarrollador de aplicaciones multiplataformas</subtitle><entry><title type="html">Proyecto Integrado [En curso]</title><link href="https://rarcos.com/2023/06/30/Proyecto_integrado/" rel="alternate" type="text/html" title="Proyecto Integrado [En curso]" /><published>2023-06-30T16:33:28+02:00</published><updated>2023-06-30T16:33:28+02:00</updated><id>https://rarcos.com/2023/06/30/Proyecto_integrado</id><content type="html" xml:base="https://rarcos.com/2023/06/30/Proyecto_integrado/"><![CDATA[<p>Realizando el proyecto integrado fin del Ciclo Formativo de Grado Superior de Aplicaciones Web</p>
+
+<h1 id="presentación-y-exposición-del-proyecto">Presentación y exposición del proyecto</h1>
+
+<video autoplay="" width="100%" muted="" controls=""><source src="/images/pages/GesMerCa_defensa.mp4" type="video/mp4" /></video>
+
+<iframe src="/pdf/GesMerCa_defensa_anticopia.pdf#toolbar=0" frameborder="0" allowfullscreen="" width="660" height="500"></iframe>
+
+<h1 id="ejemplo-de-ejecución">Ejemplo de ejecución</h1>
+
+<p><a href="https://vps.rarcos.com:10448"><img src="/images/pages/gesmerca.png" alt="Repositorio" /></a> <a href="https://vps.rarcos.com:10448">Demostración web online</a></p>]]></content><author><name></name></author><category term="javascript" /><category term="php" /><category term="angular" /><category term="laravel" /><category term="proyecto integrado" /><category term="gesmerca" /><summary type="html"><![CDATA[Proyecto integrado fin del Ciclo Formativo de Grado Superior de Aplicaciones Web.]]></summary></entry><entry><title type="html">Securizando VPS</title><link href="https://rarcos.com/2023/03/14/Securizando-VPS/" rel="alternate" type="text/html" title="Securizando VPS" /><published>2023-03-14T06:41:00+01:00</published><updated>2023-03-14T06:41:00+01:00</updated><id>https://rarcos.com/2023/03/14/Securizando%20VPS</id><content type="html" xml:base="https://rarcos.com/2023/03/14/Securizando-VPS/"><![CDATA[<p>A modo de apuntes, una securización estándar de un VPS:</p>
 <ul>
   <li><a href="#seg-basica">Seguridad básica</a></li>
   <li><a href="#ssh">Autenticación basada en clave SSH </a></li>
@@ -492,26 +502,7 @@ services:
 <p><a href="https://github.com/rubenarcos2/ia-juego_hotel"><img src="/images/pages/repository_small.png" alt="Repositorio" /></a>
 <a href="https://colab.research.google.com/drive/1KEqghfPGeuk9u5u8_s531CCb7869Hn3u"><img src="/images/pages/repository_small_colab.png" alt="Generador de partidas" /></a>
 <a href="https://colab.research.google.com/drive/10rXkRiRnq59435RtOSICPrA1T2dXyxG6"><img src="/images/pages/repository_small_colab.png" alt="Programa IA" /></a>
-<a href="https://colab.research.google.com/drive/1c-ozdgzMSYzZD2el46knjWx0SRIi-hMC"><img src="/images/pages/repository_small_colab.png" alt="Programa Jugadores vs IA" /></a></p>]]></content><author><name></name></author><category term="python" /><category term="naives bayes" /><category term="ia" /><category term="colab" /><summary type="html"><![CDATA[Creación de un sistema de IA para aprendizaje de la decisión de compra para el juego del Hotel]]></summary></entry><entry><title type="html">JS Vanilla MVC - Spring API rest</title><link href="https://rarcos.com/2022/07/23/Vanilla-JS-MVC-Spring-API-rest/" rel="alternate" type="text/html" title="JS Vanilla MVC - Spring API rest" /><published>2022-07-23T16:33:28+02:00</published><updated>2022-07-23T16:33:28+02:00</updated><id>https://rarcos.com/2022/07/23/Vanilla%20JS%20MVC%20-%20Spring%20API%20rest</id><content type="html" xml:base="https://rarcos.com/2022/07/23/Vanilla-JS-MVC-Spring-API-rest/"><![CDATA[<h1 id="js-vanilla-mvc---spring-api-rest">JS Vanilla MVC - Spring API rest</h1>
-
-<p>Desarrollo de una app en JS Vanilla con MVC para consumir una api rest en Spring Boot.</p>
-
-<p>Esta es la demostración de la aplicación que he realizado (click <a href="/WorkspaceWeb/JSconsumeAPI">aquí</a> o en la imagen):</p>
-
-<p><a href="/WorkspaceWeb/JSconsumeAPI"><img src="/images/pages/api_rest.png" alt="Ir a ver la app en funcionamiento" /></a></p>
-
-<hr />
-
-<p><em>Repositorio con el contenido</em></p>
-
-<p><a href="https://github.com/rubenarcos2/spring-boot-api_rest"><img src="/images/pages/repository_small.png" alt="Repositorio" /></a>
-Servidor
-<a href="https://github.com/rubenarcos2/js-vanilla-api-client"><img src="/images/pages/repository_small.png" alt="Repositorio" /></a>
-Cliente</p>
-
-<hr />
-
-<p><strong>Fuentes:</strong></p>]]></content><author><name></name></author><category term="spring" /><category term="MVC" /><category term="js" /><category term="vanilla js" /><category term="api" /><summary type="html"><![CDATA[Desarrollo de una app en JS Vanilla con MVC para consumir una api rest en Spring Boot]]></summary></entry><entry><title type="html">C# + Arduino - Detector mute</title><link href="https://rarcos.com/2022/07/23/C-+-Arduino-Detector-mute/" rel="alternate" type="text/html" title="C# + Arduino - Detector mute" /><published>2022-07-23T16:33:28+02:00</published><updated>2022-07-23T16:33:28+02:00</updated><id>https://rarcos.com/2022/07/23/C#%20+%20Arduino%20-%20Detector%20mute</id><content type="html" xml:base="https://rarcos.com/2022/07/23/C-+-Arduino-Detector-mute/"><![CDATA[<h1 id="c--arduino---detector-mute-micrófono-y-webcam-en-uso">C# + Arduino - Detector mute micrófono y webcam en uso</h1>
+<a href="https://colab.research.google.com/drive/1c-ozdgzMSYzZD2el46knjWx0SRIi-hMC"><img src="/images/pages/repository_small_colab.png" alt="Programa Jugadores vs IA" /></a></p>]]></content><author><name></name></author><category term="python" /><category term="naives bayes" /><category term="ia" /><category term="colab" /><summary type="html"><![CDATA[Creación de un sistema de IA para aprendizaje de la decisión de compra para el juego del Hotel]]></summary></entry><entry><title type="html">C# + Arduino - Detector mute</title><link href="https://rarcos.com/2022/07/23/C-+-Arduino-Detector-mute/" rel="alternate" type="text/html" title="C# + Arduino - Detector mute" /><published>2022-07-23T16:33:28+02:00</published><updated>2022-07-23T16:33:28+02:00</updated><id>https://rarcos.com/2022/07/23/C#%20+%20Arduino%20-%20Detector%20mute</id><content type="html" xml:base="https://rarcos.com/2022/07/23/C-+-Arduino-Detector-mute/"><![CDATA[<h1 id="c--arduino---detector-mute-micrófono-y-webcam-en-uso">C# + Arduino - Detector mute micrófono y webcam en uso</h1>
 
 <p>Desarrollo de una app en C# que se comunique con Arduino para la detección del micrófono, el estado muteado y la activación de la webcam.</p>
 
@@ -828,7 +819,26 @@ Cliente</p>
 <p><strong>Fuentes</strong></p>
 
 <p><a href="https://codingvision.net/c-edit-registry-keys-or-values">https://codingvision.net/c-edit-registry-keys-or-values</a>
-<a href="https://superuser.com/questions/1346676/disabling-camera-via-regedit">https://superuser.com/questions/1346676/disabling-camera-via-regedit</a></p>]]></content><author><name></name></author><category term="C#" /><category term="arduino" /><category term="iot" /><summary type="html"><![CDATA[Desarrollo de una app en C# que se comunique con Arduino para la detección del micrófono, el estado muteado y la activación de la webcam]]></summary></entry><entry><title type="html">Laravel 9 - PHP 8 y MVC</title><link href="https://rarcos.com/2022/07/17/Laravel-9-MVC/" rel="alternate" type="text/html" title="Laravel 9 - PHP 8 y MVC" /><published>2022-07-17T16:33:28+02:00</published><updated>2022-07-17T16:33:28+02:00</updated><id>https://rarcos.com/2022/07/17/Laravel%209%20-%20MVC</id><content type="html" xml:base="https://rarcos.com/2022/07/17/Laravel-9-MVC/"><![CDATA[<h1 id="laravel-9-php-8-y-mvc">Laravel 9, PHP 8 y MVC</h1>
+<a href="https://superuser.com/questions/1346676/disabling-camera-via-regedit">https://superuser.com/questions/1346676/disabling-camera-via-regedit</a></p>]]></content><author><name></name></author><category term="C#" /><category term="arduino" /><category term="iot" /><summary type="html"><![CDATA[Desarrollo de una app en C# que se comunique con Arduino para la detección del micrófono, el estado muteado y la activación de la webcam]]></summary></entry><entry><title type="html">JS Vanilla MVC - Spring API rest</title><link href="https://rarcos.com/2022/07/23/Vanilla-JS-MVC-Spring-API-rest/" rel="alternate" type="text/html" title="JS Vanilla MVC - Spring API rest" /><published>2022-07-23T16:33:28+02:00</published><updated>2022-07-23T16:33:28+02:00</updated><id>https://rarcos.com/2022/07/23/Vanilla%20JS%20MVC%20-%20Spring%20API%20rest</id><content type="html" xml:base="https://rarcos.com/2022/07/23/Vanilla-JS-MVC-Spring-API-rest/"><![CDATA[<h1 id="js-vanilla-mvc---spring-api-rest">JS Vanilla MVC - Spring API rest</h1>
+
+<p>Desarrollo de una app en JS Vanilla con MVC para consumir una api rest en Spring Boot.</p>
+
+<p>Esta es la demostración de la aplicación que he realizado (click <a href="/WorkspaceWeb/JSconsumeAPI">aquí</a> o en la imagen):</p>
+
+<p><a href="/WorkspaceWeb/JSconsumeAPI"><img src="/images/pages/api_rest.png" alt="Ir a ver la app en funcionamiento" /></a></p>
+
+<hr />
+
+<p><em>Repositorio con el contenido</em></p>
+
+<p><a href="https://github.com/rubenarcos2/spring-boot-api_rest"><img src="/images/pages/repository_small.png" alt="Repositorio" /></a>
+Servidor
+<a href="https://github.com/rubenarcos2/js-vanilla-api-client"><img src="/images/pages/repository_small.png" alt="Repositorio" /></a>
+Cliente</p>
+
+<hr />
+
+<p><strong>Fuentes:</strong></p>]]></content><author><name></name></author><category term="spring" /><category term="MVC" /><category term="js" /><category term="vanilla js" /><category term="api" /><summary type="html"><![CDATA[Desarrollo de una app en JS Vanilla con MVC para consumir una api rest en Spring Boot]]></summary></entry><entry><title type="html">Laravel 9 - PHP 8 y MVC</title><link href="https://rarcos.com/2022/07/17/Laravel-9-MVC/" rel="alternate" type="text/html" title="Laravel 9 - PHP 8 y MVC" /><published>2022-07-17T16:33:28+02:00</published><updated>2022-07-17T16:33:28+02:00</updated><id>https://rarcos.com/2022/07/17/Laravel%209%20-%20MVC</id><content type="html" xml:base="https://rarcos.com/2022/07/17/Laravel-9-MVC/"><![CDATA[<h1 id="laravel-9-php-8-y-mvc">Laravel 9, PHP 8 y MVC</h1>
 
 <p>Desarrollo de una aplicaciones web usando Laravel 9 y PHP 8:</p>
 
@@ -1997,26 +2007,4 @@ desarrollar un programa que implemente las siguientes funcionalidades:</p>
 
 <p><a href="https://colab.research.google.com/drive/1ST8i9XHfSs3Q2V05bNJSYaeLBWgiaeMy"><img src="/images/pages/repository_small_colab.png" alt="Repositorio" /></a>
 <a href="https://drive.google.com/file/d/1QhejgenyBE_FBpFvKOOmlMja_Y5o-Xjv/view"><img src="/images/pages/repository_small_file.png" alt="Fichero 1" /></a>
-<a href="https://drive.google.com/file/d/1_TjHyRSwFDea6gVHYOz6u15U9Krd3U-D/view"><img src="/images/pages/repository_small_file.png" alt="Fichero 2" /></a></p>]]></content><author><name></name></author><category term="python" /><category term="NLTK" /><summary type="html"><![CDATA[Desarrollo de un buscador de sustantivos. El programa consistirá en preprocesar un documento, extraer todos sus sustantivos en minúsculas y guardarlos en un índice para poder hacer luego búsquedas solo de sustantivos.]]></summary></entry><entry><title type="html">Python - IA ejemplo de uso de RoBERTa Q&amp;amp;A</title><link href="https://rarcos.com/2022/03/18/IA-Roberta-QA/" rel="alternate" type="text/html" title="Python - IA ejemplo de uso de RoBERTa Q&amp;amp;A" /><published>2022-03-18T15:33:28+01:00</published><updated>2022-03-18T15:33:28+01:00</updated><id>https://rarcos.com/2022/03/18/IA-Roberta-QA</id><content type="html" xml:base="https://rarcos.com/2022/03/18/IA-Roberta-QA/"><![CDATA[<h1 id="utilización-de-roberta-en-qa">Utilización de RoBERTa en Q&amp;A</h1>
-
-<p>RoBERTa-base español entrenado en BNE afinado para el conjunto de datos del Corpus de Respuesta a Preguntas en Español (SQAC).
-RoBERTa-base-bne es un modelo de lenguaje enmascarado basado en transformadores para el idioma español. Está basado en el modelo base de RoBERTa y ha sido preentrenado utilizando el mayor corpus de español conocido hasta la fecha, con un total de 570GB de texto limpio y deduplicado procesado para este trabajo, recopilado a partir de los rastreos web realizados por la Biblioteca Nacional de España desde 2009 hasta 2019.</p>
-
-<p>El modelo original preentrenado se puede encontrar <a href="https://huggingface.co/PlanTL-GOB-ES/roberta-base-bne">aquí</a>:</p>
-
-<p><strong>Dataset</strong></p>
-
-<p>El conjunto de datos utilizado es el corpus SQAC.</p>
-
-<p><strong>Evaluación y resultados</strong></p>
-
-<p>Puntuación F1: 0,7923 (media de 5 ejecuciones).</p>
-
-<p>Para ver los detalles de la evaluación, visite nuestro repositorio de <a href="https://github.com/PlanTL-GOB-ES/lm-spanish">GitHub</a>.</p>
-
-<hr />
-<p>Si quieres ver el resultado de mi ejemplo de utilización de RoBERTa, te recomiendo visites:</p>
-
-<p><em>Repositorio con el contenido</em></p>
-
-<p><a href="https://colab.research.google.com/drive/16diuU5pQSETl3VQeh6E909YFsbtlfX3Z"><img src="/images/pages/repository_small_colab.png" alt="Repositorio" /></a></p>]]></content><author><name></name></author><category term="python" /><category term="pytorch" /><category term="ia" /><category term="colab" /><category term="bert" /><summary type="html"><![CDATA[Utilización del modelo de aprendizaje profundo RoBERTa para pregruntas y respuestas.]]></summary></entry></feed>
+<a href="https://drive.google.com/file/d/1_TjHyRSwFDea6gVHYOz6u15U9Krd3U-D/view"><img src="/images/pages/repository_small_file.png" alt="Fichero 2" /></a></p>]]></content><author><name></name></author><category term="python" /><category term="NLTK" /><summary type="html"><![CDATA[Desarrollo de un buscador de sustantivos. El programa consistirá en preprocesar un documento, extraer todos sus sustantivos en minúsculas y guardarlos en un índice para poder hacer luego búsquedas solo de sustantivos.]]></summary></entry></feed>

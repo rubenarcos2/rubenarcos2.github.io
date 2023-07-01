@@ -1,6 +1,14 @@
 [
   
     {
+      "title"    : "Proyecto Integrado [En curso]",
+      "category" : "",
+      "tags"     : "javascript, php, angular, laravel, proyecto integrado, gesmerca",
+      "url"      : "/2023/06/30/Proyecto_integrado/",
+      "date"     : "2023-06-30 16:33:28 +0200"
+    } ,
+  
+    {
       "title"    : "Securizando VPS",
       "category" : "",
       "tags"     : "vps, seguridad, ssh, postfix, malware",
