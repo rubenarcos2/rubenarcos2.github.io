@@ -171,9 +171,9 @@
   <li><a href="#cont-laravel">Laravel</a></li>
   <li><a href="#cont-flask">Flask</a></li>
   <li><a href="#cont-nginx">Nginx</a></li>
-  <li>PostgreSQL</li>
-  <li>MySQL</li>
-  <li>MongoDB</li>
+  <li><a href="#cont-postgres">PostgreSQL</a></li>
+  <li><a href="#cont-mysql">MySQL</a></li>
+  <li><a href="#cont-mongo">MongoDB</a></li>
 </ul>
 
 <h1 id="instalación-de-docker-en-el-vps">Instalación de docker en el VPS</h1>
@@ -219,7 +219,7 @@ docker versión</code></pre></figure>
 <p><em>Resolución del problema de permisos de docker para un usuario no root</em></p>
 
 <figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nb">sudo </span>groupadd docker
-<span class="nb">sudo </span>usermod <span class="nt">-aG</span> docker ruben
+<span class="nb">sudo </span>usermod <span class="nt">-aG</span> docker mi_usuario
 newgrp docker
 docker ps</code></pre></figure>
 
@@ -258,7 +258,7 @@ docker-compose <span class="nt">-version</span></code></pre></figure>
 
 <p>Generamos el certificado que es válido para tomcat .p12.</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">openssl pkcs12 <span class="nt">-export</span> <span class="nt">-in</span> /etc/letsencrypt/live/vps.rarcos.com/fullchain.pem <span class="nt">-inkey</span> /etc/letsencrypt/live/vps.rarcos.com/privkey.pem <span class="nt">-out</span> springboot_letsencrypt.p12 <span class="nt">-name</span> bootalias <span class="nt">-CAfile</span> chain.pem <span class="nt">-caname</span> root</code></pre></figure>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">openssl pkcs12 <span class="nt">-export</span> <span class="nt">-in</span> /etc/letsencrypt/live/mi_dominio_web/fullchain.pem <span class="nt">-inkey</span> /etc/letsencrypt/live/mi_dominio_web/privkey.pem <span class="nt">-out</span> springboot_letsencrypt.p12 <span class="nt">-name</span> bootalias <span class="nt">-CAfile</span> chain.pem <span class="nt">-caname</span> root</code></pre></figure>
 
 <p><em>Recuerda cambiar las rutas por las tuyas</em></p>
 
@@ -272,6 +272,8 @@ docker-compose <span class="nt">-version</span></code></pre></figure>
 
 <p>En primer lugar, vamos a crear un <em>Dockerfile</em> para que contenga la imagen (para Ubuntu server) y realice la copia de los ficheros necesarios (el .jar y el certificado) hacia nuestro contenedor.</p>
 
+<p>Dockerfile</p>
+
 <figure class="highlight"><pre><code class="language-bash" data-lang="bash">FROM eclipse-temurin:17-jdk-alpine
 
 ARG <span class="nv">JAR_FILE</span><span class="o">=</span><span class="k">*</span>.jar
@@ -284,6 +286,8 @@ ENTRYPOINT <span class="o">[</span><span class="s2">"java"</span>,<span class="s
 <p><em>Tendremos que cambiar el nombre del certificado y del fichero del proyecto compilado .jar</em></p>
 
 <p>En segundo lugar, vamos a crear el script de <em>docker-compose.yml</em> que creará nuestro servicio web y expondrá el puerto 8443 por defecto.</p>
+
+<p>docker-compose.yml</p>
 
 <figure class="highlight"><pre><code class="language-bash" data-lang="bash">version: <span class="s1">'3.8'</span>
 services:
@@ -300,6 +304,8 @@ services:
 <p><em>Proyecto Spring Boot</em></p>
 
 <p>Vamos a añadir al fichero <em>aplication.properties</em> la configuración para que el servidor tomcat que crea Spring, escuche por el puerto https, que por defecto es el 8443 en lugar del 443. Y el certificado que hemos creado previamente para que nuestro servidor funcione con Let’s encrypt.</p>
+
+<p>aplication.properties</p>
 
 <figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="n">server</span><span class="o">.</span><span class="na">port</span><span class="o">=</span><span class="mi">9443</span>
 <span class="n">server</span><span class="o">.</span><span class="na">ssl</span><span class="o">.</span><span class="na">enabled</span><span class="o">=</span><span class="kc">true</span>
@@ -332,6 +338,122 @@ services:
 
 <p><strong>Contenedor para Laravel</strong></p>
 
+<p>Para Laravel vamos a utilizar un servidor ngnix con la última versión por seguridad.
+para ello crearemos varios ficheros que describiré a continuación:</p>
+
+<p><em>Generación de los scripts de docker</em></p>
+
+<p>Dockerfile</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="c"># imagen de dockerhub que descargara</span>
+FROM php:8.2-fpm-alpine
+
+<span class="c"># algunas configuraciones para que funcione el contenedor para mysql</span>
+<span class="c">#RUN docker-php-ext-install pdo pdo_mysql</span>
+
+<span class="c"># Install Postgre PDO</span>
+RUN <span class="nb">set</span> <span class="nt">-ex</span> <span class="se">\</span>
+  <span class="o">&amp;&amp;</span> apk <span class="nt">--no-cache</span> add <span class="se">\</span>
+    postgresql-dev
+
+RUN docker-php-ext-install pdo pdo_pgsql
+
+<span class="c"># instala composer en el contenedor</span>
+RUN curl <span class="nt">-sS</span> https://getcomposer.org/installer | php <span class="nt">--</span> <span class="nt">--install-dir</span><span class="o">=</span>/usr/local/bin <span class="nt">--filename</span><span class="o">=</span>composer
+
+<span class="c"># da permisos para editar los archivos en esta ruta del container</span>
+RUN <span class="nb">chown</span> <span class="nt">-R</span> www-data:www-data /var/www
+RUN <span class="nb">chmod </span>755 /var/www</code></pre></figure>
+
+<p>docker-compose.yml</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">version: <span class="s2">"3.3"</span>
+
+<span class="c"># Servidor nginx</span>
+services:
+  nginx-laravel:
+    image: nginx:latest
+    restart: always
+    ports:
+      - <span class="s2">"10440:443"</span>
+    volumes:
+      - ./src:/var/www/html
+      - ./src/storage:/var/www/html/storage
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf
+      - /etc/letsencrypt/live/mi_dominio_web/fullchain.pem:/etc/nginx/ssl/fullchain.pem:ro
+      - /etc/letsencrypt/live/mi_dominio_web/privkey.pem:/etc/nginx/ssl/privkey.pem:ro
+
+    links:
+      - php-laravel
+
+  <span class="c"># Configuración de php-fpm</span>
+  php-laravel:
+<span class="c">#    image: php:8-fpm</span>
+    build: <span class="nb">.</span>
+    restart: always
+    volumes:
+      - ./src:/var/www/html
+<span class="c">#    command: sh -c "cd /var/www/html &amp;&amp; composer update nesbot/carbon"</span></code></pre></figure>
+
+<p>nginx.conf</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">server <span class="o">{</span>
+    listen 80<span class="p">;</span>
+    listen <span class="o">[</span>::]:80<span class="p">;</span>
+    listen 443 ssl<span class="p">;</span>
+    server_name mi_ip www.mi_dominio mi_dominio localhost<span class="p">;</span>
+    ssl_certificate /etc/nginx/ssl/fullchain.pem<span class="p">;</span>
+    ssl_certificate_key /etc/nginx/ssl/privkey.pem<span class="p">;</span>
+
+    <span class="c"># Redirect non-https traffic to https</span>
+    <span class="k">if</span> <span class="o">(</span><span class="nv">$scheme</span> <span class="o">!=</span> <span class="s2">"https"</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">return </span>301 https://<span class="nv">$host$request_uri</span><span class="p">;</span>
+    <span class="o">}</span>
+
+    <span class="c"># Log files for Debug</span>
+    error_log  /var/log/nginx/error.log<span class="p">;</span>
+    access_log /var/log/nginx/access.log<span class="p">;</span>
+
+    <span class="c"># Laravel web root directory</span>
+    root /var/www/html/public<span class="p">;</span>
+    index index.php index.html<span class="p">;</span>
+
+    location / <span class="o">{</span>
+        try_files <span class="nv">$uri</span> <span class="nv">$uri</span>/ /index.php?<span class="nv">$query_string</span><span class="p">;</span>
+        gzip_static on<span class="p">;</span>
+    <span class="o">}</span>
+
+    <span class="c"># Nginx Pass requests to PHP-FPM</span>
+    location ~ <span class="se">\.</span>php<span class="nv">$ </span><span class="o">{</span>
+        try_files <span class="nv">$uri</span> <span class="o">=</span>404<span class="p">;</span>
+        fastcgi_split_path_info ^<span class="o">(</span>.+<span class="se">\.</span>php<span class="o">)(</span>/.+<span class="o">)</span><span class="nv">$;</span>
+        fastcgi_pass php-laravel:9000<span class="p">;</span>
+        fastcgi_index index.php<span class="p">;</span>
+        include fastcgi_params<span class="p">;</span>
+        fastcgi_param SCRIPT_FILENAME <span class="nv">$document_root$fastcgi_script_name</span><span class="p">;</span>
+        fastcgi_param PATH_INFO <span class="nv">$fastcgi_path_info</span><span class="p">;</span>
+    <span class="o">}</span>
+<span class="o">}</span></code></pre></figure>
+
+<p><em>Sustituye mi dominio mi_dominio por el tuyo</em></p>
+
+<p>Finalmente, debemos tener la siguiente estructura de ficheros en la carpeta de docker:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">/docker-my_app
+|-Dockerfile
+|-docker-compose.yml
+|-default.conf
+|-nginx.conf
+|-src</code></pre></figure>
+
+<p>Y en la carpeta <em>src</em> vamos a copiar todo el contenido de Laravel.</p>
+
+<p>Levantamos el contenedor de docker como demonio y con la compilación activada</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">docker-compose up <span class="nt">--build</span> <span class="nt">-d</span></code></pre></figure>
+
+<p>Con esto ya tenemos una versión de Laravel Dockerizada y funcionando.</p>
+
 <p><a name="cont-flask"></a></p>
 
 <p><strong>Contenedor para Flask</strong></p>
@@ -363,7 +485,7 @@ services:
     listen 80<span class="p">;</span>
     listen <span class="o">[</span>::]:80<span class="p">;</span>
     listen 443 ssl<span class="p">;</span>
-    server_name  www.vps.rarcos.com vps.rarcos.com<span class="p">;</span>
+    server_name  www.mi_dominio_web mi_dominio_web<span class="p">;</span>
     ssl_certificate /etc/nginx/certs/fullchain.pem<span class="p">;</span>
     ssl_certificate_key /etc/nginx/certs/privkey.pem<span class="p">;</span>
 
@@ -375,7 +497,7 @@ services:
 
 <p>app.py</p>
 
-<p><em>Sustituye mi dominio vps.rarcos.com por el tuyo</em></p>
+<p><em>Sustituye mi dominio mi_dominio_web por el tuyo</em></p>
 
 <p><a name="cont-nginx"></a></p>
 
@@ -401,8 +523,6 @@ services:
      - <span class="s2">"80:80"</span>
      - <span class="s2">"443:443"</span></code></pre></figure>
 
-<p><em>Sustituye mi dominio vps.rarcos.com por el tuyo</em></p>
-
 <p><em>Generación del script de configuración de ngnix</em></p>
 
 <p>nginx.conf</p>
@@ -411,7 +531,7 @@ services:
     listen 80<span class="p">;</span>
     listen <span class="o">[</span>::]:80<span class="p">;</span>
     listen 443 ssl<span class="p">;</span>
-    server_name  www.vps.rarcos.com vps.rarcos.com<span class="p">;</span>
+    server_name  www.mi_dominio_web mi_dominio_web<span class="p">;</span>
     ssl_certificate /etc/nginx/certs/fullchain.pem<span class="p">;</span>
     ssl_certificate_key /etc/nginx/certs/privkey.pem<span class="p">;</span>
 
@@ -421,7 +541,7 @@ services:
     <span class="o">}</span>
 <span class="o">}</span></code></pre></figure>
 
-<p><em>Sustituye mi dominio vps.rarcos.com por el tuyo</em></p>
+<p><em>Sustituye mi dominio mi_dominio_web por el tuyo</em></p>
 
 <p><em>Generación del resto de ficheros y carpetas</em></p>
 
@@ -438,14 +558,103 @@ services:
     <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">"UTF-8"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">"viewport"</span> <span class="na">content=</span><span class="s">"width=device-width, initial-scale=1.0"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;meta</span> <span class="na">http-equiv=</span><span class="s">"X-UA-Compatible"</span> <span class="na">content=</span><span class="s">"ie=edge"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;meta</span> <span class="na">http-equiv=</span><span class="s">"refresh"</span> <span class="na">content=</span><span class="s">"5;url=https://rarcos.com"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;meta</span> <span class="na">http-equiv=</span><span class="s">"refresh"</span> <span class="na">content=</span><span class="s">"5;url=https://mi_dominio_web"</span><span class="nt">&gt;</span>
 <span class="nt">&lt;/head&gt;</span>
 
 <span class="nt">&lt;body&gt;</span>
 <span class="nt">&lt;h1&gt;</span>Acceso no permitido<span class="nt">&lt;/h1&gt;</span>
-<span class="nt">&lt;p&gt;</span>Va a ser redireccionado a la página <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"https://rarcos.com"</span><span class="nt">&gt;</span>https://rarcos.com<span class="nt">&lt;/a&gt;&lt;/p&gt;</span>
+<span class="nt">&lt;p&gt;</span>Va a ser redireccionado a la página <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"https://mi_dominio_web"</span><span class="nt">&gt;</span>https://mi_dominio_web<span class="nt">&lt;/a&gt;&lt;/p&gt;</span>
 <span class="nt">&lt;/body&gt;</span>
 <span class="nt">&lt;/html&gt;</span></code></pre></figure>
+
+<p><a name="cont-postgres"></a></p>
+
+<p><strong>Contenedor para PostgreSQL</strong></p>
+
+<p>La dockerización de PostgreSQL es una de las más sencillas que hay, solamente tenemos que crear un docker-compose y levantar el contenedor.</p>
+
+<p><em>Generación del scripts de docker</em></p>
+
+<p>docker-compose.yml</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">version: <span class="s1">'3.3'</span>
+services:
+  db:
+    image: postgres
+    restart: always
+    container_name: postgresql
+    environment:
+      - <span class="nv">POSTGRES_USER</span><span class="o">=</span>mi_usuario
+      - <span class="nv">POSTGRES_PASSWORD</span><span class="o">=</span>mi_contraseña
+    ports:
+      - <span class="s1">'mi_puerto_ext:5432'</span>
+    volumes:
+      - db:/var/lib/postgresql/data
+volumes:
+  db:
+    driver: <span class="nb">local</span></code></pre></figure>
+
+<p>En la carpeta <em>./db</em> que se creará automáticamente tendremos todos los ficheros de la base de datos para poder consultar y/o modificar lo que necesitemos desde fuera del contenedor.</p>
+
+<p><a name="cont-mysql"></a></p>
+
+<p><strong>Contenedor para mySQL</strong></p>
+
+<p>La dockerización de MySQL es una de las más sencillas que hay, solamente tenemos que crear un docker-compose y levantar el contenedor.</p>
+
+<p><em>Generación del scripts de docker</em></p>
+
+<p>docker-compose.yml</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">version: <span class="s1">'2.4'</span>
+services:
+  mariadb:
+    image: mariadb
+    container_name: mysql
+    restart: always
+    volumes:
+      - ./db:/var/lib/mysql
+    environment:
+      TZ: Europe/Madrid
+      <span class="c">#MYSQL_RANDOM_ROOT_PASSWORD: "yes"</span>
+      MYSQL_ROOT_PASSWORD: mi_contraseña_root
+      MYSQL_DATABASE: mi_nombre_bbdd
+      MYSQL_USER: mi_usuario
+      MYSQL_PASSWORD: mi_contraseña
+    ports:
+      - 23452:3306
+    <span class="c">#healthcheck:</span>
+      <span class="c">#test:  mysqladmin ping -h 127.0.0.1 -u root --password=$$MYSQL_ROOT_PASSWORD || exit 1</span>
+      <span class="c">#test:  mysqladmin ping -h 127.0.0.1 -u $$MYSQL_USER --password=$$MYSQL_PASSWORD || exit 1</span>
+      <span class="c">#interval: 60s</span>
+      <span class="c">#timeout: 5s</span>
+      <span class="c">#retries: 5</span>
+      <span class="c">#start_period: 30s</span></code></pre></figure>
+
+<p>En la carpeta <em>./db</em> que se creará automáticamente tendremos todos los ficheros de la base de datos para poder consultar y/o modificar lo que necesitemos desde fuera del contenedor.</p>
+
+<p><a name="cont-mongo"></a></p>
+
+<p><strong>Contenedor para MongoDB</strong></p>
+
+<p>La dockerización de MongoDB es una de las más sencillas que hay, solamente tenemos que crear un docker-compose y levantar el contenedor.</p>
+
+<p><em>Generación del scripts de docker</em></p>
+
+<p>docker-compose.yml</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">version: <span class="s1">'3.7'</span>
+services:
+  mongodb_container:
+    image: mongo:latest
+    ports:
+      - mi_puerto_ext:27017
+    volumes:
+      - db:/data/db
+volumes:
+  db:</code></pre></figure>
+
+<p>En la carpeta <em>./db</em> que se creará automáticamente tendremos todos los ficheros de la base de datos para poder consultar y/o modificar lo que necesitemos desde fuera del contenedor.</p>
 
 <hr />
 

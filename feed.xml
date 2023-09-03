@@ -1,4 +1,126 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="https://rarcos.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://rarcos.com/" rel="alternate" type="text/html" /><updated>2023-08-28T08:32:22+02:00</updated><id>https://rarcos.com/feed.xml</id><title type="html">Rubén Arcos</title><subtitle>Desarrollador de aplicaciones multiplataformas</subtitle><entry><title type="html">Proyecto Integrado [En curso]</title><link href="https://rarcos.com/2023/06/30/Proyecto_integrado/" rel="alternate" type="text/html" title="Proyecto Integrado [En curso]" /><published>2023-06-30T16:33:28+02:00</published><updated>2023-06-30T16:33:28+02:00</updated><id>https://rarcos.com/2023/06/30/Proyecto_integrado</id><content type="html" xml:base="https://rarcos.com/2023/06/30/Proyecto_integrado/"><![CDATA[<p>Realización en curso…</p>]]></content><author><name></name></author><category term="javascript" /><category term="php" /><category term="angular" /><category term="laravel" /><category term="proyecto integrado" /><category term="gesmerca" /><summary type="html"><![CDATA[Proyecto integrado fin del Ciclo Formativo de Grado Superior de Aplicaciones Web.]]></summary></entry><entry><title type="html">Securizando VPS</title><link href="https://rarcos.com/2023/03/14/Securizando-VPS/" rel="alternate" type="text/html" title="Securizando VPS" /><published>2023-03-14T06:41:00+01:00</published><updated>2023-03-14T06:41:00+01:00</updated><id>https://rarcos.com/2023/03/14/Securizando%20VPS</id><content type="html" xml:base="https://rarcos.com/2023/03/14/Securizando-VPS/"><![CDATA[<p>A modo de apuntes, una securización estándar de un VPS:</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="https://rarcos.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://rarcos.com/" rel="alternate" type="text/html" /><updated>2023-09-03T11:27:50+02:00</updated><id>https://rarcos.com/feed.xml</id><title type="html">Rubén Arcos</title><subtitle>Desarrollador de aplicaciones multiplataformas</subtitle><entry><title type="html">Proyecto Integrado [En curso]</title><link href="https://rarcos.com/2023/06/30/Proyecto_integrado/" rel="alternate" type="text/html" title="Proyecto Integrado [En curso]" /><published>2023-06-30T16:33:28+02:00</published><updated>2023-06-30T16:33:28+02:00</updated><id>https://rarcos.com/2023/06/30/Proyecto_integrado</id><content type="html" xml:base="https://rarcos.com/2023/06/30/Proyecto_integrado/"><![CDATA[<p style="text-align: justify">
+La finalidad principal de la aplicación, ha sido la demostración de la puesta en práctica de los conocimientos adquiridos a lo largo del ciclo formativo de desarrollo de aplicaciones web. He focalizado la aplicación en los conocimientos adquiridos sobre la gestión de privilegios de acceso de usuarios a distintos elementos (o módulos como me referiré a lo largo del documento) de la aplicación, la gestión de usuarios jerarquizados en distintos grupos (denominados roles) y la administración por parte de un usuario autorizado. No menos relevante ha sido la aplicación de los conocimientos en el diseño y gestión de bases de datos relacionales y las plataformas de implementación de estas. Otro factor que se ha tenido en cuenta ha sido la seguridad del entorno de uso (JWT) y de la aplicación (Angular), implementando funcionalidades como, la encriptación de datos sensibles, o la prevención en la utilización de elementos sensibles a la inyección de información automatizada (cracking o ataques de fuerza bruta).
+</p>
+
+<h1 id="arquitectura">Arquitectura</h1>
+
+<p>Esta es la arquitectura que se ha utilizado para el entorno de producción en una VPS.</p>
+
+<p><img src="/images/pages/GesMerCa_arquitectura.png" alt="Arquitectura en VPS" title="Arquitectura en VPS de GesMerCa" /></p>
+
+<p>La separación lógica del frontend, el backend y la base de datos.</p>
+
+<p><img src="/images/pages/GesMerCa_arquitectura_Front-Back.png" alt="Arquitectura GesMerCa Frontend-Backend" title="Arquitectura GesMerCa Frontend-Backend" /></p>
+
+<h2 id="entorno-de-ejecución---frontend">Entorno de ejecución - Frontend</h2>
+<p style="text-align: center">
+<a href="https://vps.rarcos.com:10448/" target="_blank">
+    <img src="/images/pages/gesmerca.png" width="100" alt="GesMerCa Logo" />&nbsp;Demostración web online
+</a>
+</p>
+<h2 id="documentación-de-la-api---backend">Documentación de la API - Backend</h2>
+<p style="text-align: center">
+<a href="https://vps.rarcos.com:10447/" target="_blank">
+    <img src="https://avatars.githubusercontent.com/u/7658037?s=200&amp;v=4" width="100" alt="Swagger Logo" />&nbsp;Documentación api online
+</a>
+</p>
+
+<hr />
+
+<p><em>Repositorio con el contenido</em></p>
+
+<p><a href="https://github.com/rubenarcos2/proyecto_daw/tree/main/frontend/gesmerca"><img src="/images/pages/repository_small.png" alt="Repositorio" /></a>
+Frontend
+<a href="https://github.com/rubenarcos2/proyecto_daw/tree/main/backend/gesmerca"><img src="/images/pages/repository_small.png" alt="Repositorio" /></a>
+Backend
+<a href="https://github.com/rubenarcos2/proyecto_daw/tree/main/IA"><img src="/images/pages/repository_small.png" alt="Repositorio" /></a>
+IA</p>
+
+<hr />
+
+<p><strong>Fuentes:</strong></p>
+
+<p><em>Angular</em></p>
+<ul>
+  <li><a href="https://openwebinars.net/academia/aprende/angular/9221/">https://openwebinars.net/academia/aprende/angular/9221/</a></li>
+  <li><a href="https://www.positronx.io/laravel-angular-token-based-authentication-with-jwt/">https://www.positronx.io/laravel-angular-token-based-authentication-with-jwt/</a></li>
+  <li><a href="https://www.ultimateakash.com/blog-details/Ii1TNGAKYAo=/How-to-Implement-JWT-Authentication-in-Angular-2023">https://www.ultimateakash.com/blog-details/Ii1TNGAKYAo=/How-to-Implement-JWT-Authentication-in-Angular-2023</a></li>
+  <li><a href="https://www.tektutorialshub.com/angular/meta-service-in-angular-add-update-meta-tags-example/">https://www.tektutorialshub.com/angular/meta-service-in-angular-add-update-meta-tags-example/</a>
+<a href="https://angular.io/api/platform-browser/MetaDefinition">https://angular.io/api/platform-browser/MetaDefinition</a></li>
+  <li><a href="https://www.concretepage.com/angular-2/angular-2-4-minlength-and-maxlength-validation-example#:~:text=It%20means%20the%20value%20entered,can%20write%20code%20as%20below.">https://www.concretepage.com/angular-2/angular-2-4-minlength-and-maxlength-validation-example#:~:text=It%20means%20the%20value%20entered,can%20write%20code%20as%20below.</a></li>
+  <li><a href="https://stackoverflow.com/questions/52389376/how-to-reload-current-page">https://stackoverflow.com/questions/52389376/how-to-reload-current-page</a></li>
+</ul>
+
+<p><em>LocalStorage y sessionStorage</em></p>
+<ul>
+  <li><a href="https://ed.team/blog/que-es-y-como-utilizar-localstorage-y-sessionstorage">https://ed.team/blog/que-es-y-como-utilizar-localstorage-y-sessionstorage</a></li>
+</ul>
+
+<p><em>Component Lifecycle</em></p>
+<ul>
+  <li><a href="https://angular.io/guide/lifecycle-hooks">https://angular.io/guide/lifecycle-hooks</a></li>
+</ul>
+
+<p><em>Unit testing</em></p>
+<ul>
+  <li><a href="https://www.infragistics.com/community/blogs/b/infragistics/posts/unit-testing-in-angular">https://www.infragistics.com/community/blogs/b/infragistics/posts/unit-testing-in-angular</a> -&gt; ng test –code-coverage</li>
+</ul>
+
+<p><em>Auth guard with roles/permission based</em></p>
+<ul>
+  <li><a href="https://jasonwatmore.com/post/2022/12/22/angular-14-role-based-authorization-tutorial-with-example">https://jasonwatmore.com/post/2022/12/22/angular-14-role-based-authorization-tutorial-with-example</a></li>
+</ul>
+
+<p><em>Unsuscribing AJAX request</em></p>
+<ul>
+  <li><a href="https://nocodenobug.substack.com/p/rxjs-en-angular-el-drama-de-las-suscripciones">https://nocodenobug.substack.com/p/rxjs-en-angular-el-drama-de-las-suscripciones</a></li>
+</ul>
+
+<p><em>Laravel</em>
+<em>Creación del API rest en laravel con autenticación JWT</em></p>
+<ul>
+  <li><a href="https://www.positronx.io/laravel-jwt-authentication-tutorial-user-login-signup-api/">https://www.positronx.io/laravel-jwt-authentication-tutorial-user-login-signup-api/</a></li>
+  <li><a href="https://www.nigmacode.com/laravel/roles-de-usuario-en-laravel/">https://www.nigmacode.com/laravel/roles-de-usuario-en-laravel/</a> -&gt; php artisan vendor:publish –provider=”Spatie\Permission\PermissionServiceProvider”</li>
+  <li><a href="https://laraveldaily.com/post/laravel-api-errors-and-exceptions-how-to-return-responses">https://laraveldaily.com/post/laravel-api-errors-and-exceptions-how-to-return-responses</a></li>
+  <li><a href="https://stackoverflow.com/questions/64897053/laravel-8-return-all-exceptions-as-json">https://stackoverflow.com/questions/64897053/laravel-8-return-all-exceptions-as-json</a></li>
+  <li><a href="https://www.itsolutionstuff.com/post/laravel-9-user-roles-and-permissions-tutorialexample.html">https://www.itsolutionstuff.com/post/laravel-9-user-roles-and-permissions-tutorialexample.html</a>
+<a href="https://larainfo.com/blogs/laravel-9-image-file-upload-example">https://larainfo.com/blogs/laravel-9-image-file-upload-example</a></li>
+  <li><a href="https://stackoverflow.com/questions/68128685/laravel-get-public-url-for-file-stored-in-storage-public-folder">https://stackoverflow.com/questions/68128685/laravel-get-public-url-for-file-stored-in-storage-public-folder</a> -&gt; php artisan storage:link
+<a href="https://tinkerwell.app/blog/laravel-caches-and-all-ways-to-clear-them">https://tinkerwell.app/blog/laravel-caches-and-all-ways-to-clear-them</a></li>
+  <li><a href="https://www.positronx.io/laravel-image-resize-upload-with-intervention-image-package/">https://www.positronx.io/laravel-image-resize-upload-with-intervention-image-package/</a></li>
+</ul>
+
+<p><em>Spatie permissions</em></p>
+<ul>
+  <li><a href="https://spatie.be/docs/laravel-permission/v5/basic-usage/direct-permissions">https://spatie.be/docs/laravel-permission/v5/basic-usage/direct-permissions</a></li>
+  <li><a href="https://laravelcode.com/post/laravel-8-user-roles-and-permissions-using-spatie">https://laravelcode.com/post/laravel-8-user-roles-and-permissions-using-spatie</a>
+<a href="https://spatie.be/docs/laravel-permission/v5/basic-usage/role-permissions">https://spatie.be/docs/laravel-permission/v5/basic-usage/role-permissions</a></li>
+  <li><a href="https://scrutinizer-ci.com/g/spatie/laravel-permission/code-structure/master/operation/Spatie%5CPermission%5CTraits%5CHasPermissions::syncPermissions">https://scrutinizer-ci.com/g/spatie/laravel-permission/code-structure/master/operation/Spatie%5CPermission%5CTraits%5CHasPermissions::syncPermissions</a></li>
+</ul>
+
+<p><em>Faker y seed imagenes</em></p>
+<ul>
+  <li><a href="https://styde.net/generando-datos-de-prueba-con-faker-en-laravel/">https://styde.net/generando-datos-de-prueba-con-faker-en-laravel/</a></li>
+  <li><a href="https://github.com/fzaninotto/Faker#formatters">https://github.com/fzaninotto/Faker#formatters</a></li>
+  <li><a href="https://kodementor.com/how-to-seeds-images-with-faker-in-laravel/">https://kodementor.com/how-to-seeds-images-with-faker-in-laravel/</a></li>
+  <li><a href="https://styde.net/insercion-de-datos-con-los-seeders-de-laravel/">https://styde.net/insercion-de-datos-con-los-seeders-de-laravel/</a> -&gt; php artisan migrate:fresh –seed</li>
+</ul>
+
+<p><em>Vínculo de storage -&gt; public</em></p>
+<ul>
+  <li><a href="https://laravel.com/docs/10.x/filesystem#the-public-disk">https://laravel.com/docs/10.x/filesystem#the-public-disk</a> -&gt; php artisan storage:link</li>
+</ul>
+
+<p><em>Unit testing</em></p>
+<ul>
+  <li><a href="https://platzi.com/discusiones/1842-intro-laravel/85644-que-diferencia-hay-entre-unit-test-y-feature-test/">https://platzi.com/discusiones/1842-intro-laravel/85644-que-diferencia-hay-entre-unit-test-y-feature-test/</a></li>
+  <li><a href="https://laravel.com/docs/10.x/testing">https://laravel.com/docs/10.x/testing</a> -&gt; php artisan test</li>
+</ul>
+
+<p><em>Docker postgreSQL database backup</em></p>
+<ul>
+  <li><a href="https://stackoverflow.com/questions/30171063/how-to-generate-a-postgresql-dump-from-a-docker-container">https://stackoverflow.com/questions/30171063/how-to-generate-a-postgresql-dump-from-a-docker-container</a></li>
+</ul>]]></content><author><name></name></author><category term="javascript" /><category term="php" /><category term="angular" /><category term="laravel" /><category term="proyecto integrado" /><category term="gesmerca" /><summary type="html"><![CDATA[Proyecto integrado fin del Ciclo Formativo de Grado Superior de Aplicaciones Web.]]></summary></entry><entry><title type="html">Securizando VPS</title><link href="https://rarcos.com/2023/03/14/Securizando-VPS/" rel="alternate" type="text/html" title="Securizando VPS" /><published>2023-03-14T06:41:00+01:00</published><updated>2023-03-14T06:41:00+01:00</updated><id>https://rarcos.com/2023/03/14/Securizando%20VPS</id><content type="html" xml:base="https://rarcos.com/2023/03/14/Securizando-VPS/"><![CDATA[<p>A modo de apuntes, una securización estándar de un VPS:</p>
 <ul>
   <li><a href="#seg-basica">Seguridad básica</a></li>
   <li><a href="#ssh">Autenticación basada en clave SSH </a></li>
@@ -86,9 +208,9 @@ En la parte del cliente, instalamos putty y generamos la clave privada de la sig
   <li><a href="#cont-laravel">Laravel</a></li>
   <li><a href="#cont-flask">Flask</a></li>
   <li><a href="#cont-nginx">Nginx</a></li>
-  <li>PostgreSQL</li>
-  <li>MySQL</li>
-  <li>MongoDB</li>
+  <li><a href="#cont-postgres">PostgreSQL</a></li>
+  <li><a href="#cont-mysql">MySQL</a></li>
+  <li><a href="#cont-mongo">MongoDB</a></li>
 </ul>
 
 <h1 id="instalación-de-docker-en-el-vps">Instalación de docker en el VPS</h1>
@@ -134,7 +256,7 @@ docker versión</code></pre></figure>
 <p><em>Resolución del problema de permisos de docker para un usuario no root</em></p>
 
 <figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nb">sudo </span>groupadd docker
-<span class="nb">sudo </span>usermod <span class="nt">-aG</span> docker ruben
+<span class="nb">sudo </span>usermod <span class="nt">-aG</span> docker mi_usuario
 newgrp docker
 docker ps</code></pre></figure>
 
@@ -173,7 +295,7 @@ docker-compose <span class="nt">-version</span></code></pre></figure>
 
 <p>Generamos el certificado que es válido para tomcat .p12.</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">openssl pkcs12 <span class="nt">-export</span> <span class="nt">-in</span> /etc/letsencrypt/live/vps.rarcos.com/fullchain.pem <span class="nt">-inkey</span> /etc/letsencrypt/live/vps.rarcos.com/privkey.pem <span class="nt">-out</span> springboot_letsencrypt.p12 <span class="nt">-name</span> bootalias <span class="nt">-CAfile</span> chain.pem <span class="nt">-caname</span> root</code></pre></figure>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">openssl pkcs12 <span class="nt">-export</span> <span class="nt">-in</span> /etc/letsencrypt/live/mi_dominio_web/fullchain.pem <span class="nt">-inkey</span> /etc/letsencrypt/live/mi_dominio_web/privkey.pem <span class="nt">-out</span> springboot_letsencrypt.p12 <span class="nt">-name</span> bootalias <span class="nt">-CAfile</span> chain.pem <span class="nt">-caname</span> root</code></pre></figure>
 
 <p><em>Recuerda cambiar las rutas por las tuyas</em></p>
 
@@ -187,6 +309,8 @@ docker-compose <span class="nt">-version</span></code></pre></figure>
 
 <p>En primer lugar, vamos a crear un <em>Dockerfile</em> para que contenga la imagen (para Ubuntu server) y realice la copia de los ficheros necesarios (el .jar y el certificado) hacia nuestro contenedor.</p>
 
+<p>Dockerfile</p>
+
 <figure class="highlight"><pre><code class="language-bash" data-lang="bash">FROM eclipse-temurin:17-jdk-alpine
 
 ARG <span class="nv">JAR_FILE</span><span class="o">=</span><span class="k">*</span>.jar
@@ -199,6 +323,8 @@ ENTRYPOINT <span class="o">[</span><span class="s2">"java"</span>,<span class="s
 <p><em>Tendremos que cambiar el nombre del certificado y del fichero del proyecto compilado .jar</em></p>
 
 <p>En segundo lugar, vamos a crear el script de <em>docker-compose.yml</em> que creará nuestro servicio web y expondrá el puerto 8443 por defecto.</p>
+
+<p>docker-compose.yml</p>
 
 <figure class="highlight"><pre><code class="language-bash" data-lang="bash">version: <span class="s1">'3.8'</span>
 services:
@@ -215,6 +341,8 @@ services:
 <p><em>Proyecto Spring Boot</em></p>
 
 <p>Vamos a añadir al fichero <em>aplication.properties</em> la configuración para que el servidor tomcat que crea Spring, escuche por el puerto https, que por defecto es el 8443 en lugar del 443. Y el certificado que hemos creado previamente para que nuestro servidor funcione con Let’s encrypt.</p>
+
+<p>aplication.properties</p>
 
 <figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="n">server</span><span class="o">.</span><span class="na">port</span><span class="o">=</span><span class="mi">9443</span>
 <span class="n">server</span><span class="o">.</span><span class="na">ssl</span><span class="o">.</span><span class="na">enabled</span><span class="o">=</span><span class="kc">true</span>
@@ -247,6 +375,122 @@ services:
 
 <p><strong>Contenedor para Laravel</strong></p>
 
+<p>Para Laravel vamos a utilizar un servidor ngnix con la última versión por seguridad.
+para ello crearemos varios ficheros que describiré a continuación:</p>
+
+<p><em>Generación de los scripts de docker</em></p>
+
+<p>Dockerfile</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="c"># imagen de dockerhub que descargara</span>
+FROM php:8.2-fpm-alpine
+
+<span class="c"># algunas configuraciones para que funcione el contenedor para mysql</span>
+<span class="c">#RUN docker-php-ext-install pdo pdo_mysql</span>
+
+<span class="c"># Install Postgre PDO</span>
+RUN <span class="nb">set</span> <span class="nt">-ex</span> <span class="se">\</span>
+  <span class="o">&amp;&amp;</span> apk <span class="nt">--no-cache</span> add <span class="se">\</span>
+    postgresql-dev
+
+RUN docker-php-ext-install pdo pdo_pgsql
+
+<span class="c"># instala composer en el contenedor</span>
+RUN curl <span class="nt">-sS</span> https://getcomposer.org/installer | php <span class="nt">--</span> <span class="nt">--install-dir</span><span class="o">=</span>/usr/local/bin <span class="nt">--filename</span><span class="o">=</span>composer
+
+<span class="c"># da permisos para editar los archivos en esta ruta del container</span>
+RUN <span class="nb">chown</span> <span class="nt">-R</span> www-data:www-data /var/www
+RUN <span class="nb">chmod </span>755 /var/www</code></pre></figure>
+
+<p>docker-compose.yml</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">version: <span class="s2">"3.3"</span>
+
+<span class="c"># Servidor nginx</span>
+services:
+  nginx-laravel:
+    image: nginx:latest
+    restart: always
+    ports:
+      - <span class="s2">"10440:443"</span>
+    volumes:
+      - ./src:/var/www/html
+      - ./src/storage:/var/www/html/storage
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf
+      - /etc/letsencrypt/live/mi_dominio_web/fullchain.pem:/etc/nginx/ssl/fullchain.pem:ro
+      - /etc/letsencrypt/live/mi_dominio_web/privkey.pem:/etc/nginx/ssl/privkey.pem:ro
+
+    links:
+      - php-laravel
+
+  <span class="c"># Configuración de php-fpm</span>
+  php-laravel:
+<span class="c">#    image: php:8-fpm</span>
+    build: <span class="nb">.</span>
+    restart: always
+    volumes:
+      - ./src:/var/www/html
+<span class="c">#    command: sh -c "cd /var/www/html &amp;&amp; composer update nesbot/carbon"</span></code></pre></figure>
+
+<p>nginx.conf</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">server <span class="o">{</span>
+    listen 80<span class="p">;</span>
+    listen <span class="o">[</span>::]:80<span class="p">;</span>
+    listen 443 ssl<span class="p">;</span>
+    server_name mi_ip www.mi_dominio mi_dominio localhost<span class="p">;</span>
+    ssl_certificate /etc/nginx/ssl/fullchain.pem<span class="p">;</span>
+    ssl_certificate_key /etc/nginx/ssl/privkey.pem<span class="p">;</span>
+
+    <span class="c"># Redirect non-https traffic to https</span>
+    <span class="k">if</span> <span class="o">(</span><span class="nv">$scheme</span> <span class="o">!=</span> <span class="s2">"https"</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">return </span>301 https://<span class="nv">$host$request_uri</span><span class="p">;</span>
+    <span class="o">}</span>
+
+    <span class="c"># Log files for Debug</span>
+    error_log  /var/log/nginx/error.log<span class="p">;</span>
+    access_log /var/log/nginx/access.log<span class="p">;</span>
+
+    <span class="c"># Laravel web root directory</span>
+    root /var/www/html/public<span class="p">;</span>
+    index index.php index.html<span class="p">;</span>
+
+    location / <span class="o">{</span>
+        try_files <span class="nv">$uri</span> <span class="nv">$uri</span>/ /index.php?<span class="nv">$query_string</span><span class="p">;</span>
+        gzip_static on<span class="p">;</span>
+    <span class="o">}</span>
+
+    <span class="c"># Nginx Pass requests to PHP-FPM</span>
+    location ~ <span class="se">\.</span>php<span class="nv">$ </span><span class="o">{</span>
+        try_files <span class="nv">$uri</span> <span class="o">=</span>404<span class="p">;</span>
+        fastcgi_split_path_info ^<span class="o">(</span>.+<span class="se">\.</span>php<span class="o">)(</span>/.+<span class="o">)</span><span class="nv">$;</span>
+        fastcgi_pass php-laravel:9000<span class="p">;</span>
+        fastcgi_index index.php<span class="p">;</span>
+        include fastcgi_params<span class="p">;</span>
+        fastcgi_param SCRIPT_FILENAME <span class="nv">$document_root$fastcgi_script_name</span><span class="p">;</span>
+        fastcgi_param PATH_INFO <span class="nv">$fastcgi_path_info</span><span class="p">;</span>
+    <span class="o">}</span>
+<span class="o">}</span></code></pre></figure>
+
+<p><em>Sustituye mi dominio mi_dominio por el tuyo</em></p>
+
+<p>Finalmente, debemos tener la siguiente estructura de ficheros en la carpeta de docker:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">/docker-my_app
+|-Dockerfile
+|-docker-compose.yml
+|-default.conf
+|-nginx.conf
+|-src</code></pre></figure>
+
+<p>Y en la carpeta <em>src</em> vamos a copiar todo el contenido de Laravel.</p>
+
+<p>Levantamos el contenedor de docker como demonio y con la compilación activada</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">docker-compose up <span class="nt">--build</span> <span class="nt">-d</span></code></pre></figure>
+
+<p>Con esto ya tenemos una versión de Laravel Dockerizada y funcionando.</p>
+
 <p><a name="cont-flask"></a></p>
 
 <p><strong>Contenedor para Flask</strong></p>
@@ -278,7 +522,7 @@ services:
     listen 80<span class="p">;</span>
     listen <span class="o">[</span>::]:80<span class="p">;</span>
     listen 443 ssl<span class="p">;</span>
-    server_name  www.vps.rarcos.com vps.rarcos.com<span class="p">;</span>
+    server_name  www.mi_dominio_web mi_dominio_web<span class="p">;</span>
     ssl_certificate /etc/nginx/certs/fullchain.pem<span class="p">;</span>
     ssl_certificate_key /etc/nginx/certs/privkey.pem<span class="p">;</span>
 
@@ -290,7 +534,7 @@ services:
 
 <p>app.py</p>
 
-<p><em>Sustituye mi dominio vps.rarcos.com por el tuyo</em></p>
+<p><em>Sustituye mi dominio mi_dominio_web por el tuyo</em></p>
 
 <p><a name="cont-nginx"></a></p>
 
@@ -316,8 +560,6 @@ services:
      - <span class="s2">"80:80"</span>
      - <span class="s2">"443:443"</span></code></pre></figure>
 
-<p><em>Sustituye mi dominio vps.rarcos.com por el tuyo</em></p>
-
 <p><em>Generación del script de configuración de ngnix</em></p>
 
 <p>nginx.conf</p>
@@ -326,7 +568,7 @@ services:
     listen 80<span class="p">;</span>
     listen <span class="o">[</span>::]:80<span class="p">;</span>
     listen 443 ssl<span class="p">;</span>
-    server_name  www.vps.rarcos.com vps.rarcos.com<span class="p">;</span>
+    server_name  www.mi_dominio_web mi_dominio_web<span class="p">;</span>
     ssl_certificate /etc/nginx/certs/fullchain.pem<span class="p">;</span>
     ssl_certificate_key /etc/nginx/certs/privkey.pem<span class="p">;</span>
 
@@ -336,7 +578,7 @@ services:
     <span class="o">}</span>
 <span class="o">}</span></code></pre></figure>
 
-<p><em>Sustituye mi dominio vps.rarcos.com por el tuyo</em></p>
+<p><em>Sustituye mi dominio mi_dominio_web por el tuyo</em></p>
 
 <p><em>Generación del resto de ficheros y carpetas</em></p>
 
@@ -353,14 +595,103 @@ services:
     <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">"UTF-8"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">"viewport"</span> <span class="na">content=</span><span class="s">"width=device-width, initial-scale=1.0"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;meta</span> <span class="na">http-equiv=</span><span class="s">"X-UA-Compatible"</span> <span class="na">content=</span><span class="s">"ie=edge"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;meta</span> <span class="na">http-equiv=</span><span class="s">"refresh"</span> <span class="na">content=</span><span class="s">"5;url=https://rarcos.com"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;meta</span> <span class="na">http-equiv=</span><span class="s">"refresh"</span> <span class="na">content=</span><span class="s">"5;url=https://mi_dominio_web"</span><span class="nt">&gt;</span>
 <span class="nt">&lt;/head&gt;</span>
 
 <span class="nt">&lt;body&gt;</span>
 <span class="nt">&lt;h1&gt;</span>Acceso no permitido<span class="nt">&lt;/h1&gt;</span>
-<span class="nt">&lt;p&gt;</span>Va a ser redireccionado a la página <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"https://rarcos.com"</span><span class="nt">&gt;</span>https://rarcos.com<span class="nt">&lt;/a&gt;&lt;/p&gt;</span>
+<span class="nt">&lt;p&gt;</span>Va a ser redireccionado a la página <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"https://mi_dominio_web"</span><span class="nt">&gt;</span>https://mi_dominio_web<span class="nt">&lt;/a&gt;&lt;/p&gt;</span>
 <span class="nt">&lt;/body&gt;</span>
 <span class="nt">&lt;/html&gt;</span></code></pre></figure>
+
+<p><a name="cont-postgres"></a></p>
+
+<p><strong>Contenedor para PostgreSQL</strong></p>
+
+<p>La dockerización de PostgreSQL es una de las más sencillas que hay, solamente tenemos que crear un docker-compose y levantar el contenedor.</p>
+
+<p><em>Generación del scripts de docker</em></p>
+
+<p>docker-compose.yml</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">version: <span class="s1">'3.3'</span>
+services:
+  db:
+    image: postgres
+    restart: always
+    container_name: postgresql
+    environment:
+      - <span class="nv">POSTGRES_USER</span><span class="o">=</span>mi_usuario
+      - <span class="nv">POSTGRES_PASSWORD</span><span class="o">=</span>mi_contraseña
+    ports:
+      - <span class="s1">'mi_puerto_ext:5432'</span>
+    volumes:
+      - db:/var/lib/postgresql/data
+volumes:
+  db:
+    driver: <span class="nb">local</span></code></pre></figure>
+
+<p>En la carpeta <em>./db</em> que se creará automáticamente tendremos todos los ficheros de la base de datos para poder consultar y/o modificar lo que necesitemos desde fuera del contenedor.</p>
+
+<p><a name="cont-mysql"></a></p>
+
+<p><strong>Contenedor para mySQL</strong></p>
+
+<p>La dockerización de MySQL es una de las más sencillas que hay, solamente tenemos que crear un docker-compose y levantar el contenedor.</p>
+
+<p><em>Generación del scripts de docker</em></p>
+
+<p>docker-compose.yml</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">version: <span class="s1">'2.4'</span>
+services:
+  mariadb:
+    image: mariadb
+    container_name: mysql
+    restart: always
+    volumes:
+      - ./db:/var/lib/mysql
+    environment:
+      TZ: Europe/Madrid
+      <span class="c">#MYSQL_RANDOM_ROOT_PASSWORD: "yes"</span>
+      MYSQL_ROOT_PASSWORD: mi_contraseña_root
+      MYSQL_DATABASE: mi_nombre_bbdd
+      MYSQL_USER: mi_usuario
+      MYSQL_PASSWORD: mi_contraseña
+    ports:
+      - 23452:3306
+    <span class="c">#healthcheck:</span>
+      <span class="c">#test:  mysqladmin ping -h 127.0.0.1 -u root --password=$$MYSQL_ROOT_PASSWORD || exit 1</span>
+      <span class="c">#test:  mysqladmin ping -h 127.0.0.1 -u $$MYSQL_USER --password=$$MYSQL_PASSWORD || exit 1</span>
+      <span class="c">#interval: 60s</span>
+      <span class="c">#timeout: 5s</span>
+      <span class="c">#retries: 5</span>
+      <span class="c">#start_period: 30s</span></code></pre></figure>
+
+<p>En la carpeta <em>./db</em> que se creará automáticamente tendremos todos los ficheros de la base de datos para poder consultar y/o modificar lo que necesitemos desde fuera del contenedor.</p>
+
+<p><a name="cont-mongo"></a></p>
+
+<p><strong>Contenedor para MongoDB</strong></p>
+
+<p>La dockerización de MongoDB es una de las más sencillas que hay, solamente tenemos que crear un docker-compose y levantar el contenedor.</p>
+
+<p><em>Generación del scripts de docker</em></p>
+
+<p>docker-compose.yml</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">version: <span class="s1">'3.7'</span>
+services:
+  mongodb_container:
+    image: mongo:latest
+    ports:
+      - mi_puerto_ext:27017
+    volumes:
+      - db:/data/db
+volumes:
+  db:</code></pre></figure>
+
+<p>En la carpeta <em>./db</em> que se creará automáticamente tendremos todos los ficheros de la base de datos para poder consultar y/o modificar lo que necesitemos desde fuera del contenedor.</p>
 
 <hr />
 
