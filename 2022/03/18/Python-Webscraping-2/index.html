@@ -230,7 +230,7 @@
 
 <span class="c1">#### Guardado del dataframe en la base de datos ####
 </span><span class="k">try</span><span class="p">:</span>
-    <span class="n">engine</span> <span class="o">=</span> <span class="n">create_engine</span><span class="p">(</span><span class="s">'mysql+pymysql://sbd_tarea_24:sbd_tarea_2-4123456@db4free.net/sbd_tarea_24'</span><span class="p">)</span>
+    <span class="n">engine</span> <span class="o">=</span> <span class="n">create_engine</span><span class="p">(</span><span class="s">'mysql+pymysql://name_db:passwd_db@domain_db/name_db'</span><span class="p">)</span>
 
     <span class="n">df</span><span class="p">.</span><span class="n">to_sql</span><span class="p">(</span><span class="s">"ofertas_trabajo"</span><span class="p">,</span> <span class="n">con</span> <span class="o">=</span> <span class="n">engine</span><span class="p">,</span> <span class="n">if_exists</span><span class="o">=</span><span class="s">'replace'</span><span class="p">)</span>
 
