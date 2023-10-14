@@ -898,6 +898,27 @@ table tr:hover {
   text-decoration: underline;
 }
 
+/* 2.2 Switch language */
+
+.switch-lang{
+  position: absolute; 
+  right: 5rem; 
+  top: 1rem;
+  z-index: 100; 
+  color: white;
+  font-weight: bold;
+}
+
+.switch-lang a{
+  text-decoration: none;
+  color: white;
+  font-weight: normal;
+}
+
+.switch-lang a:hover{
+  color: rgb(0, 195, 217);
+}
+
 /* 3. ========== Hero ========== */
 
 .hero {

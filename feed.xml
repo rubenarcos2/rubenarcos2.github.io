@@ -1,4 +1,143 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="https://rarcos.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://rarcos.com/" rel="alternate" type="text/html" /><updated>2023-09-06T16:54:41+02:00</updated><id>https://rarcos.com/feed.xml</id><title type="html">Rubén Arcos</title><subtitle>Desarrollador de aplicaciones multiplataformas</subtitle><entry><title type="html">Proyecto Integrado [En curso]</title><link href="https://rarcos.com/2023/06/30/Proyecto_integrado/" rel="alternate" type="text/html" title="Proyecto Integrado [En curso]" /><published>2023-06-30T16:33:28+02:00</published><updated>2023-06-30T16:33:28+02:00</updated><id>https://rarcos.com/2023/06/30/Proyecto_integrado</id><content type="html" xml:base="https://rarcos.com/2023/06/30/Proyecto_integrado/"><![CDATA[<p>Realización en curso</p>]]></content><author><name></name></author><category term="javascript" /><category term="php" /><category term="angular" /><category term="laravel" /><category term="proyecto integrado" /><category term="gesmerca" /><summary type="html"><![CDATA[Proyecto integrado fin del Ciclo Formativo de Grado Superior de Aplicaciones Web.]]></summary></entry><entry><title type="html">Securizando VPS</title><link href="https://rarcos.com/2023/03/14/Securizando-VPS/" rel="alternate" type="text/html" title="Securizando VPS" /><published>2023-03-14T06:41:00+01:00</published><updated>2023-03-14T06:41:00+01:00</updated><id>https://rarcos.com/2023/03/14/Securizando%20VPS</id><content type="html" xml:base="https://rarcos.com/2023/03/14/Securizando-VPS/"><![CDATA[<p>A modo de apuntes, una securización estándar de un VPS:</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="https://rarcos.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://rarcos.com/" rel="alternate" type="text/html" /><updated>2023-10-14T11:39:24+02:00</updated><id>https://rarcos.com/feed.xml</id><title type="html">Rubén Arcos</title><subtitle>Desarrollador de aplicaciones multiplataformas</subtitle><entry xml:lang="en"><title type="html">Integrated Project DWA</title><link href="https://rarcos.com/2023/06/30/Proyecto_integrado/" rel="alternate" type="text/html" title="Integrated Project DWA" /><published>2023-06-30T16:33:28+02:00</published><updated>2023-06-30T16:33:28+02:00</updated><id>https://rarcos.com/2023/06/30/Proyecto_integrado</id><content type="html" xml:base="https://rarcos.com/2023/06/30/Proyecto_integrado/"><![CDATA[<h1 id="integrated-project-at-the-end-of-the-higher-technician-in-development-of-web-applications">Integrated project at the end of the Higher Technician in Development of Web Applications</h1>
+
+<p style="text-align: justify">
+The main purpose of the application has been to demonstrate the implementation of the knowledge acquired throughout the training cycle of web application development. I have focused the application on the knowledge acquired on the management of user access privileges to different elements (or modules as I will refer to throughout the document) of the application, the management of hierarchical users in different groups (called roles) and the administration by an authorised user. No less relevant has been the application of knowledge in the design and management of relational databases and their implementation platforms. Another factor taken into account was the security of the environment of use (JWT) and of the application (Angular), implementing functionalities such as the encryption of sensitive data, or the prevention of the use of elements sensitive to the injection of automated information (cracking or brute force attacks).
+</p>
+
+<h1 id="architecture">Architecture</h1>
+
+<p>This is the architecture that has been used for the production environment on a VPS.</p>
+
+<p><img src="/images/pages/GesMerCa_arquitectura.png" alt="VPS Architecture" title="GesMerCa VPS Architecture" /></p>
+
+<p>The logical separation of frontend, backend and database.</p>
+
+<p><img src="/images/pages/GesMerCa_arquitectura_Front-Back.png" alt="Architecture GesMerCa Frontend-Backend" title="GesMerCa Frontend-Backend architecture" /></p>
+
+<h2 id="execution-environment---frontend">Execution environment - Frontend</h2>
+
+<p style="text-align: center">
+<a href="https://vps.rarcos.com:10448/" target="_blank">
+    <img src="/images/pages/gesmerca.png" width="100" alt="GesMerCa Logo" />Online web demo
+</a>
+</p>
+
+<h2 id="api-documentation---backend">API documentation - Backend</h2>
+
+<p style="text-align: center">
+<a href="https://vps.rarcos.com:10447/" target="_blank">
+    <img src="https://avatars.githubusercontent.com/u/7658037?s=200&amp;v=4" width="100" alt="Swagger Logo" />Api online documentation
+</a>
+</p>
+
+<hr />
+
+<p><em>Repository with content</em></p>
+
+<p><a href="https://github.com/rubenarcos2/proyecto_daw/tree/main/frontend/gesmerca"><img src="/images/pages/repository_small.png" alt="Repository" /></a>
+Frontend
+<a href="https://github.com/rubenarcos2/proyecto_daw/tree/main/backend/gesmerca"><img src="/images/pages/repository_small.png" alt="Repository" /></a>
+Backend
+<a href="https://github.com/rubenarcos2/proyecto_daw/tree/main/IA"><img src="/images/pages/repository_small.png" alt="Repository" /></a>
+IA</p>
+
+<hr />
+
+<p><strong>Sources:</strong></p>
+
+<p><em>Angular</em></p>
+
+<ul>
+  <li><a href="https://openwebinars.net/academia/aprende/angular/9221/">https://openwebinars.net/academia/aprende/angular/9221/</a></li>
+  <li><a href="https://www.positronx.io/laravel-angular-token-based-authentication-with-jwt/">https://www.positronx.io/laravel-angular-token-based-authentication-with-jwt/</a></li>
+  <li><a href="https://www.ultimateakash.com/blog-details/Ii1TNGAKYAo=/How-to-Implement-JWT-Authentication-in-Angular-2023">https://www.ultimateakash.com/blog-details/Ii1TNGAKYAo=/How-to-Implement-JWT-Authentication-in-Angular-2023</a></li>
+  <li><a href="https://www.tektutorialshub.com/angular/meta-service-in-angular-add-update-meta-tags-example/">https://www.tektutorialshub.com/angular/meta-service-in-angular-add-update-meta-tags-example/</a>
+<a href="https://angular.io/api/platform-browser/MetaDefinition">https://angular.io/api/platform-browser/MetaDefinition</a></li>
+  <li><a href="https://www.concretepage.com/angular-2/angular-2-4-minlength-and-maxlength-validation-example#:~:text=It%20means%20the%20value%20entered,can%20write%20code%20as%20below.">https://www.concretepage.com/angular-2/angular-2-4-minlength-and-maxlength-validation-example#:~:text=It%20means%20the%20value%20entered,can%20write%20code%20as%20below.</a></li>
+  <li><a href="https://stackoverflow.com/questions/52389376/how-to-reload-current-page">https://stackoverflow.com/questions/52389376/how-to-reload-current-page</a></li>
+</ul>
+
+<p><em>LocalStorage y sessionStorage</em></p>
+
+<ul>
+  <li><a href="https://ed.team/blog/que-es-y-como-utilizar-localstorage-y-sessionstorage">https://ed.team/blog/que-es-y-como-utilizar-localstorage-y-sessionstorage</a></li>
+</ul>
+
+<p><em>Component Lifecycle</em></p>
+
+<ul>
+  <li><a href="https://angular.io/guide/lifecycle-hooks">https://angular.io/guide/lifecycle-hooks</a></li>
+</ul>
+
+<p><em>Unit testing</em></p>
+
+<ul>
+  <li><a href="https://www.infragistics.com/community/blogs/b/infragistics/posts/unit-testing-in-angular">https://www.infragistics.com/community/blogs/b/infragistics/posts/unit-testing-in-angular</a> -&gt; ng test –code-coverage</li>
+</ul>
+
+<p><em>Auth guard with roles/permission based</em></p>
+
+<ul>
+  <li><a href="https://jasonwatmore.com/post/2022/12/22/angular-14-role-based-authorization-tutorial-with-example">https://jasonwatmore.com/post/2022/12/22/angular-14-role-based-authorization-tutorial-with-example</a></li>
+</ul>
+
+<p><em>Unsuscribing AJAX request</em></p>
+
+<ul>
+  <li><a href="https://nocodenobug.substack.com/p/rxjs-en-angular-el-drama-de-las-suscripciones">https://nocodenobug.substack.com/p/rxjs-en-angular-el-drama-de-las-suscripciones</a></li>
+</ul>
+
+<p><em>Laravel</em>
+<em>Creating the rest API in laravel with JWT authentication</em></p>
+
+<ul>
+  <li><a href="https://www.positronx.io/laravel-jwt-authentication-tutorial-user-login-signup-api/">https://www.positronx.io/laravel-jwt-authentication-tutorial-user-login-signup-api/</a></li>
+  <li><a href="https://www.nigmacode.com/laravel/roles-de-usuario-en-laravel/">https://www.nigmacode.com/laravel/roles-de-usuario-en-laravel/</a> -&gt; php artisan vendor:publish –provider=”Spatie\Permission\PermissionServiceProvider”</li>
+  <li><a href="https://laraveldaily.com/post/laravel-api-errors-and-exceptions-how-to-return-responses">https://laraveldaily.com/post/laravel-api-errors-and-exceptions-how-to-return-responses</a></li>
+  <li><a href="https://stackoverflow.com/questions/64897053/laravel-8-return-all-exceptions-as-json">https://stackoverflow.com/questions/64897053/laravel-8-return-all-exceptions-as-json</a></li>
+  <li><a href="https://www.itsolutionstuff.com/post/laravel-9-user-roles-and-permissions-tutorialexample.html">https://www.itsolutionstuff.com/post/laravel-9-user-roles-and-permissions-tutorialexample.html</a>
+<a href="https://larainfo.com/blogs/laravel-9-image-file-upload-example">https://larainfo.com/blogs/laravel-9-image-file-upload-example</a></li>
+  <li><a href="https://stackoverflow.com/questions/68128685/laravel-get-public-url-for-file-stored-in-storage-public-folder">https://stackoverflow.com/questions/68128685/laravel-get-public-url-for-file-stored-in-storage-public-folder</a> -&gt; php artisan storage:link
+<a href="https://tinkerwell.app/blog/laravel-caches-and-all-ways-to-clear-them">https://tinkerwell.app/blog/laravel-caches-and-all-ways-to-clear-them</a></li>
+  <li><a href="https://www.positronx.io/laravel-image-resize-upload-with-intervention-image-package/">https://www.positronx.io/laravel-image-resize-upload-with-intervention-image-package/</a></li>
+</ul>
+
+<p><em>Spatie permissions</em></p>
+
+<ul>
+  <li><a href="https://spatie.be/docs/laravel-permission/v5/basic-usage/direct-permissions">https://spatie.be/docs/laravel-permission/v5/basic-usage/direct-permissions</a></li>
+  <li><a href="https://laravelcode.com/post/laravel-8-user-roles-and-permissions-using-spatie">https://laravelcode.com/post/laravel-8-user-roles-and-permissions-using-spatie</a>
+<a href="https://spatie.be/docs/laravel-permission/v5/basic-usage/role-permissions">https://spatie.be/docs/laravel-permission/v5/basic-usage/role-permissions</a></li>
+  <li><a href="https://scrutinizer-ci.com/g/spatie/laravel-permission/code-structure/master/operation/Spatie%5CPermission%5CTraits%5CHasPermissions::syncPermissions">https://scrutinizer-ci.com/g/spatie/laravel-permission/code-structure/master/operation/Spatie%5CPermission%5CTraits%5CHasPermissions::syncPermissions</a></li>
+</ul>
+
+<p><em>Faker y seed imagenes</em></p>
+
+<ul>
+  <li><a href="https://styde.net/generando-datos-de-prueba-con-faker-en-laravel/">https://styde.net/generando-datos-de-prueba-con-faker-en-laravel/</a></li>
+  <li><a href="https://github.com/fzaninotto/Faker#formatters">https://github.com/fzaninotto/Faker#formatters</a></li>
+  <li><a href="https://kodementor.com/how-to-seeds-images-with-faker-in-laravel/">https://kodementor.com/how-to-seeds-images-with-faker-in-laravel/</a></li>
+  <li><a href="https://styde.net/insercion-de-datos-con-los-seeders-de-laravel/">https://styde.net/insercion-de-datos-con-los-seeders-de-laravel/</a> -&gt; php artisan migrate:fresh –seed</li>
+</ul>
+
+<p><em>storage -&gt; public link</em></p>
+
+<ul>
+  <li><a href="https://laravel.com/docs/10.x/filesystem#the-public-disk">https://laravel.com/docs/10.x/filesystem#the-public-disk</a> -&gt; php artisan storage:link</li>
+</ul>
+
+<p><em>Unit testing</em></p>
+
+<ul>
+  <li><a href="https://platzi.com/discusiones/1842-intro-laravel/85644-que-diferencia-hay-entre-unit-test-y-feature-test/">https://platzi.com/discusiones/1842-intro-laravel/85644-que-diferencia-hay-entre-unit-test-y-feature-test/</a></li>
+  <li><a href="https://laravel.com/docs/10.x/testing">https://laravel.com/docs/10.x/testing</a> -&gt; php artisan test</li>
+</ul>
+
+<p><em>Docker postgreSQL database backup</em></p>
+
+<ul>
+  <li><a href="https://stackoverflow.com/questions/30171063/how-to-generate-a-postgresql-dump-from-a-docker-container">https://stackoverflow.com/questions/30171063/how-to-generate-a-postgresql-dump-from-a-docker-container</a></li>
+</ul>]]></content><author><name></name></author><category term="javascript" /><category term="php" /><category term="angular" /><category term="laravel" /><category term="proyecto integrado" /><category term="gesmerca" /><summary type="html"><![CDATA[Integrated project at the end of the Higher Technician in Development of Web Applications (DWA).]]></summary></entry><entry><title type="html">Securizando VPS</title><link href="https://rarcos.com/2023/03/14/Securizando-VPS/" rel="alternate" type="text/html" title="Securizando VPS" /><published>2023-03-14T06:41:00+01:00</published><updated>2023-03-14T06:41:00+01:00</updated><id>https://rarcos.com/2023/03/14/Securizando%20VPS</id><content type="html" xml:base="https://rarcos.com/2023/03/14/Securizando-VPS/"><![CDATA[<p>A modo de apuntes, una securización estándar de un VPS:</p>
 <ul>
   <li><a href="#seg-basica">Seguridad básica</a></li>
   <li><a href="#ssh">Autenticación basada en clave SSH </a></li>

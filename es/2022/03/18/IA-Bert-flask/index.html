@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Python - IA ejemplo de uso de Bert Q&A exportado con flask</title>
+  <meta name='description'
+    content='Utilización del modelo de aprendizaje profundo Bert para pregruntas y respuestas, exportado en flask.'>
+
+  <!-- Google Fonts -->
+  <link
+    href="https://fonts.googleapis.com/css?family=Dancing+Script%7CPT+Serif:400,400i,700%7CLato:400,700%7CRoboto:300,400"
+    rel="stylesheet">
+
+  <!-- Font Awesome v4.7.0 -->
+  <link rel="stylesheet" href="/es/css/font-awesome.min.css">
+
+  <!-- Normalize v7.0.0 -->
+  <link rel="stylesheet" href="/es/css/normalize.css">
+
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="/es/css/main.css">
+  <link rel="canonical" href="https://rarcos.com/es/2022/03/18/IA-Bert-flask/">
+  <link rel="alternate" type="application/rss+xml" title="Rubén Arcos" href="/es/%20/feed.xml">
+
+  <!-- Chrome, Firefox OS and Opera -->
+  <meta name="theme-color" content="#faf5ee">
+  <!-- Windows Phone -->
+  <meta name="msapplication-navbutton-color" content="#faf5ee">
+  <!-- iOS Safari -->
+  <meta name="apple-mobile-web-app-status-bar-style" content="#faf5ee">
+</head>
+  
+  
+  
+    
+      <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-VL018H86JE"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { dataLayer.push(arguments); }
+  gtag('js', new Date());
+
+  gtag('config', 'G-VL018H86JE');
+</script> <!-- /Google Analytics -->
+    
+
+    <div class="full-page-container">
+      <div class="overlay"></div>
+      <header class="site-header clearfix">
+  <div class="wrapper-content">
+
+    <div class="switch-lang">
+      
+      
+      
+      <a id="switch-lang" href=" /2022/03/18/IA-Bert-flask/" title="Change language to en">
+        <img src=" https://cdn.wpml.org/wp-content/plugins/sitepress-multilingual-cms/res/flags/en.png">
+      </a>
+      
+      
+      
+      
+      <!--es-->
+      
+      
+    </div>
+
+    <div class="navigation-wrap">
+      <div class="nav-toggle-close"><i class="fa fa-times" aria-hidden="true"></i></div>
+
+      <nav class="site-nav">
+        
+        
+        
+        
+        
+        <a href='/about/'>Sobre mí</a>
+        
+        
+        
+        
+        
+        <a href='/contacto/'>Contacto</a>
+        
+        
+        
+        
+        
+        <a href='/cookies/'>Cookies</a>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <a href="https://linkedin.com/in/rubenarcos2"><i class="fa fa-linkedin fa-2x" aria-hidden="true"></i></a>
+        <a href="https://github.com/rubenarcos2"><i class="fa fa-github fa-2x" aria-hidden="true"></i></a>
+      </nav>
+
+    </div>
+
+    <span class="search-toggle">
+      <i class="fa fa-search" aria-hidden="true"></i>
+    </span>
+
+    <div class="nav-toggle"><i class="fa fa-bars" aria-hidden="true"></i></div>
+
+    <div class="site-logo">
+      <a href="/es/">Rubén Arcos</a>
+    </div>
+
+  </div>
+</header> <!-- /.site-header -->
+      <div class="search-box">
+  <div class="wrapper-content">
+    <form class="search-form">
+      
+      
+      
+      <label class="screen-reader-text" for="search-input">Buscar...</label>
+      <input type="text" id="search-input" class="search-field" name="s" placeholder="Buscar...">
+      
+      
+      
+      
+      
+      
+
+    </form>
+    <div class="btn-close">
+      <span class="bt-search-close">
+        <i class="fa fa-times" aria-hidden="true"></i>
+      </span>
+    </div>
+  </div>
+  <ul id="results-container" class="search-results-list"></ul>
+</div> <!-- /.search-box -->
+
+        <div class="post-header" style="background: url( /images/pages/bert-based-qna-chatbot.jpg)">
+  <div class="post-header-info">
+    <h1 class="post-title">Python - IA ejemplo de uso de Bert Q&amp;A exportado con flask</h1>
+    <div class="post-meta">
+      <time datetime="2022-03-18T15:33:28+01:00">
+         18/03/2022
+      </time>
+    </div>
+  </div>
+</div>
+<div id="readPostContent" style="text-align:center"><a class="btn btn-middle" onclick="readPostContent(this)">
+    
+    
+    
+    Leer artículo en voz alta
+    
+    
+    
+    
+    <!--es-->
+    
+    
+  </a></div>
+<div class="content-box">
+  <article class="post">
+
+    <div class="post-content">
+      <h1 id="utilización-de-bert-en-flask">Utilización de Bert en flask</h1>
+
+<p>El BERT (Bidirectional Encoder Representations from Transformers) puede utilizarse para una de estas aplicaciones, es decir, la de preguntas y respuestas. Le das al modelo de aprendizaje profundo un párrafo para que lo lea y luego le haces una pregunta relacionada con el mismo. Hay muchas aplicaciones de este tipo en las que BERT ha demostrado ser lo suficientemente fuerte en PNL (Comprensión del Lenguaje Natural para ser más precisos). El concepto de BERT se introdujo en 2018. Desde entonces, han surgido variaciones de BERT como ALBERT, RoBERTa, MobileBERT, etc. Puede leer sobre el documento original <a href="https://arxiv.org/pdf/1810.04805.pdf">aquí</a>.</p>
+
+<p>Utilizaremos una versión de BERT especial para web, más ligera, está en <a href="https://huggingface.co/mrm8488/distill-bert-base-spanish-wwm-cased-finetuned-spa-squad2-es">huggingface</a> para un conjunto de datos de preguntas y respuestas, es decir, Stanford Question Answering Dataset (SQuAD) y desplegaremos el modelo afinado en Heroku para la inferencia en tiempo real.</p>
+
+<hr />
+
+<p>Esta es la aplicación que yo he realizado basándome en la del tutorial y he aplicado algunas modificaciones:</p>
+
+<p><a href="https://vps.rarcos.com:10444/">https://vps.rarcos.com:10444/</a></p>
+
+<hr />
+
+<p><strong>Nota</strong>
+Asegúrese de seguir esta estructura de carpetas:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">/web-app
+|--templates
+|----index.html
+|--app.py
+|--requirements.txt
+|--Procfile</code></pre></figure>
+
+<h2 id="paso-1">Paso 1</h2>
+
+<p>Como esto tiene que ser desplegado en Heroku, vamos a asegurarnos de que Heroku instala todas las bibliotecas necesarias para ejecutar el programa.
+Haz un archivo llamado “requirements.txt” y pon las siguientes librerías en el archivo:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">https://download.pytorch.org/whl/cpu/torch-1.3.1%2Bcpu-cp36-cp36m-linux_x86_64.whl
+<span class="nv">transformers</span><span class="o">==</span>3.0.2
+<span class="nv">numpy</span><span class="o">==</span>1.19.1
+flask
+<span class="nv">joblib</span><span class="o">==</span>0.16.0
+<span class="nv">sentencepiece</span><span class="o">==</span>0.1.91
+<span class="nv">urllib3</span><span class="o">==</span>1.25.10</code></pre></figure>
+
+<p>Para instalar las dependencias en un entorno, tipo anaconda, no funciona la descarga directa de pytorch para cpu. Es necesario ejecutar:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">pip3 <span class="nb">install </span><span class="nv">torch</span><span class="o">==</span>1.3.1+cpu <span class="nv">torchvision</span><span class="o">==</span>0.4.2+cpu <span class="nt">-f</span> https://download.pytorch.org/whl/torch_stable.html</code></pre></figure>
+
+<p>Más info: <a href="https://github.com/pytorch/pytorch/issues/29434">en este enlace</a> y este <a href="https://foroayuda.es/donde-obtengo-una-version-de-pytorch-solo-para-cpu/">otro enlace</a> que tiene el versionado de pytorch.</p>
+
+<h2 id="paso-2">Paso 2</h2>
+
+<p>Haz un archivo llamado “app.py” y pon el siguiente código:</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">os</span>
+
+<span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Flask</span><span class="p">,</span> <span class="n">render_template</span>
+
+<span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">request</span>
+
+<span class="kn">import</span> <span class="nn">torch</span>
+
+<span class="kn">from</span> <span class="nn">transformers</span> <span class="kn">import</span> <span class="n">pipeline</span>
+
+<span class="c1"># name = "twmkn9/albert-base-v2-squad2"
+</span>
+<span class="c1"># name = "distilbert-base-uncased-distilled-squad"
+</span>
+<span class="n">nlp</span> <span class="o">=</span> <span class="n">pipeline</span><span class="p">(</span>
+
+    <span class="s">'question-answering'</span><span class="p">,</span>
+
+    <span class="n">model</span><span class="o">=</span><span class="s">'mrm8488/distill-bert-base-spanish-wwm-cased-finetuned-spa-squad2-es'</span><span class="p">,</span>
+
+    <span class="n">tokenizer</span><span class="o">=</span><span class="p">(</span>
+
+    <span class="s">'mrm8488/distill-bert-base-spanish-wwm-cased-finetuned-spa-squad2-es'</span><span class="p">,</span>
+
+    <span class="p">{</span><span class="s">"use_fast"</span><span class="p">:</span> <span class="bp">False</span><span class="p">}</span>
+
+    <span class="p">)</span>
+
+<span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">answer_question</span><span class="p">(</span><span class="n">question</span><span class="p">,</span> <span class="n">answer_text</span><span class="p">):</span>
+
+    <span class="k">try</span><span class="p">:</span>
+
+    <span class="n">answer</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">({</span><span class="s">'question'</span><span class="p">:</span><span class="n">question</span><span class="p">,</span> <span class="s">'context'</span><span class="p">:</span><span class="n">answer_text</span><span class="p">})</span>
+
+    <span class="k">return</span> <span class="n">answer</span><span class="p">[</span><span class="s">'answer'</span><span class="p">]</span>
+
+    <span class="k">except</span> <span class="nb">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+
+    <span class="k">print</span><span class="p">(</span><span class="s">"Error en la generación de la respuesta:"</span><span class="p">,</span> <span class="n">e</span><span class="p">)</span>
+
+<span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="n">__name__</span><span class="p">)</span>
+
+<span class="o">@</span><span class="n">app</span><span class="p">.</span><span class="n">route</span><span class="p">(</span><span class="s">'/'</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s">'GET'</span><span class="p">,</span> <span class="s">'POST'</span><span class="p">])</span>
+
+<span class="k">def</span> <span class="nf">index</span><span class="p">():</span>
+
+    <span class="k">if</span> <span class="n">request</span><span class="p">.</span><span class="n">method</span> <span class="o">==</span> <span class="s">'POST'</span><span class="p">:</span>
+
+    <span class="n">form</span> <span class="o">=</span> <span class="n">request</span><span class="p">.</span><span class="n">form</span>
+
+    <span class="n">result</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="n">bert_abstract</span> <span class="o">=</span> <span class="n">form</span><span class="p">[</span><span class="s">'paragraph'</span><span class="p">]</span>
+
+    <span class="n">question</span> <span class="o">=</span> <span class="n">form</span><span class="p">[</span><span class="s">'question'</span><span class="p">]</span>
+
+    <span class="n">result</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">form</span><span class="p">[</span><span class="s">'question'</span><span class="p">])</span>
+
+    <span class="n">result</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">answer_question</span><span class="p">(</span><span class="n">question</span><span class="p">,</span> <span class="n">bert_abstract</span><span class="p">))</span>
+
+    <span class="n">result</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">form</span><span class="p">[</span><span class="s">'paragraph'</span><span class="p">])</span>
+
+    <span class="k">return</span> <span class="n">render_template</span><span class="p">(</span><span class="s">"index.html"</span><span class="p">,</span><span class="n">result</span> <span class="o">=</span> <span class="n">result</span><span class="p">)</span>
+
+    <span class="c1"># answer = answer_question(question, bert_abstract)
+</span>
+    <span class="c1"># return answer
+</span>
+    <span class="k">return</span> <span class="n">render_template</span><span class="p">(</span><span class="s">"index.html"</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">'__main__'</span><span class="p">:</span>
+
+    <span class="n">port</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">os</span><span class="p">.</span><span class="n">environ</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="s">"PORT"</span><span class="p">,</span> <span class="mi">5000</span><span class="p">))</span>
+
+    <span class="n">app</span><span class="p">.</span><span class="n">run</span><span class="p">(</span><span class="n">host</span><span class="o">=</span><span class="s">'0.0.0.0'</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="n">port</span><span class="p">)</span></code></pre></figure>
+
+<p>Esto obtendrá el modelo BERT y el tokenizador necesario para el modelo. Hemos utilizado “mrm8488/bert-small-finetuned-squadv2” de huggingface ya que es comparativamente más pequeño que los otros modelos BERT y tenemos un espacio limitado de 512 MBs en la cuenta de nivel gratuito de Heroku. A continuación, creamos un servidor flask para recibir las entradas en forma de párrafos y preguntas.
+Ahora, haz una carpeta llamada “templates” y dentro de la carpeta, crea un archivo llamado “index.html”. Pon el siguiente código en el archivo:</p>
+
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="cp">&lt;!DOCTYPE html&gt;</span>
+
+<span class="nt">&lt;html&gt;</span>
+  <span class="nt">&lt;head&gt;</span>
+    <span class="nt">&lt;title&gt;</span>Bert Question Answering<span class="nt">&lt;/title&gt;</span>
+    <span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">"viewport"</span> <span class="na">content=</span><span class="s">"width=device-width, initial-scale=1.0"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;link</span> <span class="na">href=</span><span class="s">"//netdna.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">media=</span><span class="s">"screen"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;style&gt;</span>
+      <span class="nc">.container</span> <span class="p">{</span>
+        <span class="nl">max-width</span><span class="p">:</span> <span class="m">1000px</span><span class="p">;</span>
+      <span class="p">}</span>
+    <span class="nt">&lt;/style&gt;</span>
+  <span class="nt">&lt;/head&gt;</span>
+  <span class="nt">&lt;body&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"container"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"row-sm-5 row-sm-offset-1"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;h4&gt;</span>Enter a paragraph and a question to test BERT<span class="nt">&lt;/h4&gt;</span>
+            <span class="nt">&lt;form</span> <span class="na">role=</span><span class="s">"form"</span> <span class="na">method=</span><span class="s">'POST'</span> <span class="na">action=</span><span class="s">'/'</span><span class="nt">&gt;</span>
+              <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"form-group"</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;textarea</span> <span class="na">name=</span><span class="s">"paragraph"</span> <span class="na">class=</span><span class="s">"form-control"</span> <span class="na">id=</span><span class="s">"url-box"</span> <span class="na">placeholder=</span><span class="s">"Enter a paragraph"</span> <span class="na">style=</span><span class="s">"max-width: 300px;"</span> <span class="na">autofocus</span> <span class="na">required</span><span class="nt">&gt;</span>
+			
+		<span class="nt">&lt;/textarea&gt;</span>
+                 <span class="nt">&lt;br&gt;</span>
+                <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">name=</span><span class="s">"question"</span> <span class="na">class=</span><span class="s">"form-control"</span> <span class="na">id=</span><span class="s">"url-box"</span> <span class="na">placeholder=</span><span class="s">"Enter a question"</span> <span class="na">style=</span><span class="s">"max-width: 300px;"</span> <span class="na">autofocus</span> <span class="na">required</span><span class="nt">&gt;</span>
+              <span class="nt">&lt;/div&gt;</span>
+              <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"submit"</span> <span class="na">class=</span><span class="s">"btn btn-default"</span><span class="nt">&gt;</span>Predict<span class="nt">&lt;/button&gt;</span>
+            <span class="nt">&lt;/form&gt;</span>
+          <span class="nt">&lt;br&gt;</span>
+      <span class="nt">&lt;/div&gt;</span>
+
+    `<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"row-sm-5 row-sm-offset-1"</span><span class="nt">&gt;</span>`
+          
+      `<span class="nt">&lt;/div&gt;</span>`
+
+    `<span class="nt">&lt;/div&gt;</span>`
+
+<span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span></code></pre></figure>
+
+<p>Con el código anterior, creamos un formulario para recibir las entradas.</p>
+
+<h2 id="paso-3">Paso 3</h2>
+
+<p>Crea un archivo llamándolo “Procfile” sin ninguna extensión. Y pon el siguiente código:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">web: python app.py</code></pre></figure>
+
+<p>Esto le dirá a Heroku qué hacer una vez que la aplicación haya sido desplegada.</p>
+
+<h2 id="paso-4">Paso 4</h2>
+
+<p>Tenemos nuestro código listo. Ahora vamos a hablar con Heroku. Asegúrate de tener instalado Heroku CLI y git.</p>
+
+<p>Una vez hecho esto, escriba los siguientes comandos en su terminal de comandos:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">heroku login</code></pre></figure>
+
+<p>Esto te conectará con Heroku CLI
+A continuación, escriba esto para crear una aplicación heroku:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">heroku create your_app_name</code></pre></figure>
+
+<p>El nombre de tu aplicación puede ser cualquier cosa única.
+A continuación, escribe los siguientes comandos para desplegar tu aplicación en Heroku:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">git init
+git add <span class="nb">.</span>
+git commit <span class="nt">-m</span> <span class="s1">'initial commit'</span>
+git push heroku master</code></pre></figure>
+
+<p>¡Hurra! ¡Tu aplicación ha sido desplegada! Veamos cómo funciona.
+Abre una ventana del navegador y escribe la siguiente dirección web:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">https://your_app_name.herokuapp.com</code></pre></figure>
+
+<p>Debería ver una página web como ésta:</p>
+
+<p><img src="/images/pages/0_1YwbgemSDKHq0WQ2.png" alt="app en funcionamiento" /></p>
+
+<p><em>Este tutorial está copiado y traducido de <a href="https://medium.com/analytics-vidhya/deploying-bert-on-heroku-7df1d23f9c43">aquí</a> quién tiene todos los derechos.
+La aplicación original: “I have deployed my BERT app <a href="https://bertqna.herokuapp.com/">here</a> if you wish to give it a try.”</em></p>
+
+<hr />
+<p><strong>Fuentes:</strong></p>
+
+<p><a href="https://medium.com/analytics-vidhya/deploying-bert-on-heroku-7df1d23f9c43">https://medium.com/analytics-vidhya/deploying-bert-on-heroku-7df1d23f9c43</a></p>
+
+    </div>
+
+    <footer class="post-footer">
+      
+      
+      
+      <p>
+      <h3>Licencia de contenido</h3>
+
+      <p><img src="/images/pages/88x311.png" /></p>
+
+      <p>Esta página web y todo su contenido, incluido proyectos y código fuente, está licenciado bajo una licencia de
+        Creative Commons: Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0) <a
+          href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.es">Más info</a></p>
+
+      </p>
+      
+      
+      
+      
+      <!--es-->
+      
+      
+
+      <ul class="post-footer-list">
+        <li class="post-footer-item">
+          <a class="post-facebook"
+            href="https://www.facebook.com/sharer/sharer.php?u=https://rarcos.com/2022/03/18/IA-Bert-flask/"
+            onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
+            title="Share on Facebook" rel="nofollow"><i class="fa fa-facebook"
+              aria-hidden="true"></i><span>Facebook</span></a>
+        </li>
+
+        <li class="post-footer-item">
+          <a class="post-twitter"
+            href="https://twitter.com/intent/tweet?text=Python%20-%20IA%20ejemplo%20de%20uso%20de%20Bert%20Q&A%20exportado%20con%20flask&url=https://rarcos.com/2022/03/18/IA-Bert-flask/"
+            onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
+            title="Share on Twitter" rel="nofollow"><i class="fa fa-twitter"
+              aria-hidden="true"></i><span>Twitter</span></a>
+        </li>
+
+        <li class="post-footer-item">
+          <a href="http://pinterest.com/pin/create/button/?url=https://rarcos.com/2022/03/18/IA-Bert-flask/&amp;media=https://rarcos.com/images/pages/bert-based-qna-chatbot.jpg&amp;description=Python%20-%20IA%20ejemplo%20de%20uso%20de%20Bert%20Q&A%20exportado%20con%20flask"
+            onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=900,height=500,toolbar=1,resizable=0'); return false;"
+            class="post-pinterest" title="Share on Pinterest" rel="nofollow"><i class="fa fa-pinterest"
+              aria-hidden="true"></i><span>Pinterest</span></a>
+        </li>
+
+        <li class="post-footer-item">
+          <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://rarcos.com/2022/03/18/IA-Bert-flask/&title=Python%20-%20IA%20ejemplo%20de%20uso%20de%20Bert%20Q&A%20exportado%20con%20flask"
+            onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=900,height=500,toolbar=1,resizable=0'); return false;"
+            class="post-linkedin" title="Share on Linkedin" rel="nofollow"><i class="fa fa-linkedin"
+              aria-hidden="true"></i><span>Linkedin</span></a>
+        </li>
+      </ul>
+      
+      <div class="post-tag">
+        <span>Tags:</span>
+        
+        <a href="/es/tags#python" class="tag">python</a>
+        
+        <a href="/es/tags#pytorch" class="tag">pytorch</a>
+        
+        <a href="/es/tags#ia" class="tag">ia</a>
+        
+        <a href="/es/tags#flask" class="tag">flask</a>
+        
+        <a href="/es/tags#bert" class="tag">bert</a>
+        
+      </div>
+      
+    </footer>
+
+    
+    <div class="post-author">
+      
+      <div class="post-author-image">
+        <a style="background-image: url( /images/ruben.jpg)">
+          <span class="screen-reader-text">Rubén Arcos Picture</span>
+        </a>
+      </div>
+      <div class="post-author-info">
+        <h4>Rubén Arcos</h4>
+        <p class="post-author-bio">
+          
+          
+          
+          Desarrollador TI. <br>Técnico especialista en IA y Big data, <br>Técnico superior en desarrollo de aplicaciones web y <br>Técnico superior en desarrollo de aplicaciones multiplataformas.
+          
+          
+          
+          
+          
+          
+        </p>
+        <div class="post-author-meta">
+          
+          <a href="https://twitter.com/rarcosdev" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+          
+          
+          <a href="https://linkedin.com/in/rubenarcos2" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+          
+          
+          <a href="https://github.com/rubenarcos2" target="_blank"><i class="fa fa-github" aria-hidden="true"></i></a>
+          
+          
+          
+          
+          
+          
+          
+          
+          
+        </div>
+      </div>
+      
+    </div>
+
+    <div class="page-navigation clearfix">
+      
+      <a class="prev-page" href="/es/2022/03/18/Python-Webscraping-2/"><i class="fa fa-angle-left"
+          aria-hidden="true"></i><span>Python - Webscraping II (Selenium)</span></a>
+      
+      
+      <a class="next-page" href="/es/2022/03/18/IA-Roberta-QA/"><span>Python - IA ejemplo de uso de RoBERTa Q&A</span><i class="fa fa-angle-right"
+          aria-hidden="true"></i></a>
+      
+    </div>
+
+    
+  </article> <!-- /.post -->
+
+</div> <!-- /.content-box -->
+<style>
+    #cookie-notice {
+        padding: 0.5rem 1rem;
+        display: none;
+        text-align: center;
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        background: #222;
+        color: rgba(255, 255, 255, 0.8);
+    }
+
+    #cookie-notice a {
+        display: inline-block;
+        cursor: pointer;
+        margin-left: 0.5rem;
+    }
+
+    @media (max-width: 767px) {
+        #cookie-notice span {
+            display: block;
+            padding-top: 3px;
+            margin-bottom: 1rem;
+        }
+
+        #cookie-notice a {
+            position: relative;
+            bottom: 4px;
+        }
+    }
+</style>
+
+
+
+<div id="cookie-notice"><span>Esta web utiliza cookies y scripts de terceros para mejorar la funcionalidad de este sitio
+        web.</span>
+    <a id="cookie-notice-accept" class="btn btn-primary btn-sm">Aceptar</a><a href="/es/cookies"
+        class="btn btn-primary btn-sm">Más info</a>
+</div>
+
+
+
+
+
+
+<script>
+    function createCookie(name, value, days) {
+        var expires = "";
+        if (days) {
+            var date = new Date();
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+            expires = "; expires=" + date.toUTCString();
+        }
+        document.cookie = name + "=" + value + expires + "; path=/";
+    }
+    function readCookie(name) {
+        var nameEQ = name + "=";
+        var ca = document.cookie.split(';');
+        for (var i = 0; i < ca.length; i++) {
+            var c = ca[i];
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+        }
+        return null;
+    }
+    function eraseCookie(name) {
+        createCookie(name, "", -1);
+    }
+
+    if (readCookie('cookie-notice-dismissed') == 'true') {
+
+    } else {
+        document.getElementById('cookie-notice').style.display = 'block';
+    }
+    document.getElementById('cookie-notice-accept').addEventListener("click", function () {
+        createCookie('cookie-notice-dismissed', 'true', 31);
+        document.getElementById('cookie-notice').style.display = 'none';
+        location.reload();
+    });
+
+</script>
+
+      <div class="top" title="Scroll To Top">
+  <i class="fa fa-chevron-up" aria-hidden="true"></i>
+</div> <!-- /.top -->
+      <footer class="site-footer">
+
+  <div class="footer-wrapper">
+
+    <h2 class="footer-heading">Rubén Arcos</h2>
+
+    <ul class="social-footer">
+    
+      <li><a href="https://twitter.com/rarcosdev" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+    
+    
+    
+    
+    <li><a href="https://linkedin.com/in/rubenarcos2" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+    
+    
+    <li><a href="https://github.com/rubenarcos2" target="_blank"><i class="fa fa-github" aria-hidden="true"></i></a></li>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    </ul>
+
+    <div class="copyright">
+      <p><a href="https://jekyllrb.com/">Proudly powered by Jekyll</a> | Theme: Lokmont by <a href="https://artemsheludko.github.io/">Artem Sheludko</a></p>
+    </div>
+  </div>
+
+</footer> <!-- /.site-footer -->
+
+    </div> <!-- /.full-page-container -->
+
+    <script src="/js/jquery-3.2.1.min.js"></script>
+<script src="/js/jquery.viewportchecker.min.js"></script>
+<script src="/js/jquery.fitvids.js"></script>
+<script src="/js/simple-jekyll-search.min.js"></script>
+<script src="/js/transition.js"></script>
+<script src="/js/zoom.min.js"></script>
+<script src="/js/main.js"></script>
+    <style>
+    #cookie-notice {
+        padding: 0.5rem 1rem;
+        display: none;
+        text-align: center;
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        background: #222;
+        color: rgba(255, 255, 255, 0.8);
+    }
+
+    #cookie-notice a {
+        display: inline-block;
+        cursor: pointer;
+        margin-left: 0.5rem;
+    }
+
+    @media (max-width: 767px) {
+        #cookie-notice span {
+            display: block;
+            padding-top: 3px;
+            margin-bottom: 1rem;
+        }
+
+        #cookie-notice a {
+            position: relative;
+            bottom: 4px;
+        }
+    }
+</style>
+
+
+
+<div id="cookie-notice"><span>Esta web utiliza cookies y scripts de terceros para mejorar la funcionalidad de este sitio
+        web.</span>
+    <a id="cookie-notice-accept" class="btn btn-primary btn-sm">Aceptar</a><a href="/es/cookies"
+        class="btn btn-primary btn-sm">Más info</a>
+</div>
+
+
+
+
+
+
+<script>
+    function createCookie(name, value, days) {
+        var expires = "";
+        if (days) {
+            var date = new Date();
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+            expires = "; expires=" + date.toUTCString();
+        }
+        document.cookie = name + "=" + value + expires + "; path=/";
+    }
+    function readCookie(name) {
+        var nameEQ = name + "=";
+        var ca = document.cookie.split(';');
+        for (var i = 0; i < ca.length; i++) {
+            var c = ca[i];
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+        }
+        return null;
+    }
+    function eraseCookie(name) {
+        createCookie(name, "", -1);
+    }
+
+    if (readCookie('cookie-notice-dismissed') == 'true') {
+
+    } else {
+        document.getElementById('cookie-notice').style.display = 'block';
+    }
+    document.getElementById('cookie-notice-accept').addEventListener("click", function () {
+        createCookie('cookie-notice-dismissed', 'true', 31);
+        document.getElementById('cookie-notice').style.display = 'none';
+        location.reload();
+    });
+
+</script>
+  </body>
+
+</html>

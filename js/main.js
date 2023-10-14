@@ -86,7 +86,13 @@ $(function() {
     var nextPage = parseInt($postsContainer.attr("data-page")) + 1;
     var totalPages = parseInt($postsContainer.attr("data-totalPages"));
 
-    $(this).addClass("is-loading").text("Ver más artículos");
+    let switchLang = document.getElementById('switch-lang').title;
+    let langOutOfUse = switchLang[switchLang.length-2]+switchLang[switchLang.length-1];
+    
+    if(langOutOfUse == 'en')
+      $(this).addClass("is-loading").text("Ver más artículos");
+    else
+      $(this).addClass("is-loading").text("Show more articles");
 
     $.get("/page/" + nextPage, function(data) {
       var htmlData = $.parseHTML(data);
@@ -116,21 +122,41 @@ function readPostContent(evt){
     const post = document.getElementsByClassName('post-content')[0].textContent; 
     const synth = window.speechSynthesis;
     const utterThis = new SpeechSynthesisUtterance(post);
-    utterThis.lang = 'es-ES';
 
-    utterThis.addEventListener("end", (event) => {
-      document.getElementById("readPostContent").childNodes[0].text = "Leer artículo en voz alta";
-    });
-
-    if(synth.speaking){
-      synth.cancel();
-      utterThis.text = "Narración parada";
-      synth.speak(utterThis);
-      evt.text = "Leer artículo en voz alta";
+    let switchLang = document.getElementById('switch-lang').title;
+    let langOutOfUse = switchLang[switchLang.length-2]+switchLang[switchLang.length-1];
+    
+    if(langOutOfUse == 'en'){
+      utterThis.lang = 'es-ES';
+      utterThis.addEventListener("end", (event) => {
+        document.getElementById("readPostContent").childNodes[0].text = "Leer artículo en voz alta";
+      });
+  
+      if(synth.speaking){
+        synth.cancel();
+        utterThis.text = "Narración parada";
+        synth.speak(utterThis);
+        evt.text = "Leer artículo en voz alta";
+      }else{
+        evt.text = "Parar narración";
+        synth.speak(utterThis);
+      }
     }else{
-      evt.text = "Parar narración";
-      synth.speak(utterThis);
-    }    
+      utterThis.lang = 'en-GB';
+      utterThis.addEventListener("end", (event) => {
+        document.getElementById("readPostContent").childNodes[0].text = "Read article aloud";
+      });
+  
+      if(synth.speaking){
+        synth.cancel();
+        utterThis.text = "Narration stopped";
+        synth.speak(utterThis);
+        evt.text = "Read article aloud";
+      }else{
+        evt.text = "Stop narration";
+        synth.speak(utterThis);
+      }
+    }
   }else{
     alert("Tu buscador no soporta la narración interactiva (TTS)");
   }
