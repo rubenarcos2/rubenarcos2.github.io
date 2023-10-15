@@ -9,7 +9,7 @@
     } ,
   
     {
-      "title"    : "Securizando VPS",
+      "title"    : "Securing VPS",
       "category" : "",
       "tags"     : "vps, seguridad, ssh, postfix, malware",
       "url"      : "/2023/03/14/Securizando-VPS/",

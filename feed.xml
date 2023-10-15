@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="https://rarcos.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://rarcos.com/" rel="alternate" type="text/html" /><updated>2023-10-15T11:21:32+02:00</updated><id>https://rarcos.com/feed.xml</id><title type="html">Rubén Arcos</title><subtitle>Desarrollador de aplicaciones multiplataformas</subtitle><entry xml:lang="en"><title type="html">Integrated Project DWA</title><link href="https://rarcos.com/2023/06/30/Proyecto_integrado/" rel="alternate" type="text/html" title="Integrated Project DWA" /><published>2023-06-30T16:33:28+02:00</published><updated>2023-06-30T16:33:28+02:00</updated><id>https://rarcos.com/2023/06/30/Proyecto_integrado</id><content type="html" xml:base="https://rarcos.com/2023/06/30/Proyecto_integrado/"><![CDATA[<h1 id="integrated-project-at-the-end-of-the-higher-technician-in-development-of-web-applications">Integrated project at the end of the Higher Technician in Development of Web Applications</h1>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="https://rarcos.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://rarcos.com/" rel="alternate" type="text/html" /><updated>2023-10-15T11:34:53+02:00</updated><id>https://rarcos.com/feed.xml</id><title type="html">Rubén Arcos</title><subtitle>Desarrollador de aplicaciones multiplataformas</subtitle><entry xml:lang="en"><title type="html">Integrated Project DWA</title><link href="https://rarcos.com/2023/06/30/Proyecto_integrado/" rel="alternate" type="text/html" title="Integrated Project DWA" /><published>2023-06-30T16:33:28+02:00</published><updated>2023-06-30T16:33:28+02:00</updated><id>https://rarcos.com/2023/06/30/Proyecto_integrado</id><content type="html" xml:base="https://rarcos.com/2023/06/30/Proyecto_integrado/"><![CDATA[<h1 id="integrated-project-at-the-end-of-the-higher-technician-in-development-of-web-applications">Integrated project at the end of the Higher Technician in Development of Web Applications</h1>
 
 <p style="text-align: justify">
 The main purpose of the application has been to demonstrate the implementation of the knowledge acquired throughout the training cycle of web application development. I have focused the application on the knowledge acquired on the management of user access privileges to different elements (or modules as I will refer to throughout the document) of the application, the management of hierarchical users in different groups (called roles) and the administration by an authorised user. No less relevant has been the application of knowledge in the design and management of relational databases and their implementation platforms. Another factor taken into account was the security of the environment of use (JWT) and of the application (Angular), implementing functionalities such as the encryption of sensitive data, or the prevention of the use of elements sensitive to the injection of automated information (cracking or brute force attacks).
@@ -137,89 +137,89 @@ IA</p>
 
 <ul>
   <li><a href="https://stackoverflow.com/questions/30171063/how-to-generate-a-postgresql-dump-from-a-docker-container">https://stackoverflow.com/questions/30171063/how-to-generate-a-postgresql-dump-from-a-docker-container</a></li>
-</ul>]]></content><author><name></name></author><category term="javascript" /><category term="php" /><category term="angular" /><category term="laravel" /><category term="proyecto integrado" /><category term="gesmerca" /><summary type="html"><![CDATA[Integrated project at the end of the Higher Technician in Development of Web Applications (DWA).]]></summary></entry><entry><title type="html">Securizando VPS</title><link href="https://rarcos.com/2023/03/14/Securizando-VPS/" rel="alternate" type="text/html" title="Securizando VPS" /><published>2023-03-14T06:41:00+01:00</published><updated>2023-03-14T06:41:00+01:00</updated><id>https://rarcos.com/2023/03/14/Securizando%20VPS</id><content type="html" xml:base="https://rarcos.com/2023/03/14/Securizando-VPS/"><![CDATA[<p>A modo de apuntes, una securización estándar de un VPS:</p>
+</ul>]]></content><author><name></name></author><category term="javascript" /><category term="php" /><category term="angular" /><category term="laravel" /><category term="proyecto integrado" /><category term="gesmerca" /><summary type="html"><![CDATA[Integrated project at the end of the Higher Technician in Development of Web Applications (DWA).]]></summary></entry><entry xml:lang="en"><title type="html">Securing VPS</title><link href="https://rarcos.com/2023/03/14/Securizando-VPS/" rel="alternate" type="text/html" title="Securing VPS" /><published>2023-03-14T06:41:00+01:00</published><updated>2023-03-14T06:41:00+01:00</updated><id>https://rarcos.com/2023/03/14/Securizando%20VPS</id><content type="html" xml:base="https://rarcos.com/2023/03/14/Securizando-VPS/"><![CDATA[<p>By way of notes, a standard VPS securisation:</p>
 <ul>
-  <li><a href="#seg-basica">Seguridad básica</a></li>
-  <li><a href="#ssh">Autenticación basada en clave SSH </a></li>
-  <li><a href="#maldet">Detección de malware - maldet</a></li>
-  <li><a href="#postfix">Postfix - Envío de emai</a></li>
-  <li><a href="#cpu">Notificación si CPU máx</a></li>
+  <li><a href="#seg-basica">Basic security</a></li>
+  <li><a href="#ssh">SSH key-based authentication</a></li>
+  <li><a href="#maldet">Malware detection - maldet</a></li>
+  <li><a href="#postfix">Postfix - Sending email</a></li>
+  <li><a href="#cpu">Notification if CPU max</a></li>
 </ul>
 
 <p><a name="seg-basica"></a></p>
 
-<h1 id="seguridad-de-linux-y-debilidades-comunes">Seguridad de Linux y debilidades comunes</h1>
+<h1 id="linux-security-and-common-weaknesses">Linux security and common weaknesses</h1>
 
-<p>15 consejos de seguridad de VPS para proteger la seguridad de tu servidor</p>
+<p>15 VPS security tips for protecting your server security</p>
 
 <p><a href="https://www.hostinger.es/tutoriales/seguridad-vps">https://www.hostinger.es/tutoriales/seguridad-vps</a></p>
 
 <p><a name="ssh"></a></p>
 
-<h1 id="autenticación-basada-en-clave-ssh---acceso">Autenticación basada en clave SSH - Acceso</h1>
+<h1 id="ssh-key-based-authentication---access">SSH Key Based Authentication - Access</h1>
 
-<p>Generación del para de claves: pública-privada</p>
+<p>Generation of the key pair: public-private</p>
 
 <figure class="highlight"><pre><code class="language-bash" data-lang="bash">ssh-keygen <span class="nt">-t</span> rsa</code></pre></figure>
 
-<p>Autorización de la clave pública</p>
+<p>Public key authorisation</p>
 
 <figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nb">cat</span> ~/.ssh/id_rsa.pub <span class="o">&gt;&gt;</span> ~/.ssh/authorized_keys</code></pre></figure>
 
-<p>Deshabilitar la autenticación de contraseña en su servidor</p>
+<p>Disable password authentication on your server</p>
 
 <figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nb">sudo </span>nano /etc/ssh/sshd_config</code></pre></figure>
 
-<p>Cambiar el valor de PasswordAuthentication dentro del sshd_config a:</p>
+<p>Change the value of PasswordAuthentication inside the sshd_config to:</p>
 
 <figure class="highlight"><pre><code class="language-bash" data-lang="bash">PasswordAuthentication no</code></pre></figure>
 
-<p>Reiniciamos el servidor SSH para que se hagan efectivo los cambios:</p>
+<p>Restart the SSH server for the changes to take effect:</p>
 
 <figure class="highlight"><pre><code class="language-bash" data-lang="bash">service ssh restart</code></pre></figure>
 
-<p>Pasamos por sftp la clave privada <em>id_rsa</em> al cliente que vayamos a utilizar. Putty en mi caso.
-En la parte del cliente, instalamos putty y generamos la clave privada de la siguiente forma:</p>
+<p>We pass by sftp the private key <em>id_rsa</em> to the client we are going to use. Putty in my case.
+On the client side, we install putty and generate the private key as follows:</p>
 
 <p><a href="https://www.simplified.guide/putty/convert-ssh-key-to-ppk">https://www.simplified.guide/putty/convert-ssh-key-to-ppk</a></p>
 
 <p><a name="maldet"></a></p>
 
-<h1 id="detección-de-malware---maldet">Detección de malware - maldet</h1>
+<h1 id="malware-detection---maldet">Malware detection - maldet</h1>
 
-<p>Instalación y puesta en funcionamiento:</p>
+<p>Installation and commissioning:</p>
 
 <p><a href="https://codigonaranja.com/como-detectar-malware-en-tu-sitio-web-servidores-linux-ubuntu-debian">https://codigonaranja.com/como-detectar-malware-en-tu-sitio-web-servidores-linux-ubuntu-debian</a></p>
 
-<p>Ve informes y reportes:</p>
+<p>View reports and briefings:</p>
 
 <p><a href="https://wpbeaches.com/set-lmd-maldet-clamav-runcloud/">https://wpbeaches.com/set-lmd-maldet-clamav-runcloud/</a></p>
 
-<p>Escaneo manual:</p>
+<p>Manual scanning:</p>
 
 <p><a href="https://www.nosolocodigo.com/linux-malware-detect-escaner-para-aplicaciones-web-open-source/">https://www.nosolocodigo.com/linux-malware-detect-escaner-para-aplicaciones-web-open-source/</a></p>
 
 <p><a name="postfix"></a></p>
 
-<h1 id="instalación-y-configuración-de-postfix-para-usar-el-smtp-de-gmail">Instalación y configuración de Postfix para usar el SMTP de Gmail</h1>
+<h1 id="installing-and-configuring-postfix-to-use-gmail-smtp">Installing and configuring Postfix to use Gmail SMTP</h1>
 
 <p><a href="http://somebooks.es/configurar-postfix-para-usar-el-smtp-de-gmail-en-ubuntu-20-04-lts/">http://somebooks.es/configurar-postfix-para-usar-el-smtp-de-gmail-en-ubuntu-20-04-lts/</a></p>
 
 <p><a href="https://www.fosstechnix.com/how-to-configure-postfix-with-gmail-on-ubuntu/">https://www.fosstechnix.com/how-to-configure-postfix-with-gmail-on-ubuntu/</a></p>
 
-<p>Email alias para usuarios:</p>
+<p>Email aliases for users:</p>
 
 <p><a href="https://www.cyberciti.biz/tips/how-to-redirect-one-users-mail-to-another-user-with-postfix.html">https://www.cyberciti.biz/tips/how-to-redirect-one-users-mail-to-another-user-with-postfix.html</a></p>
 
-<p>Resolución al error en el certificado:</p>
+<p>Resolution of the error in the certificate:</p>
 
 <p><a href="https://github.com/rancher/rancher/issues/4293">https://github.com/rancher/rancher/issues/4293</a></p>
 
 <p><a name="cpu"></a></p>
 
-<h1 id="notificación-por-email-si-cpu-supera-el-80">Notificación por email si CPU supera el 80%</h1>
+<h1 id="email-notification-if-cpu-exceeds-80">Email notification if CPU exceeds 80%</h1>
 
-<p><a href="https://www.2daygeek.com/linux-shell-script-to-monitor-cpu-utilization-usage-and-send-email/">https://www.2daygeek.com/linux-shell-script-to-monitor-cpu-utilization-usage-and-send-email/</a></p>]]></content><author><name></name></author><category term="vps" /><category term="seguridad" /><category term="ssh" /><category term="postfix" /><category term="malware" /><summary type="html"><![CDATA[Apuntes de securización VPS: seguridad básica, claves ssh, detección malware, posfix...]]></summary></entry><entry><title type="html">Dockerizando VPS</title><link href="https://rarcos.com/2023/03/11/Dockerizando-VPS/" rel="alternate" type="text/html" title="Dockerizando VPS" /><published>2023-03-11T06:41:00+01:00</published><updated>2023-03-11T06:41:00+01:00</updated><id>https://rarcos.com/2023/03/11/Dockerizando%20VPS</id><content type="html" xml:base="https://rarcos.com/2023/03/11/Dockerizando-VPS/"><![CDATA[<p>He traspasado todas mis aplicaciones que tenía en heroku a un vps propio y además he aprovechado para dockerizarlas todas, incluyendo bases de datos y otros servicios web. Concretamente he dockerizado:</p>
+<p><a href="https://www.2daygeek.com/linux-shell-script-to-monitor-cpu-utilization-usage-and-send-email/">https://www.2daygeek.com/linux-shell-script-to-monitor-cpu-utilization-usage-and-send-email/</a></p>]]></content><author><name></name></author><category term="vps" /><category term="seguridad" /><category term="ssh" /><category term="postfix" /><category term="malware" /><summary type="html"><![CDATA[VPS securisation notes: basic security, ssh keys, malware detection, posfix...]]></summary></entry><entry><title type="html">Dockerizando VPS</title><link href="https://rarcos.com/2023/03/11/Dockerizando-VPS/" rel="alternate" type="text/html" title="Dockerizando VPS" /><published>2023-03-11T06:41:00+01:00</published><updated>2023-03-11T06:41:00+01:00</updated><id>https://rarcos.com/2023/03/11/Dockerizando%20VPS</id><content type="html" xml:base="https://rarcos.com/2023/03/11/Dockerizando-VPS/"><![CDATA[<p>He traspasado todas mis aplicaciones que tenía en heroku a un vps propio y además he aprovechado para dockerizarlas todas, incluyendo bases de datos y otros servicios web. Concretamente he dockerizado:</p>
 <ul>
   <li><a href="#cont-spring-boot">Spring Boot</a></li>
   <li><a href="#cont-laravel">Laravel</a></li>

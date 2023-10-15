@@ -15,9 +15,9 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Securizando VPS</title>
+  <title>Securing VPS</title>
   <meta name='description'
-    content='Apuntes de securización VPS: seguridad básica, claves ssh, detección malware, posfix...'>
+    content='VPS securisation notes: basic security, ssh keys, malware detection, posfix...'>
 
   <!-- Google Fonts -->
   <link
@@ -219,7 +219,7 @@
 
         <div class="post-header" style="background: url(/images/pages/security_server.jpg)">
   <div class="post-header-info">
-    <h1 class="post-title">Securizando VPS</h1>
+    <h1 class="post-title">Securing VPS</h1>
     <div class="post-meta">
       
       
@@ -253,87 +253,87 @@
   <article class="post">
 
     <div class="post-content">
-      <p>A modo de apuntes, una securización estándar de un VPS:</p>
+      <p>By way of notes, a standard VPS securisation:</p>
 <ul>
-  <li><a href="#seg-basica">Seguridad básica</a></li>
-  <li><a href="#ssh">Autenticación basada en clave SSH </a></li>
-  <li><a href="#maldet">Detección de malware - maldet</a></li>
-  <li><a href="#postfix">Postfix - Envío de emai</a></li>
-  <li><a href="#cpu">Notificación si CPU máx</a></li>
+  <li><a href="#seg-basica">Basic security</a></li>
+  <li><a href="#ssh">SSH key-based authentication</a></li>
+  <li><a href="#maldet">Malware detection - maldet</a></li>
+  <li><a href="#postfix">Postfix - Sending email</a></li>
+  <li><a href="#cpu">Notification if CPU max</a></li>
 </ul>
 
 <p><a name="seg-basica"></a></p>
 
-<h1 id="seguridad-de-linux-y-debilidades-comunes">Seguridad de Linux y debilidades comunes</h1>
+<h1 id="linux-security-and-common-weaknesses">Linux security and common weaknesses</h1>
 
-<p>15 consejos de seguridad de VPS para proteger la seguridad de tu servidor</p>
+<p>15 VPS security tips for protecting your server security</p>
 
 <p><a href="https://www.hostinger.es/tutoriales/seguridad-vps">https://www.hostinger.es/tutoriales/seguridad-vps</a></p>
 
 <p><a name="ssh"></a></p>
 
-<h1 id="autenticación-basada-en-clave-ssh---acceso">Autenticación basada en clave SSH - Acceso</h1>
+<h1 id="ssh-key-based-authentication---access">SSH Key Based Authentication - Access</h1>
 
-<p>Generación del para de claves: pública-privada</p>
+<p>Generation of the key pair: public-private</p>
 
 <figure class="highlight"><pre><code class="language-bash" data-lang="bash">ssh-keygen <span class="nt">-t</span> rsa</code></pre></figure>
 
-<p>Autorización de la clave pública</p>
+<p>Public key authorisation</p>
 
 <figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nb">cat</span> ~/.ssh/id_rsa.pub <span class="o">&gt;&gt;</span> ~/.ssh/authorized_keys</code></pre></figure>
 
-<p>Deshabilitar la autenticación de contraseña en su servidor</p>
+<p>Disable password authentication on your server</p>
 
 <figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nb">sudo </span>nano /etc/ssh/sshd_config</code></pre></figure>
 
-<p>Cambiar el valor de PasswordAuthentication dentro del sshd_config a:</p>
+<p>Change the value of PasswordAuthentication inside the sshd_config to:</p>
 
 <figure class="highlight"><pre><code class="language-bash" data-lang="bash">PasswordAuthentication no</code></pre></figure>
 
-<p>Reiniciamos el servidor SSH para que se hagan efectivo los cambios:</p>
+<p>Restart the SSH server for the changes to take effect:</p>
 
 <figure class="highlight"><pre><code class="language-bash" data-lang="bash">service ssh restart</code></pre></figure>
 
-<p>Pasamos por sftp la clave privada <em>id_rsa</em> al cliente que vayamos a utilizar. Putty en mi caso.
-En la parte del cliente, instalamos putty y generamos la clave privada de la siguiente forma:</p>
+<p>We pass by sftp the private key <em>id_rsa</em> to the client we are going to use. Putty in my case.
+On the client side, we install putty and generate the private key as follows:</p>
 
 <p><a href="https://www.simplified.guide/putty/convert-ssh-key-to-ppk">https://www.simplified.guide/putty/convert-ssh-key-to-ppk</a></p>
 
 <p><a name="maldet"></a></p>
 
-<h1 id="detección-de-malware---maldet">Detección de malware - maldet</h1>
+<h1 id="malware-detection---maldet">Malware detection - maldet</h1>
 
-<p>Instalación y puesta en funcionamiento:</p>
+<p>Installation and commissioning:</p>
 
 <p><a href="https://codigonaranja.com/como-detectar-malware-en-tu-sitio-web-servidores-linux-ubuntu-debian">https://codigonaranja.com/como-detectar-malware-en-tu-sitio-web-servidores-linux-ubuntu-debian</a></p>
 
-<p>Ve informes y reportes:</p>
+<p>View reports and briefings:</p>
 
 <p><a href="https://wpbeaches.com/set-lmd-maldet-clamav-runcloud/">https://wpbeaches.com/set-lmd-maldet-clamav-runcloud/</a></p>
 
-<p>Escaneo manual:</p>
+<p>Manual scanning:</p>
 
 <p><a href="https://www.nosolocodigo.com/linux-malware-detect-escaner-para-aplicaciones-web-open-source/">https://www.nosolocodigo.com/linux-malware-detect-escaner-para-aplicaciones-web-open-source/</a></p>
 
 <p><a name="postfix"></a></p>
 
-<h1 id="instalación-y-configuración-de-postfix-para-usar-el-smtp-de-gmail">Instalación y configuración de Postfix para usar el SMTP de Gmail</h1>
+<h1 id="installing-and-configuring-postfix-to-use-gmail-smtp">Installing and configuring Postfix to use Gmail SMTP</h1>
 
 <p><a href="http://somebooks.es/configurar-postfix-para-usar-el-smtp-de-gmail-en-ubuntu-20-04-lts/">http://somebooks.es/configurar-postfix-para-usar-el-smtp-de-gmail-en-ubuntu-20-04-lts/</a></p>
 
 <p><a href="https://www.fosstechnix.com/how-to-configure-postfix-with-gmail-on-ubuntu/">https://www.fosstechnix.com/how-to-configure-postfix-with-gmail-on-ubuntu/</a></p>
 
-<p>Email alias para usuarios:</p>
+<p>Email aliases for users:</p>
 
 <p><a href="https://www.cyberciti.biz/tips/how-to-redirect-one-users-mail-to-another-user-with-postfix.html">https://www.cyberciti.biz/tips/how-to-redirect-one-users-mail-to-another-user-with-postfix.html</a></p>
 
-<p>Resolución al error en el certificado:</p>
+<p>Resolution of the error in the certificate:</p>
 
 <p><a href="https://github.com/rancher/rancher/issues/4293">https://github.com/rancher/rancher/issues/4293</a></p>
 
 <p><a name="cpu"></a></p>
 
-<h1 id="notificación-por-email-si-cpu-supera-el-80">Notificación por email si CPU supera el 80%</h1>
+<h1 id="email-notification-if-cpu-exceeds-80">Email notification if CPU exceeds 80%</h1>
 
 <p><a href="https://www.2daygeek.com/linux-shell-script-to-monitor-cpu-utilization-usage-and-send-email/">https://www.2daygeek.com/linux-shell-script-to-monitor-cpu-utilization-usage-and-send-email/</a></p>
 
@@ -371,21 +371,21 @@ En la parte del cliente, instalamos putty y generamos la clave privada de la sig
 
         <li class="post-footer-item">
           <a class="post-twitter"
-            href="https://twitter.com/intent/tweet?text=Securizando%20VPS&url=https://rarcos.com/2023/03/14/Securizando-VPS/"
+            href="https://twitter.com/intent/tweet?text=Securing%20VPS&url=https://rarcos.com/2023/03/14/Securizando-VPS/"
             onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
             title="Share on Twitter" rel="nofollow"><i class="fa-brands fa-x-twitter"
               aria-hidden="true"></i><span>Twitter</span></a>
         </li>
 
         <li class="post-footer-item">
-          <a href="http://pinterest.com/pin/create/button/?url=https://rarcos.com/2023/03/14/Securizando-VPS/&amp;media=https://rarcos.com/images/pages/security_server.jpg&amp;description=Securizando%20VPS"
+          <a href="http://pinterest.com/pin/create/button/?url=https://rarcos.com/2023/03/14/Securizando-VPS/&amp;media=https://rarcos.com/images/pages/security_server.jpg&amp;description=Securing%20VPS"
             onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=900,height=500,toolbar=1,resizable=0'); return false;"
             class="post-pinterest" title="Share on Pinterest" rel="nofollow"><i class="fa-brands fa-pinterest"
               aria-hidden="true"></i><span>Pinterest</span></a>
         </li>
 
         <li class="post-footer-item">
-          <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://rarcos.com/2023/03/14/Securizando-VPS/&title=Securizando%20VPS"
+          <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://rarcos.com/2023/03/14/Securizando-VPS/&title=Securing%20VPS"
             onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=900,height=500,toolbar=1,resizable=0'); return false;"
             class="post-linkedin" title="Share on Linkedin" rel="nofollow"><i class="fa-brands fa-linkedin"
               aria-hidden="true"></i><span>Linkedin</span></a>
