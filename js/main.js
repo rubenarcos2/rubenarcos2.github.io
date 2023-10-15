@@ -89,30 +89,49 @@ $(function() {
     let switchLang = document.getElementById('switch-lang').title;
     let langOutOfUse = switchLang[switchLang.length-2]+switchLang[switchLang.length-1];
     
-    if(langOutOfUse == 'en')
+    if(langOutOfUse == 'en'){
       $(this).addClass("is-loading").text("Ver más artículos");
-    else
+      $.get("/es/page/" + nextPage, function(data) {
+        var htmlData = $.parseHTML(data);
+        var $articles = $(htmlData).find("article");
+  
+        $postsContainer.attr("data-page", nextPage).append($articles);
+  
+          $(".post-thumbnail").viewportChecker({
+            classToAdd: "visible",
+            classToRemove: "hidden visible",
+            removeClassAfterAnimation: true,
+            offset: 0
+          });
+  
+        if ($postsContainer.attr("data-totalPages") == nextPage) {
+          $(".load-more").remove();
+        }
+  
+        $(_this).removeClass("is-loading");
+      });
+    }else{
       $(this).addClass("is-loading").text("Show more articles");
-
-    $.get("/page/" + nextPage, function(data) {
-      var htmlData = $.parseHTML(data);
-      var $articles = $(htmlData).find("article");
-
-      $postsContainer.attr("data-page", nextPage).append($articles);
-
-        $(".post-thumbnail").viewportChecker({
-          classToAdd: "visible",
-          classToRemove: "hidden visible",
-          removeClassAfterAnimation: true,
-          offset: 0
-        });
-
-      if ($postsContainer.attr("data-totalPages") == nextPage) {
-        $(".load-more").remove();
-      }
-
-      $(_this).removeClass("is-loading");
-    });
+      $.get("/page/" + nextPage, function(data) {
+        var htmlData = $.parseHTML(data);
+        var $articles = $(htmlData).find("article");
+  
+        $postsContainer.attr("data-page", nextPage).append($articles);
+  
+          $(".post-thumbnail").viewportChecker({
+            classToAdd: "visible",
+            classToRemove: "hidden visible",
+            removeClassAfterAnimation: true,
+            offset: 0
+          });
+  
+        if ($postsContainer.attr("data-totalPages") == nextPage) {
+          $(".load-more").remove();
+        }
+  
+        $(_this).removeClass("is-loading");
+      });
+    }
   }
 
 });
