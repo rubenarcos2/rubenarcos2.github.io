@@ -262,20 +262,20 @@ Para que funcione tiene que estar todo en la misma carpeta y tiene el siguiente 
   <li>Clase entrypoint. Contiene la configuración del servidor que levanta R.</li>
 </ul>
 
-<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">library</span><span class="p">(</span><span class="nx">plumber</span><span class="p">)</span>
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nf">library</span><span class="p">(</span><span class="nx">plumber</span><span class="p">)</span>
 
-<span class="nx">p</span> <span class="o">&lt;-</span> <span class="nx">plumb</span><span class="p">(</span><span class="dl">"</span><span class="s2">API_calculadora.r</span><span class="dl">"</span><span class="p">)</span>
-<span class="nx">p$run</span><span class="p">(</span><span class="nx">port</span> <span class="o">=</span> <span class="mi">8888</span><span class="p">)</span></code></pre></figure>
+<span class="nx">p</span> <span class="o">&lt;-</span> <span class="nf">plumb</span><span class="p">(</span><span class="dl">"</span><span class="s2">API_calculadora.r</span><span class="dl">"</span><span class="p">)</span>
+<span class="nx">p</span><span class="nf">$run</span><span class="p">(</span><span class="nx">port</span> <span class="o">=</span> <span class="mi">8888</span><span class="p">)</span></code></pre></figure>
 
 <ul>
   <li>Clase enrutadora. Es una clase que tiene los endpoints a las funciones de la calculadora.</li>
 </ul>
 
-<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">library</span><span class="p">(</span><span class="nx">jsonlite</span><span class="p">)</span>
-<span class="nx">library</span><span class="p">(</span><span class="nx">plumber</span><span class="p">)</span>
-<span class="nx">library</span><span class="p">(</span><span class="nx">dplyr</span><span class="p">)</span>
-<span class="nx">library</span><span class="p">(</span><span class="nx">ggplot2</span><span class="p">)</span>
-<span class="nx">library</span><span class="p">(</span><span class="nx">gapminder</span><span class="p">)</span>
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nf">library</span><span class="p">(</span><span class="nx">jsonlite</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="nx">plumber</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="nx">dplyr</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="nx">ggplot2</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="nx">gapminder</span><span class="p">)</span>
 
 <span class="err">#</span><span class="o">*</span> <span class="p">@</span><span class="nd">apiTitle</span> <span class="nx">API</span> <span class="nx">de</span> <span class="nx">ejemplo</span>
 <span class="err">#</span><span class="o">*</span> <span class="p">@</span><span class="nd">apiDescription</span> <span class="nx">Endpoints</span> <span class="nx">para</span> <span class="nx">exponer</span> <span class="nx">funciones</span> <span class="nx">de</span> <span class="nx">ejmplo</span> <span class="nx">con</span> <span class="nx">Plumber</span><span class="p">.</span><span class="nx">r</span>
@@ -285,8 +285,8 @@ Para que funcione tiene que estar todo en la misma carpeta y tiene el siguiente 
 <span class="err">#</span><span class="o">*</span> <span class="p">@</span><span class="nd">param</span> <span class="nx">b</span>
 <span class="err">#</span><span class="o">*</span> <span class="p">@</span><span class="nd">get</span> <span class="sr">/su</span><span class="err">m
 </span><span class="kd">function</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span><span class="nx">b</span><span class="p">)</span> <span class="p">{</span>
-  <span class="nx">calculadora</span> <span class="o">&lt;-</span> <span class="nx">modules</span><span class="p">::</span><span class="nx">use</span><span class="p">(</span><span class="dl">'</span><span class="s1">./calculadora.r</span><span class="dl">'</span><span class="p">)</span>
-  <span class="nx">calculadora$suma</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span><span class="nx">b</span><span class="p">)</span>
+  <span class="nx">calculadora</span> <span class="o">&lt;-</span> <span class="nx">modules</span><span class="p">::</span><span class="nf">use</span><span class="p">(</span><span class="dl">'</span><span class="s1">./calculadora.r</span><span class="dl">'</span><span class="p">)</span>
+  <span class="nx">calculadora</span><span class="nf">$suma</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span><span class="nx">b</span><span class="p">)</span>
 <span class="p">}</span>
 
 <span class="err">#</span><span class="o">*</span> <span class="nx">Returns</span> <span class="nx">minus</span> <span class="k">of</span> <span class="nx">a</span> <span class="nx">and</span> <span class="nx">b</span>
@@ -294,8 +294,8 @@ Para que funcione tiene que estar todo en la misma carpeta y tiene el siguiente 
 <span class="err">#</span><span class="o">*</span> <span class="p">@</span><span class="nd">param</span> <span class="nx">b</span>
 <span class="err">#</span><span class="o">*</span> <span class="p">@</span><span class="nd">get</span> <span class="sr">/minu</span><span class="err">s
 </span><span class="kd">function</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span><span class="nx">b</span><span class="p">)</span> <span class="p">{</span>
-  <span class="nx">calculadora</span> <span class="o">&lt;-</span> <span class="nx">modules</span><span class="p">::</span><span class="nx">use</span><span class="p">(</span><span class="dl">'</span><span class="s1">./calculadora.r</span><span class="dl">'</span><span class="p">)</span>
-  <span class="nx">calculadora$resta</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span><span class="nx">b</span><span class="p">)</span>
+  <span class="nx">calculadora</span> <span class="o">&lt;-</span> <span class="nx">modules</span><span class="p">::</span><span class="nf">use</span><span class="p">(</span><span class="dl">'</span><span class="s1">./calculadora.r</span><span class="dl">'</span><span class="p">)</span>
+  <span class="nx">calculadora</span><span class="nf">$resta</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span><span class="nx">b</span><span class="p">)</span>
 <span class="p">}</span>
 
 <span class="err">#</span><span class="o">*</span> <span class="nx">Returns</span> <span class="nx">multiply</span> <span class="k">of</span> <span class="nx">a</span> <span class="nx">and</span> <span class="nx">b</span>
@@ -303,8 +303,8 @@ Para que funcione tiene que estar todo en la misma carpeta y tiene el siguiente 
 <span class="err">#</span><span class="o">*</span> <span class="p">@</span><span class="nd">param</span> <span class="nx">b</span>
 <span class="err">#</span><span class="o">*</span> <span class="p">@</span><span class="nd">get</span> <span class="sr">/mul</span><span class="err">t
 </span><span class="kd">function</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span><span class="nx">b</span><span class="p">)</span> <span class="p">{</span>
-  <span class="nx">calculadora</span> <span class="o">&lt;-</span> <span class="nx">modules</span><span class="p">::</span><span class="nx">use</span><span class="p">(</span><span class="dl">'</span><span class="s1">./calculadora.r</span><span class="dl">'</span><span class="p">)</span>
-  <span class="nx">calculadora$mult</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span><span class="nx">b</span><span class="p">)</span>
+  <span class="nx">calculadora</span> <span class="o">&lt;-</span> <span class="nx">modules</span><span class="p">::</span><span class="nf">use</span><span class="p">(</span><span class="dl">'</span><span class="s1">./calculadora.r</span><span class="dl">'</span><span class="p">)</span>
+  <span class="nx">calculadora</span><span class="nf">$mult</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span><span class="nx">b</span><span class="p">)</span>
 <span class="p">}</span>
 
 <span class="err">#</span><span class="o">*</span> <span class="nx">Returns</span> <span class="nx">minus</span> <span class="k">of</span> <span class="nx">a</span> <span class="nx">and</span> <span class="nx">b</span>
@@ -312,8 +312,8 @@ Para que funcione tiene que estar todo en la misma carpeta y tiene el siguiente 
 <span class="err">#</span><span class="o">*</span> <span class="p">@</span><span class="nd">param</span> <span class="nx">b</span>
 <span class="err">#</span><span class="o">*</span> <span class="p">@</span><span class="nd">get</span> <span class="sr">/di</span><span class="err">v
 </span><span class="kd">function</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span><span class="nx">b</span><span class="p">)</span> <span class="p">{</span>
-  <span class="nx">calculadora</span> <span class="o">&lt;-</span> <span class="nx">modules</span><span class="p">::</span><span class="nx">use</span><span class="p">(</span><span class="dl">'</span><span class="s1">./calculadora.r</span><span class="dl">'</span><span class="p">)</span>
-  <span class="nx">calculadora$div</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span><span class="nx">b</span><span class="p">)</span>
+  <span class="nx">calculadora</span> <span class="o">&lt;-</span> <span class="nx">modules</span><span class="p">::</span><span class="nf">use</span><span class="p">(</span><span class="dl">'</span><span class="s1">./calculadora.r</span><span class="dl">'</span><span class="p">)</span>
+  <span class="nx">calculadora</span><span class="nf">$div</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span><span class="nx">b</span><span class="p">)</span>
 <span class="p">}</span>
 
 <span class="err">#</span><span class="o">*</span> <span class="nx">Returns</span> <span class="nx">minus</span> <span class="k">of</span> <span class="nx">a</span> <span class="nx">and</span> <span class="nx">b</span>
@@ -322,8 +322,8 @@ Para que funcione tiene que estar todo en la misma carpeta y tiene el siguiente 
 <span class="err">#</span><span class="o">*</span> <span class="p">@</span><span class="nd">param</span> <span class="nx">c</span>
 <span class="err">#</span><span class="o">*</span> <span class="p">@</span><span class="nd">get</span> <span class="sr">/pol</span><span class="err">i
 </span><span class="kd">function</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span><span class="nx">b</span><span class="p">,</span><span class="nx">c</span><span class="p">)</span> <span class="p">{</span>
-  <span class="nx">calculadora</span> <span class="o">&lt;-</span> <span class="nx">modules</span><span class="p">::</span><span class="nx">use</span><span class="p">(</span><span class="dl">'</span><span class="s1">./calculadora.r</span><span class="dl">'</span><span class="p">)</span>
-  <span class="nx">calculadora$poli</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span><span class="nx">b</span><span class="p">,</span><span class="nx">c</span><span class="p">)</span>
+  <span class="nx">calculadora</span> <span class="o">&lt;-</span> <span class="nx">modules</span><span class="p">::</span><span class="nf">use</span><span class="p">(</span><span class="dl">'</span><span class="s1">./calculadora.r</span><span class="dl">'</span><span class="p">)</span>
+  <span class="nx">calculadora</span><span class="nf">$poli</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span><span class="nx">b</span><span class="p">,</span><span class="nx">c</span><span class="p">)</span>
 <span class="p">}</span></code></pre></figure>
 
 <ul>
@@ -331,20 +331,20 @@ Para que funcione tiene que estar todo en la misma carpeta y tiene el siguiente 
 </ul>
 
 <figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">suma</span> <span class="o">&lt;-</span> <span class="kd">function</span><span class="p">(</span><span class="nx">num1</span><span class="p">,</span> <span class="nx">num2</span><span class="p">)</span> <span class="p">{</span>
-  <span class="k">as</span><span class="p">.</span><span class="nx">numeric</span><span class="p">(</span><span class="nx">num1</span><span class="p">)</span> <span class="o">+</span> <span class="k">as</span><span class="p">.</span><span class="nx">numeric</span><span class="p">(</span><span class="nx">num2</span><span class="p">)</span>
+  <span class="k">as</span><span class="p">.</span><span class="nf">numeric</span><span class="p">(</span><span class="nx">num1</span><span class="p">)</span> <span class="o">+</span> <span class="k">as</span><span class="p">.</span><span class="nf">numeric</span><span class="p">(</span><span class="nx">num2</span><span class="p">)</span>
 <span class="p">}</span>
 
 <span class="nx">resta</span> <span class="o">&lt;-</span> <span class="kd">function</span><span class="p">(</span><span class="nx">num1</span><span class="p">,</span> <span class="nx">num2</span><span class="p">)</span> <span class="p">{</span>
-  <span class="k">as</span><span class="p">.</span><span class="nx">numeric</span><span class="p">(</span><span class="nx">num1</span><span class="p">)</span> <span class="o">-</span> <span class="k">as</span><span class="p">.</span><span class="nx">numeric</span><span class="p">(</span><span class="nx">num2</span><span class="p">)</span>
+  <span class="k">as</span><span class="p">.</span><span class="nf">numeric</span><span class="p">(</span><span class="nx">num1</span><span class="p">)</span> <span class="o">-</span> <span class="k">as</span><span class="p">.</span><span class="nf">numeric</span><span class="p">(</span><span class="nx">num2</span><span class="p">)</span>
 <span class="p">}</span>
 
 <span class="nx">mult</span> <span class="o">&lt;-</span> <span class="kd">function</span><span class="p">(</span><span class="nx">num1</span><span class="p">,</span> <span class="nx">num2</span><span class="p">)</span> <span class="p">{</span>
-  <span class="k">as</span><span class="p">.</span><span class="nx">numeric</span><span class="p">(</span><span class="nx">num1</span><span class="p">)</span> <span class="o">*</span> <span class="k">as</span><span class="p">.</span><span class="nx">numeric</span><span class="p">(</span><span class="nx">num2</span><span class="p">)</span>
+  <span class="k">as</span><span class="p">.</span><span class="nf">numeric</span><span class="p">(</span><span class="nx">num1</span><span class="p">)</span> <span class="o">*</span> <span class="k">as</span><span class="p">.</span><span class="nf">numeric</span><span class="p">(</span><span class="nx">num2</span><span class="p">)</span>
 <span class="p">}</span>
 
 <span class="nx">div</span> <span class="o">&lt;-</span> <span class="kd">function</span><span class="p">(</span><span class="nx">num1</span><span class="p">,</span> <span class="nx">num2</span><span class="p">)</span> <span class="p">{</span>
   <span class="k">if</span><span class="p">(</span><span class="nx">num2</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">){</span>
-    <span class="k">as</span><span class="p">.</span><span class="nx">numeric</span><span class="p">(</span><span class="nx">num1</span><span class="p">)</span> <span class="o">/</span> <span class="k">as</span><span class="p">.</span><span class="nx">numeric</span><span class="p">(</span><span class="nx">num2</span><span class="p">)</span>
+    <span class="k">as</span><span class="p">.</span><span class="nf">numeric</span><span class="p">(</span><span class="nx">num1</span><span class="p">)</span> <span class="o">/</span> <span class="k">as</span><span class="p">.</span><span class="nf">numeric</span><span class="p">(</span><span class="nx">num2</span><span class="p">)</span>
   <span class="p">}</span><span class="k">else</span><span class="p">{</span>
     <span class="dl">"</span><span class="s2">No se puede dividir por 0</span><span class="dl">"</span>
   <span class="p">}</span>

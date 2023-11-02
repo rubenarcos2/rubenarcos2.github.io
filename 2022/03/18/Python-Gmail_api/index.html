@@ -325,123 +325,123 @@
 
 <p>En la misma carpeta donde se encuentre este script, debe estar el fichero <em>credentials.json</em> que fue renombrado por el que nos descargamos de google con los credenciales de acceso de nuestra cuenta. También destacar que se creará de forma automática después del primer lanzamiento un fichero <em>tocken.picle</em> que no deberemos borrar.</p>
 
-<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">os</span>
-<span class="kn">import</span> <span class="nn">pickle</span>
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="n">os</span>
+<span class="kn">import</span> <span class="n">pickle</span>
 
 <span class="c1"># Gmail API utils
 </span>
-<span class="kn">from</span> <span class="nn">googleapiclient.discovery</span> <span class="kn">import</span> <span class="n">build</span>
-<span class="kn">from</span> <span class="nn">google_auth_oauthlib.flow</span> <span class="kn">import</span> <span class="n">InstalledAppFlow</span>
-<span class="kn">from</span> <span class="nn">google.auth.transport.requests</span> <span class="kn">import</span> <span class="n">Request</span>
+<span class="kn">from</span> <span class="n">googleapiclient.discovery</span> <span class="kn">import</span> <span class="n">build</span>
+<span class="kn">from</span> <span class="n">google_auth_oauthlib.flow</span> <span class="kn">import</span> <span class="n">InstalledAppFlow</span>
+<span class="kn">from</span> <span class="n">google.auth.transport.requests</span> <span class="kn">import</span> <span class="n">Request</span>
 
 <span class="c1"># for encoding/decoding messages in base64
 </span>
-<span class="kn">from</span> <span class="nn">base64</span> <span class="kn">import</span> <span class="n">urlsafe_b64decode</span><span class="p">,</span> <span class="n">urlsafe_b64encode</span>
+<span class="kn">from</span> <span class="n">base64</span> <span class="kn">import</span> <span class="n">urlsafe_b64decode</span><span class="p">,</span> <span class="n">urlsafe_b64encode</span>
 
 <span class="c1"># for dealing with attachement MIME types
 </span>
-<span class="kn">from</span> <span class="nn">email.mime.text</span> <span class="kn">import</span> <span class="n">MIMEText</span>
-<span class="kn">from</span> <span class="nn">email.mime.multipart</span> <span class="kn">import</span> <span class="n">MIMEMultipart</span>
-<span class="kn">from</span> <span class="nn">email.mime.image</span> <span class="kn">import</span> <span class="n">MIMEImage</span>
-<span class="kn">from</span> <span class="nn">email.mime.audio</span> <span class="kn">import</span> <span class="n">MIMEAudio</span>
-<span class="kn">from</span> <span class="nn">email.mime.base</span> <span class="kn">import</span> <span class="n">MIMEBase</span>
-<span class="kn">from</span> <span class="nn">mimetypes</span> <span class="kn">import</span> <span class="n">guess_type</span> <span class="k">as</span> <span class="n">guess_mime_type</span>
+<span class="kn">from</span> <span class="n">email.mime.text</span> <span class="kn">import</span> <span class="n">MIMEText</span>
+<span class="kn">from</span> <span class="n">email.mime.multipart</span> <span class="kn">import</span> <span class="n">MIMEMultipart</span>
+<span class="kn">from</span> <span class="n">email.mime.image</span> <span class="kn">import</span> <span class="n">MIMEImage</span>
+<span class="kn">from</span> <span class="n">email.mime.audio</span> <span class="kn">import</span> <span class="n">MIMEAudio</span>
+<span class="kn">from</span> <span class="n">email.mime.base</span> <span class="kn">import</span> <span class="n">MIMEBase</span>
+<span class="kn">from</span> <span class="n">mimetypes</span> <span class="kn">import</span> <span class="n">guess_type</span> <span class="k">as</span> <span class="n">guess_mime_type</span>
 
 <span class="c1"># Request all access (permission to read/send/receive emails, manage the inbox, and more)
 </span>
-<span class="n">SCOPES</span> <span class="o">=</span> <span class="p">[</span><span class="s">'https://mail.google.com/'</span><span class="p">]</span>
-<span class="n">our_email</span> <span class="o">=</span> <span class="s">'email_envio@gmail.com'</span>
+<span class="n">SCOPES</span> <span class="o">=</span> <span class="p">[</span><span class="sh">'</span><span class="s">https://mail.google.com/</span><span class="sh">'</span><span class="p">]</span>
+<span class="n">our_email</span> <span class="o">=</span> <span class="sh">'</span><span class="s">email_envio@gmail.com</span><span class="sh">'</span>
 
 <span class="k">def</span> <span class="nf">gmail_authenticate</span><span class="p">():</span>
     <span class="n">creds</span> <span class="o">=</span> <span class="bp">None</span>
     <span class="c1"># the file token.pickle stores the user's access and refresh tokens, and is
 </span>    <span class="c1"># created automatically when the authorization flow completes for the first time
-</span>    <span class="k">if</span> <span class="n">os</span><span class="p">.</span><span class="n">path</span><span class="p">.</span><span class="n">exists</span><span class="p">(</span><span class="s">"token.pickle"</span><span class="p">):</span>
-        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s">"token.pickle"</span><span class="p">,</span> <span class="s">"rb"</span><span class="p">)</span> <span class="k">as</span> <span class="n">token</span><span class="p">:</span>
-            <span class="n">creds</span> <span class="o">=</span> <span class="n">pickle</span><span class="p">.</span><span class="n">load</span><span class="p">(</span><span class="n">token</span><span class="p">)</span>
+</span>    <span class="k">if</span> <span class="n">os</span><span class="p">.</span><span class="n">path</span><span class="p">.</span><span class="nf">exists</span><span class="p">(</span><span class="sh">"</span><span class="s">token.pickle</span><span class="sh">"</span><span class="p">):</span>
+        <span class="k">with</span> <span class="nf">open</span><span class="p">(</span><span class="sh">"</span><span class="s">token.pickle</span><span class="sh">"</span><span class="p">,</span> <span class="sh">"</span><span class="s">rb</span><span class="sh">"</span><span class="p">)</span> <span class="k">as</span> <span class="n">token</span><span class="p">:</span>
+            <span class="n">creds</span> <span class="o">=</span> <span class="n">pickle</span><span class="p">.</span><span class="nf">load</span><span class="p">(</span><span class="n">token</span><span class="p">)</span>
     <span class="c1"># if there are no (valid) credentials availablle, let the user log in.
 </span>    <span class="k">if</span> <span class="ow">not</span> <span class="n">creds</span> <span class="ow">or</span> <span class="ow">not</span> <span class="n">creds</span><span class="p">.</span><span class="n">valid</span><span class="p">:</span>
         <span class="k">if</span> <span class="n">creds</span> <span class="ow">and</span> <span class="n">creds</span><span class="p">.</span><span class="n">expired</span> <span class="ow">and</span> <span class="n">creds</span><span class="p">.</span><span class="n">refresh_token</span><span class="p">:</span>
-            <span class="n">creds</span><span class="p">.</span><span class="n">refresh</span><span class="p">(</span><span class="n">Request</span><span class="p">())</span>
+            <span class="n">creds</span><span class="p">.</span><span class="nf">refresh</span><span class="p">(</span><span class="nc">Request</span><span class="p">())</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="n">flow</span> <span class="o">=</span> <span class="n">InstalledAppFlow</span><span class="p">.</span><span class="n">from_client_secrets_file</span><span class="p">(</span><span class="s">'credentials.json'</span><span class="p">,</span> <span class="n">SCOPES</span><span class="p">)</span>
-            <span class="n">creds</span> <span class="o">=</span> <span class="n">flow</span><span class="p">.</span><span class="n">run_local_server</span><span class="p">(</span><span class="n">port</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+            <span class="n">flow</span> <span class="o">=</span> <span class="n">InstalledAppFlow</span><span class="p">.</span><span class="nf">from_client_secrets_file</span><span class="p">(</span><span class="sh">'</span><span class="s">credentials.json</span><span class="sh">'</span><span class="p">,</span> <span class="n">SCOPES</span><span class="p">)</span>
+            <span class="n">creds</span> <span class="o">=</span> <span class="n">flow</span><span class="p">.</span><span class="nf">run_local_server</span><span class="p">(</span><span class="n">port</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
         <span class="c1"># save the credentials for the next run
-</span>        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s">"token.pickle"</span><span class="p">,</span> <span class="s">"wb"</span><span class="p">)</span> <span class="k">as</span> <span class="n">token</span><span class="p">:</span>
-            <span class="n">pickle</span><span class="p">.</span><span class="n">dump</span><span class="p">(</span><span class="n">creds</span><span class="p">,</span> <span class="n">token</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">build</span><span class="p">(</span><span class="s">'gmail'</span><span class="p">,</span> <span class="s">'v1'</span><span class="p">,</span> <span class="n">credentials</span><span class="o">=</span><span class="n">creds</span><span class="p">)</span>
+</span>        <span class="k">with</span> <span class="nf">open</span><span class="p">(</span><span class="sh">"</span><span class="s">token.pickle</span><span class="sh">"</span><span class="p">,</span> <span class="sh">"</span><span class="s">wb</span><span class="sh">"</span><span class="p">)</span> <span class="k">as</span> <span class="n">token</span><span class="p">:</span>
+            <span class="n">pickle</span><span class="p">.</span><span class="nf">dump</span><span class="p">(</span><span class="n">creds</span><span class="p">,</span> <span class="n">token</span><span class="p">)</span>
+    <span class="k">return</span> <span class="nf">build</span><span class="p">(</span><span class="sh">'</span><span class="s">gmail</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">v1</span><span class="sh">'</span><span class="p">,</span> <span class="n">credentials</span><span class="o">=</span><span class="n">creds</span><span class="p">)</span>
 
 <span class="c1"># get the Gmail API service
 </span>
-<span class="n">service</span> <span class="o">=</span> <span class="n">gmail_authenticate</span><span class="p">()</span>
+<span class="n">service</span> <span class="o">=</span> <span class="nf">gmail_authenticate</span><span class="p">()</span>
 
 <span class="c1"># Adds the attachment with the given filename to the given message
 </span>
 <span class="k">def</span> <span class="nf">add_attachment</span><span class="p">(</span><span class="n">message</span><span class="p">,</span> <span class="n">filename</span><span class="p">):</span>
-    <span class="n">content_type</span><span class="p">,</span> <span class="n">encoding</span> <span class="o">=</span> <span class="n">guess_mime_type</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+    <span class="n">content_type</span><span class="p">,</span> <span class="n">encoding</span> <span class="o">=</span> <span class="nf">guess_mime_type</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">content_type</span> <span class="ow">is</span> <span class="bp">None</span> <span class="ow">or</span> <span class="n">encoding</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
-        <span class="n">content_type</span> <span class="o">=</span> <span class="s">'application/octet-stream'</span>
-    <span class="n">main_type</span><span class="p">,</span> <span class="n">sub_type</span> <span class="o">=</span> <span class="n">content_type</span><span class="p">.</span><span class="n">split</span><span class="p">(</span><span class="s">'/'</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-    <span class="k">if</span> <span class="n">main_type</span> <span class="o">==</span> <span class="s">'text'</span><span class="p">:</span>
-        <span class="n">fp</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s">'rb'</span><span class="p">)</span>
-        <span class="n">msg</span> <span class="o">=</span> <span class="n">MIMEText</span><span class="p">(</span><span class="n">fp</span><span class="p">.</span><span class="n">read</span><span class="p">().</span><span class="n">decode</span><span class="p">(),</span> <span class="n">_subtype</span><span class="o">=</span><span class="n">sub_type</span><span class="p">)</span>
-        <span class="n">fp</span><span class="p">.</span><span class="n">close</span><span class="p">()</span>
-    <span class="k">elif</span> <span class="n">main_type</span> <span class="o">==</span> <span class="s">'image'</span><span class="p">:</span>
-        <span class="n">fp</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s">'rb'</span><span class="p">)</span>
-        <span class="n">msg</span> <span class="o">=</span> <span class="n">MIMEImage</span><span class="p">(</span><span class="n">fp</span><span class="p">.</span><span class="n">read</span><span class="p">(),</span> <span class="n">_subtype</span><span class="o">=</span><span class="n">sub_type</span><span class="p">)</span>
-        <span class="n">fp</span><span class="p">.</span><span class="n">close</span><span class="p">()</span>
-    <span class="k">elif</span> <span class="n">main_type</span> <span class="o">==</span> <span class="s">'audio'</span><span class="p">:</span>
-        <span class="n">fp</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s">'rb'</span><span class="p">)</span>
-        <span class="n">msg</span> <span class="o">=</span> <span class="n">MIMEAudio</span><span class="p">(</span><span class="n">fp</span><span class="p">.</span><span class="n">read</span><span class="p">(),</span> <span class="n">_subtype</span><span class="o">=</span><span class="n">sub_type</span><span class="p">)</span>
-        <span class="n">fp</span><span class="p">.</span><span class="n">close</span><span class="p">()</span>
+        <span class="n">content_type</span> <span class="o">=</span> <span class="sh">'</span><span class="s">application/octet-stream</span><span class="sh">'</span>
+    <span class="n">main_type</span><span class="p">,</span> <span class="n">sub_type</span> <span class="o">=</span> <span class="n">content_type</span><span class="p">.</span><span class="nf">split</span><span class="p">(</span><span class="sh">'</span><span class="s">/</span><span class="sh">'</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">main_type</span> <span class="o">==</span> <span class="sh">'</span><span class="s">text</span><span class="sh">'</span><span class="p">:</span>
+        <span class="n">fp</span> <span class="o">=</span> <span class="nf">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="sh">'</span><span class="s">rb</span><span class="sh">'</span><span class="p">)</span>
+        <span class="n">msg</span> <span class="o">=</span> <span class="nc">MIMEText</span><span class="p">(</span><span class="n">fp</span><span class="p">.</span><span class="nf">read</span><span class="p">().</span><span class="nf">decode</span><span class="p">(),</span> <span class="n">_subtype</span><span class="o">=</span><span class="n">sub_type</span><span class="p">)</span>
+        <span class="n">fp</span><span class="p">.</span><span class="nf">close</span><span class="p">()</span>
+    <span class="k">elif</span> <span class="n">main_type</span> <span class="o">==</span> <span class="sh">'</span><span class="s">image</span><span class="sh">'</span><span class="p">:</span>
+        <span class="n">fp</span> <span class="o">=</span> <span class="nf">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="sh">'</span><span class="s">rb</span><span class="sh">'</span><span class="p">)</span>
+        <span class="n">msg</span> <span class="o">=</span> <span class="nc">MIMEImage</span><span class="p">(</span><span class="n">fp</span><span class="p">.</span><span class="nf">read</span><span class="p">(),</span> <span class="n">_subtype</span><span class="o">=</span><span class="n">sub_type</span><span class="p">)</span>
+        <span class="n">fp</span><span class="p">.</span><span class="nf">close</span><span class="p">()</span>
+    <span class="k">elif</span> <span class="n">main_type</span> <span class="o">==</span> <span class="sh">'</span><span class="s">audio</span><span class="sh">'</span><span class="p">:</span>
+        <span class="n">fp</span> <span class="o">=</span> <span class="nf">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="sh">'</span><span class="s">rb</span><span class="sh">'</span><span class="p">)</span>
+        <span class="n">msg</span> <span class="o">=</span> <span class="nc">MIMEAudio</span><span class="p">(</span><span class="n">fp</span><span class="p">.</span><span class="nf">read</span><span class="p">(),</span> <span class="n">_subtype</span><span class="o">=</span><span class="n">sub_type</span><span class="p">)</span>
+        <span class="n">fp</span><span class="p">.</span><span class="nf">close</span><span class="p">()</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="n">fp</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s">'rb'</span><span class="p">)</span>
-        <span class="n">msg</span> <span class="o">=</span> <span class="n">MIMEBase</span><span class="p">(</span><span class="n">main_type</span><span class="p">,</span> <span class="n">sub_type</span><span class="p">)</span>
-        <span class="n">msg</span><span class="p">.</span><span class="n">set_payload</span><span class="p">(</span><span class="n">fp</span><span class="p">.</span><span class="n">read</span><span class="p">())</span>
-        <span class="n">fp</span><span class="p">.</span><span class="n">close</span><span class="p">()</span>
-    <span class="n">filename</span> <span class="o">=</span> <span class="n">os</span><span class="p">.</span><span class="n">path</span><span class="p">.</span><span class="n">basename</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
-    <span class="n">msg</span><span class="p">.</span><span class="n">add_header</span><span class="p">(</span><span class="s">'Content-Disposition'</span><span class="p">,</span> <span class="s">'attachment'</span><span class="p">,</span> <span class="n">filename</span><span class="o">=</span><span class="n">filename</span><span class="p">)</span>
-    <span class="n">message</span><span class="p">.</span><span class="n">attach</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+        <span class="n">fp</span> <span class="o">=</span> <span class="nf">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="sh">'</span><span class="s">rb</span><span class="sh">'</span><span class="p">)</span>
+        <span class="n">msg</span> <span class="o">=</span> <span class="nc">MIMEBase</span><span class="p">(</span><span class="n">main_type</span><span class="p">,</span> <span class="n">sub_type</span><span class="p">)</span>
+        <span class="n">msg</span><span class="p">.</span><span class="nf">set_payload</span><span class="p">(</span><span class="n">fp</span><span class="p">.</span><span class="nf">read</span><span class="p">())</span>
+        <span class="n">fp</span><span class="p">.</span><span class="nf">close</span><span class="p">()</span>
+    <span class="n">filename</span> <span class="o">=</span> <span class="n">os</span><span class="p">.</span><span class="n">path</span><span class="p">.</span><span class="nf">basename</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+    <span class="n">msg</span><span class="p">.</span><span class="nf">add_header</span><span class="p">(</span><span class="sh">'</span><span class="s">Content-Disposition</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">attachment</span><span class="sh">'</span><span class="p">,</span> <span class="n">filename</span><span class="o">=</span><span class="n">filename</span><span class="p">)</span>
+    <span class="n">message</span><span class="p">.</span><span class="nf">attach</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
 
 <span class="k">def</span> <span class="nf">build_message</span><span class="p">(</span><span class="n">destination</span><span class="p">,</span> <span class="n">obj</span><span class="p">,</span> <span class="n">body</span><span class="p">,</span> <span class="n">attachments</span><span class="o">=</span><span class="p">[]):</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="n">attachments</span><span class="p">:</span> <span class="c1"># no attachments given
-</span>        <span class="n">message</span> <span class="o">=</span> <span class="n">MIMEText</span><span class="p">(</span><span class="n">body</span><span class="p">,</span> <span class="s">'html'</span><span class="p">)</span>
-        <span class="n">message</span><span class="p">[</span><span class="s">'to'</span><span class="p">]</span> <span class="o">=</span> <span class="n">destination</span>
-        <span class="n">message</span><span class="p">[</span><span class="s">'from'</span><span class="p">]</span> <span class="o">=</span> <span class="n">our_email</span>
-        <span class="n">message</span><span class="p">[</span><span class="s">'subject'</span><span class="p">]</span> <span class="o">=</span> <span class="n">obj</span>
+</span>        <span class="n">message</span> <span class="o">=</span> <span class="nc">MIMEText</span><span class="p">(</span><span class="n">body</span><span class="p">,</span> <span class="sh">'</span><span class="s">html</span><span class="sh">'</span><span class="p">)</span>
+        <span class="n">message</span><span class="p">[</span><span class="sh">'</span><span class="s">to</span><span class="sh">'</span><span class="p">]</span> <span class="o">=</span> <span class="n">destination</span>
+        <span class="n">message</span><span class="p">[</span><span class="sh">'</span><span class="s">from</span><span class="sh">'</span><span class="p">]</span> <span class="o">=</span> <span class="n">our_email</span>
+        <span class="n">message</span><span class="p">[</span><span class="sh">'</span><span class="s">subject</span><span class="sh">'</span><span class="p">]</span> <span class="o">=</span> <span class="n">obj</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="n">message</span> <span class="o">=</span> <span class="n">MIMEMultipart</span><span class="p">()</span>
-        <span class="n">message</span><span class="p">[</span><span class="s">'to'</span><span class="p">]</span> <span class="o">=</span> <span class="n">destination</span>
-        <span class="n">message</span><span class="p">[</span><span class="s">'from'</span><span class="p">]</span> <span class="o">=</span> <span class="n">our_email</span>
-        <span class="n">message</span><span class="p">[</span><span class="s">'subject'</span><span class="p">]</span> <span class="o">=</span> <span class="n">obj</span>
-        <span class="n">message</span><span class="p">.</span><span class="n">attach</span><span class="p">(</span><span class="n">MIMEText</span><span class="p">(</span><span class="n">body</span><span class="p">))</span>
+        <span class="n">message</span> <span class="o">=</span> <span class="nc">MIMEMultipart</span><span class="p">()</span>
+        <span class="n">message</span><span class="p">[</span><span class="sh">'</span><span class="s">to</span><span class="sh">'</span><span class="p">]</span> <span class="o">=</span> <span class="n">destination</span>
+        <span class="n">message</span><span class="p">[</span><span class="sh">'</span><span class="s">from</span><span class="sh">'</span><span class="p">]</span> <span class="o">=</span> <span class="n">our_email</span>
+        <span class="n">message</span><span class="p">[</span><span class="sh">'</span><span class="s">subject</span><span class="sh">'</span><span class="p">]</span> <span class="o">=</span> <span class="n">obj</span>
+        <span class="n">message</span><span class="p">.</span><span class="nf">attach</span><span class="p">(</span><span class="nc">MIMEText</span><span class="p">(</span><span class="n">body</span><span class="p">))</span>
         <span class="k">for</span> <span class="n">filename</span> <span class="ow">in</span> <span class="n">attachments</span><span class="p">:</span>
-            <span class="n">add_attachment</span><span class="p">(</span><span class="n">message</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span>
-    <span class="k">return</span> <span class="p">{</span><span class="s">'raw'</span><span class="p">:</span> <span class="n">urlsafe_b64encode</span><span class="p">(</span><span class="n">message</span><span class="p">.</span><span class="n">as_bytes</span><span class="p">()).</span><span class="n">decode</span><span class="p">()}</span>
+            <span class="nf">add_attachment</span><span class="p">(</span><span class="n">message</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">{</span><span class="sh">'</span><span class="s">raw</span><span class="sh">'</span><span class="p">:</span> <span class="nf">urlsafe_b64encode</span><span class="p">(</span><span class="n">message</span><span class="p">.</span><span class="nf">as_bytes</span><span class="p">()).</span><span class="nf">decode</span><span class="p">()}</span>
 
 <span class="k">def</span> <span class="nf">send_message</span><span class="p">(</span><span class="n">service</span><span class="p">,</span> <span class="n">destination</span><span class="p">,</span> <span class="n">obj</span><span class="p">,</span> <span class="n">body</span><span class="p">,</span> <span class="n">attachments</span><span class="o">=</span><span class="p">[]):</span>
-    <span class="k">return</span> <span class="n">service</span><span class="p">.</span><span class="n">users</span><span class="p">().</span><span class="n">messages</span><span class="p">().</span><span class="n">send</span><span class="p">(</span>
-      <span class="n">userId</span><span class="o">=</span><span class="s">"me"</span><span class="p">,</span>
-      <span class="n">body</span><span class="o">=</span><span class="n">build_message</span><span class="p">(</span><span class="n">destination</span><span class="p">,</span> <span class="n">obj</span><span class="p">,</span> <span class="n">body</span><span class="p">,</span> <span class="n">attachments</span><span class="p">)</span>
-    <span class="p">).</span><span class="n">execute</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">service</span><span class="p">.</span><span class="nf">users</span><span class="p">().</span><span class="nf">messages</span><span class="p">().</span><span class="nf">send</span><span class="p">(</span>
+      <span class="n">userId</span><span class="o">=</span><span class="sh">"</span><span class="s">me</span><span class="sh">"</span><span class="p">,</span>
+      <span class="n">body</span><span class="o">=</span><span class="nf">build_message</span><span class="p">(</span><span class="n">destination</span><span class="p">,</span> <span class="n">obj</span><span class="p">,</span> <span class="n">body</span><span class="p">,</span> <span class="n">attachments</span><span class="p">)</span>
+    <span class="p">).</span><span class="nf">execute</span><span class="p">()</span>
 
 <span class="k">def</span> <span class="nf">send</span><span class="p">(</span><span class="n">user</span><span class="p">,</span> <span class="n">subject</span><span class="p">,</span> <span class="n">body</span><span class="p">):</span>
-    <span class="n">send_message</span><span class="p">(</span><span class="n">service</span><span class="p">,</span> <span class="n">user</span><span class="p">,</span> <span class="n">subject</span><span class="p">,</span> <span class="n">body</span><span class="p">)</span></code></pre></figure>
+    <span class="nf">send_message</span><span class="p">(</span><span class="n">service</span><span class="p">,</span> <span class="n">user</span><span class="p">,</span> <span class="n">subject</span><span class="p">,</span> <span class="n">body</span><span class="p">)</span></code></pre></figure>
 
 <h2 id="llamada-y-utilización-a-este-script">Llamada y utilización a este script</h2>
 
 <p>El script anterior, lo denominto una dependencia y he externalizado su uso, por ello desde dónde tengamos los datos y queramos enviar el email deberemos poner:</p>
 
-<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">email_api_gmail</span> <span class="kn">import</span> <span class="n">send</span> <span class="c1">#Es el nombre que yo le he dado al script que consume la api de gmail.
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="n">email_api_gmail</span> <span class="kn">import</span> <span class="n">send</span> <span class="c1">#Es el nombre que yo le he dado al script que consume la api de gmail.
 </span>
 <span class="c1">#### Envío de los datos por email
 </span>
     <span class="k">try</span><span class="p">:</span>
-        <span class="n">email</span> <span class="o">=</span> <span class="s">"`&lt;html&gt;`"</span> <span class="o">+</span> <span class="n">df</span><span class="p">.</span><span class="n">to_html</span><span class="p">()</span> <span class="o">+</span> <span class="s">"`&lt;/html&gt;`"</span>
-        <span class="n">send</span><span class="p">(</span><span class="s">"email_destinatario@dominio"</span><span class="p">,</span> <span class="s">"Encabezado del email"</span><span class="p">,</span> <span class="n">cuerpo_email</span><span class="p">)</span>
-        <span class="k">print</span><span class="p">(</span><span class="s">"Se ha el email correctamente."</span><span class="p">)</span>
+        <span class="n">email</span> <span class="o">=</span> <span class="sh">"</span><span class="s">`&lt;html&gt;`</span><span class="sh">"</span> <span class="o">+</span> <span class="n">df</span><span class="p">.</span><span class="nf">to_html</span><span class="p">()</span> <span class="o">+</span> <span class="sh">"</span><span class="s">`&lt;/html&gt;`</span><span class="sh">"</span>
+        <span class="nf">send</span><span class="p">(</span><span class="sh">"</span><span class="s">email_destinatario@dominio</span><span class="sh">"</span><span class="p">,</span> <span class="sh">"</span><span class="s">Encabezado del email</span><span class="sh">"</span><span class="p">,</span> <span class="n">cuerpo_email</span><span class="p">)</span>
+        <span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">Se ha el email correctamente.</span><span class="sh">"</span><span class="p">)</span>
     <span class="k">except</span> <span class="nb">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-        <span class="k">print</span><span class="p">(</span><span class="s">"Ha habido un error en el envío del email:"</span><span class="p">,</span> <span class="n">e</span><span class="p">)</span></code></pre></figure>
+        <span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">Ha habido un error en el envío del email:</span><span class="sh">"</span><span class="p">,</span> <span class="n">e</span><span class="p">)</span></code></pre></figure>
 
 <hr />
 <p><strong>Fuentes:</strong></p>

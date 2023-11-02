@@ -273,40 +273,40 @@ Python nos presenta el módulo crontab para gestionar los trabajos programados a
 ##### THIS SCRIPT CAN ONLY BE RUN IN A LINUX ENVIRONMENT                        ############
 ############################################################################################
 </span>
-<span class="kn">from</span> <span class="nn">crontab</span> <span class="kn">import</span> <span class="n">CronTab</span>
-<span class="kn">import</span> <span class="nn">pwd</span>
-<span class="kn">import</span> <span class="nn">os</span>
-<span class="kn">import</span> <span class="nn">shutil</span>
+<span class="kn">from</span> <span class="n">crontab</span> <span class="kn">import</span> <span class="n">CronTab</span>
+<span class="kn">import</span> <span class="n">pwd</span>
+<span class="kn">import</span> <span class="n">os</span>
+<span class="kn">import</span> <span class="n">shutil</span>
 
 <span class="c1">#/opt/jobs_offer must have permissions for the script to create the token.pickle file the first time. This is a dependency on email sending.
 #They have to be absolute routes, change before using
 </span><span class="k">def</span> <span class="nf">uploadScript</span><span class="p">():</span>
-    <span class="n">src_path</span> <span class="o">=</span> <span class="sa">r</span><span class="s">"ruta_absoluta/script_lanzado.py"</span>
-    <span class="n">dst_path</span> <span class="o">=</span> <span class="sa">r</span><span class="s">"/opt/carpeta_destino/script_lanzado.py"</span>
-    <span class="n">shutil</span><span class="p">.</span><span class="n">copy</span><span class="p">(</span><span class="n">src_path</span><span class="p">,</span> <span class="n">dst_path</span><span class="p">)</span>
-    <span class="k">print</span><span class="p">(</span><span class="s">'Copied all files'</span><span class="p">)</span>
+    <span class="n">src_path</span> <span class="o">=</span> <span class="sa">r</span><span class="sh">"</span><span class="s">ruta_absoluta/script_lanzado.py</span><span class="sh">"</span>
+    <span class="n">dst_path</span> <span class="o">=</span> <span class="sa">r</span><span class="sh">"</span><span class="s">/opt/carpeta_destino/script_lanzado.py</span><span class="sh">"</span>
+    <span class="n">shutil</span><span class="p">.</span><span class="nf">copy</span><span class="p">(</span><span class="n">src_path</span><span class="p">,</span> <span class="n">dst_path</span><span class="p">)</span>
+    <span class="nf">print</span><span class="p">(</span><span class="sh">'</span><span class="s">Copied all files</span><span class="sh">'</span><span class="p">)</span>
 
 <span class="k">def</span> <span class="nf">add_cron</span><span class="p">():</span>
-    <span class="n">cron</span> <span class="o">=</span> <span class="n">CronTab</span><span class="p">(</span><span class="n">pwd</span><span class="p">.</span><span class="n">getpwuid</span><span class="p">(</span><span class="n">os</span><span class="p">.</span><span class="n">getuid</span><span class="p">())[</span><span class="mi">0</span><span class="p">])</span> <span class="c1"># For current user
+    <span class="n">cron</span> <span class="o">=</span> <span class="nc">CronTab</span><span class="p">(</span><span class="n">pwd</span><span class="p">.</span><span class="nf">getpwuid</span><span class="p">(</span><span class="n">os</span><span class="p">.</span><span class="nf">getuid</span><span class="p">())[</span><span class="mi">0</span><span class="p">])</span> <span class="c1"># For current user
 </span>    <span class="c1"># 8:00 am all days in the morning
-</span>    <span class="n">basic_command</span> <span class="o">=</span> <span class="s">"0 8 * * 0-6 python3 /opt/jobs_offer/jobs_offer_task.py"</span>
-    <span class="n">basic_iter</span> <span class="o">=</span> <span class="n">cron</span><span class="p">.</span><span class="n">find_command</span><span class="p">(</span><span class="s">"jobs_offer_task"</span><span class="p">)</span>
+</span>    <span class="n">basic_command</span> <span class="o">=</span> <span class="sh">"</span><span class="s">0 8 * * 0-6 python3 /opt/jobs_offer/jobs_offer_task.py</span><span class="sh">"</span>
+    <span class="n">basic_iter</span> <span class="o">=</span> <span class="n">cron</span><span class="p">.</span><span class="nf">find_command</span><span class="p">(</span><span class="sh">"</span><span class="s">jobs_offer_task</span><span class="sh">"</span><span class="p">)</span>
     <span class="n">exists</span><span class="o">=</span><span class="bp">False</span>
     <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">basic_iter</span><span class="p">:</span>
-        <span class="k">if</span> <span class="nb">str</span><span class="p">(</span><span class="n">item</span><span class="p">)</span> <span class="o">==</span> <span class="n">basic_command</span><span class="p">:</span>
-            <span class="k">print</span><span class="p">(</span><span class="s">"crontab job already exist"</span><span class="p">,</span> <span class="n">item</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nf">str</span><span class="p">(</span><span class="n">item</span><span class="p">)</span> <span class="o">==</span> <span class="n">basic_command</span><span class="p">:</span>
+            <span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">crontab job already exist</span><span class="sh">"</span><span class="p">,</span> <span class="n">item</span><span class="p">)</span>
             <span class="n">exists</span><span class="o">=</span><span class="bp">True</span>
             <span class="k">break</span>
 
     <span class="k">if</span> <span class="ow">not</span> <span class="n">exists</span><span class="p">:</span>
-        <span class="n">job</span> <span class="o">=</span> <span class="n">cron</span><span class="p">.</span><span class="n">new</span><span class="p">(</span><span class="n">command</span><span class="o">=</span><span class="s">'python3 /opt/jobs_offer_task.py'</span><span class="p">)</span>
-        <span class="n">job</span><span class="p">.</span><span class="n">minute</span><span class="p">.</span><span class="n">every</span><span class="p">(</span><span class="mi">15</span><span class="p">)</span>
-        <span class="n">job</span><span class="p">.</span><span class="n">enable</span><span class="p">()</span>
-        <span class="n">cron</span><span class="p">.</span><span class="n">write</span><span class="p">()</span>
-    <span class="k">print</span><span class="p">(</span><span class="s">'Job added to crontab, ok'</span><span class="p">)</span>
+        <span class="n">job</span> <span class="o">=</span> <span class="n">cron</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">command</span><span class="o">=</span><span class="sh">'</span><span class="s">python3 /opt/jobs_offer_task.py</span><span class="sh">'</span><span class="p">)</span>
+        <span class="n">job</span><span class="p">.</span><span class="n">minute</span><span class="p">.</span><span class="nf">every</span><span class="p">(</span><span class="mi">15</span><span class="p">)</span>
+        <span class="n">job</span><span class="p">.</span><span class="nf">enable</span><span class="p">()</span>
+        <span class="n">cron</span><span class="p">.</span><span class="nf">write</span><span class="p">()</span>
+    <span class="nf">print</span><span class="p">(</span><span class="sh">'</span><span class="s">Job added to crontab, ok</span><span class="sh">'</span><span class="p">)</span>
 
-<span class="n">uploadScript</span><span class="p">()</span>
-<span class="n">add_cron</span><span class="p">()</span></code></pre></figure>
+<span class="nf">uploadScript</span><span class="p">()</span>
+<span class="nf">add_cron</span><span class="p">()</span></code></pre></figure>
 
 <hr />
 <p><strong>Fuentes:</strong></p>

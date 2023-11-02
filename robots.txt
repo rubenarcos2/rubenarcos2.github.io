@@ -2,3 +2,4 @@ Sitemap: https://rarcos.com/sitemap.xml
 User-agent: Googlebot
 Disallow: /*.pdf$
 Disallow: /pdf/*
+Disallow: /es/pdf/*

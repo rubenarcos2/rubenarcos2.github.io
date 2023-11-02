@@ -264,7 +264,7 @@ desarrollar un programa que implemente las siguientes funcionalidades:</p>
     Leer con codificación utf-8 para que los acentos sean detectados:</li>
 </ul>
 
-<figure class="highlight"><pre><code class="language-python" data-lang="python">        <span class="nb">open</span> <span class="p">(</span><span class="n">ruta_fichero</span><span class="p">,</span> <span class="s">"r"</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s">'utf-8'</span><span class="p">)</span>
+<figure class="highlight"><pre><code class="language-python" data-lang="python">        <span class="nf">open </span><span class="p">(</span><span class="n">ruta_fichero</span><span class="p">,</span> <span class="sh">"</span><span class="s">r</span><span class="sh">"</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="sh">'</span><span class="s">utf-8</span><span class="sh">'</span><span class="p">)</span>
         </code></pre></figure>
 
 <ul>
@@ -284,37 +284,37 @@ desarrollar un programa que implemente las siguientes funcionalidades:</p>
 <h2 id="script-de-extracción-de-datos-de-fichero-y-preprocesado">Script de extracción de datos de fichero y preprocesado</h2>
 
 <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c1"># Importing the required libraries
-</span><span class="kn">import</span> <span class="nn">nltk</span>
-<span class="kn">import</span> <span class="nn">unicodedata</span>
-<span class="kn">from</span> <span class="nn">nltk.corpus</span> <span class="kn">import</span> <span class="n">stopwords</span>
+</span><span class="kn">import</span> <span class="n">nltk</span>
+<span class="kn">import</span> <span class="n">unicodedata</span>
+<span class="kn">from</span> <span class="n">nltk.corpus</span> <span class="kn">import</span> <span class="n">stopwords</span>
 
-<span class="n">nltk</span><span class="p">.</span><span class="n">download</span><span class="p">(</span><span class="s">'punkt'</span><span class="p">)</span>
-<span class="n">nltk</span><span class="p">.</span><span class="n">download</span><span class="p">(</span><span class="s">'stopwords'</span><span class="p">)</span>
-<span class="n">nltk</span><span class="p">.</span><span class="n">download</span><span class="p">(</span><span class="s">'averaged_perceptron_tagger'</span><span class="p">)</span>
+<span class="n">nltk</span><span class="p">.</span><span class="nf">download</span><span class="p">(</span><span class="sh">'</span><span class="s">punkt</span><span class="sh">'</span><span class="p">)</span>
+<span class="n">nltk</span><span class="p">.</span><span class="nf">download</span><span class="p">(</span><span class="sh">'</span><span class="s">stopwords</span><span class="sh">'</span><span class="p">)</span>
+<span class="n">nltk</span><span class="p">.</span><span class="nf">download</span><span class="p">(</span><span class="sh">'</span><span class="s">averaged_perceptron_tagger</span><span class="sh">'</span><span class="p">)</span>
 
-<span class="n">stopwords</span><span class="o">=</span><span class="nb">set</span><span class="p">(</span><span class="n">stopwords</span><span class="p">.</span><span class="n">words</span><span class="p">(</span><span class="s">'spanish'</span><span class="p">))</span>
+<span class="n">stopwords</span><span class="o">=</span><span class="nf">set</span><span class="p">(</span><span class="n">stopwords</span><span class="p">.</span><span class="nf">words</span><span class="p">(</span><span class="sh">'</span><span class="s">spanish</span><span class="sh">'</span><span class="p">))</span>
 
 <span class="c1"># Extraer los tokens (word_tokenizer)
 </span><span class="k">def</span> <span class="nf">extract_tokens</span><span class="p">(</span><span class="n">sentence</span><span class="p">):</span>
-  <span class="k">return</span> <span class="n">nltk</span><span class="p">.</span><span class="n">word_tokenize</span><span class="p">(</span><span class="n">sentence</span><span class="p">)</span>
+  <span class="k">return</span> <span class="n">nltk</span><span class="p">.</span><span class="nf">word_tokenize</span><span class="p">(</span><span class="n">sentence</span><span class="p">)</span>
 
 <span class="c1"># Convertir a minúsculas (función lower() de str de python)
 </span><span class="k">def</span> <span class="nf">to_lower</span><span class="p">(</span><span class="n">sentence</span><span class="p">):</span>
-  <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">sentence</span><span class="p">)):</span>
-    <span class="n">sentence</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">sentence</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">lower</span><span class="p">()</span>
+  <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nf">range</span><span class="p">(</span><span class="nf">len</span><span class="p">(</span><span class="n">sentence</span><span class="p">)):</span>
+    <span class="n">sentence</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">sentence</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="nf">lower</span><span class="p">()</span>
   <span class="k">return</span> <span class="n">sentence</span>
 
 <span class="c1"># Eliminar los acentos
 </span><span class="k">def</span> <span class="nf">remove_accents_word</span><span class="p">(</span><span class="n">input_str</span><span class="p">):</span>
-    <span class="n">nfkd_form</span> <span class="o">=</span> <span class="n">unicodedata</span><span class="p">.</span><span class="n">normalize</span><span class="p">(</span><span class="s">'NFKD'</span><span class="p">,</span> <span class="n">input_str</span><span class="p">)</span>
-    <span class="n">only_ascii</span> <span class="o">=</span> <span class="n">nfkd_form</span><span class="p">.</span><span class="n">encode</span><span class="p">(</span><span class="s">'ASCII'</span><span class="p">,</span> <span class="s">'ignore'</span><span class="p">)</span>
+    <span class="n">nfkd_form</span> <span class="o">=</span> <span class="n">unicodedata</span><span class="p">.</span><span class="nf">normalize</span><span class="p">(</span><span class="sh">'</span><span class="s">NFKD</span><span class="sh">'</span><span class="p">,</span> <span class="n">input_str</span><span class="p">)</span>
+    <span class="n">only_ascii</span> <span class="o">=</span> <span class="n">nfkd_form</span><span class="p">.</span><span class="nf">encode</span><span class="p">(</span><span class="sh">'</span><span class="s">ASCII</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">ignore</span><span class="sh">'</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">only_ascii</span>
 
 <span class="k">def</span> <span class="nf">remove_accents</span><span class="p">(</span><span class="n">sentence</span><span class="p">):</span>
-  <span class="n">encoding</span> <span class="o">=</span> <span class="s">"utf-8"</span> <span class="c1"># or iso-8859-15, or cp1252, or whatever encoding you use
+  <span class="n">encoding</span> <span class="o">=</span> <span class="sh">"</span><span class="s">utf-8</span><span class="sh">"</span> <span class="c1"># or iso-8859-15, or cp1252, or whatever encoding you use
 </span>
-  <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">sentence</span><span class="p">)):</span>
-    <span class="n">sentence</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">remove_accents_word</span><span class="p">(</span><span class="n">sentence</span><span class="p">[</span><span class="n">i</span><span class="p">]).</span><span class="n">decode</span><span class="p">(</span><span class="n">encoding</span><span class="p">)</span>
+  <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nf">range</span><span class="p">(</span><span class="nf">len</span><span class="p">(</span><span class="n">sentence</span><span class="p">)):</span>
+    <span class="n">sentence</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="nf">remove_accents_word</span><span class="p">(</span><span class="n">sentence</span><span class="p">[</span><span class="n">i</span><span class="p">]).</span><span class="nf">decode</span><span class="p">(</span><span class="n">encoding</span><span class="p">)</span>
   <span class="k">return</span> <span class="n">sentence</span>
 
 <span class="c1"># Eliminar las stopwords
@@ -322,110 +322,110 @@ desarrollar un programa que implemente las siguientes funcionalidades:</p>
   <span class="n">output_array</span><span class="o">=</span><span class="p">[]</span>
   <span class="k">for</span> <span class="n">sentence</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
       <span class="n">temp_list</span><span class="o">=</span><span class="p">[]</span>
-      <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">sentence</span><span class="p">.</span><span class="n">split</span><span class="p">():</span>
-          <span class="k">if</span> <span class="n">word</span><span class="p">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">stopwords</span><span class="p">:</span>
-              <span class="n">temp_list</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">word</span><span class="p">)</span>
-      <span class="n">output_array</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="s">' '</span><span class="p">.</span><span class="n">join</span><span class="p">(</span><span class="n">temp_list</span><span class="p">))</span>
+      <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">sentence</span><span class="p">.</span><span class="nf">split</span><span class="p">():</span>
+          <span class="k">if</span> <span class="n">word</span><span class="p">.</span><span class="nf">lower</span><span class="p">()</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">stopwords</span><span class="p">:</span>
+              <span class="n">temp_list</span><span class="p">.</span><span class="nf">append</span><span class="p">(</span><span class="n">word</span><span class="p">)</span>
+      <span class="n">output_array</span><span class="p">.</span><span class="nf">append</span><span class="p">(</span><span class="sh">'</span><span class="s"> </span><span class="sh">'</span><span class="p">.</span><span class="nf">join</span><span class="p">(</span><span class="n">temp_list</span><span class="p">))</span>
 
-  <span class="n">output_array</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">output_array</span> <span class="k">if</span> <span class="n">x</span> <span class="o">!=</span> <span class="s">''</span><span class="p">]</span>
+  <span class="n">output_array</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">output_array</span> <span class="k">if</span> <span class="n">x</span> <span class="o">!=</span> <span class="sh">''</span><span class="p">]</span>
   <span class="k">return</span> <span class="n">output_array</span>
 
 <span class="c1"># Extraer los POS tags
 </span><span class="k">def</span> <span class="nf">extract_pos_tags</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
-  <span class="n">text_tag</span> <span class="o">=</span> <span class="n">nltk</span><span class="p">.</span><span class="n">pos_tag</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+  <span class="n">text_tag</span> <span class="o">=</span> <span class="n">nltk</span><span class="p">.</span><span class="nf">pos_tag</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
   <span class="k">return</span> <span class="n">text_tag</span>
 
 <span class="c1"># Eliminar las palabras que no sean nombres.
 </span><span class="k">def</span> <span class="nf">remove_not_nouns</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
   <span class="n">data_not</span> <span class="o">=</span> <span class="p">[]</span>
   <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">d</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="s">"NN"</span><span class="p">):</span>
-      <span class="n">data_not</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">d</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="nf">if </span><span class="p">(</span><span class="n">d</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="sh">"</span><span class="s">NN</span><span class="sh">"</span><span class="p">):</span>
+      <span class="n">data_not</span><span class="p">.</span><span class="nf">append</span><span class="p">(</span><span class="n">d</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
   <span class="k">return</span> <span class="n">data_not</span>
 
 <span class="c1"># Lectura y extracción del fichero 1
-</span><span class="n">text1</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s">"MiaTexto1.txt"</span><span class="p">,</span> <span class="s">"r"</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s">'utf-8'</span><span class="p">)</span>
-<span class="n">sentences</span> <span class="o">=</span> <span class="n">text1</span><span class="p">.</span><span class="n">readlines</span><span class="p">()</span>
-<span class="n">text1</span><span class="p">.</span><span class="n">close</span><span class="p">()</span>
+</span><span class="n">text1</span> <span class="o">=</span> <span class="nf">open</span><span class="p">(</span><span class="sh">"</span><span class="s">MiaTexto1.txt</span><span class="sh">"</span><span class="p">,</span> <span class="sh">"</span><span class="s">r</span><span class="sh">"</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="sh">'</span><span class="s">utf-8</span><span class="sh">'</span><span class="p">)</span>
+<span class="n">sentences</span> <span class="o">=</span> <span class="n">text1</span><span class="p">.</span><span class="nf">readlines</span><span class="p">()</span>
+<span class="n">text1</span><span class="p">.</span><span class="nf">close</span><span class="p">()</span>
 
 <span class="c1">#División de los fragmentos del fichero 1
 </span><span class="n">sentences_cleaned</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">sentences</span><span class="p">:</span>
-  <span class="n">sentence</span> <span class="o">=</span> <span class="s">""</span>
+  <span class="n">sentence</span> <span class="o">=</span> <span class="sh">""</span>
   <span class="k">for</span> <span class="n">char</span> <span class="ow">in</span> <span class="n">line</span><span class="p">:</span>
-    <span class="k">if</span><span class="p">(</span><span class="n">char</span> <span class="o">!=</span> <span class="s">'</span><span class="se">\n</span><span class="s">'</span><span class="p">):</span>
+    <span class="nf">if</span><span class="p">(</span><span class="n">char</span> <span class="o">!=</span> <span class="sh">'</span><span class="se">\n</span><span class="sh">'</span><span class="p">):</span>
       <span class="n">sentence</span> <span class="o">+=</span> <span class="n">char</span>
-  <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">sentence</span><span class="p">)</span> <span class="o">&gt;</span><span class="mi">0</span><span class="p">:</span>
-    <span class="n">sentences_cleaned</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">sentence</span><span class="p">)</span>
+  <span class="k">if</span> <span class="nf">len</span><span class="p">(</span><span class="n">sentence</span><span class="p">)</span> <span class="o">&gt;</span><span class="mi">0</span><span class="p">:</span>
+    <span class="n">sentences_cleaned</span><span class="p">.</span><span class="nf">append</span><span class="p">(</span><span class="n">sentence</span><span class="p">)</span>
 
 <span class="n">titulo</span> <span class="o">=</span> <span class="n">sentences_cleaned</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
-<span class="n">noticia</span> <span class="o">=</span> <span class="n">sentences_cleaned</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">+</span> <span class="s">" "</span> <span class="o">+</span> <span class="n">sentences_cleaned</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">+</span> <span class="s">" "</span> <span class="o">+</span> <span class="n">sentences_cleaned</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="o">+</span> <span class="s">" "</span> <span class="o">+</span> <span class="n">sentences_cleaned</span><span class="p">[</span><span class="mi">6</span><span class="p">]</span>
-<span class="n">resumen</span> <span class="o">=</span> <span class="n">sentences_cleaned</span><span class="p">[</span><span class="mi">8</span><span class="p">]</span> <span class="o">+</span> <span class="s">" "</span> <span class="o">+</span> <span class="n">sentences_cleaned</span><span class="p">[</span><span class="mi">9</span><span class="p">]</span>
+<span class="n">noticia</span> <span class="o">=</span> <span class="n">sentences_cleaned</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">+</span> <span class="sh">"</span><span class="s"> </span><span class="sh">"</span> <span class="o">+</span> <span class="n">sentences_cleaned</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">+</span> <span class="sh">"</span><span class="s"> </span><span class="sh">"</span> <span class="o">+</span> <span class="n">sentences_cleaned</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="o">+</span> <span class="sh">"</span><span class="s"> </span><span class="sh">"</span> <span class="o">+</span> <span class="n">sentences_cleaned</span><span class="p">[</span><span class="mi">6</span><span class="p">]</span>
+<span class="n">resumen</span> <span class="o">=</span> <span class="n">sentences_cleaned</span><span class="p">[</span><span class="mi">8</span><span class="p">]</span> <span class="o">+</span> <span class="sh">"</span><span class="s"> </span><span class="sh">"</span> <span class="o">+</span> <span class="n">sentences_cleaned</span><span class="p">[</span><span class="mi">9</span><span class="p">]</span>
 
 <span class="c1"># Lectura y extracción del fichero 2
-</span><span class="n">text2</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s">"MiaTexto2.txt"</span><span class="p">,</span> <span class="s">"r"</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s">'utf-8'</span><span class="p">)</span>
-<span class="n">sentences2</span> <span class="o">=</span> <span class="n">text2</span><span class="p">.</span><span class="n">readlines</span><span class="p">()</span>
-<span class="n">text2</span><span class="p">.</span><span class="n">close</span><span class="p">()</span>
+</span><span class="n">text2</span> <span class="o">=</span> <span class="nf">open</span><span class="p">(</span><span class="sh">"</span><span class="s">MiaTexto2.txt</span><span class="sh">"</span><span class="p">,</span> <span class="sh">"</span><span class="s">r</span><span class="sh">"</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="sh">'</span><span class="s">utf-8</span><span class="sh">'</span><span class="p">)</span>
+<span class="n">sentences2</span> <span class="o">=</span> <span class="n">text2</span><span class="p">.</span><span class="nf">readlines</span><span class="p">()</span>
+<span class="n">text2</span><span class="p">.</span><span class="nf">close</span><span class="p">()</span>
 
 <span class="c1">#División de los fragmentos del fichero 2
 </span><span class="n">sentences_cleaned2</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">sentences2</span><span class="p">:</span>
-  <span class="n">sentence</span> <span class="o">=</span> <span class="s">""</span>
+  <span class="n">sentence</span> <span class="o">=</span> <span class="sh">""</span>
   <span class="k">for</span> <span class="n">char</span> <span class="ow">in</span> <span class="n">line</span><span class="p">:</span>
-    <span class="k">if</span><span class="p">(</span><span class="n">char</span> <span class="o">!=</span> <span class="s">'</span><span class="se">\n</span><span class="s">'</span><span class="p">):</span>
+    <span class="nf">if</span><span class="p">(</span><span class="n">char</span> <span class="o">!=</span> <span class="sh">'</span><span class="se">\n</span><span class="sh">'</span><span class="p">):</span>
       <span class="n">sentence</span> <span class="o">+=</span> <span class="n">char</span>
-  <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">sentence</span><span class="p">)</span> <span class="o">&gt;</span><span class="mi">0</span><span class="p">:</span>
-    <span class="n">sentences_cleaned2</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">sentence</span><span class="p">)</span>
+  <span class="k">if</span> <span class="nf">len</span><span class="p">(</span><span class="n">sentence</span><span class="p">)</span> <span class="o">&gt;</span><span class="mi">0</span><span class="p">:</span>
+    <span class="n">sentences_cleaned2</span><span class="p">.</span><span class="nf">append</span><span class="p">(</span><span class="n">sentence</span><span class="p">)</span>
 
 <span class="n">titulo2</span> <span class="o">=</span> <span class="n">sentences_cleaned2</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> 
-<span class="n">noticia2</span><span class="o">=</span> <span class="n">sentences_cleaned2</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">+</span> <span class="s">" "</span> <span class="o">+</span> <span class="n">sentences_cleaned2</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">+</span> <span class="s">" "</span> <span class="o">+</span> <span class="n">sentences_cleaned2</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">+</span> <span class="s">" "</span> <span class="o">+</span> <span class="n">sentences_cleaned2</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span>
+<span class="n">noticia2</span><span class="o">=</span> <span class="n">sentences_cleaned2</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">+</span> <span class="sh">"</span><span class="s"> </span><span class="sh">"</span> <span class="o">+</span> <span class="n">sentences_cleaned2</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">+</span> <span class="sh">"</span><span class="s"> </span><span class="sh">"</span> <span class="o">+</span> <span class="n">sentences_cleaned2</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">+</span> <span class="sh">"</span><span class="s"> </span><span class="sh">"</span> <span class="o">+</span> <span class="n">sentences_cleaned2</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span>
 <span class="n">resumen2</span> <span class="o">=</span> <span class="n">sentences_cleaned2</span><span class="p">[</span><span class="mi">7</span><span class="p">]</span>
 
 <span class="c1"># Preprocesado del fichero 1
-</span><span class="n">titulo_process</span> <span class="o">=</span> <span class="n">extract_tokens</span><span class="p">(</span><span class="n">titulo</span><span class="p">)</span>
-<span class="n">titulo_process</span> <span class="o">=</span> <span class="n">to_lower</span><span class="p">(</span><span class="n">titulo_process</span><span class="p">)</span>
-<span class="n">titulo_process</span> <span class="o">=</span> <span class="n">remove_accents</span><span class="p">(</span><span class="n">titulo_process</span><span class="p">)</span>
-<span class="n">titulo_process</span> <span class="o">=</span> <span class="n">remove_stopwords</span><span class="p">(</span><span class="n">titulo_process</span><span class="p">)</span>
-<span class="n">titulo_process</span> <span class="o">=</span> <span class="n">extract_pos_tags</span><span class="p">(</span><span class="n">titulo_process</span><span class="p">)</span>
-<span class="n">titulo_process</span> <span class="o">=</span> <span class="n">remove_not_nouns</span><span class="p">(</span><span class="n">titulo_process</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="s">"Fichero 1 -&gt; Sustantivos en Título:"</span><span class="p">,</span><span class="o">*</span><span class="n">titulo_process</span><span class="p">,</span> <span class="n">sep</span> <span class="o">=</span> <span class="s">", "</span><span class="p">)</span>
-<span class="n">noticia_process</span> <span class="o">=</span> <span class="n">extract_tokens</span><span class="p">(</span><span class="n">noticia</span><span class="p">)</span>
-<span class="n">noticia_process</span> <span class="o">=</span> <span class="n">to_lower</span><span class="p">(</span><span class="n">noticia_process</span><span class="p">)</span>
-<span class="n">noticia_process</span> <span class="o">=</span> <span class="n">remove_accents</span><span class="p">(</span><span class="n">noticia_process</span><span class="p">)</span>
-<span class="n">noticia_process</span> <span class="o">=</span> <span class="n">remove_stopwords</span><span class="p">(</span><span class="n">noticia_process</span><span class="p">)</span>
-<span class="n">noticia_process</span> <span class="o">=</span> <span class="n">extract_pos_tags</span><span class="p">(</span><span class="n">noticia_process</span><span class="p">)</span>
-<span class="n">noticia_process</span> <span class="o">=</span> <span class="n">remove_not_nouns</span><span class="p">(</span><span class="n">noticia_process</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="s">"Fichero 1 -&gt; Sustantivos en Noticia:"</span><span class="p">,</span><span class="o">*</span><span class="n">noticia_process</span><span class="p">,</span> <span class="n">sep</span> <span class="o">=</span> <span class="s">", "</span><span class="p">)</span>
-<span class="n">resumen_process</span> <span class="o">=</span> <span class="n">extract_tokens</span><span class="p">(</span><span class="n">resumen</span><span class="p">)</span>
-<span class="n">resumen_process</span> <span class="o">=</span> <span class="n">to_lower</span><span class="p">(</span><span class="n">resumen_process</span><span class="p">)</span>
-<span class="n">resumen_process</span> <span class="o">=</span> <span class="n">remove_accents</span><span class="p">(</span><span class="n">resumen_process</span><span class="p">)</span>
-<span class="n">resumen_process</span> <span class="o">=</span> <span class="n">remove_stopwords</span><span class="p">(</span><span class="n">resumen_process</span><span class="p">)</span>
-<span class="n">resumen_process</span> <span class="o">=</span> <span class="n">extract_pos_tags</span><span class="p">(</span><span class="n">resumen_process</span><span class="p">)</span>
-<span class="n">resumen_process</span> <span class="o">=</span> <span class="n">remove_not_nouns</span><span class="p">(</span><span class="n">resumen_process</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="s">"Fichero 1 -&gt; Sustantivos en Resumen:"</span><span class="p">,</span><span class="o">*</span><span class="n">resumen_process</span><span class="p">,</span> <span class="n">sep</span> <span class="o">=</span> <span class="s">", "</span><span class="p">)</span>
+</span><span class="n">titulo_process</span> <span class="o">=</span> <span class="nf">extract_tokens</span><span class="p">(</span><span class="n">titulo</span><span class="p">)</span>
+<span class="n">titulo_process</span> <span class="o">=</span> <span class="nf">to_lower</span><span class="p">(</span><span class="n">titulo_process</span><span class="p">)</span>
+<span class="n">titulo_process</span> <span class="o">=</span> <span class="nf">remove_accents</span><span class="p">(</span><span class="n">titulo_process</span><span class="p">)</span>
+<span class="n">titulo_process</span> <span class="o">=</span> <span class="nf">remove_stopwords</span><span class="p">(</span><span class="n">titulo_process</span><span class="p">)</span>
+<span class="n">titulo_process</span> <span class="o">=</span> <span class="nf">extract_pos_tags</span><span class="p">(</span><span class="n">titulo_process</span><span class="p">)</span>
+<span class="n">titulo_process</span> <span class="o">=</span> <span class="nf">remove_not_nouns</span><span class="p">(</span><span class="n">titulo_process</span><span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">Fichero 1 -&gt; Sustantivos en Título:</span><span class="sh">"</span><span class="p">,</span><span class="o">*</span><span class="n">titulo_process</span><span class="p">,</span> <span class="n">sep</span> <span class="o">=</span> <span class="sh">"</span><span class="s">, </span><span class="sh">"</span><span class="p">)</span>
+<span class="n">noticia_process</span> <span class="o">=</span> <span class="nf">extract_tokens</span><span class="p">(</span><span class="n">noticia</span><span class="p">)</span>
+<span class="n">noticia_process</span> <span class="o">=</span> <span class="nf">to_lower</span><span class="p">(</span><span class="n">noticia_process</span><span class="p">)</span>
+<span class="n">noticia_process</span> <span class="o">=</span> <span class="nf">remove_accents</span><span class="p">(</span><span class="n">noticia_process</span><span class="p">)</span>
+<span class="n">noticia_process</span> <span class="o">=</span> <span class="nf">remove_stopwords</span><span class="p">(</span><span class="n">noticia_process</span><span class="p">)</span>
+<span class="n">noticia_process</span> <span class="o">=</span> <span class="nf">extract_pos_tags</span><span class="p">(</span><span class="n">noticia_process</span><span class="p">)</span>
+<span class="n">noticia_process</span> <span class="o">=</span> <span class="nf">remove_not_nouns</span><span class="p">(</span><span class="n">noticia_process</span><span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">Fichero 1 -&gt; Sustantivos en Noticia:</span><span class="sh">"</span><span class="p">,</span><span class="o">*</span><span class="n">noticia_process</span><span class="p">,</span> <span class="n">sep</span> <span class="o">=</span> <span class="sh">"</span><span class="s">, </span><span class="sh">"</span><span class="p">)</span>
+<span class="n">resumen_process</span> <span class="o">=</span> <span class="nf">extract_tokens</span><span class="p">(</span><span class="n">resumen</span><span class="p">)</span>
+<span class="n">resumen_process</span> <span class="o">=</span> <span class="nf">to_lower</span><span class="p">(</span><span class="n">resumen_process</span><span class="p">)</span>
+<span class="n">resumen_process</span> <span class="o">=</span> <span class="nf">remove_accents</span><span class="p">(</span><span class="n">resumen_process</span><span class="p">)</span>
+<span class="n">resumen_process</span> <span class="o">=</span> <span class="nf">remove_stopwords</span><span class="p">(</span><span class="n">resumen_process</span><span class="p">)</span>
+<span class="n">resumen_process</span> <span class="o">=</span> <span class="nf">extract_pos_tags</span><span class="p">(</span><span class="n">resumen_process</span><span class="p">)</span>
+<span class="n">resumen_process</span> <span class="o">=</span> <span class="nf">remove_not_nouns</span><span class="p">(</span><span class="n">resumen_process</span><span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">Fichero 1 -&gt; Sustantivos en Resumen:</span><span class="sh">"</span><span class="p">,</span><span class="o">*</span><span class="n">resumen_process</span><span class="p">,</span> <span class="n">sep</span> <span class="o">=</span> <span class="sh">"</span><span class="s">, </span><span class="sh">"</span><span class="p">)</span>
 
 <span class="c1"># Preprocesado del fichero 2
-</span><span class="n">titulo_process2</span> <span class="o">=</span> <span class="n">extract_tokens</span><span class="p">(</span><span class="n">titulo2</span><span class="p">)</span>
-<span class="n">titulo_process2</span> <span class="o">=</span> <span class="n">to_lower</span><span class="p">(</span><span class="n">titulo_process2</span><span class="p">)</span>
-<span class="n">titulo_process2</span> <span class="o">=</span> <span class="n">remove_accents</span><span class="p">(</span><span class="n">titulo_process2</span><span class="p">)</span>
-<span class="n">titulo_process2</span> <span class="o">=</span> <span class="n">remove_stopwords</span><span class="p">(</span><span class="n">titulo_process2</span><span class="p">)</span>
-<span class="n">titulo_process2</span> <span class="o">=</span> <span class="n">extract_pos_tags</span><span class="p">(</span><span class="n">titulo_process2</span><span class="p">)</span>
-<span class="n">titulo_process2</span> <span class="o">=</span> <span class="n">remove_not_nouns</span><span class="p">(</span><span class="n">titulo_process2</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="s">"Fichero 2 -&gt; Sustantivos en Título:"</span><span class="p">,</span><span class="o">*</span><span class="n">titulo_process2</span><span class="p">,</span> <span class="n">sep</span> <span class="o">=</span> <span class="s">", "</span><span class="p">)</span>
-<span class="n">noticia_process2</span> <span class="o">=</span> <span class="n">extract_tokens</span><span class="p">(</span><span class="n">noticia2</span><span class="p">)</span>
-<span class="n">noticia_process2</span> <span class="o">=</span> <span class="n">to_lower</span><span class="p">(</span><span class="n">noticia_process2</span><span class="p">)</span>
-<span class="n">noticia_process2</span> <span class="o">=</span> <span class="n">remove_accents</span><span class="p">(</span><span class="n">noticia_process2</span><span class="p">)</span>
-<span class="n">noticia_process2</span> <span class="o">=</span> <span class="n">remove_stopwords</span><span class="p">(</span><span class="n">noticia_process2</span><span class="p">)</span>
-<span class="n">noticia_process2</span> <span class="o">=</span> <span class="n">extract_pos_tags</span><span class="p">(</span><span class="n">noticia_process2</span><span class="p">)</span>
-<span class="n">noticia_process2</span> <span class="o">=</span> <span class="n">remove_not_nouns</span><span class="p">(</span><span class="n">noticia_process2</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="s">"Fichero 2 -&gt; Sustantivos en Noticia:"</span><span class="p">,</span><span class="o">*</span><span class="n">noticia_process2</span><span class="p">,</span> <span class="n">sep</span> <span class="o">=</span> <span class="s">", "</span><span class="p">)</span>
-<span class="n">resumen_process2</span> <span class="o">=</span> <span class="n">extract_tokens</span><span class="p">(</span><span class="n">resumen2</span><span class="p">)</span>
-<span class="n">resumen_process2</span> <span class="o">=</span> <span class="n">to_lower</span><span class="p">(</span><span class="n">resumen_process2</span><span class="p">)</span>
-<span class="n">resumen_process2</span> <span class="o">=</span> <span class="n">remove_accents</span><span class="p">(</span><span class="n">resumen_process2</span><span class="p">)</span>
-<span class="n">resumen_process2</span> <span class="o">=</span> <span class="n">remove_stopwords</span><span class="p">(</span><span class="n">resumen_process2</span><span class="p">)</span>
-<span class="n">resumen_process2</span> <span class="o">=</span> <span class="n">extract_pos_tags</span><span class="p">(</span><span class="n">resumen_process2</span><span class="p">)</span>
-<span class="n">resumen_process2</span> <span class="o">=</span> <span class="n">remove_not_nouns</span><span class="p">(</span><span class="n">resumen_process2</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="s">"Fichero 2 -&gt; Sustantivos en Resumen:"</span><span class="p">,</span><span class="o">*</span><span class="n">resumen_process2</span><span class="p">,</span> <span class="n">sep</span> <span class="o">=</span> <span class="s">", "</span><span class="p">)</span></code></pre></figure>
+</span><span class="n">titulo_process2</span> <span class="o">=</span> <span class="nf">extract_tokens</span><span class="p">(</span><span class="n">titulo2</span><span class="p">)</span>
+<span class="n">titulo_process2</span> <span class="o">=</span> <span class="nf">to_lower</span><span class="p">(</span><span class="n">titulo_process2</span><span class="p">)</span>
+<span class="n">titulo_process2</span> <span class="o">=</span> <span class="nf">remove_accents</span><span class="p">(</span><span class="n">titulo_process2</span><span class="p">)</span>
+<span class="n">titulo_process2</span> <span class="o">=</span> <span class="nf">remove_stopwords</span><span class="p">(</span><span class="n">titulo_process2</span><span class="p">)</span>
+<span class="n">titulo_process2</span> <span class="o">=</span> <span class="nf">extract_pos_tags</span><span class="p">(</span><span class="n">titulo_process2</span><span class="p">)</span>
+<span class="n">titulo_process2</span> <span class="o">=</span> <span class="nf">remove_not_nouns</span><span class="p">(</span><span class="n">titulo_process2</span><span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">Fichero 2 -&gt; Sustantivos en Título:</span><span class="sh">"</span><span class="p">,</span><span class="o">*</span><span class="n">titulo_process2</span><span class="p">,</span> <span class="n">sep</span> <span class="o">=</span> <span class="sh">"</span><span class="s">, </span><span class="sh">"</span><span class="p">)</span>
+<span class="n">noticia_process2</span> <span class="o">=</span> <span class="nf">extract_tokens</span><span class="p">(</span><span class="n">noticia2</span><span class="p">)</span>
+<span class="n">noticia_process2</span> <span class="o">=</span> <span class="nf">to_lower</span><span class="p">(</span><span class="n">noticia_process2</span><span class="p">)</span>
+<span class="n">noticia_process2</span> <span class="o">=</span> <span class="nf">remove_accents</span><span class="p">(</span><span class="n">noticia_process2</span><span class="p">)</span>
+<span class="n">noticia_process2</span> <span class="o">=</span> <span class="nf">remove_stopwords</span><span class="p">(</span><span class="n">noticia_process2</span><span class="p">)</span>
+<span class="n">noticia_process2</span> <span class="o">=</span> <span class="nf">extract_pos_tags</span><span class="p">(</span><span class="n">noticia_process2</span><span class="p">)</span>
+<span class="n">noticia_process2</span> <span class="o">=</span> <span class="nf">remove_not_nouns</span><span class="p">(</span><span class="n">noticia_process2</span><span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">Fichero 2 -&gt; Sustantivos en Noticia:</span><span class="sh">"</span><span class="p">,</span><span class="o">*</span><span class="n">noticia_process2</span><span class="p">,</span> <span class="n">sep</span> <span class="o">=</span> <span class="sh">"</span><span class="s">, </span><span class="sh">"</span><span class="p">)</span>
+<span class="n">resumen_process2</span> <span class="o">=</span> <span class="nf">extract_tokens</span><span class="p">(</span><span class="n">resumen2</span><span class="p">)</span>
+<span class="n">resumen_process2</span> <span class="o">=</span> <span class="nf">to_lower</span><span class="p">(</span><span class="n">resumen_process2</span><span class="p">)</span>
+<span class="n">resumen_process2</span> <span class="o">=</span> <span class="nf">remove_accents</span><span class="p">(</span><span class="n">resumen_process2</span><span class="p">)</span>
+<span class="n">resumen_process2</span> <span class="o">=</span> <span class="nf">remove_stopwords</span><span class="p">(</span><span class="n">resumen_process2</span><span class="p">)</span>
+<span class="n">resumen_process2</span> <span class="o">=</span> <span class="nf">extract_pos_tags</span><span class="p">(</span><span class="n">resumen_process2</span><span class="p">)</span>
+<span class="n">resumen_process2</span> <span class="o">=</span> <span class="nf">remove_not_nouns</span><span class="p">(</span><span class="n">resumen_process2</span><span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">Fichero 2 -&gt; Sustantivos en Resumen:</span><span class="sh">"</span><span class="p">,</span><span class="o">*</span><span class="n">resumen_process2</span><span class="p">,</span> <span class="n">sep</span> <span class="o">=</span> <span class="sh">"</span><span class="s">, </span><span class="sh">"</span><span class="p">)</span></code></pre></figure>
 
 <p><em>Repositorio con el contenido</em></p>
 

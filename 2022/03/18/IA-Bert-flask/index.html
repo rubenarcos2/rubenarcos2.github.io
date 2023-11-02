@@ -300,31 +300,31 @@ flask
 
 <p>Haz un archivo llamado “app.py” y pon el siguiente código:</p>
 
-<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">os</span>
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="n">os</span>
 
-<span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Flask</span><span class="p">,</span> <span class="n">render_template</span>
+<span class="kn">from</span> <span class="n">flask</span> <span class="kn">import</span> <span class="n">Flask</span><span class="p">,</span> <span class="n">render_template</span>
 
-<span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">request</span>
+<span class="kn">from</span> <span class="n">flask</span> <span class="kn">import</span> <span class="n">request</span>
 
-<span class="kn">import</span> <span class="nn">torch</span>
+<span class="kn">import</span> <span class="n">torch</span>
 
-<span class="kn">from</span> <span class="nn">transformers</span> <span class="kn">import</span> <span class="n">pipeline</span>
+<span class="kn">from</span> <span class="n">transformers</span> <span class="kn">import</span> <span class="n">pipeline</span>
 
 <span class="c1"># name = "twmkn9/albert-base-v2-squad2"
 </span>
 <span class="c1"># name = "distilbert-base-uncased-distilled-squad"
 </span>
-<span class="n">nlp</span> <span class="o">=</span> <span class="n">pipeline</span><span class="p">(</span>
+<span class="n">nlp</span> <span class="o">=</span> <span class="nf">pipeline</span><span class="p">(</span>
 
-    <span class="s">'question-answering'</span><span class="p">,</span>
+    <span class="sh">'</span><span class="s">question-answering</span><span class="sh">'</span><span class="p">,</span>
 
-    <span class="n">model</span><span class="o">=</span><span class="s">'mrm8488/distill-bert-base-spanish-wwm-cased-finetuned-spa-squad2-es'</span><span class="p">,</span>
+    <span class="n">model</span><span class="o">=</span><span class="sh">'</span><span class="s">mrm8488/distill-bert-base-spanish-wwm-cased-finetuned-spa-squad2-es</span><span class="sh">'</span><span class="p">,</span>
 
     <span class="n">tokenizer</span><span class="o">=</span><span class="p">(</span>
 
-    <span class="s">'mrm8488/distill-bert-base-spanish-wwm-cased-finetuned-spa-squad2-es'</span><span class="p">,</span>
+    <span class="sh">'</span><span class="s">mrm8488/distill-bert-base-spanish-wwm-cased-finetuned-spa-squad2-es</span><span class="sh">'</span><span class="p">,</span>
 
-    <span class="p">{</span><span class="s">"use_fast"</span><span class="p">:</span> <span class="bp">False</span><span class="p">}</span>
+    <span class="p">{</span><span class="sh">"</span><span class="s">use_fast</span><span class="sh">"</span><span class="p">:</span> <span class="bp">False</span><span class="p">}</span>
 
     <span class="p">)</span>
 
@@ -334,49 +334,49 @@ flask
 
     <span class="k">try</span><span class="p">:</span>
 
-    <span class="n">answer</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">({</span><span class="s">'question'</span><span class="p">:</span><span class="n">question</span><span class="p">,</span> <span class="s">'context'</span><span class="p">:</span><span class="n">answer_text</span><span class="p">})</span>
+    <span class="n">answer</span> <span class="o">=</span> <span class="nf">nlp</span><span class="p">({</span><span class="sh">'</span><span class="s">question</span><span class="sh">'</span><span class="p">:</span><span class="n">question</span><span class="p">,</span> <span class="sh">'</span><span class="s">context</span><span class="sh">'</span><span class="p">:</span><span class="n">answer_text</span><span class="p">})</span>
 
-    <span class="k">return</span> <span class="n">answer</span><span class="p">[</span><span class="s">'answer'</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">answer</span><span class="p">[</span><span class="sh">'</span><span class="s">answer</span><span class="sh">'</span><span class="p">]</span>
 
     <span class="k">except</span> <span class="nb">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
 
-    <span class="k">print</span><span class="p">(</span><span class="s">"Error en la generación de la respuesta:"</span><span class="p">,</span> <span class="n">e</span><span class="p">)</span>
+    <span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">Error en la generación de la respuesta:</span><span class="sh">"</span><span class="p">,</span> <span class="n">e</span><span class="p">)</span>
 
-<span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="n">__name__</span><span class="p">)</span>
+<span class="n">app</span> <span class="o">=</span> <span class="nc">Flask</span><span class="p">(</span><span class="n">__name__</span><span class="p">)</span>
 
-<span class="o">@</span><span class="n">app</span><span class="p">.</span><span class="n">route</span><span class="p">(</span><span class="s">'/'</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s">'GET'</span><span class="p">,</span> <span class="s">'POST'</span><span class="p">])</span>
+<span class="nd">@app.route</span><span class="p">(</span><span class="sh">'</span><span class="s">/</span><span class="sh">'</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="sh">'</span><span class="s">GET</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">POST</span><span class="sh">'</span><span class="p">])</span>
 
 <span class="k">def</span> <span class="nf">index</span><span class="p">():</span>
 
-    <span class="k">if</span> <span class="n">request</span><span class="p">.</span><span class="n">method</span> <span class="o">==</span> <span class="s">'POST'</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">request</span><span class="p">.</span><span class="n">method</span> <span class="o">==</span> <span class="sh">'</span><span class="s">POST</span><span class="sh">'</span><span class="p">:</span>
 
     <span class="n">form</span> <span class="o">=</span> <span class="n">request</span><span class="p">.</span><span class="n">form</span>
 
     <span class="n">result</span> <span class="o">=</span> <span class="p">[]</span>
 
-    <span class="n">bert_abstract</span> <span class="o">=</span> <span class="n">form</span><span class="p">[</span><span class="s">'paragraph'</span><span class="p">]</span>
+    <span class="n">bert_abstract</span> <span class="o">=</span> <span class="n">form</span><span class="p">[</span><span class="sh">'</span><span class="s">paragraph</span><span class="sh">'</span><span class="p">]</span>
 
-    <span class="n">question</span> <span class="o">=</span> <span class="n">form</span><span class="p">[</span><span class="s">'question'</span><span class="p">]</span>
+    <span class="n">question</span> <span class="o">=</span> <span class="n">form</span><span class="p">[</span><span class="sh">'</span><span class="s">question</span><span class="sh">'</span><span class="p">]</span>
 
-    <span class="n">result</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">form</span><span class="p">[</span><span class="s">'question'</span><span class="p">])</span>
+    <span class="n">result</span><span class="p">.</span><span class="nf">append</span><span class="p">(</span><span class="n">form</span><span class="p">[</span><span class="sh">'</span><span class="s">question</span><span class="sh">'</span><span class="p">])</span>
 
-    <span class="n">result</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">answer_question</span><span class="p">(</span><span class="n">question</span><span class="p">,</span> <span class="n">bert_abstract</span><span class="p">))</span>
+    <span class="n">result</span><span class="p">.</span><span class="nf">append</span><span class="p">(</span><span class="nf">answer_question</span><span class="p">(</span><span class="n">question</span><span class="p">,</span> <span class="n">bert_abstract</span><span class="p">))</span>
 
-    <span class="n">result</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">form</span><span class="p">[</span><span class="s">'paragraph'</span><span class="p">])</span>
+    <span class="n">result</span><span class="p">.</span><span class="nf">append</span><span class="p">(</span><span class="n">form</span><span class="p">[</span><span class="sh">'</span><span class="s">paragraph</span><span class="sh">'</span><span class="p">])</span>
 
-    <span class="k">return</span> <span class="n">render_template</span><span class="p">(</span><span class="s">"index.html"</span><span class="p">,</span><span class="n">result</span> <span class="o">=</span> <span class="n">result</span><span class="p">)</span>
+    <span class="k">return</span> <span class="nf">render_template</span><span class="p">(</span><span class="sh">"</span><span class="s">index.html</span><span class="sh">"</span><span class="p">,</span><span class="n">result</span> <span class="o">=</span> <span class="n">result</span><span class="p">)</span>
 
     <span class="c1"># answer = answer_question(question, bert_abstract)
 </span>
     <span class="c1"># return answer
 </span>
-    <span class="k">return</span> <span class="n">render_template</span><span class="p">(</span><span class="s">"index.html"</span><span class="p">)</span>
+    <span class="k">return</span> <span class="nf">render_template</span><span class="p">(</span><span class="sh">"</span><span class="s">index.html</span><span class="sh">"</span><span class="p">)</span>
 
-<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">'__main__'</span><span class="p">:</span>
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="sh">'</span><span class="s">__main__</span><span class="sh">'</span><span class="p">:</span>
 
-    <span class="n">port</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">os</span><span class="p">.</span><span class="n">environ</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="s">"PORT"</span><span class="p">,</span> <span class="mi">5000</span><span class="p">))</span>
+    <span class="n">port</span> <span class="o">=</span> <span class="nf">int</span><span class="p">(</span><span class="n">os</span><span class="p">.</span><span class="n">environ</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="sh">"</span><span class="s">PORT</span><span class="sh">"</span><span class="p">,</span> <span class="mi">5000</span><span class="p">))</span>
 
-    <span class="n">app</span><span class="p">.</span><span class="n">run</span><span class="p">(</span><span class="n">host</span><span class="o">=</span><span class="s">'0.0.0.0'</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="n">port</span><span class="p">)</span></code></pre></figure>
+    <span class="n">app</span><span class="p">.</span><span class="nf">run</span><span class="p">(</span><span class="n">host</span><span class="o">=</span><span class="sh">'</span><span class="s">0.0.0.0</span><span class="sh">'</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="n">port</span><span class="p">)</span></code></pre></figure>
 
 <p>Esto obtendrá el modelo BERT y el tokenizador necesario para el modelo. Hemos utilizado “mrm8488/bert-small-finetuned-squadv2” de huggingface ya que es comparativamente más pequeño que los otros modelos BERT y tenemos un espacio limitado de 512 MBs en la cuenta de nivel gratuito de Heroku. A continuación, creamos un servidor flask para recibir las entradas en forma de párrafos y preguntas.
 Ahora, haz una carpeta llamada “templates” y dentro de la carpeta, crea un archivo llamado “index.html”. Pon el siguiente código en el archivo:</p>

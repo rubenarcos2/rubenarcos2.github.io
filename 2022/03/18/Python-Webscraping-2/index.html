@@ -261,70 +261,70 @@
 
 <h2 id="script-de-captación-de-datos-y-guardado-en-base-de-datos">Script de captación de datos y guardado en base de datos</h2>
 
-<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">selenium</span> <span class="kn">import</span> <span class="n">webdriver</span>
-<span class="kn">from</span> <span class="nn">sqlalchemy</span> <span class="kn">import</span> <span class="n">create_engine</span>
-<span class="kn">import</span> <span class="nn">os</span>
-<span class="kn">import</span> <span class="nn">time</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="n">pd</span>
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="n">selenium</span> <span class="kn">import</span> <span class="n">webdriver</span>
+<span class="kn">from</span> <span class="n">sqlalchemy</span> <span class="kn">import</span> <span class="n">create_engine</span>
+<span class="kn">import</span> <span class="n">os</span>
+<span class="kn">import</span> <span class="n">time</span>
+<span class="kn">import</span> <span class="n">pandas</span> <span class="k">as</span> <span class="n">pd</span>
 
-<span class="n">search_query</span> <span class="o">=</span> <span class="s">'https://ticjob.es'</span>
+<span class="n">search_query</span> <span class="o">=</span> <span class="sh">'</span><span class="s">https://ticjob.es</span><span class="sh">'</span>
 
-<span class="n">browser</span> <span class="o">=</span> <span class="n">webdriver</span><span class="p">.</span><span class="n">Firefox</span><span class="p">()</span>
-<span class="k">if</span> <span class="s">'linux'</span> <span class="ow">in</span> <span class="n">os</span><span class="p">.</span><span class="n">name</span><span class="p">:</span>
-    <span class="n">browser</span> <span class="o">=</span> <span class="n">webdriver</span><span class="p">.</span><span class="n">Firefox</span><span class="p">(</span><span class="n">executable_path</span><span class="o">=</span><span class="s">'geckodriver'</span><span class="p">)</span>
-<span class="k">elif</span> <span class="s">'windows'</span> <span class="ow">in</span> <span class="n">os</span><span class="p">.</span><span class="n">name</span><span class="p">:</span>
-    <span class="n">browser</span> <span class="o">=</span> <span class="n">webdriver</span><span class="p">.</span><span class="n">Firefox</span><span class="p">(</span><span class="n">executable_path</span><span class="o">=</span><span class="s">'geckodriver.exe'</span><span class="p">)</span>
+<span class="n">browser</span> <span class="o">=</span> <span class="n">webdriver</span><span class="p">.</span><span class="nc">Firefox</span><span class="p">()</span>
+<span class="k">if</span> <span class="sh">'</span><span class="s">linux</span><span class="sh">'</span> <span class="ow">in</span> <span class="n">os</span><span class="p">.</span><span class="n">name</span><span class="p">:</span>
+    <span class="n">browser</span> <span class="o">=</span> <span class="n">webdriver</span><span class="p">.</span><span class="nc">Firefox</span><span class="p">(</span><span class="n">executable_path</span><span class="o">=</span><span class="sh">'</span><span class="s">geckodriver</span><span class="sh">'</span><span class="p">)</span>
+<span class="k">elif</span> <span class="sh">'</span><span class="s">windows</span><span class="sh">'</span> <span class="ow">in</span> <span class="n">os</span><span class="p">.</span><span class="n">name</span><span class="p">:</span>
+    <span class="n">browser</span> <span class="o">=</span> <span class="n">webdriver</span><span class="p">.</span><span class="nc">Firefox</span><span class="p">(</span><span class="n">executable_path</span><span class="o">=</span><span class="sh">'</span><span class="s">geckodriver.exe</span><span class="sh">'</span><span class="p">)</span>
 
-<span class="n">browser</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="n">search_query</span><span class="p">)</span>
-<span class="n">time</span><span class="p">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">browser</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="n">search_query</span><span class="p">)</span>
+<span class="n">time</span><span class="p">.</span><span class="nf">sleep</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
 
-<span class="nb">input</span> <span class="o">=</span> <span class="n">browser</span><span class="p">.</span><span class="n">find_element_by_id</span><span class="p">(</span><span class="s">"keywords-input"</span><span class="p">).</span><span class="n">send_keys</span><span class="p">(</span><span class="s">"Python Málaga"</span><span class="p">)</span>
-<span class="n">send_button</span> <span class="o">=</span> <span class="n">browser</span><span class="p">.</span><span class="n">find_element_by_id</span><span class="p">(</span><span class="s">"search-form"</span><span class="p">).</span><span class="n">submit</span><span class="p">()</span>
-<span class="n">time</span><span class="p">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="nb">input</span> <span class="o">=</span> <span class="n">browser</span><span class="p">.</span><span class="nf">find_element_by_id</span><span class="p">(</span><span class="sh">"</span><span class="s">keywords-input</span><span class="sh">"</span><span class="p">).</span><span class="nf">send_keys</span><span class="p">(</span><span class="sh">"</span><span class="s">Python Málaga</span><span class="sh">"</span><span class="p">)</span>
+<span class="n">send_button</span> <span class="o">=</span> <span class="n">browser</span><span class="p">.</span><span class="nf">find_element_by_id</span><span class="p">(</span><span class="sh">"</span><span class="s">search-form</span><span class="sh">"</span><span class="p">).</span><span class="nf">submit</span><span class="p">()</span>
+<span class="n">time</span><span class="p">.</span><span class="nf">sleep</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
 
 <span class="c1"># Página con los resultados
 </span>
-<span class="n">titles</span> <span class="o">=</span> <span class="n">browser</span><span class="p">.</span><span class="n">find_elements_by_class_name</span><span class="p">(</span><span class="s">"job-title"</span><span class="p">)</span>
-<span class="n">dates</span> <span class="o">=</span> <span class="n">browser</span><span class="p">.</span><span class="n">find_elements_by_class_name</span><span class="p">(</span><span class="s">"date-field"</span><span class="p">)</span>
-<span class="n">locations</span> <span class="o">=</span> <span class="n">browser</span><span class="p">.</span><span class="n">find_elements_by_class_name</span><span class="p">(</span><span class="s">"location-field"</span><span class="p">)</span>
-<span class="n">descriptions</span> <span class="o">=</span> <span class="n">browser</span><span class="p">.</span><span class="n">find_elements_by_class_name</span><span class="p">(</span><span class="s">"job-description"</span><span class="p">)</span>
+<span class="n">titles</span> <span class="o">=</span> <span class="n">browser</span><span class="p">.</span><span class="nf">find_elements_by_class_name</span><span class="p">(</span><span class="sh">"</span><span class="s">job-title</span><span class="sh">"</span><span class="p">)</span>
+<span class="n">dates</span> <span class="o">=</span> <span class="n">browser</span><span class="p">.</span><span class="nf">find_elements_by_class_name</span><span class="p">(</span><span class="sh">"</span><span class="s">date-field</span><span class="sh">"</span><span class="p">)</span>
+<span class="n">locations</span> <span class="o">=</span> <span class="n">browser</span><span class="p">.</span><span class="nf">find_elements_by_class_name</span><span class="p">(</span><span class="sh">"</span><span class="s">location-field</span><span class="sh">"</span><span class="p">)</span>
+<span class="n">descriptions</span> <span class="o">=</span> <span class="n">browser</span><span class="p">.</span><span class="nf">find_elements_by_class_name</span><span class="p">(</span><span class="sh">"</span><span class="s">job-description</span><span class="sh">"</span><span class="p">)</span>
 
-<span class="n">time</span><span class="p">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">time</span><span class="p">.</span><span class="nf">sleep</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
 
 <span class="n">lista_titles</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="k">for</span> <span class="n">title</span> <span class="ow">in</span> <span class="n">titles</span><span class="p">:</span>
-    <span class="n">lista_titles</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">title</span><span class="p">.</span><span class="n">text</span><span class="p">)</span>
+    <span class="n">lista_titles</span><span class="p">.</span><span class="nf">append</span><span class="p">(</span><span class="n">title</span><span class="p">.</span><span class="n">text</span><span class="p">)</span>
 
 <span class="n">lista_dates</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="k">for</span> <span class="n">date</span> <span class="ow">in</span> <span class="n">dates</span><span class="p">:</span>
-    <span class="n">lista_dates</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">date</span><span class="p">.</span><span class="n">text</span><span class="p">)</span>
+    <span class="n">lista_dates</span><span class="p">.</span><span class="nf">append</span><span class="p">(</span><span class="n">date</span><span class="p">.</span><span class="n">text</span><span class="p">)</span>
 
 <span class="n">lista_locations</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="k">for</span> <span class="n">location</span> <span class="ow">in</span> <span class="n">locations</span><span class="p">:</span>
-    <span class="n">lista_locations</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">location</span><span class="p">.</span><span class="n">text</span><span class="p">)</span>
+    <span class="n">lista_locations</span><span class="p">.</span><span class="nf">append</span><span class="p">(</span><span class="n">location</span><span class="p">.</span><span class="n">text</span><span class="p">)</span>
 
 <span class="n">lista_descriptions</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="k">for</span> <span class="n">description</span> <span class="ow">in</span> <span class="n">descriptions</span><span class="p">:</span>
-    <span class="n">lista_descriptions</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">description</span><span class="p">.</span><span class="n">text</span><span class="p">)</span>
+    <span class="n">lista_descriptions</span><span class="p">.</span><span class="nf">append</span><span class="p">(</span><span class="n">description</span><span class="p">.</span><span class="n">text</span><span class="p">)</span>
 
-<span class="n">time</span><span class="p">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
-<span class="n">browser</span><span class="p">.</span><span class="n">close</span><span class="p">()</span>
+<span class="n">time</span><span class="p">.</span><span class="nf">sleep</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">browser</span><span class="p">.</span><span class="nf">close</span><span class="p">()</span>
 
 <span class="c1">#### Guardado de los datos en un dataframe
 </span>
-<span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="s">"Títulos"</span><span class="p">:</span> <span class="n">lista_titles</span><span class="p">,</span> <span class="s">"Fechas"</span><span class="p">:</span> <span class="n">lista_dates</span><span class="p">,</span> <span class="s">"Localización"</span><span class="p">:</span> <span class="n">lista_locations</span><span class="p">,</span> <span class="s">"Descripción"</span><span class="p">:</span> <span class="n">lista_descriptions</span><span class="p">}</span>
-<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+<span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="sh">"</span><span class="s">Títulos</span><span class="sh">"</span><span class="p">:</span> <span class="n">lista_titles</span><span class="p">,</span> <span class="sh">"</span><span class="s">Fechas</span><span class="sh">"</span><span class="p">:</span> <span class="n">lista_dates</span><span class="p">,</span> <span class="sh">"</span><span class="s">Localización</span><span class="sh">"</span><span class="p">:</span> <span class="n">lista_locations</span><span class="p">,</span> <span class="sh">"</span><span class="s">Descripción</span><span class="sh">"</span><span class="p">:</span> <span class="n">lista_descriptions</span><span class="p">}</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="nc">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
 
 <span class="c1">#### Guardado del dataframe en la base de datos ####
 </span><span class="k">try</span><span class="p">:</span>
-    <span class="n">engine</span> <span class="o">=</span> <span class="n">create_engine</span><span class="p">(</span><span class="s">'mysql+pymysql://name_db:passwd_db@domain_db/name_db'</span><span class="p">)</span>
+    <span class="n">engine</span> <span class="o">=</span> <span class="nf">create_engine</span><span class="p">(</span><span class="sh">'</span><span class="s">mysql+pymysql://name_db:passwd_db@domain_db/name_db</span><span class="sh">'</span><span class="p">)</span>
 
-    <span class="n">df</span><span class="p">.</span><span class="n">to_sql</span><span class="p">(</span><span class="s">"ofertas_trabajo"</span><span class="p">,</span> <span class="n">con</span> <span class="o">=</span> <span class="n">engine</span><span class="p">,</span> <span class="n">if_exists</span><span class="o">=</span><span class="s">'replace'</span><span class="p">)</span>
+    <span class="n">df</span><span class="p">.</span><span class="nf">to_sql</span><span class="p">(</span><span class="sh">"</span><span class="s">ofertas_trabajo</span><span class="sh">"</span><span class="p">,</span> <span class="n">con</span> <span class="o">=</span> <span class="n">engine</span><span class="p">,</span> <span class="n">if_exists</span><span class="o">=</span><span class="sh">'</span><span class="s">replace</span><span class="sh">'</span><span class="p">)</span>
 
-    <span class="k">print</span><span class="p">(</span><span class="s">"Se ha grabado en la base de datos correctamente"</span><span class="p">)</span>
+    <span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">Se ha grabado en la base de datos correctamente</span><span class="sh">"</span><span class="p">)</span>
 <span class="k">except</span> <span class="nb">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-    <span class="k">print</span><span class="p">(</span><span class="s">"Ha habido un error en la grabación en la base de datos:"</span><span class="p">,</span> <span class="n">e</span><span class="p">)</span></code></pre></figure>
+    <span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">Ha habido un error en la grabación en la base de datos:</span><span class="sh">"</span><span class="p">,</span> <span class="n">e</span><span class="p">)</span></code></pre></figure>
 
 <h2 id="envío-del-resultado-por-email">Envío del resultado por email</h2>
 
@@ -334,16 +334,16 @@
 
 <p>Añadir este pedazo de código al final del script de webscraping, para que se envíen las ofertas por email.</p>
 
-<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">email_api_gmail</span> <span class="kn">import</span> <span class="n">send</span>
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="n">email_api_gmail</span> <span class="kn">import</span> <span class="n">send</span>
 
 <span class="c1">#### Envío de los datos por email ####
 </span>
     <span class="k">try</span><span class="p">:</span>
-        <span class="n">email</span> <span class="o">=</span> <span class="s">"&lt;html&gt;"</span> <span class="o">+</span> <span class="n">df</span><span class="p">.</span><span class="n">to_html</span><span class="p">()</span> <span class="o">+</span> <span class="s">"&lt;/html&gt;"</span>
-        <span class="n">send</span><span class="p">(</span><span class="s">"destinatario@email.com"</span><span class="p">,</span> <span class="s">"Listado de ofertas de empleo"</span><span class="p">,</span> <span class="n">email</span><span class="p">)</span>
-        <span class="k">print</span><span class="p">(</span><span class="s">"Se han enviado las ofertas de trabajo por email correctamente."</span><span class="p">)</span>
+        <span class="n">email</span> <span class="o">=</span> <span class="sh">"</span><span class="s">&lt;html&gt;</span><span class="sh">"</span> <span class="o">+</span> <span class="n">df</span><span class="p">.</span><span class="nf">to_html</span><span class="p">()</span> <span class="o">+</span> <span class="sh">"</span><span class="s">&lt;/html&gt;</span><span class="sh">"</span>
+        <span class="nf">send</span><span class="p">(</span><span class="sh">"</span><span class="s">destinatario@email.com</span><span class="sh">"</span><span class="p">,</span> <span class="sh">"</span><span class="s">Listado de ofertas de empleo</span><span class="sh">"</span><span class="p">,</span> <span class="n">email</span><span class="p">)</span>
+        <span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">Se han enviado las ofertas de trabajo por email correctamente.</span><span class="sh">"</span><span class="p">)</span>
     <span class="k">except</span> <span class="nb">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-        <span class="k">print</span><span class="p">(</span><span class="s">"Ha habido un error en el envío de las ofertas por email:"</span><span class="p">,</span> <span class="n">e</span><span class="p">)</span></code></pre></figure>
+        <span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">Ha habido un error en el envío de las ofertas por email:</span><span class="sh">"</span><span class="p">,</span> <span class="n">e</span><span class="p">)</span></code></pre></figure>
 
 <h2 id="automatización-del-script-con-cron">Automatización del script con cron</h2>
 
@@ -354,19 +354,19 @@
 <p>Cambiar este pedazo de código, sustituir la función <em>uploadScript</em>, al final del script de crontab del tutorial anterior.</p>
 
 <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">uploadScript</span><span class="p">():</span>
-    <span class="n">src_path</span> <span class="o">=</span> <span class="sa">r</span><span class="s">"ruta_acceso/Selenium.py"</span>
-    <span class="n">dst_path</span> <span class="o">=</span> <span class="sa">r</span><span class="s">"/opt/jobs_offer/jobs_offer_task.py"</span>
-    <span class="n">shutil</span><span class="p">.</span><span class="n">copy</span><span class="p">(</span><span class="n">src_path</span><span class="p">,</span> <span class="n">dst_path</span><span class="p">)</span>
-    <span class="n">src_path</span> <span class="o">=</span> <span class="sa">r</span><span class="s">"ruta_acceso/credentials.json"</span>
-    <span class="n">dst_path</span> <span class="o">=</span> <span class="sa">r</span><span class="s">"/opt/jobs_offer/credentials.json"</span>
-    <span class="n">shutil</span><span class="p">.</span><span class="n">copy</span><span class="p">(</span><span class="n">src_path</span><span class="p">,</span> <span class="n">dst_path</span><span class="p">)</span>
-    <span class="n">src_path</span> <span class="o">=</span> <span class="sa">r</span><span class="s">"ruta_acceso/email_api_gmail.py"</span>
-    <span class="n">dst_path</span> <span class="o">=</span> <span class="sa">r</span><span class="s">"/opt/jobs_offer/email_api_gmail.py"</span>
-    <span class="n">shutil</span><span class="p">.</span><span class="n">copy</span><span class="p">(</span><span class="n">src_path</span><span class="p">,</span> <span class="n">dst_path</span><span class="p">)</span>
-    <span class="n">src_path</span> <span class="o">=</span> <span class="sa">r</span><span class="s">"ruta_acceso/chromedriver"</span>
-    <span class="n">dst_path</span> <span class="o">=</span> <span class="sa">r</span><span class="s">"/opt/jobs_offer/chromedriver"</span>
-    <span class="n">shutil</span><span class="p">.</span><span class="n">copy</span><span class="p">(</span><span class="n">src_path</span><span class="p">,</span> <span class="n">dst_path</span><span class="p">)</span>
-    <span class="k">print</span><span class="p">(</span><span class="s">'Copied all files'</span><span class="p">)</span></code></pre></figure>
+    <span class="n">src_path</span> <span class="o">=</span> <span class="sa">r</span><span class="sh">"</span><span class="s">ruta_acceso/Selenium.py</span><span class="sh">"</span>
+    <span class="n">dst_path</span> <span class="o">=</span> <span class="sa">r</span><span class="sh">"</span><span class="s">/opt/jobs_offer/jobs_offer_task.py</span><span class="sh">"</span>
+    <span class="n">shutil</span><span class="p">.</span><span class="nf">copy</span><span class="p">(</span><span class="n">src_path</span><span class="p">,</span> <span class="n">dst_path</span><span class="p">)</span>
+    <span class="n">src_path</span> <span class="o">=</span> <span class="sa">r</span><span class="sh">"</span><span class="s">ruta_acceso/credentials.json</span><span class="sh">"</span>
+    <span class="n">dst_path</span> <span class="o">=</span> <span class="sa">r</span><span class="sh">"</span><span class="s">/opt/jobs_offer/credentials.json</span><span class="sh">"</span>
+    <span class="n">shutil</span><span class="p">.</span><span class="nf">copy</span><span class="p">(</span><span class="n">src_path</span><span class="p">,</span> <span class="n">dst_path</span><span class="p">)</span>
+    <span class="n">src_path</span> <span class="o">=</span> <span class="sa">r</span><span class="sh">"</span><span class="s">ruta_acceso/email_api_gmail.py</span><span class="sh">"</span>
+    <span class="n">dst_path</span> <span class="o">=</span> <span class="sa">r</span><span class="sh">"</span><span class="s">/opt/jobs_offer/email_api_gmail.py</span><span class="sh">"</span>
+    <span class="n">shutil</span><span class="p">.</span><span class="nf">copy</span><span class="p">(</span><span class="n">src_path</span><span class="p">,</span> <span class="n">dst_path</span><span class="p">)</span>
+    <span class="n">src_path</span> <span class="o">=</span> <span class="sa">r</span><span class="sh">"</span><span class="s">ruta_acceso/chromedriver</span><span class="sh">"</span>
+    <span class="n">dst_path</span> <span class="o">=</span> <span class="sa">r</span><span class="sh">"</span><span class="s">/opt/jobs_offer/chromedriver</span><span class="sh">"</span>
+    <span class="n">shutil</span><span class="p">.</span><span class="nf">copy</span><span class="p">(</span><span class="n">src_path</span><span class="p">,</span> <span class="n">dst_path</span><span class="p">)</span>
+    <span class="nf">print</span><span class="p">(</span><span class="sh">'</span><span class="s">Copied all files</span><span class="sh">'</span><span class="p">)</span></code></pre></figure>
 
 <hr />
 <p><strong>Fuentes:</strong></p>
