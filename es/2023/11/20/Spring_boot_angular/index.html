@@ -15,9 +15,9 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Proyecto Integrado DAW</title>
+  <title>Angular 17 + Spring Boot 3 + Spring Security 6 [En curso]</title>
   <meta name='description'
-    content='Proyecto integrado fin del Ciclo Formativo de Grado Superior en desarrollo de Aplicaciones Web.'>
+    content='La finalidad principal de la aplicación, ha sido la gestión de privilegios de acceso de usuarios a distintos elementos, spring security y JWT.'>
 
   <!-- Google Fonts -->
   <link
@@ -35,7 +35,7 @@
 
   <!-- Main Stylesheet -->
   <link rel="stylesheet" href="/es/css/main.css">
-  <link rel="canonical" href="https://rarcos.com/es/2023/06/30/Proyecto_integrado/">
+  <link rel="canonical" href="https://rarcos.com/es/2023/11/20/Spring_boot_angular/">
   <link rel="alternate" type="application/rss+xml" title="Rubén Arcos" href="/es/feed.xml">
 
   <!-- Chrome, Firefox OS and Opera -->
@@ -69,7 +69,7 @@
       
       
       
-      <a id="switch-lang" href=" /2023/06/30/Proyecto_integrado/" title="Change language to en">
+      <a id="switch-lang" href=" /2023/11/20/Spring_boot_angular/" title="Change language to en">
         <img src=" https://cdn.wpml.org/wp-content/plugins/sitepress-multilingual-cms/res/flags/en.png">
       </a>
       
@@ -217,15 +217,15 @@
   <ul id="results-container" class="search-results-list"></ul>
 </div> <!-- /.search-box -->
 
-        <div class="post-header" style="background: url(/images/pages/Carga2.png)">
+        <div class="post-header" style="background: url(/images/pages/spring_boot+angular.png)">
   <div class="post-header-info">
-    <h1 class="post-title">Proyecto Integrado DAW</h1>
+    <h1 class="post-title">Angular 17 + Spring Boot 3 + Spring Security 6 [En curso]</h1>
     <div class="post-meta">
       
       
       
-      <time datetime="2023-06-30T16:33:28+02:00">
-         30/06/2023
+      <time datetime="2023-11-20T15:33:28+01:00">
+         20/11/2023
       </time>
       
       
@@ -253,143 +253,53 @@
   <article class="post">
 
     <div class="post-content">
-      <h1 id="proyecto-integrado-fin-del-ciclo-formativo-de-grado-superior-en-desarrollo-de-aplicaciones-web">Proyecto integrado fin del Ciclo Formativo de Grado Superior en desarrollo de Aplicaciones Web</h1>
+      <h1 id="angular-17--spring-boot-3--spring-security-6-en-curso">Angular 17 + Spring Boot 3 + Spring Security 6 [En curso]</h1>
 
 <p style="text-align: justify">
-La finalidad principal de la aplicación, ha sido la demostración de la puesta en práctica de los conocimientos adquiridos a lo largo del ciclo formativo de desarrollo de aplicaciones web. He focalizado la aplicación en los conocimientos adquiridos sobre la gestión de privilegios de acceso de usuarios a distintos elementos (o módulos como me referiré a lo largo del documento) de la aplicación, la gestión de usuarios jerarquizados en distintos grupos (denominados roles) y la administración por parte de un usuario autorizado. No menos relevante ha sido la aplicación de los conocimientos en el diseño y gestión de bases de datos relacionales y las plataformas de implementación de estas. Otro factor que se ha tenido en cuenta ha sido la seguridad del entorno de uso (JWT) y de la aplicación (Angular), implementando funcionalidades como, la encriptación de datos sensibles, o la prevención en la utilización de elementos sensibles a la inyección de información automatizada (cracking o ataques de fuerza bruta).
+La finalidad principal de la aplicación, ha sido la demostración de la puesta en práctica de los conocimientos adquiridos sobre la gestión de privilegios de acceso de usuarios a distintos elementos (o módulos como me referiré a lo largo del documento) de la aplicación, la gestión de usuarios jerarquizados en distintos grupos (denominados roles) y la administración por parte de un usuario autorizado. No menos relevante ha sido la aplicación de los conocimientos en el diseño y gestión de bases de datos relacionales y las plataformas de implementación de estas. Otro factor que se ha tenido en cuenta ha sido la seguridad del entorno de uso (JWT) y de la aplicación (Angular), implementando funcionalidades como, la encriptación de datos sensibles, o la prevención en la utilización de elementos sensibles a la inyección de información automatizada (cracking o ataques de fuerza bruta).
 </p>
 
 <h1 id="arquitectura">Arquitectura</h1>
 
-<p>Esta es la arquitectura que se ha utilizado para el entorno de producción en una VPS.</p>
+<p>Esta es la arquitectura que se ha utilizado para el entorno de producción en un VPS.</p>
 
-<p><img src="/images/pages/GesMerCa_arquitectura.png" alt="Arquitectura en VPS" title="Arquitectura en VPS de GesMerCa" /></p>
+<p><img src="/images/pages/spring_boot_arquitectura.png" alt="VPS Architecture" title="Spring Boot VPS Architecture" /></p>
 
-<p>La separación lógica del frontend, el backend y la base de datos.</p>
+<p>Separación lógica del frontend, backend y la base de datos.</p>
 
-<p><img src="/images/pages/GesMerCa_arquitectura_Front-Back.png" alt="Arquitectura GesMerCa Frontend-Backend" title="Arquitectura GesMerCa Frontend-Backend" /></p>
+<p><img src="/images/pages/spring_boot_arquitectura_Front-Back.png" alt="Architecture GesMerCa Frontend-Backend" title="Spring Boot Frontend-Backend architecture" /></p>
 
 <h2 id="entorno-de-ejecución---frontend">Entorno de ejecución - Frontend</h2>
 
 <p style="text-align: center">
 <a href="https://vps.rarcos.com:10448/" target="_blank">
-    <img src="/images/pages/gesmerca.png" width="100" alt="GesMerCa Logo" /> Demostración web online
+    <img src="/images/pages/gesmerca.png" width="100" alt="GesMerCa Logo" />Demo online
 </a>
 </p>
-<h2 id="documentación-de-la-api---backend">Documentación de la API - Backend</h2>
+
+<h2 id="documentación-api---backend">Documentación API - Backend</h2>
+
 <p style="text-align: center">
 <a href="https://vps.rarcos.com:10447/" target="_blank">
-    <img src="https://avatars.githubusercontent.com/u/7658037?s=200&amp;v=4" width="100" alt="Swagger Logo" /> Documentación api online
+    <img src="https://avatars.githubusercontent.com/u/7658037?s=200&amp;v=4" width="100" alt="Swagger Logo" />Documentación API online
 </a>
 </p>
 
 <hr />
 
-<p><em>Repositorio con el contenido</em></p>
+<p><em>Repository with content</em></p>
 
-<p><a href="https://github.com/rubenarcos2/proyecto_daw/tree/main/frontend/gesmerca"><img src="/images/pages/repository_small.png" alt="Repositorio" /></a>
-Frontend
-<a href="https://github.com/rubenarcos2/proyecto_daw/tree/main/backend/gesmerca"><img src="/images/pages/repository_small.png" alt="Repositorio" /></a>
-Backend
-<a href="https://github.com/rubenarcos2/proyecto_daw/tree/main/IA"><img src="/images/pages/repository_small.png" alt="Repositorio" /></a>
-IA</p>
+<p><a href="https://github.com/rubenarcos2/spring_security_angular"><img src="/images/pages/repository_small.png" alt="Repository" /></a></p>
 
 <hr />
 
 <p><strong>Fuentes:</strong></p>
 
-<p><em>Angular</em></p>
+<p><em>Spring security + JWT</em></p>
 
 <ul>
-  <li><a href="https://openwebinars.net/academia/aprende/angular/9221/">https://openwebinars.net/academia/aprende/angular/9221/</a></li>
-  <li><a href="https://www.positronx.io/laravel-angular-token-based-authentication-with-jwt/">https://www.positronx.io/laravel-angular-token-based-authentication-with-jwt/</a></li>
-  <li><a href="https://www.ultimateakash.com/blog-details/Ii1TNGAKYAo=/How-to-Implement-JWT-Authentication-in-Angular-2023">https://www.ultimateakash.com/blog-details/Ii1TNGAKYAo=/How-to-Implement-JWT-Authentication-in-Angular-2023</a></li>
-  <li><a href="https://www.tektutorialshub.com/angular/meta-service-in-angular-add-update-meta-tags-example/">https://www.tektutorialshub.com/angular/meta-service-in-angular-add-update-meta-tags-example/</a>
-<a href="https://angular.io/api/platform-browser/MetaDefinition">https://angular.io/api/platform-browser/MetaDefinition</a></li>
-  <li><a href="https://www.concretepage.com/angular-2/angular-2-4-minlength-and-maxlength-validation-example#:~:text=It%20means%20the%20value%20entered,can%20write%20code%20as%20below.">https://www.concretepage.com/angular-2/angular-2-4-minlength-and-maxlength-validation-example#:~:text=It%20means%20the%20value%20entered,can%20write%20code%20as%20below.</a></li>
-  <li><a href="https://stackoverflow.com/questions/52389376/how-to-reload-current-page">https://stackoverflow.com/questions/52389376/how-to-reload-current-page</a></li>
-</ul>
-
-<p><em>LocalStorage y sessionStorage</em></p>
-
-<ul>
-  <li><a href="https://ed.team/blog/que-es-y-como-utilizar-localstorage-y-sessionstorage">https://ed.team/blog/que-es-y-como-utilizar-localstorage-y-sessionstorage</a></li>
-</ul>
-
-<p><em>Component Lifecycle</em></p>
-
-<ul>
-  <li><a href="https://angular.io/guide/lifecycle-hooks">https://angular.io/guide/lifecycle-hooks</a></li>
-</ul>
-
-<p><em>Unit testing</em></p>
-
-<ul>
-  <li><a href="https://www.infragistics.com/community/blogs/b/infragistics/posts/unit-testing-in-angular">https://www.infragistics.com/community/blogs/b/infragistics/posts/unit-testing-in-angular</a> -&gt; ng test –code-coverage</li>
-</ul>
-
-<p><em>Auth guard with roles/permission based</em></p>
-
-<ul>
-  <li><a href="https://jasonwatmore.com/post/2022/12/22/angular-14-role-based-authorization-tutorial-with-example">https://jasonwatmore.com/post/2022/12/22/angular-14-role-based-authorization-tutorial-with-example</a></li>
-</ul>
-
-<p><em>Unsuscribing AJAX request</em></p>
-
-<ul>
-  <li><a href="https://nocodenobug.substack.com/p/rxjs-en-angular-el-drama-de-las-suscripciones">https://nocodenobug.substack.com/p/rxjs-en-angular-el-drama-de-las-suscripciones</a></li>
-</ul>
-
-<p><em>Laravel</em>
-<em>Creación del API rest en laravel con autenticación JWT</em></p>
-
-<ul>
-  <li><a href="https://www.positronx.io/laravel-jwt-authentication-tutorial-user-login-signup-api/">https://www.positronx.io/laravel-jwt-authentication-tutorial-user-login-signup-api/</a></li>
-  <li><a href="https://www.nigmacode.com/laravel/roles-de-usuario-en-laravel/">https://www.nigmacode.com/laravel/roles-de-usuario-en-laravel/</a> -&gt; php artisan vendor:publish –provider=”Spatie\Permission\PermissionServiceProvider”</li>
-  <li><a href="https://laraveldaily.com/post/laravel-api-errors-and-exceptions-how-to-return-responses">https://laraveldaily.com/post/laravel-api-errors-and-exceptions-how-to-return-responses</a></li>
-  <li><a href="https://stackoverflow.com/questions/64897053/laravel-8-return-all-exceptions-as-json">https://stackoverflow.com/questions/64897053/laravel-8-return-all-exceptions-as-json</a></li>
-  <li><a href="https://www.itsolutionstuff.com/post/laravel-9-user-roles-and-permissions-tutorialexample.html">https://www.itsolutionstuff.com/post/laravel-9-user-roles-and-permissions-tutorialexample.html</a>
-<a href="https://larainfo.com/blogs/laravel-9-image-file-upload-example">https://larainfo.com/blogs/laravel-9-image-file-upload-example</a></li>
-  <li><a href="https://stackoverflow.com/questions/68128685/laravel-get-public-url-for-file-stored-in-storage-public-folder">https://stackoverflow.com/questions/68128685/laravel-get-public-url-for-file-stored-in-storage-public-folder</a> -&gt; php artisan storage:link
-<a href="https://tinkerwell.app/blog/laravel-caches-and-all-ways-to-clear-them">https://tinkerwell.app/blog/laravel-caches-and-all-ways-to-clear-them</a></li>
-  <li><a href="https://www.positronx.io/laravel-image-resize-upload-with-intervention-image-package/">https://www.positronx.io/laravel-image-resize-upload-with-intervention-image-package/</a></li>
-</ul>
-
-<p><em>Spatie permissions</em></p>
-
-<ul>
-  <li><a href="https://spatie.be/docs/laravel-permission/v5/basic-usage/direct-permissions">https://spatie.be/docs/laravel-permission/v5/basic-usage/direct-permissions</a></li>
-  <li><a href="https://laravelcode.com/post/laravel-8-user-roles-and-permissions-using-spatie">https://laravelcode.com/post/laravel-8-user-roles-and-permissions-using-spatie</a>
-<a href="https://spatie.be/docs/laravel-permission/v5/basic-usage/role-permissions">https://spatie.be/docs/laravel-permission/v5/basic-usage/role-permissions</a></li>
-  <li><a href="https://scrutinizer-ci.com/g/spatie/laravel-permission/code-structure/master/operation/Spatie%5CPermission%5CTraits%5CHasPermissions::syncPermissions">https://scrutinizer-ci.com/g/spatie/laravel-permission/code-structure/master/operation/Spatie%5CPermission%5CTraits%5CHasPermissions::syncPermissions</a></li>
-</ul>
-
-<p><em>Faker y seed imagenes</em></p>
-
-<ul>
-  <li><a href="https://styde.net/generando-datos-de-prueba-con-faker-en-laravel/">https://styde.net/generando-datos-de-prueba-con-faker-en-laravel/</a></li>
-  <li><a href="https://github.com/fzaninotto/Faker#formatters">https://github.com/fzaninotto/Faker#formatters</a></li>
-  <li><a href="https://kodementor.com/how-to-seeds-images-with-faker-in-laravel/">https://kodementor.com/how-to-seeds-images-with-faker-in-laravel/</a></li>
-  <li><a href="https://styde.net/insercion-de-datos-con-los-seeders-de-laravel/">https://styde.net/insercion-de-datos-con-los-seeders-de-laravel/</a> -&gt; php artisan migrate:fresh –seed</li>
-</ul>
-
-<p><em>Vínculo de storage -&gt; public</em></p>
-
-<ul>
-  <li><a href="https://laravel.com/docs/10.x/filesystem#the-public-disk">https://laravel.com/docs/10.x/filesystem#the-public-disk</a> -&gt; php artisan storage:link</li>
-</ul>
-
-<p><em>Unit testing</em></p>
-
-<ul>
-  <li><a href="https://platzi.com/discusiones/1842-intro-laravel/85644-que-diferencia-hay-entre-unit-test-y-feature-test/">https://platzi.com/discusiones/1842-intro-laravel/85644-que-diferencia-hay-entre-unit-test-y-feature-test/</a></li>
-  <li><a href="https://laravel.com/docs/10.x/testing">https://laravel.com/docs/10.x/testing</a> -&gt; php artisan test</li>
-</ul>
-
-<p><em>Docker postgreSQL database backup</em></p>
-
-<ul>
-  <li><a href="https://stackoverflow.com/questions/30171063/how-to-generate-a-postgresql-dump-from-a-docker-container">https://stackoverflow.com/questions/30171063/how-to-generate-a-postgresql-dump-from-a-docker-container</a></li>
+  <li><a href="https://www.youtube.com/playlist?list=PL4bT56Uw3S4z9rtwwGvuk1Mjhu5sdLSwX">https://www.youtube.com/playlist?list=PL4bT56Uw3S4z9rtwwGvuk1Mjhu5sdLSwX</a></li>
+  <li><a href="https://github.com/cavanosa/tutorial_jwt_BACK">https://github.com/cavanosa/tutorial_jwt_BACK</a></li>
 </ul>
 
     </div>
@@ -418,7 +328,7 @@ IA</p>
       <ul class="post-footer-list">
         <li class="post-footer-item">
           <a class="post-facebook"
-            href="https://www.facebook.com/sharer/sharer.php?u=https://rarcos.com/2023/06/30/Proyecto_integrado/"
+            href="https://www.facebook.com/sharer/sharer.php?u=https://rarcos.com/2023/11/20/Spring_boot_angular/"
             onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
             title="Share on Facebook" rel="nofollow"><i class="fa-brands fa-facebook"
               aria-hidden="true"></i><span>Facebook</span></a>
@@ -426,21 +336,21 @@ IA</p>
 
         <li class="post-footer-item">
           <a class="post-twitter"
-            href="https://twitter.com/intent/tweet?text=Proyecto%20Integrado%20DAW&url=https://rarcos.com/2023/06/30/Proyecto_integrado/"
+            href="https://twitter.com/intent/tweet?text=Angular%2017%20+%20Spring%20Boot%203%20+%20Spring%20Security%206%20[En%20curso]&url=https://rarcos.com/2023/11/20/Spring_boot_angular/"
             onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
             title="Share on Twitter" rel="nofollow"><i class="fa-brands fa-x-twitter"
               aria-hidden="true"></i><span>Twitter</span></a>
         </li>
 
         <li class="post-footer-item">
-          <a href="http://pinterest.com/pin/create/button/?url=https://rarcos.com/2023/06/30/Proyecto_integrado/&amp;media=https://rarcos.com/images/pages/Carga2.png&amp;description=Proyecto%20Integrado%20DAW"
+          <a href="http://pinterest.com/pin/create/button/?url=https://rarcos.com/2023/11/20/Spring_boot_angular/&amp;media=https://rarcos.com/images/pages/spring_boot+angular.png&amp;description=Angular%2017%20+%20Spring%20Boot%203%20+%20Spring%20Security%206%20[En%20curso]"
             onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=900,height=500,toolbar=1,resizable=0'); return false;"
             class="post-pinterest" title="Share on Pinterest" rel="nofollow"><i class="fa-brands fa-pinterest"
               aria-hidden="true"></i><span>Pinterest</span></a>
         </li>
 
         <li class="post-footer-item">
-          <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://rarcos.com/2023/06/30/Proyecto_integrado/&title=Proyecto%20Integrado%20DAW"
+          <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://rarcos.com/2023/11/20/Spring_boot_angular/&title=Angular%2017%20+%20Spring%20Boot%203%20+%20Spring%20Security%206%20[En%20curso]"
             onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=900,height=500,toolbar=1,resizable=0'); return false;"
             class="post-linkedin" title="Share on Linkedin" rel="nofollow"><i class="fa-brands fa-linkedin"
               aria-hidden="true"></i><span>Linkedin</span></a>
@@ -513,12 +423,9 @@ IA</p>
 
     <div class="page-navigation clearfix">
       
-      <a class="prev-page" href="/es/2023/03/14/Securizando-VPS/"><i class="fa fa-angle-left"
-          aria-hidden="true"></i><span>Securizando VPS</span></a>
+      <a class="prev-page" href="/es/2023/06/30/Proyecto_integrado/"><i class="fa fa-angle-left"
+          aria-hidden="true"></i><span>Proyecto Integrado DAW</span></a>
       
-      
-      <a class="next-page" href="/es/2023/11/20/Spring_boot_angular/"><span>Angular 17 + Spring Boot 3 + Spring Security 6 [En curso]</span><i class="fa fa-angle-right"
-          aria-hidden="true"></i></a>
       
     </div>
 

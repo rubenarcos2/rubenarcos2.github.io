@@ -1,4 +1,51 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="https://rarcos.com/es/feed.xml" rel="self" type="application/atom+xml" /><link href="https://rarcos.com/es/" rel="alternate" type="text/html" /><updated>2023-11-02T09:48:55+01:00</updated><id>https://rarcos.com/feed.xml</id><title type="html">Rubén Arcos</title><subtitle>Desarrollador de aplicaciones multiplataformas</subtitle><entry xml:lang="es"><title type="html">Proyecto Integrado DAW</title><link href="https://rarcos.com/es/2023/06/30/Proyecto_integrado/" rel="alternate" type="text/html" title="Proyecto Integrado DAW" /><published>2023-06-30T16:33:28+02:00</published><updated>2023-06-30T16:33:28+02:00</updated><id>https://rarcos.com/2023/06/30/Proyecto_integrado</id><content type="html" xml:base="https://rarcos.com/2023/06/30/Proyecto_integrado/"><![CDATA[<h1 id="proyecto-integrado-fin-del-ciclo-formativo-de-grado-superior-en-desarrollo-de-aplicaciones-web">Proyecto integrado fin del Ciclo Formativo de Grado Superior en desarrollo de Aplicaciones Web</h1>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="https://rarcos.com/es/feed.xml" rel="self" type="application/atom+xml" /><link href="https://rarcos.com/es/" rel="alternate" type="text/html" /><updated>2023-11-21T13:56:31+01:00</updated><id>https://rarcos.com/feed.xml</id><title type="html">Rubén Arcos</title><subtitle>Desarrollador de aplicaciones multiplataformas</subtitle><entry xml:lang="es"><title type="html">Angular 17 + Spring Boot 3 + Spring Security 6 [En curso]</title><link href="https://rarcos.com/es/2023/11/20/Spring_boot_angular/" rel="alternate" type="text/html" title="Angular 17 + Spring Boot 3 + Spring Security 6 [En curso]" /><published>2023-11-20T15:33:28+01:00</published><updated>2023-11-20T15:33:28+01:00</updated><id>https://rarcos.com/2023/11/20/Spring_boot_angular</id><content type="html" xml:base="https://rarcos.com/2023/11/20/Spring_boot_angular/"><![CDATA[<h1 id="angular-17--spring-boot-3--spring-security-6-en-curso">Angular 17 + Spring Boot 3 + Spring Security 6 [En curso]</h1>
+
+<p style="text-align: justify">
+La finalidad principal de la aplicación, ha sido la demostración de la puesta en práctica de los conocimientos adquiridos sobre la gestión de privilegios de acceso de usuarios a distintos elementos (o módulos como me referiré a lo largo del documento) de la aplicación, la gestión de usuarios jerarquizados en distintos grupos (denominados roles) y la administración por parte de un usuario autorizado. No menos relevante ha sido la aplicación de los conocimientos en el diseño y gestión de bases de datos relacionales y las plataformas de implementación de estas. Otro factor que se ha tenido en cuenta ha sido la seguridad del entorno de uso (JWT) y de la aplicación (Angular), implementando funcionalidades como, la encriptación de datos sensibles, o la prevención en la utilización de elementos sensibles a la inyección de información automatizada (cracking o ataques de fuerza bruta).
+</p>
+
+<h1 id="arquitectura">Arquitectura</h1>
+
+<p>Esta es la arquitectura que se ha utilizado para el entorno de producción en un VPS.</p>
+
+<p><img src="/images/pages/spring_boot_arquitectura.png" alt="VPS Architecture" title="Spring Boot VPS Architecture" /></p>
+
+<p>Separación lógica del frontend, backend y la base de datos.</p>
+
+<p><img src="/images/pages/spring_boot_arquitectura_Front-Back.png" alt="Architecture GesMerCa Frontend-Backend" title="Spring Boot Frontend-Backend architecture" /></p>
+
+<h2 id="entorno-de-ejecución---frontend">Entorno de ejecución - Frontend</h2>
+
+<p style="text-align: center">
+<a href="https://vps.rarcos.com:10448/" target="_blank">
+    <img src="/images/pages/gesmerca.png" width="100" alt="GesMerCa Logo" />Demo online
+</a>
+</p>
+
+<h2 id="documentación-api---backend">Documentación API - Backend</h2>
+
+<p style="text-align: center">
+<a href="https://vps.rarcos.com:10447/" target="_blank">
+    <img src="https://avatars.githubusercontent.com/u/7658037?s=200&amp;v=4" width="100" alt="Swagger Logo" />Documentación API online
+</a>
+</p>
+
+<hr />
+
+<p><em>Repository with content</em></p>
+
+<p><a href="https://github.com/rubenarcos2/spring_security_angular"><img src="/images/pages/repository_small.png" alt="Repository" /></a></p>
+
+<hr />
+
+<p><strong>Fuentes:</strong></p>
+
+<p><em>Spring security + JWT</em></p>
+
+<ul>
+  <li><a href="https://www.youtube.com/playlist?list=PL4bT56Uw3S4z9rtwwGvuk1Mjhu5sdLSwX">https://www.youtube.com/playlist?list=PL4bT56Uw3S4z9rtwwGvuk1Mjhu5sdLSwX</a></li>
+  <li><a href="https://github.com/cavanosa/tutorial_jwt_BACK">https://github.com/cavanosa/tutorial_jwt_BACK</a></li>
+</ul>]]></content><author><name></name></author><category term="javascript" /><category term="php" /><category term="angular" /><category term="laravel" /><category term="proyecto integrado" /><category term="gesmerca" /><summary type="html"><![CDATA[La finalidad principal de la aplicación, ha sido la gestión de privilegios de acceso de usuarios a distintos elementos, spring security y JWT.]]></summary></entry><entry xml:lang="es"><title type="html">Proyecto Integrado DAW</title><link href="https://rarcos.com/es/2023/06/30/Proyecto_integrado/" rel="alternate" type="text/html" title="Proyecto Integrado DAW" /><published>2023-06-30T16:33:28+02:00</published><updated>2023-06-30T16:33:28+02:00</updated><id>https://rarcos.com/2023/06/30/Proyecto_integrado</id><content type="html" xml:base="https://rarcos.com/2023/06/30/Proyecto_integrado/"><![CDATA[<h1 id="proyecto-integrado-fin-del-ciclo-formativo-de-grado-superior-en-desarrollo-de-aplicaciones-web">Proyecto integrado fin del Ciclo Formativo de Grado Superior en desarrollo de Aplicaciones Web</h1>
 
 <p style="text-align: justify">
 La finalidad principal de la aplicación, ha sido la demostración de la puesta en práctica de los conocimientos adquiridos a lo largo del ciclo formativo de desarrollo de aplicaciones web. He focalizado la aplicación en los conocimientos adquiridos sobre la gestión de privilegios de acceso de usuarios a distintos elementos (o módulos como me referiré a lo largo del documento) de la aplicación, la gestión de usuarios jerarquizados en distintos grupos (denominados roles) y la administración por parte de un usuario autorizado. No menos relevante ha sido la aplicación de los conocimientos en el diseño y gestión de bases de datos relacionales y las plataformas de implementación de estas. Otro factor que se ha tenido en cuenta ha sido la seguridad del entorno de uso (JWT) y de la aplicación (Angular), implementando funcionalidades como, la encriptación de datos sensibles, o la prevención en la utilización de elementos sensibles a la inyección de información automatizada (cracking o ataques de fuerza bruta).
@@ -838,7 +885,26 @@ volumes:
 <p><a href="https://github.com/rubenarcos2/ia-juego_hotel"><img src="/images/pages/repository_small.png" alt="Repositorio" /></a>
 <a href="https://colab.research.google.com/drive/1KEqghfPGeuk9u5u8_s531CCb7869Hn3u"><img src="/images/pages/repository_small_colab.png" alt="Generador de partidas" /></a>
 <a href="https://colab.research.google.com/drive/10rXkRiRnq59435RtOSICPrA1T2dXyxG6"><img src="/images/pages/repository_small_colab.png" alt="Programa IA" /></a>
-<a href="https://colab.research.google.com/drive/1c-ozdgzMSYzZD2el46knjWx0SRIi-hMC"><img src="/images/pages/repository_small_colab.png" alt="Programa Jugadores vs IA" /></a></p>]]></content><author><name></name></author><category term="python" /><category term="naives bayes" /><category term="ia" /><category term="colab" /><summary type="html"><![CDATA[Creación de un sistema de IA para aprendizaje de la decisión de compra para el juego del Hotel]]></summary></entry><entry><title type="html">C# + Arduino - Detector mute</title><link href="https://rarcos.com/es/2022/07/23/C-+-Arduino-Detector-mute/" rel="alternate" type="text/html" title="C# + Arduino - Detector mute" /><published>2022-07-23T16:33:28+02:00</published><updated>2022-07-23T16:33:28+02:00</updated><id>https://rarcos.com/2022/07/23/C#%20+%20Arduino%20-%20Detector%20mute</id><content type="html" xml:base="https://rarcos.com/2022/07/23/C-+-Arduino-Detector-mute/"><![CDATA[<h1 id="c--arduino---detector-mute-micrófono-y-webcam-en-uso">C# + Arduino - Detector mute micrófono y webcam en uso</h1>
+<a href="https://colab.research.google.com/drive/1c-ozdgzMSYzZD2el46knjWx0SRIi-hMC"><img src="/images/pages/repository_small_colab.png" alt="Programa Jugadores vs IA" /></a></p>]]></content><author><name></name></author><category term="python" /><category term="naives bayes" /><category term="ia" /><category term="colab" /><summary type="html"><![CDATA[Creación de un sistema de IA para aprendizaje de la decisión de compra para el juego del Hotel]]></summary></entry><entry><title type="html">JS Vanilla MVC - Spring API rest</title><link href="https://rarcos.com/es/2022/07/23/Vanilla-JS-MVC-Spring-API-rest/" rel="alternate" type="text/html" title="JS Vanilla MVC - Spring API rest" /><published>2022-07-23T16:33:28+02:00</published><updated>2022-07-23T16:33:28+02:00</updated><id>https://rarcos.com/2022/07/23/Vanilla%20JS%20MVC%20-%20Spring%20API%20rest</id><content type="html" xml:base="https://rarcos.com/2022/07/23/Vanilla-JS-MVC-Spring-API-rest/"><![CDATA[<h1 id="js-vanilla-mvc---spring-api-rest">JS Vanilla MVC - Spring API rest</h1>
+
+<p>Desarrollo de una app en JS Vanilla con MVC para consumir una api rest en Spring Boot.</p>
+
+<p>Esta es la demostración de la aplicación que he realizado (click <a href="/es/WorkspaceWeb/JSconsumeAPI">aquí</a> o en la imagen):</p>
+
+<p><a href="/es/WorkspaceWeb/JSconsumeAPI"><img src="/images/pages/api_rest.png" alt="Ir a ver la app en funcionamiento" /></a></p>
+
+<hr />
+
+<p><em>Repositorio con el contenido</em></p>
+
+<p><a href="https://github.com/rubenarcos2/spring-boot-api_rest"><img src="/images/pages/repository_small.png" alt="Repositorio" /></a>
+Servidor
+<a href="https://github.com/rubenarcos2/js-vanilla-api-client"><img src="/images/pages/repository_small.png" alt="Repositorio" /></a>
+Cliente</p>
+
+<hr />
+
+<p><strong>Fuentes:</strong></p>]]></content><author><name></name></author><category term="spring" /><category term="MVC" /><category term="js" /><category term="vanilla js" /><category term="api" /><summary type="html"><![CDATA[Desarrollo de una app en JS Vanilla con MVC para consumir una api rest en Spring Boot]]></summary></entry><entry><title type="html">C# + Arduino - Detector mute</title><link href="https://rarcos.com/es/2022/07/23/C-+-Arduino-Detector-mute/" rel="alternate" type="text/html" title="C# + Arduino - Detector mute" /><published>2022-07-23T16:33:28+02:00</published><updated>2022-07-23T16:33:28+02:00</updated><id>https://rarcos.com/2022/07/23/C#%20+%20Arduino%20-%20Detector%20mute</id><content type="html" xml:base="https://rarcos.com/2022/07/23/C-+-Arduino-Detector-mute/"><![CDATA[<h1 id="c--arduino---detector-mute-micrófono-y-webcam-en-uso">C# + Arduino - Detector mute micrófono y webcam en uso</h1>
 
 <p>Desarrollo de una app en C# que se comunique con Arduino para la detección del micrófono, el estado muteado y la activación de la webcam.</p>
 
@@ -1155,26 +1221,7 @@ volumes:
 <p><strong>Fuentes</strong></p>
 
 <p><a href="https://codingvision.net/c-edit-registry-keys-or-values">https://codingvision.net/c-edit-registry-keys-or-values</a>
-<a href="https://superuser.com/questions/1346676/disabling-camera-via-regedit">https://superuser.com/questions/1346676/disabling-camera-via-regedit</a></p>]]></content><author><name></name></author><category term="C#" /><category term="arduino" /><category term="iot" /><summary type="html"><![CDATA[Desarrollo de una app en C# que se comunique con Arduino para la detección del micrófono, el estado muteado y la activación de la webcam]]></summary></entry><entry><title type="html">JS Vanilla MVC - Spring API rest</title><link href="https://rarcos.com/es/2022/07/23/Vanilla-JS-MVC-Spring-API-rest/" rel="alternate" type="text/html" title="JS Vanilla MVC - Spring API rest" /><published>2022-07-23T16:33:28+02:00</published><updated>2022-07-23T16:33:28+02:00</updated><id>https://rarcos.com/2022/07/23/Vanilla%20JS%20MVC%20-%20Spring%20API%20rest</id><content type="html" xml:base="https://rarcos.com/2022/07/23/Vanilla-JS-MVC-Spring-API-rest/"><![CDATA[<h1 id="js-vanilla-mvc---spring-api-rest">JS Vanilla MVC - Spring API rest</h1>
-
-<p>Desarrollo de una app en JS Vanilla con MVC para consumir una api rest en Spring Boot.</p>
-
-<p>Esta es la demostración de la aplicación que he realizado (click <a href="/es/WorkspaceWeb/JSconsumeAPI">aquí</a> o en la imagen):</p>
-
-<p><a href="/es/WorkspaceWeb/JSconsumeAPI"><img src="/images/pages/api_rest.png" alt="Ir a ver la app en funcionamiento" /></a></p>
-
-<hr />
-
-<p><em>Repositorio con el contenido</em></p>
-
-<p><a href="https://github.com/rubenarcos2/spring-boot-api_rest"><img src="/images/pages/repository_small.png" alt="Repositorio" /></a>
-Servidor
-<a href="https://github.com/rubenarcos2/js-vanilla-api-client"><img src="/images/pages/repository_small.png" alt="Repositorio" /></a>
-Cliente</p>
-
-<hr />
-
-<p><strong>Fuentes:</strong></p>]]></content><author><name></name></author><category term="spring" /><category term="MVC" /><category term="js" /><category term="vanilla js" /><category term="api" /><summary type="html"><![CDATA[Desarrollo de una app en JS Vanilla con MVC para consumir una api rest en Spring Boot]]></summary></entry><entry><title type="html">Laravel 9 - PHP 8 y MVC</title><link href="https://rarcos.com/es/2022/07/17/Laravel-9-MVC/" rel="alternate" type="text/html" title="Laravel 9 - PHP 8 y MVC" /><published>2022-07-17T16:33:28+02:00</published><updated>2022-07-17T16:33:28+02:00</updated><id>https://rarcos.com/2022/07/17/Laravel%209%20-%20MVC</id><content type="html" xml:base="https://rarcos.com/2022/07/17/Laravel-9-MVC/"><![CDATA[<h1 id="laravel-9-php-8-y-mvc">Laravel 9, PHP 8 y MVC</h1>
+<a href="https://superuser.com/questions/1346676/disabling-camera-via-regedit">https://superuser.com/questions/1346676/disabling-camera-via-regedit</a></p>]]></content><author><name></name></author><category term="C#" /><category term="arduino" /><category term="iot" /><summary type="html"><![CDATA[Desarrollo de una app en C# que se comunique con Arduino para la detección del micrófono, el estado muteado y la activación de la webcam]]></summary></entry><entry><title type="html">Laravel 9 - PHP 8 y MVC</title><link href="https://rarcos.com/es/2022/07/17/Laravel-9-MVC/" rel="alternate" type="text/html" title="Laravel 9 - PHP 8 y MVC" /><published>2022-07-17T16:33:28+02:00</published><updated>2022-07-17T16:33:28+02:00</updated><id>https://rarcos.com/2022/07/17/Laravel%209%20-%20MVC</id><content type="html" xml:base="https://rarcos.com/2022/07/17/Laravel-9-MVC/"><![CDATA[<h1 id="laravel-9-php-8-y-mvc">Laravel 9, PHP 8 y MVC</h1>
 
 <p>Desarrollo de una aplicaciones web usando Laravel 9 y PHP 8:</p>
 
@@ -2163,32 +2210,4 @@ npm <span class="nb">install
 
 <p><a href="https://github.com/vfarcic/java-8-exercises">https://github.com/vfarcic/java-8-exercises</a></p>
 
-<p><a href="https://github.com/OpenWebinarsNet/Curso-java-8-para-programadores-java">https://github.com/OpenWebinarsNet/Curso-java-8-para-programadores-java</a></p>]]></content><author><name></name></author><category term="java" /><category term="stream api" /><summary type="html"><![CDATA[Uso de la Stream Api de Java 8]]></summary></entry><entry><title type="html">Power BI</title><link href="https://rarcos.com/es/2022/04/21/Power-BI/" rel="alternate" type="text/html" title="Power BI" /><published>2022-04-21T16:33:28+02:00</published><updated>2022-04-21T16:33:28+02:00</updated><id>https://rarcos.com/2022/04/21/Power%20BI</id><content type="html" xml:base="https://rarcos.com/2022/04/21/Power-BI/"><![CDATA[<h1 id="python-y-power-bi">Python y Power BI</h1>
-
-<p>A continuación, se muestran 3 proyectos en Python y en Power BI con análisis de 3 fuentes de datos diferentes.</p>
-
-<h2 id="python-y-power-bi-i---alquiler-de-alojamientos">Python y Power BI I - Alquiler de alojamientos</h2>
-
-<p>Ejercicio de alquiler de alojamientos:</p>
-
-<iframe type="application/pdf" src="/pdf/PowerBI-Ejercicio1.pdf#toolbar=0" frameborder="0" allowfullscreen="" width="100%" height="500"></iframe>
-
-<p><a href="https://colab.research.google.com/drive/1RwTC3bZu_ceE4J7Zea0wBHxVBBiK18G_"><img src="/images/pages/repository_small_colab.png" alt="Repositorio" /></a> Versión Colab
-<a href="https://drive.google.com/file/d/1UFqVfxWfwG3VS3b_r84BW7wC1Q9Cq2f_"><img src="/images/pages/repository_small_file.png" alt="Repositorio" /></a> Versión PowerBI y listado de datos en CSV</p>
-
-<h2 id="python-y-power-bi-ii---juegos-olímpicos">Python y Power BI II - Juegos olímpicos</h2>
-
-<p>Ejercicio con datos de juegos olímpicos:</p>
-
-<iframe type="application/pdf" src="/pdf/PowerBI-Ejercicio2.pdf#toolbar=0" frameborder="0" allowfullscreen="" width="100%" height="500"></iframe>
-
-<p><a href="https://colab.research.google.com/drive/1iWEPGupNABjurql8xRxzitvMzgQ-T0fo"><img src="/images/pages/repository_small_colab.png" alt="Repositorio" /></a> Versión Colab
-<a href="https://drive.google.com/file/d/1aFZUOVVVsUKSyI177MRsIlajgH_A-8I9"><img src="/images/pages/repository_small_file.png" alt="Repositorio" /></a> Versión PowerBI y listado de datos en CSV</p>
-
-<h2 id="python-y-power-bi-iii---bestsellers-de-libros">Python y Power BI III - Bestsellers de libros</h2>
-
-<p>Ejercicio con datos de bestsellers de libros:</p>
-
-<iframe type="application/pdf" src="/pdf/PowerBI-Ejercicio3.pdf#toolbar=0" frameborder="0" allowfullscreen="" width="100%" height="500"></iframe>
-
-<p><a href="https://drive.google.com/file/d/1mUDA4crc_IMJHI-Ta7H2YTyIwV3BpR5Z"><img src="/images/pages/repository_small_file.png" alt="Repositorio" /></a> Versión PowerBI y listado de datos en CSV</p>]]></content><author><name></name></author><category term="python" /><category term="powerBI" /><category term="EDA" /><summary type="html"><![CDATA[Proyectos en Power BI con análisis de 3 fuentes de datos diferentes.]]></summary></entry></feed>
+<p><a href="https://github.com/OpenWebinarsNet/Curso-java-8-para-programadores-java">https://github.com/OpenWebinarsNet/Curso-java-8-para-programadores-java</a></p>]]></content><author><name></name></author><category term="java" /><category term="stream api" /><summary type="html"><![CDATA[Uso de la Stream Api de Java 8]]></summary></entry></feed>
