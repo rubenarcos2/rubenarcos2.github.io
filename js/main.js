@@ -1,5 +1,12 @@
 $(function() {
   'use strict';
+  
+  //Detect browsser language and change web page
+  $(document).one('ready', function() {
+    const lang = navigator.language.substring(0,2);
+    if(lang == "es")
+      window.location.href = "http://www.rarcos.com/es"+window.location.pathname;
+  });
 
   // Nav Menu
   $(".nav-toggle").click(function() {
