@@ -1,6 +1,45 @@
 $(function() {
   'use strict';
  
+  $(window).on('load', function() {
+    document.getElementById('switch-lang').addEventListener('click', setCookieLanguage)
+    const lang = navigator.languages[1];
+    console.log(getCookie('disable-detect-lang'));
+    
+    if(!getCookie('disable-detect-lang')){
+      if(lang == 'es' && !window.location.pathname.includes('/es')){
+        window.location.pathname = '/es' + window.location.pathname;        
+      } 
+    }
+    
+    function getCookie(cname) {
+      let name = cname + "=";
+      let ca = document.cookie.split(';');
+      for(let i = 0; i < ca.length; i++) {
+        let c = ca[i];
+        while (c.charAt(0) == ' ') {
+          c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+          return c.substring(name.length, c.length);
+        }
+      }
+      return null;
+    }
+  });
+
+  function setCookieLanguage(){
+    setCookie('disable-detect-lang', true, 30);
+
+    function setCookie(cname, cvalue, exdays) {
+      const d = new Date();
+      d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+      let expires = "expires="+d.toUTCString();
+      document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+    }
+  };
+
+
   // Nav Menu
   $(".nav-toggle").click(function() {
 
