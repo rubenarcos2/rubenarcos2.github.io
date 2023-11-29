@@ -1,14 +1,6 @@
 $(function() {
   'use strict';
-  
-  //Detect browsser language and change web page
-  $(document).one('ready', function() {
-    const lang = navigator.language.substring(0,2);
-    const urlEs = window.location.href.substring("https://www.rarcos.com/".length, 2);
-    if(lang == "es" && urlEs != "es")
-      window.location.href = "https://www.rarcos.com/es" + window.location.pathname;
-  });
-
+ 
   // Nav Menu
   $(".nav-toggle").click(function() {
 
