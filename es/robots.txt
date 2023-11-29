@@ -1,4 +1,4 @@
-Sitemap: https://rarcos.com/sitemap.xml
+Sitemap: https://rarcos.com/es/sitemap.xml
 User-agent: Googlebot
 Disallow: /*.pdf$
 Disallow: /pdf/*
