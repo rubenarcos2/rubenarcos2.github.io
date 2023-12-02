@@ -4,6 +4,7 @@ $(function() {
   $(window).on('load', function() {
     document.getElementById('switch-lang').addEventListener('click', setCookieLanguage)
     const lang = navigator.languages[1];
+    console.log(getCookie('disable-detect-lang'));
     
     if(!getCookie('disable-detect-lang')){
       if(lang == 'es' && !window.location.pathname.includes('/es')){
