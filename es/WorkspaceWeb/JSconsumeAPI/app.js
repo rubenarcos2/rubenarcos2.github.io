@@ -1,0 +1,1 @@
+const app = new HouseController(new HouseService(), new HouseView(), new HouseEditView(), new HouseNewView());
