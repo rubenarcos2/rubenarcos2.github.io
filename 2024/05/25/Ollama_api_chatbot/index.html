@@ -2,10 +2,10 @@
 
 
 
-<html lang="es">
 
 
 
+<html lang="en">
 
 
 
@@ -15,9 +15,9 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Angular 17 + Spring Boot 3 + Spring Security 6 + JWT</title>
+  <title>Opensource Chatbot</title>
   <meta name='description'
-    content='Gestión de privilegios de acceso de usuarios a distintos elementos con spring boot, spring security, JWT y Angular.'>
+    content='Creation of a chatbot with opensource model, applying the RAG technique and using Ollama, LangChain, ChromaDb and a final output as API to a web chatbot.'>
 
   <!-- Google Fonts -->
   <link
@@ -28,12 +28,12 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 
   <!-- Normalize v7.0.0 -->
-  <link rel="stylesheet" href="/es/css/normalize.css">
+  <link rel="stylesheet" href="/css/normalize.css">
 
   <!-- Main Stylesheet -->
-  <link rel="stylesheet" href="/es/css/main.css">
-  <link rel="canonical" href="https://rarcos.com/es/2023/11/20/Spring_boot_angular/">
-  <link rel="alternate" type="application/rss+xml" title="Rubén Arcos" href="/es/feed.xml">
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="https://rarcos.com/2024/05/25/Ollama_api_chatbot/">
+  <link rel="alternate" type="application/rss+xml" title="Rubén Arcos" href="/feed.xml">
 
   <!-- Chrome, Firefox OS and Opera -->
   <meta name="theme-color" content="#faf5ee">
@@ -68,15 +68,15 @@
     <div class="switch-lang">
       
       
+      <!--en-->
       
-      <a id="switch-lang" href=" /2023/11/20/Spring_boot_angular/" title="Change language to en">
-        <img src=" https://cdn.wpml.org/wp-content/plugins/sitepress-multilingual-cms/res/flags/en.png">
+      
+      
+      
+      <a id="switch-lang" href="/es/2024/05/25/Ollama_api_chatbot/" title="Change language to es">
+        <img src="https://cdn.wpml.org/wp-content/plugins/sitepress-multilingual-cms/res/flags/es.png">
       </a>
       
-      
-      
-      
-      <!--es-->
       
       
     </div>
@@ -94,26 +94,10 @@
         
       
       
-      <a href='/es/about/'>Sobre mí</a>
       
       
       
-      
-      
-      
-        
-        
-        
-        
-        
-        
-        
-      
-      
-      <a href='/es/contacto/'>Contacto</a>
-      
-      
-      
+      <a href='/about/'>About me</a>
       
       
       
@@ -126,10 +110,26 @@
         
       
       
-      <a href='/es/cookies/'>Cookies</a>
       
       
       
+      <a href='/contacto/'>Contact</a>
+      
+      
+      
+        
+        
+        
+        
+        
+        
+        
+      
+      
+      
+      
+      
+      <a href='/cookies/'>Cookies</a>
       
       
       
@@ -187,7 +187,7 @@
     <div class="nav-toggle"><i class="fa fa-bars" aria-hidden="true"></i></div>
 
     <div class="site-logo">
-      <a href="/es/">Rubén Arcos</a>
+      <a href="/">Rubén Arcos</a>
     </div>
 
   </div>
@@ -198,11 +198,11 @@
       
       
       
-      <label class="screen-reader-text" for="search-input">Buscar...</label>
-      <input type="text" id="search-input" class="search-field" name="s" placeholder="Buscar...">
       
       
       
+      <label class="screen-reader-text" for="search-input">Search...</label>
+      <input type="text" id="search-input" class="search-field" name="s" placeholder="Search...">
       
       
       
@@ -217,19 +217,19 @@
   <ul id="results-container" class="search-results-list"></ul>
 </div> <!-- /.search-box -->
 
-    <div class="post-header" style="background: url(/images/pages/spring_boot+angular.png)">
+    <div class="post-header" style="background: url(/images/pages/ollama_api.jpg)">
   <div class="post-header-info">
-    <h1 class="post-title">Angular 17 + Spring Boot 3 + Spring Security 6 + JWT</h1>
+    <h1 class="post-title">Opensource Chatbot</h1>
     <div class="post-meta">
       
       
       
-      <time datetime="2023-11-20T15:33:28+01:00">
-         20/11/2023
+      
+      
+      
+      <time datetime="2024-05-25T09:10:28+02:00">
+         05-25-2024
       </time>
-      
-      
-      
       
       
       
@@ -241,10 +241,10 @@
     
     
     
-    Leer artículo en voz alta
     
     
     
+    Read article aloud
     
     
     
@@ -253,53 +253,43 @@
   <article class="post">
 
     <div class="post-content">
-      <h1 id="angular-17--spring-boot-3--spring-security-6--jwt">Angular 17 + Spring Boot 3 + Spring Security 6 + JWT</h1>
+      <h1 id="creating-a-chatbot-with-an-opensource-model">Creating a chatbot with an opensource model</h1>
 
 <p style="text-align: justify">
-La finalidad principal de la aplicación, ha sido la demostración de la puesta en práctica de los conocimientos adquiridos sobre la gestión de privilegios de acceso de usuarios a distintos elementos (o módulos como me referiré a lo largo del documento) de la aplicación, la gestión de usuarios jerarquizados en distintos grupos (denominados roles) y la administración por parte de un usuario autorizado. No menos relevante ha sido la aplicación de los conocimientos en el diseño y gestión de bases de datos relacionales y las plataformas de implementación de estas. Otro factor que se ha tenido en cuenta ha sido la seguridad del entorno de uso (JWT) y de la aplicación (Angular), implementando funcionalidades como, la encriptación de datos sensibles, o la prevención en la utilización de elementos sensibles a la inyección de información automatizada (cracking o ataques de fuerza bruta).
-</p>
+A chatbot (originally chatterbot) is a software application or web interface that is designed to mimic human conversation through text or voice interactions. Modern chatbots are typically online and use generative artificial intelligence systems that are capable of maintaining a conversation with a user in natural language and simulating the way a human would behave as a conversational partner. Such chatbots often use deep learning and natural language processing, but simpler chatbots have existed for decades.
+
+Since late 2022, the field has gained widespread attention due to the popularity of OpenAI's ChatGPT, followed by alternatives such as Microsoft's Copilot and Google's Gemini. Such examples reflect the recent practice of basing such products upon broad foundational large language models, such as GPT-4 or the Gemini language model, that get fine-tuned so as to target specific tasks or applications (i.e., simulating human conversation, in the case of chatbots). Chatbots can also be designed or customized to further target even more specific situations and/or particular subject-matter domains.
+
+A major area where chatbots have long been used is in customer service and support, with various sorts of virtual assistants. Companies spanning a wide range of industries have begun using the latest generative artificial intelligence technologies to power more advanced developments in such areas.
+
+As chatbots work by predicting responses rather than knowing the meaning of their responses, this means they can produce coherent-sounding but inaccurate or fabricated content, referred to as ‘hallucinations’. When humans use and apply chatbot content contaminated with hallucinations, this results in ‘botshit’. Given the increasing adoption and use of chatbots for generating content, there are concerns that this technology will significantly reduce the cost it takes humans to generate, spread and consume bullshit.</p>
+
+<ul>
+  <li>For more information I recommend you to visit the following <a href="https://es.wikipedia.org/wiki/Bot_conversacional">article</a> from wikipedia from where this fragment has been obtained.</li>
+</ul>
 
 <h1 id="arquitectura">Arquitectura</h1>
 
-<p>Esta es la arquitectura que se ha utilizado para el entorno de producción en un VPS.</p>
+<p><img src="/images/pages/ollama_api.jpg" alt="Architecture" title="Ollama API Architecture" /></p>
 
-<p><img src="/images/pages/spring_boot_arquitectura.png" alt="VPS Architecture" title="Spring Boot VPS Architecture" /></p>
+<h2 id="ollama">Ollama</h2>
 
-<p>Separación lógica del frontend, backend y la base de datos.</p>
+<h2 id="langchain">LangChain</h2>
 
-<p><img src="/images/pages/spring_boot_arquitectura_Front-Back.png" alt="Architecture GesMerCa Frontend-Backend" title="Spring Boot Frontend-Backend architecture" /></p>
+<h2 id="chromadb">ChromaDb</h2>
 
-<h2 id="entorno-de-ejecución---frontend">Entorno de ejecución - Frontend</h2>
+<h2 id="api-with-flask">API with Flask</h2>
 
-<p style="text-align: center">
-<a href="https://vps.rarcos.com:10451/" target="_blank">
-    <img src="/images/pages/gesmerca.png" width="100" alt="GesMerCa Logo" />Demo online
-</a>
-</p>
-
-<h2 id="documentación-api---backend">Documentación API - Backend</h2>
-
-<p style="text-align: center">
-<a href="https://vps.rarcos.com:10447/" target="_blank">
-    <img src="https://avatars.githubusercontent.com/u/7658037?s=200&amp;v=4" width="100" alt="Swagger Logo" />Documentación API online
-</a>
-</p>
+<h2 id="the-web-chatbot">The Web Chatbot</h2>
 
 <hr />
 
-<p><em>Repositorio con el contenido</em></p>
-
-<p><a href="https://github.com/rubenarcos2/spring_security_angular"><img src="/images/pages/repository_small.png" alt="Repository" /></a></p>
-
-<hr />
-
-<p><strong>Fuentes:</strong></p>
-
-<p><em>Spring security + JWT</em></p>
+<p><strong>Sources:</strong></p>
 
 <ul>
-  <li><a href="https://www.youtube.com/playlist?list=PL4bT56Uw3S4z9rtwwGvuk1Mjhu5sdLSwX">https://www.youtube.com/playlist?list=PL4bT56Uw3S4z9rtwwGvuk1Mjhu5sdLSwX</a></li>
-  <li><a href="https://github.com/cavanosa/tutorial_jwt_BACK">https://github.com/cavanosa/tutorial_jwt_BACK</a></li>
+  <li><a href="https://github.com/valiantlynx/ollama-docker/">https://github.com/valiantlynx/ollama-docker</a></li>
+  <li><a href="https://mobiarch.wordpress.com/2024/02/19/run-rag-locally-using-mistral-ollama-and-langchain/">https://mobiarch.wordpress.com/2024/02/19/run-rag-locally-using-mistral-ollama-and-langchain/</a></li>
+  <li><a href="https://realpython.com/build-llm-rag-chatbot-with-langchain/">https://realpython.com/build-llm-rag-chatbot-with-langchain/</a></li>
 </ul>
 
     </div>
@@ -308,19 +298,19 @@ La finalidad principal de la aplicación, ha sido la demostración de la puesta 
       
       
       
+      
+      
+      
       <p>
-      <h3>Licencia de contenido</h3>
+      <h3>Content License</h3>
 
       <p><img src="/images/pages/88x311.png" /></p>
 
-      <p>Esta página web y todo su contenido, incluido proyectos y código fuente, está licenciado bajo una licencia de
-        Creative Commons: Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0) <a
-          href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.es">Más info</a></p>
+      <p>This web page, all content with proyects and source code, is licensed under Creative Commons:
+        Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0) <a
+          href="https://creativecommons.org/licenses/by-nc-nd/4.0/">More info</a></p>
 
       </p>
-      
-      
-      
       
       
       
@@ -328,7 +318,7 @@ La finalidad principal de la aplicación, ha sido la demostración de la puesta 
       <ul class="post-footer-list">
         <li class="post-footer-item">
           <a class="post-facebook"
-            href="https://www.facebook.com/sharer/sharer.php?u=https://rarcos.com/2023/11/20/Spring_boot_angular/"
+            href="https://www.facebook.com/sharer/sharer.php?u=https://rarcos.com/2024/05/25/Ollama_api_chatbot/"
             onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
             title="Share on Facebook" rel="nofollow"><i class="fa-brands fa-facebook"
               aria-hidden="true"></i><span>Facebook</span></a>
@@ -336,21 +326,21 @@ La finalidad principal de la aplicación, ha sido la demostración de la puesta 
 
         <li class="post-footer-item">
           <a class="post-twitter"
-            href="https://twitter.com/intent/tweet?text=Angular%2017%20+%20Spring%20Boot%203%20+%20Spring%20Security%206%20+%20JWT&url=https://rarcos.com/2023/11/20/Spring_boot_angular/"
+            href="https://twitter.com/intent/tweet?text=Opensource%20Chatbot&url=https://rarcos.com/2024/05/25/Ollama_api_chatbot/"
             onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
             title="Share on Twitter" rel="nofollow"><i class="fa-brands fa-x-twitter"
               aria-hidden="true"></i><span>Twitter</span></a>
         </li>
 
         <li class="post-footer-item">
-          <a href="http://pinterest.com/pin/create/button/?url=https://rarcos.com/2023/11/20/Spring_boot_angular/&amp;media=https://rarcos.com/images/pages/spring_boot+angular.png&amp;description=Angular%2017%20+%20Spring%20Boot%203%20+%20Spring%20Security%206%20+%20JWT"
+          <a href="http://pinterest.com/pin/create/button/?url=https://rarcos.com/2024/05/25/Ollama_api_chatbot/&amp;media=https://rarcos.com/images/pages/ollama_api.jpg&amp;description=Opensource%20Chatbot"
             onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=900,height=500,toolbar=1,resizable=0'); return false;"
             class="post-pinterest" title="Share on Pinterest" rel="nofollow"><i class="fa-brands fa-pinterest"
               aria-hidden="true"></i><span>Pinterest</span></a>
         </li>
 
         <li class="post-footer-item">
-          <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://rarcos.com/2023/11/20/Spring_boot_angular/&title=Angular%2017%20+%20Spring%20Boot%203%20+%20Spring%20Security%206%20+%20JWT"
+          <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://rarcos.com/2024/05/25/Ollama_api_chatbot/&title=Opensource%20Chatbot"
             onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=900,height=500,toolbar=1,resizable=0'); return false;"
             class="post-linkedin" title="Share on Linkedin" rel="nofollow"><i class="fa-brands fa-linkedin"
               aria-hidden="true"></i><span>Linkedin</span></a>
@@ -360,17 +350,15 @@ La finalidad principal de la aplicación, ha sido la demostración de la puesta 
       <div class="post-tag">
         <span>Tags:</span>
         
-        <a href="/es/tags#javascript" class="tag">javascript</a>
+        <a href="/tags#ai" class="tag">ai</a>
         
-        <a href="/es/tags#php" class="tag">php</a>
+        <a href="/tags#rag" class="tag">rag</a>
         
-        <a href="/es/tags#angular" class="tag">angular</a>
+        <a href="/tags#open source" class="tag">open source</a>
         
-        <a href="/es/tags#laravel" class="tag">laravel</a>
+        <a href="/tags#models" class="tag">models</a>
         
-        <a href="/tags#proyecto integrado" class="tag">proyecto integrado</a>
-        
-        <a href="/es/tags#gesmerca" class="tag">gesmerca</a>
+        <a href="/tags#chatbot" class="tag">chatbot</a>
         
       </div>
       
@@ -390,10 +378,10 @@ La finalidad principal de la aplicación, ha sido la demostración de la puesta 
           
           
           
-          Desarrollador TI. <br>Máster FP en IA y Big data, <br>Técnico superior en desarrollo de aplicaciones web y <br>Técnico superior en desarrollo de aplicaciones multiplataformas.
           
           
           
+          IT Developer. <br>Higher Education Master in AI and Big Data, <br>Higher Technician in Web Applications Development and <br>Higher Technician in Multiplatform Applications Development.
           
           
           
@@ -423,12 +411,9 @@ La finalidad principal de la aplicación, ha sido la demostración de la puesta 
 
     <div class="page-navigation clearfix">
       
-      <a class="prev-page" href="/es/2023/06/30/Proyecto_integrado/"><i class="fa fa-angle-left"
-          aria-hidden="true"></i><span>Proyecto Integrado DAW</span></a>
+      <a class="prev-page" href="/2024/05/25/RAG_modelos_open_source/"><i class="fa fa-angle-left"
+          aria-hidden="true"></i><span>RAG with open source AI models</span></a>
       
-      
-      <a class="next-page" href="/es/2024/05/25/RAG_modelos_open_source/"><span>RAG con modelos de IA open source</span><i class="fa fa-angle-right"
-          aria-hidden="true"></i></a>
       
     </div>
 

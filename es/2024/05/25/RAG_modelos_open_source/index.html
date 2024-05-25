@@ -15,9 +15,9 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Angular 17 + Spring Boot 3 + Spring Security 6 + JWT</title>
+  <title>RAG con modelos de IA open source</title>
   <meta name='description'
-    content='Gestión de privilegios de acceso de usuarios a distintos elementos con spring boot, spring security, JWT y Angular.'>
+    content='RAG (Generación Aumentada por Recuperación) lleva la precisión a los modelos del lenguaje'>
 
   <!-- Google Fonts -->
   <link
@@ -32,7 +32,7 @@
 
   <!-- Main Stylesheet -->
   <link rel="stylesheet" href="/es/css/main.css">
-  <link rel="canonical" href="https://rarcos.com/es/2023/11/20/Spring_boot_angular/">
+  <link rel="canonical" href="https://rarcos.com/es/2024/05/25/RAG_modelos_open_source/">
   <link rel="alternate" type="application/rss+xml" title="Rubén Arcos" href="/es/feed.xml">
 
   <!-- Chrome, Firefox OS and Opera -->
@@ -69,7 +69,7 @@
       
       
       
-      <a id="switch-lang" href=" /2023/11/20/Spring_boot_angular/" title="Change language to en">
+      <a id="switch-lang" href=" /2024/05/25/RAG_modelos_open_source/" title="Change language to en">
         <img src=" https://cdn.wpml.org/wp-content/plugins/sitepress-multilingual-cms/res/flags/en.png">
       </a>
       
@@ -217,15 +217,15 @@
   <ul id="results-container" class="search-results-list"></ul>
 </div> <!-- /.search-box -->
 
-    <div class="post-header" style="background: url(/images/pages/spring_boot+angular.png)">
+    <div class="post-header" style="background: url(/images/pages/rag_ia_open_source.jpeg)">
   <div class="post-header-info">
-    <h1 class="post-title">Angular 17 + Spring Boot 3 + Spring Security 6 + JWT</h1>
+    <h1 class="post-title">RAG con modelos de IA open source</h1>
     <div class="post-meta">
       
       
       
-      <time datetime="2023-11-20T15:33:28+01:00">
-         20/11/2023
+      <time datetime="2024-05-25T08:23:28+02:00">
+         25/05/2024
       </time>
       
       
@@ -253,53 +253,48 @@
   <article class="post">
 
     <div class="post-content">
-      <h1 id="angular-17--spring-boot-3--spring-security-6--jwt">Angular 17 + Spring Boot 3 + Spring Security 6 + JWT</h1>
+      <h1 id="uso-de-rag-generación-aumentada-por-recuperación-en-modelos-open-source">Uso de RAG (Generación Aumentada por Recuperación) en modelos open source</h1>
 
 <p style="text-align: justify">
-La finalidad principal de la aplicación, ha sido la demostración de la puesta en práctica de los conocimientos adquiridos sobre la gestión de privilegios de acceso de usuarios a distintos elementos (o módulos como me referiré a lo largo del documento) de la aplicación, la gestión de usuarios jerarquizados en distintos grupos (denominados roles) y la administración por parte de un usuario autorizado. No menos relevante ha sido la aplicación de los conocimientos en el diseño y gestión de bases de datos relacionales y las plataformas de implementación de estas. Otro factor que se ha tenido en cuenta ha sido la seguridad del entorno de uso (JWT) y de la aplicación (Angular), implementando funcionalidades como, la encriptación de datos sensibles, o la prevención en la utilización de elementos sensibles a la inyección de información automatizada (cracking o ataques de fuerza bruta).
+La generación mejorada por recuperación (RAG) es el proceso de optimización de la salida de un modelo lingüístico de gran tamaño, de modo que haga referencia a una base de conocimientos autorizada fuera de los orígenes de datos de entrenamiento antes de generar una respuesta. Los modelos de lenguaje de gran tamaño (LLM) se entrenan con grandes volúmenes de datos y usan miles de millones de parámetros para generar resultados originales en tareas como responder preguntas, traducir idiomas y completar frases. RAG extiende las ya poderosas capacidades de los LLM a dominios específicos o a la base de conocimientos interna de una organización, todo ello sin la necesidad de volver a entrenar el modelo. Se trata de un método rentable para mejorar los resultados de los LLM de modo que sigan siendo relevantes, precisos y útiles en diversos contextos.
 </p>
 
-<h1 id="arquitectura">Arquitectura</h1>
+<ul>
+  <li>Para tener más información te recomiendo visites el siguiente <a href="https://aws.amazon.com/es/what-is/retrieval-augmented-generation/">artículo</a> de AWS.</li>
+  <li>También en este <a href="https://www.thepowerplatformcave.com/rag-ia-generativa-con-tus-datos/">artículo</a> se explica de una forma más técnica.</li>
+</ul>
 
-<p>Esta es la arquitectura que se ha utilizado para el entorno de producción en un VPS.</p>
-
-<p><img src="/images/pages/spring_boot_arquitectura.png" alt="VPS Architecture" title="Spring Boot VPS Architecture" /></p>
-
-<p>Separación lógica del frontend, backend y la base de datos.</p>
-
-<p><img src="/images/pages/spring_boot_arquitectura_Front-Back.png" alt="Architecture GesMerCa Frontend-Backend" title="Spring Boot Frontend-Backend architecture" /></p>
-
-<h2 id="entorno-de-ejecución---frontend">Entorno de ejecución - Frontend</h2>
+<p>A continuación se muestran las fases de la técnica RAG:</p>
 
 <p style="text-align: center">
-<a href="https://vps.rarcos.com:10451/" target="_blank">
-    <img src="/images/pages/gesmerca.png" width="100" alt="GesMerCa Logo" />Demo online
-</a>
-</p>
-
-<h2 id="documentación-api---backend">Documentación API - Backend</h2>
-
-<p style="text-align: center">
-<a href="https://vps.rarcos.com:10447/" target="_blank">
-    <img src="https://avatars.githubusercontent.com/u/7658037?s=200&amp;v=4" width="100" alt="Swagger Logo" />Documentación API online
-</a>
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSYb12anR2JNWP4NDPZ6e1qiEEt3DhUMWkiCqk1YSC53w&amp;s" />    
+    <img src="https://observatorio-ia.com/wp-content/uploads/2024/02/RAG.png" />    
 </p>
 
 <hr />
 
 <p><em>Repositorio con el contenido</em></p>
 
-<p><a href="https://github.com/rubenarcos2/spring_security_angular"><img src="/images/pages/repository_small.png" alt="Repository" /></a></p>
+<p>RAG Mistral model</p>
+
+<p><a href="https://colab.research.google.com/drive/1JS0bucLeiNdbFsf6y0gr3bo62lcsCwNj?usp=sharing"><img src="/images/pages/repository_small_colab.png" alt="Repository1" /></a></p>
+
+<p>RAG RoBERTa model</p>
+
+<p><a href="https://colab.research.google.com/drive/1wEJDmyXSdmPH1E9pba9mRrkUSVilzNUn?usp=sharing"><img src="/images/pages/repository_small_colab.png" alt="Repository2" /></a></p>
 
 <hr />
 
 <p><strong>Fuentes:</strong></p>
 
-<p><em>Spring security + JWT</em></p>
-
 <ul>
-  <li><a href="https://www.youtube.com/playlist?list=PL4bT56Uw3S4z9rtwwGvuk1Mjhu5sdLSwX">https://www.youtube.com/playlist?list=PL4bT56Uw3S4z9rtwwGvuk1Mjhu5sdLSwX</a></li>
-  <li><a href="https://github.com/cavanosa/tutorial_jwt_BACK">https://github.com/cavanosa/tutorial_jwt_BACK</a></li>
+  <li><a href="https://aws.amazon.com/es/what-is/retrieval-augmented-generation/">https://aws.amazon.com/es/what-is/retrieval-augmented-generation/</a></li>
+  <li><a href="https://www.thepowerplatformcave.com/rag-ia-generativa-con-tus-datos/">https://www.thepowerplatformcave.com/rag-ia-generativa-con-tus-datos/ </a></li>
+  <li><a href="https://observatorio-ia.com/wp-content/uploads/2024/02/RAG.png">https://observatorio-ia.com/wp-content/uploads/2024/02/RAG.png</a></li>
+  <li><a href="https://www.e2enetworks.com/blog/implementing-a-rag-pipeline-with-mixtral-8x7b">https://www.e2enetworks.com/blog/implementing-a-rag-pipeline-with-mixtral-8x7b</a></li>
+  <li><a href="https://www.hiberus.com/crecemos-contigo/ask-your-web-pages-otro-enfoque-rag-utilizando-modelos-de-codigo-abierto/">https://www.hiberus.com/crecemos-contigo/ask-your-web-pages-otro-enfoque-rag-utilizando-modelos-de-codigo-abierto/</a></li>
+  <li><a href="https://www.datacamp.com/tutorial/mistral-7b-tutorial">https://www.datacamp.com/tutorial/mistral-7b-tutorial</a></li>
+  <li><a href="https://haystack.deepset.ai/tutorials/22_pipeline_with_promptnode">https://haystack.deepset.ai/tutorials/22_pipeline_with_promptnode</a></li>
 </ul>
 
     </div>
@@ -328,7 +323,7 @@ La finalidad principal de la aplicación, ha sido la demostración de la puesta 
       <ul class="post-footer-list">
         <li class="post-footer-item">
           <a class="post-facebook"
-            href="https://www.facebook.com/sharer/sharer.php?u=https://rarcos.com/2023/11/20/Spring_boot_angular/"
+            href="https://www.facebook.com/sharer/sharer.php?u=https://rarcos.com/2024/05/25/RAG_modelos_open_source/"
             onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
             title="Share on Facebook" rel="nofollow"><i class="fa-brands fa-facebook"
               aria-hidden="true"></i><span>Facebook</span></a>
@@ -336,21 +331,21 @@ La finalidad principal de la aplicación, ha sido la demostración de la puesta 
 
         <li class="post-footer-item">
           <a class="post-twitter"
-            href="https://twitter.com/intent/tweet?text=Angular%2017%20+%20Spring%20Boot%203%20+%20Spring%20Security%206%20+%20JWT&url=https://rarcos.com/2023/11/20/Spring_boot_angular/"
+            href="https://twitter.com/intent/tweet?text=RAG%20con%20modelos%20de%20IA%20open%20source&url=https://rarcos.com/2024/05/25/RAG_modelos_open_source/"
             onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
             title="Share on Twitter" rel="nofollow"><i class="fa-brands fa-x-twitter"
               aria-hidden="true"></i><span>Twitter</span></a>
         </li>
 
         <li class="post-footer-item">
-          <a href="http://pinterest.com/pin/create/button/?url=https://rarcos.com/2023/11/20/Spring_boot_angular/&amp;media=https://rarcos.com/images/pages/spring_boot+angular.png&amp;description=Angular%2017%20+%20Spring%20Boot%203%20+%20Spring%20Security%206%20+%20JWT"
+          <a href="http://pinterest.com/pin/create/button/?url=https://rarcos.com/2024/05/25/RAG_modelos_open_source/&amp;media=https://rarcos.com/images/pages/rag_ia_open_source.jpeg&amp;description=RAG%20con%20modelos%20de%20IA%20open%20source"
             onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=900,height=500,toolbar=1,resizable=0'); return false;"
             class="post-pinterest" title="Share on Pinterest" rel="nofollow"><i class="fa-brands fa-pinterest"
               aria-hidden="true"></i><span>Pinterest</span></a>
         </li>
 
         <li class="post-footer-item">
-          <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://rarcos.com/2023/11/20/Spring_boot_angular/&title=Angular%2017%20+%20Spring%20Boot%203%20+%20Spring%20Security%206%20+%20JWT"
+          <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://rarcos.com/2024/05/25/RAG_modelos_open_source/&title=RAG%20con%20modelos%20de%20IA%20open%20source"
             onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=900,height=500,toolbar=1,resizable=0'); return false;"
             class="post-linkedin" title="Share on Linkedin" rel="nofollow"><i class="fa-brands fa-linkedin"
               aria-hidden="true"></i><span>Linkedin</span></a>
@@ -360,17 +355,13 @@ La finalidad principal de la aplicación, ha sido la demostración de la puesta 
       <div class="post-tag">
         <span>Tags:</span>
         
-        <a href="/es/tags#javascript" class="tag">javascript</a>
+        <a href="/es/tags#ia" class="tag">ia</a>
         
-        <a href="/es/tags#php" class="tag">php</a>
+        <a href="/es/tags#rag" class="tag">rag</a>
         
-        <a href="/es/tags#angular" class="tag">angular</a>
+        <a href="/tags#open source" class="tag">open source</a>
         
-        <a href="/es/tags#laravel" class="tag">laravel</a>
-        
-        <a href="/tags#proyecto integrado" class="tag">proyecto integrado</a>
-        
-        <a href="/es/tags#gesmerca" class="tag">gesmerca</a>
+        <a href="/es/tags#modelos" class="tag">modelos</a>
         
       </div>
       
@@ -423,11 +414,11 @@ La finalidad principal de la aplicación, ha sido la demostración de la puesta 
 
     <div class="page-navigation clearfix">
       
-      <a class="prev-page" href="/es/2023/06/30/Proyecto_integrado/"><i class="fa fa-angle-left"
-          aria-hidden="true"></i><span>Proyecto Integrado DAW</span></a>
+      <a class="prev-page" href="/es/2023/11/20/Spring_boot_angular/"><i class="fa fa-angle-left"
+          aria-hidden="true"></i><span>Angular 17 + Spring Boot 3 + Spring Security 6 + JWT</span></a>
       
       
-      <a class="next-page" href="/es/2024/05/25/RAG_modelos_open_source/"><span>RAG con modelos de IA open source</span><i class="fa fa-angle-right"
+      <a class="next-page" href="/es/2024/05/25/Ollama_api_chatbot/"><span>Chatbot opensource</span><i class="fa fa-angle-right"
           aria-hidden="true"></i></a>
       
     </div>

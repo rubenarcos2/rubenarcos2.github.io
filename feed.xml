@@ -1,4 +1,83 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="https://rarcos.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://rarcos.com/" rel="alternate" type="text/html" /><updated>2024-02-20T08:16:57+01:00</updated><id>https://rarcos.com/feed.xml</id><title type="html">Rubén Arcos</title><subtitle>Full Stack Developer</subtitle><entry xml:lang="en"><title type="html">Angular 17 + Spring Boot 3 + Spring Security 6 + JWT</title><link href="https://rarcos.com/2023/11/20/Spring_boot_angular/" rel="alternate" type="text/html" title="Angular 17 + Spring Boot 3 + Spring Security 6 + JWT" /><published>2023-11-20T15:33:28+01:00</published><updated>2023-11-20T15:33:28+01:00</updated><id>https://rarcos.com/2023/11/20/Spring_boot_angular</id><content type="html" xml:base="https://rarcos.com/2023/11/20/Spring_boot_angular/"><![CDATA[<h1 id="angular-17--spring-boot-3--spring-security-6--jwt">Angular 17 + Spring Boot 3 + Spring Security 6 + JWT</h1>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="https://rarcos.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://rarcos.com/" rel="alternate" type="text/html" /><updated>2024-05-25T09:30:22+02:00</updated><id>https://rarcos.com/feed.xml</id><title type="html">Rubén Arcos</title><subtitle>Full Stack Developer</subtitle><entry xml:lang="en"><title type="html">Opensource Chatbot</title><link href="https://rarcos.com/2024/05/25/Ollama_api_chatbot/" rel="alternate" type="text/html" title="Opensource Chatbot" /><published>2024-05-25T09:10:28+02:00</published><updated>2024-05-25T09:10:28+02:00</updated><id>https://rarcos.com/2024/05/25/Ollama_api_chatbot</id><content type="html" xml:base="https://rarcos.com/2024/05/25/Ollama_api_chatbot/"><![CDATA[<h1 id="creating-a-chatbot-with-an-opensource-model">Creating a chatbot with an opensource model</h1>
+
+<p style="text-align: justify">
+A chatbot (originally chatterbot) is a software application or web interface that is designed to mimic human conversation through text or voice interactions. Modern chatbots are typically online and use generative artificial intelligence systems that are capable of maintaining a conversation with a user in natural language and simulating the way a human would behave as a conversational partner. Such chatbots often use deep learning and natural language processing, but simpler chatbots have existed for decades.
+
+Since late 2022, the field has gained widespread attention due to the popularity of OpenAI's ChatGPT, followed by alternatives such as Microsoft's Copilot and Google's Gemini. Such examples reflect the recent practice of basing such products upon broad foundational large language models, such as GPT-4 or the Gemini language model, that get fine-tuned so as to target specific tasks or applications (i.e., simulating human conversation, in the case of chatbots). Chatbots can also be designed or customized to further target even more specific situations and/or particular subject-matter domains.
+
+A major area where chatbots have long been used is in customer service and support, with various sorts of virtual assistants. Companies spanning a wide range of industries have begun using the latest generative artificial intelligence technologies to power more advanced developments in such areas.
+
+As chatbots work by predicting responses rather than knowing the meaning of their responses, this means they can produce coherent-sounding but inaccurate or fabricated content, referred to as ‘hallucinations’. When humans use and apply chatbot content contaminated with hallucinations, this results in ‘botshit’. Given the increasing adoption and use of chatbots for generating content, there are concerns that this technology will significantly reduce the cost it takes humans to generate, spread and consume bullshit.</p>
+
+<ul>
+  <li>For more information I recommend you to visit the following <a href="https://es.wikipedia.org/wiki/Bot_conversacional">article</a> from wikipedia from where this fragment has been obtained.</li>
+</ul>
+
+<h1 id="arquitectura">Arquitectura</h1>
+
+<p><img src="/images/pages/ollama_api.jpg" alt="Architecture" title="Ollama API Architecture" /></p>
+
+<h2 id="ollama">Ollama</h2>
+
+<h2 id="langchain">LangChain</h2>
+
+<h2 id="chromadb">ChromaDb</h2>
+
+<h2 id="api-with-flask">API with Flask</h2>
+
+<h2 id="the-web-chatbot">The Web Chatbot</h2>
+
+<hr />
+
+<p><strong>Sources:</strong></p>
+
+<ul>
+  <li><a href="https://github.com/valiantlynx/ollama-docker/">https://github.com/valiantlynx/ollama-docker</a></li>
+  <li><a href="https://mobiarch.wordpress.com/2024/02/19/run-rag-locally-using-mistral-ollama-and-langchain/">https://mobiarch.wordpress.com/2024/02/19/run-rag-locally-using-mistral-ollama-and-langchain/</a></li>
+  <li><a href="https://realpython.com/build-llm-rag-chatbot-with-langchain/">https://realpython.com/build-llm-rag-chatbot-with-langchain/</a></li>
+</ul>]]></content><author><name></name></author><category term="ai" /><category term="rag" /><category term="open source" /><category term="models" /><category term="chatbot" /><summary type="html"><![CDATA[Creation of a chatbot with opensource model, applying the RAG technique and using Ollama, LangChain, ChromaDb and a final output as API to a web chatbot.]]></summary></entry><entry xml:lang="en"><title type="html">RAG with open source AI models</title><link href="https://rarcos.com/2024/05/25/RAG_modelos_open_source/" rel="alternate" type="text/html" title="RAG with open source AI models" /><published>2024-05-25T08:23:28+02:00</published><updated>2024-05-25T08:23:28+02:00</updated><id>https://rarcos.com/2024/05/25/RAG_modelos_open_source</id><content type="html" xml:base="https://rarcos.com/2024/05/25/RAG_modelos_open_source/"><![CDATA[<h1 id="use-of-rag-retrieval-augmented-generation-in-open-source-models">Use of RAG (Retrieval Augmented Generation) in open source models</h1>
+
+<p style="text-align: justify">
+Retrieval-enhanced generation (RAG) is the process of optimising the output of a large language model so that it references an authoritative knowledge base outside of the training data sources before generating an answer. Large Language Models (LLMs) are trained on large volumes of data and use billions of parameters to generate original results for tasks such as question answering, language translation and sentence completion. RAG extends the already powerful capabilities of LLMs to specific domains or to an organisation's internal knowledge base, all without the need to retrain the model. It is a cost-effective method for improving LLM results so that they remain relevant, accurate and useful in a variety of contexts.
+</p>
+
+<ul>
+  <li>For more information I recommend you visit the following <a href="https://aws.amazon.com/es/what-is/retrieval-augmented-generation/">article</a> from AWS.</li>
+  <li>Also in this <a href="https://www.thepowerplatformcave.com/rag-ia-generativa-con-tus-datos/">article</a> it is explained in a more technical way.</li>
+</ul>
+
+<p>The phases of the RAG technique are shown below:</p>
+
+<p style="text-align: center">
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSYb12anR2JNWP4NDPZ6e1qiEEt3DhUMWkiCqk1YSC53w&amp;s" />    
+    <img src="https://observatorio-ia.com/wp-content/uploads/2024/02/RAG.png" />    
+</p>
+
+<hr />
+
+<p><em>Repository with content</em></p>
+
+<p>RAG Mistral model</p>
+
+<p><a href="https://colab.research.google.com/drive/1JS0bucLeiNdbFsf6y0gr3bo62lcsCwNj?usp=sharing"><img src="/images/pages/repository_small_colab.png" alt="Repository1" /></a></p>
+
+<p>RAG RoBERTa model</p>
+
+<p><a href="https://colab.research.google.com/drive/1wEJDmyXSdmPH1E9pba9mRrkUSVilzNUn?usp=sharing"><img src="/images/pages/repository_small_colab.png" alt="Repository2" /></a></p>
+
+<hr />
+
+<p><strong>Sources:</strong></p>
+
+<ul>
+  <li><a href="https://aws.amazon.com/es/what-is/retrieval-augmented-generation/">https://aws.amazon.com/es/what-is/retrieval-augmented-generation/</a></li>
+  <li><a href="https://www.thepowerplatformcave.com/rag-ia-generativa-con-tus-datos/">https://www.thepowerplatformcave.com/rag-ia-generativa-con-tus-datos/ </a></li>
+  <li><a href="https://observatorio-ia.com/wp-content/uploads/2024/02/RAG.png">https://observatorio-ia.com/wp-content/uploads/2024/02/RAG.png</a></li>
+  <li><a href="https://www.e2enetworks.com/blog/implementing-a-rag-pipeline-with-mixtral-8x7b">https://www.e2enetworks.com/blog/implementing-a-rag-pipeline-with-mixtral-8x7b</a></li>
+  <li><a href="https://www.hiberus.com/crecemos-contigo/ask-your-web-pages-otro-enfoque-rag-utilizando-modelos-de-codigo-abierto/">https://www.hiberus.com/crecemos-contigo/ask-your-web-pages-otro-enfoque-rag-utilizando-modelos-de-codigo-abierto/</a></li>
+  <li><a href="https://www.datacamp.com/tutorial/mistral-7b-tutorial">https://www.datacamp.com/tutorial/mistral-7b-tutorial</a></li>
+  <li><a href="https://haystack.deepset.ai/tutorials/22_pipeline_with_promptnode">https://haystack.deepset.ai/tutorials/22_pipeline_with_promptnode</a></li>
+</ul>]]></content><author><name></name></author><category term="ai" /><category term="rag" /><category term="open source" /><category term="models" /><summary type="html"><![CDATA[RAG (Retrieval Augmented Generation) brings precision to language modelling]]></summary></entry><entry xml:lang="en"><title type="html">Angular 17 + Spring Boot 3 + Spring Security 6 + JWT</title><link href="https://rarcos.com/2023/11/20/Spring_boot_angular/" rel="alternate" type="text/html" title="Angular 17 + Spring Boot 3 + Spring Security 6 + JWT" /><published>2023-11-20T15:33:28+01:00</published><updated>2023-11-20T15:33:28+01:00</updated><id>https://rarcos.com/2023/11/20/Spring_boot_angular</id><content type="html" xml:base="https://rarcos.com/2023/11/20/Spring_boot_angular/"><![CDATA[<h1 id="angular-17--spring-boot-3--spring-security-6--jwt">Angular 17 + Spring Boot 3 + Spring Security 6 + JWT</h1>
 
 <p style="text-align: justify">
 The main purpose of the application has been to demonstrate the implementation of the knowledge acquired throughout the training on the management of user access privileges to different elements (or modules as I will refer to throughout the document) of the application, the management of hierarchical users in different groups (called roles) and the administration by an authorised user. No less relevant has been the application of knowledge in the design and management of relational databases and their implementation platforms. Another factor taken into account was the security of the environment of use (JWT) and of the application (Angular), implementing functionalities such as the encryption of sensitive data, or the prevention of the use of elements sensitive to the injection of automated information (cracking or brute force attacks).
@@ -1736,487 +1815,4 @@ npm <span class="nb">install
 <a href="https://styde.net/despliega-tu-aplicacion-de-laravel-con-github-y-heroku/">https://styde.net/despliega-tu-aplicacion-de-laravel-con-github-y-heroku/</a>
 <a href="https://www.youtube.com/watch?v=BowxsMH91Xw">https://www.youtube.com/watch?v=BowxsMH91Xw</a>
 <a href="https://www.codekayak.net/laravel-displaying-created_at-updated_at-value-in-view/">https://www.codekayak.net/laravel-displaying-created_at-updated_at-value-in-view/</a>
-<a href="https://webdesignerwall.com/wdw-snippet/bootstrap-cards-in-columns">https://webdesignerwall.com/wdw-snippet/bootstrap-cards-in-columns</a></p>]]></content><author><name></name></author><category term="php" /><category term="spring" /><category term="MVC" /><category term="laravel" /><summary type="html"><![CDATA[Uso del framework Laravel 9 con PHP 8: MVC]]></summary></entry><entry><title type="html">Spring 5 - Spring Boot y MVC</title><link href="https://rarcos.com/2022/07/15/Spring-5-MVC/" rel="alternate" type="text/html" title="Spring 5 - Spring Boot y MVC" /><published>2022-07-15T16:33:28+02:00</published><updated>2022-07-15T16:33:28+02:00</updated><id>https://rarcos.com/2022/07/15/Spring%205%20-%20MVC</id><content type="html" xml:base="https://rarcos.com/2022/07/15/Spring-5-MVC/"><![CDATA[<h1 id="spring-boot-y-spring-mvc">Spring Boot y Spring MVC</h1>
-
-<p>Desarrollo de una aplicaciones web usando Spring Boot:</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>- Spring MVC
-    - Thymeleaf
-    - Bootstrap
-- Spring JPA
-    - PostgreSQL
-- Upload files to server
-- Spring security
-    - Persistence on DB
-    - Sessions
-</code></pre></div></div>
-
-<p>Los credenciales son:</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>- username: admin
-- password: admin
-</code></pre></div></div>
-
-<p>Esta es la demostración de la aplicación que he realizado (click <a href="https://vps.rarcos.com:10442">aquí</a> o en la imagen):</p>
-
-<p><a href="https://vps.rarcos.com:10442"><img src="/images/pages/spring-inmobiliaria.png" alt="Ir a ver la app en funcionamiento" /></a></p>
-
-<hr />
-
-<p><em>Repositorio con el contenido</em></p>
-
-<p><a href="https://github.com/rubenarcos2/spring-Inmobiliaria"><img src="/images/pages/repository_small.png" alt="Repositorio" /></a></p>
-
-<hr />
-
-<p><strong>Fuentes:</strong></p>
-
-<p><a href="https://openwebinars.net/academia/aprende/spring-boot/">https://openwebinars.net/academia/aprende/spring-boot/</a>
-<a href="https://github.com/OpenWebinarsNet/curso_spring_boot_mvc">https://github.com/OpenWebinarsNet/curso_spring_boot_mvc</a>
-<a href="https://github.com/OpenWebinarsNet/curso_spring_boot_mvc/blob/master/19_Seguridad_completo/src/main/java/com/openwebinars/spring/seguridad/SecurityConfig.java">https://github.com/OpenWebinarsNet/curso_spring_boot_mvc/blob/master/19_Seguridad_completo/src/main/java/com/openwebinars/spring/seguridad/SecurityConfig.java</a>
-<a href="https://fullstackdeveloper.guru/2020/06/05/how-to-do-user-authentication-in-spring-boot-using-postgresql-database/">https://fullstackdeveloper.guru/2020/06/05/how-to-do-user-authentication-in-spring-boot-using-postgresql-database/</a>
-<a href="https://www.jhipster.tech/tips/028_tip_pgadmin_heroku.html">https://www.jhipster.tech/tips/028_tip_pgadmin_heroku.html</a>
-<a href="https://huongdanjava.com/introduction-about-spring-session.html">https://huongdanjava.com/introduction-about-spring-session.html</a></p>]]></content><author><name></name></author><category term="java" /><category term="spring" /><category term="MVC" /><category term="spring5" /><summary type="html"><![CDATA[Uso del framework Spring 5 con Spring Boot: MVC, spring security, spring JPA, postgreSQL, upload file, thymeleaf, sessions...]]></summary></entry><entry><title type="html">Java - Stream Api</title><link href="https://rarcos.com/2022/07/07/Java-Stream-Api/" rel="alternate" type="text/html" title="Java - Stream Api" /><published>2022-07-07T16:33:28+02:00</published><updated>2022-07-07T16:33:28+02:00</updated><id>https://rarcos.com/2022/07/07/Java-Stream-Api</id><content type="html" xml:base="https://rarcos.com/2022/07/07/Java-Stream-Api/"><![CDATA[<h1 id="utilización-de-la-stream-api">Utilización de la Stream Api</h1>
-
-<p>La API Stream ofrece un enfoque alternativo de “tuberías y filtros” para el procesamiento de colecciones.</p>
-
-<p>Antes de Java 8 debías manipular colecciones manualmente, por lo general iterando a través de la colección y usando operadores en cada elemento en turno. Estos bucles explícitos requerían muchas repeticiones, además de que es difícil entender la estructura del ciclo for hasta que uno llega al cuerpo del mismo.</p>
-
-<p>La API Stream te proporciona una forma de procesar datos de manera más eficiente al realizar una única ejecución sobre ellos, independientemente de la cantidad de información que estés procesando o de si estás realizando múltiples cálculos</p>
-
-<p>El código fuente con los ejerciciós está <a href="https://github.com/rubenarcos2/java8StreamApi">aquí</a>, he utilizado TDD:</p>
-
-<p><strong>Map</strong></p>
-
-<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kn">package</span> <span class="nn">com.rarcos</span><span class="o">;</span>
-
-<span class="kn">import</span> <span class="nn">static</span> <span class="n">java</span><span class="o">.</span><span class="na">util</span><span class="o">.</span><span class="na">stream</span><span class="o">.</span><span class="na">Collectors</span><span class="o">.</span><span class="na">toList</span><span class="o">;</span>
-
-<span class="kn">import</span> <span class="nn">java.util.ArrayList</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">java.util.List</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">java.util.stream.IntStream</span><span class="o">;</span>
-
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MapCollection</span> <span class="o">{</span>
-
-	<span class="kd">private</span> <span class="nf">MapCollection</span><span class="o">()</span> <span class="o">{</span>
-	<span class="o">}</span>
-
-	<span class="c1">// Map 1 - All characters upper case are returned.</span>
-	<span class="kd">public</span> <span class="kd">static</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="nf">mapAllUpperCaseJava7</span><span class="o">(</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">collection</span><span class="o">)</span> <span class="o">{</span>
-		<span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">newCollection</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;();</span>
-		<span class="k">for</span> <span class="o">(</span><span class="nc">String</span> <span class="n">elm</span> <span class="o">:</span> <span class="n">collection</span><span class="o">)</span> <span class="o">{</span>
-			<span class="n">newCollection</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">elm</span><span class="o">.</span><span class="na">toUpperCase</span><span class="o">());</span>
-		<span class="o">}</span>
-		<span class="k">return</span> <span class="n">newCollection</span><span class="o">;</span>
-	<span class="o">}</span>
-
-	<span class="kd">public</span> <span class="kd">static</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="nf">mapAllUpperCase</span><span class="o">(</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">collection</span><span class="o">)</span> <span class="o">{</span>
-		<span class="k">return</span> <span class="n">collection</span><span class="o">.</span><span class="na">stream</span><span class="o">().</span><span class="na">map</span><span class="o">(</span><span class="nl">String:</span><span class="o">:</span><span class="n">toUpperCase</span><span class="o">).</span><span class="na">toList</span><span class="o">();</span>
-	<span class="o">}</span>
-
-	<span class="c1">// Map 2 - All length of countries are returned.</span>
-	<span class="kd">public</span> <span class="kd">static</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="nf">mapLengthJava7</span><span class="o">(</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">collection</span><span class="o">)</span> <span class="o">{</span>
-		<span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">newCollection</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;();</span>
-		<span class="k">for</span> <span class="o">(</span><span class="nc">String</span> <span class="n">elm</span> <span class="o">:</span> <span class="n">collection</span><span class="o">)</span> <span class="o">{</span>
-			<span class="n">newCollection</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="nc">String</span><span class="o">.</span><span class="na">valueOf</span><span class="o">(</span><span class="n">elm</span><span class="o">.</span><span class="na">length</span><span class="o">()));</span>
-		<span class="o">}</span>
-		<span class="k">return</span> <span class="n">newCollection</span><span class="o">;</span>
-	<span class="o">}</span>
-
-	<span class="kd">public</span> <span class="kd">static</span> <span class="nc">IntStream</span> <span class="nf">mapLength</span><span class="o">(</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">collection</span><span class="o">)</span> <span class="o">{</span>
-		<span class="k">return</span> <span class="n">collection</span><span class="o">.</span><span class="na">stream</span><span class="o">().</span><span class="na">mapToInt</span><span class="o">(</span><span class="nl">String:</span><span class="o">:</span><span class="n">length</span><span class="o">);</span>
-	<span class="o">}</span>
-
-	<span class="c1">// Map 3 - All name of person to upper case are returned.</span>
-	<span class="kd">public</span> <span class="kd">static</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="nf">mapNamePersonUpperCaseJava7</span><span class="o">(</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">Person</span><span class="o">&gt;</span> <span class="n">collection</span><span class="o">)</span> <span class="o">{</span>
-		<span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">newCollection</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;();</span>
-		<span class="k">for</span> <span class="o">(</span><span class="nc">Person</span> <span class="n">elm</span> <span class="o">:</span> <span class="n">collection</span><span class="o">)</span> <span class="o">{</span>
-			<span class="n">newCollection</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="nc">String</span><span class="o">.</span><span class="na">valueOf</span><span class="o">(</span><span class="n">elm</span><span class="o">.</span><span class="na">getName</span><span class="o">().</span><span class="na">toUpperCase</span><span class="o">()));</span>
-		<span class="o">}</span>
-		<span class="k">return</span> <span class="n">newCollection</span><span class="o">;</span>
-	<span class="o">}</span>
-
-	<span class="kd">public</span> <span class="kd">static</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="nf">mapNamePersonUpperCase</span><span class="o">(</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">Person</span><span class="o">&gt;</span> <span class="n">collection</span><span class="o">)</span> <span class="o">{</span>
-		<span class="k">return</span> <span class="n">collection</span><span class="o">.</span><span class="na">stream</span><span class="o">().</span><span class="na">map</span><span class="o">(</span><span class="n">e</span> <span class="o">-&gt;</span> <span class="n">e</span><span class="o">.</span><span class="na">getName</span><span class="o">()).</span><span class="na">map</span><span class="o">(</span><span class="n">e</span> <span class="o">-&gt;</span> <span class="n">e</span><span class="o">.</span><span class="na">toUpperCase</span><span class="o">()).</span><span class="na">toList</span><span class="o">();</span>
-	<span class="o">}</span>
-
-	<span class="c1">// Map 4 - Flat map are returned.</span>
-	<span class="kd">public</span> <span class="kd">static</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="nf">mapFlatJava7</span><span class="o">(</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;&gt;</span> <span class="n">collection</span><span class="o">)</span> <span class="o">{</span>
-        <span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">newCollection</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;();</span>
-        <span class="k">for</span> <span class="o">(</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">subCollection</span> <span class="o">:</span> <span class="n">collection</span><span class="o">)</span> <span class="o">{</span>
-            <span class="k">for</span> <span class="o">(</span><span class="nc">String</span> <span class="n">value</span> <span class="o">:</span> <span class="n">subCollection</span><span class="o">)</span> <span class="o">{</span>
-                <span class="n">newCollection</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">value</span><span class="o">);</span>
-            <span class="o">}</span>
-        <span class="o">}</span>
-        <span class="k">return</span> <span class="n">newCollection</span><span class="o">;</span>
-    <span class="o">}</span>
-
-    <span class="kd">public</span> <span class="kd">static</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="nf">mapFlat</span><span class="o">(</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;&gt;</span> <span class="n">collection</span><span class="o">)</span> <span class="o">{</span>
-        <span class="k">return</span> <span class="n">collection</span><span class="o">.</span><span class="na">stream</span><span class="o">()</span> <span class="c1">// Convert collection to Stream</span>
-                <span class="o">.</span><span class="na">flatMap</span><span class="o">(</span><span class="n">value</span> <span class="o">-&gt;</span> <span class="n">value</span><span class="o">.</span><span class="na">stream</span><span class="o">())</span> <span class="c1">// Replace list with stream</span>
-                <span class="o">.</span><span class="na">collect</span><span class="o">(</span><span class="n">toList</span><span class="o">());</span> <span class="c1">// Collect results to a new list</span>
-    <span class="o">}</span>
-<span class="o">}</span></code></pre></figure>
-
-<p><strong>Filter</strong></p>
-
-<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kn">package</span> <span class="nn">com.rarcos</span><span class="o">;</span>
-
-<span class="kn">import</span> <span class="nn">java.util.ArrayList</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">java.util.List</span><span class="o">;</span>
-
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">FilterCollection</span> <span class="o">{</span>
-
-	<span class="kd">private</span> <span class="nf">FilterCollection</span><span class="o">()</span> <span class="o">{</span>
-	<span class="o">}</span>
-
-	<span class="c1">// Filter 1 - Filter collection so that only elements with less or equal then 5</span>
-	<span class="c1">// characters are returned.</span>
-	<span class="kd">public</span> <span class="kd">static</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="nf">filterShorterThant5CharactersJava7</span><span class="o">(</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">collection</span><span class="o">)</span> <span class="o">{</span>
-		<span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">newCollection</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;();</span>
-		<span class="k">for</span> <span class="o">(</span><span class="nc">String</span> <span class="n">elm</span> <span class="o">:</span> <span class="n">collection</span><span class="o">)</span> <span class="o">{</span>
-			<span class="k">if</span> <span class="o">(</span><span class="n">elm</span><span class="o">.</span><span class="na">length</span><span class="o">()</span> <span class="o">&lt;=</span> <span class="mi">5</span><span class="o">)</span>
-				<span class="n">newCollection</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">elm</span><span class="o">);</span>
-		<span class="o">}</span>
-		<span class="k">return</span> <span class="n">newCollection</span><span class="o">;</span>
-	<span class="o">}</span>
-
-	<span class="kd">public</span> <span class="kd">static</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="nf">filterShorterThant5Characters</span><span class="o">(</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">collection</span><span class="o">)</span> <span class="o">{</span>
-		<span class="k">return</span> <span class="n">collection</span><span class="o">.</span><span class="na">stream</span><span class="o">().</span><span class="na">filter</span><span class="o">(</span><span class="n">e</span> <span class="o">-&gt;</span> <span class="n">e</span><span class="o">.</span><span class="na">length</span><span class="o">()</span> <span class="o">&lt;=</span> <span class="mi">5</span><span class="o">).</span><span class="na">toList</span><span class="o">();</span>
-	<span class="o">}</span>
-
-	<span class="c1">// Filter 2 - Filter collection start with C character are returned.</span>
-	<span class="kd">public</span> <span class="kd">static</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="nf">filterWithCharacterCJava7</span><span class="o">(</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">collection</span><span class="o">)</span> <span class="o">{</span>
-		<span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">newCollection</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;();</span>
-		<span class="k">for</span> <span class="o">(</span><span class="nc">String</span> <span class="n">elm</span> <span class="o">:</span> <span class="n">collection</span><span class="o">)</span> <span class="o">{</span>
-			<span class="k">if</span> <span class="o">(</span><span class="n">elm</span><span class="o">.</span><span class="na">toUpperCase</span><span class="o">().</span><span class="na">contains</span><span class="o">(</span><span class="s">"C"</span><span class="o">))</span>
-				<span class="n">newCollection</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">elm</span><span class="o">);</span>
-		<span class="o">}</span>
-		<span class="k">return</span> <span class="n">newCollection</span><span class="o">;</span>
-	<span class="o">}</span>
-
-	<span class="kd">public</span> <span class="kd">static</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="nf">filterWithCharacterC</span><span class="o">(</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">collection</span><span class="o">)</span> <span class="o">{</span>
-		<span class="k">return</span> <span class="n">collection</span><span class="o">.</span><span class="na">stream</span><span class="o">().</span><span class="na">filter</span><span class="o">(</span><span class="n">e</span> <span class="o">-&gt;</span> <span class="n">e</span><span class="o">.</span><span class="na">toUpperCase</span><span class="o">().</span><span class="na">contains</span><span class="o">(</span><span class="s">"C"</span><span class="o">)).</span><span class="na">toList</span><span class="o">();</span>
-	<span class="o">}</span>
-
-	<span class="c1">// Filter 3 - Filter collection with distinct characters are returned.</span>
-	<span class="kd">public</span> <span class="kd">static</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="nf">filterWithDistinctCharactersJava7</span><span class="o">(</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">collection</span><span class="o">)</span> <span class="o">{</span>
-		<span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">listDistinctInts</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;(</span><span class="n">collection</span><span class="o">.</span><span class="na">size</span><span class="o">());</span>
-		<span class="k">for</span> <span class="o">(</span><span class="nc">String</span> <span class="n">i</span> <span class="o">:</span> <span class="n">collection</span><span class="o">)</span> <span class="o">{</span>
-			<span class="k">if</span> <span class="o">(!</span><span class="n">listDistinctInts</span><span class="o">.</span><span class="na">contains</span><span class="o">(</span><span class="n">i</span><span class="o">))</span> <span class="o">{</span>
-				<span class="n">listDistinctInts</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">i</span><span class="o">);</span>
-			<span class="o">}</span>
-		<span class="o">}</span>
-		<span class="k">return</span> <span class="n">listDistinctInts</span><span class="o">;</span>
-	<span class="o">}</span>
-
-	<span class="kd">public</span> <span class="kd">static</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="nf">filterWithDistinctCharacters</span><span class="o">(</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">collection</span><span class="o">)</span> <span class="o">{</span>
-		<span class="k">return</span> <span class="n">collection</span><span class="o">.</span><span class="na">stream</span><span class="o">().</span><span class="na">distinct</span><span class="o">().</span><span class="na">toList</span><span class="o">();</span>
-	<span class="o">}</span>
-
-	<span class="c1">// Filter 4 - Filter collection 3 first elements are returned.</span>
-	<span class="kd">public</span> <span class="kd">static</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="nf">filter3FirstJava7</span><span class="o">(</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">collection</span><span class="o">)</span> <span class="o">{</span>
-		<span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">newCollection</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;(</span><span class="n">collection</span><span class="o">.</span><span class="na">size</span><span class="o">());</span>
-		<span class="n">newCollection</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">collection</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">0</span><span class="o">));</span>
-		<span class="n">newCollection</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">collection</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">1</span><span class="o">));</span>
-		<span class="n">newCollection</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">collection</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">2</span><span class="o">));</span>
-		<span class="k">return</span> <span class="n">newCollection</span><span class="o">;</span>
-	<span class="o">}</span>
-
-	<span class="kd">public</span> <span class="kd">static</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="nf">filter3First</span><span class="o">(</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">collection</span><span class="o">)</span> <span class="o">{</span>
-		<span class="k">return</span> <span class="n">collection</span><span class="o">.</span><span class="na">stream</span><span class="o">().</span><span class="na">limit</span><span class="o">(</span><span class="mi">3</span><span class="o">).</span><span class="na">toList</span><span class="o">();</span>
-	<span class="o">}</span>
-
-	<span class="c1">// Filter 4 - Filter collection all elements minus 3 first elements are</span>
-	<span class="c1">// returned.</span>
-	<span class="kd">public</span> <span class="kd">static</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="nf">filterAllMinus3FirstJava7</span><span class="o">(</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">collection</span><span class="o">)</span> <span class="o">{</span>
-		<span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">newCollection</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;(</span><span class="n">collection</span><span class="o">.</span><span class="na">size</span><span class="o">());</span>
-
-		<span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">3</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">collection</span><span class="o">.</span><span class="na">size</span><span class="o">();</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
-			<span class="n">newCollection</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">collection</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">i</span><span class="o">));</span>
-		<span class="o">}</span>
-
-		<span class="k">return</span> <span class="n">newCollection</span><span class="o">;</span>
-	<span class="o">}</span>
-
-	<span class="kd">public</span> <span class="kd">static</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="nf">filterAllMinus3First</span><span class="o">(</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">collection</span><span class="o">)</span> <span class="o">{</span>
-		<span class="k">return</span> <span class="n">collection</span><span class="o">.</span><span class="na">stream</span><span class="o">().</span><span class="na">skip</span><span class="o">(</span><span class="mi">3</span><span class="o">).</span><span class="na">toList</span><span class="o">();</span>
-	<span class="o">}</span>
-<span class="o">}</span></code></pre></figure>
-
-<p><strong>Search</strong></p>
-
-<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kn">package</span> <span class="nn">com.rarcos</span><span class="o">;</span>
-
-<span class="kn">import</span> <span class="nn">java.util.ArrayList</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">java.util.List</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">java.util.Optional</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">java.util.Random</span><span class="o">;</span>
-
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">SearchCollection</span> <span class="o">{</span>
-
-	<span class="kd">private</span> <span class="nf">SearchCollection</span><span class="o">()</span> <span class="o">{</span>
-	<span class="o">}</span>
-
-	<span class="c1">// Search 1 - Search it have more 4 characters are returned.</span>
-	<span class="kd">public</span> <span class="kd">static</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="nf">searchAllMore4CharactersJava7</span><span class="o">(</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">collection</span><span class="o">)</span> <span class="o">{</span>
-		<span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">newCollection</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;();</span>
-		<span class="k">for</span> <span class="o">(</span><span class="nc">String</span> <span class="n">elm</span> <span class="o">:</span> <span class="n">collection</span><span class="o">)</span> <span class="o">{</span>
-			<span class="k">if</span> <span class="o">(</span><span class="n">elm</span><span class="o">.</span><span class="na">length</span><span class="o">()</span> <span class="o">&gt;</span> <span class="mi">4</span><span class="o">)</span>
-				<span class="n">newCollection</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">elm</span><span class="o">);</span>
-		<span class="o">}</span>
-		<span class="k">return</span> <span class="n">newCollection</span><span class="o">;</span>
-	<span class="o">}</span>
-
-	<span class="kd">public</span> <span class="kd">static</span> <span class="kt">boolean</span> <span class="nf">searchAllMore4Characters</span><span class="o">(</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">collection</span><span class="o">)</span> <span class="o">{</span>
-		<span class="k">return</span> <span class="n">collection</span><span class="o">.</span><span class="na">stream</span><span class="o">().</span><span class="na">allMatch</span><span class="o">(</span><span class="n">e</span> <span class="o">-&gt;</span> <span class="n">e</span><span class="o">.</span><span class="na">length</span><span class="o">()</span> <span class="o">&gt;</span> <span class="mi">4</span><span class="o">);</span>
-	<span class="o">}</span>
-
-	<span class="c1">// Search 2 - Search it have one or more condition are returned.</span>
-	<span class="kd">public</span> <span class="kd">static</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="nf">searchConditionJava7</span><span class="o">(</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">collection</span><span class="o">)</span> <span class="o">{</span>
-		<span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">newCollection</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;();</span>
-		<span class="k">for</span> <span class="o">(</span><span class="nc">String</span> <span class="n">elm</span> <span class="o">:</span> <span class="n">collection</span><span class="o">)</span> <span class="o">{</span>
-			<span class="k">if</span> <span class="o">(</span><span class="n">elm</span> <span class="o">==</span> <span class="s">"Spain"</span><span class="o">)</span>
-				<span class="n">newCollection</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">elm</span><span class="o">);</span>
-		<span class="o">}</span>
-		<span class="k">return</span> <span class="n">newCollection</span><span class="o">;</span>
-	<span class="o">}</span>
-
-	<span class="kd">public</span> <span class="kd">static</span> <span class="kt">boolean</span> <span class="nf">searchCondition</span><span class="o">(</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">collection</span><span class="o">)</span> <span class="o">{</span>
-		<span class="k">return</span> <span class="n">collection</span><span class="o">.</span><span class="na">stream</span><span class="o">().</span><span class="na">anyMatch</span><span class="o">(</span><span class="n">e</span> <span class="o">-&gt;</span> <span class="n">e</span> <span class="o">==</span> <span class="s">"Spain"</span><span class="o">);</span>
-	<span class="o">}</span>
-
-	<span class="c1">// Search 2 - Search it haven't condition are returned.</span>
-	<span class="kd">public</span> <span class="kd">static</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="nf">searchNotConditionJava7</span><span class="o">(</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">collection</span><span class="o">)</span> <span class="o">{</span>
-		<span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">newCollection</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;();</span>
-		<span class="k">for</span> <span class="o">(</span><span class="nc">String</span> <span class="n">elm</span> <span class="o">:</span> <span class="n">collection</span><span class="o">)</span> <span class="o">{</span>
-			<span class="k">if</span> <span class="o">(</span><span class="n">elm</span> <span class="o">==</span> <span class="s">"Spain"</span><span class="o">)</span>
-				<span class="n">newCollection</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">elm</span><span class="o">);</span>
-		<span class="o">}</span>
-		<span class="k">return</span> <span class="n">newCollection</span><span class="o">;</span>
-	<span class="o">}</span>
-
-	<span class="kd">public</span> <span class="kd">static</span> <span class="kt">boolean</span> <span class="nf">searchNotCondition</span><span class="o">(</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">collection</span><span class="o">)</span> <span class="o">{</span>
-		<span class="k">return</span> <span class="n">collection</span><span class="o">.</span><span class="na">stream</span><span class="o">().</span><span class="na">noneMatch</span><span class="o">(</span><span class="n">e</span> <span class="o">-&gt;</span> <span class="n">e</span><span class="o">.</span><span class="na">length</span><span class="o">()</span> <span class="o">&gt;=</span> <span class="mi">4</span><span class="o">);</span>
-	<span class="o">}</span>
-
-	<span class="c1">// Search 3 - Search any element are returned.</span>
-	<span class="kd">public</span> <span class="kd">static</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="nf">searchAnyElementJava7</span><span class="o">(</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">collection</span><span class="o">)</span> <span class="o">{</span>
-		<span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">newCollection</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;();</span>
-		<span class="nc">Random</span> <span class="n">r</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Random</span><span class="o">();</span>
-		<span class="kt">int</span> <span class="n">pos</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="na">nextInt</span><span class="o">((</span><span class="n">collection</span><span class="o">.</span><span class="na">size</span><span class="o">()</span> <span class="o">-</span> <span class="mi">0</span><span class="o">)</span> <span class="o">+</span> <span class="mi">1</span><span class="o">)</span> <span class="o">+</span> <span class="mi">0</span><span class="o">;</span>
-		<span class="n">newCollection</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">collection</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">pos</span><span class="o">));</span>
-		<span class="k">return</span> <span class="n">newCollection</span><span class="o">;</span>
-	<span class="o">}</span>
-
-	<span class="kd">public</span> <span class="kd">static</span> <span class="nc">Optional</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="nf">searchAnyElement</span><span class="o">(</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">collection</span><span class="o">)</span> <span class="o">{</span>
-		<span class="k">return</span> <span class="n">collection</span><span class="o">.</span><span class="na">parallelStream</span><span class="o">().</span><span class="na">findAny</span><span class="o">();</span>
-	<span class="o">}</span>
-
-	<span class="c1">// Search 4 - Search first element are returned.</span>
-	<span class="kd">public</span> <span class="kd">static</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="nf">searchFirstElementJava7</span><span class="o">(</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">collection</span><span class="o">)</span> <span class="o">{</span>
-		<span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">newCollection</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;();</span>
-		<span class="nc">Random</span> <span class="n">r</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Random</span><span class="o">();</span>
-		<span class="kt">int</span> <span class="n">pos</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="na">nextInt</span><span class="o">((</span><span class="n">collection</span><span class="o">.</span><span class="na">size</span><span class="o">()</span> <span class="o">-</span> <span class="mi">0</span><span class="o">)</span> <span class="o">+</span> <span class="mi">1</span><span class="o">)</span> <span class="o">+</span> <span class="mi">0</span><span class="o">;</span>
-		<span class="n">newCollection</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">collection</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">pos</span><span class="o">));</span>
-		<span class="k">return</span> <span class="n">newCollection</span><span class="o">;</span>
-	<span class="o">}</span>
-
-	<span class="kd">public</span> <span class="kd">static</span> <span class="nc">Optional</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="nf">searchFirstElement</span><span class="o">(</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">collection</span><span class="o">)</span> <span class="o">{</span>
-		<span class="k">return</span> <span class="n">collection</span><span class="o">.</span><span class="na">parallelStream</span><span class="o">().</span><span class="na">findFirst</span><span class="o">();</span>
-	<span class="o">}</span>
-<span class="o">}</span></code></pre></figure>
-
-<p><strong>Data and Calculate</strong></p>
-
-<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kn">package</span> <span class="nn">com.rarcos</span><span class="o">;</span>
-
-<span class="kn">import</span> <span class="nn">java.util.Arrays</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">java.util.Comparator</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">java.util.List</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">java.util.OptionalInt</span><span class="o">;</span>
-
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">DataAndCalculateCollection</span> <span class="o">{</span>
-
-	<span class="kd">private</span> <span class="nf">DataAndCalculateCollection</span><span class="o">()</span> <span class="o">{</span>
-	<span class="o">}</span>
-
-	<span class="c1">// Data and calculate 1 - Max number are returned.</span>
-	<span class="kd">public</span> <span class="kd">static</span> <span class="kt">int</span> <span class="nf">dataAndCalculateMaxJava7</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">collection</span><span class="o">)</span> <span class="o">{</span>
-		<span class="kt">int</span> <span class="n">maximum</span> <span class="o">=</span> <span class="n">collection</span><span class="o">[</span><span class="mi">0</span><span class="o">];</span>
-		<span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">collection</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
-			<span class="k">if</span> <span class="o">(</span><span class="n">maximum</span> <span class="o">&lt;</span> <span class="n">collection</span><span class="o">[</span><span class="n">i</span><span class="o">])</span>
-				<span class="n">maximum</span> <span class="o">=</span> <span class="n">collection</span><span class="o">[</span><span class="n">i</span><span class="o">];</span>
-		<span class="o">}</span>
-		<span class="k">return</span> <span class="n">maximum</span><span class="o">;</span>
-	<span class="o">}</span>
-
-	<span class="kd">public</span> <span class="kd">static</span> <span class="nc">OptionalInt</span> <span class="nf">dataAndCalculateMax</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">collection</span><span class="o">)</span> <span class="o">{</span>
-		<span class="k">return</span> <span class="nc">Arrays</span><span class="o">.</span><span class="na">stream</span><span class="o">(</span><span class="n">collection</span><span class="o">).</span><span class="na">reduce</span><span class="o">(</span><span class="nl">Integer:</span><span class="o">:</span><span class="n">max</span><span class="o">);</span>
-	<span class="o">}</span>
-
-	<span class="c1">// Data and calculate 2 - Sum of numbers are returned.</span>
-	<span class="kd">public</span> <span class="kd">static</span> <span class="kt">int</span> <span class="nf">dataAndCalculateSumJava7</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">collection</span><span class="o">)</span> <span class="o">{</span>
-		<span class="kt">int</span> <span class="n">sum</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
-		<span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">number</span> <span class="o">:</span> <span class="n">collection</span><span class="o">)</span> <span class="o">{</span>
-			<span class="n">sum</span> <span class="o">+=</span> <span class="n">number</span><span class="o">;</span>
-		<span class="o">}</span>
-		<span class="k">return</span> <span class="n">sum</span><span class="o">;</span>
-	<span class="o">}</span>
-
-	<span class="kd">public</span> <span class="kd">static</span> <span class="kt">int</span> <span class="nf">dataAndCalculateSum</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">collection</span><span class="o">)</span> <span class="o">{</span>
-		<span class="k">return</span> <span class="nc">Arrays</span><span class="o">.</span><span class="na">stream</span><span class="o">(</span><span class="n">collection</span><span class="o">).</span><span class="na">reduce</span><span class="o">(</span><span class="mi">0</span><span class="o">,</span> <span class="o">(</span><span class="n">x</span><span class="o">,</span> <span class="n">y</span><span class="o">)</span> <span class="o">-&gt;</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span><span class="o">);</span>
-	<span class="o">}</span>
-
-	<span class="c1">// Data and calculate 3 - Elements sorted are returned.</span>
-<span class="c1">//	public static int[] dataAndCalculateSortJava7(int[] collection) {</span>
-<span class="c1">//		return Collections.sort(collection);</span>
-<span class="c1">//	}</span>
-
-	<span class="kd">public</span> <span class="kd">static</span> <span class="nc">Object</span><span class="o">[]</span> <span class="nf">dataAndCalculateSort</span><span class="o">(</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">collection</span><span class="o">)</span> <span class="o">{</span>
-		<span class="k">return</span> <span class="n">collection</span><span class="o">.</span><span class="na">stream</span><span class="o">().</span><span class="na">sorted</span><span class="o">((</span><span class="n">s1</span><span class="o">,</span> <span class="n">s2</span><span class="o">)</span> <span class="o">-&gt;</span> <span class="n">s1</span><span class="o">.</span><span class="na">compareTo</span><span class="o">(</span><span class="n">s2</span><span class="o">)).</span><span class="na">toArray</span><span class="o">();</span>
-	<span class="o">}</span>
-
-	<span class="c1">// Data and calculate 4 - Oldest person are returned.</span>
-	<span class="kd">public</span> <span class="kd">static</span> <span class="nc">Person</span> <span class="nf">getOldestPerson7</span><span class="o">(</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">Person</span><span class="o">&gt;</span> <span class="n">people</span><span class="o">)</span> <span class="o">{</span>
-		<span class="nc">Person</span> <span class="n">oldestPerson</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Person</span><span class="o">(</span><span class="s">""</span><span class="o">,</span> <span class="mi">0</span><span class="o">);</span>
-		<span class="k">for</span> <span class="o">(</span><span class="nc">Person</span> <span class="n">person</span> <span class="o">:</span> <span class="n">people</span><span class="o">)</span> <span class="o">{</span>
-			<span class="k">if</span> <span class="o">(</span><span class="n">person</span><span class="o">.</span><span class="na">getAge</span><span class="o">()</span> <span class="o">&gt;</span> <span class="n">oldestPerson</span><span class="o">.</span><span class="na">getAge</span><span class="o">())</span> <span class="o">{</span>
-				<span class="n">oldestPerson</span> <span class="o">=</span> <span class="n">person</span><span class="o">;</span>
-			<span class="o">}</span>
-		<span class="o">}</span>
-		<span class="k">return</span> <span class="n">oldestPerson</span><span class="o">;</span>
-	<span class="o">}</span>
-
-	<span class="kd">public</span> <span class="kd">static</span> <span class="nc">Person</span> <span class="nf">getOldestPerson</span><span class="o">(</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">Person</span><span class="o">&gt;</span> <span class="n">people</span><span class="o">)</span> <span class="o">{</span>
-		<span class="k">return</span> <span class="n">people</span><span class="o">.</span><span class="na">stream</span><span class="o">()</span> <span class="c1">// Convert collection to Stream</span>
-				<span class="o">.</span><span class="na">max</span><span class="o">(</span><span class="nc">Comparator</span><span class="o">.</span><span class="na">comparing</span><span class="o">(</span><span class="nl">Person:</span><span class="o">:</span><span class="n">getAge</span><span class="o">))</span> <span class="c1">// Compares people ages</span>
-				<span class="o">.</span><span class="na">get</span><span class="o">();</span> <span class="c1">// Gets stream result</span>
-	<span class="o">}</span>
-<span class="o">}</span></code></pre></figure>
-
-<p><strong>Collectors</strong></p>
-
-<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kn">package</span> <span class="nn">com.rarcos</span><span class="o">;</span>
-
-<span class="kn">import</span> <span class="nn">java.util.ArrayList</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">java.util.Comparator</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">java.util.HashMap</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">java.util.IntSummaryStatistics</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">java.util.List</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">java.util.Map</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">java.util.Optional</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">java.util.Set</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">java.util.stream.Collectors</span><span class="o">;</span>
-
-<span class="kn">import</span> <span class="nn">static</span> <span class="n">java</span><span class="o">.</span><span class="na">util</span><span class="o">.</span><span class="na">stream</span><span class="o">.</span><span class="na">Collectors</span><span class="o">.*;</span>
-
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">CollectorsCollection</span> <span class="o">{</span>
-
-	<span class="kd">private</span> <span class="nf">CollectorsCollection</span><span class="o">()</span> <span class="o">{</span>
-	<span class="o">}</span>
-
-	<span class="c1">// Collectors 1 - Count of elements are returned.</span>
-	<span class="kd">public</span> <span class="kd">static</span> <span class="nc">Long</span> <span class="nf">collectorsCountingJava7</span><span class="o">(</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">collection</span><span class="o">)</span> <span class="o">{</span>
-		<span class="k">return</span> <span class="o">(</span><span class="kt">long</span><span class="o">)</span> <span class="n">collection</span><span class="o">.</span><span class="na">size</span><span class="o">();</span>
-	<span class="o">}</span>
-
-	<span class="kd">public</span> <span class="kd">static</span> <span class="nc">Long</span> <span class="nf">collectorsCounting</span><span class="o">(</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">collection</span><span class="o">)</span> <span class="o">{</span>
-		<span class="k">return</span> <span class="n">collection</span><span class="o">.</span><span class="na">stream</span><span class="o">().</span><span class="na">collect</span><span class="o">(</span><span class="nc">Collectors</span><span class="o">.</span><span class="na">counting</span><span class="o">());</span>
-	<span class="o">}</span>
-
-	<span class="c1">// Collectors 2 - Max of elements are returned.</span>
-<span class="c1">//	public static Long collectorsMaxJava7(List&lt;String&gt; collection) {</span>
-<span class="c1">//		return (long) Collections.max(collection);</span>
-<span class="c1">//	}</span>
-
-	<span class="kd">public</span> <span class="kd">static</span> <span class="nc">Optional</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="nf">collectorsMax</span><span class="o">(</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">collection</span><span class="o">)</span> <span class="o">{</span>
-		<span class="k">return</span> <span class="n">collection</span><span class="o">.</span><span class="na">stream</span><span class="o">().</span><span class="na">collect</span><span class="o">(</span><span class="nc">Collectors</span><span class="o">.</span><span class="na">maxBy</span><span class="o">(</span><span class="nc">Comparator</span><span class="o">.</span><span class="na">naturalOrder</span><span class="o">()));</span>
-	<span class="o">}</span>
-
-	<span class="c1">// Collectors 3 - Sum of elements are returned.</span>
-	<span class="kd">public</span> <span class="kd">static</span> <span class="nc">Double</span> <span class="nf">collectorsSumJava7</span><span class="o">(</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">collection</span><span class="o">)</span> <span class="o">{</span>
-		<span class="kt">double</span> <span class="n">sum</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
-		<span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">collection</span><span class="o">.</span><span class="na">size</span><span class="o">();</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
-			<span class="n">sum</span> <span class="o">=</span> <span class="n">sum</span> <span class="o">+</span> <span class="n">collection</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">i</span><span class="o">);</span>
-		<span class="o">}</span>
-		<span class="k">return</span> <span class="n">sum</span><span class="o">;</span>
-	<span class="o">}</span>
-
-	<span class="kd">public</span> <span class="kd">static</span> <span class="nc">Integer</span> <span class="nf">collectorsSum</span><span class="o">(</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">collection</span><span class="o">)</span> <span class="o">{</span>
-		<span class="k">return</span> <span class="n">collection</span><span class="o">.</span><span class="na">stream</span><span class="o">().</span><span class="na">collect</span><span class="o">(</span><span class="nc">Collectors</span><span class="o">.</span><span class="na">summingInt</span><span class="o">(</span><span class="n">v</span> <span class="o">-&gt;</span> <span class="n">v</span><span class="o">.</span><span class="na">intValue</span><span class="o">()));</span>
-	<span class="o">}</span>
-
-	<span class="c1">// Collectors 4 - Average of elements are returned.</span>
-	<span class="kd">public</span> <span class="kd">static</span> <span class="nc">Double</span> <span class="nf">collectorsAverageJava7</span><span class="o">(</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">collection</span><span class="o">)</span> <span class="o">{</span>
-		<span class="kt">double</span> <span class="n">sum</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
-		<span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">collection</span><span class="o">.</span><span class="na">size</span><span class="o">();</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
-			<span class="n">sum</span> <span class="o">=</span> <span class="n">sum</span> <span class="o">+</span> <span class="n">collection</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">i</span><span class="o">);</span>
-		<span class="o">}</span>
-		<span class="k">return</span> <span class="n">sum</span> <span class="o">/</span> <span class="n">collection</span><span class="o">.</span><span class="na">size</span><span class="o">();</span>
-	<span class="o">}</span>
-
-	<span class="kd">public</span> <span class="kd">static</span> <span class="nc">Double</span> <span class="nf">collectorsAverage</span><span class="o">(</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">collection</span><span class="o">)</span> <span class="o">{</span>
-		<span class="k">return</span> <span class="n">collection</span><span class="o">.</span><span class="na">stream</span><span class="o">().</span><span class="na">collect</span><span class="o">(</span><span class="nc">Collectors</span><span class="o">.</span><span class="na">averagingInt</span><span class="o">(</span><span class="nl">Integer:</span><span class="o">:</span><span class="n">intValue</span><span class="o">));</span>
-	<span class="o">}</span>
-
-	<span class="c1">// Collectors 5 - Summarizing of elements are returned.</span>
-	<span class="kd">public</span> <span class="kd">static</span> <span class="nc">IntSummaryStatistics</span> <span class="nf">collectorsSummarizing</span><span class="o">(</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">collection</span><span class="o">)</span> <span class="o">{</span>
-		<span class="k">return</span> <span class="n">collection</span><span class="o">.</span><span class="na">stream</span><span class="o">().</span><span class="na">collect</span><span class="o">(</span><span class="nc">Collectors</span><span class="o">.</span><span class="na">summarizingInt</span><span class="o">(</span><span class="nl">Integer:</span><span class="o">:</span><span class="n">intValue</span><span class="o">));</span>
-	<span class="o">}</span>
-
-	<span class="c1">// Collectors 6 - Join of elements are returned.</span>
-	<span class="kd">public</span> <span class="kd">static</span> <span class="nc">String</span> <span class="nf">collectorsJoining</span><span class="o">(</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">collection</span><span class="o">)</span> <span class="o">{</span>
-		<span class="k">return</span> <span class="n">collection</span><span class="o">.</span><span class="na">stream</span><span class="o">().</span><span class="na">sorted</span><span class="o">().</span><span class="na">map</span><span class="o">(</span><span class="nl">Object:</span><span class="o">:</span><span class="n">toString</span><span class="o">).</span><span class="na">collect</span><span class="o">(</span><span class="nc">Collectors</span><span class="o">.</span><span class="na">joining</span><span class="o">(</span><span class="s">", "</span><span class="o">));</span>
-	<span class="o">}</span>
-
-	<span class="c1">// Collectors 7 - Group by of elements are returned.</span>
-	<span class="kd">public</span> <span class="kd">static</span> <span class="nc">Map</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">,</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">Person</span><span class="o">&gt;&gt;</span> <span class="nf">collectorsGroupByNationalityJava7</span><span class="o">(</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">Person</span><span class="o">&gt;</span> <span class="n">people</span><span class="o">)</span> <span class="o">{</span>
-		<span class="nc">Map</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">,</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">Person</span><span class="o">&gt;&gt;</span> <span class="n">map</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">HashMap</span><span class="o">&lt;&gt;();</span>
-		<span class="k">for</span> <span class="o">(</span><span class="nc">Person</span> <span class="n">person</span> <span class="o">:</span> <span class="n">people</span><span class="o">)</span> <span class="o">{</span>
-			<span class="k">if</span> <span class="o">(!</span><span class="n">map</span><span class="o">.</span><span class="na">containsKey</span><span class="o">(</span><span class="n">person</span><span class="o">.</span><span class="na">getNationality</span><span class="o">()))</span> <span class="o">{</span>
-				<span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">person</span><span class="o">.</span><span class="na">getNationality</span><span class="o">(),</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;());</span>
-			<span class="o">}</span>
-			<span class="n">map</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">person</span><span class="o">.</span><span class="na">getNationality</span><span class="o">()).</span><span class="na">add</span><span class="o">(</span><span class="n">person</span><span class="o">);</span>
-		<span class="o">}</span>
-		<span class="k">return</span> <span class="n">map</span><span class="o">;</span>
-	<span class="o">}</span>
-
-	<span class="kd">public</span> <span class="kd">static</span> <span class="nc">Map</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">,</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">Person</span><span class="o">&gt;&gt;</span> <span class="nf">collectorsGroupByNationality</span><span class="o">(</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">Person</span><span class="o">&gt;</span> <span class="n">people</span><span class="o">)</span> <span class="o">{</span>
-		<span class="k">return</span> <span class="n">people</span><span class="o">.</span><span class="na">stream</span><span class="o">()</span> <span class="c1">// Convert collection to Stream</span>
-				<span class="o">.</span><span class="na">collect</span><span class="o">(</span><span class="n">groupingBy</span><span class="o">(</span><span class="nl">Person:</span><span class="o">:</span><span class="n">getNationality</span><span class="o">));</span> <span class="c1">// Group people by nationality</span>
-	<span class="o">}</span>
-
-	<span class="c1">// Collectors 8 - Collector to set are returned.</span>
-	<span class="kd">public</span> <span class="kd">static</span> <span class="nc">Set</span><span class="o">&lt;</span><span class="nc">Person</span><span class="o">&gt;</span> <span class="nf">collectorsToSet</span><span class="o">(</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">Person</span><span class="o">&gt;</span> <span class="n">people</span><span class="o">)</span> <span class="o">{</span>
-		<span class="k">return</span> <span class="n">people</span><span class="o">.</span><span class="na">stream</span><span class="o">().</span><span class="na">collect</span><span class="o">(</span><span class="nc">Collectors</span><span class="o">.</span><span class="na">toSet</span><span class="o">());</span>
-	<span class="o">}</span>
-
-	<span class="c1">// Collectors 9 - Collector to list are returned.</span>
-	<span class="kd">public</span> <span class="kd">static</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">Person</span><span class="o">&gt;</span> <span class="nf">collectorsToList</span><span class="o">(</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">Person</span><span class="o">&gt;</span> <span class="n">people</span><span class="o">)</span> <span class="o">{</span>
-		<span class="k">return</span> <span class="n">people</span><span class="o">.</span><span class="na">stream</span><span class="o">().</span><span class="na">collect</span><span class="o">(</span><span class="nc">Collectors</span><span class="o">.</span><span class="na">toList</span><span class="o">());</span>
-	<span class="o">}</span>
-
-	<span class="c1">// Collectors 10 - Collector to map are returned.</span>
-	<span class="kd">public</span> <span class="kd">static</span> <span class="nc">Map</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">,</span> <span class="nc">Integer</span><span class="o">&gt;</span> <span class="nf">collectorsToMap</span><span class="o">(</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">Person</span><span class="o">&gt;</span> <span class="n">people</span><span class="o">)</span> <span class="o">{</span>
-		<span class="k">return</span> <span class="n">people</span><span class="o">.</span><span class="na">stream</span><span class="o">().</span><span class="na">collect</span><span class="o">(</span><span class="nc">Collectors</span><span class="o">.</span><span class="na">toMap</span><span class="o">(</span><span class="nl">Person:</span><span class="o">:</span><span class="n">getName</span><span class="o">,</span> <span class="nl">Person:</span><span class="o">:</span><span class="n">getAge</span><span class="o">));</span>
-	<span class="o">}</span>
-<span class="o">}</span></code></pre></figure>
-
-<hr />
-
-<p>El código fuente con los ejerciciós está aquí, he utilizado TDD:</p>
-
-<p><em>Repositorio con el contenido</em></p>
-
-<p><a href="https://github.com/rubenarcos2/java8StreamApi"><img src="/images/pages/repository_small.png" alt="Repositorio" /></a></p>
-
-<h5 id="más-sobre-todas-las-novedades-de-java-8">Más sobre todas las novedades de Java 8:</h5>
-
-<p><a href="https://code.tutsplus.com/es/tutorials/java-8-for-android-development-stream-api-and-date-time-libraries--cms-29904">https://code.tutsplus.com/es/tutorials/java-8-for-android-development-stream-api-and-date-time-libraries–cms-29904</a></p>
-
-<h5 id="más-ejercicios-para-practicar-el-stream-api">Más ejercicios para practicar el stream api:</h5>
-
-<p><a href="https://github.com/vfarcic/java-8-exercises">https://github.com/vfarcic/java-8-exercises</a></p>
-
-<p><a href="https://github.com/OpenWebinarsNet/Curso-java-8-para-programadores-java">https://github.com/OpenWebinarsNet/Curso-java-8-para-programadores-java</a></p>]]></content><author><name></name></author><category term="java" /><category term="stream api" /><summary type="html"><![CDATA[Uso de la Stream Api de Java 8]]></summary></entry></feed>
+<a href="https://webdesignerwall.com/wdw-snippet/bootstrap-cards-in-columns">https://webdesignerwall.com/wdw-snippet/bootstrap-cards-in-columns</a></p>]]></content><author><name></name></author><category term="php" /><category term="spring" /><category term="MVC" /><category term="laravel" /><summary type="html"><![CDATA[Uso del framework Laravel 9 con PHP 8: MVC]]></summary></entry></feed>

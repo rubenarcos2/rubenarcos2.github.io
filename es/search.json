@@ -1,6 +1,22 @@
 [
   
     {
+      "title"    : "Chatbot opensource",
+      "category" : "",
+      "tags"     : "ia, rag, open source, modelos",
+      "url"      : "/2024/05/25/Ollama_api_chatbot/",
+      "date"     : "2024-05-25 09:10:28 +0200"
+    } ,
+  
+    {
+      "title"    : "RAG con modelos de IA open source",
+      "category" : "",
+      "tags"     : "ia, rag, open source, modelos",
+      "url"      : "/2024/05/25/RAG_modelos_open_source/",
+      "date"     : "2024-05-25 08:23:28 +0200"
+    } ,
+  
+    {
       "title"    : "Angular 17 + Spring Boot 3 + Spring Security 6 + JWT",
       "category" : "",
       "tags"     : "javascript, php, angular, laravel, proyecto integrado, gesmerca",
