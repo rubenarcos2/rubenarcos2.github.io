@@ -1,36 +1,403 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="https://rarcos.com/es/feed.xml" rel="self" type="application/atom+xml" /><link href="https://rarcos.com/es/" rel="alternate" type="text/html" /><updated>2024-05-25T10:10:28+02:00</updated><id>https://rarcos.com/feed.xml</id><title type="html">Rubén Arcos</title><subtitle>Full Stack Developer</subtitle><entry xml:lang="es"><title type="html">Chatbot opensource</title><link href="https://rarcos.com/es/2024/05/25/Ollama_api_chatbot/" rel="alternate" type="text/html" title="Chatbot opensource" /><published>2024-05-25T09:10:28+02:00</published><updated>2024-05-25T09:10:28+02:00</updated><id>https://rarcos.com/2024/05/25/Ollama_api_chatbot</id><content type="html" xml:base="https://rarcos.com/2024/05/25/Ollama_api_chatbot/"><![CDATA[<h1 id="creación-de-un-chatbot-con-modelo-opensource">Creación de un chatbot con modelo opensource</h1>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="https://rarcos.com/es/feed.xml" rel="self" type="application/atom+xml" /><link href="https://rarcos.com/es/" rel="alternate" type="text/html" /><updated>2024-05-25T18:25:54+02:00</updated><id>https://rarcos.com/feed.xml</id><title type="html">Rubén Arcos</title><subtitle>Full Stack Developer</subtitle><entry xml:lang="es"><title type="html">Chatbot opensource</title><link href="https://rarcos.com/es/2024/05/25/Ollama_api_chatbot/" rel="alternate" type="text/html" title="Chatbot opensource" /><published>2024-05-25T09:10:28+02:00</published><updated>2024-05-25T09:10:28+02:00</updated><id>https://rarcos.com/2024/05/25/Ollama_api_chatbot</id><content type="html" xml:base="https://rarcos.com/2024/05/25/Ollama_api_chatbot/"><![CDATA[<p>La creación de un chatbot para una página web, es una tarea que se suele contratar a un proveedor de servicios, pero en este caso voy a contar como se puede realizar de principio a fin y además con un conjunto de herramientas que son libres y gratuitas.</p>
 
-<p style="text-align: justify">
-Los bot de charla o bot conversacional (en inglés: chatbot ),​ son aplicaciones software que surgen en los años 60, y que simulan mantener una conversación con una persona al proveer respuestas automáticas, las cuales son previamente establecidas por un conjunto de expertos a entradas realizadas por el usuario. Estos bot, también conocidos como sistemas expertos, utilizan el razonamiento basado en casos (CBR: case base reasoning).
+<h1 id="creación-de-un-chatbot-con-modelo-opensource">Creación de un chatbot con modelo opensource</h1>
 
-Habitualmente, la conversación se establece mediante texto, aunque también hay modelos que disponen de una interfaz de usuario multimedia que permiten la entrada auditiva. Más recientemente, algunos comienzan a utilizar programas conversores de texto a sonido (CTV), dotando de mayor realismo a la interacción con el usuario y ayudando a reducir el tiempo de respuesta.
+<p>Los bot de charla o bot conversacional (en inglés: chatbot), son aplicaciones software que surgen en los años 60, y que simulan mantener una conversación con una persona al proveer respuestas automáticas, las cuales son previamente establecidas por un conjunto de expertos a entradas realizadas por el usuario. Estos bot, también conocidos como sistemas expertos, utilizan el razonamiento basado en casos (CBR: case base reasoning).</p>
 
-Para establecer una conversación, han de utilizarse frases fácilmente comprensibles y que sean coherentes, aunque la mayoría de los bot conversacionales no consiguen comprender del todo. En su lugar, tienen en cuenta las palabras o frases del interlocutor, que les permitirán usar una serie de respuestas preparadas de antemano. Estos son capaces de reconocer la manera en la que una frase está formulada gracias a una serie de patrones comparativos preestablecidos, y de este modo, basándose en las diferentes variables de dicha frase, presentan una respuesta correspondiente. De esta manera, el bot es capaz de seguir una conversación con más o menos lógica, pero sin saber realmente de qué está hablando.</p>
+<p>Habitualmente, la conversación se establece mediante texto, aunque también hay modelos que disponen de una interfaz de usuario multimedia que permiten la entrada auditiva. Más recientemente, algunos comienzan a utilizar programas conversores de texto a sonido (CTV), dotando de mayor realismo a la interacción con el usuario y ayudando a reducir el tiempo de respuesta.</p>
+
+<p>Para establecer una conversación, han de utilizarse frases fácilmente comprensibles y que sean coherentes, aunque la mayoría de los bot conversacionales no consiguen comprender del todo. En su lugar, tienen en cuenta las palabras o frases del interlocutor, que les permitirán usar una serie de respuestas preparadas de antemano. Estos son capaces de reconocer la manera en la que una frase está formulada gracias a una serie de patrones comparativos preestablecidos, y de este modo, basándose en las diferentes variables de dicha frase, presentan una respuesta correspondiente. De esta manera, el bot es capaz de seguir una conversación con más o menos lógica, pero sin saber realmente de qué está hablando.</p>
+
+<blockquote>
+  <p>Para tener más información te recomiendo visites el siguiente <a href="https://es.wikipedia.org/wiki/Bot_conversacional">artículo</a> de wikipedia de donde se ha obtenido este fragmento.</p>
+</blockquote>
+
+<h1 id="qué-es-retrieval-augmented-generation-rag">¿Qué es Retrieval-Augmented Generation (RAG)?</h1>
+
+<p>Es el aumento de conocimiento que se aplica a un LLM con datos que no ha sido entrenado. Esto permite al sistema de IA generativa proporcionar respuestas contextualmente adecuadas a las consultas, así como basar dichas respuestas en datos extremadamente recientes.</p>
+
+<p>En pocas palabras, la RAG ayuda a los LLM a proporcionar respuestas más idóneas.</p>
+
+<p><strong>Conclusiones clave</strong></p>
 
 <ul>
-  <li>Para tener más información te recomiendo visites el siguiente <a href="https://es.wikipedia.org/wiki/Bot_conversacional">artículo</a> de wikipedia de donde se ha obtenido este fragmento.</li>
+  <li>La RAG es una técnica de inteligencia artificial relativamente nueva que mejora la calidad de la IA generativa al permitir a grandes modelos de lenguaje (LLM) aprovechar recursos de datos adicionales sin necesidad de volver a entrenarlos.</li>
+  <li>Los modelos RAG crean repositorios de conocimientos basados en los datos de la propia organización. Estos repositorios se pueden actualizar continuamente para ayudar a la IA generativa a brindar respuestas adaptadas al contexto y oportunas.</li>
+  <li>Los chatbots y otros sistemas conversacionales que utilizan el procesamiento del lenguaje natural pueden beneficiarse enormemente de la RAG y la IA generativa.</li>
+  <li>La implementación de RAG requiere tecnologías como bases de datos vectoriales, que permiten la codificación rápida de nuevos datos y la búsqueda en esos datos para alimentar el LLM.</li>
 </ul>
+
+<h2 id="cómo-funciona">¿Cómo funciona?</h2>
+
+<p>Los datos de esa biblioteca de conocimientos se procesan en representaciones numéricas utilizando un tipo especial de algoritmo llamado modelo de lenguaje embebido y se almacenan en una base de datos vectorial, en la que se puede buscar rápidamente para recuperar la información contextual correcta.</p>
+
+<blockquote>
+  <p>Para tener más información te recomiendo visites el siguiente <a href="https://www.oracle.com/es/artificial-intelligence/generative-ai/retrieval-augmented-generation-rag/">artículo</a> de Oracle de donde se ha obtenido este fragmento.</p>
+</blockquote>
 
 <h1 id="arquitectura">Arquitectura</h1>
 
-<p><img src="/images/pages/ollama_api.jpg" alt="Architecture" title="Ollama API Architecture" /></p>
+<p><img src="/images/pages/ollama_api_arquitectura.jpg" alt="Architecture" title="Ollama API Architecture" /></p>
+
+<p>Nosotros vamos a ejecutar nuestro modelo LLM en un servidor local. Además vamos a tener la posibilidad de cambiar de modelo desde una interfaz amigable de administración, que nos permite descargarnos el modelo que deseemos utilizar e incluso poder probarlo con antelación. Por ello, he elegido <a href="https://ollama.com/">Ollama</a> que tiene un <a href="https://ollama.com/library">conjunto de modelos</a> opensource bastante interesante. Vamos a ir viendo paso a paso cómo ir instalando y configurando nuestro software.</p>
+
+<p>Pero antes de nada, vamos a ver una breve descripción de cada uno de los elementos que vamos a instalar:</p>
 
 <h2 id="ollama">Ollama</h2>
 
+<p>Ollama hace que sea muy fácil ejecutar LLM de código abierto localmente. Puede esperar un rendimiento decente incluso en portátiles pequeños. Ollama es una alternativa a Hugging Face para ejecutar modelos localmente. Las bibliotecas de Hugging Face se ejecutan sobre Tensorflow o Torch. Ollama usa llama.cpp como tiempo de ejecución subyacente. Esto hace que sea muy fácil comenzar con Ollama. Ni siquiera necesitas tener Python instalado.</p>
+
 <h2 id="langchain">LangChain</h2>
+
+<p>LangChain es un marco de trabajo de código abierto para crear aplicaciones basadas en modelos de lenguaje de gran tamaño (LLM). Los LLM son grandes modelos de aprendizaje profundo entrenados previamente con grandes cantidades de datos que pueden generar respuestas a las consultas de los usuarios, por ejemplo, responder preguntas o crear imágenes a partir de peticiones basadas en texto. LangChain proporciona herramientas y abstracciones para mejorar la personalización, precisión y relevancia de la información que generan los modelos. Por ejemplo, los desarrolladores pueden usar los componentes de LangChain para crear nuevas cadenas de peticiones o personalizar las plantillas existentes. LangChain también incluye componentes que permiten a los LLM acceder a nuevos conjuntos de datos sin necesidad de repetir el entrenamiento.</p>
+
+<blockquote>
+  <p>Para tener más información te recomiendo visites el siguiente <a href="https://aws.amazon.com/es/what-is/langchain/">artículo</a> de AWS de donde se ha obtenido este fragmento.</p>
+</blockquote>
 
 <h2 id="chromadb">ChromaDb</h2>
 
+<p>ChromaDB es una base de datos especializada en el almacenamiento y recuperación eficiente de información lingüística, incluyendo datos de texto, anotaciones semánticas y sintácticas. ChromaDB es particularmente útil para el almacenamiento y la gestión de grandes cantidades de datos de lenguaje natural, lo que permite a los desarrolladores aprovechar al máximo los avances en algoritmos de aprendizaje automático y análisis de texto.</p>
+
+<blockquote>
+  <p>Para tener más información te recomiendo visites el siguiente <a href="https://brainq.ai/chromadb/">artículo</a> de donde se ha obtenido este fragmento.</p>
+</blockquote>
+
 <h2 id="api-con-flask">API con Flask</h2>
+
+<p>Flask es un micro marco de trabajo web de Python que proporciona las herramientas necesarias para crear aplicaciones web de manera rápida y sencilla. Aunque es un micro marco, Flask es altamente modular y permite agregar fácilmente extensiones para agregar funcionalidades adicionales.</p>
+
+<blockquote>
+  <p>Para tener más información te recomiendo visites el siguiente <a href="https://datascientest.com/es/programacion-de-api-web-en-python-con-flask">artículo</a> de donde se ha obtenido este fragmento y donde puedes seguir el tutorial detallado de como crear una API con Flask.</p>
+</blockquote>
 
 <h2 id="el-chatbot-web">El Chatbot web</h2>
 
-<p>Haga clic sobre la burbuja morada, para abrir el Chatbot</p>
+<p>Me he basado en esta integración de un chatbot web, para utilizar los recursos y adaptarlo a nuestro modelo opensource alojado en Ollama.</p>
+
+<p>El código fuente se encuentra <a href="https://github.com/galaxyofai/chatgpt_flask_webapp">aquí</a>.</p>
+
+<p>Y un explicación detallada de como integrarlo con otras API, se encuentra <a href="https://galaxyofai.com/building-a-flask-chat-web-app-with-openais-chatgpt-api/">aquí</a>.</p>
+
+<h1 id="la-demostración">La demostración</h1>
+
+<p>A continuación se ha embebido la aplicación realizada. Esta está alojada en un servidor de unas características muy limitadas para la ejecución de desarrollos de inteligencia artificial. Pero como demostración de que es posible, aquí se encuentra en funcionamiento:</p>
+
+<p><em>Haga clic sobre la burbuja morada, para abrir el Chatbot</em></p>
 
 <p style="text-align: center">
-  <iframe style="border: 0" id="chatbot" title="Chatbot" width="400" height="600" src="https://vps.rarcos.com:10453/">
+  <iframe style="border: 0" id="chatbot" title="Chatbot" width="390" height="600" src="https://vps.rarcos.com:10453/">
   </iframe>
 </p>
+
+<h1 id="el-tutorial">El tutorial</h1>
+
+<p>Como viene siendo habitual en esta página web, vamos a utilizar un entorno dockerizado que será el encargado de levantar Ollama, el administrador web de Ollama y nuestra aplicación de ChatBot web.</p>
+
+<p>Para ello tenemos los siguiente scripts de <em>docker compose</em>:</p>
+
+<h3 id="script-de-ejecución-más-completo-sin-gpu">Script de ejecución más completo (sin GPU)</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>version: '3.8'
+services:
+  app:
+    build: .
+    container_name: ollama-app
+    ports:
+      - 8002:8002
+      - 5678:5678
+    volumes:
+      - ./app:/usr/src/app/
+    command: python app.py
+    restart: always
+    depends_on:
+      - ollama
+      - ollama-webui
+    networks:
+      - ollama-docker
+
+  ollama:
+    image: ollama/ollama:latest
+    ports:
+      - 11434:11434
+    volumes:
+      - .:/code
+      - ./ollama/ollama:/root/.ollama
+    container_name: ollama
+    pull_policy: always
+    tty: true
+    restart: always
+    networks:
+      - ollama-docker
+
+  ollama-webui:
+    image: ghcr.io/open-webui/open-webui:main
+    container_name: ollama-webui
+    volumes:
+      - ./ollama/ollama-webui:/app/backend/data
+    depends_on:
+      - ollama
+    ports:
+      - 8080:8080
+    environment:
+      - '/ollama/api=http://ollama:11434/api'
+    extra_hosts:
+      - host.docker.internal:host-gateway
+    restart: unless-stopped
+    networks:
+      - ollama-docker
+
+networks:
+  ollama-docker:
+    external: false
+
+</code></pre></div></div>
+
+<h3 id="el-script-mínimo-sin-gpu">El script mínimo (sin GPU)</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>services:
+
+  # ollama and API
+  ollama:
+    image: ollama/ollama:latest
+    container_name: ollama
+    tty: true
+    restart: unless-stopped
+    # Expose Ollama API outside the container stack
+    ports:
+      - 11434:11434
+      - 53:53
+    volumes:
+      - ollama:/root/.ollama
+    command: pip install -r requirements.txt
+
+
+  # webui, nagivate to http://localhost:3000/ to use
+  open-webui:
+    image: ghcr.io/open-webui/open-webui:main
+    container_name: open-webui
+    volumes:
+      - open-webui:/app/backend/data
+    depends_on:
+      - ollama
+    ports:
+      - 10453:8080
+    environment:
+      - "OLLAMA_API_BASE_URL=http://ollama:11434/api"
+    extra_hosts:
+      - host.docker.internal:host-gateway
+    restart: unless-stopped
+
+volumes:
+  ollama: {}
+  open-webui: {}
+</code></pre></div></div>
+<h3 id="el-script-para-utilización-de-gpu">El script para utilización de GPU</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>version: '3.8'
+
+services:
+  app:
+    build: .
+    ports:
+      - 8000:8000
+      - 5678:5678
+    volumes:
+      - .:/code
+    command: uvicorn src.main:app --host 0.0.0.0 --port 8000 --reload
+    restart: always
+    depends_on:
+      - ollama
+      - ollama-webui
+    networks:
+      - ollama-docker
+      
+  ollama:
+    volumes:
+      - ./ollama/ollama:/root/.ollama
+    container_name: ollama
+    pull_policy: always
+    tty: true
+    restart: unless-stopped
+    image: ollama/ollama:latest
+    ports:
+      - 11434:11434
+    networks:
+      - ollama-docker
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+
+  ollama-webui:
+    image: ghcr.io/open-webui/open-webui:main
+    container_name: ollama-webui
+    volumes:
+      - ./ollama/ollama-webui:/app/backend/data
+    depends_on:
+      - ollama
+    ports:
+      - 8080:8080
+    environment:
+      - '/ollama/api=http://ollama:11434/api'
+    extra_hosts:
+      - host.docker.internal:host-gateway
+    restart: unless-stopped
+    networks:
+      - ollama-docker
+
+networks:
+  ollama-docker:
+    external: false
+
+</code></pre></div></div>
+
+<p>Las rutas de acceso que se establecen son:</p>
+<ul>
+  <li>Página web de administración de Ollama: <a href="http://localhost:8080">http://localhost:8080</a></li>
+  <li>Motor de Ollana: <a href="http://localhost:11434">http://localhost:11434</a></li>
+  <li>Aplicación web: <a href="http://localhost:8002">http://localhost:8002</a></li>
+</ul>
+
+<blockquote>
+  <p>Para tener más información te recomiendo visites el siguiente <a href="https://github.com/valiantlynx/ollama-docker/">repositorio</a> de donde se ha obtenido este script y donde hay más ejemplos e información.</p>
+</blockquote>
+
+<h3 id="la-instalación-del-modelo-desde-el-administrador-web-de-ollama">La instalación del modelo desde el administrador web de Ollama</h3>
+
+<p>Una vez tenemos el docker levantado, tan solo tenemos que entrar a la url <a href="http://localhost:8080">http://localhost:8080</a>, descargar e instalar el modelo.</p>
+
+<p>A continuación se muestra un video de cómo se realiza:</p>
+
+<p><img src="https://docs.openwebui.com/assets/images/demo-6793d95448aa180bca8dafbd21aa91b5.gif" alt="video" /></p>
+
+<p>En nuestro caso introduciremos el modelo: <em>mistral:instruct</em></p>
+
+<h3 id="la-aplicación-en-consola-el-chatbot">La aplicación en consola (el chatbot)</h3>
+
+<p>Luego tenemos la aplicación en consola que consume el modelo LLM, en nuestro ejemplo se ha utilizado <em>Mistral</em> por sus gran rendimiento similar a Llama y por ser opensource. También tenemos la especificación del promt de consulta, con unas instrucciones previas a las consultas. Y el método de entrenamiento RAG.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>from langchain_community.vectorstores import Chroma
+from langchain_community.chat_models import ChatOllama
+from langchain_community.embeddings.fastembed import FastEmbedEmbeddings
+from langchain_community.document_loaders import WebBaseLoader
+from langchain.text_splitter import CharacterTextSplitter
+from langchain_core.prompts import ChatPromptTemplate
+from langchain.chains.combine_documents import create_stuff_documents_chain
+from langchain.chains import create_retrieval_chain
+import sys
+ 
+class ChatWebDoc:
+    vector_store = None
+    retriever = None
+    chain = None
+ 
+    def __init__(self):
+        self.model = ChatOllama(model="mistral:instruct")
+        #Loading embedding
+        self.embedding = FastEmbedEmbeddings()
+ 
+        self.text_splitter = CharacterTextSplitter(chunk_size=1024, chunk_overlap=100)
+        self.prompt = ChatPromptTemplate.from_messages(
+        [
+            ("system", 
+"""You are an assistant for question-answering tasks. Use only the following 
+context to answer the question. If you don't know the answer, just say that you don't know.
+ 
+CONTEXT:
+ 
+{context}
+"""),
+            ("human", "{input}"),
+        ]
+    )
+ 
+    def ingest(self, url_list):
+        #Load web pages
+        docs = WebBaseLoader(url_list).load()
+        chunks = self.text_splitter.split_documents(docs)
+ 
+        #Create vector store
+        vector_store = Chroma.from_documents(documents=chunks, 
+            embedding=self.embedding, persist_directory="./chroma_db")
+ 
+    def load(self):
+        #Load vector store
+        vector_store = Chroma(persist_directory="./chroma_db", 
+            embedding_function=self.embedding)
+ 
+        #Create chain
+        self.retriever = vector_store.as_retriever(
+            search_type="similarity_score_threshold",
+            search_kwargs={
+                "k": 3,
+                "score_threshold": 0.5,
+            },
+        )
+ 
+        document_chain = create_stuff_documents_chain(self.model, self.prompt)
+        self.chain = create_retrieval_chain(self.retriever, document_chain)
+ 
+    def ask(self, query: str):
+        if not self.chain:
+            self.load()
+ 
+        result = self.chain.invoke({"input": query})
+ 
+        print(result["answer"])
+        for doc in result["context"]:
+            print("Source: ", doc.metadata["source"])
+ 
+ 
+def build():
+    w = ChatWebDoc()
+    w.ingest([
+        "https://www.webagesolutions.com/courses/WA3446-comprehensive-angular-programming",
+        "https://www.webagesolutions.com/courses/AZ-1005-configuring-azure-virtual-desktop-for-the-enterprise",
+        "https://www.webagesolutions.com/courses/AZ-305T00-designing-microsoft-azure-infrastructure-solutions",
+        ])
+ 
+def chat():
+    w = ChatWebDoc()
+ 
+    w.load()
+ 
+    while True:
+        query = input("&gt;&gt;&gt; ")
+ 
+        if len(query) == 0:
+            continue
+ 
+        if query == "/exit":
+            break
+         
+        w.ask(query)
+ 
+if len(sys.argv) &lt; 2:
+    chat()
+elif sys.argv[1] == "--ingest":
+    build()
+</code></pre></div></div>
+
+<p>La ejecución del entrenamiento RAG de las web provistas anteriorement en el programa anterior se realiza con el comando:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>python rag-test.py --ingest
+</code></pre></div></div>
+
+<p>La interactuación con el model una vez entrenado:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>python rag-test.py
+</code></pre></div></div>
+
+<blockquote>
+  <p>Recomiendo ver con mayor detalle esta <a href="https://mobiarch.wordpress.com/2024/02/19/run-rag-locally-using-mistral-ollama-and-langchain/">página web</a> donde se trata esta misma aplicación.</p>
+</blockquote>
+
+<h2 id="la-aplicación-web-el-chatbot">La aplicación web (el Chatbot)</h2>
+
+<p>Queda pendiente para una futura actualización del artículo que os muestre como integrar en la aplicación web el motor LLM, interactuar con el, entrenarlo con el método RAG y levantarlo en el servidor web. ¡Hasta pronto! 😉</p>
 
 <hr />
 
