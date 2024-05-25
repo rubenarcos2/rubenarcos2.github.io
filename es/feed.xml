@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="https://rarcos.com/es/feed.xml" rel="self" type="application/atom+xml" /><link href="https://rarcos.com/es/" rel="alternate" type="text/html" /><updated>2024-05-25T09:30:27+02:00</updated><id>https://rarcos.com/feed.xml</id><title type="html">Rubén Arcos</title><subtitle>Full Stack Developer</subtitle><entry xml:lang="es"><title type="html">Chatbot opensource</title><link href="https://rarcos.com/es/2024/05/25/Ollama_api_chatbot/" rel="alternate" type="text/html" title="Chatbot opensource" /><published>2024-05-25T09:10:28+02:00</published><updated>2024-05-25T09:10:28+02:00</updated><id>https://rarcos.com/2024/05/25/Ollama_api_chatbot</id><content type="html" xml:base="https://rarcos.com/2024/05/25/Ollama_api_chatbot/"><![CDATA[<h1 id="creación-de-un-chatbot-con-modelo-opensource">Creación de un chatbot con modelo opensource</h1>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="https://rarcos.com/es/feed.xml" rel="self" type="application/atom+xml" /><link href="https://rarcos.com/es/" rel="alternate" type="text/html" /><updated>2024-05-25T09:46:05+02:00</updated><id>https://rarcos.com/feed.xml</id><title type="html">Rubén Arcos</title><subtitle>Full Stack Developer</subtitle><entry xml:lang="es"><title type="html">Chatbot opensource</title><link href="https://rarcos.com/es/2024/05/25/Ollama_api_chatbot/" rel="alternate" type="text/html" title="Chatbot opensource" /><published>2024-05-25T09:10:28+02:00</published><updated>2024-05-25T09:10:28+02:00</updated><id>https://rarcos.com/2024/05/25/Ollama_api_chatbot</id><content type="html" xml:base="https://rarcos.com/2024/05/25/Ollama_api_chatbot/"><![CDATA[<h1 id="creación-de-un-chatbot-con-modelo-opensource">Creación de un chatbot con modelo opensource</h1>
 
 <p style="text-align: justify">
 Los bot de charla o bot conversacional (en inglés: chatbot ),​ son aplicaciones software que surgen en los años 60, y que simulan mantener una conversación con una persona al proveer respuestas automáticas, las cuales son previamente establecidas por un conjunto de expertos a entradas realizadas por el usuario. Estos bot, también conocidos como sistemas expertos, utilizan el razonamiento basado en casos (CBR: case base reasoning).
@@ -24,6 +24,13 @@ Para establecer una conversación, han de utilizarse frases fácilmente comprens
 <h2 id="api-con-flask">API con Flask</h2>
 
 <h2 id="el-chatbot-web">El Chatbot web</h2>
+
+<p>Haga clic sobre la burbuja morada, para abrir el Chatbot</p>
+
+<p style="text-align: center">
+  <iframe style="border: 0" id="chatbot" title="Chatbot" width="400" height="600" src="https://vps.rarcos.com:10453/">
+  </iframe>
+</p>
 
 <hr />
 

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="https://rarcos.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://rarcos.com/" rel="alternate" type="text/html" /><updated>2024-05-25T09:30:22+02:00</updated><id>https://rarcos.com/feed.xml</id><title type="html">Rubén Arcos</title><subtitle>Full Stack Developer</subtitle><entry xml:lang="en"><title type="html">Opensource Chatbot</title><link href="https://rarcos.com/2024/05/25/Ollama_api_chatbot/" rel="alternate" type="text/html" title="Opensource Chatbot" /><published>2024-05-25T09:10:28+02:00</published><updated>2024-05-25T09:10:28+02:00</updated><id>https://rarcos.com/2024/05/25/Ollama_api_chatbot</id><content type="html" xml:base="https://rarcos.com/2024/05/25/Ollama_api_chatbot/"><![CDATA[<h1 id="creating-a-chatbot-with-an-opensource-model">Creating a chatbot with an opensource model</h1>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="https://rarcos.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://rarcos.com/" rel="alternate" type="text/html" /><updated>2024-05-25T09:46:03+02:00</updated><id>https://rarcos.com/feed.xml</id><title type="html">Rubén Arcos</title><subtitle>Full Stack Developer</subtitle><entry xml:lang="en"><title type="html">Opensource Chatbot</title><link href="https://rarcos.com/2024/05/25/Ollama_api_chatbot/" rel="alternate" type="text/html" title="Opensource Chatbot" /><published>2024-05-25T09:10:28+02:00</published><updated>2024-05-25T09:10:28+02:00</updated><id>https://rarcos.com/2024/05/25/Ollama_api_chatbot</id><content type="html" xml:base="https://rarcos.com/2024/05/25/Ollama_api_chatbot/"><![CDATA[<h1 id="creating-a-chatbot-with-an-opensource-model">Creating a chatbot with an opensource model</h1>
 
 <p style="text-align: justify">
 A chatbot (originally chatterbot) is a software application or web interface that is designed to mimic human conversation through text or voice interactions. Modern chatbots are typically online and use generative artificial intelligence systems that are capable of maintaining a conversation with a user in natural language and simulating the way a human would behave as a conversational partner. Such chatbots often use deep learning and natural language processing, but simpler chatbots have existed for decades.
@@ -13,7 +13,7 @@ As chatbots work by predicting responses rather than knowing the meaning of thei
   <li>For more information I recommend you to visit the following <a href="https://es.wikipedia.org/wiki/Bot_conversacional">article</a> from wikipedia from where this fragment has been obtained.</li>
 </ul>
 
-<h1 id="arquitectura">Arquitectura</h1>
+<h1 id="architecture">Architecture</h1>
 
 <p><img src="/images/pages/ollama_api.jpg" alt="Architecture" title="Ollama API Architecture" /></p>
 
@@ -26,6 +26,13 @@ As chatbots work by predicting responses rather than knowing the meaning of thei
 <h2 id="api-with-flask">API with Flask</h2>
 
 <h2 id="the-web-chatbot">The Web Chatbot</h2>
+
+<p>Click on the purple bubble, to open the Chatbot.</p>
+
+<p style="text-align: center">
+  <iframe style="border: 0" id="chatbot" title="Chatbot" width="400" height="600" src="https://vps.rarcos.com:10453/">
+  </iframe>
+</p>
 
 <hr />
 
