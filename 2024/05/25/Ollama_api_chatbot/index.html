@@ -338,6 +338,10 @@
 
 <p>The application has been embedded below. It is hosted on a server with very limited characteristics for the execution of artificial intelligence developments. But as a demonstration that it is possible, here it is in operation:</p>
 
+<blockquote>
+  <p><img src="/images/pages/aviso_icon.png" alt="Aviso" /> <strong>The chatbot is hosted on a server with few resources</strong><br /><br />This is why it takes a long time to answer. This is precisely what we are looking for, to demonstrate the viability in this type of environment.</p>
+</blockquote>
+
 <p><em>Click on the purple bubble to open the Chatbot</em>.</p>
 
 <p style="text-align: center">
@@ -412,7 +416,6 @@ networks:
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>services:
 
-  # ollama and API
   ollama:
     image: ollama/ollama:latest
     container_name: ollama
@@ -426,8 +429,6 @@ networks:
       - ollama:/root/.ollama
     command: pip install -r requirements.txt
 
-
-  # webui, nagivate to http://localhost:3000/ to use
   open-webui:
     image: ghcr.io/open-webui/open-webui:main
     container_name: open-webui
@@ -436,7 +437,7 @@ networks:
     depends_on:
       - ollama
     ports:
-      - 10453:8080
+      - 8080:8080
     environment:
       - "OLLAMA_API_BASE_URL=http://ollama:11434/api"
     extra_hosts:
