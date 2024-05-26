@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="https://rarcos.com/es/feed.xml" rel="self" type="application/atom+xml" /><link href="https://rarcos.com/es/" rel="alternate" type="text/html" /><updated>2024-05-26T10:55:21+02:00</updated><id>https://rarcos.com/feed.xml</id><title type="html">Rubén Arcos</title><subtitle>Full Stack Developer</subtitle><entry xml:lang="es"><title type="html">Chatbot opensource</title><link href="https://rarcos.com/es/2024/05/25/Ollama_api_chatbot/" rel="alternate" type="text/html" title="Chatbot opensource" /><published>2024-05-25T09:10:28+02:00</published><updated>2024-05-25T09:10:28+02:00</updated><id>https://rarcos.com/2024/05/25/Ollama_api_chatbot</id><content type="html" xml:base="https://rarcos.com/2024/05/25/Ollama_api_chatbot/"><![CDATA[<p>La creación de un chatbot para una página web, es una tarea que se suele contratar a un proveedor de servicios, pero en este caso voy a contar como se puede realizar de principio a fin y además con un conjunto de herramientas que son libres y gratuitas.</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="https://rarcos.com/es/feed.xml" rel="self" type="application/atom+xml" /><link href="https://rarcos.com/es/" rel="alternate" type="text/html" /><updated>2024-05-26T11:23:51+02:00</updated><id>https://rarcos.com/feed.xml</id><title type="html">Rubén Arcos</title><subtitle>Full Stack Developer</subtitle><entry xml:lang="es"><title type="html">Chatbot opensource</title><link href="https://rarcos.com/es/2024/05/25/Ollama_api_chatbot/" rel="alternate" type="text/html" title="Chatbot opensource" /><published>2024-05-25T09:10:28+02:00</published><updated>2024-05-25T09:10:28+02:00</updated><id>https://rarcos.com/2024/05/25/Ollama_api_chatbot</id><content type="html" xml:base="https://rarcos.com/2024/05/25/Ollama_api_chatbot/"><![CDATA[<p>La creación de un chatbot para una página web, es una tarea que se suele contratar a un proveedor de servicios, pero en este caso voy a contar como se puede realizar de principio a fin y además con un conjunto de herramientas que son libres y gratuitas.</p>
 
 <h1 id="creación-de-un-chatbot-con-modelo-opensource">Creación de un chatbot con modelo opensource</h1>
 
@@ -86,6 +86,13 @@
 <blockquote>
   <p><img src="/images/pages/aviso_icon.png" alt="Aviso" /> <strong>El chatbot está alojado en un servidor con pocos recursos.</strong><br /><br />Por ello tarda bastante en contestar. Es precisamente lo que se busca, demostrar la viabilidad en este tipo de entornos.</p>
 </blockquote>
+
+<p>Preguntas de ejemplo que puede realizar:</p>
+<ul>
+  <li>¿Qué experiencia tiene Rubén Arcos?</li>
+  <li>¿Cuántos años de experiencia tiene Rubén Arcos?</li>
+  <li>¿Qué lenguajes de programación sabe Rubén Arcos?</li>
+</ul>
 
 <p><em>Haga clic sobre la burbuja morada, para abrir el Chatbot</em></p>
 

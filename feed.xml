@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="https://rarcos.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://rarcos.com/" rel="alternate" type="text/html" /><updated>2024-05-26T10:55:19+02:00</updated><id>https://rarcos.com/feed.xml</id><title type="html">Rubén Arcos</title><subtitle>Full Stack Developer</subtitle><entry xml:lang="en"><title type="html">Opensource Chatbot</title><link href="https://rarcos.com/2024/05/25/Ollama_api_chatbot/" rel="alternate" type="text/html" title="Opensource Chatbot" /><published>2024-05-25T09:10:28+02:00</published><updated>2024-05-25T09:10:28+02:00</updated><id>https://rarcos.com/2024/05/25/Ollama_api_chatbot</id><content type="html" xml:base="https://rarcos.com/2024/05/25/Ollama_api_chatbot/"><![CDATA[<p>The creation of a chatbot for a website is a task that is usually contracted to a service provider, but in this case I will tell you how it can be done from start to finish and also with a set of tools that are free and free.</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="https://rarcos.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://rarcos.com/" rel="alternate" type="text/html" /><updated>2024-05-26T11:23:49+02:00</updated><id>https://rarcos.com/feed.xml</id><title type="html">Rubén Arcos</title><subtitle>Full Stack Developer</subtitle><entry xml:lang="en"><title type="html">Opensource Chatbot</title><link href="https://rarcos.com/2024/05/25/Ollama_api_chatbot/" rel="alternate" type="text/html" title="Opensource Chatbot" /><published>2024-05-25T09:10:28+02:00</published><updated>2024-05-25T09:10:28+02:00</updated><id>https://rarcos.com/2024/05/25/Ollama_api_chatbot</id><content type="html" xml:base="https://rarcos.com/2024/05/25/Ollama_api_chatbot/"><![CDATA[<p>The creation of a chatbot for a website is a task that is usually contracted to a service provider, but in this case I will tell you how it can be done from start to finish and also with a set of tools that are free and free.</p>
 
 <h1 id="creation-of-a-chatbot-with-an-opensource-model">Creation of a chatbot with an opensource model</h1>
 
@@ -86,6 +86,13 @@
 <blockquote>
   <p><img src="/images/pages/aviso_icon.png" alt="Aviso" /> <strong>The chatbot is hosted on a server with few resources</strong><br /><br />This is why it takes a long time to answer. This is precisely what we are looking for, to demonstrate the viability in this type of environment.</p>
 </blockquote>
+
+<p>Sample questions you can ask:</p>
+<ul>
+  <li>What experience does Ruben Arcos have?</li>
+  <li>How many years of experience does Ruben Arcos have?</li>
+  <li>What programming languages does Ruben Arcos know?</li>
+</ul>
 
 <p><em>Click on the purple bubble to open the Chatbot</em>.</p>
 
