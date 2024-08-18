@@ -2081,7 +2081,7 @@ table tr:hover {
 
 @media screen and (max-width: 720px) {
   .hero {
-    min-height: 420px;
+    min-height: 200px;
   }
 
   .hero-content .hero-title {
