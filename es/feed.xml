@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="https://rarcos.com/es/feed.xml" rel="self" type="application/atom+xml" /><link href="https://rarcos.com/es/" rel="alternate" type="text/html" /><updated>2024-08-17T09:43:29+02:00</updated><id>https://rarcos.com/feed.xml</id><title type="html">Rubén Arcos</title><subtitle>FullStack, AI &amp; Big Data developer</subtitle><entry xml:lang="es"><title type="html">Chatbot opensource</title><link href="https://rarcos.com/es/2024/05/25/Ollama_api_chatbot/" rel="alternate" type="text/html" title="Chatbot opensource" /><published>2024-05-25T09:10:28+02:00</published><updated>2024-05-25T09:10:28+02:00</updated><id>https://rarcos.com/2024/05/25/Ollama_api_chatbot</id><content type="html" xml:base="https://rarcos.com/2024/05/25/Ollama_api_chatbot/"><![CDATA[<p>La creación de un chatbot para una página web, es una tarea que se suele contratar a un proveedor de servicios, pero en este caso voy a contar como se puede realizar de principio a fin y además con un conjunto de herramientas que son libres y gratuitas.</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="https://rarcos.com/es/feed.xml" rel="self" type="application/atom+xml" /><link href="https://rarcos.com/es/" rel="alternate" type="text/html" /><updated>2024-08-18T11:46:15+02:00</updated><id>https://rarcos.com/feed.xml</id><title type="html">Rubén Arcos</title><subtitle>FullStack, AI &amp; Big Data developer</subtitle><entry xml:lang="es"><title type="html">Chatbot opensource</title><link href="https://rarcos.com/es/2024/05/25/Ollama_api_chatbot/" rel="alternate" type="text/html" title="Chatbot opensource" /><published>2024-05-25T09:10:28+02:00</published><updated>2024-05-25T09:10:28+02:00</updated><id>https://rarcos.com/2024/05/25/Ollama_api_chatbot</id><content type="html" xml:base="https://rarcos.com/2024/05/25/Ollama_api_chatbot/"><![CDATA[<p>La creación de un chatbot para una página web, es una tarea que se suele contratar a un proveedor de servicios, pero en este caso voy a contar como se puede realizar de principio a fin y además con un conjunto de herramientas que son libres y gratuitas.</p>
 
 <h1 id="creación-de-un-chatbot-con-modelo-opensource">Creación de un chatbot con modelo opensource</h1>
 
@@ -517,6 +517,12 @@ La finalidad principal de la aplicación, ha sido la demostración de la puesta 
   <li>API externa: IA (Flask)</li>
 </ul>
 
+<h1 id="presentación-y-exposición-del-proyecto">Presentación y exposición del proyecto</h1>
+
+<iframe src="https://drive.google.com/file/d/1aQDC9SKSf5Bv2m2dRbUT85_k6z7MnYG9/preview" frameborder="0" allowfullscreen="" width="100%" height="400"></iframe>
+
+<iframe type="application/pdf" src="/pdf/Gesmerca_DAW_Presentacion.pdf#toolbar=0" frameborder="0" allowfullscreen="" width="100%" height="500"></iframe>
+
 <h1 id="arquitectura">Arquitectura</h1>
 
 <p>Esta es la arquitectura que se ha utilizado para el entorno de producción en una VPS.</p>
@@ -540,6 +546,10 @@ La finalidad principal de la aplicación, ha sido la demostración de la puesta 
     <img src="https://avatars.githubusercontent.com/u/7658037?s=200&amp;v=4" width="100" alt="Swagger Logo" /> Documentación api online
 </a>
 </p>
+
+<h2 id="documentación-completa-y-diagramas-del-proyecto">Documentación completa y diagramas del proyecto</h2>
+
+<iframe type="application/pdf" src="/pdf/Documentacion_GESMERCA_anticopia_DAW.pdf#toolbar=0" frameborder="0" allowfullscreen="" width="100%" height="990"></iframe>
 
 <hr />
 
