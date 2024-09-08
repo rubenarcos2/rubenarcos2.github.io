@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="https://rarcos.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://rarcos.com/" rel="alternate" type="text/html" /><updated>2024-09-07T20:08:33+02:00</updated><id>https://rarcos.com/feed.xml</id><title type="html">Rubén Arcos</title><subtitle>FullStack, AI &amp; Big Data developer</subtitle><entry xml:lang="en"><title type="html">Opensource Chatbot</title><link href="https://rarcos.com/2024/05/25/Ollama_api_chatbot/" rel="alternate" type="text/html" title="Opensource Chatbot" /><published>2024-05-25T09:10:28+02:00</published><updated>2024-05-25T09:10:28+02:00</updated><id>https://rarcos.com/2024/05/25/Ollama_api_chatbot</id><content type="html" xml:base="https://rarcos.com/2024/05/25/Ollama_api_chatbot/"><![CDATA[<p>The creation of a chatbot for a website is a task that is usually contracted to a service provider, but in this case I will tell you how it can be done from start to finish and also with a set of tools that are free and free.</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="https://rarcos.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://rarcos.com/" rel="alternate" type="text/html" /><updated>2024-09-08T09:09:19+02:00</updated><id>https://rarcos.com/feed.xml</id><title type="html">Rubén Arcos</title><subtitle>FullStack, AI &amp; Big Data developer</subtitle><entry xml:lang="en"><title type="html">Opensource Chatbot</title><link href="https://rarcos.com/2024/05/25/Ollama_api_chatbot/" rel="alternate" type="text/html" title="Opensource Chatbot" /><published>2024-05-25T09:10:28+02:00</published><updated>2024-05-25T09:10:28+02:00</updated><id>https://rarcos.com/2024/05/25/Ollama_api_chatbot</id><content type="html" xml:base="https://rarcos.com/2024/05/25/Ollama_api_chatbot/"><![CDATA[<p>The creation of a chatbot for a website is a task that is usually contracted to a service provider, but in this case I will tell you how it can be done from start to finish and also with a set of tools that are free and free.</p>
 
 <h1 id="creation-of-a-chatbot-with-an-opensource-model">Creation of a chatbot with an opensource model</h1>
 
@@ -472,13 +472,13 @@ The main purpose of the application has been to demonstrate the implementation o
 
 <p>The logical separation of frontend, backend and database.</p>
 
-<p><img src="/images/pages/spring_boot_arquitectura_Front-Back.png" alt="Architecture GesMerCa Frontend-Backend" title="Spring Boot Frontend-Backend architecture" /></p>
+<p><img src="/images/pages/spring_boot_arquitectura_Front-Back.png" alt="Architecture GMCCA Frontend-Backend" title="Spring Boot Frontend-Backend architecture" /></p>
 
 <h2 id="execution-environment---frontend">Execution environment - Frontend</h2>
 
 <p style="text-align: center">
 <a href="https://gesmerca-spring.rarcos.com" target="_blank">
-    <img src="/images/pages/gesmerca.png" width="100" alt="GesMerCa Logo" />Online web demo
+    <img src="/images/pages/gesmerca.png" width="100" alt="GMCCA Logo" />Online web demo
 </a>
 </p>
 
@@ -505,7 +505,7 @@ The main purpose of the application has been to demonstrate the implementation o
 <ul>
   <li><a href="https://www.youtube.com/playlist?list=PL4bT56Uw3S4z9rtwwGvuk1Mjhu5sdLSwX">https://www.youtube.com/playlist?list=PL4bT56Uw3S4z9rtwwGvuk1Mjhu5sdLSwX</a></li>
   <li><a href="https://github.com/cavanosa/tutorial_jwt_BACK">https://github.com/cavanosa/tutorial_jwt_BACK</a></li>
-</ul>]]></content><author><name></name></author><category term="javascript" /><category term="php" /><category term="angular" /><category term="laravel" /><category term="proyecto integrado" /><category term="gesmerca" /><summary type="html"><![CDATA[Management of user access privileges to different elements, spring boot, spring security, JWT and Angular.]]></summary></entry><entry xml:lang="en"><title type="html">Integrated Project DWA</title><link href="https://rarcos.com/2023/06/30/Proyecto_integrado/" rel="alternate" type="text/html" title="Integrated Project DWA" /><published>2023-06-30T16:33:28+02:00</published><updated>2023-06-30T16:33:28+02:00</updated><id>https://rarcos.com/2023/06/30/Proyecto_integrado</id><content type="html" xml:base="https://rarcos.com/2023/06/30/Proyecto_integrado/"><![CDATA[<h1 id="integrated-project-at-the-end-of-the-higher-technician-in-development-of-web-applications">Integrated project at the end of the Higher Technician in Development of Web Applications</h1>
+</ul>]]></content><author><name></name></author><category term="javascript" /><category term="php" /><category term="angular" /><category term="laravel" /><category term="proyecto integrado" /><category term="GMCCA" /><summary type="html"><![CDATA[Management of user access privileges to different elements, spring boot, spring security, JWT and Angular.]]></summary></entry><entry xml:lang="en"><title type="html">Integrated Project DWA</title><link href="https://rarcos.com/2023/06/30/Proyecto_integrado/" rel="alternate" type="text/html" title="Integrated Project DWA" /><published>2023-06-30T16:33:28+02:00</published><updated>2023-06-30T16:33:28+02:00</updated><id>https://rarcos.com/2023/06/30/Proyecto_integrado</id><content type="html" xml:base="https://rarcos.com/2023/06/30/Proyecto_integrado/"><![CDATA[<h1 id="integrated-project-at-the-end-of-the-higher-technician-in-development-of-web-applications">Integrated project at the end of the Higher Technician in Development of Web Applications</h1>
 
 <p style="text-align: justify">
 The main purpose of the application has been to demonstrate the implementation of the knowledge acquired throughout the training cycle of web application development. I have focused the application on the knowledge acquired on the management of user access privileges to different elements (or modules as I will refer to throughout the document) of the application, the management of hierarchical users in different groups (called roles) and the administration by an authorised user. No less relevant has been the application of knowledge in the design and management of relational databases and their implementation platforms. Another factor taken into account was the security of the environment of use (JWT) and of the application (Angular), implementing functionalities such as the encryption of sensitive data, or the prevention of the use of elements sensitive to the injection of automated information (cracking or brute force attacks).
@@ -532,13 +532,13 @@ The main purpose of the application has been to demonstrate the implementation o
 
 <p>The logical separation of frontend, backend and database.</p>
 
-<p><img src="/images/pages/GesMerCa_arquitectura_Front-Back.png" alt="Architecture GesMerCa Frontend-Backend" title="GesMerCa Frontend-Backend architecture" /></p>
+<p><img src="/images/pages/GesMerCa_arquitectura_Front-Back.png" alt="Architecture GMCCA Frontend-Backend" title="GesMerCa Frontend-Backend architecture" /></p>
 
 <h2 id="execution-environment---frontend">Execution environment - Frontend</h2>
 
 <p style="text-align: center">
 <a href="https://gesmerca-laravel.rarcos.com" target="_blank">
-    <img src="/images/pages/gesmerca.png" width="100" alt="GesMerCa Logo" />Online web demo
+    <img src="/images/pages/gesmerca.png" width="100" alt="GMCCA Logo" />Online web demo
 </a>
 </p>
 
@@ -661,7 +661,7 @@ IA</p>
 
 <ul>
   <li><a href="https://stackoverflow.com/questions/30171063/how-to-generate-a-postgresql-dump-from-a-docker-container">https://stackoverflow.com/questions/30171063/how-to-generate-a-postgresql-dump-from-a-docker-container</a></li>
-</ul>]]></content><author><name></name></author><category term="javascript" /><category term="php" /><category term="angular" /><category term="laravel" /><category term="proyecto integrado" /><category term="gesmerca" /><summary type="html"><![CDATA[Integrated project at the end of the Higher Technician in Development of Web Applications (DWA).Angular 16 + Laravel 10 + JWT + IA]]></summary></entry><entry xml:lang="en"><title type="html">Securing VPS</title><link href="https://rarcos.com/2023/03/14/Securizando-VPS/" rel="alternate" type="text/html" title="Securing VPS" /><published>2023-03-14T06:41:00+01:00</published><updated>2023-03-14T06:41:00+01:00</updated><id>https://rarcos.com/2023/03/14/Securizando%20VPS</id><content type="html" xml:base="https://rarcos.com/2023/03/14/Securizando-VPS/"><![CDATA[<p>By way of notes, a standard VPS securisation:</p>
+</ul>]]></content><author><name></name></author><category term="javascript" /><category term="php" /><category term="angular" /><category term="laravel" /><category term="proyecto integrado" /><category term="GMCCA" /><summary type="html"><![CDATA[Integrated project at the end of the Higher Technician in Development of Web Applications (DWA).Angular 16 + Laravel 10 + JWT + IA]]></summary></entry><entry xml:lang="en"><title type="html">Securing VPS</title><link href="https://rarcos.com/2023/03/14/Securizando-VPS/" rel="alternate" type="text/html" title="Securing VPS" /><published>2023-03-14T06:41:00+01:00</published><updated>2023-03-14T06:41:00+01:00</updated><id>https://rarcos.com/2023/03/14/Securizando%20VPS</id><content type="html" xml:base="https://rarcos.com/2023/03/14/Securizando-VPS/"><![CDATA[<p>By way of notes, a standard VPS securisation:</p>
 <ul>
   <li><a href="#seg-basica">Basic security</a></li>
   <li><a href="#ssh">SSH key-based authentication</a></li>
