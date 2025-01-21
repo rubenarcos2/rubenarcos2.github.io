@@ -1,4 +1,184 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="https://rarcos.com/es/feed.xml" rel="self" type="application/atom+xml" /><link href="https://rarcos.com/es/" rel="alternate" type="text/html" /><updated>2024-09-08T09:28:16+02:00</updated><id>https://rarcos.com/feed.xml</id><title type="html">Rubén Arcos</title><subtitle>FullStack, AI &amp; Big Data developer</subtitle><entry xml:lang="es"><title type="html">Chatbot opensource</title><link href="https://rarcos.com/es/2024/05/25/Ollama_api_chatbot/" rel="alternate" type="text/html" title="Chatbot opensource" /><published>2024-05-25T09:10:28+02:00</published><updated>2024-05-25T09:10:28+02:00</updated><id>https://rarcos.com/2024/05/25/Ollama_api_chatbot</id><content type="html" xml:base="https://rarcos.com/2024/05/25/Ollama_api_chatbot/"><![CDATA[<p>La creación de un chatbot para una página web, es una tarea que se suele contratar a un proveedor de servicios, pero en este caso voy a contar como se puede realizar de principio a fin y además con un conjunto de herramientas que son libres y gratuitas.</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="https://rarcos.com/es/feed.xml" rel="self" type="application/atom+xml" /><link href="https://rarcos.com/es/" rel="alternate" type="text/html" /><updated>2025-01-21T19:17:19+01:00</updated><id>https://rarcos.com/feed.xml</id><title type="html">Rubén Arcos</title><subtitle>FullStack, AI &amp; Big Data developer</subtitle><entry xml:lang="es"><title type="html">ALIA el modelo español de IA</title><link href="https://rarcos.com/es/2025/01/21/ALIA_a_spanish_model/" rel="alternate" type="text/html" title="ALIA el modelo español de IA" /><published>2025-01-21T07:23:28+01:00</published><updated>2025-01-21T07:23:28+01:00</updated><id>https://rarcos.com/2025/01/21/ALIA_a_spanish_model</id><content type="html" xml:base="https://rarcos.com/2025/01/21/ALIA_a_spanish_model/"><![CDATA[<h1 id="qué-es-alia">¿Qué es ALIA?</h1>
+
+<p><img src="/images/pages/logo_alia.png" alt="Logo" /></p>
+
+<p style="text-align: justify">
+ALIA o también conocida como 'Salmandra ALIA-40b' es el nuevo modelo de inteligencia artificial español y el primero de Europa. ALIA es un gran modelo de lenguaje de inteligencia artificial, entrenado en español, catalán, gallego, valenciano y euskera. El proyecto está completamente financiado con fondos públicos. 
+
+Se han creado varios modelos para su uso: 40B, 7B y 2B de parámetros.
+</p>
+
+<h2 id="qué-es-un-modelo-de-ia-según-copilot">¿Qué es un modelo de IA (según copilot)?</h2>
+
+<p style="text-align: justify">
+Un modelo de IA (Inteligencia Artificial) es un sistema que ha sido entrenado para realizar tareas específicas o generales, utilizando datos y algoritmos avanzados. Estos modelos pueden ser utilizados para una amplia gama de aplicaciones, como el reconocimiento de imágenes, el procesamiento del lenguaje natural y la toma de decisiones.
+</p>
+
+<h2 id="qué-es-un-llm-según-copilot">¿Qué es un LLM (según copilot)?</h2>
+
+<p style="text-align: justify">
+Un LLM (Large Language Model), o modelo de lenguaje grande, es un tipo específico de modelo de IA diseñado para procesar y generar texto. Estos modelos son entrenados con enormes cantidades de texto y utilizan técnicas avanzadas para comprender y generar lenguaje humano de manera coherente y contextual.
+</p>
+
+<h2 id="prueba-en-colab-del-modelo-7b">Prueba en Colab del modelo 7B</h2>
+<p>He realizado una prueba para ver que tal funciona:</p>
+
+<p><a href="https://colab.research.google.com/drive/1iNebMKb4bR8kLqm52qH22DYcNjbo4ebW"><img src="/images/pages/repository_small_colab.png" alt="Programa IA" /></a></p>
+
+<h2 id="qué-arquitectura-tiene">¿Qué arquitectura tiene?</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Total Parameters</th>
+      <th style="text-align: left">40,433,885,184</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Embedding Parameters</td>
+      <td style="text-align: left">2,097,152,000</td>
+    </tr>
+    <tr>
+      <td>Layers</td>
+      <td style="text-align: left">48</td>
+    </tr>
+    <tr>
+      <td>Hidden size</td>
+      <td style="text-align: left">8,192</td>
+    </tr>
+    <tr>
+      <td>Attention heads</td>
+      <td style="text-align: left">64</td>
+    </tr>
+    <tr>
+      <td>Context length</td>
+      <td style="text-align: left">4,096</td>
+    </tr>
+    <tr>
+      <td>Vocabulary size</td>
+      <td style="text-align: left">256,000</td>
+    </tr>
+    <tr>
+      <td>Precision</td>
+      <td style="text-align: left">bfloat16</td>
+    </tr>
+    <tr>
+      <td>Embedding type</td>
+      <td style="text-align: left">RoPE</td>
+    </tr>
+    <tr>
+      <td>Activation Function</td>
+      <td style="text-align: left">SwiGLU</td>
+    </tr>
+    <tr>
+      <td>Layer normalization</td>
+      <td style="text-align: left">RMS Norm</td>
+    </tr>
+    <tr>
+      <td>Flash attention</td>
+      <td style="text-align: left">✅</td>
+    </tr>
+    <tr>
+      <td>Grouped Query Attention</td>
+      <td style="text-align: left">✅</td>
+    </tr>
+    <tr>
+      <td>Num. query groups</td>
+      <td style="text-align: left">8</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><br /></p>
+
+<h2 id="con-qué-ha-sido-entrenada">¿Con qué ha sido entrenada?</h2>
+
+<p style="text-align: justify">
+El entrenamiento previo se realizó utilizando NeMo Framework de NVIDIA, que aprovecha PyTorch Lightning para un entrenamiento de modelos eficiente en entornos altamente distribuidos.
+
+Las versiones optimizadas con instrucciones se produjeron con FastChat.
+</p>
+
+<h3 id="datos">Datos</h3>
+<h4 id="datos-de-preentrenamiento">Datos de preentrenamiento</h4>
+
+<p style="text-align: justify">
+El corpus de preentrenamiento comprende datos de 35 idiomas europeos y 92 lenguajes de programación, con fuentes de datos detalladas que se proporcionan a continuación. Las 1,5 épocas de entrenamiento iniciales utilizaron 2,4 billones de tokens, obtenidos mediante el ajuste manual de la proporción de datos para equilibrar la representación y dar más importancia a los idiomas cooficiales de España (español, catalán, gallego y vasco). De esta manera, redujimos el código y los datos en inglés a la mitad, los idiomas cooficiales españoles se sobremuestrearon en un doble y los idiomas restantes se mantuvieron en sus proporciones originales. A continuación, durante las siguientes épocas (aún en entrenamiento), el conjunto de datos Colossal OSCAR se reemplazó con el conjunto de datos FineWebEdu. Este ajuste dio como resultado un total de 2,68 billones de tokens, distribuidos como se describe a continuación:
+</p>
+
+<p>
+<img src="/images/pages/images_corpus_languages_alia.png" />
+</p>
+
+<p style="text-align: justify">
+El corpus de preentrenamiento está compuesto predominantemente por datos de Colossal OSCAR, que contribuye con un significativo 53,05% del total de tokens. A continuación, Starcoder proporciona el 13,67% y FineWebEdu (subconjunto de 350 mil millones de tokens) agrega el 10,24%. Las siguientes fuentes más importantes son HPLT con un 4,21% y French-PD con un 3,59%. Otras contribuciones notables incluyen MaCoCu, Legal-ES y EurLex, cada una de las cuales contribuye con alrededor del 1,72% al 1,41%. Estas fuentes principales forman colectivamente la mayor parte del corpus, lo que garantiza un conjunto de datos rico y diverso para entrenar el modelo de lenguaje. El 10% restante proviene de fuentes más pequeñas en varios idiomas.
+</p>
+
+<h3 id="infraestructura-informática">Infraestructura informática</h3>
+
+<p>Todos los modelos fueron entrenados en MareNostrum 5, un superordenador EuroHPC pre-exascale alojado y operado por el Barcelona Supercomputing Center.</p>
+
+<p>La partición acelerada está compuesta por 1.120 nodos con las siguientes especificaciones:</p>
+
+<ul>
+  <li>4 GPU Nvidia Hopper con memoria HBM2 de 64 GB</li>
+  <li>2 procesadores Intel Sapphire Rapids 8460Y+ a 2,3 GHz y 32 c cada uno (64 núcleos)</li>
+  <li>4x NDR200 (BW por nodo 800 Gb/s)</li>
+  <li>512 GB de memoria principal (DDR5)</li>
+  <li>460 GB en almacenamiento NVMe</li>
+</ul>
+
+<table>
+  <thead>
+    <tr>
+      <th>Modelo</th>
+      <th>Nodos</th>
+      <th>GPU</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>2B</td>
+      <td>64</td>
+      <td>256</td>
+    </tr>
+    <tr>
+      <td>7B</td>
+      <td>128</td>
+      <td>512</td>
+    </tr>
+    <tr>
+      <td>40B</td>
+      <td>256 / 512</td>
+      <td>1.024 / 2.048</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+
+<p>Enlaces de interés:</p>
+
+<ul>
+  <li><a href="https://alia.gob.es/">Web oficial</a>.</li>
+  <li><a href="https://langtech-bsc.gitbook.io/alia-kit/modelos/modelos-de-texto">Todos los modelos de texto</a></li>
+  <li><a href="https://langtech-bsc.gitbook.io/alia-kit/modelos/modelos-de-traduccion-automatica">Todos los modelos de traducción</a></li>
+  <li><a href="https://huggingface.co/spaces/BSC-LT/SalamandraTA-2B-Demo">Una demostración de traducción</a></li>
+</ul>
+
+<p>Ampliar información:</p>
+<ul>
+  <li><a href="https://www.rtve.es/noticias/20250120/alia-familia-modelos-inteligencia-artificial-pedro-sanchez/16414386.shtml">https://www.rtve.es/noticias/20250120/alia-familia-modelos-inteligencia-artificial-pedro-sanchez/16414386.shtml</a></li>
+  <li><a href="https://www.xataka.com/robotica-e-ia/pedro-sanchez-anuncia-lanzamiento-primeros-modelos-alia-asi-ia-publica-abierta-que-impulsa-estado">https://www.xataka.com/robotica-e-ia/pedro-sanchez-anuncia-lanzamiento-primeros-modelos-alia-asi-ia-publica-abierta-que-impulsa-estado</a></li>
+</ul>
+
+<hr />
+
+<p><strong>Fuentes:</strong></p>
+<ul>
+  <li><a href="https://huggingface.co/BSC-LT/ALIA-40b">https://huggingface.co/BSC-LT/ALIA-40b</a></li>
+</ul>]]></content><author><name></name></author><category term="ai" /><category term="rag" /><category term="open source" /><category term="models" /><summary type="html"><![CDATA[Modelo de lenguaje basado en transformer que solo utiliza decoder y que ha sido entrenado previamente desde cero con 6,9 billones de tokens de datos cuidadosamente seleccionados. El corpus de preentrenamiento contiene texto en 35 idiomas europeos y código.]]></summary></entry><entry xml:lang="es"><title type="html">Chatbot opensource</title><link href="https://rarcos.com/es/2024/05/25/Ollama_api_chatbot/" rel="alternate" type="text/html" title="Chatbot opensource" /><published>2024-05-25T09:10:28+02:00</published><updated>2024-05-25T09:10:28+02:00</updated><id>https://rarcos.com/2024/05/25/Ollama_api_chatbot</id><content type="html" xml:base="https://rarcos.com/2024/05/25/Ollama_api_chatbot/"><![CDATA[<p>La creación de un chatbot para una página web, es una tarea que se suele contratar a un proveedor de servicios, pero en este caso voy a contar como se puede realizar de principio a fin y además con un conjunto de herramientas que son libres y gratuitas.</p>
 
 <h1 id="creación-de-un-chatbot-con-modelo-opensource">Creación de un chatbot con modelo opensource</h1>
 
@@ -1697,510 +1877,4 @@ Cliente</p>
 <p><strong>Fuentes</strong></p>
 
 <p><a href="https://codingvision.net/c-edit-registry-keys-or-values">https://codingvision.net/c-edit-registry-keys-or-values</a>
-<a href="https://superuser.com/questions/1346676/disabling-camera-via-regedit">https://superuser.com/questions/1346676/disabling-camera-via-regedit</a></p>]]></content><author><name></name></author><category term="C#" /><category term="arduino" /><category term="iot" /><summary type="html"><![CDATA[Desarrollo de una app en C# que se comunique con Arduino para la detección del micrófono, el estado muteado y la activación de la webcam]]></summary></entry><entry><title type="html">Laravel 9 - PHP 8 y MVC</title><link href="https://rarcos.com/es/2022/07/17/Laravel-9-MVC/" rel="alternate" type="text/html" title="Laravel 9 - PHP 8 y MVC" /><published>2022-07-17T16:33:28+02:00</published><updated>2022-07-17T16:33:28+02:00</updated><id>https://rarcos.com/2022/07/17/Laravel%209%20-%20MVC</id><content type="html" xml:base="https://rarcos.com/2022/07/17/Laravel-9-MVC/"><![CDATA[<h1 id="laravel-9-php-8-y-mvc">Laravel 9, PHP 8 y MVC</h1>
-
-<p>Desarrollo de una aplicaciones web usando Laravel 9 y PHP 8:</p>
-
-<p>Esta es la demostración de la aplicación que he realizado (click <a href="https://vps.rarcos.com:10440">aquí</a> o en la imagen):</p>
-
-<p>Los credenciales son:</p>
-<ul>
-  <li>usuario: admin@admin.com</li>
-  <li>contraseña: administrador</li>
-</ul>
-
-<p><a href="https://vps.rarcos.com:10440"><img src="/images/pages/laravel-inmobiliaria.png" alt="Ir a ver la app en funcionamiento" /></a></p>
-
-<h2 id="creación-del-proyecto">Creación del proyecto</h2>
-<p>Para la creación del proyecto primero tenemos que tener instalado composer y php. También tenerlos enlazados en el IDE para que la terminal reconozca los comandos. 
-Para ver cómo enlazar php con vscode click <a href="https://code.visualstudio.com/docs/languages/php">aquí</a>.</p>
-
-<p>Una vez tenemos todo lo necesario, creamos el proyecto con el siguiente comando:</p>
-
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">composer create-project laravel/laravel nombre_app
-<span class="nb">cd </span>nombre_app
-php artisan serve</code></pre></figure>
-
-<p>Y se levantará un servidor en <a href="http://127.0.0.1:8000/">http://127.0.0.1:8000/</a> con el proyecto (esqueleto solamente) y la página de bienvenida.
-Para más información y otros tipos de instalaciones ver <a href="https://laravel.com/docs/9.x/installation">aquí</a> en la documentación oficial.</p>
-
-<h2 id="creación-de-los-ficheros-migration">Creación de los ficheros migration</h2>
-<p>Para que laravel pueda crear la tabla en la DB, tiene unos ficheros que se encargan de crearlas, destruirlas, actualizarlas o modificarlas según vamos necesitando a lo largo del proyecto.</p>
-
-<p>Ahora vamos a crear un fichero de migrations para la tabla <em>Property</em> que vamos a crear.</p>
-
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">php artisan make:migration Property</code></pre></figure>
-
-<p>Este una vez creado lo podremos comprobar en la ruta: database\migrations\fecha_y_hora_creacion_property.php</p>
-
-<p>Ahora vamos a completar el contenido del fichero de migración con los campos de nuestra tabla:</p>
-
-<figure class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
-
-<span class="kn">use</span> <span class="nc">Illuminate\Database\Migrations\Migration</span><span class="p">;</span>
-<span class="kn">use</span> <span class="nc">Illuminate\Database\Schema\Blueprint</span><span class="p">;</span>
-<span class="kn">use</span> <span class="nc">Illuminate\Support\Facades\Schema</span><span class="p">;</span>
-
-<span class="k">return</span> <span class="k">new</span> <span class="kd">class</span> <span class="kd">extends</span> <span class="nc">Migration</span>
-<span class="p">{</span>
-    <span class="cd">/**
-     * Run the migrations.
-     *
-     * @return void
-     */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="n">up</span><span class="p">()</span>
-    <span class="p">{</span>
-        <span class="nc">Schema</span><span class="o">::</span><span class="nf">create</span><span class="p">(</span><span class="s1">'properties'</span><span class="p">,</span> <span class="k">function</span> <span class="p">(</span><span class="kt">Blueprint</span> <span class="nv">$table</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nv">$table</span><span class="o">-&gt;</span><span class="nf">id</span><span class="p">();</span>
-            <span class="nv">$table</span><span class="o">-&gt;</span><span class="nf">string</span><span class="p">(</span><span class="s1">'name'</span><span class="p">);</span>
-            <span class="nv">$table</span><span class="o">-&gt;</span><span class="nf">string</span><span class="p">(</span><span class="s1">'shortDescription'</span><span class="p">);</span>
-            <span class="nv">$table</span><span class="o">-&gt;</span><span class="nf">string</span><span class="p">(</span><span class="s1">'phone'</span><span class="p">);</span>
-            <span class="nv">$table</span><span class="o">-&gt;</span><span class="nf">timestamps</span><span class="p">();</span>
-        <span class="p">});</span>
-    <span class="p">}</span>
-
-    <span class="cd">/**
-     * Reverse the migrations.
-     *
-     * @return void
-     */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="n">down</span><span class="p">()</span>
-    <span class="p">{</span>
-        <span class="nc">Schema</span><span class="o">::</span><span class="nf">dropIfExists</span><span class="p">(</span><span class="s1">'properties'</span><span class="p">);</span>
-    <span class="p">}</span>
-<span class="p">};</span></code></pre></figure>
-
-<p>Como se puede comprobar tiene un método up (para la creación) y un down (para el borrado) de la tabla. Simplemente se trata de añadir el nombre de la tabla en ambos métodos, y en el up los campos de la tabla que queremos que tenga nuestro modelo.</p>
-
-<h3 id="añadir-segunda-tabla-con-foreign-key">Añadir segunda tabla con foreign key</h3>
-<p>A continuación, vamos a crear un fichero de migrations para el segundo modelo de <em>House</em> que hemos creado.</p>
-
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">php artisan make:migration House</code></pre></figure>
-
-<p>Este una vez creado lo podremos comprobar en la ruta: database\migrations\fecha_y_hora_creacion_house.php</p>
-
-<p>Ahora vamos a completar el contenido del fichero de migración con los campos de nuestra tabla:</p>
-
-<figure class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
-
-<span class="kn">use</span> <span class="nc">Illuminate\Database\Migrations\Migration</span><span class="p">;</span>
-<span class="kn">use</span> <span class="nc">Illuminate\Database\Schema\Blueprint</span><span class="p">;</span>
-<span class="kn">use</span> <span class="nc">Illuminate\Support\Facades\Schema</span><span class="p">;</span>
-
-<span class="k">return</span> <span class="k">new</span> <span class="kd">class</span> <span class="kd">extends</span> <span class="nc">Migration</span>
-<span class="p">{</span>
-    <span class="cd">/**
-     * Run the migrations.
-     *
-     * @return void
-     */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="n">up</span><span class="p">()</span>
-    <span class="p">{</span>
-        <span class="nc">Schema</span><span class="o">::</span><span class="nf">create</span><span class="p">(</span><span class="s1">'houses'</span><span class="p">,</span> <span class="k">function</span> <span class="p">(</span><span class="kt">Blueprint</span> <span class="nv">$table</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nv">$table</span><span class="o">-&gt;</span><span class="nf">id</span><span class="p">();</span>
-            <span class="nv">$table</span><span class="o">-&gt;</span><span class="nf">string</span><span class="p">(</span><span class="s1">'shortDescription'</span><span class="p">);</span>
-            <span class="nv">$table</span><span class="o">-&gt;</span><span class="nf">string</span><span class="p">(</span><span class="s1">'phone'</span><span class="p">);</span>
-            <span class="nv">$table</span><span class="o">-&gt;</span><span class="nf">string</span><span class="p">(</span><span class="s1">'photo'</span><span class="p">);</span>
-            <span class="nv">$table</span><span class="o">-&gt;</span><span class="nf">foreign</span><span class="p">(</span><span class="s1">'property_id'</span><span class="p">)</span>
-                <span class="o">-&gt;</span><span class="nf">references</span><span class="p">(</span><span class="s1">'id'</span><span class="p">)</span><span class="o">-&gt;</span><span class="nf">on</span><span class="p">(</span><span class="s1">'properties'</span><span class="p">)</span><span class="o">-&gt;</span><span class="nf">onUpdate</span><span class="p">(</span><span class="s1">'cascade'</span><span class="p">);</span>
-            <span class="nv">$table</span><span class="o">-&gt;</span><span class="nf">timestamps</span><span class="p">();</span>
-        <span class="p">});</span>
-    <span class="p">}</span>
-
-    <span class="cd">/**
-     * Reverse the migrations.
-     *
-     * @return void
-     */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="n">down</span><span class="p">()</span>
-    <span class="p">{</span>
-        <span class="nc">Schema</span><span class="o">::</span><span class="nf">dropIfExists</span><span class="p">(</span><span class="s1">'houses'</span><span class="p">);</span>
-    <span class="p">}</span>
-<span class="p">};</span></code></pre></figure>
-
-<p>Como se puede comprobar tiene una clave foránea añadida para la columna <em>property_id</em> que apunta a la tabla <em>properties</em> del campo <em>id</em>.</p>
-
-<h2 id="creación-de-los-modelos">Creación de los modelos</h2>
-<p>Laravel está compuesto por varios componentes y entre ellos tenemos un ORM llamado Eloquent, que nos va a realizar todas las gestiones de la base de datos, en nuestro caso PostgreSQL.</p>
-
-<p>Vamos a crear un modelo que almacene nuestras viviendas (recordar que el nombre debe estar siempre en singular, ya que laravel crea las tablas en plural automáticamente) y para ellos ejecutaremos el comando:</p>
-
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">php artisan make:model House</code></pre></figure>
-
-<p>Este una vez creado lo podremos comprobar en la ruta: app\Models\House.php</p>
-
-<p>Ahora vamos a completar el contenido del modelo con los campos que dimos en nuestra tabla:</p>
-
-<figure class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
-
-<span class="kn">namespace</span> <span class="nn">App\Models</span><span class="p">;</span>
-
-<span class="kn">use</span> <span class="nc">Illuminate\Database\Eloquent\Factories\HasFactory</span><span class="p">;</span>
-<span class="kn">use</span> <span class="nc">Illuminate\Database\Eloquent\Model</span><span class="p">;</span>
-
-<span class="kd">class</span> <span class="nc">House</span> <span class="kd">extends</span> <span class="nc">Model</span>
-<span class="p">{</span>
-    <span class="kn">use</span> <span class="nc">HasFactory</span><span class="p">;</span>
-
-    <span class="k">protected</span> <span class="nv">$fillable</span> <span class="o">=</span> <span class="p">[</span>
-        <span class="s1">'shortDescription'</span><span class="p">,</span>
-        <span class="s1">'phone'</span><span class="p">,</span>
-        <span class="s1">'photo'</span><span class="p">,</span>
-        <span class="s1">'property_id'</span>
-    <span class="p">];</span>
-<span class="p">}</span></code></pre></figure>
-
-<p>Haremos los mismo con el modelo <em>Property</em>:</p>
-
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">php artisan make:model Property</code></pre></figure>
-
-<p>Este una vez creado lo podremos comprobar en la ruta: app\Models\Property.php</p>
-
-<p>Ahora vamos a completar el contenido del modelo con los campos que dimos en nuestra tabla:</p>
-
-<figure class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
-
-<span class="kn">namespace</span> <span class="nn">App\Models</span><span class="p">;</span>
-
-<span class="kn">use</span> <span class="nc">Illuminate\Database\Eloquent\Factories\HasFactory</span><span class="p">;</span>
-<span class="kn">use</span> <span class="nc">Illuminate\Database\Eloquent\Model</span><span class="p">;</span>
-
-<span class="kd">class</span> <span class="nc">Property</span> <span class="kd">extends</span> <span class="nc">Model</span>
-<span class="p">{</span>
-    <span class="kn">use</span> <span class="nc">HasFactory</span><span class="p">;</span>
-
-    <span class="k">protected</span> <span class="nv">$fillable</span> <span class="o">=</span> <span class="p">[</span>
-        <span class="s1">'name'</span><span class="p">,</span>
-        <span class="s1">'shortDescription'</span><span class="p">,</span>
-        <span class="s1">'phone'</span><span class="p">,</span>
-    <span class="p">];</span>
-<span class="p">}</span></code></pre></figure>
-
-<h2 id="realización-de-la-migración-a-la-db">Realización de la migración a la DB</h2>
-<p>Primero, vamos a configurar los parámetros de conexión con nuestra DB. Estos se encuentra en el fichero de configuración <em>.env</em> en la raíz del proyecto. Concretamente cambiaremos la parte referente a la DB:</p>
-
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">DB_CONNECTION</span><span class="o">=</span>pgsql
-<span class="nv">DB_HOST</span><span class="o">=</span>127.0.0.1
-<span class="nv">DB_PORT</span><span class="o">=</span>5432
-<span class="nv">DB_DATABASE</span><span class="o">=</span>laravel
-<span class="nv">DB_USERNAME</span><span class="o">=</span>postgres
-<span class="nv">DB_PASSWORD</span><span class="o">=</span>postgres</code></pre></figure>
-
-<p>Posteriormente, migramos todos los cambios a la DB con el comando:</p>
-
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">php artisan make:migration</code></pre></figure>
-
-<h2 id="creación-del-controlador">Creación del controlador</h2>
-<p>Ahora vamos a crear un controlador para cada modelo, estos tendrán las operaciones básicas de un CRUD que es lo que vamos a necesitar.</p>
-
-<p>Para crear el controlador del modelo <em>House</em> ejecutamos:</p>
-
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">php artisan make:controller HouseController</code></pre></figure>
-
-<p>Y el contenido del controlador sería el siguiente:</p>
-
-<figure class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
-
-<span class="kn">namespace</span> <span class="nn">App\Http\Controllers</span><span class="p">;</span>
-
-<span class="kn">use</span> <span class="nc">App\Models\Property</span><span class="p">;</span>
-<span class="kn">use</span> <span class="nc">Illuminate\Http\Request</span><span class="p">;</span>
-<span class="kn">use</span> <span class="nc">App\Models\House</span><span class="p">;</span>
-
-<span class="kd">class</span> <span class="nc">HouseController</span> <span class="kd">extends</span> <span class="nc">Controller</span>
-<span class="p">{</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="n">index</span><span class="p">()</span>
-    <span class="p">{</span>
-        <span class="nv">$houses</span> <span class="o">=</span> <span class="nc">House</span><span class="o">::</span><span class="nf">all</span><span class="p">();</span>
-        <span class="nv">$properties</span> <span class="o">=</span> <span class="nc">Property</span><span class="o">::</span><span class="nf">all</span><span class="p">();</span>
-        <span class="k">return</span> <span class="nf">view</span><span class="p">(</span><span class="s1">'houses.index'</span><span class="p">,</span> <span class="p">[</span><span class="s1">'houses'</span> <span class="o">=&gt;</span> <span class="nv">$houses</span><span class="p">,</span> <span class="s1">'properties'</span> <span class="o">=&gt;</span> <span class="nv">$properties</span><span class="p">]);</span>
-    <span class="p">}</span>
-
-    <span class="k">public</span> <span class="k">function</span> <span class="n">store</span><span class="p">(</span><span class="kt">Request</span> <span class="nv">$request</span><span class="p">){</span>
-
-        <span class="nv">$request</span><span class="o">-&gt;</span><span class="nf">validate</span><span class="p">([</span>
-            <span class="s1">'title'</span> <span class="o">=&gt;</span> <span class="s1">'required|min:3'</span><span class="p">,</span>
-        <span class="p">]);</span>
-
-        <span class="nv">$house</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">House</span><span class="p">;</span>
-        <span class="nv">$house</span><span class="o">-&gt;</span><span class="n">title</span> <span class="o">=</span> <span class="nv">$request</span><span class="o">-&gt;</span><span class="n">title</span><span class="p">;</span>
-        <span class="nv">$house</span><span class="o">-&gt;</span><span class="n">category_id</span> <span class="o">=</span> <span class="nv">$request</span><span class="o">-&gt;</span><span class="n">category_id</span><span class="p">;</span>
-        <span class="nv">$house</span><span class="o">-&gt;</span><span class="nf">save</span><span class="p">();</span>
-
-        <span class="k">return</span> <span class="nf">redirect</span><span class="p">()</span><span class="o">-&gt;</span><span class="nf">route</span><span class="p">(</span><span class="s1">'houses'</span><span class="p">)</span><span class="o">-&gt;</span><span class="nf">with</span><span class="p">(</span><span class="s1">'success'</span><span class="p">,</span> <span class="s1">'Todo created successfully'</span><span class="p">);</span>
-    <span class="p">}</span>
-
-    <span class="k">public</span> <span class="k">function</span> <span class="n">destroy</span><span class="p">(</span><span class="nv">$id</span><span class="p">){</span>
-        <span class="nv">$house</span> <span class="o">=</span> <span class="nc">House</span><span class="o">::</span><span class="nf">find</span><span class="p">(</span><span class="nv">$id</span><span class="p">);</span>
-        <span class="nv">$house</span><span class="o">-&gt;</span><span class="nb">delete</span><span class="p">();</span>
-        <span class="k">return</span> <span class="nf">redirect</span><span class="p">()</span><span class="o">-&gt;</span><span class="nf">route</span><span class="p">(</span><span class="s1">'houses'</span><span class="p">)</span><span class="o">-&gt;</span><span class="nf">with</span><span class="p">(</span><span class="s1">'success'</span><span class="p">,</span> <span class="s1">'Todo deleted successfully'</span><span class="p">);</span>
-    <span class="p">}</span>
-
-    <span class="k">public</span> <span class="k">function</span> <span class="n">show</span><span class="p">(</span><span class="nv">$id</span><span class="p">){</span>
-        <span class="nv">$house</span> <span class="o">=</span> <span class="nc">House</span><span class="o">::</span><span class="nf">find</span><span class="p">(</span><span class="nv">$id</span><span class="p">);</span>
-        <span class="nv">$properties</span> <span class="o">=</span> <span class="nc">Property</span><span class="o">::</span><span class="nf">all</span><span class="p">();</span>
-        <span class="k">return</span> <span class="nf">view</span><span class="p">(</span><span class="s1">'houses.show'</span><span class="p">,</span> <span class="p">[</span><span class="s1">'todo'</span> <span class="o">=&gt;</span> <span class="nv">$house</span><span class="p">,</span> <span class="s1">'properties'</span> <span class="o">=&gt;</span> <span class="nv">$properties</span><span class="p">]);</span>
-    <span class="p">}</span>
-
-    <span class="k">public</span> <span class="k">function</span> <span class="n">update</span><span class="p">(</span><span class="kt">Request</span> <span class="nv">$request</span><span class="p">,</span> <span class="nv">$id</span><span class="p">){</span>
-        <span class="nv">$house</span> <span class="o">=</span> <span class="nc">House</span><span class="o">::</span><span class="nf">find</span><span class="p">(</span><span class="nv">$id</span><span class="p">);</span>
-
-        <span class="nv">$house</span><span class="o">-&gt;</span><span class="n">title</span> <span class="o">=</span> <span class="nv">$request</span><span class="o">-&gt;</span><span class="n">title</span><span class="p">;</span>
-        <span class="nv">$house</span><span class="o">-&gt;</span><span class="nf">save</span><span class="p">();</span>
-
-        <span class="k">return</span> <span class="nf">redirect</span><span class="p">()</span><span class="o">-&gt;</span><span class="nf">route</span><span class="p">(</span><span class="s1">'Houses'</span><span class="p">)</span><span class="o">-&gt;</span><span class="nf">with</span><span class="p">(</span><span class="s1">'success'</span><span class="p">,</span> <span class="s1">'House updated successfully'</span><span class="p">);</span>
-    <span class="p">}</span>
-<span class="p">}</span></code></pre></figure>
-
-<h2 id="creación-del-enrutador">Creación del enrutador</h2>
-<p>En laravel el enrutador se encuentra en la ruta <em>\routes\web.php</em>. Realizaremos las siguientes incorporaciones:</p>
-
-<figure class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
-
-<span class="kn">use</span> <span class="nc">Illuminate\Support\Facades\Route</span><span class="p">;</span>
-
-<span class="cm">/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/</span>
-
-<span class="nc">Route</span><span class="o">::</span><span class="nf">get</span><span class="p">(</span><span class="s1">'/'</span><span class="p">,</span> <span class="k">function</span> <span class="p">()</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="nf">view</span><span class="p">(</span><span class="s1">'welcome'</span><span class="p">);</span>
-<span class="p">});</span>
-
-<span class="nc">Route</span><span class="o">::</span><span class="nf">get</span><span class="p">(</span><span class="s1">'/properties'</span><span class="p">,</span> <span class="s1">'\App\Http\Controllers\PropertyController@index'</span><span class="p">)</span><span class="o">-&gt;</span><span class="nf">name</span><span class="p">(</span><span class="s1">'properties'</span><span class="p">);</span>
-
-<span class="nc">Route</span><span class="o">::</span><span class="nf">post</span><span class="p">(</span><span class="s1">'/properties'</span><span class="p">,</span> <span class="s1">'App\Http\Controllers\PropertyController@store'</span><span class="p">);</span>
-
-<span class="nc">Route</span><span class="o">::</span><span class="nb">delete</span><span class="p">(</span><span class="s1">'/properties/{id}'</span><span class="p">,</span> <span class="s1">'App\Http\Controllers\PropertyController@destroy'</span><span class="p">)</span><span class="o">-&gt;</span><span class="nf">name</span><span class="p">(</span><span class="s1">'properties-destroy'</span><span class="p">);</span>
-
-<span class="nc">Route</span><span class="o">::</span><span class="nf">get</span><span class="p">(</span><span class="s1">'/properties/{id}'</span><span class="p">,</span> <span class="s1">'App\Http\Controllers\PropertyController@show'</span><span class="p">)</span><span class="o">-&gt;</span><span class="nf">name</span><span class="p">(</span><span class="s1">'properties-edit'</span><span class="p">);</span>
-
-<span class="nc">Route</span><span class="o">::</span><span class="nf">patch</span><span class="p">(</span><span class="s1">'/properties/{id}'</span><span class="p">,</span> <span class="s1">'App\Http\Controllers\PropertyController@update'</span><span class="p">)</span><span class="o">-&gt;</span><span class="nf">name</span><span class="p">(</span><span class="s1">'properties-update'</span><span class="p">);</span>
-
-<span class="nc">Route</span><span class="o">::</span><span class="nf">get</span><span class="p">(</span><span class="s1">'/houses'</span><span class="p">,</span> <span class="s1">'\App\Http\Controllers\HouseController@index'</span><span class="p">)</span><span class="o">-&gt;</span><span class="nf">name</span><span class="p">(</span><span class="s1">'houses'</span><span class="p">);</span>
-
-<span class="nc">Route</span><span class="o">::</span><span class="nf">post</span><span class="p">(</span><span class="s1">'/houses'</span><span class="p">,</span> <span class="s1">'App\Http\Controllers\HouseController@store'</span><span class="p">);</span>
-
-<span class="nc">Route</span><span class="o">::</span><span class="nb">delete</span><span class="p">(</span><span class="s1">'/houses/{id}'</span><span class="p">,</span> <span class="s1">'App\Http\Controllers\HouseController@destroy'</span><span class="p">)</span><span class="o">-&gt;</span><span class="nf">name</span><span class="p">(</span><span class="s1">'houses-destroy'</span><span class="p">);</span>
-
-<span class="nc">Route</span><span class="o">::</span><span class="nf">get</span><span class="p">(</span><span class="s1">'/houses/{id}'</span><span class="p">,</span> <span class="s1">'App\Http\Controllers\HouseController@show'</span><span class="p">)</span><span class="o">-&gt;</span><span class="nf">name</span><span class="p">(</span><span class="s1">'houses-edit'</span><span class="p">);</span>
-
-<span class="nc">Route</span><span class="o">::</span><span class="nf">patch</span><span class="p">(</span><span class="s1">'/houses/{id}'</span><span class="p">,</span> <span class="s1">'App\Http\Controllers\HouseController@update'</span><span class="p">)</span><span class="o">-&gt;</span><span class="nf">name</span><span class="p">(</span><span class="s1">'houses-update'</span><span class="p">);</span></code></pre></figure>
-
-<p>Con el siguiente comando, podemos ver una tabla con todos los endpoints que hemos ido creando:</p>
-
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">php artisan route:list</code></pre></figure>
-
-<h2 id="creación-del-segundo-controlador">Creación del segundo controlador</h2>
-<p>Para crear el controlador del modelo <em>Property</em> ejecutamos:</p>
-
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">php artisan make:controller PropertyController</code></pre></figure>
-
-<p>Y el contenido del controlador sería el siguiente:</p>
-
-<figure class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
-
-<span class="kn">namespace</span> <span class="nn">App\Http\Controllers</span><span class="p">;</span>
-
-<span class="kn">use</span> <span class="nc">Illuminate\Http\Request</span><span class="p">;</span>
-<span class="kn">use</span> <span class="nc">App\Models\Property</span><span class="p">;</span>
-
-<span class="kd">class</span> <span class="nc">PropertyController</span> <span class="kd">extends</span> <span class="nc">Controller</span>
-<span class="p">{</span>
-    <span class="cd">/**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="n">index</span><span class="p">()</span>
-    <span class="p">{</span>
-        <span class="nv">$properties</span> <span class="o">=</span> <span class="nc">Property</span><span class="o">::</span><span class="nf">all</span><span class="p">();</span>
-
-        <span class="k">return</span> <span class="nf">view</span><span class="p">(</span><span class="s1">'properties.index'</span><span class="p">,</span> <span class="p">[</span><span class="s1">'properties'</span> <span class="o">=&gt;</span> <span class="nv">$properties</span><span class="p">]);</span>
-    <span class="p">}</span>
-
-    <span class="cd">/**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="n">create</span><span class="p">()</span>
-    <span class="p">{</span>
-        <span class="c1">//</span>
-    <span class="p">}</span>
-
-    <span class="cd">/**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="n">store</span><span class="p">(</span><span class="kt">Request</span> <span class="nv">$request</span><span class="p">)</span>
-    <span class="p">{</span>
-
-
-        <span class="nv">$this</span><span class="o">-&gt;</span><span class="nf">validate</span><span class="p">(</span><span class="nv">$request</span><span class="p">,</span> <span class="p">[</span>
-            <span class="s1">'name'</span> <span class="o">=&gt;</span> <span class="s1">'required|unique:properties|max:255'</span><span class="p">,</span>
-        <span class="p">]);</span>
-
-        <span class="nv">$property</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Property</span><span class="p">;</span>
-        <span class="nv">$property</span><span class="o">-&gt;</span><span class="n">name</span> <span class="o">=</span> <span class="nv">$request</span><span class="o">-&gt;</span><span class="n">name</span><span class="p">;</span>
-        <span class="nv">$property</span><span class="o">-&gt;</span><span class="nf">save</span><span class="p">();</span>
-
-        <span class="k">return</span> <span class="nf">redirect</span><span class="p">()</span><span class="o">-&gt;</span><span class="nf">route</span><span class="p">(</span><span class="s1">'properties.index'</span><span class="p">)</span><span class="o">-&gt;</span><span class="nf">with</span><span class="p">(</span><span class="s1">'success'</span><span class="p">,</span> <span class="s1">'Property has been added'</span><span class="p">);</span>
-    <span class="p">}</span>
-
-    <span class="cd">/**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="n">show</span><span class="p">(</span><span class="nv">$id</span><span class="p">)</span>
-    <span class="p">{</span>
-        <span class="nv">$property</span> <span class="o">=</span> <span class="nc">Property</span><span class="o">::</span><span class="nf">find</span><span class="p">(</span><span class="nv">$id</span><span class="p">);</span>
-        <span class="k">return</span> <span class="nf">view</span><span class="p">(</span><span class="s1">'properties.show'</span><span class="p">,</span> <span class="p">[</span><span class="s1">'property'</span> <span class="o">=&gt;</span> <span class="nv">$property</span><span class="p">]);</span>
-    <span class="p">}</span>
-
-    <span class="cd">/**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="n">edit</span><span class="p">(</span><span class="nv">$id</span><span class="p">)</span>
-    <span class="p">{</span>
-        <span class="c1">//</span>
-    <span class="p">}</span>
-
-    <span class="cd">/**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="n">update</span><span class="p">(</span><span class="kt">Request</span> <span class="nv">$request</span><span class="p">,</span> <span class="nv">$property</span><span class="p">)</span>
-    <span class="p">{</span>
-        <span class="nv">$property</span> <span class="o">=</span> <span class="nc">Property</span><span class="o">::</span><span class="nf">find</span><span class="p">(</span><span class="nv">$property</span><span class="p">);</span>
-
-        <span class="nv">$property</span><span class="o">-&gt;</span><span class="n">name</span> <span class="o">=</span> <span class="nv">$request</span><span class="o">-&gt;</span><span class="n">name</span><span class="p">;</span>
-        <span class="nv">$property</span><span class="o">-&gt;</span><span class="nf">save</span><span class="p">();</span>
-
-        <span class="k">return</span> <span class="nf">redirect</span><span class="p">()</span><span class="o">-&gt;</span><span class="nf">route</span><span class="p">(</span><span class="s1">'properties.index'</span><span class="p">)</span><span class="o">-&gt;</span><span class="nf">with</span><span class="p">(</span><span class="s1">'success'</span><span class="p">,</span> <span class="s1">'Property updated successfully'</span><span class="p">);</span>
-    <span class="p">}</span>
-
-    <span class="cd">/**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="n">destroy</span><span class="p">(</span><span class="nv">$property</span><span class="p">)</span>
-    <span class="p">{</span>
-        <span class="c1">//</span>
-        <span class="nv">$property</span> <span class="o">=</span> <span class="nc">Property</span><span class="o">::</span><span class="nf">find</span><span class="p">(</span><span class="nv">$property</span><span class="p">);</span>
-        <span class="nv">$property</span><span class="o">-&gt;</span><span class="nf">todos</span><span class="p">()</span><span class="o">-&gt;</span><span class="nb">each</span><span class="p">(</span><span class="k">function</span><span class="p">(</span><span class="nv">$todo</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nv">$todo</span><span class="o">-&gt;</span><span class="nb">delete</span><span class="p">();</span> <span class="c1">// &lt;-- direct deletion</span>
-        <span class="p">});</span>
-        <span class="nv">$property</span><span class="o">-&gt;</span><span class="nb">delete</span><span class="p">();</span>
-        <span class="k">return</span> <span class="nf">redirect</span><span class="p">()</span><span class="o">-&gt;</span><span class="nf">route</span><span class="p">(</span><span class="s1">'properties.index'</span><span class="p">)</span><span class="o">-&gt;</span><span class="nf">with</span><span class="p">(</span><span class="s1">'success'</span><span class="p">,</span> <span class="s1">'Property deleted successfully'</span><span class="p">);</span>
-    <span class="p">}</span>
-<span class="p">}</span></code></pre></figure>
-
-<h2 id="sistema-de-vistas">Sistema de vistas</h2>
-<p>Debido a que es un sistema completo las vistas que se han realizado, añadiendo bootstrap y demás elementos web, que directamente te bajes los recursos de mi repositorio y le eches un vistazo al funcionamiente, puesto que es intuitivo.</p>
-
-<p><a href="https://github.com/rubenarcos2/laravel-Inmobiliaria/tree/main/resources/views">https://github.com/rubenarcos2/laravel-Inmobiliaria/tree/main/resources/views</a></p>
-
-<h2 id="instalación-módulo-auth-login">Instalación módulo Auth: login</h2>
-<p>Tendremos que ejeuctar los siguientes comandos:</p>
-
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">composer require laravel/ui
-php artisan ui vue <span class="nt">--auth</span>
-npm <span class="nb">install
-</span>npm run dev</code></pre></figure>
-
-<p>Comprobaremos que nos ha creado:</p>
-<ul>
-  <li>Actualizado el controlador HomeController en App\Http\Controllers</li>
-  <li>Creado una carpeta <em>auth</em> en la vista en resources\views\auth</li>
-  <li>Añadido <em>Auth::routes();</em> a nuestros endpoints en routes\web.php</li>
-</ul>
-
-<h2 id="solución-al-error-de-la-pérdida-del-estilo-en-login-logout-y-forgot-módulo-auth">Solución al error de la pérdida del estilo en login, logout y forgot. Módulo ‘auth’.</h2>
-<p>Aún instalado todo lo anterior, se puede dar el caso de que se pierda el estilo de las páginas de auth que se acaban de instalar, para solucionarlo:</p>
-<ul>
-  <li>Ir a la vista \resources\views\layouts\app.blade.php</li>
-  <li>Eliminar las rutas al css y el fichero jss</li>
-  <li>Sustituirlas por:</li>
-</ul>
-
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">&lt;<span class="nb">link </span><span class="nv">href</span><span class="o">=</span><span class="s2">"https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css"</span> <span class="nv">rel</span><span class="o">=</span><span class="s2">"stylesheet"</span> <span class="nv">integrity</span><span class="o">=</span><span class="s2">"sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU"</span> <span class="nv">crossorigin</span><span class="o">=</span><span class="s2">"anonymous"</span><span class="o">&gt;</span>
-&lt;script <span class="nv">src</span><span class="o">=</span><span class="s2">"https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"</span> <span class="nv">integrity</span><span class="o">=</span><span class="s2">"sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"</span> <span class="nv">crossorigin</span><span class="o">=</span><span class="s2">"anonymous"</span><span class="o">&gt;</span>&lt;/script&gt;</code></pre></figure>
-
-<p>Y una vez guardado se verán los cambios ya aplicados y nuestra aplicación ya tendrá servicio de autenticación completo. Solo tendremos que ir añadiendo la autenticación requerida en los endpoints.</p>
-
-<h2 id="modificación-del-enrutador">Modificación del enrutador</h2>
-<p>Ahora vamos a modificar el enrutador para que tenga los endpoints restringidos y solamente se pueda acceder a la vista principal sin haber hecho <em>login in</em>.</p>
-
-<figure class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
-
-<span class="kn">use</span> <span class="nc">Illuminate\Support\Facades\Route</span><span class="p">;</span>
-
-<span class="cm">/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/</span>
-<span class="nc">Auth</span><span class="o">::</span><span class="nf">routes</span><span class="p">();</span>
-<span class="nc">Route</span><span class="o">::</span><span class="nf">group</span><span class="p">([</span><span class="s1">'middleware'</span> <span class="o">=&gt;</span> <span class="s1">'auth'</span><span class="p">],</span> <span class="k">function</span> <span class="p">()</span> <span class="p">{</span>
-    <span class="nc">Route</span><span class="o">::</span><span class="nb">delete</span><span class="p">(</span><span class="s1">'/{id}'</span><span class="p">,</span> <span class="s1">'App\Http\Controllers\HouseController@destroy'</span><span class="p">)</span><span class="o">-&gt;</span><span class="nf">name</span><span class="p">(</span><span class="s1">'houses-destroy'</span><span class="p">);</span>
-    <span class="nc">Route</span><span class="o">::</span><span class="nf">post</span><span class="p">(</span><span class="s1">'/edit/{id}'</span><span class="p">,</span> <span class="s1">'App\Http\Controllers\HouseController@update'</span><span class="p">)</span><span class="o">-&gt;</span><span class="nf">name</span><span class="p">(</span><span class="s1">'houses-update'</span><span class="p">);</span>
-    <span class="nc">Route</span><span class="o">::</span><span class="nf">get</span><span class="p">(</span><span class="s1">'/edit/{id}'</span><span class="p">,</span> <span class="s1">'App\Http\Controllers\HouseController@edit'</span><span class="p">)</span><span class="o">-&gt;</span><span class="nf">name</span><span class="p">(</span><span class="s1">'houses-edit'</span><span class="p">);</span>
-    <span class="nc">Route</span><span class="o">::</span><span class="nf">get</span><span class="p">(</span><span class="s1">'/new'</span><span class="p">,</span> <span class="s1">'App\Http\Controllers\HouseController@new'</span><span class="p">)</span><span class="o">-&gt;</span><span class="nf">name</span><span class="p">(</span><span class="s1">'houses-new'</span><span class="p">);</span>
-    <span class="nc">Route</span><span class="o">::</span><span class="nf">post</span><span class="p">(</span><span class="s1">'/new'</span><span class="p">,</span> <span class="s1">'App\Http\Controllers\HouseController@store'</span><span class="p">)</span><span class="o">-&gt;</span><span class="nf">name</span><span class="p">(</span><span class="s1">'houses-new'</span><span class="p">);</span>
-
-    <span class="nc">Route</span><span class="o">::</span><span class="nf">get</span><span class="p">(</span><span class="s1">'/properties'</span><span class="p">,</span> <span class="s1">'\App\Http\Controllers\PropertyController@index'</span><span class="p">)</span><span class="o">-&gt;</span><span class="nf">name</span><span class="p">(</span><span class="s1">'properties'</span><span class="p">);</span>
-    <span class="nc">Route</span><span class="o">::</span><span class="nf">get</span><span class="p">(</span><span class="s1">'/properties/new'</span><span class="p">,</span> <span class="s1">'App\Http\Controllers\PropertyController@new'</span><span class="p">)</span><span class="o">-&gt;</span><span class="nf">name</span><span class="p">(</span><span class="s1">'properties-new'</span><span class="p">);</span>
-    <span class="nc">Route</span><span class="o">::</span><span class="nf">post</span><span class="p">(</span><span class="s1">'/properties/new'</span><span class="p">,</span> <span class="s1">'App\Http\Controllers\PropertyController@store'</span><span class="p">)</span><span class="o">-&gt;</span><span class="nf">name</span><span class="p">(</span><span class="s1">'properties-new'</span><span class="p">);</span>
-    <span class="nc">Route</span><span class="o">::</span><span class="nf">get</span><span class="p">(</span><span class="s1">'/properties/{id}'</span><span class="p">,</span> <span class="s1">'App\Http\Controllers\PropertyController@show'</span><span class="p">)</span><span class="o">-&gt;</span><span class="nf">name</span><span class="p">(</span><span class="s1">'properties-show'</span><span class="p">);</span>
-    <span class="nc">Route</span><span class="o">::</span><span class="nb">delete</span><span class="p">(</span><span class="s1">'/properties/{id}'</span><span class="p">,</span> <span class="s1">'App\Http\Controllers\PropertyController@destroy'</span><span class="p">)</span><span class="o">-&gt;</span><span class="nf">name</span><span class="p">(</span><span class="s1">'properties-destroy'</span><span class="p">);</span>
-    <span class="nc">Route</span><span class="o">::</span><span class="nf">post</span><span class="p">(</span><span class="s1">'/properties/edit/{id}'</span><span class="p">,</span> <span class="s1">'App\Http\Controllers\PropertyController@update'</span><span class="p">)</span><span class="o">-&gt;</span><span class="nf">name</span><span class="p">(</span><span class="s1">'properties-update'</span><span class="p">);</span>
-    <span class="nc">Route</span><span class="o">::</span><span class="nf">get</span><span class="p">(</span><span class="s1">'/properties/edit/{id}'</span><span class="p">,</span> <span class="s1">'App\Http\Controllers\PropertyController@edit'</span><span class="p">)</span><span class="o">-&gt;</span><span class="nf">name</span><span class="p">(</span><span class="s1">'properties-edit'</span><span class="p">);</span>
-<span class="p">});</span>
-
-<span class="nc">Route</span><span class="o">::</span><span class="nf">get</span><span class="p">(</span><span class="s1">'/'</span><span class="p">,</span> <span class="s1">'\App\Http\Controllers\HouseController@index'</span><span class="p">)</span><span class="o">-&gt;</span><span class="nf">name</span><span class="p">(</span><span class="s1">'houses'</span><span class="p">);</span>
-<span class="nc">Route</span><span class="o">::</span><span class="nf">get</span><span class="p">(</span><span class="s1">'/{id}'</span><span class="p">,</span> <span class="s1">'App\Http\Controllers\HouseController@show'</span><span class="p">)</span><span class="o">-&gt;</span><span class="nf">name</span><span class="p">(</span><span class="s1">'houses-show'</span><span class="p">);</span></code></pre></figure>
-
-<p>Es importante tener en cuenta el orden en el que se definen las rutas hacia los controladores, debe de coincidir con el flujo del usuario, para que no empiecen a generarse errores dispares que en apariencia difieren, pero son provocados por esto solamente.</p>
-
-<hr />
-
-<p><em>Repositorio con el contenido</em></p>
-
-<p><a href="https://github.com/rubenarcos2/laravel-Inmobiliaria"><img src="/images/pages/repository_small.png" alt="Repositorio" /></a></p>
-
-<hr />
-
-<p><strong>Fuentes:</strong></p>
-
-<p><a href="https://www.youtube.com/watch?v=a-4923Uyu54">https://www.youtube.com/watch?v=a-4923Uyu54</a>
-<a href="https://github.com/marcosrivasr/primera-app-laravel">https://github.com/marcosrivasr/primera-app-laravel</a>
-<a href="https://www.codermen.com/solved-target-class-controller-does-not-exist/#:~:text=%E2%80%9CTarget%20class%20Controller%20does%20not,your%20routes%20are%20loaded%20into.">https://www.codermen.com/solved-target-class-controller-does-not-exist/#:~:text=%E2%80%9CTarget%20class%20Controller%20does%20not,your%20routes%20are%20loaded%20into.</a>
-<a href="https://styde.net/despliega-tu-aplicacion-de-laravel-con-github-y-heroku/">https://styde.net/despliega-tu-aplicacion-de-laravel-con-github-y-heroku/</a>
-<a href="https://www.youtube.com/watch?v=BowxsMH91Xw">https://www.youtube.com/watch?v=BowxsMH91Xw</a>
-<a href="https://www.codekayak.net/laravel-displaying-created_at-updated_at-value-in-view/">https://www.codekayak.net/laravel-displaying-created_at-updated_at-value-in-view/</a>
-<a href="https://webdesignerwall.com/wdw-snippet/bootstrap-cards-in-columns">https://webdesignerwall.com/wdw-snippet/bootstrap-cards-in-columns</a></p>]]></content><author><name></name></author><category term="php" /><category term="spring" /><category term="MVC" /><category term="laravel" /><summary type="html"><![CDATA[Uso del framework Laravel 9 con PHP 8: MVC]]></summary></entry></feed>
+<a href="https://superuser.com/questions/1346676/disabling-camera-via-regedit">https://superuser.com/questions/1346676/disabling-camera-via-regedit</a></p>]]></content><author><name></name></author><category term="C#" /><category term="arduino" /><category term="iot" /><summary type="html"><![CDATA[Desarrollo de una app en C# que se comunique con Arduino para la detección del micrófono, el estado muteado y la activación de la webcam]]></summary></entry></feed>

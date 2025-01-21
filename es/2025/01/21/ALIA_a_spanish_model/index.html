@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<style>
+  .alert {
+    padding: 20px;
+    background-color: #ff9203;
+    text-align: center;
+  }
+
+  .alert a{
+    color: white;
+    text-decoration: none;
+  }
+
+  .closebtn {
+    margin-left: 15px;
+    color: white;
+    font-weight: bold;
+    float: right;
+    font-size: 22px;
+    line-height: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+
+  .closebtn:hover {
+    color: black;
+  }
+</style>
+
+
+
+
+<html lang="es">
+
+
+
+
+
+
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>ALIA el modelo español de IA</title>
+  <meta name='description'
+    content='Modelo de lenguaje basado en transformer que solo utiliza decoder y que ha sido entrenado previamente desde cero con 6,9 billones de tokens de datos cuidados...'>
+
+  <!-- Google Fonts -->
+  <link
+    href="https://fonts.googleapis.com/css?family=Dancing+Script%7CPT+Serif:400,400i,700%7CLato:400,700%7CRoboto:300,400"
+    rel="stylesheet">
+
+  <!-- Font Awesome v6.4.2 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+  <!-- Normalize v7.0.0 -->
+  <link rel="stylesheet" href="/es/css/normalize.css">
+
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="/es/css/main.css">
+  <link rel="canonical" href="https://rarcos.com/es/2025/01/21/ALIA_a_spanish_model/">
+  <link rel="alternate" type="application/rss+xml" title="Rubén Arcos" href="/es/feed.xml">
+
+  <!-- Chrome, Firefox OS and Opera -->
+  <meta name="theme-color" content="#faf5ee">
+  <!-- Windows Phone -->
+  <meta name="msapplication-navbutton-color" content="#faf5ee">
+  <!-- iOS Safari -->
+  <meta name="apple-mobile-web-app-status-bar-style" content="#faf5ee">
+  <!-- Start cookieyes banner --> 
+  <script id="cookieyes" type="text/javascript" src="https://cdn-cookieyes.com/client_data/6ae1ee7e40cef2c175ff9462/script.js"></script> 
+  <!-- End cookieyes banner -->
+</head>
+
+
+
+  
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-VL018H86JE"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { dataLayer.push(arguments); }
+  gtag('js', new Date());
+
+  gtag('config', 'G-VL018H86JE');
+</script> <!-- /Google Analytics -->
+  
+
+  <div class="full-page-container">
+    <div class="overlay"></div>
+    <header class="site-header clearfix">
+  <div class="wrapper-content">
+
+    <div class="switch-lang">
+      
+      
+      
+      <a id="switch-lang" href=" /2025/01/21/ALIA_a_spanish_model/" title="Change language to en">
+        <img src=" https://cdn.wpml.org/wp-content/plugins/sitepress-multilingual-cms/res/flags/en.png">
+      </a>
+      
+      
+      
+      
+      <!--es-->
+      
+      
+    </div>
+
+    <div class="navigation-wrap">
+      <div class="nav-toggle-close"><i class="fa fa-times" aria-hidden="true"></i></div>
+
+      <nav class="site-nav">
+        
+        
+        
+        
+        
+        
+        
+      
+      
+      <a href='/es/about/'>Sobre mí</a>
+      
+      
+      
+      
+      
+      
+        
+        
+        
+        
+        
+        
+        
+      
+      
+      <a href='/es/contacto/'>Contacto</a>
+      
+      
+      
+      
+      
+      
+        
+        
+        
+        
+        
+        
+        
+      
+      
+      <a href='/es/cookies/'>Cookies</a>
+      
+      
+      
+      
+      
+      
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <a href="https://linkedin.com/in/rubenarcos2"><i class="fa-brands fa-linkedin fa-2x" aria-hidden="true"></i></a>
+        <a href="https://github.com/rubenarcos2"><i class="fa-brands fa-github fa-2x" aria-hidden="true"></i></a>
+      </nav>
+
+    </div>
+
+    <span class="search-toggle">
+      <i class="fa fa-search" aria-hidden="true"></i>
+    </span>
+
+    <div class="nav-toggle"><i class="fa fa-bars" aria-hidden="true"></i></div>
+
+    <div class="site-logo">
+      <a href="/es/">Rubén Arcos</a>
+    </div>
+
+  </div>
+</header> <!-- /.site-header -->
+    <div class="search-box">
+  <div class="wrapper-content">
+    <form class="search-form">
+      
+      
+      
+      <label class="screen-reader-text" for="search-input">Buscar...</label>
+      <input type="text" id="search-input" class="search-field" name="s" placeholder="Buscar...">
+      
+      
+      
+      
+      
+      
+
+    </form>
+    <div class="btn-close">
+      <span class="bt-search-close">
+        <i class="fa fa-times" aria-hidden="true"></i>
+      </span>
+    </div>
+  </div>
+  <ul id="results-container" class="search-results-list"></ul>
+</div> <!-- /.search-box -->
+    
+    
+    
+    
+    <div class="alert">
+      <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+      <a href="https://www.linkedin.com/in/rubenarcos2/">Ofertas laborales, propuestas u otras iniciativas envíamelas a través de LinkedIn</a>
+    </div>    
+    
+    
+    
+    
+    
+    
+
+    <div class="post-header" style="background: url(/images/pages/logo_alia.png)">
+  <div class="post-header-info">
+    <h1 class="post-title">ALIA el modelo español de IA</h1>
+    <div class="post-meta">
+      
+      
+      
+      <time datetime="2025-01-21T07:23:28+01:00">
+         21/01/2025
+      </time>
+      
+      
+      
+      
+      
+      
+      
+    </div>
+  </div>
+</div>
+<div id="readPostContent" style="text-align:center"><a class="btn btn-middle" onclick="readPostContent(this)">
+    
+    
+    
+    Leer artículo en voz alta
+    
+    
+    
+    
+    
+    
+  </a></div>
+<div class="content-box">
+  <article class="post">
+
+    <div class="post-content">
+      <h1 id="qué-es-alia">¿Qué es ALIA?</h1>
+
+<p><img src="/images/pages/logo_alia.png" alt="Logo" /></p>
+
+<p style="text-align: justify">
+ALIA o también conocida como 'Salmandra ALIA-40b' es el nuevo modelo de inteligencia artificial español y el primero de Europa. ALIA es un gran modelo de lenguaje de inteligencia artificial, entrenado en español, catalán, gallego, valenciano y euskera. El proyecto está completamente financiado con fondos públicos. 
+
+Se han creado varios modelos para su uso: 40B, 7B y 2B de parámetros.
+</p>
+
+<h2 id="qué-es-un-modelo-de-ia-según-copilot">¿Qué es un modelo de IA (según copilot)?</h2>
+
+<p style="text-align: justify">
+Un modelo de IA (Inteligencia Artificial) es un sistema que ha sido entrenado para realizar tareas específicas o generales, utilizando datos y algoritmos avanzados. Estos modelos pueden ser utilizados para una amplia gama de aplicaciones, como el reconocimiento de imágenes, el procesamiento del lenguaje natural y la toma de decisiones.
+</p>
+
+<h2 id="qué-es-un-llm-según-copilot">¿Qué es un LLM (según copilot)?</h2>
+
+<p style="text-align: justify">
+Un LLM (Large Language Model), o modelo de lenguaje grande, es un tipo específico de modelo de IA diseñado para procesar y generar texto. Estos modelos son entrenados con enormes cantidades de texto y utilizan técnicas avanzadas para comprender y generar lenguaje humano de manera coherente y contextual.
+</p>
+
+<h2 id="prueba-en-colab-del-modelo-7b">Prueba en Colab del modelo 7B</h2>
+<p>He realizado una prueba para ver que tal funciona:</p>
+
+<p><a href="https://colab.research.google.com/drive/1iNebMKb4bR8kLqm52qH22DYcNjbo4ebW"><img src="/images/pages/repository_small_colab.png" alt="Programa IA" /></a></p>
+
+<h2 id="qué-arquitectura-tiene">¿Qué arquitectura tiene?</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Total Parameters</th>
+      <th style="text-align: left">40,433,885,184</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Embedding Parameters</td>
+      <td style="text-align: left">2,097,152,000</td>
+    </tr>
+    <tr>
+      <td>Layers</td>
+      <td style="text-align: left">48</td>
+    </tr>
+    <tr>
+      <td>Hidden size</td>
+      <td style="text-align: left">8,192</td>
+    </tr>
+    <tr>
+      <td>Attention heads</td>
+      <td style="text-align: left">64</td>
+    </tr>
+    <tr>
+      <td>Context length</td>
+      <td style="text-align: left">4,096</td>
+    </tr>
+    <tr>
+      <td>Vocabulary size</td>
+      <td style="text-align: left">256,000</td>
+    </tr>
+    <tr>
+      <td>Precision</td>
+      <td style="text-align: left">bfloat16</td>
+    </tr>
+    <tr>
+      <td>Embedding type</td>
+      <td style="text-align: left">RoPE</td>
+    </tr>
+    <tr>
+      <td>Activation Function</td>
+      <td style="text-align: left">SwiGLU</td>
+    </tr>
+    <tr>
+      <td>Layer normalization</td>
+      <td style="text-align: left">RMS Norm</td>
+    </tr>
+    <tr>
+      <td>Flash attention</td>
+      <td style="text-align: left">✅</td>
+    </tr>
+    <tr>
+      <td>Grouped Query Attention</td>
+      <td style="text-align: left">✅</td>
+    </tr>
+    <tr>
+      <td>Num. query groups</td>
+      <td style="text-align: left">8</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><br /></p>
+
+<h2 id="con-qué-ha-sido-entrenada">¿Con qué ha sido entrenada?</h2>
+
+<p style="text-align: justify">
+El entrenamiento previo se realizó utilizando NeMo Framework de NVIDIA, que aprovecha PyTorch Lightning para un entrenamiento de modelos eficiente en entornos altamente distribuidos.
+
+Las versiones optimizadas con instrucciones se produjeron con FastChat.
+</p>
+
+<h3 id="datos">Datos</h3>
+<h4 id="datos-de-preentrenamiento">Datos de preentrenamiento</h4>
+
+<p style="text-align: justify">
+El corpus de preentrenamiento comprende datos de 35 idiomas europeos y 92 lenguajes de programación, con fuentes de datos detalladas que se proporcionan a continuación. Las 1,5 épocas de entrenamiento iniciales utilizaron 2,4 billones de tokens, obtenidos mediante el ajuste manual de la proporción de datos para equilibrar la representación y dar más importancia a los idiomas cooficiales de España (español, catalán, gallego y vasco). De esta manera, redujimos el código y los datos en inglés a la mitad, los idiomas cooficiales españoles se sobremuestrearon en un doble y los idiomas restantes se mantuvieron en sus proporciones originales. A continuación, durante las siguientes épocas (aún en entrenamiento), el conjunto de datos Colossal OSCAR se reemplazó con el conjunto de datos FineWebEdu. Este ajuste dio como resultado un total de 2,68 billones de tokens, distribuidos como se describe a continuación:
+</p>
+
+<p>
+<img src="/images/pages/images_corpus_languages_alia.png" />
+</p>
+
+<p style="text-align: justify">
+El corpus de preentrenamiento está compuesto predominantemente por datos de Colossal OSCAR, que contribuye con un significativo 53,05% del total de tokens. A continuación, Starcoder proporciona el 13,67% y FineWebEdu (subconjunto de 350 mil millones de tokens) agrega el 10,24%. Las siguientes fuentes más importantes son HPLT con un 4,21% y French-PD con un 3,59%. Otras contribuciones notables incluyen MaCoCu, Legal-ES y EurLex, cada una de las cuales contribuye con alrededor del 1,72% al 1,41%. Estas fuentes principales forman colectivamente la mayor parte del corpus, lo que garantiza un conjunto de datos rico y diverso para entrenar el modelo de lenguaje. El 10% restante proviene de fuentes más pequeñas en varios idiomas.
+</p>
+
+<h3 id="infraestructura-informática">Infraestructura informática</h3>
+
+<p>Todos los modelos fueron entrenados en MareNostrum 5, un superordenador EuroHPC pre-exascale alojado y operado por el Barcelona Supercomputing Center.</p>
+
+<p>La partición acelerada está compuesta por 1.120 nodos con las siguientes especificaciones:</p>
+
+<ul>
+  <li>4 GPU Nvidia Hopper con memoria HBM2 de 64 GB</li>
+  <li>2 procesadores Intel Sapphire Rapids 8460Y+ a 2,3 GHz y 32 c cada uno (64 núcleos)</li>
+  <li>4x NDR200 (BW por nodo 800 Gb/s)</li>
+  <li>512 GB de memoria principal (DDR5)</li>
+  <li>460 GB en almacenamiento NVMe</li>
+</ul>
+
+<table>
+  <thead>
+    <tr>
+      <th>Modelo</th>
+      <th>Nodos</th>
+      <th>GPU</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>2B</td>
+      <td>64</td>
+      <td>256</td>
+    </tr>
+    <tr>
+      <td>7B</td>
+      <td>128</td>
+      <td>512</td>
+    </tr>
+    <tr>
+      <td>40B</td>
+      <td>256 / 512</td>
+      <td>1.024 / 2.048</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+
+<p>Enlaces de interés:</p>
+
+<ul>
+  <li><a href="https://alia.gob.es/">Web oficial</a>.</li>
+  <li><a href="https://langtech-bsc.gitbook.io/alia-kit/modelos/modelos-de-texto">Todos los modelos de texto</a></li>
+  <li><a href="https://langtech-bsc.gitbook.io/alia-kit/modelos/modelos-de-traduccion-automatica">Todos los modelos de traducción</a></li>
+  <li><a href="https://huggingface.co/spaces/BSC-LT/SalamandraTA-2B-Demo">Una demostración de traducción</a></li>
+</ul>
+
+<p>Ampliar información:</p>
+<ul>
+  <li><a href="https://www.rtve.es/noticias/20250120/alia-familia-modelos-inteligencia-artificial-pedro-sanchez/16414386.shtml">https://www.rtve.es/noticias/20250120/alia-familia-modelos-inteligencia-artificial-pedro-sanchez/16414386.shtml</a></li>
+  <li><a href="https://www.xataka.com/robotica-e-ia/pedro-sanchez-anuncia-lanzamiento-primeros-modelos-alia-asi-ia-publica-abierta-que-impulsa-estado">https://www.xataka.com/robotica-e-ia/pedro-sanchez-anuncia-lanzamiento-primeros-modelos-alia-asi-ia-publica-abierta-que-impulsa-estado</a></li>
+</ul>
+
+<hr />
+
+<p><strong>Fuentes:</strong></p>
+<ul>
+  <li><a href="https://huggingface.co/BSC-LT/ALIA-40b">https://huggingface.co/BSC-LT/ALIA-40b</a></li>
+</ul>
+
+    </div>
+
+    <footer class="post-footer">
+      
+      
+      
+      <p>
+      <h3>Licencia de contenido</h3>
+
+      <p><img src="/images/pages/88x311.png" /></p>
+
+      <p>Esta página web y todo su contenido, incluido proyectos y código fuente, está licenciado bajo una licencia de
+        Creative Commons: Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0) <a
+          href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.es">Más info</a></p>
+
+      </p>
+      
+      
+      
+      
+      
+      
+
+      <ul class="post-footer-list">
+        <li class="post-footer-item">
+          <a class="post-facebook"
+            href="https://www.facebook.com/sharer/sharer.php?u=https://rarcos.com/2025/01/21/ALIA_a_spanish_model/"
+            onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
+            title="Share on Facebook" rel="nofollow"><i class="fa-brands fa-facebook"
+              aria-hidden="true"></i><span>Facebook</span></a>
+        </li>
+
+        <li class="post-footer-item">
+          <a class="post-twitter"
+            href="https://twitter.com/intent/tweet?text=ALIA%20el%20modelo%20espa%C3%B1ol%20de%20IA&url=https://rarcos.com/2025/01/21/ALIA_a_spanish_model/"
+            onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
+            title="Share on Twitter" rel="nofollow"><i class="fa-brands fa-x-twitter"
+              aria-hidden="true"></i><span>Twitter</span></a>
+        </li>
+
+        <li class="post-footer-item">
+          <a href="http://pinterest.com/pin/create/button/?url=https://rarcos.com/2025/01/21/ALIA_a_spanish_model/&amp;media=https://rarcos.com/images/pages/logo_alia.png&amp;description=ALIA%20el%20modelo%20espa%C3%B1ol%20de%20IA"
+            onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=900,height=500,toolbar=1,resizable=0'); return false;"
+            class="post-pinterest" title="Share on Pinterest" rel="nofollow"><i class="fa-brands fa-pinterest"
+              aria-hidden="true"></i><span>Pinterest</span></a>
+        </li>
+
+        <li class="post-footer-item">
+          <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://rarcos.com/2025/01/21/ALIA_a_spanish_model/&title=ALIA%20el%20modelo%20espa%C3%B1ol%20de%20IA"
+            onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=900,height=500,toolbar=1,resizable=0'); return false;"
+            class="post-linkedin" title="Share on Linkedin" rel="nofollow"><i class="fa-brands fa-linkedin"
+              aria-hidden="true"></i><span>Linkedin</span></a>
+        </li>
+      </ul>
+      
+      <div class="post-tag">
+        <span>Tags:</span>
+        
+        <a href="/es/tags#ai" class="tag">ai</a>
+        
+        <a href="/es/tags#rag" class="tag">rag</a>
+        
+        <a href="/tags#open source" class="tag">open source</a>
+        
+        <a href="/es/tags#models" class="tag">models</a>
+        
+      </div>
+      
+    </footer>
+
+    
+    <div class="post-author">
+      
+      <div class="post-author-image">
+        <a style="background-image: url(/images/ruben.jpg)">
+          <span class="screen-reader-text">Rubén Arcos Picture</span>
+        </a>
+      </div>
+      <div class="post-author-info">
+        <h4>Rubén Arcos</h4>
+        <p class="post-author-bio">
+          
+          
+          
+          Desarrollador TI. <br>Máster FP en IA y Big data, <br>Técnico superior en desarrollo de aplicaciones web y <br>Técnico superior en desarrollo de aplicaciones multiplataformas.
+          
+          
+          
+          
+          
+          
+        </p>
+        <div class="post-author-meta">
+          
+          <a href="https://twitter.com/rarcosdev" target="_blank"><i class="fa-brands fa-x-twitter" aria-hidden="true"></i></a>
+          
+          
+          <a href="https://linkedin.com/in/rubenarcos2" target="_blank"><i class="fa-brands fa-linkedin" aria-hidden="true"></i></a>
+          
+          
+          <a href="https://github.com/rubenarcos2" target="_blank"><i class="fa-brands fa-github" aria-hidden="true"></i></a>
+          
+          
+          
+          
+          
+          
+          
+          
+          
+        </div>
+      </div>
+      
+    </div>
+
+    <div class="page-navigation clearfix">
+      
+      <a class="prev-page" href="/es/2024/05/25/Ollama_api_chatbot/"><i class="fa fa-angle-left"
+          aria-hidden="true"></i><span>Chatbot opensource</span></a>
+      
+      
+    </div>
+
+    
+  </article> <!-- /.post -->
+
+</div> <!-- /.content-box -->
+
+    <div class="top" title="Scroll To Top">
+  <i class="fa fa-chevron-up" aria-hidden="true"></i>
+</div> <!-- /.top -->
+    <footer class="site-footer">
+
+  <div class="footer-wrapper">
+
+    <h2 class="footer-heading">Rubén Arcos</h2>
+
+    <ul class="social-footer">
+    
+      <li><a href="https://twitter.com/rarcosdev" target="_blank"><i class="fa-brands fa-x-twitter" aria-hidden="true"></i></a></li>
+    
+    
+    
+    
+    <li><a href="https://linkedin.com/in/rubenarcos2" target="_blank"><i class="fa-brands fa-linkedin" aria-hidden="true"></i></a></li>
+    
+    
+    <li><a href="https://github.com/rubenarcos2" target="_blank"><i class="fa-brands fa-github" aria-hidden="true"></i></a></li>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    </ul>
+
+    <div class="copyright">
+      <p><a href="https://jekyllrb.com/">Proudly powered by Jekyll</a> | Theme: Lokmont by <a href="https://artemsheludko.github.io/">Artem Sheludko</a> | Modifications: <a href="https://github.com/rubenarcos2">Rubén Arcos</a></p>
+    </div>
+  </div>
+
+</footer> <!-- /.site-footer -->
+
+  </div> <!-- /.full-page-container -->
+
+  <script src="/js/jquery-3.7.1.min.js"></script>
+<script src="/js/jquery.viewportchecker.min.js"></script>
+<script src="/js/jquery.fitvids.js"></script>
+<script src="/js/simple-jekyll-search.min.js"></script>
+<script src="/js/transition.js"></script>
+<script src="/js/zoom.min.js"></script>
+<script src="/js/main.js"></script>
+</body>
+
+</html>
