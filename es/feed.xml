@@ -1,11 +1,11 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="https://rarcos.com/es/feed.xml" rel="self" type="application/atom+xml" /><link href="https://rarcos.com/es/" rel="alternate" type="text/html" /><updated>2025-01-21T19:30:36+01:00</updated><id>https://rarcos.com/feed.xml</id><title type="html">Rubén Arcos</title><subtitle>FullStack, AI &amp; Big Data developer</subtitle><entry xml:lang="es"><title type="html">ALIA el modelo español de IA</title><link href="https://rarcos.com/es/2025/01/21/ALIA_a_spanish_model/" rel="alternate" type="text/html" title="ALIA el modelo español de IA" /><published>2025-01-21T07:23:28+01:00</published><updated>2025-01-21T07:23:28+01:00</updated><id>https://rarcos.com/2025/01/21/ALIA_a_spanish_model</id><content type="html" xml:base="https://rarcos.com/2025/01/21/ALIA_a_spanish_model/"><![CDATA[<h1 id="qué-es-alia">¿Qué es ALIA?</h1>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="https://rarcos.com/es/feed.xml" rel="self" type="application/atom+xml" /><link href="https://rarcos.com/es/" rel="alternate" type="text/html" /><updated>2025-01-21T19:46:32+01:00</updated><id>https://rarcos.com/feed.xml</id><title type="html">Rubén Arcos</title><subtitle>FullStack, AI &amp; Big Data developer</subtitle><entry xml:lang="es"><title type="html">ALIA el modelo español de IA</title><link href="https://rarcos.com/es/2025/01/21/ALIA_a_spanish_model/" rel="alternate" type="text/html" title="ALIA el modelo español de IA" /><published>2025-01-21T07:23:28+01:00</published><updated>2025-01-21T07:23:28+01:00</updated><id>https://rarcos.com/2025/01/21/ALIA_a_spanish_model</id><content type="html" xml:base="https://rarcos.com/2025/01/21/ALIA_a_spanish_model/"><![CDATA[<h1 id="qué-es-alia">¿Qué es ALIA?</h1>
 
 <p><img src="/images/pages/logo_alia.png" alt="Logo" /></p>
 
 <p style="text-align: justify">
-ALIA o también conocida como 'Salmandra ALIA-40b' es el nuevo modelo de inteligencia artificial español y el primero de Europa. ALIA es un gran modelo de lenguaje de inteligencia artificial, entrenado en español, catalán, gallego, euskera. El proyecto está completamente financiado con fondos públicos. 
+ALIA o también conocida como 'ALIA-40b' es el nuevo modelo de inteligencia artificial español y el primero de Europa. ALIA es un gran modelo de lenguaje de inteligencia artificial, entrenado en español, catalán, gallego, euskera. El proyecto está completamente financiado con fondos públicos. 
 
-Se han creado varios modelos para su uso: 40B, 7B y 2B de parámetros.
+Se han creado varios modelos para su uso: ALIA-40b, salamandra-7B y salamandra-2B de parámetros.
 </p>
 
 <h2 id="qué-es-un-modelo-de-ia-según-copilot">¿Qué es un modelo de IA (según copilot)?</h2>
