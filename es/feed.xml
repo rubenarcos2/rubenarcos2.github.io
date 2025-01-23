@@ -1,4 +1,79 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="https://rarcos.com/es/feed.xml" rel="self" type="application/atom+xml" /><link href="https://rarcos.com/es/" rel="alternate" type="text/html" /><updated>2025-01-21T19:46:32+01:00</updated><id>https://rarcos.com/feed.xml</id><title type="html">Rubén Arcos</title><subtitle>FullStack, AI &amp; Big Data developer</subtitle><entry xml:lang="es"><title type="html">ALIA el modelo español de IA</title><link href="https://rarcos.com/es/2025/01/21/ALIA_a_spanish_model/" rel="alternate" type="text/html" title="ALIA el modelo español de IA" /><published>2025-01-21T07:23:28+01:00</published><updated>2025-01-21T07:23:28+01:00</updated><id>https://rarcos.com/2025/01/21/ALIA_a_spanish_model</id><content type="html" xml:base="https://rarcos.com/2025/01/21/ALIA_a_spanish_model/"><![CDATA[<h1 id="qué-es-alia">¿Qué es ALIA?</h1>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="https://rarcos.com/es/feed.xml" rel="self" type="application/atom+xml" /><link href="https://rarcos.com/es/" rel="alternate" type="text/html" /><updated>2025-01-23T12:03:14+01:00</updated><id>https://rarcos.com/feed.xml</id><title type="html">Rubén Arcos</title><subtitle>FullStack, AI &amp; Big Data developer</subtitle><entry xml:lang="es"><title type="html">ALIA en Ollama (y cualquier modelo externo)</title><link href="https://rarcos.com/es/2025/01/22/ALIA_on_Ollama/" rel="alternate" type="text/html" title="ALIA en Ollama (y cualquier modelo externo)" /><published>2025-01-22T17:00:00+01:00</published><updated>2025-01-22T17:00:00+01:00</updated><id>https://rarcos.com/2025/01/22/ALIA_on_Ollama</id><content type="html" xml:base="https://rarcos.com/2025/01/22/ALIA_on_Ollama/"><![CDATA[<p>Hace un tiempo publiqué un artículo en el que veíamos <a href="https://rarcos.com/es/2024/05/25/Ollama_api_chatbot/">cómo instalar Ollama y cómo crear un ChatBot</a> que utilizase sus servicios. 
+Pues ahora vamos a ver cómo crear un modelo de datos obtenido de una fuente externa, a diferencia de los modelos que ya se encuentran preparados en la <a href="https://ollama.com/library">librería de Ollama</a>.</p>
+
+<p>En nuestro caso vamos a utilizar el modelo ALIA, el primer modelo en español, que acaba de lanzarse para su uso.</p>
+
+<p>Antes de nada, comentar los requisitos del modelo:</p>
+
+<ul>
+  <li>Memoria del sistema: 76.5 GiB</li>
+  <li>Tamaño del modelo: 150 Gb</li>
+  <li>Tamaño del modelo convertido para ollama: 75,3 GB</li>
+</ul>
+
+<p>Tras ello, lo primero que vamos a hacer es localizar el modelo y proceder a su descarga:</p>
+
+<h1 id="descarga-del-modelo-alia">Descarga del modelo ALIA</h1>
+
+<p>En Hugging Face tenemos los modelos ofrecidos por el Barcelona Supercomputing Center. En nuestro caso nos interesan 3 modelos:</p>
+
+<ul>
+  <li><a href="https://huggingface.co/BSC-LT/ALIA-40b">ALIA-40b</a></li>
+  <li><a href="https://huggingface.co/BSC-LT/salamandra-7b">Salamandra-7b</a></li>
+  <li><a href="https://huggingface.co/BSC-LT/salamandra-2b">Salamandra-2b</a></li>
+</ul>
+
+<h2 id="clonado-del-repositorio-de-alia">Clonado del repositorio de ALIA</h2>
+
+<p>Abrimos una terminal y en el directorio que deseamos realizar la descarga, introducimos:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># Make sure you have git-lfs installed (https://git-lfs.com)
+git lfs install
+
+git clone https://huggingface.co/BSC-LT/ALIA-40b
+</code></pre></div></div>
+
+<h1 id="cómo-crear-el-modelo-de-alia-en-ollama">¿Cómo crear el modelo de ALIA en ollama?</h1>
+
+<p>Esta tarea que puede parecernos compleja, pero no lo es realmente, se trata solamente de ejecutar 3 comandos.</p>
+
+<p>En primer lugar vamos a crear un fichero (dentro del directorio donde hemos descargado el modelo, junto con los ficheros descargado) denominado <code class="language-plaintext highlighter-rouge">Modelfile</code> y su contenido será el siguiente: <code class="language-plaintext highlighter-rouge">FROM .</code></p>
+
+<p>Nuestro árbol de directorio quedará así:</p>
+
+<p><img src="/images/pages/arbol_directorio_alia.png" alt="arbol_alia" /></p>
+
+<h2 id="creación-del-modelo-en-ollama">Creación del modelo en Ollama</h2>
+
+<p>Para ello, vamos a ejecutar el siguiente comando, ubicados en la misma carpeta anterior:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ollama create alia40b
+</code></pre></div></div>
+
+<p><img src="/images/pages/alia_create_model_process.png" alt="arbol_alia" /></p>
+
+<p>Una vez finalizado, comprobamos que se ha creado el modelo correctamente, viendo la lista de modelos instalados:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ollama list
+</code></pre></div></div>
+
+<p><img src="/images/pages/alia_list_model.png" alt="arbol_alia" /></p>
+
+<h2 id="ejecución-del-modelo-en-ollama">Ejecución del modelo en Ollama</h2>
+
+<p>Por último, vamos a ejecutar el modelo y así poder interactuar con el:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ollama run alia40b
+</code></pre></div></div>
+
+<p><img src="/images/pages/alia_execute_model.png" alt="arbol_alia" /></p>
+
+<hr />
+
+<p><strong>Fuentes:</strong></p>
+<ul>
+  <li><a href="https://github.com/ollama/ollama/blob/main/docs/import.md">https://github.com/ollama/ollama/blob/main/docs/import.md</a></li>
+</ul>]]></content><author><name></name></author><category term="ai" /><category term="rag" /><category term="open source" /><category term="models" /><summary type="html"><![CDATA[Vamos a ver cómo crear un modelo de datos obtenido de una fuente externa, a diferencia de los modelos que ya se encuentran preparados en la librería de Ollama, en nuestro caso crearemos el modelo ALIA en Ollama.]]></summary></entry><entry xml:lang="es"><title type="html">ALIA el modelo español de IA</title><link href="https://rarcos.com/es/2025/01/21/ALIA_a_spanish_model/" rel="alternate" type="text/html" title="ALIA el modelo español de IA" /><published>2025-01-21T07:23:28+01:00</published><updated>2025-01-21T07:23:28+01:00</updated><id>https://rarcos.com/2025/01/21/ALIA_a_spanish_model</id><content type="html" xml:base="https://rarcos.com/2025/01/21/ALIA_a_spanish_model/"><![CDATA[<h1 id="qué-es-alia">¿Qué es ALIA?</h1>
 
 <p><img src="/images/pages/logo_alia.png" alt="Logo" /></p>
 
@@ -1541,26 +1616,7 @@ volumes:
 <p><a href="https://github.com/rubenarcos2/ia-juego_hotel"><img src="/images/pages/repository_small.png" alt="Repositorio" /></a>
 <a href="https://colab.research.google.com/drive/1KEqghfPGeuk9u5u8_s531CCb7869Hn3u"><img src="/images/pages/repository_small_colab.png" alt="Generador de partidas" /></a>
 <a href="https://colab.research.google.com/drive/10rXkRiRnq59435RtOSICPrA1T2dXyxG6"><img src="/images/pages/repository_small_colab.png" alt="Programa IA" /></a>
-<a href="https://colab.research.google.com/drive/1c-ozdgzMSYzZD2el46knjWx0SRIi-hMC"><img src="/images/pages/repository_small_colab.png" alt="Programa Jugadores vs IA" /></a></p>]]></content><author><name></name></author><category term="python" /><category term="naives bayes" /><category term="ia" /><category term="colab" /><summary type="html"><![CDATA[Creación de un sistema de IA para aprendizaje de la decisión de compra para el juego del Hotel]]></summary></entry><entry><title type="html">JS Vanilla MVC - Spring API rest</title><link href="https://rarcos.com/es/2022/07/23/Vanilla-JS-MVC-Spring-API-rest/" rel="alternate" type="text/html" title="JS Vanilla MVC - Spring API rest" /><published>2022-07-23T16:33:28+02:00</published><updated>2022-07-23T16:33:28+02:00</updated><id>https://rarcos.com/2022/07/23/Vanilla%20JS%20MVC%20-%20Spring%20API%20rest</id><content type="html" xml:base="https://rarcos.com/2022/07/23/Vanilla-JS-MVC-Spring-API-rest/"><![CDATA[<h1 id="js-vanilla-mvc---spring-api-rest">JS Vanilla MVC - Spring API rest</h1>
-
-<p>Desarrollo de una app en JS Vanilla con MVC para consumir una api rest en Spring Boot.</p>
-
-<p>Esta es la demostración de la aplicación que he realizado (click <a href="/es/WorkspaceWeb/JSconsumeAPI">aquí</a> o en la imagen):</p>
-
-<p><a href="/es/WorkspaceWeb/JSconsumeAPI"><img src="/images/pages/api_rest.png" alt="Ir a ver la app en funcionamiento" /></a></p>
-
-<hr />
-
-<p><em>Repositorio con el contenido</em></p>
-
-<p><a href="https://github.com/rubenarcos2/spring-boot-api_rest"><img src="/images/pages/repository_small.png" alt="Repositorio" /></a>
-Servidor
-<a href="https://github.com/rubenarcos2/js-vanilla-api-client"><img src="/images/pages/repository_small.png" alt="Repositorio" /></a>
-Cliente</p>
-
-<hr />
-
-<p><strong>Fuentes:</strong></p>]]></content><author><name></name></author><category term="spring" /><category term="MVC" /><category term="js" /><category term="vanilla js" /><category term="api" /><summary type="html"><![CDATA[Desarrollo de una app en JS Vanilla con MVC para consumir una api rest en Spring Boot]]></summary></entry><entry><title type="html">C# + Arduino - Detector mute</title><link href="https://rarcos.com/es/2022/07/23/C-+-Arduino-Detector-mute/" rel="alternate" type="text/html" title="C# + Arduino - Detector mute" /><published>2022-07-23T16:33:28+02:00</published><updated>2022-07-23T16:33:28+02:00</updated><id>https://rarcos.com/2022/07/23/C#%20+%20Arduino%20-%20Detector%20mute</id><content type="html" xml:base="https://rarcos.com/2022/07/23/C-+-Arduino-Detector-mute/"><![CDATA[<h1 id="c--arduino---detector-mute-micrófono-y-webcam-en-uso">C# + Arduino - Detector mute micrófono y webcam en uso</h1>
+<a href="https://colab.research.google.com/drive/1c-ozdgzMSYzZD2el46knjWx0SRIi-hMC"><img src="/images/pages/repository_small_colab.png" alt="Programa Jugadores vs IA" /></a></p>]]></content><author><name></name></author><category term="python" /><category term="naives bayes" /><category term="ia" /><category term="colab" /><summary type="html"><![CDATA[Creación de un sistema de IA para aprendizaje de la decisión de compra para el juego del Hotel]]></summary></entry><entry><title type="html">C# + Arduino - Detector mute</title><link href="https://rarcos.com/es/2022/07/23/C-+-Arduino-Detector-mute/" rel="alternate" type="text/html" title="C# + Arduino - Detector mute" /><published>2022-07-23T16:33:28+02:00</published><updated>2022-07-23T16:33:28+02:00</updated><id>https://rarcos.com/2022/07/23/C#%20+%20Arduino%20-%20Detector%20mute</id><content type="html" xml:base="https://rarcos.com/2022/07/23/C-+-Arduino-Detector-mute/"><![CDATA[<h1 id="c--arduino---detector-mute-micrófono-y-webcam-en-uso">C# + Arduino - Detector mute micrófono y webcam en uso</h1>
 
 <p>Desarrollo de una app en C# que se comunique con Arduino para la detección del micrófono, el estado muteado y la activación de la webcam.</p>
 

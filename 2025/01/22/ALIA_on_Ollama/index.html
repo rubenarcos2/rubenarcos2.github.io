@@ -43,9 +43,9 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>ALIA the Spanish AI model</title>
+  <title>ALIA in Ollama (and any external model)</title>
   <meta name='description'
-    content='Transformer-based decoder-only language model that has been pre-trained from scratch on 6.9 trillion tokens of highly curated data. The pre-training corpus c...'>
+    content='We are going to see how to create a data model obtained from an external source, unlike the models that are already prepared in the Ollama library, in our ca...'>
 
   <!-- Google Fonts -->
   <link
@@ -60,7 +60,7 @@
 
   <!-- Main Stylesheet -->
   <link rel="stylesheet" href="/css/main.css">
-  <link rel="canonical" href="https://rarcos.com/2025/01/21/ALIA_a_spanish_model/">
+  <link rel="canonical" href="https://rarcos.com/2025/01/22/ALIA_on_Ollama/">
   <link rel="alternate" type="application/rss+xml" title="Rubén Arcos" href="/feed.xml">
 
   <!-- Chrome, Firefox OS and Opera -->
@@ -101,7 +101,7 @@
       
       
       
-      <a id="switch-lang" href="/es/2025/01/21/ALIA_a_spanish_model/" title="Change language to es">
+      <a id="switch-lang" href="/es/2025/01/22/ALIA_on_Ollama/" title="Change language to es">
         <img src="https://cdn.wpml.org/wp-content/plugins/sitepress-multilingual-cms/res/flags/es.png">
       </a>
       
@@ -259,9 +259,9 @@
     
     
 
-    <div class="post-header" style="background: url(/images/pages/logo_alia.png)">
+    <div class="post-header" style="background: url(/images/pages/logo_alia_ollama.png)">
   <div class="post-header-info">
-    <h1 class="post-title">ALIA the Spanish AI model</h1>
+    <h1 class="post-title">ALIA in Ollama (and any external model)</h1>
     <div class="post-meta">
       
       
@@ -269,8 +269,8 @@
       
       
       
-      <time datetime="2025-01-21T07:23:28+01:00">
-         01-21-2025
+      <time datetime="2025-01-22T17:00:00+01:00">
+         01-22-2025
       </time>
       
       
@@ -295,177 +295,80 @@
   <article class="post">
 
     <div class="post-content">
-      <h1 id="what-is-alia">What is ALIA?</h1>
+      <p>Some time ago I published an article in which we looked at <a href="https://rarcos.com/2024/05/25/Ollama_api_chatbot/">how to install Ollama and how to create a ChatBot</a> using its services.
+Now we are going to see how to create a data model obtained from an external source, as opposed to the models that are already prepared in the <a href="https://ollama.com/library">Ollama library</a>.</p>
 
-<p><img src="/images/pages/logo_alia.png" alt="Logo" /></p>
+<p>In our case we are going to use the ALIA model, the first model in Spanish, which has just been released for use.</p>
 
-<p style="text-align: justify">
-ALIA or also known as 'ALIA-40b' is the new Spanish artificial intelligence model and the first in Europe. ALIA is a large artificial intelligence language model, trained in Spanish, Catalan, Galician and Basque. The project is fully publicly funded.
-
-Several models have been created for its use: ALIA-40b, salamandra-7B and salamandra-2B parameters.
-</p>
-
-<h2 id="what-is-an-ai-model-according-to-copilot">What is an AI model (according to copilot)?</h2>
-
-<p style="text-align: justify">
-An AI (Artificial Intelligence) model is a system that has been trained to perform specific or general tasks, using advanced data and algorithms. These models can be used for a wide range of applications, such as image recognition, natural language processing and decision making.
-</p>
-
-<h2 id="what-is-an-llm-according-to-copilot">What is an LLM (according to copilot)?</h2>
-
-<p style="text-align: justify">
-An LLM (Large Language Model) is a specific type of AI model designed to process and generate text. These models are trained on huge amounts of text and use advanced techniques to understand and generate human language in a coherent and contextual manner.
-</p>
-
-<h2 id="colab-test-of-the-model-7b">Colab test of the model 7B</h2>
-<p>I have done a test to see how it works:</p>
-
-<p><a href="https://colab.research.google.com/drive/1iNebMKb4bR8kLqm52qH22DYcNjbo4ebW"><img src="/images/pages/repository_small_colab.png" alt="Program IA" /></a></p>
-
-<h2 id="what-is-its-architecture">What is its architecture?</h2>
-
-<table>
-  <thead>
-    <tr>
-      <th>Total Parameters</th>
-      <th style="text-align: left">40,433,885,184</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>Embedding Parameters</td>
-      <td style="text-align: left">2,097,152,000</td>
-    </tr>
-    <tr>
-      <td>Layers</td>
-      <td style="text-align: left">48</td>
-    </tr>
-    <tr>
-      <td>Hidden size</td>
-      <td style="text-align: left">8,192</td>
-    </tr>
-    <tr>
-      <td>Attention heads</td>
-      <td style="text-align: left">64</td>
-    </tr>
-    <tr>
-      <td>Context length</td>
-      <td style="text-align: left">4,096</td>
-    </tr>
-    <tr>
-      <td>Vocabulary size</td>
-      <td style="text-align: left">256,000</td>
-    </tr>
-    <tr>
-      <td>Precision</td>
-      <td style="text-align: left">bfloat16</td>
-    </tr>
-    <tr>
-      <td>Embedding type</td>
-      <td style="text-align: left">RoPE</td>
-    </tr>
-    <tr>
-      <td>Activation Function</td>
-      <td style="text-align: left">SwiGLU</td>
-    </tr>
-    <tr>
-      <td>Layer normalization</td>
-      <td style="text-align: left">RMS Norm</td>
-    </tr>
-    <tr>
-      <td>Flash attention</td>
-      <td style="text-align: left">✅</td>
-    </tr>
-    <tr>
-      <td>Grouped Query Attention</td>
-      <td style="text-align: left">✅</td>
-    </tr>
-    <tr>
-      <td>Num. query groups</td>
-      <td style="text-align: left">8</td>
-    </tr>
-  </tbody>
-</table>
-
-<p><br /></p>
-
-<h2 id="what-has-it-been-trained-with">What has it been trained with?</h2>
-
-<p>Pre-training was performed using NVIDIA’s NeMo Framework, which leverages PyTorch Lightning for efficient model training in highly distributed environments.</p>
-
-<p>Instruction-optimised versions were produced with FastChat.</p>
-
-<h3 id="data">Data</h3>
-<h4 id="pre-training-data">Pre-training data</h4>
-
-<p style="text-align: justify">
-The pre-training corpus comprises data from 35 European languages and 92 programming languages, with detailed data sources provided below. The initial 1.5 training epochs used 2.4 trillion tokens, obtained by manually adjusting data proportion to balance the representation and give more importance to Spain’s co-official (Spanish, Catalan, Galician, and Basque). This way, we downsampled code and English data to half, Spanish co-official languages were oversampled by 2x, and the remaining languages were kept in their original proportions. Following, during the following epochs (still training), the Colossal OSCAR dataset was replaced with the FineWebEdu dataset. This adjustment resulted in a total of 2.68 trillion tokens, distributed as outlined below:
-</p>
-
-<p>
-<img src="/images/pages/images_corpus_languages_alia.png" />
-</p>
-
-<p style="text-align: justify">
-The pretraining corpus is predominantly composed of data from Colossal OSCAR, which contributes a significant 53,05% of the total tokens. Following this, Starcoder provides 13,67%, and FineWebEdu (350B tokens subset) adds 10,24%. The next largest sources are HPLT at 4,21% and French-PD at 3,59%. Other notable contributions include MaCoCu, Legal-ES, and EurLex, each contributing around 1.72% to 1.41%. These major sources collectively form the bulk of the corpus, ensuring a rich and diverse dataset for training the language model. The remaining 10% comes from smaller sources in various languages.
-</p>
-
-<h3 id="computing-infrastructure">Computing infrastructure</h3>
-
-<p>All models were trained on MareNostrum 5, a pre-exascale EuroHPC supercomputer hosted and operated by the Barcelona Supercomputing Center.</p>
-
-<p>The accelerated partition is composed of 1,120 nodes with the following specifications:</p>
+<p>First of all, let’s comment on the requirements of the model:</p>
 
 <ul>
-  <li>4 Nvidia Hopper GPUs with 64 GB HBM2 memory.</li>
-  <li>2 Intel Sapphire Rapids 8460Y+ processors at 2.3 GHz and 32 c each (64 cores)</li>
-  <li>4x NDR200 (BW per node 800 Gb/s)</li>
-  <li>512 GB main memory (DDR5)</li>
-  <li>460 GB NVMe storage</li>
+  <li>System memory: 76.5 GiB</li>
+  <li>Model size: 150 Gb</li>
+  <li>Model size converted for ollama: 75.3 GB</li>
 </ul>
 
-<table>
-  <thead>
-    <tr>
-      <th>Model</th>
-      <th>Nodes</th>
-      <th>GPUs</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>2B</td>
-      <td>64</td>
-      <td>256</td>
-    </tr>
-    <tr>
-      <td>7B</td>
-      <td>128</td>
-      <td>512</td>
-    </tr>
-    <tr>
-      <td>40B</td>
-      <td>256 / 512</td>
-      <td>1.024 / 2.048</td>
-    </tr>
-  </tbody>
-</table>
+<p>After that, the first thing we are going to do is to locate the model and proceed to download it:</p>
+
+<h1 id="download-the-alia-model">Download the ALIA model</h1>
+
+<p>In Hugging Face we have the models offered by the Barcelona Supercomputing Center. In our case we are interested in 3 models:</p>
+
+<ul>
+  <li><a href="https://huggingface.co/BSC-LT/ALIA-40b">ALIA-40b</a></li>
+  <li><a href="https://huggingface.co/BSC-LT/salamandra-7b">Salamandra-7b</a></li>
+  <li><a href="https://huggingface.co/BSC-LT/salamandra-2b">Salamandra-2b</a></li>
+</ul>
+
+<h2 id="cloning-of-the-alia-repository">Cloning of the ALIA repository</h2>
+
+<p>We open a terminal and in the directory we want to download, we enter:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># Make sure you have git-lfs installed (https://git-lfs.com)
+git lfs install
+
+git clone https://huggingface.co/BSC-LT/ALIA-40b
+</code></pre></div></div>
+<h1 id="how-to-create-the-alia-model-in-ollama">How to create the ALIA model in ollama?</h1>
+
+<p>This task may seem complex, but it is not really, it is just a matter of executing 3 commands.</p>
+
+<p>First of all we are going to create a file (inside the directory where we have downloaded the model, together with the downloaded files) called <code class="language-plaintext highlighter-rouge">Modelfile</code> and its content will be the following: <code class="language-plaintext highlighter-rouge">FROM .</code>.</p>
+
+<p>Our directory tree will look like this:</p>
+
+<p><img src="/images/pages/directory_tree_alia.png" alt="arbol_alia" /></p>
+
+<h2 id="creation-of-the-model-in-ollama">Creation of the model in Ollama</h2>
+
+<p>To do this, we will run the following command, located in the same folder as above:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ollama create alia40b
+</code></pre></div></div>
+
+<p><img src="/images/pages/alia_create_model_process.png" alt="arbol_alia" /></p>
+
+<p>Once finished, we check that the model has been created correctly by looking at the list of installed models:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ollama list
+</code></pre></div></div>
+
+<p><img src="/images/pages/alia_list_model.png" alt="arbol_alia" /></p>
+
+<h2 id="running-the-model-in-ollama">Running the model in Ollama</h2>
+
+<p>Finally, let’s run the model so we can interact with it:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ollama run alia40b
+</code></pre></div></div>
+
+<p><img src="/images/pages/alia_execute_model.png" alt="arbol_alia" /></p>
 
 <hr />
 
-<p>Links of interest:</p>
-
+<p><strong>Sources:</strong></p>
 <ul>
-  <li><a href="https://alia.gob.es/">Official website</a>.</li>
-  <li><a href="https://langtech-bsc.gitbook.io/alia-kit/modelos/modelos-de-texto">All the text models</a></li>
-  <li><a href="https://langtech-bsc.gitbook.io/alia-kit/modelos/modelos-de-traduccion-automatica">All translation models</a></li>
-  <li><a href="https://huggingface.co/spaces/BSC-LT/SalamandraTA-2B-Demo">A translation demonstration</a></li>
-</ul>
-
-<p>More information:</p>
-<ul>
-  <li><a href="https://www.rtve.es/noticias/20250120/alia-familia-modelos-inteligencia-artificial-pedro-sanchez/16414386.shtml">https://www.rtve.es/noticias/20250120/alia-familia-modelos-inteligencia-artificial-pedro-sanchez/16414386.shtml</a></li>
-  <li><a href="https://www.xataka.com/robotica-e-ia/pedro-sanchez-anuncia-lanzamiento-primeros-modelos-alia-asi-ia-publica-abierta-que-impulsa-estado">https://www.xataka.com/robotica-e-ia/pedro-sanchez-anuncia-lanzamiento-primeros-modelos-alia-asi-ia-publica-abierta-que-impulsa-estado</a></li>
+  <li><a href="https://github.com/ollama/ollama/blob/main/docs/import.md">https://github.com/ollama/ollama/blob/main/docs/import.md</a></li>
 </ul>
 
     </div>
@@ -494,7 +397,7 @@ The pretraining corpus is predominantly composed of data from Colossal OSCAR, wh
       <ul class="post-footer-list">
         <li class="post-footer-item">
           <a class="post-facebook"
-            href="https://www.facebook.com/sharer/sharer.php?u=https://rarcos.com/2025/01/21/ALIA_a_spanish_model/"
+            href="https://www.facebook.com/sharer/sharer.php?u=https://rarcos.com/2025/01/22/ALIA_on_Ollama/"
             onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
             title="Share on Facebook" rel="nofollow"><i class="fa-brands fa-facebook"
               aria-hidden="true"></i><span>Facebook</span></a>
@@ -502,21 +405,21 @@ The pretraining corpus is predominantly composed of data from Colossal OSCAR, wh
 
         <li class="post-footer-item">
           <a class="post-twitter"
-            href="https://twitter.com/intent/tweet?text=ALIA%20the%20Spanish%20AI%20model&url=https://rarcos.com/2025/01/21/ALIA_a_spanish_model/"
+            href="https://twitter.com/intent/tweet?text=ALIA%20in%20Ollama%20(and%20any%20external%20model)&url=https://rarcos.com/2025/01/22/ALIA_on_Ollama/"
             onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
             title="Share on Twitter" rel="nofollow"><i class="fa-brands fa-x-twitter"
               aria-hidden="true"></i><span>Twitter</span></a>
         </li>
 
         <li class="post-footer-item">
-          <a href="http://pinterest.com/pin/create/button/?url=https://rarcos.com/2025/01/21/ALIA_a_spanish_model/&amp;media=https://rarcos.com/images/pages/logo_alia.png&amp;description=ALIA%20the%20Spanish%20AI%20model"
+          <a href="http://pinterest.com/pin/create/button/?url=https://rarcos.com/2025/01/22/ALIA_on_Ollama/&amp;media=https://rarcos.com/images/pages/logo_alia_ollama.png&amp;description=ALIA%20in%20Ollama%20(and%20any%20external%20model)"
             onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=900,height=500,toolbar=1,resizable=0'); return false;"
             class="post-pinterest" title="Share on Pinterest" rel="nofollow"><i class="fa-brands fa-pinterest"
               aria-hidden="true"></i><span>Pinterest</span></a>
         </li>
 
         <li class="post-footer-item">
-          <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://rarcos.com/2025/01/21/ALIA_a_spanish_model/&title=ALIA%20the%20Spanish%20AI%20model"
+          <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://rarcos.com/2025/01/22/ALIA_on_Ollama/&title=ALIA%20in%20Ollama%20(and%20any%20external%20model)"
             onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=900,height=500,toolbar=1,resizable=0'); return false;"
             class="post-linkedin" title="Share on Linkedin" rel="nofollow"><i class="fa-brands fa-linkedin"
               aria-hidden="true"></i><span>Linkedin</span></a>
@@ -585,12 +488,9 @@ The pretraining corpus is predominantly composed of data from Colossal OSCAR, wh
 
     <div class="page-navigation clearfix">
       
-      <a class="prev-page" href="/2024/05/25/Ollama_api_chatbot/"><i class="fa fa-angle-left"
-          aria-hidden="true"></i><span>Opensource Chatbot</span></a>
+      <a class="prev-page" href="/2025/01/21/ALIA_a_spanish_model/"><i class="fa fa-angle-left"
+          aria-hidden="true"></i><span>ALIA the Spanish AI model</span></a>
       
-      
-      <a class="next-page" href="/2025/01/22/ALIA_on_Ollama/"><span>ALIA in Ollama (and any external model)</span><i class="fa fa-angle-right"
-          aria-hidden="true"></i></a>
       
     </div>
 

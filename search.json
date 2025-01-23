@@ -1,6 +1,14 @@
 [
   
     {
+      "title"    : "ALIA in Ollama (and any external model)",
+      "category" : "",
+      "tags"     : "ai, rag, open source, models",
+      "url"      : "/2025/01/22/ALIA_on_Ollama/",
+      "date"     : "2025-01-22 17:00:00 +0100"
+    } ,
+  
+    {
       "title"    : "ALIA the Spanish AI model",
       "category" : "",
       "tags"     : "ai, rag, open source, models",
