@@ -295,7 +295,7 @@
   <article class="post">
 
     <div class="post-content">
-      <p>Some time ago I published an article in which we looked at <a href="https://rarcos.com/2024/05/25/Ollama_api_chatbot/">how to install Ollama and how to create a ChatBot</a> using its services.
+      <p>Some time ago, I published an article in which we looked at <a href="https://rarcos.com/2024/05/25/Ollama_api_chatbot/">how to install Ollama and how to create a ChatBot</a> using its services.
 Now we are going to see how to create a data model obtained from an external source, as opposed to the models that are already prepared in the <a href="https://ollama.com/library">Ollama library</a>.</p>
 
 <p>In our case we are going to use the ALIA model, the first model in Spanish, which has just been released for use.</p>
@@ -337,7 +337,7 @@ git clone https://huggingface.co/BSC-LT/ALIA-40b
 
 <p>Our directory tree will look like this:</p>
 
-<p><img src="/images/pages/directory_tree_alia.png" alt="arbol_alia" /></p>
+<p><img src="/images/pages/arbol_directorio_alia.png" alt="arbol_alia" /></p>
 
 <h2 id="creation-of-the-model-in-ollama">Creation of the model in Ollama</h2>
 
@@ -364,11 +364,20 @@ git clone https://huggingface.co/BSC-LT/ALIA-40b
 
 <p><img src="/images/pages/alia_execute_model.png" alt="arbol_alia" /></p>
 
+<h1 id="ready-to-download-salamander-7b-model">Ready-to-download salamander 7b model</h1>
+
+<p>In the Hugging Face <a href="https://huggingface.co/BSC-LT/salamandra-7b-instruct/discussions/7#67923b3de75ed5c939ae48b49">thread</a> you will find a ready-to-download model of salamander-7b-instruct, with which you can test it directly:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ollama run hdnh2006/salamandra-7b-instruct
+
+</code></pre></div></div>
+
 <hr />
 
 <p><strong>Sources:</strong></p>
 <ul>
   <li><a href="https://github.com/ollama/ollama/blob/main/docs/import.md">https://github.com/ollama/ollama/blob/main/docs/import.md</a></li>
+  <li><a href="https://huggingface.co/BSC-LT/salamandra-7b-instruct/discussions/7">https://huggingface.co/BSC-LT/salamandra-7b-instruct/discussions/7</a></li>
 </ul>
 
     </div>

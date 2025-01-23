@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="https://rarcos.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://rarcos.com/" rel="alternate" type="text/html" /><updated>2025-01-23T12:03:12+01:00</updated><id>https://rarcos.com/feed.xml</id><title type="html">Rubén Arcos</title><subtitle>FullStack, AI &amp; Big Data developer</subtitle><entry xml:lang="en"><title type="html">ALIA in Ollama (and any external model)</title><link href="https://rarcos.com/2025/01/22/ALIA_on_Ollama/" rel="alternate" type="text/html" title="ALIA in Ollama (and any external model)" /><published>2025-01-22T17:00:00+01:00</published><updated>2025-01-22T17:00:00+01:00</updated><id>https://rarcos.com/2025/01/22/ALIA_on_Ollama</id><content type="html" xml:base="https://rarcos.com/2025/01/22/ALIA_on_Ollama/"><![CDATA[<p>Some time ago I published an article in which we looked at <a href="https://rarcos.com/2024/05/25/Ollama_api_chatbot/">how to install Ollama and how to create a ChatBot</a> using its services.
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="https://rarcos.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://rarcos.com/" rel="alternate" type="text/html" /><updated>2025-01-23T20:42:20+01:00</updated><id>https://rarcos.com/feed.xml</id><title type="html">Rubén Arcos</title><subtitle>FullStack, AI &amp; Big Data developer</subtitle><entry xml:lang="en"><title type="html">ALIA in Ollama (and any external model)</title><link href="https://rarcos.com/2025/01/22/ALIA_on_Ollama/" rel="alternate" type="text/html" title="ALIA in Ollama (and any external model)" /><published>2025-01-22T17:00:00+01:00</published><updated>2025-01-22T17:00:00+01:00</updated><id>https://rarcos.com/2025/01/22/ALIA_on_Ollama</id><content type="html" xml:base="https://rarcos.com/2025/01/22/ALIA_on_Ollama/"><![CDATA[<p>Some time ago, I published an article in which we looked at <a href="https://rarcos.com/2024/05/25/Ollama_api_chatbot/">how to install Ollama and how to create a ChatBot</a> using its services.
 Now we are going to see how to create a data model obtained from an external source, as opposed to the models that are already prepared in the <a href="https://ollama.com/library">Ollama library</a>.</p>
 
 <p>In our case we are going to use the ALIA model, the first model in Spanish, which has just been released for use.</p>
@@ -40,7 +40,7 @@ git clone https://huggingface.co/BSC-LT/ALIA-40b
 
 <p>Our directory tree will look like this:</p>
 
-<p><img src="/images/pages/directory_tree_alia.png" alt="arbol_alia" /></p>
+<p><img src="/images/pages/arbol_directorio_alia.png" alt="arbol_alia" /></p>
 
 <h2 id="creation-of-the-model-in-ollama">Creation of the model in Ollama</h2>
 
@@ -67,11 +67,20 @@ git clone https://huggingface.co/BSC-LT/ALIA-40b
 
 <p><img src="/images/pages/alia_execute_model.png" alt="arbol_alia" /></p>
 
+<h1 id="ready-to-download-salamander-7b-model">Ready-to-download salamander 7b model</h1>
+
+<p>In the Hugging Face <a href="https://huggingface.co/BSC-LT/salamandra-7b-instruct/discussions/7#67923b3de75ed5c939ae48b49">thread</a> you will find a ready-to-download model of salamander-7b-instruct, with which you can test it directly:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ollama run hdnh2006/salamandra-7b-instruct
+
+</code></pre></div></div>
+
 <hr />
 
 <p><strong>Sources:</strong></p>
 <ul>
   <li><a href="https://github.com/ollama/ollama/blob/main/docs/import.md">https://github.com/ollama/ollama/blob/main/docs/import.md</a></li>
+  <li><a href="https://huggingface.co/BSC-LT/salamandra-7b-instruct/discussions/7">https://huggingface.co/BSC-LT/salamandra-7b-instruct/discussions/7</a></li>
 </ul>]]></content><author><name></name></author><category term="ai" /><category term="rag" /><category term="open source" /><category term="models" /><summary type="html"><![CDATA[We are going to see how to create a data model obtained from an external source, unlike the models that are already prepared in the Ollama library, in our case we will create the ALIA model in Ollama.]]></summary></entry><entry xml:lang="en"><title type="html">ALIA the Spanish AI model</title><link href="https://rarcos.com/2025/01/21/ALIA_a_spanish_model/" rel="alternate" type="text/html" title="ALIA the Spanish AI model" /><published>2025-01-21T07:23:28+01:00</published><updated>2025-01-21T07:23:28+01:00</updated><id>https://rarcos.com/2025/01/21/ALIA_a_spanish_model</id><content type="html" xml:base="https://rarcos.com/2025/01/21/ALIA_a_spanish_model/"><![CDATA[<h1 id="what-is-alia">What is ALIA?</h1>
 
 <p><img src="/images/pages/logo_alia.png" alt="Logo" /></p>

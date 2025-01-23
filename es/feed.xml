@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="https://rarcos.com/es/feed.xml" rel="self" type="application/atom+xml" /><link href="https://rarcos.com/es/" rel="alternate" type="text/html" /><updated>2025-01-23T12:03:14+01:00</updated><id>https://rarcos.com/feed.xml</id><title type="html">Rubén Arcos</title><subtitle>FullStack, AI &amp; Big Data developer</subtitle><entry xml:lang="es"><title type="html">ALIA en Ollama (y cualquier modelo externo)</title><link href="https://rarcos.com/es/2025/01/22/ALIA_on_Ollama/" rel="alternate" type="text/html" title="ALIA en Ollama (y cualquier modelo externo)" /><published>2025-01-22T17:00:00+01:00</published><updated>2025-01-22T17:00:00+01:00</updated><id>https://rarcos.com/2025/01/22/ALIA_on_Ollama</id><content type="html" xml:base="https://rarcos.com/2025/01/22/ALIA_on_Ollama/"><![CDATA[<p>Hace un tiempo publiqué un artículo en el que veíamos <a href="https://rarcos.com/es/2024/05/25/Ollama_api_chatbot/">cómo instalar Ollama y cómo crear un ChatBot</a> que utilizase sus servicios. 
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="https://rarcos.com/es/feed.xml" rel="self" type="application/atom+xml" /><link href="https://rarcos.com/es/" rel="alternate" type="text/html" /><updated>2025-01-23T20:43:35+01:00</updated><id>https://rarcos.com/feed.xml</id><title type="html">Rubén Arcos</title><subtitle>FullStack, AI &amp; Big Data developer</subtitle><entry xml:lang="es"><title type="html">ALIA en Ollama (y cualquier modelo externo)</title><link href="https://rarcos.com/es/2025/01/22/ALIA_on_Ollama/" rel="alternate" type="text/html" title="ALIA en Ollama (y cualquier modelo externo)" /><published>2025-01-22T17:00:00+01:00</published><updated>2025-01-22T17:00:00+01:00</updated><id>https://rarcos.com/2025/01/22/ALIA_on_Ollama</id><content type="html" xml:base="https://rarcos.com/2025/01/22/ALIA_on_Ollama/"><![CDATA[<p>Hace un tiempo, publiqué un artículo en el que veíamos <a href="https://rarcos.com/es/2024/05/25/Ollama_api_chatbot/">cómo instalar Ollama y cómo crear un ChatBot</a> que utilizase sus servicios. 
 Pues ahora vamos a ver cómo crear un modelo de datos obtenido de una fuente externa, a diferencia de los modelos que ya se encuentran preparados en la <a href="https://ollama.com/library">librería de Ollama</a>.</p>
 
 <p>En nuestro caso vamos a utilizar el modelo ALIA, el primer modelo en español, que acaba de lanzarse para su uso.</p>
@@ -35,9 +35,9 @@ git clone https://huggingface.co/BSC-LT/ALIA-40b
 
 <h1 id="cómo-crear-el-modelo-de-alia-en-ollama">¿Cómo crear el modelo de ALIA en ollama?</h1>
 
-<p>Esta tarea que puede parecernos compleja, pero no lo es realmente, se trata solamente de ejecutar 3 comandos.</p>
+<p>Esta tarea que puede parecernos compleja, no lo es realmente, se trata solamente de ejecutar 3 comandos.</p>
 
-<p>En primer lugar vamos a crear un fichero (dentro del directorio donde hemos descargado el modelo, junto con los ficheros descargado) denominado <code class="language-plaintext highlighter-rouge">Modelfile</code> y su contenido será el siguiente: <code class="language-plaintext highlighter-rouge">FROM .</code></p>
+<p>En primer lugar vamos a crear un fichero (dentro del directorio donde hemos descargado el modelo, junto con los ficheros descargados) denominado <code class="language-plaintext highlighter-rouge">Modelfile</code> y su contenido será el siguiente: <code class="language-plaintext highlighter-rouge">FROM .</code></p>
 
 <p>Nuestro árbol de directorio quedará así:</p>
 
@@ -61,18 +61,26 @@ git clone https://huggingface.co/BSC-LT/ALIA-40b
 
 <h2 id="ejecución-del-modelo-en-ollama">Ejecución del modelo en Ollama</h2>
 
-<p>Por último, vamos a ejecutar el modelo y así poder interactuar con el:</p>
+<p>Por último, vamos a ejecutar el modelo y así poder interactuar con él:</p>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ollama run alia40b
 </code></pre></div></div>
 
 <p><img src="/images/pages/alia_execute_model.png" alt="arbol_alia" /></p>
 
+<h1 id="modelo-listo-para-descargar-de-salamandra-7b">Modelo listo para descargar de salamandra 7b</h1>
+<p>En el <a href="https://huggingface.co/BSC-LT/salamandra-7b-instruct/discussions/7#67923b3de75ed5c939ae48b49">hilo</a> de Hugging Face se encuentra un modelo listo para su descarga de salamandra-7b-instruct, con el que podrás probar su funcionamiento directamente:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ollama run hdnh2006/salamandra-7b-instruct
+
+</code></pre></div></div>
+
 <hr />
 
 <p><strong>Fuentes:</strong></p>
 <ul>
   <li><a href="https://github.com/ollama/ollama/blob/main/docs/import.md">https://github.com/ollama/ollama/blob/main/docs/import.md</a></li>
+  <li><a href="https://huggingface.co/BSC-LT/salamandra-7b-instruct/discussions/7">https://huggingface.co/BSC-LT/salamandra-7b-instruct/discussions/7</a></li>
 </ul>]]></content><author><name></name></author><category term="ai" /><category term="rag" /><category term="open source" /><category term="models" /><summary type="html"><![CDATA[Vamos a ver cómo crear un modelo de datos obtenido de una fuente externa, a diferencia de los modelos que ya se encuentran preparados en la librería de Ollama, en nuestro caso crearemos el modelo ALIA en Ollama.]]></summary></entry><entry xml:lang="es"><title type="html">ALIA el modelo español de IA</title><link href="https://rarcos.com/es/2025/01/21/ALIA_a_spanish_model/" rel="alternate" type="text/html" title="ALIA el modelo español de IA" /><published>2025-01-21T07:23:28+01:00</published><updated>2025-01-21T07:23:28+01:00</updated><id>https://rarcos.com/2025/01/21/ALIA_a_spanish_model</id><content type="html" xml:base="https://rarcos.com/2025/01/21/ALIA_a_spanish_model/"><![CDATA[<h1 id="qué-es-alia">¿Qué es ALIA?</h1>
 
 <p><img src="/images/pages/logo_alia.png" alt="Logo" /></p>
