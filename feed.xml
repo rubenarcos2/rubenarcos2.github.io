@@ -1,4 +1,261 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="https://rarcos.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://rarcos.com/" rel="alternate" type="text/html" /><updated>2025-01-23T20:42:20+01:00</updated><id>https://rarcos.com/feed.xml</id><title type="html">Rubén Arcos</title><subtitle>FullStack, AI &amp; Big Data developer</subtitle><entry xml:lang="en"><title type="html">ALIA in Ollama (and any external model)</title><link href="https://rarcos.com/2025/01/22/ALIA_on_Ollama/" rel="alternate" type="text/html" title="ALIA in Ollama (and any external model)" /><published>2025-01-22T17:00:00+01:00</published><updated>2025-01-22T17:00:00+01:00</updated><id>https://rarcos.com/2025/01/22/ALIA_on_Ollama</id><content type="html" xml:base="https://rarcos.com/2025/01/22/ALIA_on_Ollama/"><![CDATA[<p>Some time ago, I published an article in which we looked at <a href="https://rarcos.com/2024/05/25/Ollama_api_chatbot/">how to install Ollama and how to create a ChatBot</a> using its services.
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="https://rarcos.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://rarcos.com/" rel="alternate" type="text/html" /><updated>2025-02-13T19:46:34+01:00</updated><id>https://rarcos.com/feed.xml</id><title type="html">Rubén Arcos</title><subtitle>FullStack, AI &amp; Big Data developer</subtitle><entry xml:lang="en"><title type="html">Spring AI, Kafka, RAG and microservices</title><link href="https://rarcos.com/2025/02/12/GMCCA_microservices/" rel="alternate" type="text/html" title="Spring AI, Kafka, RAG and microservices" /><published>2025-02-12T19:00:00+01:00</published><updated>2025-02-12T19:00:00+01:00</updated><id>https://rarcos.com/2025/02/12/GMCCA_microservices</id><content type="html" xml:base="https://rarcos.com/2025/02/12/GMCCA_microservices/"><![CDATA[<p style="text-align: justify">
+I have made an application based on microservices that allows the consultation of documentation of a product (for example the instruction manual in PDF) in order to obtain information through a chatbot. It uses the following technology:
+</p>
+
+<ul>
+  <li>Data model: <em>mxbai-embed-large</em>, text extraction and <em>ALIA</em> for chat.</li>
+  <li>Ollama as a manager of AI models</li>
+  <li>Chatbot opensource</li>
+  <li>Frontend: React</li>
+  <li>Backend: SpringBoot + Spring AI
+    <ul>
+      <li>Notification module (Kafka)</li>
+      <li>AI module (RAG for PDF extraction and post-query information)</li>
+      <li>Inventory module</li>
+      <li>Ordering module</li>
+      <li>Product module</li>
+    </ul>
+  </li>
+</ul>
+
+<p style="text-align: justify">
+Next, we are going to see, in a brief but detailed way, the main technologies used in the project, and finally we will see in detail everything I have done in the project. Communication between modules using Kafka, the use of Kafka as an event trigger, the implementation of Spring AI with connection to Ollama, and the microservices architecture... just to mention some relevant points.
+</p>
+
+<h1 id="qué-es-spring-ai">¿Qué es Spring AI?</h1>
+
+<p>Es uno de los proyectos que tiene Spring, y que según su página web, lo definen como:</p>
+
+<blockquote>
+  <p>Spring AI es un marco de aplicación para la ingeniería de IA. Su objetivo es aplicar al dominio de la IA los principios de diseño del ecosistema Spring, como la portabilidad y el diseño modular, y promover el uso de POJOs como bloques de construcción de una aplicación para el dominio de la IA.</p>
+</blockquote>
+
+<p>+info: <a href="https://spring.io/projects/spring-ai">https://spring.io/projects/spring-ai</a></p>
+
+<p style="text-align: justify">
+It is part of the Spring Framework and is designed to make it easy to integrate artificial intelligence functionality into applications without unnecessary complication. Spring AI provides abstractions that allow developers to connect business data and APIs with AI models, making it easier to create applications that use AI.
+</p>
+
+<h2 id="features">Features:</h2>
+
+<ul>
+  <li>Compatibility with all major AI model vendors, such as Anthropic, OpenAI, Microsoft, Amazon, Google and Ollama.
+    <ul>
+      <li>Supported model types include:
+        <ul>
+          <li><a href="https://docs.spring.io/spring-ai/reference/api/chatmodel.html">Chat</a></li>
+          <li>Embeddings](https://docs.spring.io/spring-ai/reference/api/embeddings.html)</li>
+          <li>Text to image](https://docs.spring.io/spring-ai/reference/api/imageclient.html)</li>
+          <li><a href="https://docs.spring.io/spring-ai/reference/api/audio/transcriptions.html">Audio transcription</a></li>
+          <li>Text to Speech](https://docs.spring.io/spring-ai/reference/api/audio/speech.html)</li>
+          <li>Moderation](https://docs.spring.io/spring-ai/reference/api/index.html#api/moderation)</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>Supports API support between AI providers for synchronous and streaming API options. Access to model-specific functions is also available.</li>
+  <li>Structured outputs : mapping of AI model output to POJO.</li>
+  <li>Support for major vector database vendors such as Apache Cassandra, Azure Vector Search, Chroma, Milvus, MongoDB Atlas, Neo4j, Oracle, PostgreSQL/PGVector, PineCone, Qdrant, Redis and Weaviate.</li>
+  <li>APIs between vector storage providers, including a novel SQL-like metadata filter API.</li>
+  <li>Tool/function call: allows the model to request execution of client-side tools and functions, thus accessing the necessary information in real time as needed.</li>
+  <li>Observability : provides information about AI-related operations.</li>
+  <li>Document injection ETL framework for data engineering.</li>
+  <li>AI model evaluation : utilities to help evaluate generated content and protect against hallucinogenic responses.</li>
+  <li>ChatClient API - Fluent API for communicating with AI chat models, idiomatically similar to the WebClient and RestClient APIs.</li>
+  <li>Advisor API : Encapsulates recurring generative AI patterns, transforms data sent to and from language models (LLMs) and provides portability between various models and use cases.</li>
+  <li>Support for chat conversation memory and augmented generation retrieval (AGR).</li>
+  <li>Automatic configuration of Spring Boot and starters for all AI models and vector shops.</li>
+</ul>
+
+<h2 id="current-status">Current status</h2>
+
+<p style="text-align: justify">
+It is still in version 1.0.0-SNAPSHOT, so it is not yet very standardised and stable. So I do not recommend it for production use, since I myself have had some setbacks and changes during the realization of this project. Although it is true that they are constantly changing and evolving. You can see that they are very committed to the Spring AI project.
+</p>
+
+<h2 id="documentation">Documentation</h2>
+
+<p>The most recommended documentation is the official one, because of the above:</p>
+
+<ul>
+  <li><a href="https://spring.io/projects/spring-ai">https://spring.io/projects/spring-ai</a></li>
+  <li><a href="https://docs.spring.io/spring-ai/reference/index.html">https://docs.spring.io/spring-ai/reference/index.html</a></li>
+</ul>
+
+<h1 id="what-is-apache-kafka">What is Apache Kafka?</h1>
+
+<p style="text-align: justify">
+It is an open source distributed streaming data platform developed by the Apache Software Foundation. It is used to build real-time data pipelines and streaming data applications. Kafka is highly scalable, fault-tolerant and designed to handle large, real-time data streams. It is popular in large technology companies for real-time data management and analytics.
+</p>
+
+<blockquote>
+  <p>More than 80% of all Fortune 100 companies trust, and use Kafka.</p>
+</blockquote>
+
+<blockquote>
+  <p>Apache Kafka is an open-source distributed event streaming platform used by thousands of companies for high-performance data pipelines, streaming analytics, data integration, and mission-critical applications.</p>
+</blockquote>
+
+<p>+info: <a href="https://kafka.apache.org/">https://kafka.apache.org/</a></p>
+
+<p style="text-align: justify">
+Apache Kafka is the alternative to a traditional enterprise messaging system. It started as an internal system that LinkedIn developed to handle 1.4 billion messages per day. Now, it is an open source data transmission solution to meet a variety of business needs.
+</p>
+
+<h2 id="why-is-it-developed">Why is it developed?</h2>
+
+<p style="text-align: justify">
+Due to the emergence of microservices architecture in the development world, dependencies are reduced and the shared use of a centralized database is moved to smaller, specific and even modular ones. But methods for sharing data are still required. A popular method is the use of synchronous APIs. However, asynchronous integration, which uses a <b>buffer</b>, offers an efficient alternative.
+</p>
+
+<p style="text-align: justify">
+Apache Kafka plays a crucial role in transmitting data between development teams to populate this data warehouse, facilitating information sharing. Microservices teams require distributed integrations, APIs, and containers to fit their specific needs. Allowing you to use both synchronous and asynchronous methods as needed.
+</p>
+
+<p style="text-align: justify">
+Apache Kafka is especially useful for integration based on asynchronous events, which complements the use of synchronous APIs, improves microservices and favors agile integration. This streamlines development, drives innovation, saves time, and accelerates time to market for new features, applications, and services.
+</p>
+
+<p>I recommend reading this <a href="https://www.redhat.com/es/topics/integration/what-is-apache-kafka">article</a> published by Red Hat in which they explain the features of Kafka and the needs for which it was developed.</p>
+
+<h1 id="what-is-microservices-architecture">What is microservices architecture?</h1>
+
+<p style="text-align: justify">
+Microservices architecture is a software design style that organizes an application as a collection of small autonomous services, each of which runs a single process and communicates through lightweight interfaces, often HTTP APIs or messaging such as Apache Kafka.
+</p>
+
+<h2 id="benefits-of-microservices-architecture">Benefits of microservices architecture</h2>
+
+<ol>
+  <li>Scalability: Each microservice can scale independently based on its demand. This means that resources only need to be increased for the services that really require it, improving efficiency.</li>
+  <li>Flexibility in Development: Different teams can work on different microservices using different technologies and programming languages ​​suitable for each case.</li>
+  <li>Resilience: If a microservice fails, it does not necessarily affect the entire application. Other services can continue to function, improving overall system availability.</li>
+  <li>Independent Lifecycle: Microservices can be deployed, updated, and scale independently, allowing for more agile development and continuous delivery.</li>
+  <li>Ease of Maintainability: Due to their small size, microservices are easier to understand, test and maintain. Errors are located and resolved faster.</li>
+  <li>Rapid Innovation: Small units of code allow teams to introduce new features and technologies quickly, encouraging continuous innovation.</li>
+</ol>
+
+<p style="text-align: justify">
+Microservices architecture is especially advantageous for large applications that require rapid and flexible development and deployment. However, it also introduces challenges, such as managing communication between services and the need for adequate infrastructure for support.
+</p>
+
+<hr />
+
+<p>And now that we know what technologies we will work with.</p>
+
+<h1 id="lets-start-the-project">Let’s start the project!</h1>
+
+<h2 id="architecture">Architecture</h2>
+
+<p>This is the architecture that has been used in the microservices project:</p>
+
+<p><img src="/images/pages/gmcca_microservices_architecture.jpg" alt="GMCCA Microservices Architecture" title="GMCCA Microservices architecture" /></p>
+
+<p>The principles of microservices architecture have been taken into account at all times. Maintaining independent databases, favoring their scalability. Performing communications between microservices in an efficient and maintainable way in the life cycle. As well as, the resilience of the project, allowing fault tolerance of the microservices independently.</p>
+
+<h3 id="products-module">Products module</h3>
+
+<p>This module is designed to perform CRUD operations of a product warehouse.</p>
+
+<p>Currently only the methods are implemented: <a href="https://github.com/rubenarcos2/gmcca_microservices/blob/main/backend/gmcca_microservices/gmcca_products/src/main/java/com/rarcos/gmcca_products/controller/ProductController.java">addProduct, getAllProducts, getProductByCode and changeStatusProduct</a>.</p>
+
+<p>The data is stored in a PostgreSQL database, for this module.</p>
+
+<h3 id="order-module">Order module</h3>
+
+<p>This module is designed to perform CRUD operations of a product order (with product data, a given price and quantity).</p>
+
+<p>Currently only the methods are implemented: <a href="https://github.com/rubenarcos2/gmcca_microservices/blob/main/backend/gmcca_microservices/gmcca_orders/src/main/java/com/rarcos/gmcca_orders/controllers/OrderController.java">placeOrder and getOrders</a>.</p>
+
+<p>The service <a href="https://github.com/rubenarcos2/gmcca_microservices/blob/main/backend/gmcca_microservices/gmcca_orders/src/main/java/com/rarcos/gmcca_orders/services/OrderService.java">placeOrder</a>, has the peculiarity, that it performs a check using <a href="https://docs.spring.io/spring-framework/reference/web/webflux-webclient.html">WebClient</a> to the inventory module. This check consists of carrying out a query on the product stock to see if there is availability in the warehouse.
+Also, send a notification, through Kafka, to warn that the order has been placed (with its number, number of products and its status).</p>
+
+<p>The data is stored in a PostgreSQL database, for this module.</p>
+
+<h3 id="inventory-module">Inventory module</h3>
+
+<p>This module is designed to perform CRUD operations on a product inventory (with product code data and a given quantity).</p>
+
+<p>Currently only the methods are implemented: <a href="https://github.com/rubenarcos2/gmcca_microservices/blob/main/backend/gmcca_microservices/gmcca_inventory/src/main/java/com/rarcos/gmcca_inventory/controllers/InventoryController.java">isInStock and areInStock</a>.</p>
+
+<p>The <a href="https://github.com/rubenarcos2/gmcca_microservices/blob/main/backend/gmcca_microservices/gmcca_inventory/src/main/java/com/rarcos/gmcca_inventory/services/InventoryService.java">InventoryService</a> service is responsible for returning the stock for a product code or for a complete order.</p>
+
+<p>The data is stored in a PostgreSQL database, for this module.</p>
+
+<h3 id="notifications-module">Notifications module</h3>
+
+<p>Its main purpose is communication with the Kafka messaging queue and the WebSocket web.</p>
+
+<p>It has two event triggers: for the <a href="https://github.com/rubenarcos2/gmcca_microservices/blob/main/backend/gmcca_microservices/gmcca_notifications/src/main/java/com/rarcos/gmcca_notifications/events/DocProcessEvent.java">extraction processing</a> status of the PDF document using AI and for the <a href="https://github.com/rubenarcos2/gmcca_microservices/blob/main/backend/gmcca_microservices/gmcca_notifications/src/main/java/com/rarcos/gmcca_notifications/events/OrderEvent.java">order status</a>.</p>
+
+<p>The listeners for: <a href="https://github.com/rubenarcos2/gmcca_microservices/blob/main/backend/gmcca_microservices/gmcca_notifications/src/main/java/com/rarcos/gmcca_notifications/listeners/DocProcessEventListener.java">document processing</a> have also been implemented. <a href="https://github.com/rubenarcos2/gmcca_microservices/blob/main/backend/gmcca_microservices/gmcca_notifications/src/main/java/com/rarcos/gmcca_notifications/listeners/OrderEventListener.java">order</a> and <a href="https://github.com/rubenarcos2/gmcca_microservices/blob/main/backend/gmcca_microservices/gmcca_notifications/src/main/java/com/rarcos/gmcca_notifications/listeners/WebSocketEventListener.java">WebSocket</a>.</p>
+
+<ul>
+  <li>handleDocProcessNotifications:</li>
+  <li>Emits a notification to the WebSocket with the status of the process that is extracting the text from the PDF document using AI.</li>
+  <li>Query a product by its code and change the status of that product depending on whether or not it is available for web viewing. That is, whether or not it has a PDF manual related to the product.</li>
+  <li>handleOrdersNotifications:</li>
+  <li>Emits a notification to the WebSocket with the status of the order.</li>
+  <li>handleWebSocketConnectListener and handleWebSocketDisconnectListener.</li>
+</ul>
+
+<h3 id="ai-rag-module">AI-RAG module</h3>
+
+<p>The <a href="https://github.com/rubenarcos2/gmcca_microservices/blob/main/backend/gmcca_microservices/gmcca_ia_rag/src/main/java/com/rarcos/gmcca_ia_rag/controllers/DocsController.java">functions</a> performed by this module are:</p>
+
+<ul>
+  <li>Extracting text from a PDF document using AI (mxbai-embed-large model)</li>
+  <li>Storing said information in a vector database (PGVector)</li>
+  <li>Storing the PDF document in a document database (MongoDB)</li>
+  <li>Downloading the PDF document (viewer)</li>
+  <li>The AI-based chatbot (communicated with Ollama)</li>
+</ul>
+
+<h2 id="execution-environment---frontend">Execution environment - Frontend</h2>
+
+<p>The website is <strong>still under development</strong>.</p>
+
+<p>At this time it only has the following functionalities:</p>
+
+<ul>
+  <li>Upload/Download PDF documents</li>
+  <li>Extract information from the PDF using AI</li>
+  <li>Notifications using WebSocket</li>
+  <li>​​Access to the chatbot, only through web API (not on the web yet)</li>
+  <li>CRUD of products (not on the web yet)</li>
+  <li>CRUD of orders (not on the web yet)</li>
+</ul>
+
+<p style="text-align: center">
+<a href="https://gmcca-microservices.rarcos.com/" target="_blank">
+<img src="/images/pages/gesmerca.png" width="100" alt="GMCCA Logo" /> Online demo
+</a>
+</p>
+
+<hr />
+
+<p><em>Repository with the content</em></p>
+
+<p><a href="https://github.com/rubenarcos2/gmcca_microservices"><img src="/images/pages/repository_small.png" alt="Repository" /></a></p>
+
+<hr />
+
+<p><strong>Sources:</strong></p>
+
+<ul>
+  <li><a href="https://spring.io/projects/spring-ai">https://spring.io/projects/spring-ai</a></li>
+  <li><a href="https://docs.spring.io/spring-ai/reference/index.html">https://docs.spring.io/spring-ai/reference/index.html</a></li>
+  <li><a href="https://kafka.apache.org/">https://kafka.apache.org/</a></li>
+  <li><a href="https://www.redhat.com/es/topics/integration/what-is-apache-kafka">https://www.redhat.com/es/topics/integration/what-is-apache-kafka</a></li>
+  <li><a href="https://www.youtube.com/playlist?list=PLlYjHWCxjWmAt5hE3OEaemlWkZBZa7w4e">https://www.youtube.com/playlist?list=PLlYjHWCxjWmAt5hE3OEaemlWkZBZa7w4e</a></li>
+  <li><a href="https://www.youtube.com/watch?v=q2zTo21PEMU">https://www.youtube.com/watch?v=q2zTo21PEMU</a></li>
+  <li><a href="https://www.youtube.com/watch?v=UbbyW5Z1lv8">https://www.youtube.com/watch?v=UbbyW5Z1lv8</a></li>
+  <li><a href="https://www.baeldung.com/ops/kafka-docker-setup">https://www.baeldung.com/ops/kafka-docker-setup</a></li>
+  <li><a href="https://virendraoswal.com/getting-started-with-spring-ai-and-ollama-a-quick-guide-to-using-microsoft-phi3-language-models">https://virendraoswal.com/getting-started-with-spring-ai-and-ollama-a-quick-guide-to-using-microsoft-phi3-language-models</a></li>
+  <li><a href="https://erkanyasun.medium.com/simplifying-file-uploads-in-spring-boot-with-multipartfile-eb8bbef68dfe">https://erkanyasun.medium.com/simplifying-file-uploads-in-spring-boot-with-multipartfile-eb8bbef68dfe</a></li>
+  <li><a href="https://github.com/spring-projects/spring-ai/issues/356">https://github.com/spring-projects/spring-ai/issues/356</a></li>
+  <li><a href="https://www.baeldung.com/spring-boot-mongodb-upload-file">https://www.baeldung.com/spring-boot-mongodb-upload-file</a></li>
+</ul>]]></content><author><name></name></author><category term="ai" /><category term="kafka" /><category term="spring ai" /><category term="rag" /><category term="microservices" /><summary type="html"><![CDATA[AI utilisation for text extraction from documents, with a microservices architecture with inter-module and notification communication via Kafka and an AI chat for querying document information.]]></summary></entry><entry xml:lang="en"><title type="html">ALIA in Ollama (and any external model)</title><link href="https://rarcos.com/2025/01/22/ALIA_on_Ollama/" rel="alternate" type="text/html" title="ALIA in Ollama (and any external model)" /><published>2025-01-22T17:00:00+01:00</published><updated>2025-01-22T17:00:00+01:00</updated><id>https://rarcos.com/2025/01/22/ALIA_on_Ollama</id><content type="html" xml:base="https://rarcos.com/2025/01/22/ALIA_on_Ollama/"><![CDATA[<p>Some time ago, I published an article in which we looked at <a href="https://rarcos.com/2024/05/25/Ollama_api_chatbot/">how to install Ollama and how to create a ChatBot</a> using its services.
 Now we are going to see how to create a data model obtained from an external source, as opposed to the models that are already prepared in the <a href="https://ollama.com/library">Ollama library</a>.</p>
 
 <p>In our case we are going to use the ALIA model, the first model in Spanish, which has just been released for use.</p>
@@ -1618,321 +1875,4 @@ volumes:
 <p><a href="https://github.com/rubenarcos2/ia-juego_hotel"><img src="/images/pages/repository_small.png" alt="Repositorio" /></a>
 <a href="https://colab.research.google.com/drive/1KEqghfPGeuk9u5u8_s531CCb7869Hn3u"><img src="/images/pages/repository_small_colab.png" alt="Generador de partidas" /></a>
 <a href="https://colab.research.google.com/drive/10rXkRiRnq59435RtOSICPrA1T2dXyxG6"><img src="/images/pages/repository_small_colab.png" alt="Programa IA" /></a>
-<a href="https://colab.research.google.com/drive/1c-ozdgzMSYzZD2el46knjWx0SRIi-hMC"><img src="/images/pages/repository_small_colab.png" alt="Programa Jugadores vs IA" /></a></p>]]></content><author><name></name></author><category term="python" /><category term="naives bayes" /><category term="ia" /><category term="colab" /><summary type="html"><![CDATA[Creación de un sistema de IA para aprendizaje de la decisión de compra para el juego del Hotel]]></summary></entry><entry><title type="html">C# + Arduino - Detector mute</title><link href="https://rarcos.com/2022/07/23/C-+-Arduino-Detector-mute/" rel="alternate" type="text/html" title="C# + Arduino - Detector mute" /><published>2022-07-23T16:33:28+02:00</published><updated>2022-07-23T16:33:28+02:00</updated><id>https://rarcos.com/2022/07/23/C#%20+%20Arduino%20-%20Detector%20mute</id><content type="html" xml:base="https://rarcos.com/2022/07/23/C-+-Arduino-Detector-mute/"><![CDATA[<h1 id="c--arduino---detector-mute-micrófono-y-webcam-en-uso">C# + Arduino - Detector mute micrófono y webcam en uso</h1>
-
-<p>Desarrollo de una app en C# que se comunique con Arduino para la detección del micrófono, el estado muteado y la activación de la webcam.</p>
-
-<p><img src="/images/pages/arduino_c_sharp_detect_mute.jpg" alt="app en funcionamiento" /></p>
-
-<p><img src="/images/pages/detector_mute_cam.jpg" alt="soporte iot" /></p>
-
-<p>El código de C#:</p>
-
-<figure class="highlight"><pre><code class="language-c" data-lang="c"><span class="n">using</span> <span class="n">System</span><span class="p">;</span>
-<span class="n">using</span> <span class="n">System</span><span class="p">.</span><span class="n">Linq</span><span class="p">;</span>
-<span class="n">using</span> <span class="n">System</span><span class="p">.</span><span class="n">Windows</span><span class="p">.</span><span class="n">Forms</span><span class="p">;</span>
-<span class="n">using</span> <span class="n">System</span><span class="p">.</span><span class="n">IO</span><span class="p">.</span><span class="n">Ports</span><span class="p">;</span>
-<span class="n">using</span> <span class="n">NAudio</span><span class="p">.</span><span class="n">CoreAudioApi</span><span class="p">;</span>
-<span class="n">using</span> <span class="n">Microsoft</span><span class="p">.</span><span class="n">Win32</span><span class="p">;</span>
-<span class="n">using</span> <span class="n">System</span><span class="p">.</span><span class="n">Threading</span><span class="p">;</span>
-
-<span class="n">namespace</span> <span class="n">ArduinoComunicacionSerie</span>
-<span class="p">{</span>
-    <span class="n">public</span> <span class="n">partial</span> <span class="n">class</span> <span class="n">frmMain</span> <span class="o">:</span> <span class="n">Form</span>
-    <span class="p">{</span>
-        <span class="n">System</span><span class="p">.</span><span class="n">IO</span><span class="p">.</span><span class="n">Ports</span><span class="p">.</span><span class="n">SerialPort</span> <span class="n">ArduinoPort</span><span class="p">;</span>
-        <span class="n">public</span> <span class="n">MMDeviceCollection</span> <span class="n">devices</span><span class="p">;</span>
-        <span class="n">public</span> <span class="kt">int</span> <span class="n">deviceSelected</span><span class="p">;</span>
-        <span class="n">public</span> <span class="n">bool</span> <span class="n">toogleMuted</span><span class="p">;</span>
-        <span class="n">public</span> <span class="n">bool</span> <span class="n">toogleCamera</span><span class="p">;</span>
-
-        <span class="n">public</span> <span class="n">frmMain</span><span class="p">()</span>
-        <span class="p">{</span>
-            <span class="n">InitializeComponent</span><span class="p">();</span>
-            <span class="n">timerChangeStatus</span><span class="p">.</span><span class="n">Stop</span><span class="p">();</span>
-
-            <span class="n">MMDeviceEnumerator</span> <span class="n">en</span> <span class="o">=</span> <span class="n">new</span> <span class="n">MMDeviceEnumerator</span><span class="p">();</span>
-            <span class="n">devices</span> <span class="o">=</span> <span class="n">en</span><span class="p">.</span><span class="n">EnumerateAudioEndPoints</span><span class="p">(</span><span class="n">DataFlow</span><span class="p">.</span><span class="n">All</span><span class="p">,</span> <span class="n">DeviceState</span><span class="p">.</span><span class="n">Active</span><span class="p">);</span>
-
-            <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">devices</span><span class="p">.</span><span class="n">Count</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
-            <span class="p">{</span>
-                <span class="c1">//Console.WriteLine(devices[i].ToString());</span>
-                <span class="n">cmbDevices</span><span class="p">.</span><span class="n">Items</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="n">devices</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">ToString</span><span class="p">());</span>
-                <span class="k">if</span> <span class="p">(</span><span class="n">devices</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">ToString</span><span class="p">().</span><span class="n">Contains</span><span class="p">(</span><span class="s">"Micrófono"</span><span class="p">))</span> <span class="p">{</span> <span class="n">cmbDevices</span><span class="p">.</span><span class="n">SelectedIndex</span> <span class="o">=</span> <span class="n">i</span><span class="p">;</span> <span class="n">deviceSelected</span> <span class="o">=</span> <span class="n">i</span><span class="p">;</span> <span class="p">}</span>
-            <span class="p">}</span>
-        <span class="p">}</span>
-
-        <span class="n">private</span> <span class="kt">void</span> <span class="n">onLoadFrm</span><span class="p">(</span><span class="n">object</span> <span class="n">sender</span><span class="p">,</span> <span class="n">EventArgs</span> <span class="n">e</span><span class="p">)</span>
-        <span class="p">{</span>
-            <span class="n">try</span>
-            <span class="p">{</span>
-                <span class="n">ArduinoPort</span> <span class="o">=</span> <span class="n">new</span> <span class="n">SerialPort</span><span class="p">();</span>
-                <span class="n">ArduinoPort</span><span class="p">.</span><span class="n">PortName</span> <span class="o">=</span> <span class="s">"COM4"</span><span class="p">;</span>
-                <span class="n">ArduinoPort</span><span class="p">.</span><span class="n">BaudRate</span> <span class="o">=</span> <span class="mi">9600</span><span class="p">;</span>
-                <span class="n">ArduinoPort</span><span class="p">.</span><span class="n">DataReceived</span> <span class="o">+=</span> <span class="n">new</span> <span class="n">SerialDataReceivedEventHandler</span><span class="p">(</span><span class="n">arduinoReceivedSerial</span><span class="p">);</span>
-                <span class="n">ArduinoPort</span><span class="p">.</span><span class="n">Open</span><span class="p">();</span>
-                <span class="n">timerChangeStatus</span><span class="p">.</span><span class="n">Start</span><span class="p">();</span>
-                <span class="n">chkToogleWebcam</span><span class="p">.</span><span class="n">Checked</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
-            <span class="p">}</span>
-            <span class="n">catch</span> <span class="p">(</span><span class="n">Exception</span> <span class="n">ex</span><span class="p">)</span>
-            <span class="p">{</span>
-                <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="n">ex</span><span class="p">.</span><span class="n">Message</span><span class="p">);</span>
-                <span class="n">MessageBox</span><span class="p">.</span><span class="n">Show</span><span class="p">(</span><span class="s">"Conecte Arduino e inicie de nuevo la aplicación"</span><span class="p">,</span> <span class="s">"No está conectado Arduino"</span><span class="p">);</span>
-                <span class="n">timerChangeStatus</span><span class="p">.</span><span class="n">Stop</span><span class="p">();</span>
-                <span class="n">this</span><span class="p">.</span><span class="n">Close</span><span class="p">();</span>
-            <span class="p">}</span>
-
-        <span class="p">}</span>
-
-        <span class="n">private</span> <span class="kt">void</span> <span class="n">arduinoReceivedSerial</span><span class="p">(</span><span class="n">object</span> <span class="n">sender</span><span class="p">,</span> <span class="n">SerialDataReceivedEventArgs</span> <span class="n">e</span><span class="p">)</span>
-        <span class="p">{</span>
-            <span class="k">if</span> <span class="p">(</span><span class="n">e</span><span class="p">.</span><span class="n">EventType</span> <span class="o">==</span> <span class="n">SerialData</span><span class="p">.</span><span class="n">Chars</span><span class="p">)</span>
-            <span class="p">{</span>
-                <span class="kt">int</span> <span class="n">input</span> <span class="o">=</span> <span class="n">ArduinoPort</span><span class="p">.</span><span class="n">ReadChar</span><span class="p">();</span>
-                <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="n">input</span><span class="p">);</span>
-                <span class="k">if</span> <span class="p">(</span><span class="n">input</span><span class="p">.</span><span class="n">Equals</span><span class="p">(</span><span class="sc">'z'</span><span class="p">))</span>
-                <span class="p">{</span>
-                    <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">"***** CONNECTED *****"</span><span class="p">);</span>
-                <span class="p">}</span>
-
-                <span class="k">if</span> <span class="p">(</span><span class="n">input</span><span class="p">.</span><span class="n">Equals</span><span class="p">(</span><span class="sc">'g'</span><span class="p">))</span>
-                <span class="p">{</span>
-                    <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">"***** BUTTON PRESSED MICRO *****"</span><span class="p">);</span>
-                    <span class="n">MMDeviceEnumerator</span> <span class="n">en</span> <span class="o">=</span> <span class="n">new</span> <span class="n">MMDeviceEnumerator</span><span class="p">();</span>
-                    <span class="n">var</span> <span class="n">devices</span> <span class="o">=</span> <span class="n">en</span><span class="p">.</span><span class="n">EnumerateAudioEndPoints</span><span class="p">(</span><span class="n">DataFlow</span><span class="p">.</span><span class="n">All</span><span class="p">,</span> <span class="n">DeviceState</span><span class="p">.</span><span class="n">Active</span><span class="p">);</span>
-                    <span class="n">toogleMuted</span> <span class="o">=</span> <span class="o">!</span><span class="n">toogleMuted</span><span class="p">;</span>
-                    <span class="n">devices</span><span class="p">[</span><span class="n">deviceSelected</span><span class="p">].</span><span class="n">AudioSessionManager</span><span class="p">.</span><span class="n">AudioSessionControl</span><span class="p">.</span><span class="n">SimpleAudioVolume</span><span class="p">.</span><span class="n">Mute</span> <span class="o">=</span> <span class="n">toogleMuted</span><span class="p">;</span>
-                <span class="p">}</span>
-                <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">input</span><span class="p">.</span><span class="n">Equals</span><span class="p">(</span><span class="sc">'h'</span><span class="p">))</span>
-                <span class="p">{</span>
-                    <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">"***** BUTTON PRESSED CAMERA *****"</span><span class="p">);</span>
-                    <span class="n">RegistryKey</span> <span class="n">key</span> <span class="o">=</span> <span class="n">Registry</span><span class="p">.</span><span class="n">CurrentUser</span><span class="p">.</span><span class="n">OpenSubKey</span><span class="p">(</span><span class="err">@</span><span class="s">"Software\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\webcam"</span><span class="p">,</span> <span class="nb">true</span><span class="p">);</span>
-                    <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="n">key</span><span class="p">);</span>
-                    <span class="n">toogleCamera</span> <span class="o">=</span> <span class="o">!</span><span class="n">toogleCamera</span><span class="p">;</span>
-                    <span class="k">if</span> <span class="p">(</span><span class="n">toogleCamera</span><span class="p">)</span>
-                    <span class="p">{</span>
-                        <span class="c1">//adding/editing a value </span>
-                        <span class="n">key</span><span class="p">.</span><span class="n">SetValue</span><span class="p">(</span><span class="s">"Value"</span><span class="p">,</span> <span class="s">"Allow"</span><span class="p">);</span>
-                    <span class="p">}</span>
-                    <span class="k">else</span>
-                    <span class="p">{</span>
-                        <span class="n">key</span><span class="p">.</span><span class="n">SetValue</span><span class="p">(</span><span class="s">"Value"</span><span class="p">,</span> <span class="s">"Deny"</span><span class="p">);</span>
-                    <span class="p">}</span>
-                    <span class="n">key</span><span class="p">.</span><span class="n">Close</span><span class="p">();</span>
-                <span class="p">}</span>
-            <span class="p">}</span>
-        <span class="p">}</span>
-
-        <span class="n">private</span> <span class="kt">void</span> <span class="n">chkToogleMute_CheckedChanged</span><span class="p">(</span><span class="n">object</span> <span class="n">sender</span><span class="p">,</span> <span class="n">EventArgs</span> <span class="n">e</span><span class="p">)</span>
-        <span class="p">{</span>
-            <span class="n">MMDeviceEnumerator</span> <span class="n">en</span> <span class="o">=</span> <span class="n">new</span> <span class="n">MMDeviceEnumerator</span><span class="p">();</span>
-            <span class="n">var</span> <span class="n">devices</span> <span class="o">=</span> <span class="n">en</span><span class="p">.</span><span class="n">EnumerateAudioEndPoints</span><span class="p">(</span><span class="n">DataFlow</span><span class="p">.</span><span class="n">All</span><span class="p">,</span> <span class="n">DeviceState</span><span class="p">.</span><span class="n">Active</span><span class="p">);</span>
-            <span class="n">toogleMuted</span> <span class="o">=</span> <span class="n">chkToogleMute</span><span class="p">.</span><span class="n">Checked</span><span class="p">;</span>
-            <span class="n">devices</span><span class="p">[</span><span class="n">cmbDevices</span><span class="p">.</span><span class="n">SelectedIndex</span><span class="p">].</span><span class="n">AudioSessionManager</span><span class="p">.</span><span class="n">AudioSessionControl</span><span class="p">.</span><span class="n">SimpleAudioVolume</span><span class="p">.</span><span class="n">Mute</span> <span class="o">=</span> <span class="n">toogleMuted</span><span class="p">;</span>
-        <span class="p">}</span>
-
-        <span class="n">private</span> <span class="kt">void</span> <span class="n">chkToogleWebcam_CheckedChanged</span><span class="p">(</span><span class="n">object</span> <span class="n">sender</span><span class="p">,</span> <span class="n">EventArgs</span> <span class="n">e</span><span class="p">)</span>
-        <span class="p">{</span>
-            <span class="n">toogleCamera</span> <span class="o">=</span> <span class="n">chkToogleWebcam</span><span class="p">.</span><span class="n">Checked</span><span class="p">;</span>
-
-            <span class="n">RegistryKey</span> <span class="n">key</span> <span class="o">=</span> <span class="n">Registry</span><span class="p">.</span><span class="n">CurrentUser</span><span class="p">.</span><span class="n">OpenSubKey</span><span class="p">(</span><span class="err">@</span><span class="s">"Software\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\webcam"</span><span class="p">,</span> <span class="nb">true</span><span class="p">);</span>
-            <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="n">key</span><span class="p">);</span>
-            <span class="k">if</span> <span class="p">(</span><span class="n">chkToogleWebcam</span><span class="p">.</span><span class="n">Checked</span><span class="p">)</span>
-            <span class="p">{</span>
-                <span class="c1">//adding/editing a value </span>
-                <span class="n">key</span><span class="p">.</span><span class="n">SetValue</span><span class="p">(</span><span class="s">"Value"</span><span class="p">,</span> <span class="s">"Allow"</span><span class="p">);</span>
-            <span class="p">}</span>
-            <span class="k">else</span>
-            <span class="p">{</span>
-                <span class="n">key</span><span class="p">.</span><span class="n">SetValue</span><span class="p">(</span><span class="s">"Value"</span><span class="p">,</span> <span class="s">"Deny"</span><span class="p">);</span>
-            <span class="p">}</span>
-            <span class="n">key</span><span class="p">.</span><span class="n">Close</span><span class="p">();</span>
-        <span class="p">}</span>
-
-        <span class="n">private</span> <span class="kt">void</span> <span class="n">frmMain_FormClosing</span><span class="p">(</span><span class="n">object</span> <span class="n">sender</span><span class="p">,</span> <span class="n">FormClosingEventArgs</span> <span class="n">e</span><span class="p">)</span>
-        <span class="p">{</span>
-            <span class="k">if</span> <span class="p">(</span><span class="n">ArduinoPort</span><span class="p">.</span><span class="n">IsOpen</span><span class="p">)</span> <span class="n">ArduinoPort</span><span class="p">.</span><span class="n">Close</span><span class="p">();</span>
-        <span class="p">}</span>
-
-        <span class="n">private</span> <span class="kt">void</span> <span class="n">timerChangeStatus_Tick</span><span class="p">(</span><span class="n">object</span> <span class="n">sender</span><span class="p">,</span> <span class="n">EventArgs</span> <span class="n">e</span><span class="p">)</span>
-        <span class="p">{</span>
-            <span class="n">chkToogleMute</span><span class="p">.</span><span class="n">Checked</span> <span class="o">=</span> <span class="n">toogleMuted</span><span class="p">;</span>
-            <span class="n">chkToogleWebcam</span><span class="p">.</span><span class="n">Checked</span> <span class="o">=</span> <span class="n">toogleCamera</span><span class="p">;</span>
-
-            <span class="n">try</span>
-            <span class="p">{</span>
-                <span class="k">if</span> <span class="p">(</span><span class="n">cmbDevices</span><span class="p">.</span><span class="n">SelectedItem</span> <span class="o">!=</span> <span class="n">null</span><span class="p">)</span>
-                <span class="p">{</span>
-                    <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">"Mute      : "</span> <span class="o">+</span> <span class="n">devices</span><span class="p">[</span><span class="n">cmbDevices</span><span class="p">.</span><span class="n">SelectedIndex</span><span class="p">].</span><span class="n">AudioSessionManager</span><span class="p">.</span><span class="n">AudioSessionControl</span><span class="p">.</span><span class="n">SimpleAudioVolume</span><span class="p">.</span><span class="n">Mute</span><span class="p">);</span>
-                    <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">"Webcam    : "</span> <span class="o">+</span> <span class="n">IsWebCamInUse</span><span class="p">());</span>
-                    <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">"Microphone: "</span> <span class="o">+</span> <span class="n">IsMicrophoneInUse</span><span class="p">());</span>
-
-                    <span class="k">if</span> <span class="p">(</span><span class="n">IsWebCamInUse</span><span class="p">())</span>
-                    <span class="p">{</span>
-                        <span class="n">chkCamera</span><span class="p">.</span><span class="n">Checked</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
-                        <span class="n">ArduinoPort</span><span class="p">.</span><span class="n">Write</span><span class="p">(</span><span class="s">"e"</span><span class="p">);</span>
-                    <span class="p">}</span>
-                    <span class="k">else</span>
-                    <span class="p">{</span>
-                        <span class="n">chkCamera</span><span class="p">.</span><span class="n">Checked</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
-                        <span class="n">ArduinoPort</span><span class="p">.</span><span class="n">Write</span><span class="p">(</span><span class="s">"f"</span><span class="p">);</span>
-                    <span class="p">}</span>
-
-                    <span class="k">if</span> <span class="p">(</span><span class="n">IsMicrophoneInUse</span><span class="p">())</span>
-                    <span class="p">{</span>
-                        <span class="n">chkMicrophone</span><span class="p">.</span><span class="n">Checked</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
-                        <span class="n">ArduinoPort</span><span class="p">.</span><span class="n">Write</span><span class="p">(</span><span class="s">"a"</span><span class="p">);</span>
-                    <span class="p">}</span>
-                    <span class="k">else</span>
-                    <span class="p">{</span>
-                        <span class="n">chkMicrophone</span><span class="p">.</span><span class="n">Checked</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
-                        <span class="n">ArduinoPort</span><span class="p">.</span><span class="n">Write</span><span class="p">(</span><span class="s">"b"</span><span class="p">);</span>
-                    <span class="p">}</span>
-
-                    <span class="k">if</span> <span class="p">(</span><span class="n">devices</span><span class="p">[</span><span class="n">cmbDevices</span><span class="p">.</span><span class="n">SelectedIndex</span><span class="p">].</span><span class="n">AudioSessionManager</span><span class="p">.</span><span class="n">AudioSessionControl</span><span class="p">.</span><span class="n">SimpleAudioVolume</span><span class="p">.</span><span class="n">Mute</span><span class="p">)</span>
-                    <span class="p">{</span>
-                        <span class="n">chkMicroMute</span><span class="p">.</span><span class="n">Checked</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
-                        <span class="n">ArduinoPort</span><span class="p">.</span><span class="n">Write</span><span class="p">(</span><span class="s">"c"</span><span class="p">);</span>
-                    <span class="p">}</span>
-                    <span class="k">else</span>
-                    <span class="p">{</span>
-                        <span class="n">chkMicroMute</span><span class="p">.</span><span class="n">Checked</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
-                        <span class="n">ArduinoPort</span><span class="p">.</span><span class="n">Write</span><span class="p">(</span><span class="s">"d"</span><span class="p">);</span>
-                    <span class="p">}</span>
-                <span class="p">}</span>
-            <span class="p">}</span><span class="n">catch</span><span class="p">(</span><span class="n">Exception</span> <span class="n">ex</span><span class="p">)</span>
-            <span class="p">{</span>
-                <span class="n">timerChangeStatus</span><span class="p">.</span><span class="n">Stop</span><span class="p">();</span>
-                <span class="n">MessageBox</span><span class="p">.</span><span class="n">Show</span><span class="p">(</span><span class="s">"Se ha perdido la conexión con Arduino</span><span class="se">\n</span><span class="s">Vuelve a abrir la aplicación una vez esté solucionado."</span><span class="p">,</span> <span class="s">"Comprueba la conexión con Arduino"</span><span class="p">);</span>
-                <span class="n">this</span><span class="p">.</span><span class="n">Close</span><span class="p">();</span>
-            <span class="p">}</span>
-
-
-        <span class="p">}</span>
-
-        <span class="n">private</span> <span class="n">bool</span> <span class="n">IsWebCamInUse</span><span class="p">()</span>
-        <span class="p">{</span>
-            <span class="n">using</span> <span class="p">(</span><span class="n">var</span> <span class="n">key</span> <span class="o">=</span> <span class="n">Registry</span><span class="p">.</span><span class="n">CurrentUser</span><span class="p">.</span><span class="n">OpenSubKey</span><span class="p">(</span><span class="err">@</span><span class="s">"SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\webcam\NonPackaged"</span><span class="p">))</span>
-            <span class="p">{</span>
-                <span class="n">foreach</span> <span class="p">(</span><span class="n">var</span> <span class="n">subKeyName</span> <span class="n">in</span> <span class="n">key</span><span class="p">.</span><span class="n">GetSubKeyNames</span><span class="p">())</span>
-                <span class="p">{</span>
-                    <span class="n">using</span> <span class="p">(</span><span class="n">var</span> <span class="n">subKey</span> <span class="o">=</span> <span class="n">key</span><span class="p">.</span><span class="n">OpenSubKey</span><span class="p">(</span><span class="n">subKeyName</span><span class="p">))</span>
-                    <span class="p">{</span>
-                        <span class="k">if</span> <span class="p">(</span><span class="n">subKey</span><span class="p">.</span><span class="n">GetValueNames</span><span class="p">().</span><span class="n">Contains</span><span class="p">(</span><span class="s">"LastUsedTimeStop"</span><span class="p">))</span>
-                        <span class="p">{</span>
-                            <span class="n">var</span> <span class="n">endTime</span> <span class="o">=</span> <span class="n">subKey</span><span class="p">.</span><span class="n">GetValue</span><span class="p">(</span><span class="s">"LastUsedTimeStop"</span><span class="p">)</span> <span class="n">is</span> <span class="kt">long</span> <span class="o">?</span> <span class="p">(</span><span class="kt">long</span><span class="p">)</span><span class="n">subKey</span><span class="p">.</span><span class="n">GetValue</span><span class="p">(</span><span class="s">"LastUsedTimeStop"</span><span class="p">)</span> <span class="o">:</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
-                            <span class="k">if</span> <span class="p">(</span><span class="n">endTime</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">)</span>
-                            <span class="p">{</span>
-                                <span class="k">return</span> <span class="nb">true</span><span class="p">;</span>
-                            <span class="p">}</span>
-                        <span class="p">}</span>
-                    <span class="p">}</span>
-                <span class="p">}</span>
-            <span class="p">}</span>
-
-            <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
-        <span class="p">}</span>
-
-        <span class="n">private</span> <span class="n">bool</span> <span class="n">IsMicrophoneInUse</span><span class="p">()</span>
-        <span class="p">{</span>
-            <span class="n">using</span> <span class="p">(</span><span class="n">var</span> <span class="n">key</span> <span class="o">=</span> <span class="n">Registry</span><span class="p">.</span><span class="n">CurrentUser</span><span class="p">.</span><span class="n">OpenSubKey</span><span class="p">(</span><span class="err">@</span><span class="s">"SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\microphone\NonPackaged"</span><span class="p">))</span>
-            <span class="p">{</span>
-                <span class="n">foreach</span> <span class="p">(</span><span class="n">var</span> <span class="n">subKeyName</span> <span class="n">in</span> <span class="n">key</span><span class="p">.</span><span class="n">GetSubKeyNames</span><span class="p">())</span>
-                <span class="p">{</span>
-                    <span class="n">using</span> <span class="p">(</span><span class="n">var</span> <span class="n">subKey</span> <span class="o">=</span> <span class="n">key</span><span class="p">.</span><span class="n">OpenSubKey</span><span class="p">(</span><span class="n">subKeyName</span><span class="p">))</span>
-                    <span class="p">{</span>
-                        <span class="k">if</span> <span class="p">(</span><span class="n">subKey</span><span class="p">.</span><span class="n">GetValueNames</span><span class="p">().</span><span class="n">Contains</span><span class="p">(</span><span class="s">"LastUsedTimeStop"</span><span class="p">))</span>
-                        <span class="p">{</span>
-                            <span class="n">var</span> <span class="n">endTime</span> <span class="o">=</span> <span class="n">subKey</span><span class="p">.</span><span class="n">GetValue</span><span class="p">(</span><span class="s">"LastUsedTimeStop"</span><span class="p">)</span> <span class="n">is</span> <span class="kt">long</span> <span class="o">?</span> <span class="p">(</span><span class="kt">long</span><span class="p">)</span><span class="n">subKey</span><span class="p">.</span><span class="n">GetValue</span><span class="p">(</span><span class="s">"LastUsedTimeStop"</span><span class="p">)</span> <span class="o">:</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
-                            <span class="k">if</span> <span class="p">(</span><span class="n">endTime</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">)</span>
-                            <span class="p">{</span>
-                                <span class="k">return</span> <span class="nb">true</span><span class="p">;</span>
-                            <span class="p">}</span>
-                        <span class="p">}</span>
-                    <span class="p">}</span>
-                <span class="p">}</span>
-            <span class="p">}</span>
-
-            <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
-        <span class="p">}</span>
-
-    <span class="p">}</span>
-<span class="p">}</span></code></pre></figure>
-
-<p>El código de Arduino:</p>
-
-<figure class="highlight"><pre><code class="language-c" data-lang="c"><span class="k">const</span> <span class="kt">int</span> <span class="n">pinLEDMicUso</span>  <span class="o">=</span> <span class="mi">16</span><span class="p">;</span>
-<span class="k">const</span> <span class="kt">int</span> <span class="n">pinLEDMicMute</span> <span class="o">=</span> <span class="mi">12</span><span class="p">;</span>
-<span class="k">const</span> <span class="kt">int</span> <span class="n">pinLEDCamUso</span>  <span class="o">=</span> <span class="mi">14</span><span class="p">;</span>
-<span class="k">const</span> <span class="kt">int</span> <span class="n">pinBTNMicMute</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-<span class="k">const</span> <span class="kt">int</span> <span class="n">pinBTNCamMute</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
-
-<span class="kt">int</span> <span class="n">btnMicMute</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-<span class="kt">int</span> <span class="n">btnCamMute</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-
-<span class="kt">void</span> <span class="nf">setup</span><span class="p">()</span>
-<span class="p">{</span>
-  <span class="n">Serial</span><span class="p">.</span><span class="n">begin</span><span class="p">(</span><span class="mi">9600</span><span class="p">);</span>
-  <span class="n">pinMode</span><span class="p">(</span><span class="n">pinLEDMicUso</span><span class="p">,</span> <span class="n">OUTPUT</span><span class="p">);</span>
-  <span class="n">pinMode</span><span class="p">(</span><span class="n">pinLEDMicMute</span><span class="p">,</span> <span class="n">OUTPUT</span><span class="p">);</span>
-  <span class="n">pinMode</span><span class="p">(</span><span class="n">pinLEDCamUso</span><span class="p">,</span> <span class="n">OUTPUT</span><span class="p">);</span>
-  <span class="n">pinMode</span><span class="p">(</span><span class="n">pinBTNMicMute</span><span class="p">,</span> <span class="n">INPUT</span><span class="p">);</span>
-  <span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="sc">'z'</span><span class="p">);</span> <span class="c1">//Conectado</span>
-<span class="p">}</span>
-
-<span class="kt">void</span> <span class="nf">loop</span><span class="p">()</span> <span class="p">{</span>
-  <span class="k">if</span> <span class="p">(</span><span class="n">Serial</span><span class="p">.</span><span class="n">available</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span>
-  <span class="p">{</span>
-    <span class="kt">int</span> <span class="n">option</span> <span class="o">=</span> <span class="n">Serial</span><span class="p">.</span><span class="n">read</span><span class="p">();</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">option</span> <span class="o">==</span> <span class="sc">'a'</span><span class="p">)</span>
-    <span class="p">{</span>
-      <span class="n">digitalWrite</span><span class="p">(</span><span class="n">pinLEDMicUso</span><span class="p">,</span> <span class="n">HIGH</span><span class="p">);</span>
-    <span class="p">}</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">option</span> <span class="o">==</span> <span class="sc">'b'</span><span class="p">)</span>
-    <span class="p">{</span>
-      <span class="n">digitalWrite</span><span class="p">(</span><span class="n">pinLEDMicUso</span><span class="p">,</span> <span class="n">LOW</span><span class="p">);</span>
-    <span class="p">}</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">option</span> <span class="o">==</span> <span class="sc">'c'</span><span class="p">)</span>
-    <span class="p">{</span>
-      <span class="n">digitalWrite</span><span class="p">(</span><span class="n">pinLEDMicMute</span><span class="p">,</span> <span class="n">HIGH</span><span class="p">);</span>
-    <span class="p">}</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">option</span> <span class="o">==</span> <span class="sc">'d'</span><span class="p">)</span>
-    <span class="p">{</span>
-      <span class="n">digitalWrite</span><span class="p">(</span><span class="n">pinLEDMicMute</span><span class="p">,</span> <span class="n">LOW</span><span class="p">);</span>
-    <span class="p">}</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">option</span> <span class="o">==</span> <span class="sc">'e'</span><span class="p">)</span>
-    <span class="p">{</span>
-      <span class="n">digitalWrite</span><span class="p">(</span><span class="n">pinLEDCamUso</span><span class="p">,</span> <span class="n">HIGH</span><span class="p">);</span>
-    <span class="p">}</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">option</span> <span class="o">==</span> <span class="sc">'f'</span><span class="p">)</span>
-    <span class="p">{</span>
-      <span class="n">digitalWrite</span><span class="p">(</span><span class="n">pinLEDCamUso</span><span class="p">,</span> <span class="n">LOW</span><span class="p">);</span>
-    <span class="p">}</span>
-  <span class="p">}</span>
-
-  <span class="n">btnMicMute</span> <span class="o">=</span> <span class="n">digitalRead</span><span class="p">(</span><span class="n">pinBTNMicMute</span><span class="p">);</span>
-  <span class="k">if</span> <span class="p">(</span><span class="n">btnMicMute</span> <span class="o">==</span> <span class="n">LOW</span><span class="p">)</span> <span class="p">{</span>
-    <span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">"g"</span><span class="p">);</span>
-    <span class="n">delay</span><span class="p">(</span><span class="mi">200</span><span class="p">);</span>
-  <span class="p">}</span>
-
-  <span class="n">btnCamMute</span> <span class="o">=</span> <span class="n">digitalRead</span><span class="p">(</span><span class="n">pinBTNCamMute</span><span class="p">);</span>
-  <span class="k">if</span> <span class="p">(</span><span class="n">btnCamMute</span> <span class="o">==</span> <span class="n">LOW</span><span class="p">)</span> <span class="p">{</span>
-    <span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">"h"</span><span class="p">);</span>
-    <span class="n">delay</span><span class="p">(</span><span class="mi">200</span><span class="p">);</span>
-  <span class="p">}</span>
-<span class="p">}</span></code></pre></figure>
-
-<hr />
-
-<p><em>Repositorio con el contenido</em></p>
-
-<p><a href="https://github.com/rubenarcos2/c_sharp-arduino_detect_mute"><img src="/images/pages/repository_small.png" alt="Repositorio" /></a>
-<a href="https://github.com/rubenarcos2/c_sharp-arduino_detect_mute/tree/main/ArduinoComunicacionSerie/bin/Debug"><img src="/images/pages/icono_archivo_exe1-100x100.png" alt="Ejecutable" /></a></p>
-
-<hr />
-
-<p><strong>Fuentes</strong></p>
-
-<p><a href="https://codingvision.net/c-edit-registry-keys-or-values">https://codingvision.net/c-edit-registry-keys-or-values</a>
-<a href="https://superuser.com/questions/1346676/disabling-camera-via-regedit">https://superuser.com/questions/1346676/disabling-camera-via-regedit</a></p>]]></content><author><name></name></author><category term="C#" /><category term="arduino" /><category term="iot" /><summary type="html"><![CDATA[Desarrollo de una app en C# que se comunique con Arduino para la detección del micrófono, el estado muteado y la activación de la webcam]]></summary></entry></feed>
+<a href="https://colab.research.google.com/drive/1c-ozdgzMSYzZD2el46knjWx0SRIi-hMC"><img src="/images/pages/repository_small_colab.png" alt="Programa Jugadores vs IA" /></a></p>]]></content><author><name></name></author><category term="python" /><category term="naives bayes" /><category term="ia" /><category term="colab" /><summary type="html"><![CDATA[Creación de un sistema de IA para aprendizaje de la decisión de compra para el juego del Hotel]]></summary></entry></feed>

@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<style>
+  .alert {
+    padding: 20px;
+    background-color: #ff9203;
+    text-align: center;
+  }
+
+  .alert a{
+    color: white;
+    text-decoration: none;
+  }
+
+  .closebtn {
+    margin-left: 15px;
+    color: white;
+    font-weight: bold;
+    float: right;
+    font-size: 22px;
+    line-height: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+
+  .closebtn:hover {
+    color: black;
+  }
+</style>
+
+
+
+
+<html lang="es">
+
+
+
+
+
+
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Spring AI, Kafka, RAG y microservicios</title>
+  <meta name='description'
+    content='Útilización de IA para la extracción de texto de documentos, con una arquitectura en microservicios con comunicación, entre módulos y de notificaciones, medi...'>
+
+  <!-- Google Fonts -->
+  <link
+    href="https://fonts.googleapis.com/css?family=Dancing+Script%7CPT+Serif:400,400i,700%7CLato:400,700%7CRoboto:300,400"
+    rel="stylesheet">
+
+  <!-- Font Awesome v6.4.2 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+  <!-- Normalize v7.0.0 -->
+  <link rel="stylesheet" href="/es/css/normalize.css">
+
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="/es/css/main.css">
+  <link rel="canonical" href="https://rarcos.com/es/2025/02/12/GMCCA_microservices/">
+  <link rel="alternate" type="application/rss+xml" title="Rubén Arcos" href="/es/feed.xml">
+
+  <!-- Chrome, Firefox OS and Opera -->
+  <meta name="theme-color" content="#faf5ee">
+  <!-- Windows Phone -->
+  <meta name="msapplication-navbutton-color" content="#faf5ee">
+  <!-- iOS Safari -->
+  <meta name="apple-mobile-web-app-status-bar-style" content="#faf5ee">
+  <!-- Start cookieyes banner --> 
+  <script id="cookieyes" type="text/javascript" src="https://cdn-cookieyes.com/client_data/6ae1ee7e40cef2c175ff9462/script.js"></script> 
+  <!-- End cookieyes banner -->
+</head>
+
+
+
+  
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-VL018H86JE"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { dataLayer.push(arguments); }
+  gtag('js', new Date());
+
+  gtag('config', 'G-VL018H86JE');
+</script> <!-- /Google Analytics -->
+  
+
+  <div class="full-page-container">
+    <div class="overlay"></div>
+    <header class="site-header clearfix">
+  <div class="wrapper-content">
+
+    <div class="switch-lang">
+      
+      
+      
+      <a id="switch-lang" href=" /2025/02/12/GMCCA_microservices/" title="Change language to en">
+        <img src=" https://cdn.wpml.org/wp-content/plugins/sitepress-multilingual-cms/res/flags/en.png">
+      </a>
+      
+      
+      
+      
+      <!--es-->
+      
+      
+    </div>
+
+    <div class="navigation-wrap">
+      <div class="nav-toggle-close"><i class="fa fa-times" aria-hidden="true"></i></div>
+
+      <nav class="site-nav">
+        
+        
+        
+        
+        
+        
+        
+      
+      
+      <a href='/es/about/'>Sobre mí</a>
+      
+      
+      
+      
+      
+      
+        
+        
+        
+        
+        
+        
+        
+      
+      
+      <a href='/es/contacto/'>Contacto</a>
+      
+      
+      
+      
+      
+      
+        
+        
+        
+        
+        
+        
+        
+      
+      
+      <a href='/es/cookies/'>Cookies</a>
+      
+      
+      
+      
+      
+      
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <a href="https://linkedin.com/in/rubenarcos2"><i class="fa-brands fa-linkedin fa-2x" aria-hidden="true"></i></a>
+        <a href="https://github.com/rubenarcos2"><i class="fa-brands fa-github fa-2x" aria-hidden="true"></i></a>
+      </nav>
+
+    </div>
+
+    <span class="search-toggle">
+      <i class="fa fa-search" aria-hidden="true"></i>
+    </span>
+
+    <div class="nav-toggle"><i class="fa fa-bars" aria-hidden="true"></i></div>
+
+    <div class="site-logo">
+      <a href="/es/">Rubén Arcos</a>
+    </div>
+
+  </div>
+</header> <!-- /.site-header -->
+    <div class="search-box">
+  <div class="wrapper-content">
+    <form class="search-form">
+      
+      
+      
+      <label class="screen-reader-text" for="search-input">Buscar...</label>
+      <input type="text" id="search-input" class="search-field" name="s" placeholder="Buscar...">
+      
+      
+      
+      
+      
+      
+
+    </form>
+    <div class="btn-close">
+      <span class="bt-search-close">
+        <i class="fa fa-times" aria-hidden="true"></i>
+      </span>
+    </div>
+  </div>
+  <ul id="results-container" class="search-results-list"></ul>
+</div> <!-- /.search-box -->
+    
+    
+    
+    
+    <div class="alert">
+      <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+      <a href="https://www.linkedin.com/in/rubenarcos2/">Ofertas laborales, propuestas u otras iniciativas envíamelas a través de LinkedIn</a>
+    </div>    
+    
+    
+    
+    
+    
+    
+
+    <div class="post-header" style="background: url(/images/pages/spring_ai-kafka-microservices.jpeg)">
+  <div class="post-header-info">
+    <h1 class="post-title">Spring AI, Kafka, RAG y microservicios</h1>
+    <div class="post-meta">
+      
+      
+      
+      <time datetime="2025-02-12T19:00:00+01:00">
+         12/02/2025
+      </time>
+      
+      
+      
+      
+      
+      
+      
+    </div>
+  </div>
+</div>
+<div id="readPostContent" style="text-align:center"><a class="btn btn-middle" onclick="readPostContent(this)">
+    
+    
+    
+    Leer artículo en voz alta
+    
+    
+    
+    
+    
+    
+  </a></div>
+<div class="content-box">
+  <article class="post">
+
+    <div class="post-content">
+      <p style="text-align: justify">
+He realizado una aplicación basada en microservicios que permite la consulta de documentación de un producto (por ejemplo el manual de instrucciones en PDF) para poder obtener información mediante un chatbot. Utiliza la siguiente tecnología:
+</p>
+
+<ul>
+  <li>Modelo de datos: <em>mxbai-embed-large</em>, extracción de texto y <em>ALIA</em> para el chat</li>
+  <li>Ollama como gestor de los modelos de IA</li>
+  <li>Chatbot opensource</li>
+  <li>Frontend: React</li>
+  <li>Backend: SpringBoot + Spring AI
+    <ul>
+      <li>Módulo de notificaciones (Kafka)</li>
+      <li>Módulo de IA (RAG para le extracción de PDF y post-consulta de información)</li>
+      <li>Módulo de inventario</li>
+      <li>Módulo de pedidos</li>
+      <li>Módulo de productos</li>
+    </ul>
+  </li>
+</ul>
+
+<p style="text-align: justify">
+A continuación, vamos a ir viendo, de forma breve pero detallada, las principales tecnologías utilizadas en el proyecto, y finalmente veremos en detalle todo lo que he hecho en el proyecto. Comunicación entre módulos mediante Kafka, utilización de Kafka como trigger de eventos, la implementación de Spring AI con conexión a Ollama, y la arquitectura de microservicios... por mencionar algunos puntos relevantes.
+</p>
+
+<h1 id="qué-es-spring-ai">¿Qué es Spring AI?</h1>
+
+<p>Es uno de los proyectos que tiene Spring, y que según su página web, lo definen como:</p>
+
+<blockquote>
+  <p>Spring AI is an application framework for AI engineering. Its goal is to apply to the AI domain Spring ecosystem design principles such as portability and modular design and promote using POJOs as the building blocks of an application to the AI domain.</p>
+</blockquote>
+
+<p>+info: <a href="https://spring.io/projects/spring-ai">https://spring.io/projects/spring-ai</a></p>
+
+<p style="text-align: justify">
+Forma parte del Spring Framework y está diseñado para facilitar la integración de funcionalidades de inteligencia artificial en aplicaciones sin complicaciones innecesarias. Spring AI proporciona abstracciones que permiten a los desarrolladores conectar datos empresariales y APIs con modelos de IA, facilitando la creación de aplicaciones que utilizan IA.
+</p>
+
+<h2 id="características">Características:</h2>
+
+<ul>
+  <li>Compatibilidad con todos los principales proveedores de modelos de IA, como Anthropic, OpenAI, Microsoft, Amazon, Google y Ollama.
+    <ul>
+      <li>Los tipos de modelos compatibles incluyen:
+        <ul>
+          <li><a href="https://docs.spring.io/spring-ai/reference/api/chatmodel.html">Chat</a></li>
+          <li><a href="https://docs.spring.io/spring-ai/reference/api/embeddings.html">Embeddings</a></li>
+          <li><a href="https://docs.spring.io/spring-ai/reference/api/imageclient.html">Texto a image</a></li>
+          <li><a href="https://docs.spring.io/spring-ai/reference/api/audio/transcriptions.html">Transcripción de audio</a></li>
+          <li><a href="https://docs.spring.io/spring-ai/reference/api/audio/speech.html">Texto a voz</a></li>
+          <li><a href="https://docs.spring.io/spring-ai/reference/api/index.html#api/moderation">Moderación</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>Admite la compatibilidad con APIs entre proveedores de IA para opciones de API sincrónicas y de transmisión. También está disponible el acceso a funciones específicas del modelo.</li>
+  <li>Salidas estructuradas : mapeo de la salida del modelo de IA a POJO.</li>
+  <li>Compatibilidad con los principales proveedores de bases de datos vectoriales, como Apache Cassandra, Azure Vector Search, Chroma, Milvus, MongoDB Atlas, Neo4j, Oracle, PostgreSQL/PGVector, PineCone, Qdrant, Redis y Weaviate.</li>
+  <li>API entre proveedores de almacenamiento vectorial, incluida una novedosa API de filtro de metadatos similar a SQL .</li>
+  <li>Llamada de herramientas/funciones : permite que el modelo solicite la ejecución de herramientas y funciones del lado del cliente, accediendo así a la información necesaria en tiempo real según sea necesario.</li>
+  <li>Observabilidad : proporciona información sobre las operaciones relacionadas con la IA.</li>
+  <li>Marco ETL de inyección de documentos para ingeniería de datos.</li>
+  <li>Evaluación de modelos de IA : utilidades para ayudar a evaluar el contenido generado y proteger contra respuestas alucinógenas.</li>
+  <li>API ChatClient : API fluida para comunicarse con modelos de chat de IA, idiomáticamente similar a las API WebClient y RestClient.</li>
+  <li>API de asesores : encapsula patrones de IA generativa recurrentes, transforma los datos enviados hacia y desde los modelos de lenguaje (LLM) y proporciona portabilidad entre varios modelos y casos de uso.</li>
+  <li>Soporte para memoria de conversación de chat y recuperación de generación aumentada (RAG) .</li>
+  <li>Configuración automática de Spring Boot y arrancadores para todos los modelos de IA y tiendas vectoriales.</li>
+</ul>
+
+<h2 id="estado-actual">Estado actual</h2>
+
+<p style="text-align: justify">
+Se encuentra aún en la versión 1.0.0-SNAPSHOT, por lo que aún no está muy estandarizada y estable su utilización. Por lo que no lo recomiendo para uso en producción, puesto que yo mismo, he tenido algunos contratiempos y cambios durante la realización de este proyecto. Aunque es cierto que están en constante cambio y evolución. Se nota que están muy volcados en el proyecto de Spring AI.
+</p>
+
+<h2 id="documentación">Documentación</h2>
+
+<p>La documentación más recomendada es la oficial, por lo expuesto anteriormente:</p>
+
+<ul>
+  <li><a href="https://spring.io/projects/spring-ai">https://spring.io/projects/spring-ai</a></li>
+  <li><a href="https://docs.spring.io/spring-ai/reference/index.html">https://docs.spring.io/spring-ai/reference/index.html</a></li>
+</ul>
+
+<h1 id="qué-es-apache-kafka">¿Qué es Apache Kafka?</h1>
+
+<p style="text-align: justify">
+Es una plataforma de transmisión de datos distribuida de código abierto desarrollada por Apache Software Foundation. Se utiliza para construir pipelines de datos en tiempo real y aplicaciones de transmisión de datos. Kafka es altamente escalable, tolerante a fallos y está diseñado para manejar flujos de datos grandes y en tiempo real. Es popular en grandes empresas tecnológicas para la gestión de datos y análisis en tiempo real.
+</p>
+
+<blockquote>
+  <p>More than 80% of all Fortune 100 companies trust, and use Kafka.</p>
+</blockquote>
+
+<blockquote>
+  <p>Apache Kafka is an open-source distributed event streaming platform used by thousands of companies for high-performance data pipelines, streaming analytics, data integration, and mission-critical applications.</p>
+</blockquote>
+
+<p>+info: <a href="https://kafka.apache.org/">https://kafka.apache.org/</a></p>
+
+<p style="text-align: justify">
+Apache Kafka es la alternativa a un sistema de mensajería tradicional para empresas. Comenzó como un sistema interno que LinkedIn desarrolló para gestionar 1,4 billones de mensajes por día. Ahora, es una solución open source de transmisión de datos que permite satisfacer diversas necesidades empresariales.
+</p>
+
+<h2 id="por-qué-se-desarrolla">¿Por qué se desarrolla?</h2>
+
+<p style="text-align: justify">
+Debido a la irrupción de la arquitectura de microservicios en el mundo del desarrollo, se reducen las dependencias y se pasa del uso compartido de una base de datos centralizada por unas más pequeñas, específicas e incluso modulares. Pero aún se requieren métodos para compartir datos. Un método popular es el uso de APIs sincrónicas. Sin embargo, la integración asíncrona, que utiliza un <b>almacén intermedio</b>, ofrece una alternativa eficiente.
+</p>
+
+<p style="text-align: justify">
+Apache Kafka juega un papel crucial al transmitir datos entre equipos de desarrollo para llenar este almacén de datos, lo que facilita el intercambio de información. Los equipos de microservicios requieren integraciones distribuidas, API y contenedores para adaptarse a sus necesidades específicas. Lo que permite utilizar tanto métodos sincrónicos como asíncronos según sea necesario.
+</p>
+
+<p style="text-align: justify">
+Apache Kafka es especialmente útil para la <b>integración basada en eventos asíncronos, que complementa el uso de APIs sincrónicas</b>, mejora los microservicios y favorece la integración ágil. Esto optimiza el desarrollo, impulsa la innovación, ahorra tiempo y acelera la comercialización de nuevas funciones, aplicaciones y servicios.
+</p>
+
+<p>Recomiendo leer este <a href="https://www.redhat.com/es/topics/integration/what-is-apache-kafka">artículo</a> publicado por Red Hat en el que explican las características de Kafka y las necesidades por las que se desarrolló.</p>
+
+<h1 id="qué-es-la-arquitectura-de-microservicios">¿Qué es la arquitectura de microservicios?</h1>
+
+<p style="text-align: justify">
+La arquitectura de microservicios es un estilo de diseño de software que organiza una aplicación como una colección de pequeños servicios autónomos, cada uno de los cuales ejecuta un proceso único y se comunica a través de interfaces ligeras, a menudo APIs HTTP o mensajería como Apache Kafka.
+</p>
+
+<h2 id="beneficios-de-la-arquitectura-de-microservicios">Beneficios de la arquitectura de microservicios</h2>
+
+<ol>
+  <li>Escalabilidad: Cada microservicio puede escalarse de manera independiente en función de su demanda. Esto significa que solo se necesita aumentar los recursos de los servicios que realmente lo requieren, mejorando la eficiencia.</li>
+  <li>Flexibilidad en el Desarrollo: Diferentes equipos pueden trabajar en distintos microservicios utilizando diferentes tecnologías y lenguajes de programación adecuados para cada caso.</li>
+  <li>Resiliencia: Si un microservicio falla, no necesariamente afecta a toda la aplicación. Otros servicios pueden seguir funcionando, lo que mejora la disponibilidad general del sistema.</li>
+  <li>Ciclo de Vida Independiente: Los microservicios pueden implementarse, actualizarse y escalarse de manera independiente, lo que permite un desarrollo más ágil y una entrega continua.</li>
+  <li>Facilidad de Mantenimiento: Debido a su tamaño reducido, los microservicios son más fáciles de entender, probar y mantener. Los errores se localizan y solucionan más rápido.</li>
+  <li>Innovación Rápida: Las pequeñas unidades de código permiten a los equipos introducir nuevas funciones y tecnologías rápidamente, fomentando la innovación continua.</li>
+</ol>
+
+<p style="text-align: justify">
+La arquitectura de microservicios es especialmente ventajosa para grandes aplicaciones que requieren un desarrollo y despliegue rápidos y flexibles. Sin embargo, también introduce desafíos, como la gestión de la comunicación entre servicios y la necesidad de una infraestructura adecuada para soporte.
+</p>
+
+<hr />
+
+<p>Y ahora que sabemos con qué tecnologías trabajaremos.</p>
+
+<h1 id="vamos-a-comenzar-con-el-proyecto">¡Vamos a comenzar con el proyecto!</h1>
+
+<h2 id="arquitectura">Arquitectura</h2>
+
+<p>Esta es la arquitectura que se ha utilizado en el proyecto de microservicios:</p>
+
+<p><img src="/images/pages/gmcca_microservices_architecture.jpg" alt="GMCCA Microservices Architecture" title="GMCCA Microservices arquitectura" /></p>
+
+<p>Se ha tendido en cuenta en todo momento los principios de la arquitectura de microservicios. Manteniendo bases de datos independientes, favoreciendo su escalabilidad. Realizando las comunicaciones entre microservicios de forma eficiente y mantenible en el ciclo de vida. Así como, la resiliencia del proyecto, permitiendo la tolerancia ante fallos de los microservicios de forma independiente.</p>
+
+<h3 id="módulo-de-productos">Módulo de productos</h3>
+
+<p>Este módulo está pensado para realizar las operaciones CRUD de un almacén de productos.</p>
+
+<p>Actualmente solo están implementados los métodos: <a href="https://github.com/rubenarcos2/gmcca_microservices/blob/main/backend/gmcca_microservices/gmcca_products/src/main/java/com/rarcos/gmcca_products/controller/ProductController.java">addProduct, getAllProducts, getProductByCode y changeStatusProduct</a>.</p>
+
+<p>Los datos son almacenados en una base de datos PostgreSQL, para este módulo.</p>
+
+<h3 id="módulo-de-pedidos">Módulo de pedidos</h3>
+
+<p>Este módulo está pensado para realizar las operaciones CRUD de un pedido de productos (con los datos de producto, un precio y una cantidad dadas).</p>
+
+<p>Actualmente solo están implementados los métodos: <a href="https://github.com/rubenarcos2/gmcca_microservices/blob/main/backend/gmcca_microservices/gmcca_orders/src/main/java/com/rarcos/gmcca_orders/controllers/OrderController.java">placeOrder y getOrders</a>.</p>
+
+<p>El servicio <a href="https://github.com/rubenarcos2/gmcca_microservices/blob/main/backend/gmcca_microservices/gmcca_orders/src/main/java/com/rarcos/gmcca_orders/services/OrderService.java">placeOrder</a>, tiene la peculiaridad, que realiza una comprobación mediante <a href="https://docs.spring.io/spring-framework/reference/web/webflux-webclient.html">WebClient</a> al módulo de inventario. Esta comprobación consiste, en la realización de una consulta al stock del producto, para ver si hay disponibilidad en el almacén.
+También, realiza el envío de una notificación, mediante Kafka, para advertir de que se ha realizado el pedido (con su número, cantidad de productos y el estado del mismo).</p>
+
+<p>Los datos son almacenados en una base de datos PostgreSQL, para este módulo.</p>
+
+<h3 id="módulo-de-inventario">Módulo de inventario</h3>
+
+<p>Este módulo está pensado para realizar las operaciones CRUD de un inventario de productos (con los datos del código de producto y una cantidad dadas).</p>
+
+<p>Actualmente solo están implementados los métodos: <a href="https://github.com/rubenarcos2/gmcca_microservices/blob/main/backend/gmcca_microservices/gmcca_inventory/src/main/java/com/rarcos/gmcca_inventory/controllers/InventoryController.java">isInStock y areInStock</a>.</p>
+
+<p>El servicio <a href="https://github.com/rubenarcos2/gmcca_microservices/blob/main/backend/gmcca_microservices/gmcca_inventory/src/main/java/com/rarcos/gmcca_inventory/services/InventoryService.java">InventoryService</a>, se encarga de devolver el stock para un código de producto o bien para un pedido completo.</p>
+
+<p>Los datos son almacenados en una base de datos PostgreSQL, para este módulo.</p>
+
+<h3 id="módulo-de-notificaciones">Módulo de notificaciones</h3>
+
+<p>Su finalidad principal, es la comunicación con la cola de mensajería Kafka y con el WebSocket web.</p>
+
+<p>Dispone de dos disparadores de eventos: para el estado de <a href="https://github.com/rubenarcos2/gmcca_microservices/blob/main/backend/gmcca_microservices/gmcca_notifications/src/main/java/com/rarcos/gmcca_notifications/events/DocProcessEvent.java">procesamiento de la extracción</a> del documento PDF mediante IA y en el <a href="https://github.com/rubenarcos2/gmcca_microservices/blob/main/backend/gmcca_microservices/gmcca_notifications/src/main/java/com/rarcos/gmcca_notifications/events/OrderEvent.java">estado del pedido</a>.</p>
+
+<p>También se han implementado los listeners de: <a href="https://github.com/rubenarcos2/gmcca_microservices/blob/main/backend/gmcca_microservices/gmcca_notifications/src/main/java/com/rarcos/gmcca_notifications/listeners/DocProcessEventListener.java">procesado de documento</a>, <a href="https://github.com/rubenarcos2/gmcca_microservices/blob/main/backend/gmcca_microservices/gmcca_notifications/src/main/java/com/rarcos/gmcca_notifications/listeners/OrderEventListener.java">pedido</a> y <a href="https://github.com/rubenarcos2/gmcca_microservices/blob/main/backend/gmcca_microservices/gmcca_notifications/src/main/java/com/rarcos/gmcca_notifications/listeners/WebSocketEventListener.java">WebSocket</a>.</p>
+
+<ul>
+  <li>handleDocProcessNotifications:
+    <ul>
+      <li>Emite una notificación al WebSocket con el estado del proceso que está realizando la extracción del texto del documento PDF mediante IA.</li>
+      <li>Consulta un producto por su código y cambia el estado de ese producto según esté o no disponible para su visualización web. Es decir, si tiene o no un manual PDF relacionado con el producto.</li>
+    </ul>
+  </li>
+  <li>handleOrdersNotifications:
+    <ul>
+      <li>Emite una notificación al WebSocket con el estado del pedido.</li>
+    </ul>
+  </li>
+  <li>handleWebSocketConnectListener y handleWebSocketDisconnectListener.</li>
+</ul>
+
+<h3 id="módulo-de-ia-rag">Módulo de IA-RAG</h3>
+
+<p>Las <a href="https://github.com/rubenarcos2/gmcca_microservices/blob/main/backend/gmcca_microservices/gmcca_ia_rag/src/main/java/com/rarcos/gmcca_ia_rag/controllers/DocsController.java">funciones</a> que realiza este módulo son:</p>
+
+<ul>
+  <li>La extracción de texto de un documento PDF mediante IA (modelo mxbai-embed-large)</li>
+  <li>El almacenamiento de dicha información en una base de datos vectorial (PGVector)</li>
+  <li>El almacenamiento del documento PDF en una base de datos documental (MongoDB)</li>
+  <li>La descarga del documento PDF (visor)</li>
+  <li>El chatbot basado en IA (comunicado con Ollama)</li>
+</ul>
+
+<h2 id="entorno-de-ejecución---frontend">Entorno de ejecución - Frontend</h2>
+
+<p>La página web se encuentra <strong>aún en desarrollo</strong>.</p>
+
+<p>En este momento solamente tiene las funcionalidades:</p>
+
+<ul>
+  <li>Subir/Descargar documentos PDF</li>
+  <li>Extracción de la información del PDF mediante IA</li>
+  <li>Notificaciones mediante WebSocket</li>
+  <li>Acceso al chatbot, solamente mediante API web (no está en la web aún)</li>
+  <li>CRUD de productos (no está en la web aún)</li>
+  <li>CRUD de pedidos (no está en la web aún)</li>
+</ul>
+
+<p style="text-align: center">
+<a href="https://gmcca-microservices.rarcos.com/" target="_blank">
+    <img src="/images/pages/gesmerca.png" width="100" alt="GMCCA Logo" /> Demo online
+</a>
+</p>
+
+<hr />
+
+<p><em>Repositorio con el contenido</em></p>
+
+<p><a href="https://github.com/rubenarcos2/gmcca_microservices"><img src="/images/pages/repository_small.png" alt="Repository" /></a></p>
+
+<hr />
+
+<p><strong>Fuentes:</strong></p>
+
+<ul>
+  <li><a href="https://spring.io/projects/spring-ai">https://spring.io/projects/spring-ai</a></li>
+  <li><a href="https://docs.spring.io/spring-ai/reference/index.html">https://docs.spring.io/spring-ai/reference/index.html</a></li>
+  <li><a href="https://kafka.apache.org/">https://kafka.apache.org/</a></li>
+  <li><a href="https://www.redhat.com/es/topics/integration/what-is-apache-kafka">https://www.redhat.com/es/topics/integration/what-is-apache-kafka</a></li>
+  <li><a href="https://www.youtube.com/playlist?list=PLlYjHWCxjWmAt5hE3OEaemlWkZBZa7w4e">https://www.youtube.com/playlist?list=PLlYjHWCxjWmAt5hE3OEaemlWkZBZa7w4e</a></li>
+  <li><a href="https://www.youtube.com/watch?v=q2zTo21PEMU">https://www.youtube.com/watch?v=q2zTo21PEMU</a></li>
+  <li><a href="https://www.youtube.com/watch?v=UbbyW5Z1lv8">https://www.youtube.com/watch?v=UbbyW5Z1lv8</a></li>
+  <li><a href="https://www.baeldung.com/ops/kafka-docker-setup">https://www.baeldung.com/ops/kafka-docker-setup</a></li>
+  <li><a href="https://virendraoswal.com/getting-started-with-spring-ai-and-ollama-a-quick-guide-to-using-microsoft-phi3-language-models">https://virendraoswal.com/getting-started-with-spring-ai-and-ollama-a-quick-guide-to-using-microsoft-phi3-language-models</a></li>
+  <li><a href="https://erkanyasun.medium.com/simplifying-file-uploads-in-spring-boot-with-multipartfile-eb8bbef68dfe">https://erkanyasun.medium.com/simplifying-file-uploads-in-spring-boot-with-multipartfile-eb8bbef68dfe</a></li>
+  <li><a href="https://github.com/spring-projects/spring-ai/issues/356">https://github.com/spring-projects/spring-ai/issues/356</a></li>
+  <li><a href="https://www.baeldung.com/spring-boot-mongodb-upload-file">https://www.baeldung.com/spring-boot-mongodb-upload-file</a></li>
+</ul>
+
+    </div>
+
+    <footer class="post-footer">
+      
+      
+      
+      <p>
+      <h3>Licencia de contenido</h3>
+
+      <p><img src="/images/pages/88x311.png" /></p>
+
+      <p>Esta página web y todo su contenido, incluido proyectos y código fuente, está licenciado bajo una licencia de
+        Creative Commons: Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0) <a
+          href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.es">Más info</a></p>
+
+      </p>
+      
+      
+      
+      
+      
+      
+
+      <ul class="post-footer-list">
+        <li class="post-footer-item">
+          <a class="post-facebook"
+            href="https://www.facebook.com/sharer/sharer.php?u=https://rarcos.com/2025/02/12/GMCCA_microservices/"
+            onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
+            title="Share on Facebook" rel="nofollow"><i class="fa-brands fa-facebook"
+              aria-hidden="true"></i><span>Facebook</span></a>
+        </li>
+
+        <li class="post-footer-item">
+          <a class="post-twitter"
+            href="https://twitter.com/intent/tweet?text=Spring%20AI,%20Kafka,%20RAG%20y%20microservicios&url=https://rarcos.com/2025/02/12/GMCCA_microservices/"
+            onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
+            title="Share on Twitter" rel="nofollow"><i class="fa-brands fa-x-twitter"
+              aria-hidden="true"></i><span>Twitter</span></a>
+        </li>
+
+        <li class="post-footer-item">
+          <a href="http://pinterest.com/pin/create/button/?url=https://rarcos.com/2025/02/12/GMCCA_microservices/&amp;media=https://rarcos.com/images/pages/spring_ai-kafka-microservices.jpeg&amp;description=Spring%20AI,%20Kafka,%20RAG%20y%20microservicios"
+            onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=900,height=500,toolbar=1,resizable=0'); return false;"
+            class="post-pinterest" title="Share on Pinterest" rel="nofollow"><i class="fa-brands fa-pinterest"
+              aria-hidden="true"></i><span>Pinterest</span></a>
+        </li>
+
+        <li class="post-footer-item">
+          <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://rarcos.com/2025/02/12/GMCCA_microservices/&title=Spring%20AI,%20Kafka,%20RAG%20y%20microservicios"
+            onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=900,height=500,toolbar=1,resizable=0'); return false;"
+            class="post-linkedin" title="Share on Linkedin" rel="nofollow"><i class="fa-brands fa-linkedin"
+              aria-hidden="true"></i><span>Linkedin</span></a>
+        </li>
+      </ul>
+      
+      <div class="post-tag">
+        <span>Tags:</span>
+        
+        <a href="/es/tags#ai" class="tag">ai</a>
+        
+        <a href="/es/tags#kafka" class="tag">kafka</a>
+        
+        <a href="/tags#spring ai" class="tag">spring ai</a>
+        
+        <a href="/es/tags#rag" class="tag">rag</a>
+        
+        <a href="/es/tags#microservices" class="tag">microservices</a>
+        
+      </div>
+      
+    </footer>
+
+    
+    <div class="post-author">
+      
+      <div class="post-author-image">
+        <a style="background-image: url(/images/ruben.jpg)">
+          <span class="screen-reader-text">Rubén Arcos Picture</span>
+        </a>
+      </div>
+      <div class="post-author-info">
+        <h4>Rubén Arcos</h4>
+        <p class="post-author-bio">
+          
+          
+          
+          Desarrollador TI. <br>Máster FP en IA y Big data, <br>Técnico superior en desarrollo de aplicaciones web y <br>Técnico superior en desarrollo de aplicaciones multiplataformas.
+          
+          
+          
+          
+          
+          
+        </p>
+        <div class="post-author-meta">
+          
+          <a href="https://twitter.com/rarcosdev" target="_blank"><i class="fa-brands fa-x-twitter" aria-hidden="true"></i></a>
+          
+          
+          <a href="https://linkedin.com/in/rubenarcos2" target="_blank"><i class="fa-brands fa-linkedin" aria-hidden="true"></i></a>
+          
+          
+          <a href="https://github.com/rubenarcos2" target="_blank"><i class="fa-brands fa-github" aria-hidden="true"></i></a>
+          
+          
+          
+          
+          
+          
+          
+          
+          
+        </div>
+      </div>
+      
+    </div>
+
+    <div class="page-navigation clearfix">
+      
+      <a class="prev-page" href="/es/2025/01/22/ALIA_on_Ollama/"><i class="fa fa-angle-left"
+          aria-hidden="true"></i><span>ALIA en Ollama (y cualquier modelo externo)</span></a>
+      
+      
+    </div>
+
+    
+  </article> <!-- /.post -->
+
+</div> <!-- /.content-box -->
+
+    <div class="top" title="Scroll To Top">
+  <i class="fa fa-chevron-up" aria-hidden="true"></i>
+</div> <!-- /.top -->
+    <footer class="site-footer">
+
+  <div class="footer-wrapper">
+
+    <h2 class="footer-heading">Rubén Arcos</h2>
+
+    <ul class="social-footer">
+    
+      <li><a href="https://twitter.com/rarcosdev" target="_blank"><i class="fa-brands fa-x-twitter" aria-hidden="true"></i></a></li>
+    
+    
+    
+    
+    <li><a href="https://linkedin.com/in/rubenarcos2" target="_blank"><i class="fa-brands fa-linkedin" aria-hidden="true"></i></a></li>
+    
+    
+    <li><a href="https://github.com/rubenarcos2" target="_blank"><i class="fa-brands fa-github" aria-hidden="true"></i></a></li>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    </ul>
+
+    <div class="copyright">
+      <p><a href="https://jekyllrb.com/">Proudly powered by Jekyll</a> | Theme: Lokmont by <a href="https://artemsheludko.github.io/">Artem Sheludko</a> | Modifications: <a href="https://github.com/rubenarcos2">Rubén Arcos</a></p>
+    </div>
+  </div>
+
+</footer> <!-- /.site-footer -->
+
+  </div> <!-- /.full-page-container -->
+
+  <script src="/js/jquery-3.7.1.min.js"></script>
+<script src="/js/jquery.viewportchecker.min.js"></script>
+<script src="/js/jquery.fitvids.js"></script>
+<script src="/js/simple-jekyll-search.min.js"></script>
+<script src="/js/transition.js"></script>
+<script src="/js/zoom.min.js"></script>
+<script src="/js/main.js"></script>
+</body>
+
+</html>
