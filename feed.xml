@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="https://rarcos.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://rarcos.com/" rel="alternate" type="text/html" /><updated>2025-03-15T20:13:22+01:00</updated><id>https://rarcos.com/feed.xml</id><title type="html">Rubén Arcos</title><subtitle>FullStack, AI &amp; Big Data developer</subtitle><entry xml:lang="en"><title type="html">Spring AI, Kafka, RAG and microservices</title><link href="https://rarcos.com/2025/02/12/GMCCA_microservices/" rel="alternate" type="text/html" title="Spring AI, Kafka, RAG and microservices" /><published>2025-02-12T19:00:00+01:00</published><updated>2025-02-12T19:00:00+01:00</updated><id>https://rarcos.com/2025/02/12/GMCCA_microservices</id><content type="html" xml:base="https://rarcos.com/2025/02/12/GMCCA_microservices/"><![CDATA[<p style="text-align: justify">
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="https://rarcos.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://rarcos.com/" rel="alternate" type="text/html" /><updated>2025-03-15T20:16:45+01:00</updated><id>https://rarcos.com/feed.xml</id><title type="html">Rubén Arcos</title><subtitle>FullStack, AI &amp; Big Data developer</subtitle><entry xml:lang="en"><title type="html">Spring AI, Kafka, RAG and microservices</title><link href="https://rarcos.com/2025/02/12/GMCCA_microservices/" rel="alternate" type="text/html" title="Spring AI, Kafka, RAG and microservices" /><published>2025-02-12T19:00:00+01:00</published><updated>2025-02-12T19:00:00+01:00</updated><id>https://rarcos.com/2025/02/12/GMCCA_microservices</id><content type="html" xml:base="https://rarcos.com/2025/02/12/GMCCA_microservices/"><![CDATA[<p style="text-align: justify">
 I have made an application based on microservices that allows the consultation of documentation of a product (for example the instruction manual in PDF) in order to obtain information through a chatbot. It uses the following technology:
 </p>
 
@@ -996,7 +996,7 @@ The main purpose of the application has been to demonstrate the implementation o
 <h2 id="api-documentation---backend">API documentation - Backend</h2>
 
 <p style="text-align: center">
-<a href="https://vps.rarcos.com:10447/" target="_blank">
+<a href="https://swagger.rarcos.com" target="_blank">
     <img src="https://avatars.githubusercontent.com/u/7658037?s=200&amp;v=4" width="100" alt="Swagger Logo" />Api online documentation
 </a>
 </p>
